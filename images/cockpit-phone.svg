@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 866" width="400" height="866" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8CE7A"/><stop offset="22%" stop-color="#C9A227"/><stop offset="100%" stop-color="#0A4174"/></linearGradient></defs><rect width="400" height="866" fill="#0F172A"/>
+<text x="26" y="46" font-size="14" font-weight="700" fill="#F8FAFC">9:41</text>
+<text x="374" y="46" font-size="13" fill="#94A3B8" text-anchor="end">▮▮▮  ▲  ▮▮▮</text>
+<text x="26" y="104" font-size="13" fill="#94A3B8">Good evening,</text>
+<text x="26" y="128" font-size="21" font-weight="800" fill="#F8FAFC">Al Sadd · today</text>
+<circle cx="356" cy="112" r="20" fill="#0A4174"/><text x="356" y="119" font-size="16" font-weight="800" fill="#E8CE7A" text-anchor="middle">M</text>
+<rect x="26" y="152" width="108" height="76" rx="14" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.08"/>
+<text x="80" y="190" font-size="18" font-weight="800" fill="#E8CE7A" text-anchor="middle">14,632</text>
+<text x="80" y="211" font-size="10" font-weight="600" fill="#94A3B8" text-anchor="middle" letter-spacing="0.6">SALES</text>
+<rect x="144" y="152" width="108" height="76" rx="14" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.08"/>
+<text x="198" y="190" font-size="18" font-weight="800" fill="#34D399" text-anchor="middle">9,954</text>
+<text x="198" y="211" font-size="10" font-weight="600" fill="#94A3B8" text-anchor="middle" letter-spacing="0.6">GROSS PROFIT</text>
+<rect x="262" y="152" width="108" height="76" rx="14" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.08"/>
+<text x="316" y="190" font-size="18" font-weight="800" fill="#38BDF8" text-anchor="middle">68%</text>
+<text x="316" y="211" font-size="10" font-weight="600" fill="#94A3B8" text-anchor="middle" letter-spacing="0.6">MARGIN</text>
+<rect x="26" y="248" width="348" height="150" rx="16" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.07"/>
+<text x="44" y="278" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="1.2">SALES, LAST 7 DAYS</text>
+<rect x="44" y="322" width="30" height="54" rx="5" fill="url(#bg)"/>
+<rect x="90" y="304" width="30" height="72" rx="5" fill="url(#bg)"/>
+<rect x="136" y="316" width="30" height="60" rx="5" fill="url(#bg)"/>
+<rect x="182" y="288" width="30" height="88" rx="5" fill="url(#bg)"/>
+<rect x="228" y="272" width="30" height="104" rx="5" fill="url(#bg)"/>
+<rect x="274" y="280" width="30" height="96" rx="5" fill="url(#bg)"/>
+<rect x="320" y="306" width="30" height="70" rx="5" fill="url(#bg)"/>
+<rect x="26" y="416" width="348" height="176" rx="16" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.07"/>
+<text x="44" y="446" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="1.2">TOP ITEMS TODAY</text>
+<text x="44" y="478" font-size="13.5" font-weight="600" fill="#E2E8F0">Wagyu slider</text>
+<text x="252" y="478" font-size="13" fill="#64748B" text-anchor="end">×24</text>
+<text x="356" y="478" font-size="13.5" font-weight="700" fill="#E8CE7A" text-anchor="end">QR 1,800</text>
+<text x="44" y="507" font-size="13.5" font-weight="600" fill="#E2E8F0">Stuffed burrata</text>
+<text x="252" y="507" font-size="13" fill="#64748B" text-anchor="end">×19</text>
+<text x="356" y="507" font-size="13.5" font-weight="700" fill="#E8CE7A" text-anchor="end">QR 1,425</text>
+<text x="44" y="536" font-size="13.5" font-weight="600" fill="#E2E8F0">Calamari</text>
+<text x="252" y="536" font-size="13" fill="#64748B" text-anchor="end">×17</text>
+<text x="356" y="536" font-size="13.5" font-weight="700" fill="#E8CE7A" text-anchor="end">QR 1,156</text>
+<text x="44" y="565" font-size="13.5" font-weight="600" fill="#E2E8F0">Sea bass</text>
+<text x="252" y="565" font-size="13" fill="#64748B" text-anchor="end">×11</text>
+<text x="356" y="565" font-size="13.5" font-weight="700" fill="#E8CE7A" text-anchor="end">QR 1,045</text>
+<rect x="26" y="610" width="348" height="80" rx="16" fill="#F43F5E" fill-opacity="0.12" stroke="#F43F5E" stroke-opacity="0.4"/>
+<text x="44" y="642" font-size="13.5" font-weight="800" fill="#FB7185">⚠ Food cost 3 points over theory</text>
+<text x="44" y="666" font-size="12" fill="#94A3B8">QR 434.70 unexplained · tap to see which dishes</text>
+<rect x="26" y="708" width="348" height="1" fill="#FFFFFF" fill-opacity="0.08"/>
+<text x="69" y="754" font-size="19" fill="#E8CE7A" text-anchor="middle">⌂</text>
+<text x="69" y="774" font-size="10" font-weight="600" fill="#E8CE7A" text-anchor="middle">Home</text>
+<text x="156" y="754" font-size="19" fill="#64748B" text-anchor="middle">◔</text>
+<text x="156" y="774" font-size="10" font-weight="600" fill="#64748B" text-anchor="middle">Sales</text>
+<text x="243" y="754" font-size="19" fill="#64748B" text-anchor="middle">☷</text>
+<text x="243" y="774" font-size="10" font-weight="600" fill="#64748B" text-anchor="middle">Stock</text>
+<text x="330" y="754" font-size="19" fill="#64748B" text-anchor="middle">☺</text>
+<text x="330" y="774" font-size="10" font-weight="600" fill="#64748B" text-anchor="middle">Team</text>
+</svg>
