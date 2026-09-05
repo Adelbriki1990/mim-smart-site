@@ -510,6 +510,20 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
 .price-card ul li{display:flex;gap:10px;padding:6px 0;font-size:.88rem;color:var(--ink-2);align-items:flex-start}
 .price-card ul li i{color:var(--gold-ink);margin-top:4px;width:15px;flex:none;font-size:.8rem}
 .price-card .btn{width:100%;justify-content:center}
+
+.price-band{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:14px 0;margin:0 0 18px;
+}
+.price-band .unit{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:5px}
+.price-band .note{font-size:.85rem;color:var(--ink-2);line-height:1.5}
+.price-how{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;
+  margin-top:34px;padding:26px;background:#fff;border:1px solid var(--line);border-radius:14px;
+}
+.price-how h4{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+.price-how p{font-size:.89rem;color:var(--ink-2);line-height:1.6}
+.price-how b{color:var(--ink)}
 .price-note{
   margin-top:26px;border:1px dashed var(--line);border-radius:12px;padding:18px 22px;
   font-size:.87rem;color:var(--ink-2);line-height:1.65;background:#fff;
@@ -1090,13 +1104,14 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
     <div class="text-center">
       <div class="eyebrow">No hidden module list</div>
       <h2 class="section-title reveal">How <span class="gold">pricing works</span></h2>
-      <p class="section-sub mx-auto reveal">Every department is included in every plan. You are not sold "the HR module" a year later — what changes is the size of the group, not the software.</p>
+      <p class="section-sub mx-auto reveal">Every department is included in every plan — you are never sold "the HR module" a year later. Prices are quoted per group, because a two-branch café and a seventeen-branch operation are not the same job.</p>
     </div>
     <div class="price-grid">
       <div class="price-card reveal-s">
         <div class="tag">One branch</div>
         <h4>Single</h4>
         <p class="who">One restaurant, one kitchen, however many tills you need on the floor.</p>
+        <div class="price-band"><div class="unit">Per branch · per month</div><div class="note">One branch, however many tills</div></div>
         <ul>
           <li><i class="fas fa-check"></i> All 15 departments</li>
           <li><i class="fas fa-check"></i> Unlimited tills and waiter tablets</li>
@@ -1104,12 +1119,13 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
           <li><i class="fas fa-check"></i> WPS payroll and Qatar labour rules</li>
           <li><i class="fas fa-check"></i> Guest app and loyalty</li>
         </ul>
-        <a href="#contact" class="btn btn-line">Ask for a quote</a>
+        <a href="mailto:hello@mim-smart.com?subject=Quote%20request%20%E2%80%94%20Single&amp;body=Group%20name%3A%0ANumber%20of%20branches%3A%0ATills%20per%20branch%3A%0AWhat%20you%20run%20today%3A%0A" class="btn btn-line">Ask for a quote</a>
       </div>
       <div class="price-card mid reveal-s">
         <div class="tag">Most groups start here</div>
         <h4>Group</h4>
         <p class="who">Several branches, one or more brands, a head office that wants one screen for all of it.</p>
+        <div class="price-band"><div class="unit">Per branch · per month</div><div class="note">Per branch, and the head office is included</div></div>
         <ul>
           <li><i class="fas fa-check"></i> Everything in Single, per branch</li>
           <li><i class="fas fa-check"></i> Head office cockpit across every branch</li>
@@ -1117,12 +1133,13 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
           <li><i class="fas fa-check"></i> Transfers costed between branches</li>
           <li><i class="fas fa-check"></i> Consolidated P&amp;L and food cost</li>
         </ul>
-        <a href="#contact" class="btn btn-navy">Ask for a quote</a>
+        <a href="mailto:hello@mim-smart.com?subject=Quote%20request%20%E2%80%94%20Group&amp;body=Group%20name%3A%0ANumber%20of%20branches%3A%0ATills%20per%20branch%3A%0AWhat%20you%20run%20today%3A%0A" class="btn btn-navy">Ask for a quote</a>
       </div>
       <div class="price-card reveal-s">
         <div class="tag">Large operations</div>
         <h4>Enterprise</h4>
         <p class="who">Many brands, franchise partners, or a group that needs its own install and its own keys.</p>
+        <div class="price-band"><div class="unit">Per branch · per month</div><div class="note">Your own engine, quoted on the whole operation</div></div>
         <ul>
           <li><i class="fas fa-check"></i> Everything in Group</li>
           <li><i class="fas fa-check"></i> Your own engine and your own keys</li>
@@ -1130,8 +1147,14 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
           <li><i class="fas fa-check"></i> Named support contact</li>
           <li><i class="fas fa-check"></i> Priority on the roadmap</li>
         </ul>
-        <a href="#contact" class="btn btn-line">Talk to us</a>
+        <a href="mailto:hello@mim-smart.com?subject=Quote%20request%20%E2%80%94%20Enterprise&amp;body=Group%20name%3A%0ANumber%20of%20branches%3A%0ATills%20per%20branch%3A%0AWhat%20you%20run%20today%3A%0A" class="btn btn-line">Talk to us</a>
       </div>
+    </div>
+    <div class="price-how reveal">
+      <div><h4>What sets the price</h4><p><b>Branches and tills.</b> Not modules, not seats, not how many people log in. Add a department and nothing changes on your invoice.</p></div>
+      <div><h4>What is always included</h4><p>All <b>15 departments</b>, unlimited staff accounts, waiter tablets, chef displays, the guest app and loyalty, and every update we ship.</p></div>
+      <div><h4>What costs extra</h4><p>Only <b>onboarding</b> — bringing in your menu, ingredients, suppliers and staff records, and the first branch install. Quoted once, never recurring.</p></div>
+      <div><h4>How to get a number</h4><p>Tell us your <b>branch count</b> and what you run today. You get a written quote, not a call from a salesperson.</p></div>
     </div>
     <div class="price-note">
       <b>Coming from another system?</b> Your menu, your ingredients, your suppliers and your staff records come in from spreadsheets — there are ready templates for each. Every row is checked before it lands, and anything that cannot be read is reported back to you rather than guessed at. A blank cell is never treated as a zero.
