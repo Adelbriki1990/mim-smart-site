@@ -1129,7 +1129,7 @@ html,body{max-width:100%;overflow-x:clip}
     <div class="text-center">
       <div class="eyebrow">Fifteen departments, one database</div>
       <h2 class="section-title reveal">Everyone gets <span class="gold">their own screen</span></h2>
-      <p class="section-sub mx-auto reveal">Each department has its own staff, its own sign-in, and screens built for that job — writing into the same record as everyone else. Pick one. These are the real screens.</p>
+      <p class="section-sub mx-auto reveal">Each department has its own staff, its own sign-in, and screens built for that job — writing into the same record as everyone else. Pick one. Every screen is drawn from the real MiM software — the same layout, the same rules, demo data.</p>
     </div>
 
     <div class="explorer" id="dept-explorer">
@@ -2168,7 +2168,7 @@ html,body{max-width:100%;overflow-x:clip}
   var warm=function(){ D.forEach(function(d){ var i=new Image(); i.src=d.img; }); };
   if('requestIdleCallback' in window) requestIdleCallback(warm,{timeout:3000}); else setTimeout(warm,1200);
 
-  var cur=-1, timer=null, tick=null, paused=false, userStopped=false, DWELL=7000, t0=0;
+  var cur=-1, timer=null, tick=null, paused=false, userStopped=window.matchMedia('(max-width:1039px)').matches, DWELL=12000, t0=0;
   function render(d){
     el.eyebrow.textContent=d.eyebrow; el.head.textContent=d.head; el.body.textContent=d.body;
     el.chips.innerHTML=''; d.chips.forEach(function(c){ var s=document.createElement('span'); s.textContent=c; el.chips.appendChild(s); });
