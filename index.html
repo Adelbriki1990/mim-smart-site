@@ -404,6 +404,39 @@ nav .container{display:flex;justify-content:space-between;align-items:center;gap
   .tc-thresh{font-size:.62rem}
 }
 
+
+/* ---------- owner app ---------- */
+#owner{background:var(--navy-900);color:#fff}
+.owner-phones{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:38px;align-items:start}
+.owner-phone .frame{
+  background:#11151C;border-radius:30px;padding:10px;max-width:250px;margin:0 auto;position:relative;
+  box-shadow:0 26px 60px rgba(4,12,28,.5),inset 0 0 0 1.5px rgba(255,255,255,.09);
+}
+.owner-phone .frame::after{content:'';position:absolute;top:19px;left:50%;transform:translateX(-50%);width:76px;height:18px;border-radius:11px;background:#080B11}
+.owner-phone img{width:100%;border-radius:22px;display:block;background:#0F172A}
+.owner-phone .cap{text-align:center;margin-top:16px}
+.owner-phone .cap b{display:block;font-size:1rem;font-weight:700;color:#fff;margin-bottom:5px}
+.owner-phone .cap span{font-size:.85rem;color:rgba(255,255,255,.66);line-height:1.6;display:block;max-width:270px;margin:0 auto}
+.pace-note{
+  margin-top:42px;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;
+  border:1px solid rgba(201,162,39,.34);border-radius:16px;padding:30px;background:rgba(201,162,39,.06);
+}
+.pace-note h3{font-family:'Fraunces',Georgia,serif;font-size:1.45rem;font-weight:600;color:#fff;margin-bottom:11px}
+.pace-note p{font-size:.95rem;color:rgba(255,255,255,.82);line-height:1.7}
+.pace-note p + p{margin-top:11px}
+.pace-demo{display:flex;flex-direction:column;gap:12px}
+.pace-demo .row{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:15px 18px}
+.pace-demo .row .k{font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:5px}
+.pace-demo .row .v{font-size:1.05rem;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
+.pace-demo .row.bad{border-color:rgba(244,63,94,.42);background:rgba(244,63,94,.09)}
+.pace-demo .row.bad .v{color:#FB7185}
+.pace-demo .row.good{border-color:rgba(16,185,129,.45);background:rgba(16,185,129,.09)}
+.pace-demo .row.good .v{color:#34D399}
+@media (max-width:992px){
+  .owner-phones{grid-template-columns:1fr;gap:44px}
+  .pace-note{grid-template-columns:1fr;padding:24px}
+}
+
 /* ---------- qatar + engineering ---------- */
 .tile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:18px;margin-top:34px}
 .tile{
@@ -715,6 +748,7 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
       <li><a href="#departments">Departments</a></li>
       <li><a href="#problem">The Gap</a></li>
       <li><a href="#screens">Screens</a></li>
+      <li><a href="#owner">Owner app</a></li>
       <li><a href="#calc">Calculator</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#qatar">Qatar</a></li>
@@ -980,6 +1014,45 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
         <div class="int-item"><i class="fas fa-motorcycle"></i><h4>Keeta</h4></div>
         <div class="int-item"><i class="fas fa-receipt"></i><h4>GTA e-invoice</h4></div>
         <div class="int-item"><i class="fas fa-calculator"></i><h4>Accounting export</h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OWNER APP ===== -->
+<section id="owner">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">On the owner's phone, not just the office</div>
+      <h2 class="section-title reveal">The one screen you check <span class="gold">from the car</span></h2>
+      <p class="section-sub mx-auto reveal">Three tabs. Not a report you request — the day as it happens, and the two things that need you.</p>
+    </div>
+
+    <div class="owner-phones">
+      <div class="owner-phone reveal-l">
+        <div class="frame"><img src="images/owner-sales.svg" alt="Owner app Sales tab — today's takings, pace against the same minute of last Wednesday, hourly bars and branch comparison" loading="lazy" /></div>
+        <div class="cap"><b>Sales</b><span>Today, yesterday, week, month, year. Every branch side by side, and each card draggable into the order you actually read in.</span></div>
+      </div>
+      <div class="owner-phone reveal-s">
+        <div class="frame"><img src="images/owner-inbox.svg" alt="Owner app Inbox tab — drawer shorts pulled out of the day-close notes, with amounts and who signed" loading="lazy" /></div>
+        <div class="cap"><b>Inbox</b><span>Every short, void and unapproved spend from last night's close — lifted out of the notes so nothing waits for you to go looking.</span></div>
+      </div>
+      <div class="owner-phone reveal-r">
+        <div class="frame"><img src="images/owner-reviews.svg" alt="Owner app Reviews tab — weighted rating, angry review count, Arabic and English theme buckets, worst reviews first" loading="lazy" /></div>
+        <div class="cap"><b>Reviews</b><span>Counted first, then worst first. Themes are grouped in Arabic and English, so a complaint in either language lands in the same bucket.</span></div>
+      </div>
+    </div>
+
+    <div class="pace-note reveal-s">
+      <div>
+        <h3>“Are we up or down?” — answered honestly</h3>
+        <p>At 3pm, comparing today's takings to <em>yesterday's whole day</em> tells you nothing. You will always look down, and you will learn to ignore the number.</p>
+        <p>So the app compares today to <strong>the same minute</strong> of the day you are measuring against. At 15:47 on a Thursday it reads last Wednesday's takings <strong>up to 15:47</strong> — and says so on the chip, so you know what you are being told.</p>
+      </div>
+      <div class="pace-demo">
+        <div class="row bad"><div class="k">What most systems show at 15:47</div><div class="v">QR 14,632 &nbsp;vs&nbsp; QR 31,400 &nbsp;·&nbsp; ▼ 53%</div></div>
+        <div class="row"><div class="k">…because they used the full day</div><div class="v" style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.7)">A number that is wrong every day until closing</div></div>
+        <div class="row good"><div class="k">What MiM shows</div><div class="v">▲ 12% &nbsp;vs Wednesday · by 15:47</div></div>
       </div>
     </div>
   </div>
@@ -1298,6 +1371,8 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
           <ul>
             <li><a href="#departments">Departments</a></li>
             <li><a href="#screens">Screens</a></li>
+            <li><a href="#owner">Owner app</a></li>
+      <li><a href="#owner">Owner app</a></li>
       <li><a href="#calc">Calculator</a></li>
       <li><a href="#pricing">Pricing</a></li>
             <li><a href="#integrations">Integrations</a></li>

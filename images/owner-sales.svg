@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 866" width="400" height="866" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
+<defs><linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8CE7A"/><stop offset="26%" stop-color="#C9A227"/><stop offset="100%" stop-color="#0A4174"/></linearGradient></defs>
+<rect width="400" height="866" fill="#0F172A"/>
+<text x="26" y="44" font-size="14" font-weight="700" fill="#F8FAFC">9:41</text>
+<text x="374" y="44" font-size="12" fill="#94A3B8" text-anchor="end">▮▮▮ ▲ ▮▮▮</text>
+<text x="26" y="92" font-size="22" font-weight="800" fill="#F8FAFC">Al Sadd</text>
+<text x="26" y="114" font-size="12.5" fill="#94A3B8">Sales</text>
+<rect x="26" y="132" width="348" height="132" rx="15" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.075)"/>
+<text x="44" y="160" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="1.3">TODAY</text>
+<text x="44" y="206" font-size="38" font-weight="800" fill="#F8FAFC">QR 14,632</text>
+<rect x="44" y="222" width="212" height="26" rx="13" fill="#10B981" fill-opacity="0.16" stroke="#10B981" stroke-opacity="0.45"/>
+<text x="56" y="240" font-size="12" font-weight="700" fill="#34D399">▲ 12%  vs Wednesday · by 15:47</text>
+<rect x="26" y="278" width="57.0" height="27" rx="13.5" fill="#C9A227"/>
+<text x="54.5" y="296" font-size="11.5" font-weight="700" fill="#1A1400" text-anchor="middle">Today</text>
+<rect x="89.0" y="278" width="85.0" height="27" rx="13.5" fill="rgba(255,255,255,0.06)"/>
+<text x="131.5" y="296" font-size="11.5" font-weight="700" fill="#94A3B8" text-anchor="middle">Yesterday</text>
+<rect x="180.0" y="278" width="50.0" height="27" rx="13.5" fill="rgba(255,255,255,0.06)"/>
+<text x="205.0" y="296" font-size="11.5" font-weight="700" fill="#94A3B8" text-anchor="middle">Week</text>
+<rect x="236.0" y="278" width="57.0" height="27" rx="13.5" fill="rgba(255,255,255,0.06)"/>
+<text x="264.5" y="296" font-size="11.5" font-weight="700" fill="#94A3B8" text-anchor="middle">Month</text>
+<rect x="299.0" y="278" width="50.0" height="27" rx="13.5" fill="rgba(255,255,255,0.06)"/>
+<text x="324.0" y="296" font-size="11.5" font-weight="700" fill="#94A3B8" text-anchor="middle">Year</text>
+<rect x="26" y="322" width="348" height="148" rx="15" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.075)"/>
+<text x="44" y="348" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="1.3">BY THE HOUR · DOHA</text>
+<rect x="44" y="434" width="20" height="18" rx="4" fill="url(#bar)"/>
+<rect x="76" y="426" width="20" height="26" rx="4" fill="url(#bar)"/>
+<rect x="108" y="398" width="20" height="54" rx="4" fill="url(#bar)"/>
+<rect x="140" y="364" width="20" height="88" rx="4" fill="url(#bar)"/>
+<rect x="172" y="406" width="20" height="46" rx="4" fill="url(#bar)"/>
+<rect x="204" y="422" width="20" height="30" rx="4" fill="url(#bar)"/>
+<rect x="236" y="390" width="20" height="62" rx="4" fill="url(#bar)"/>
+<rect x="268" y="356" width="20" height="96" rx="4" fill="url(#bar)"/>
+<rect x="300" y="378" width="20" height="74" rx="4" fill="url(#bar)"/>
+<rect x="332" y="412" width="20" height="40" rx="4" fill="url(#bar)"/>
+<text x="44" y="466" font-size="9" fill="#64748B">12p</text><text x="356" y="466" font-size="9" fill="#64748B" text-anchor="end">1a</text>
+<rect x="26" y="486" width="348" height="178" rx="15" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.075)"/>
+<text x="44" y="512" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="1.3">BRANCHES</text>
+<text x="44" y="542" font-size="13.5" font-weight="600" fill="#E2E8F0">Al Sadd</text>
+<text x="286" y="542" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">14,632</text>
+<text x="356" y="542" font-size="11.5" font-weight="700" fill="#34D399" text-anchor="end">▲ 12%</text>
+<text x="44" y="573" font-size="13.5" font-weight="600" fill="#E2E8F0">The Pearl</text>
+<text x="286" y="573" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">11,208</text>
+<text x="356" y="573" font-size="11.5" font-weight="700" fill="#34D399" text-anchor="end">▲ 4%</text>
+<text x="44" y="604" font-size="13.5" font-weight="600" fill="#E2E8F0">Lusail</text>
+<text x="286" y="604" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">8,940</text>
+<text x="356" y="604" font-size="11.5" font-weight="700" fill="#FB7185" text-anchor="end">▼ 9%</text>
+<text x="44" y="635" font-size="13.5" font-weight="600" fill="#E2E8F0">Msheireb</text>
+<text x="286" y="635" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">6,415</text>
+<text x="356" y="635" font-size="11.5" font-weight="700" fill="#34D399" text-anchor="end">▲ 1%</text>
+<rect x="26" y="682" width="348" height="76" rx="15" fill="#C9A227" fill-opacity="0.1" stroke="#C9A227" stroke-opacity="0.35"/>
+<text x="44" y="710" font-size="12.5" font-weight="800" fill="#E8CE7A">⇅ Drag any card to reorder</text>
+<text x="44" y="734" font-size="11.5" fill="#94A3B8">Your order, kept on your phone</text>
+<rect x="26" y="784" width="348" height="1" fill="rgba(255,255,255,0.09)"/>
+<text x="84" y="822" font-size="19" fill="#E8CE7A" text-anchor="middle">◔</text>
+<text x="84" y="842" font-size="10.5" font-weight="600" fill="#E8CE7A" text-anchor="middle">Sales</text>
+<text x="200" y="822" font-size="19" fill="#64748B" text-anchor="middle">✉</text>
+<text x="200" y="842" font-size="10.5" font-weight="600" fill="#64748B" text-anchor="middle">Inbox</text>
+<text x="316" y="822" font-size="19" fill="#64748B" text-anchor="middle">★</text>
+<text x="316" y="842" font-size="10.5" font-weight="600" fill="#64748B" text-anchor="middle">Reviews</text>
+</svg>

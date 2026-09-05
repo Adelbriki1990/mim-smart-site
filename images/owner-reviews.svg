@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 866" width="400" height="866" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
+<defs><linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8CE7A"/><stop offset="26%" stop-color="#C9A227"/><stop offset="100%" stop-color="#0A4174"/></linearGradient></defs>
+<rect width="400" height="866" fill="#0F172A"/>
+<text x="26" y="44" font-size="14" font-weight="700" fill="#F8FAFC">9:41</text>
+<text x="374" y="44" font-size="12" fill="#94A3B8" text-anchor="end">▮▮▮ ▲ ▮▮▮</text>
+<text x="26" y="92" font-size="22" font-weight="800" fill="#F8FAFC">Reviews</text>
+<text x="26" y="114" font-size="12.5" fill="#94A3B8">Counted, then worst first</text>
+<rect x="26" y="132" width="348" height="124" rx="15" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.075)"/>
+<text x="44" y="158" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="1.3">WEIGHTED RATING · 30 DAYS</text>
+<text x="44" y="204" font-size="40" font-weight="800" fill="#F8FAFC">4.2</text>
+<text x="106" y="204" font-size="24" fill="#E8CE7A">★★★★☆</text>
+<text x="44" y="232" font-size="12.5" fill="#FB7185" font-weight="700">18 angry (1–2★)</text>
+<text x="168" y="232" font-size="12.5" fill="#94A3B8">of 214 reviews</text>
+<rect x="26" y="272" width="348" height="72" rx="15" fill="#F43F5E" fill-opacity="0.1" stroke="#F43F5E" stroke-opacity="0.4"/>
+<text x="44" y="298" font-size="12.5" font-weight="800" fill="#FB7185">The verdict</text>
+<text x="44" y="320" font-size="12" fill="#E2E8F0">Waiting time is the theme in 5 of the last 8</text>
+<text x="44" y="336" font-size="12" fill="#E2E8F0">angry reviews — all at Lusail, all after 8pm.</text>
+<rect x="26" y="360" width="348" height="150" rx="15" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.075)"/>
+<text x="44" y="386" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="1.3">THEMES · EN + عربي</text>
+<text x="44" y="410" font-size="12" fill="#CBD5E1">Waiting time · الانتظار</text>
+<rect x="230" y="401" width="96" height="7" rx="3.5" fill="rgba(255,255,255,0.09)"/>
+<rect x="230" y="401" width="78" height="7" rx="3.5" fill="#F43F5E"/>
+<text x="356" y="410" font-size="12" font-weight="700" fill="#F8FAFC" text-anchor="end">9</text>
+<text x="44" y="436" font-size="12" fill="#CBD5E1">Service · الخدمة</text>
+<rect x="230" y="427" width="96" height="7" rx="3.5" fill="rgba(255,255,255,0.09)"/>
+<rect x="230" y="427" width="52" height="7" rx="3.5" fill="#F43F5E"/>
+<text x="356" y="436" font-size="12" font-weight="700" fill="#F8FAFC" text-anchor="end">6</text>
+<text x="44" y="462" font-size="12" fill="#CBD5E1">Food temperature</text>
+<rect x="230" y="453" width="96" height="7" rx="3.5" fill="rgba(255,255,255,0.09)"/>
+<rect x="230" y="453" width="34" height="7" rx="3.5" fill="#F43F5E"/>
+<text x="356" y="462" font-size="12" font-weight="700" fill="#F8FAFC" text-anchor="end">4</text>
+<text x="44" y="488" font-size="12" fill="#CBD5E1">Price · السعر</text>
+<rect x="230" y="479" width="96" height="7" rx="3.5" fill="rgba(255,255,255,0.09)"/>
+<rect x="230" y="479" width="17" height="7" rx="3.5" fill="#F43F5E"/>
+<text x="356" y="488" font-size="12" font-weight="700" fill="#F8FAFC" text-anchor="end">2</text>
+<text x="26" y="546" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="1.3">LOWEST RATED FIRST</text>
+<rect x="26" y="562" width="348" height="64" rx="15" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.075)"/>
+<text x="44" y="586" font-size="13" fill="#E8CE7A">★☆☆☆☆</text>
+<text x="356" y="586" font-size="11" fill="#64748B" text-anchor="end">Lusail · 2d</text>
+<text x="44" y="608" font-size="12.2" fill="#E2E8F0">“Waited 40 minutes for a starter.”</text>
+<rect x="26" y="634" width="348" height="64" rx="15" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.075)"/>
+<text x="44" y="658" font-size="13" fill="#E8CE7A">★★☆☆☆</text>
+<text x="356" y="658" font-size="11" fill="#64748B" text-anchor="end">Lusail · 3d</text>
+<text x="44" y="680" font-size="12.2" fill="#E2E8F0">“Food was cold when it arrived.”</text>
+<rect x="26" y="706" width="348" height="64" rx="15" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.075)"/>
+<text x="44" y="730" font-size="13" fill="#E8CE7A">★★☆☆☆</text>
+<text x="356" y="730" font-size="11" fill="#64748B" text-anchor="end">Al Sadd · 4d</text>
+<text x="44" y="752" font-size="12.2" fill="#E2E8F0">“Nobody came to take the order.”</text>
+<rect x="26" y="784" width="348" height="1" fill="rgba(255,255,255,0.09)"/>
+<text x="84" y="822" font-size="19" fill="#64748B" text-anchor="middle">◔</text>
+<text x="84" y="842" font-size="10.5" font-weight="600" fill="#64748B" text-anchor="middle">Sales</text>
+<text x="200" y="822" font-size="19" fill="#64748B" text-anchor="middle">✉</text>
+<text x="200" y="842" font-size="10.5" font-weight="600" fill="#64748B" text-anchor="middle">Inbox</text>
+<text x="316" y="822" font-size="19" fill="#E8CE7A" text-anchor="middle">★</text>
+<text x="316" y="842" font-size="10.5" font-weight="600" fill="#E8CE7A" text-anchor="middle">Reviews</text>
+</svg>
