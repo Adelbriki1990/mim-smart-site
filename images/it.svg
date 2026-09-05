@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
+<title>IT screen: paired devices with a revoke action, a live pairing QR that expires in 8:42, printer status per branch and two PIN reset requests</title>
+<rect width="1200" height="800" fill="#0F172A"/>
+<text x="30" y="46" font-size="23" font-weight="800" fill="#F8FAFC">IT — Hardware &amp; access · All branches</text>
+<text x="1170" y="46" font-size="15" fill="#94A3B8" text-anchor="end">Sun 6 Sept 2026 · 14:12 · Karim H. · IT</text>
+<rect x="24" y="66" width="1152" height="2" fill="#1E293B"/>
+<rect x="24" y="90" width="700" height="420" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<text x="46" y="120" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">PAIRED DEVICES · 41 ACROSS 7 BRANCHES</text>
+<text x="702" y="120" font-size="12" font-weight="700" fill="#F87171" text-anchor="end">1 flagged · 40 healthy</text>
+<text x="56" y="150" font-size="11" fill="#64748B">DEVICE</text>
+<text x="330" y="150" font-size="11" fill="#64748B">BRANCH</text>
+<text x="470" y="150" font-size="11" fill="#64748B">LAST SEEN</text>
+<rect x="40" y="162" width="668" height="44" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="56" y="189" font-size="14" font-weight="600" fill="#E2E8F0">Till 01 · Juno</text>
+<text x="330" y="189" font-size="13.5" fill="#CBD5E1">Al Sadd</text>
+<circle cx="476" cy="184" r="5" fill="#34D399"/>
+<text x="490" y="189" font-size="13" fill="#CBD5E1">2 min ago</text>
+<rect x="628" y="170" width="68" height="28" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="662" y="189" font-size="11.5" font-weight="700" fill="#CBD5E1" text-anchor="middle">Revoke</text>
+<rect x="40" y="216" width="668" height="44" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="56" y="243" font-size="14" font-weight="600" fill="#E2E8F0">Waiter tablet W-03</text>
+<text x="330" y="243" font-size="13.5" fill="#CBD5E1">West Walk</text>
+<circle cx="476" cy="238" r="5" fill="#34D399"/>
+<text x="490" y="243" font-size="13" fill="#CBD5E1">just now</text>
+<rect x="628" y="224" width="68" height="28" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="662" y="243" font-size="11.5" font-weight="700" fill="#CBD5E1" text-anchor="middle">Revoke</text>
+<rect x="40" y="270" width="668" height="44" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="56" y="297" font-size="14" font-weight="600" fill="#E2E8F0">Chef display · Kitchen</text>
+<text x="330" y="297" font-size="13.5" fill="#CBD5E1">West Bay</text>
+<circle cx="476" cy="292" r="5" fill="#34D399"/>
+<text x="490" y="297" font-size="13" fill="#CBD5E1">1 min ago</text>
+<rect x="628" y="278" width="68" height="28" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="662" y="297" font-size="11.5" font-weight="700" fill="#CBD5E1" text-anchor="middle">Revoke</text>
+<rect x="40" y="324" width="668" height="44" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="56" y="351" font-size="14" font-weight="600" fill="#E2E8F0">Hostess desk</text>
+<text x="330" y="351" font-size="13.5" fill="#CBD5E1">Vendome Mall</text>
+<circle cx="476" cy="346" r="5" fill="#34D399"/>
+<text x="490" y="351" font-size="13" fill="#CBD5E1">6 min ago</text>
+<rect x="628" y="332" width="68" height="28" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="662" y="351" font-size="11.5" font-weight="700" fill="#CBD5E1" text-anchor="middle">Revoke</text>
+<rect x="40" y="378" width="668" height="44" rx="9" fill="#F87171" fill-opacity="0.08" stroke="#F87171" stroke-opacity="0.35"/>
+<text x="56" y="405" font-size="14" font-weight="600" fill="#E2E8F0">Staff phone · Ramesh T.</text>
+<text x="330" y="405" font-size="13.5" fill="#CBD5E1">Old Port</text>
+<circle cx="476" cy="400" r="5" fill="#F87171"/>
+<text x="490" y="405" font-size="13" font-weight="700" fill="#F87171">9 days ago</text>
+<rect x="628" y="386" width="68" height="28" rx="8" fill="#F87171" fill-opacity="0.14" stroke="#F87171" stroke-opacity="0.45"/>
+<text x="662" y="405" font-size="11.5" font-weight="700" fill="#F87171" text-anchor="middle">Revoke</text>
+<text x="46" y="470" font-size="12" fill="#64748B">Unseen 7 days → flagged. Revoke kills its key on the engine now; the phone is a stranger until paired again.</text>
+<rect x="740" y="90" width="436" height="236" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<text x="762" y="120" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">PAIRING QR · WAITER TABLET · WEST WALK</text>
+<rect x="762" y="138" width="160" height="160" rx="10" fill="#FFFFFF"/>
+<g fill="#0F172A">
+<rect x="770" y="146" width="16" height="16"/><rect x="786" y="146" width="16" height="16"/><rect x="802" y="146" width="16" height="16"/><rect x="834" y="146" width="16" height="16"/><rect x="866" y="146" width="16" height="16"/><rect x="882" y="146" width="16" height="16"/><rect x="898" y="146" width="16" height="16"/>
+<rect x="770" y="162" width="16" height="16"/><rect x="802" y="162" width="16" height="16"/><rect x="866" y="162" width="16" height="16"/><rect x="898" y="162" width="16" height="16"/>
+<rect x="770" y="178" width="16" height="16"/><rect x="786" y="178" width="16" height="16"/><rect x="802" y="178" width="16" height="16"/><rect x="834" y="178" width="16" height="16"/><rect x="866" y="178" width="16" height="16"/><rect x="882" y="178" width="16" height="16"/><rect x="898" y="178" width="16" height="16"/>
+<rect x="818" y="194" width="16" height="16"/><rect x="850" y="194" width="16" height="16"/>
+<rect x="770" y="210" width="16" height="16"/><rect x="802" y="210" width="16" height="16"/><rect x="834" y="210" width="16" height="16"/><rect x="850" y="210" width="16" height="16"/><rect x="882" y="210" width="16" height="16"/>
+<rect x="818" y="226" width="16" height="16"/><rect x="866" y="226" width="16" height="16"/><rect x="898" y="226" width="16" height="16"/>
+<rect x="770" y="242" width="16" height="16"/><rect x="786" y="242" width="16" height="16"/><rect x="802" y="242" width="16" height="16"/><rect x="834" y="242" width="16" height="16"/><rect x="882" y="242" width="16" height="16"/>
+<rect x="770" y="258" width="16" height="16"/><rect x="802" y="258" width="16" height="16"/><rect x="850" y="258" width="16" height="16"/><rect x="866" y="258" width="16" height="16"/><rect x="898" y="258" width="16" height="16"/>
+<rect x="770" y="274" width="16" height="16"/><rect x="786" y="274" width="16" height="16"/><rect x="802" y="274" width="16" height="16"/><rect x="834" y="274" width="16" height="16"/><rect x="866" y="274" width="16" height="16"/>
+</g>
+<text x="946" y="160" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">EXPIRES IN</text>
+<text x="946" y="200" font-size="36" font-weight="800" fill="#E8CE7A">8:42</text>
+<rect x="946" y="212" width="210" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+<rect x="946" y="212" width="183" height="6" rx="3" fill="#E8CE7A"/>
+<text x="946" y="246" font-size="12.5" fill="#CBD5E1">Scan from the new tablet.</text>
+<text x="946" y="264" font-size="12.5" fill="#CBD5E1">It joins West Walk as W-08 —</text>
+<text x="946" y="282" font-size="12.5" fill="#CBD5E1">a waiter tablet, nothing else.</text>
+<rect x="740" y="346" width="436" height="408" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<text x="762" y="376" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">PRINTERS · RECEIPT + KITCHEN</text>
+<text x="1154" y="376" font-size="12" font-weight="700" fill="#FBBF24" text-anchor="end">13 of 14 online</text>
+<rect x="756" y="386" width="404" height="40" rx="9" fill="rgba(255,255,255,0.03)"/>
+<circle cx="778" cy="406" r="5" fill="#34D399"/>
+<text x="800" y="411" font-size="14" font-weight="600" fill="#E2E8F0">Al Sadd</text>
+<rect x="756" y="430" width="404" height="40" rx="9" fill="rgba(255,255,255,0.03)"/>
+<circle cx="778" cy="450" r="5" fill="#34D399"/>
+<text x="800" y="455" font-size="14" font-weight="600" fill="#E2E8F0">West Walk</text>
+<rect x="756" y="474" width="404" height="40" rx="9" fill="#F87171" fill-opacity="0.08" stroke="#F87171" stroke-opacity="0.35"/>
+<circle cx="778" cy="494" r="5" fill="#F87171"/>
+<text x="800" y="499" font-size="14" font-weight="600" fill="#E2E8F0">West Bay</text>
+<text x="1146" y="499" font-size="12.5" font-weight="700" fill="#F87171" text-anchor="end">kitchen · offline 12 min</text>
+<rect x="756" y="518" width="404" height="40" rx="9" fill="rgba(255,255,255,0.03)"/>
+<circle cx="778" cy="538" r="5" fill="#34D399"/>
+<text x="800" y="543" font-size="14" font-weight="600" fill="#E2E8F0">Vendome Mall</text>
+<rect x="756" y="562" width="404" height="40" rx="9" fill="rgba(255,255,255,0.03)"/>
+<circle cx="778" cy="582" r="5" fill="#34D399"/>
+<text x="800" y="587" font-size="14" font-weight="600" fill="#E2E8F0">Old Port</text>
+<rect x="756" y="606" width="404" height="40" rx="9" fill="rgba(255,255,255,0.03)"/>
+<circle cx="778" cy="626" r="5" fill="#34D399"/>
+<text x="800" y="631" font-size="14" font-weight="600" fill="#E2E8F0">MOQ</text>
+<rect x="756" y="650" width="404" height="40" rx="9" fill="rgba(255,255,255,0.03)"/>
+<circle cx="778" cy="670" r="5" fill="#34D399"/>
+<text x="800" y="675" font-size="14" font-weight="600" fill="#E2E8F0">DFC</text>
+<text x="762" y="728" font-size="12" fill="#64748B">West Bay tickets queue on the chef display — nothing is lost.</text>
+<rect x="24" y="530" width="700" height="224" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<text x="46" y="560" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">PIN RESET REQUESTS · 2 WAITING</text>
+<rect x="40" y="578" width="668" height="68" rx="10" fill="rgba(255,255,255,0.03)"/>
+<text x="56" y="605" font-size="14" font-weight="600" fill="#E2E8F0">Priya Nair · Waiter · West Walk</text>
+<text x="56" y="626" font-size="12.5" fill="#94A3B8">Forgot till PIN · asked 14:03 · vouched by Ahmed E., shift manager</text>
+<rect x="534" y="596" width="82" height="32" rx="9" fill="#34D399" fill-opacity="0.16" stroke="#34D399" stroke-opacity="0.5"/>
+<text x="575" y="617" font-size="12" font-weight="700" fill="#34D399" text-anchor="middle">Approve</text>
+<rect x="626" y="596" width="70" height="32" rx="9" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="661" y="617" font-size="12" font-weight="700" fill="#CBD5E1" text-anchor="middle">Deny</text>
+<rect x="40" y="656" width="668" height="68" rx="10" fill="rgba(255,255,255,0.03)"/>
+<text x="56" y="683" font-size="14" font-weight="600" fill="#E2E8F0">Dinesh Perera · Chef · Al Sadd</text>
+<text x="56" y="704" font-size="12.5" fill="#94A3B8">Locked out after 5 wrong tries · asked 13:48 · QID checked at HR</text>
+<rect x="534" y="674" width="82" height="32" rx="9" fill="#34D399" fill-opacity="0.16" stroke="#34D399" stroke-opacity="0.5"/>
+<text x="575" y="695" font-size="12" font-weight="700" fill="#34D399" text-anchor="middle">Approve</text>
+<rect x="626" y="674" width="70" height="32" rx="9" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="661" y="695" font-size="12" font-weight="700" fill="#CBD5E1" text-anchor="middle">Deny</text>
+<text x="24" y="784" font-size="12.5" fill="#64748B">Revoke is immediate. Approve writes the reset to the audit log under your name — the PIN itself is never shown to IT.</text>
+</svg>

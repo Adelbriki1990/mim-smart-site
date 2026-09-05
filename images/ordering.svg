@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
+<title>Ordering — the West Walk chilled count sheet becoming an order to the Central Store, with blank lines held back instead of ordered as zero, one line far below par and today’s wastage logged.</title>
+<rect width="1200" height="800" fill="#0F172A"/>
+<text x="30" y="46" font-size="23" font-weight="800" fill="#F8FAFC">Ordering — West Walk · Sun 6 Sept</text>
+<text x="1170" y="46" font-size="15" fill="#94A3B8" text-anchor="end">count sheet by Ramesh T. · 14:20 · order to Central Store</text>
+<rect x="24" y="66" width="1152" height="2" fill="#1E293B"/>
+<rect x="24" y="90" width="168" height="46" rx="12" fill="#E0A130"/>
+<text x="42" y="119" font-size="14.5" font-weight="700" fill="#0F172A">Chilled</text>
+<rect x="152" y="103" width="24" height="20" rx="10" fill="rgba(15,23,42,0.22)"/>
+<text x="164" y="117" font-size="11" font-weight="700" fill="#0F172A" text-anchor="middle">2</text>
+<rect x="24" y="146" width="168" height="46" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="42" y="175" font-size="14.5" font-weight="700" fill="#E2E8F0">Frozen</text>
+<rect x="24" y="202" width="168" height="46" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="42" y="231" font-size="14.5" font-weight="700" fill="#E2E8F0">Dry goods</text>
+<rect x="24" y="258" width="168" height="46" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="42" y="287" font-size="14.5" font-weight="700" fill="#E2E8F0">Produce</text>
+<rect x="152" y="271" width="24" height="20" rx="10" fill="#FBBF24" fill-opacity="0.18" stroke="#FBBF24" stroke-opacity="0.5"/>
+<text x="164" y="285" font-size="11" font-weight="700" fill="#FBBF24" text-anchor="middle">1</text>
+<rect x="24" y="314" width="168" height="46" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="42" y="343" font-size="14.5" font-weight="700" fill="#E2E8F0">Beverages</text>
+<rect x="24" y="370" width="168" height="46" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="42" y="399" font-size="14.5" font-weight="700" fill="#E2E8F0">Packaging</text>
+<rect x="208" y="90" width="648" height="510" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<text x="230" y="120" font-size="12" font-weight="700" fill="#94A3B8" letter-spacing="1.4">COUNT SHEET · CHILLED · 7 LINES</text>
+<text x="240" y="150" font-size="11" fill="#64748B">INGREDIENT</text>
+<text x="580" y="150" font-size="11" fill="#64748B" text-anchor="end">PAR</text>
+<text x="700" y="150" font-size="11" fill="#64748B" text-anchor="end">COUNTED</text>
+<text x="824" y="150" font-size="11" fill="#64748B" text-anchor="end">SUGGESTED ORDER</text>
+<rect x="224" y="164" width="616" height="40" rx="9" fill="#FBBF24" fill-opacity="0.1" stroke="#FBBF24" stroke-opacity="0.42"/>
+<text x="240" y="189" font-size="14" font-weight="600" fill="#E2E8F0">Chicken breast<tspan font-size="12.5" font-weight="400" fill="#64748B"> · kg</tspan></text>
+<rect x="404" y="174" width="92" height="20" rx="10" fill="#FBBF24" fill-opacity="0.18" stroke="#FBBF24" stroke-opacity="0.5"/>
+<text x="450" y="188" font-size="11" font-weight="700" fill="#FBBF24" text-anchor="middle">22% of par</text>
+<text x="580" y="189" font-size="13.5" font-weight="700" fill="#4A80BC" text-anchor="end">30</text>
+<text x="700" y="189" font-size="13.5" font-weight="700" fill="#FBBF24" text-anchor="end">6.5</text>
+<text x="824" y="189" font-size="14" font-weight="800" fill="#E8CE7A" text-anchor="end">24</text>
+<rect x="224" y="220" width="616" height="40" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="240" y="245" font-size="14" font-weight="600" fill="#E2E8F0">Salmon fillet<tspan font-size="12.5" font-weight="400" fill="#64748B"> · kg</tspan></text>
+<text x="580" y="245" font-size="13.5" font-weight="700" fill="#4A80BC" text-anchor="end">12</text>
+<text x="700" y="245" font-size="13.5" font-weight="700" fill="#E2E8F0" text-anchor="end">7.4</text>
+<text x="824" y="245" font-size="14" font-weight="800" fill="#E8CE7A" text-anchor="end">5</text>
+<rect x="224" y="276" width="616" height="40" rx="9" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.12)" stroke-dasharray="5 4"/>
+<text x="240" y="301" font-size="14" font-weight="600" fill="#E2E8F0">Lamb shoulder<tspan font-size="12.5" font-weight="400" fill="#64748B"> · kg</tspan></text>
+<text x="580" y="301" font-size="13.5" font-weight="700" fill="#4A80BC" text-anchor="end">18</text>
+<text x="700" y="301" font-size="13.5" font-weight="700" fill="#64748B" text-anchor="end">—</text>
+<text x="824" y="301" font-size="14" font-weight="800" fill="#64748B" text-anchor="end">—</text>
+<rect x="224" y="332" width="616" height="40" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="240" y="357" font-size="14" font-weight="600" fill="#E2E8F0">Halloumi<tspan font-size="12.5" font-weight="400" fill="#64748B"> · kg</tspan></text>
+<text x="580" y="357" font-size="13.5" font-weight="700" fill="#4A80BC" text-anchor="end">8</text>
+<text x="700" y="357" font-size="13.5" font-weight="700" fill="#E2E8F0" text-anchor="end">5.2</text>
+<text x="824" y="357" font-size="14" font-weight="800" fill="#E8CE7A" text-anchor="end">3</text>
+<rect x="224" y="388" width="616" height="40" rx="9" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.12)" stroke-dasharray="5 4"/>
+<text x="240" y="413" font-size="14" font-weight="600" fill="#E2E8F0">Labneh<tspan font-size="12.5" font-weight="400" fill="#64748B"> · kg</tspan></text>
+<text x="580" y="413" font-size="13.5" font-weight="700" fill="#4A80BC" text-anchor="end">6</text>
+<text x="700" y="413" font-size="13.5" font-weight="700" fill="#64748B" text-anchor="end">—</text>
+<text x="824" y="413" font-size="14" font-weight="800" fill="#64748B" text-anchor="end">—</text>
+<rect x="224" y="444" width="616" height="40" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="240" y="469" font-size="14" font-weight="600" fill="#E2E8F0">Butter<tspan font-size="12.5" font-weight="400" fill="#64748B"> · kg</tspan></text>
+<text x="580" y="469" font-size="13.5" font-weight="700" fill="#4A80BC" text-anchor="end">10</text>
+<text x="700" y="469" font-size="13.5" font-weight="700" fill="#E2E8F0" text-anchor="end">6.0</text>
+<text x="824" y="469" font-size="14" font-weight="800" fill="#E8CE7A" text-anchor="end">4</text>
+<rect x="224" y="500" width="616" height="40" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="240" y="525" font-size="14" font-weight="600" fill="#E2E8F0">Fresh cream<tspan font-size="12.5" font-weight="400" fill="#64748B"> · L</tspan></text>
+<text x="580" y="525" font-size="13.5" font-weight="700" fill="#4A80BC" text-anchor="end">12</text>
+<text x="700" y="525" font-size="13.5" font-weight="700" fill="#E2E8F0" text-anchor="end">4.5</text>
+<text x="824" y="525" font-size="14" font-weight="800" fill="#E8CE7A" text-anchor="end">8</text>
+<text x="230" y="574" font-size="11.5" fill="#64748B">— means not counted yet · <tspan fill="#E8CE7A" font-weight="700">blank ≠ zero</tspan> — a 0 here would order the whole par.</text>
+<rect x="872" y="90" width="304" height="510" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<text x="892" y="120" font-size="12" font-weight="700" fill="#94A3B8" letter-spacing="1.4">WASTAGE TODAY</text>
+<text x="892" y="172" font-size="36" font-weight="800" fill="#F87171">QR 227</text>
+<text x="892" y="198" font-size="12.5" fill="#64748B">3 entries · valued at last delivery cost</text>
+<rect x="888" y="230" width="272" height="56" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="902" y="253" font-size="13.5" font-weight="600" fill="#E2E8F0">Chicken breast</text>
+<text x="1146" y="253" font-size="13.5" font-weight="700" fill="#F87171" text-anchor="end">QR 77</text>
+<text x="902" y="273" font-size="11.5" fill="#64748B">3.5 kg · temp breach, walk-in chiller</text>
+<rect x="888" y="298" width="272" height="56" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="902" y="321" font-size="13.5" font-weight="600" fill="#E2E8F0">Salmon fillet</text>
+<text x="1146" y="321" font-size="13.5" font-weight="700" fill="#F87171" text-anchor="end">QR 114</text>
+<text x="902" y="341" font-size="11.5" fill="#64748B">1.2 kg · trim past use-by, 5 Sept</text>
+<rect x="888" y="366" width="272" height="56" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="902" y="389" font-size="13.5" font-weight="600" fill="#E2E8F0">Fresh cream</text>
+<text x="1146" y="389" font-size="13.5" font-weight="700" fill="#F87171" text-anchor="end">QR 36</text>
+<text x="902" y="409" font-size="11.5" fill="#64748B">2 L · split on opening</text>
+<rect x="888" y="466" width="272" height="1" fill="rgba(255,255,255,0.08)"/>
+<text x="892" y="496" font-size="11.5" fill="#64748B">Already off the count — it lands in the</text>
+<text x="892" y="514" font-size="11.5" fill="#64748B">day close as a known loss, not the gap.</text>
+<rect x="208" y="616" width="968" height="112" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<text x="232" y="648" font-size="12" font-weight="700" fill="#94A3B8" letter-spacing="1.4">ORDER TO CENTRAL STORE</text>
+<text x="232" y="676" font-size="13" fill="#CBD5E1">31 of 34 lines · delivery from Central Store Mon 7 Sept, 05:30</text>
+<text x="232" y="700" font-size="13" font-weight="600" fill="#FBBF24">3 blank lines held back · Chilled 2, Produce 1 · 1 line far below par</text>
+<text x="936" y="686" font-size="36" font-weight="800" fill="#E8CE7A" text-anchor="end">QR 6,214</text>
+<rect x="964" y="650" width="188" height="44" rx="11" fill="#E0A130"/>
+<text x="1058" y="678" font-size="13.5" font-weight="700" fill="#0F172A" text-anchor="middle">Send to Central Store</text>
+<text x="24" y="772" font-size="12.5" fill="#64748B">order = par − counted, rounded up to the pack  ·  a blank count orders nothing until someone counts it</text>
+</svg>

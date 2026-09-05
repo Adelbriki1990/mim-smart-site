@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
+<title>Maintenance board: repair jobs across the WITHSTAND branches in three columns, Reported, In progress and Fixed, with this month's spend by branch.</title>
+<rect width="1200" height="800" fill="#0F172A"/>
+<text x="30" y="46" font-size="23" font-weight="800" fill="#F8FAFC">Maintenance — all branches · September</text>
+<text x="1170" y="46" font-size="15" fill="#94A3B8" text-anchor="end">Sun 20 Sept, 14:20 · 6 open jobs</text>
+<rect x="24" y="66" width="1152" height="2" fill="#1E293B"/>
+<rect x="24" y="84" width="272" height="556" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<circle cx="46" cy="108" r="5" fill="#FBBF24"/>
+<text x="58" y="112" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">REPORTED · 3</text>
+<rect x="36" y="130" width="248" height="92" rx="10" fill="#F87171" fill-opacity="0.1" stroke="#F87171" stroke-opacity="0.5"/>
+<text x="50" y="156" font-size="13.5" font-weight="600" fill="#F8FAFC">Walk-in fridge not holding temp</text>
+<rect x="50" y="172" width="64" height="22" rx="11" fill="rgba(255,255,255,0.08)"/>
+<text x="82" y="187" font-size="11" font-weight="700" fill="#CBD5E1" text-anchor="middle">Al Sadd</text>
+<rect x="122" y="172" width="50" height="22" rx="11" fill="#F87171" fill-opacity="0.18" stroke="#F87171" stroke-opacity="0.5"/>
+<text x="147" y="187" font-size="11" font-weight="800" fill="#F87171" text-anchor="middle">HIGH</text>
+<text x="270" y="187" font-size="12.5" font-weight="700" fill="#F87171" text-anchor="end">3h</text>
+<rect x="36" y="236" width="248" height="92" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+<text x="50" y="262" font-size="13.5" font-weight="600" fill="#E2E8F0">Ice machine leaking</text>
+<rect x="50" y="278" width="70" height="22" rx="11" fill="rgba(255,255,255,0.08)"/>
+<text x="85" y="293" font-size="11" font-weight="700" fill="#CBD5E1" text-anchor="middle">West Bay</text>
+<text x="270" y="293" font-size="12.5" font-weight="700" fill="#94A3B8" text-anchor="end">1d</text>
+<rect x="36" y="342" width="248" height="92" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+<text x="50" y="368" font-size="13.5" font-weight="600" fill="#E2E8F0">Espresso machine not heating</text>
+<rect x="50" y="384" width="48" height="22" rx="11" fill="rgba(255,255,255,0.08)"/>
+<text x="74" y="399" font-size="11" font-weight="700" fill="#CBD5E1" text-anchor="middle">MOQ</text>
+<text x="270" y="399" font-size="12.5" font-weight="700" fill="#94A3B8" text-anchor="end">6h</text>
+<rect x="312" y="84" width="272" height="556" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<circle cx="334" cy="108" r="5" fill="#38BDF8"/>
+<text x="346" y="112" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">IN PROGRESS · 3</text>
+<rect x="324" y="130" width="248" height="112" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+<text x="338" y="156" font-size="13.5" font-weight="600" fill="#E2E8F0">Hood extraction fan grinding</text>
+<text x="338" y="176" font-size="12" fill="#94A3B8">Suresh P. on site since 11:40</text>
+<rect x="338" y="192" width="96" height="22" rx="11" fill="rgba(255,255,255,0.08)"/>
+<text x="386" y="207" font-size="11" font-weight="700" fill="#CBD5E1" text-anchor="middle">Vendome Mall</text>
+<text x="558" y="207" font-size="12.5" font-weight="700" fill="#94A3B8" text-anchor="end">2d</text>
+<rect x="324" y="256" width="248" height="112" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+<text x="338" y="282" font-size="13.5" font-weight="600" fill="#E2E8F0">Dining AC unit tripping</text>
+<text x="338" y="302" font-size="12" fill="#94A3B8">Compressor due Tue 22 Sept</text>
+<rect x="338" y="318" width="78" height="22" rx="11" fill="rgba(255,255,255,0.08)"/>
+<text x="377" y="333" font-size="11" font-weight="700" fill="#CBD5E1" text-anchor="middle">West Walk</text>
+<text x="558" y="333" font-size="12.5" font-weight="700" fill="#FBBF24" text-anchor="end">4d</text>
+<rect x="324" y="382" width="248" height="112" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+<text x="338" y="408" font-size="13.5" font-weight="600" fill="#E2E8F0">Terrace lights flickering</text>
+<text x="338" y="428" font-size="12" fill="#94A3B8">Nabil E. booked for Mon 21 Sept</text>
+<rect x="338" y="444" width="68" height="22" rx="11" fill="rgba(255,255,255,0.08)"/>
+<text x="372" y="459" font-size="11" font-weight="700" fill="#CBD5E1" text-anchor="middle">Old Port</text>
+<text x="558" y="459" font-size="12.5" font-weight="700" fill="#94A3B8" text-anchor="end">3d</text>
+<rect x="600" y="84" width="272" height="556" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<circle cx="622" cy="108" r="5" fill="#34D399"/>
+<text x="634" y="112" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">FIXED · LAST 7 DAYS</text>
+<rect x="612" y="130" width="248" height="104" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+<text x="626" y="156" font-size="13.5" font-weight="600" fill="#E2E8F0">Grill gas valve replaced</text>
+<rect x="626" y="172" width="68" height="22" rx="11" fill="rgba(255,255,255,0.08)"/>
+<text x="660" y="187" font-size="11" font-weight="700" fill="#CBD5E1" text-anchor="middle">Old Port</text>
+<text x="846" y="187" font-size="12.5" font-weight="700" fill="#94A3B8" text-anchor="end">1d</text>
+<text x="626" y="216" font-size="13.5" font-weight="700" fill="#34D399">QR 1,850 <tspan font-size="12" font-weight="500" fill="#64748B">→ straight to finance</tspan></text>
+<rect x="612" y="248" width="248" height="104" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+<text x="626" y="274" font-size="13.5" font-weight="600" fill="#E2E8F0">Bar receipt printer swapped</text>
+<rect x="626" y="290" width="64" height="22" rx="11" fill="rgba(255,255,255,0.08)"/>
+<text x="658" y="305" font-size="11" font-weight="700" fill="#CBD5E1" text-anchor="middle">Al Sadd</text>
+<text x="846" y="305" font-size="12.5" font-weight="700" fill="#94A3B8" text-anchor="end">3d</text>
+<text x="626" y="334" font-size="13.5" font-weight="700" fill="#34D399">QR 420 <tspan font-size="12" font-weight="500" fill="#64748B">→ straight to finance</tspan></text>
+<rect x="612" y="366" width="248" height="104" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+<text x="626" y="392" font-size="13.5" font-weight="600" fill="#E2E8F0">Kitchen drain unblocked</text>
+<rect x="626" y="408" width="44" height="22" rx="11" fill="rgba(255,255,255,0.08)"/>
+<text x="648" y="423" font-size="11" font-weight="700" fill="#CBD5E1" text-anchor="middle">DFC</text>
+<text x="846" y="423" font-size="12.5" font-weight="700" fill="#94A3B8" text-anchor="end">5d</text>
+<text x="626" y="452" font-size="13.5" font-weight="700" fill="#34D399">QR 650 <tspan font-size="12" font-weight="500" fill="#64748B">→ straight to finance</tspan></text>
+<rect x="612" y="484" width="248" height="104" rx="10" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+<text x="626" y="510" font-size="13.5" font-weight="600" fill="#E2E8F0">Dishwasher heating element</text>
+<rect x="626" y="526" width="70" height="22" rx="11" fill="rgba(255,255,255,0.08)"/>
+<text x="661" y="541" font-size="11" font-weight="700" fill="#CBD5E1" text-anchor="middle">West Bay</text>
+<text x="846" y="541" font-size="12.5" font-weight="700" fill="#94A3B8" text-anchor="end">6d</text>
+<text x="626" y="570" font-size="13.5" font-weight="700" fill="#34D399">QR 1,120 <tspan font-size="12" font-weight="500" fill="#64748B">→ straight to finance</tspan></text>
+<rect x="896" y="84" width="280" height="556" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<text x="918" y="114" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">THIS MONTH · SPENT BY BRANCH</text>
+<text x="918" y="162" font-size="36" font-weight="800" fill="#E8CE7A">QR 14,630</text>
+<text x="918" y="186" font-size="12.5" fill="#64748B">9 jobs closed · 81% of budget</text>
+<text x="918" y="232" font-size="13" font-weight="600" fill="#CBD5E1">Al Sadd</text>
+<text x="1156" y="232" font-size="13" font-weight="700" fill="#E2E8F0" text-anchor="end">QR 5,240</text>
+<rect x="918" y="242" width="238" height="10" rx="5" fill="rgba(255,255,255,0.06)"/>
+<rect x="918" y="242" width="238" height="10" rx="5" fill="#4A80BC"/>
+<text x="918" y="300" font-size="13" font-weight="600" fill="#CBD5E1">Vendome Mall</text>
+<text x="1156" y="300" font-size="13" font-weight="700" fill="#E2E8F0" text-anchor="end">QR 3,900</text>
+<rect x="918" y="310" width="238" height="10" rx="5" fill="rgba(255,255,255,0.06)"/>
+<rect x="918" y="310" width="177" height="10" rx="5" fill="#4A80BC"/>
+<text x="918" y="368" font-size="13" font-weight="600" fill="#CBD5E1">West Bay</text>
+<text x="1156" y="368" font-size="13" font-weight="700" fill="#E2E8F0" text-anchor="end">QR 2,780</text>
+<rect x="918" y="378" width="238" height="10" rx="5" fill="rgba(255,255,255,0.06)"/>
+<rect x="918" y="378" width="126" height="10" rx="5" fill="#4A80BC"/>
+<text x="918" y="436" font-size="13" font-weight="600" fill="#CBD5E1">Old Port</text>
+<text x="1156" y="436" font-size="13" font-weight="700" fill="#E2E8F0" text-anchor="end">QR 1,850</text>
+<rect x="918" y="446" width="238" height="10" rx="5" fill="rgba(255,255,255,0.06)"/>
+<rect x="918" y="446" width="84" height="10" rx="5" fill="#4A80BC"/>
+<text x="918" y="504" font-size="13" font-weight="600" fill="#CBD5E1">DFC</text>
+<text x="1156" y="504" font-size="13" font-weight="700" fill="#E2E8F0" text-anchor="end">QR 860</text>
+<rect x="918" y="514" width="238" height="10" rx="5" fill="rgba(255,255,255,0.06)"/>
+<rect x="918" y="514" width="39" height="10" rx="5" fill="#4A80BC"/>
+<rect x="918" y="556" width="238" height="1" fill="rgba(255,255,255,0.06)"/>
+<text x="918" y="588" font-size="12" fill="#64748B">West Walk · MOQ — nothing spent yet</text>
+<rect x="24" y="662" width="1152" height="112" rx="14" fill="#F87171" fill-opacity="0.1" stroke="#F87171" stroke-opacity="0.42"/>
+<text x="48" y="708" font-size="15" font-weight="800" fill="#F87171">⚠ HIGH · Walk-in fridge at Al Sadd — 3 hours without a technician</text>
+<text x="48" y="734" font-size="13" fill="#CBD5E1">Reported 11:10 by Chef Rajesh M. · cold room at 9 °C · meat moved to the bar fridges at 12:00</text>
+<rect x="960" y="698" width="192" height="40" rx="10" fill="#E0A130" fill-opacity="0.16" stroke="#E0A130" stroke-opacity="0.5"/>
+<text x="1056" y="723" font-size="13" font-weight="700" fill="#E8CE7A" text-anchor="middle">Assign a technician</text>
+</svg>

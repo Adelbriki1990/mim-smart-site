@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
+<title>Central Store purchasing screen: open branch requests on the left, a poultry purchase order with a short goods-received note in the middle, and supplier balances with one overdue on the right.</title>
+<rect width="1200" height="800" fill="#0F172A"/>
+<text x="30" y="46" font-size="23" font-weight="800" fill="#F8FAFC">Central Store — Purchasing · 12 September</text>
+<text x="1170" y="46" font-size="15" fill="#94A3B8" text-anchor="end">Nuwan Perera · request → PO → GRN → payable</text>
+<rect x="24" y="66" width="1152" height="2" fill="#1E293B"/>
+<rect x="24" y="90" width="264" height="666" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<text x="44" y="118" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">OPEN REQUESTS · 4 BRANCHES</text>
+<rect x="36" y="136" width="240" height="104" rx="12" fill="#E0A130" fill-opacity="0.12" stroke="#E0A130" stroke-opacity="0.5"/>
+<text x="50" y="164" font-size="14.5" font-weight="700" fill="#F8FAFC">Al Sadd</text>
+<rect x="180" y="150" width="84" height="20" rx="10" fill="#E0A130" fill-opacity="0.18" stroke="#E0A130" stroke-opacity="0.5"/>
+<text x="222" y="164" font-size="11" font-weight="700" fill="#E8CE7A" text-anchor="middle">IN PO-0412</text>
+<text x="50" y="188" font-size="13" fill="#E2E8F0">Chicken thigh, boneless · 40 kg</text>
+<text x="50" y="212" font-size="11.5" fill="#94A3B8">needed Sun 13 Sept · Juno kitchen</text>
+<rect x="36" y="252" width="240" height="104" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="50" y="280" font-size="14.5" font-weight="700" fill="#E2E8F0">West Bay</text>
+<rect x="196" y="266" width="68" height="20" rx="10" fill="#FBBF24" fill-opacity="0.16" stroke="#FBBF24" stroke-opacity="0.5"/>
+<text x="230" y="280" font-size="11" font-weight="700" fill="#FBBF24" text-anchor="middle">WAITING</text>
+<text x="50" y="304" font-size="13" fill="#E2E8F0">Extra virgin olive oil · 6 × 5 L</text>
+<text x="50" y="328" font-size="11.5" fill="#94A3B8">needed Mon 14 Sept · next Al Meera PO</text>
+<rect x="36" y="368" width="240" height="104" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="50" y="396" font-size="14.5" font-weight="700" fill="#E2E8F0">Vendome Mall</text>
+<rect x="196" y="382" width="68" height="20" rx="10" fill="#FBBF24" fill-opacity="0.16" stroke="#FBBF24" stroke-opacity="0.5"/>
+<text x="230" y="396" font-size="11" font-weight="700" fill="#FBBF24" text-anchor="middle">WAITING</text>
+<text x="50" y="420" font-size="13" fill="#E2E8F0">Basmati rice · 4 × 20 kg</text>
+<text x="50" y="444" font-size="11.5" fill="#94A3B8">needed Tue 15 Sept · Sumac kitchen</text>
+<rect x="36" y="484" width="240" height="104" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="50" y="512" font-size="14.5" font-weight="700" fill="#E2E8F0">DFC</text>
+<rect x="198" y="498" width="66" height="20" rx="10" fill="#38BDF8" fill-opacity="0.16" stroke="#38BDF8" stroke-opacity="0.5"/>
+<text x="231" y="512" font-size="11" font-weight="700" fill="#38BDF8" text-anchor="middle">QUOTED</text>
+<text x="50" y="536" font-size="13" fill="#E2E8F0">Lamb shoulder · 30 kg</text>
+<text x="50" y="560" font-size="11.5" fill="#94A3B8">needed Sun 13 Sept · Al Rayyan Meats</text>
+<text x="44" y="640" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">THIS WEEK</text>
+<text x="44" y="666" font-size="13.5" font-weight="600" fill="#E2E8F0">23 requests · 19 ordered · 4 open</text>
+<text x="44" y="688" font-size="11.5" fill="#64748B">1.4 days from request to PO, on average</text>
+<rect x="304" y="90" width="572" height="666" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<text x="324" y="118" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">PURCHASE ORDER · PO-0412</text>
+<rect x="690" y="100" width="166" height="26" rx="13" fill="#38BDF8" fill-opacity="0.14" stroke="#38BDF8" stroke-opacity="0.5"/>
+<text x="773" y="118" font-size="12" font-weight="700" fill="#38BDF8" text-anchor="middle">Net 30 · due 12 Oct</text>
+<text x="324" y="154" font-size="20" font-weight="800" fill="#F8FAFC">Doha Fresh Poultry W.L.L.</text>
+<text x="324" y="176" font-size="12.5" fill="#94A3B8">Ordered Tue 8 Sept · delivered Sat 12 Sept, 09:40 · to Central Store, Al Sadd</text>
+<text x="324" y="212" font-size="11" fill="#64748B">ITEM</text>
+<text x="516" y="212" font-size="11" fill="#64748B">UNIT</text>
+<text x="640" y="212" font-size="11" fill="#64748B" text-anchor="end">QTY</text>
+<text x="716" y="212" font-size="11" fill="#64748B" text-anchor="end">RECEIVED</text>
+<text x="780" y="212" font-size="11" fill="#64748B" text-anchor="end">PRICE QR</text>
+<text x="856" y="212" font-size="11" fill="#64748B" text-anchor="end">TOTAL QR</text>
+<rect x="316" y="224" width="544" height="40" rx="9" fill="#F87171" fill-opacity="0.08"/>
+<text x="324" y="249" font-size="14" font-weight="600" fill="#E2E8F0">Chicken thigh, boneless</text>
+<text x="516" y="249" font-size="12.5" fill="#94A3B8">case · 10 kg</text>
+<text x="640" y="249" font-size="13.5" font-weight="700" fill="#CBD5E1" text-anchor="end">6</text>
+<text x="716" y="249" font-size="13.5" font-weight="700" fill="#F87171" text-anchor="end">4 of 6</text>
+<text x="780" y="249" font-size="13.5" fill="#CBD5E1" text-anchor="end">165.00</text>
+<text x="856" y="249" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">990.00</text>
+<rect x="316" y="272" width="544" height="40" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="324" y="297" font-size="14" font-weight="600" fill="#E2E8F0">Whole chicken, 1.2 kg</text>
+<text x="516" y="297" font-size="12.5" fill="#94A3B8">case · 10 pcs</text>
+<text x="640" y="297" font-size="13.5" font-weight="700" fill="#CBD5E1" text-anchor="end">8</text>
+<text x="716" y="297" font-size="13.5" font-weight="700" fill="#34D399" text-anchor="end">8</text>
+<text x="780" y="297" font-size="13.5" fill="#CBD5E1" text-anchor="end">148.00</text>
+<text x="856" y="297" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">1,184.00</text>
+<rect x="316" y="320" width="544" height="40" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="324" y="345" font-size="14" font-weight="600" fill="#E2E8F0">Chicken breast, skinless</text>
+<text x="516" y="345" font-size="12.5" fill="#94A3B8">case · 10 kg</text>
+<text x="640" y="345" font-size="13.5" font-weight="700" fill="#CBD5E1" text-anchor="end">6</text>
+<text x="716" y="345" font-size="13.5" font-weight="700" fill="#34D399" text-anchor="end">6</text>
+<text x="780" y="345" font-size="13.5" fill="#CBD5E1" text-anchor="end">210.00</text>
+<text x="856" y="345" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">1,260.00</text>
+<rect x="316" y="376" width="544" height="1" fill="rgba(255,255,255,0.1)"/>
+<text x="324" y="402" font-size="13.5" font-weight="500" fill="#94A3B8">Ordered · 20 cases</text>
+<text x="856" y="402" font-size="13.5" font-weight="700" fill="#4A80BC" text-anchor="end">QR 3,434.00</text>
+<text x="324" y="432" font-size="15" font-weight="800" fill="#F8FAFC">Received · 18 cases — payable</text>
+<text x="856" y="432" font-size="19" font-weight="800" fill="#E8CE7A" text-anchor="end">QR 3,104.00</text>
+<rect x="316" y="456" width="544" height="104" rx="12" fill="#FBBF24" fill-opacity="0.1" stroke="#FBBF24" stroke-opacity="0.42"/>
+<text x="336" y="486" font-size="15" font-weight="800" fill="#FBBF24">GRN #2261 · received 18/20 cases</text>
+<rect x="724" y="470" width="124" height="24" rx="12" fill="#F87171" fill-opacity="0.16" stroke="#F87171" stroke-opacity="0.5"/>
+<text x="786" y="487" font-size="11.5" font-weight="800" fill="#F87171" text-anchor="middle">SHORT −2 CASES</text>
+<text x="336" y="514" font-size="13" fill="#CBD5E1">Chicken thigh: 4 of 6 cases came · counted by Nirmal Gurung, 10:05</text>
+<text x="336" y="536" font-size="13" fill="#CBD5E1">Pay the count, QR 3,104.00 · the 2 missing cases stay open on the PO</text>
+<text x="324" y="600" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">SUPPLIER RECORD · SINCE JUNE</text>
+<text x="324" y="624" font-size="13" fill="#CBD5E1">14 deliveries · 13 complete · 1 short (today) · every invoice matched a GRN</text>
+<rect x="316" y="696" width="176" height="40" rx="10" fill="#34D399" fill-opacity="0.16" stroke="#34D399" stroke-opacity="0.5"/>
+<text x="404" y="721" font-size="12.5" font-weight="700" fill="#34D399" text-anchor="middle">Accept 18 cases</text>
+<rect x="500" y="696" width="176" height="40" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="588" y="721" font-size="12.5" font-weight="700" fill="#CBD5E1" text-anchor="middle">Re-order 2 cases</text>
+<rect x="684" y="696" width="176" height="40" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="772" y="721" font-size="12.5" font-weight="700" fill="#CBD5E1" text-anchor="middle">Print GRN</text>
+<rect x="892" y="90" width="284" height="666" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<text x="912" y="118" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">OWED TO SUPPLIERS</text>
+<text x="912" y="164" font-size="36" font-weight="800" fill="#E8CE7A">QR 32,545</text>
+<text x="912" y="188" font-size="12.5" fill="#64748B">4 suppliers · 1 overdue</text>
+<rect x="904" y="214" width="260" height="58" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="916" y="237" font-size="13.5" font-weight="600" fill="#E2E8F0">Doha Fresh Poultry</text>
+<text x="1152" y="237" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">QR 14,230</text>
+<text x="916" y="257" font-size="11.5" fill="#94A3B8">Net 30 · 3 invoices · next due 28 Sept</text>
+<rect x="904" y="282" width="260" height="58" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="916" y="305" font-size="13.5" font-weight="600" fill="#E2E8F0">Al Meera</text>
+<text x="1152" y="305" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">QR 8,415</text>
+<text x="916" y="325" font-size="11.5" fill="#94A3B8">due Sun 20 Sept</text>
+<rect x="904" y="350" width="260" height="58" rx="9" fill="#F87171" fill-opacity="0.1" stroke="#F87171" stroke-opacity="0.45"/>
+<text x="916" y="373" font-size="13.5" font-weight="600" fill="#E2E8F0">Gulf Seafood Trading</text>
+<text x="1152" y="373" font-size="13.5" font-weight="700" fill="#F87171" text-anchor="end">QR 6,780</text>
+<text x="916" y="393" font-size="11.5" font-weight="700" fill="#F87171">OVERDUE 9 days · was due 3 Sept</text>
+<rect x="904" y="418" width="260" height="58" rx="9" fill="rgba(255,255,255,0.03)"/>
+<text x="916" y="441" font-size="13.5" font-weight="600" fill="#E2E8F0">Baladna</text>
+<text x="1152" y="441" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">QR 3,120</text>
+<text x="916" y="461" font-size="11.5" fill="#94A3B8">due 5 Oct</text>
+<rect x="912" y="500" width="244" height="1" fill="rgba(255,255,255,0.1)"/>
+<text x="912" y="530" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">PAYMENT RUN · THU 17 SEPT</text>
+<text x="912" y="566" font-size="24" font-weight="800" fill="#F8FAFC">QR 15,195</text>
+<text x="912" y="590" font-size="12.5" fill="#94A3B8">Gulf Seafood + Al Meera · transfer</text>
+<text x="912" y="716" font-size="11.5" fill="#64748B">A balance is goods received —</text>
+<text x="912" y="734" font-size="11.5" fill="#64748B">never goods ordered.</text>
+<text x="24" y="784" font-size="12.5" fill="#64748B">request → purchase order → goods received → payable  ·  every step is a ledger row  ·  a short delivery is paid short, never written off</text>
+</svg>

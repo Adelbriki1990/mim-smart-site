@@ -220,70 +220,88 @@ nav .container{display:flex;justify-content:space-between;align-items:center;gap
 }
 .device-caption .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(47,163,107,.22)}
 
-/* ---------- spotlights: three scenes built from MiM's own screens ----------
-   The Owner's references were a chart floating over a food photograph, a floor plan on a
-   tablet, and a till on a stand with a handheld beside it. Those are compositions, and
-   compositions can be rebuilt with our own product — the screens below are the real MiM UI. */
-.spot-grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:40px}
-@media(min-width:960px){.spot-grid{grid-template-columns:1fr 1fr}.spot-wide{grid-column:1/-1}}
-.spot{position:relative;min-width:0;border-radius:24px;overflow:hidden;
+/* ---------- the department explorer ----------
+   Fifteen departments, one screen each, and you can USE it: pick a department on the rail and
+   the stage shows that department's real MiM screen in the device it actually runs on. It
+   advances on its own while nobody is touching it, and stops the moment somebody is. */
+.explorer{display:grid;grid-template-columns:1fr;gap:18px;margin-top:40px;min-width:0}
+/* under 1040px the rail would be fifteen tabs stacked ABOVE the stage — a phone user taps one and
+   sees nothing change until they scroll. So the stage goes first on a phone, the picker below it. */
+@media(max-width:1039px){.ex-stage{order:-1}}
+@media(min-width:1040px){.explorer{grid-template-columns:272px minmax(0,1fr);gap:26px;align-items:start}}
+
+/* the rail */
+.ex-rail{display:grid;gap:14px;min-width:0}
+.ex-group h5{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-300);margin:0 0 8px;display:flex;align-items:center;gap:10px}
+.ex-group h5::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(232,206,122,.45),rgba(232,206,122,0))}
+.ex-tabs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+@media(min-width:1040px){.ex-tabs{grid-template-columns:1fr}}
+.ex-tab{display:flex;align-items:center;gap:10px;text-align:left;min-width:0;cursor:pointer;
+  padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.1);color:#fff;
+  background:rgba(255,255,255,.04);transition:background .22s,border-color .22s,transform .22s}
+.ex-tab i{width:30px;height:30px;flex:none;display:grid;place-items:center;border-radius:9px;font-size:.9rem;
+  background:rgba(232,206,122,.1);color:var(--gold-300);transition:background .22s,color .22s}
+.ex-tab b{display:block;font-size:.88rem;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ex-tab small{display:block;font-size:.7rem;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ex-tab span{min-width:0}
+.ex-tab:hover{background:rgba(255,255,255,.08);border-color:rgba(232,206,122,.35)}
+.ex-tab[aria-selected="true"]{background:linear-gradient(135deg,rgba(232,206,122,.22),rgba(232,206,122,.08));border-color:rgba(232,206,122,.7);transform:translateX(3px)}
+.ex-tab[aria-selected="true"] i{background:var(--gold-grad);color:#0F1B2E}
+.ex-tab:focus-visible{outline:2px solid var(--gold-300);outline-offset:2px}
+
+/* the stage */
+.ex-stage{position:relative;min-width:0;border-radius:26px;overflow:hidden;isolation:isolate;
   background:linear-gradient(160deg,#123056 0%,#0B1E3A 55%,#08172E 100%);
-  border:1px solid rgba(255,255,255,.12);box-shadow:0 28px 64px rgba(4,12,28,.5)}
-.spot-copy{padding:34px 34px 8px;position:relative;z-index:2}
-.spot-copy .eyebrow{color:var(--gold-300);margin-bottom:6px}
-.spot h3{font-size:clamp(1.35rem,2.4vw,1.75rem);font-weight:800;line-height:1.12;color:#fff;margin:0 0 10px;text-wrap:balance}
-.spot p{color:rgba(255,255,255,.72);max-width:46ch;font-size:.97rem;line-height:1.55;margin:0}
-.spot-copy .spot-pts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.spot-pts span{font-size:.74rem;font-weight:700;padding:5px 11px;border-radius:30px;
-  background:rgba(232,206,122,.12);border:1px solid rgba(232,206,122,.35);color:var(--gold-300);white-space:nowrap}
+  border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 70px rgba(4,12,28,.55)}
+.ex-glow{position:absolute;inset:-30% -20%;z-index:0;pointer-events:none;opacity:.9;
+  background:radial-gradient(34% 40% at 20% 30%,rgba(232,206,122,.22) 0%,rgba(232,206,122,0) 70%),
+             radial-gradient(40% 44% at 82% 78%,rgba(74,128,188,.28) 0%,rgba(74,128,188,0) 70%);
+  transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
+.ex-copy{position:relative;z-index:2;padding:30px 30px 6px;min-width:0}
+.ex-copy .eyebrow{color:var(--gold-300);margin-bottom:6px}
+.ex-copy h3{font-size:clamp(1.3rem,2.3vw,1.7rem);font-weight:800;line-height:1.12;color:#fff;margin:0 0 10px;text-wrap:balance}
+.ex-copy p{color:rgba(255,255,255,.74);max-width:62ch;font-size:.97rem;line-height:1.55;margin:0}
+.ex-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ex-chips span{font-size:.74rem;font-weight:700;padding:5px 11px;border-radius:30px;white-space:nowrap;
+  background:rgba(232,206,122,.12);border:1px solid rgba(232,206,122,.35);color:var(--gold-300)}
+.ex-writes{margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.55)}
+.ex-writes b{color:rgba(255,255,255,.85);font-weight:700}
+.ex-copy>*{transition:opacity .34s ease,transform .34s ease}
+.ex-stage.is-swapping .ex-copy>*{opacity:0;transform:translateY(8px)}
 
-/* scene 1 — the chart over the plate (the burger reference, honestly) */
-.scene-food{position:relative;display:grid;grid-template-columns:1fr;align-items:center;isolation:isolate}
-@media(min-width:960px){.scene-food{grid-template-columns:.95fr 1.05fr}}
-/* the warm "photograph" is the whole scene's ground — it glows behind the WORDS, the way the
-   burger sits behind the headline in the reference, and the chart floats over its far edge */
-.plate{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.plate::before{content:'';position:absolute;inset:-35% -10% -25% -25%;
-  background:
-    radial-gradient(38% 46% at 24% 58%,rgba(255,196,84,.92) 0%,rgba(236,120,42,.85) 32%,rgba(150,52,24,.62) 56%,rgba(8,23,46,0) 76%),
-    radial-gradient(22% 26% at 40% 34%,rgba(255,236,170,.5) 0%,rgba(255,236,170,0) 70%);
-  filter:blur(8px) saturate(1.1)}
-.plate::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(8,23,46,.15) 0%,rgba(8,23,46,.55) 48%,rgba(8,23,46,.92) 100%),
-             linear-gradient(0deg,rgba(8,23,46,.55) 0%,rgba(8,23,46,0) 45%)}
-.plate .grain{position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;
-  background-image:radial-gradient(rgba(255,255,255,.7) .6px,transparent .6px);background-size:3px 3px}
-.scene-food .spot-copy{padding-bottom:30px}
-.chart-wrap{position:relative;z-index:2;padding:0 26px 30px}
-@media(min-width:960px){.chart-wrap{padding:30px 30px 30px 0}}
-.chart-float{border-radius:16px;overflow:hidden;background:#fff;
-  box-shadow:0 34px 70px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.14)}
-.chart-float img{display:block;width:100%;height:auto}
+/* the device — one stage, three frames, chosen per department */
+.ex-device{position:relative;z-index:2;padding:22px 30px 34px;min-width:0;perspective:1400px}
+.ex-frame{position:relative;margin:0 auto;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.ex-shot{position:relative;overflow:hidden;background:#fff}
+.ex-shot img{display:block;width:100%;height:auto;transition:opacity .4s ease}
+.ex-stage.is-swapping .ex-shot img{opacity:0}
+/* tablet */
+.ex-frame[data-frame="tablet"]{max-width:860px;border-radius:26px;background:#0B0F16;padding:14px;
+  box-shadow:0 36px 74px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.09)}
+.ex-frame[data-frame="tablet"]::before{content:'';position:absolute;top:6px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#26324a}
+.ex-frame[data-frame="tablet"] .ex-shot{border-radius:14px}
+/* terminal on a stand */
+.ex-frame[data-frame="terminal"]{max-width:760px;padding-bottom:0}
+.ex-frame[data-frame="terminal"] .ex-shot{border-radius:16px;box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 0 11px #0B0F16,0 0 0 12px rgba(255,255,255,.09)}
+.ex-frame[data-frame="terminal"]::after{content:'';display:block;width:22%;height:34px;margin:0 auto;background:linear-gradient(#171d28,#0B0F16);
+  box-shadow:0 12px 0 -6px #0B0F16, 0 14px 0 -6px rgba(255,255,255,.06);border-radius:0 0 4px 4px}
+/* phone */
+.ex-frame[data-frame="phone"]{max-width:300px;border-radius:38px;background:#0B0F16;padding:10px;
+  box-shadow:0 36px 74px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.1)}
+.ex-frame[data-frame="phone"]::before{content:'';position:absolute;top:14px;left:50%;width:84px;height:22px;margin-left:-42px;border-radius:14px;background:#0B0F16;z-index:3}
+.ex-frame[data-frame="phone"] .ex-shot{border-radius:30px}
 
-/* scene 2 — the floor plan on a tablet */
-.tablet-wrap{padding:6px 28px 32px;position:relative;z-index:2}
-.tablet{position:relative;border-radius:26px;background:#0B0F16;padding:14px;
-  box-shadow:0 34px 70px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.09)}
-.tablet::before{content:'';position:absolute;top:6px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#26324a}
-.tablet img{display:block;width:100%;height:auto;border-radius:14px;background:#fff}
-
-/* scene 3 — the till on its stand, a phone beside it */
-.stand-wrap{position:relative;padding:6px 30px 26px;z-index:2}
-.terminal{position:relative;width:78%}
-.terminal .screen{border-radius:18px;background:#0B0F16;padding:11px;box-shadow:0 30px 60px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.09)}
-.terminal .screen img{display:block;width:100%;height:auto;border-radius:10px;background:#fff}
-.terminal .neck{width:22%;height:30px;margin:0 auto;background:linear-gradient(#171d28,#0B0F16)}
-.terminal .foot{width:54%;height:12px;margin:0 auto;border-radius:0 0 14px 14px;background:linear-gradient(#0B0F16,#050810);box-shadow:0 18px 30px rgba(0,0,0,.5)}
-.handheld{position:absolute;right:0;bottom:22px;width:27%;border-radius:22px;background:#0B0F16;padding:7px;
-  box-shadow:0 26px 50px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.1);transform:rotate(-4deg)}
-.handheld img{display:block;width:100%;height:auto;border-radius:16px;background:#fff}
-
-/* the fifteen, grouped by the area they serve — the grouping is the information */
-.dept-groups{display:grid;gap:30px;margin-top:52px}
-.dept-group h5{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-300);margin:0 0 12px;display:flex;align-items:center;gap:12px}
-.dept-group h5::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(232,206,122,.45),rgba(232,206,122,0))}
-.dept-group .dept-grid{margin-top:0}
-.spot,.spot *,.dept-grid>*{min-width:0}
+/* the timer under the device — the auto-advance made visible, so it never feels like a glitch */
+.ex-progress{position:absolute;left:30px;right:30px;bottom:14px;height:3px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden;z-index:2}
+.ex-progress i{display:block;height:100%;width:0;background:var(--gold-grad-lit);transition:width .25s linear}
+.ex-stage.is-paused .ex-progress{opacity:.35}
+.ex-hint{position:absolute;right:30px;top:30px;z-index:3;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);display:flex;align-items:center;gap:8px}
+.ex-hint .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(47,163,107,.22)}
+.ex-stage.is-paused .ex-hint .dot{background:rgba(255,255,255,.35);box-shadow:none}
+@media(max-width:1039px){.ex-hint{display:none}}
+.explorer,.explorer *{min-width:0}
+@media (prefers-reduced-motion:reduce){.ex-frame,.ex-glow,.ex-copy>*,.ex-shot img{transition:none}}
 
 /* ---------- department cards: the blue ground ---------- */
 #departments{background:var(--navy-900);color:#fff}
@@ -1111,95 +1129,27 @@ html,body{max-width:100%;overflow-x:clip}
     <div class="text-center">
       <div class="eyebrow">Fifteen departments, one database</div>
       <h2 class="section-title reveal">Everyone gets <span class="gold">their own screen</span></h2>
-      <p class="section-sub mx-auto reveal">Each department has its own staff, its own sign-in, and screens built for that job — writing into the same record as everyone else. Three of those screens, as they actually look.</p>
+      <p class="section-sub mx-auto reveal">Each department has its own staff, its own sign-in, and screens built for that job — writing into the same record as everyone else. Pick one. These are the real screens.</p>
     </div>
 
-    <div class="spot-grid">
-      <!-- 1 · the chart over the plate -->
-      <div class="spot spot-wide reveal-s">
-        <div class="scene-food">
-          <div class="spot-copy">
-            <div class="eyebrow">Finance · food cost</div>
-            <h3>What every dish really costs — against what it should</h3>
-            <p>The theoretical cost of each recipe, next to what the kitchen actually used. The gap is named, in riyals, dish by dish — not discovered at month end.</p>
-            <div class="spot-pts"><span>Recipe · yield · packaging</span><span>Actual vs target</span><span>Waste, priced</span></div>
-          </div>
-          <div class="plate"><div class="grain"></div></div>
-          <div class="chart-wrap">
-            <div class="chart-float">
-              <picture>
-                <source media="(max-width:760px)" srcset="images/food-cost-mobile.svg" />
-                <img src="images/food-cost.svg" alt="MiM food cost — theoretical against actual cost per dish, with the gap shown in riyals" loading="lazy" />
-              </picture>
-            </div>
+    <div class="explorer" id="dept-explorer">
+      <div class="ex-rail" role="navigation" aria-label="Departments" id="ex-rail"></div>
+      <div class="ex-stage" id="ex-stage" aria-live="polite">
+        <div class="ex-glow" id="ex-glow"></div>
+        <div class="ex-hint" id="ex-hint"><span class="dot"></span><span id="ex-hint-text">Touring · tap any department to stop</span></div>
+        <div class="ex-copy">
+          <div class="eyebrow" id="ex-eyebrow"></div>
+          <h3 id="ex-head"></h3>
+          <p id="ex-body"></p>
+          <div class="ex-chips" id="ex-chips"></div>
+          <div class="ex-writes" id="ex-writes"></div>
+        </div>
+        <div class="ex-device">
+          <div class="ex-frame" id="ex-frame" data-frame="tablet">
+            <div class="ex-shot"><img id="ex-img" src="images/till.svg" alt="" width="1200" height="800" /></div>
           </div>
         </div>
-      </div>
-
-      <!-- 2 · the floor on a tablet -->
-      <div class="spot reveal-s">
-        <div class="spot-copy">
-          <div class="eyebrow">Hostess desk · reservations</div>
-          <h3>The floor, as a room</h3>
-          <p>Every table lit by its state, the waitlist with its quoted time against the clock, and a guest's history the moment their number is typed.</p>
-          <div class="spot-pts"><span>Covers pacing</span><span>Waitlist timers</span><span>Guest memory</span></div>
-        </div>
-        <div class="tablet-wrap"><div class="tablet"><img src="images/floor-plan.svg" alt="MiM hostess desk — the floor plan with tables lit by state, the waitlist and reservations" loading="lazy" /></div></div>
-      </div>
-
-      <!-- 3 · the till on its stand -->
-      <div class="spot reveal-s">
-        <div class="spot-copy">
-          <div class="eyebrow">Till · staff phone</div>
-          <h3>One record, from the counter to the pocket</h3>
-          <p>The till the cashier touches all day, and the phone each member of staff carries — clock-in, shifts, leave, payslip — writing into the same ledger.</p>
-          <div class="spot-pts"><span>Three taps to a check</span><span>Clock in by code + location</span><span>Nine languages</span></div>
-        </div>
-        <div class="stand-wrap">
-          <div class="terminal">
-            <div class="screen"><picture><source media="(max-width:760px)" srcset="images/till-mobile.svg" /><img src="images/till.svg" alt="The MiM till" loading="lazy" /></picture></div>
-            <div class="neck"></div><div class="foot"></div>
-          </div>
-          <div class="handheld"><img src="images/staff-phone.svg" alt="The MiM staff phone" loading="lazy" /></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="dept-groups">
-      <div class="dept-group reveal">
-        <h5>Front of house</h5>
-        <div class="dept-grid">
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-cash-register"></i></div><h4>Restaurant POS</h4><p>Register · tables · kitchen</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-mobile-screen"></i></div><h4>Staff Self-Service</h4><p>Clock-in · shifts · leave · payslip</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-headset"></i></div><h4>Customer Service</h4><p>Complaints · calls · reviews</p><span class="badge">Live</span></div>
-        </div>
-      </div>
-      <div class="dept-group reveal">
-        <h5>Kitchen &amp; supply</h5>
-        <div class="dept-grid">
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-kitchen-set"></i></div><h4>Central Kitchen</h4><p>Produce and supply the branches</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-cake-candles"></i></div><h4>Central Pastry</h4><p>Bake and supply the branches</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-warehouse"></i></div><h4>Central Store</h4><p>Requests · purchasing · suppliers</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-clipboard-list"></i></div><h4>Ordering</h4><p>Order · wastage · inventory counts</p><span class="badge">Live</span></div>
-        </div>
-      </div>
-      <div class="dept-group reveal">
-        <h5>The office</h5>
-        <div class="dept-grid">
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-coins"></i></div><h4>Finance</h4><p>Sales · food cost · targets · EOD</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-bullhorn"></i></div><h4>Marketing</h4><p>Campaigns · plans · budgets</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-laptop"></i></div><h4>IT</h4><p>Staff access · PIN resets · printers</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-screwdriver-wrench"></i></div><h4>Maintenance</h4><p>Report · fix · cost straight to finance</p><span class="badge">Live</span></div>
-        </div>
-      </div>
-      <div class="dept-group reveal">
-        <h5>People &amp; place</h5>
-        <div class="dept-grid">
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-users"></i></div><h4>Human Resources</h4><p>People · attendance · Qatar law</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-house-user"></i></div><h4>Accommodation</h4><p>Staff housing — villas, beds, occupancy</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-graduation-cap"></i></div><h4>Quality &amp; Training</h4><p>Food safety · academy · exams</p><span class="badge">Live</span></div>
-      <div class="dept-card featured reveal-s"><div class="icon"><i class="fas fa-crown"></i></div><h4>Head Office</h4><p>Every branch, one screen</p><span class="badge">Live</span></div>
-        </div>
+        <div class="ex-progress" aria-hidden="true"><i id="ex-bar"></i></div>
       </div>
     </div>
   </div>
@@ -2106,6 +2056,172 @@ html,body{max-width:100%;overflow-x:clip}
     }, { threshold:.12, rootMargin:'0px 0px -40px 0px' });
     targets.forEach(function(el){ io.observe(el); });
   }
+})();
+</script>
+
+<script>
+/* ═══ the department explorer ═══════════════════════════════════════════════════════════════
+   Data first, so the fifteen are one list in one place. Every screen is the real MiM UI. */
+(function(){
+  var D = [
+    {id:'pos',group:'Front of house',icon:'fa-cash-register',name:'Restaurant POS',tag:'Register · tables · kitchen',
+     eyebrow:'Front of house · the till',head:'Three taps to a check — and every tap is already a ledger row',
+     body:'Category, item, done: built for a thumb on a Thursday night. Cash, card, your own app — one screen, and it keeps selling with the line down.',
+     chips:['Allergy asked, not hoped','86’d is 86’d everywhere','Sells offline'],writes:'stock ledger · P&L · the day’s Z',
+     img:'images/till.svg',frame:'terminal',alt:'The MiM till — a dine-in check, the category rail, the item grid and the allergy row'},
+    {id:'me',group:'Front of house',icon:'fa-mobile-screen',name:'Staff Self-Service',tag:'Clock-in · shifts · leave · payslip',
+     eyebrow:'Front of house · every pocket',head:'The phone each member of staff carries — in their own language',
+     body:'Clock in with the till’s code and your location. See the shifts your manager rostered. Report sick, ask for leave, read your payslip behind your PIN. HR receives it in English.',
+     chips:['Nine languages','Clock-in by code + GPS','Payslip behind a PIN'],writes:'attendance · leave · HR requests',
+     img:'images/staff-phone.svg',frame:'phone',alt:'The MiM staff phone — today, shifts, requests and documents'},
+    {id:'cs',group:'Front of house',icon:'fa-headset',name:'Customer Service',tag:'Complaints · calls · reviews',
+     eyebrow:'Front of house · the guest’s voice',head:'Every complaint has a clock on it',
+     body:'Calls, reviews and app feedback land in one inbox with a 24-hour answer window. What was done — the call, the comp, the kitchen briefing — is the record.',
+     chips:['24-hour SLA ring','Reviews that need a reply','Branch named'],writes:'cases · review replies · comps',
+     img:'images/customer-service.svg',frame:'tablet',alt:'MiM customer service — the case inbox and an open complaint with its timeline'},
+    {id:'ck',group:'Kitchen & supply',icon:'fa-kitchen-set',name:'Central Kitchen',tag:'Produce and supply the branches',
+     eyebrow:'Kitchen · the pass',head:'The plate carries the status, not the ticket',
+     body:'Every course a chef sends is stamped with the moment it left. Held items stay held; the front sees the same board the pass does.',
+     chips:['Per-plate status','Bumps are atomic','Recall within 90s'],writes:'kitchen sends · dwell time · production',
+     img:'images/chef-display.svg',frame:'tablet',alt:'The MiM chef display — tickets by course with per-plate status'},
+    {id:'pastry',group:'Kitchen & supply',icon:'fa-cake-candles',name:'Central Pastry',tag:'Bake and supply the branches',
+     eyebrow:'Kitchen · the bakery',head:'Baked, counted, dispatched — with the yield on record',
+     body:'Today’s plan against what came out of the oven, and what each branch gets. Twenty-five kilos of flour that became 212 croissants is a number finance sees.',
+     chips:['Made vs planned','Dispatch per branch','Yield tracked'],writes:'production runs · dispatches · yield',
+     img:'images/central-pastry.svg',frame:'tablet',alt:'MiM central pastry — the production plan, dispatch list and yield'},
+    {id:'store',group:'Kitchen & supply',icon:'fa-warehouse',name:'Central Store',tag:'Requests · purchasing · suppliers',
+     eyebrow:'Supply · the store',head:'A short delivery is written down as short',
+     body:'Branch requests become purchase orders; goods received are counted against them. Eighteen cases of twenty is recorded as eighteen — and the supplier’s balance knows.',
+     chips:['Requests → purchase orders','GRN against PO','Supplier balances'],writes:'purchase orders · GRNs · payables',
+     img:'images/central-store.svg',frame:'tablet',alt:'MiM central store — branch requests, a purchase order and supplier balances'},
+    {id:'ordering',group:'Kitchen & supply',icon:'fa-clipboard-list',name:'Ordering',tag:'Order · wastage · inventory counts',
+     eyebrow:'Supply · the branch count',head:'A blank count is unknown — never zero',
+     body:'Par levels, what was counted, what to order. A shelf nobody counted stays blank; the system will not invent a zero and order for it.',
+     chips:['Blank ≠ zero','Suggested order','Wastage priced'],writes:'counts · orders · waste',
+     img:'images/ordering.svg',frame:'tablet',alt:'MiM ordering — the count sheet with par levels and the order to the store'},
+    {id:'finance',group:'The office',icon:'fa-coins',name:'Finance',tag:'Sales · food cost · targets · EOD',
+     eyebrow:'The office · finance',head:'What every dish really costs — against what it should',
+     body:'Theoretical cost from the recipe next to what the kitchen actually used, dish by dish, in riyals. The gap is named on the day, not discovered at month end.',
+     chips:['Theoretical vs actual','Hand-signed approvals','WPS payroll'],writes:'P&L · food cost · pay runs',
+     img:'images/food-cost.svg',frame:'tablet',alt:'MiM food cost — theoretical against actual cost per dish, the gap in riyals'},
+    {id:'marketing',group:'The office',icon:'fa-bullhorn',name:'Marketing',tag:'Campaigns · plans · budgets',
+     eyebrow:'The office · marketing',head:'Shoot the dish that sells and has no photo',
+     body:'The plan is built from what actually sold. A dish moving 214 a week with no picture is the cheapest thing on the board — and the board says so.',
+     chips:['Post calendar','Review pulse','Budget vs spent'],writes:'campaigns · budgets · content',
+     img:'images/marketing.svg',frame:'tablet',alt:'MiM marketing — the post calendar, what to shoot this week and the review pulse'},
+    {id:'it',group:'The office',icon:'fa-laptop',name:'IT',tag:'Staff access · PIN resets · printers',
+     eyebrow:'The office · IT',head:'Every device has a name, a branch and a last-seen',
+     body:'Tills, tablets, chef displays, staff phones — paired by a QR that works once and dies in ten minutes. Revoke one and it is gone everywhere.',
+     chips:['One-shot pairing','Revoke anywhere','Printers watched'],writes:'devices · access · PIN resets',
+     img:'images/it.svg',frame:'tablet',alt:'MiM IT — paired devices, the pairing QR and printer status'},
+    {id:'maint',group:'The office',icon:'fa-screwdriver-wrench',name:'Maintenance',tag:'Report · fix · cost straight to finance',
+     eyebrow:'The office · maintenance',head:'Reported, fixed — and the cost goes straight to finance',
+     body:'A fridge losing temperature at Al Sadd is a card with an age on it. When it is fixed, the invoice does not need re-typing anywhere.',
+     chips:['Priority and age','Spend per branch','Cost → P&L'],writes:'jobs · repair costs · assets',
+     img:'images/maintenance.svg',frame:'tablet',alt:'MiM maintenance — repair jobs by state and this month’s spend by branch'},
+    {id:'hr',group:'People & place',icon:'fa-users',name:'Human Resources',tag:'People · attendance · Qatar law',
+     eyebrow:'People · HR',head:'Qatar law built in — not looked up',
+     body:'Art. 79 leave, Art. 54 gratuity, WPS pay, QID and MOPH expiries with a colour and a countdown. A leave request written in Hindi arrives in English, with the original kept beside it.',
+     chips:['Expiries ranked','Leave and gratuity','Auto-translated requests'],writes:'people · attendance · payroll inputs',
+     img:'images/hr.svg',frame:'tablet',alt:'MiM human resources — an employee file with documents, leave and translated requests'},
+    {id:'accom',group:'People & place',icon:'fa-house-user',name:'Accommodation',tag:'Villas · beds · occupancy',
+     eyebrow:'People · housing',head:'Villas, beds and the morning bus',
+     body:'Who sleeps where, which villa is full, which repair is open, and what time the bus leaves Ain Khaled. Housing is part of the payroll picture, so it lives in the same record.',
+     chips:['Occupancy per villa','Repairs open','Transport runs'],writes:'housing · occupancy · repair costs',
+     img:'images/accommodation.svg',frame:'tablet',alt:'MiM accommodation — villas with occupancy, a bed list and the transport runs'},
+    {id:'quality',group:'People & place',icon:'fa-graduation-cap',name:'Quality & Training',tag:'Food safety · academy · exams',
+     eyebrow:'People · quality',head:'The fridge that drifted is on the audit, in red',
+     body:'Temperature logs, the signed allergen matrix, hand-wash stations — and who holds a valid MOPH Food Handler certificate, who is expiring, who is missing.',
+     chips:['Audit checklist','Temperature strips','Certificates tracked'],writes:'audits · certificates · exam scores',
+     img:'images/quality.svg',frame:'tablet',alt:'MiM quality — a branch audit checklist, temperature strip and training certificates'},
+    {id:'hq',group:'People & place',icon:'fa-crown',name:'Head Office',tag:'Every branch, one screen',
+     eyebrow:'Head office · the Owner’s screen',head:'Every branch, one screen, in the Owner’s pocket',
+     body:'Sales pace by the hour, the inbox of things that need a decision, reviews as they land. Built from the same rows every department wrote — nothing re-keyed, nothing summarised by hand.',
+     chips:['Hourly pace','Decision inbox','Live reviews'],writes:'reads everything · signs the approvals',
+     img:'images/owner-sales.svg',frame:'tablet',alt:'The MiM owner screen — sales pace by branch and by hour'}
+  ];
+  var rail=document.getElementById('ex-rail'), stage=document.getElementById('ex-stage');
+  if(!rail||!stage) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var el={eyebrow:document.getElementById('ex-eyebrow'),head:document.getElementById('ex-head'),body:document.getElementById('ex-body'),
+          chips:document.getElementById('ex-chips'),writes:document.getElementById('ex-writes'),img:document.getElementById('ex-img'),
+          frame:document.getElementById('ex-frame'),bar:document.getElementById('ex-bar'),hint:document.getElementById('ex-hint-text'),glow:document.getElementById('ex-glow')};
+
+  /* the rail, grouped — the grouping is the information */
+  var groups=[]; D.forEach(function(d){ if(groups.indexOf(d.group)<0) groups.push(d.group); });
+  groups.forEach(function(g){
+    var wrap=document.createElement('div'); wrap.className='ex-group';
+    var h=document.createElement('h5'); h.textContent=g; wrap.appendChild(h);
+    var tabs=document.createElement('div'); tabs.className='ex-tabs'; tabs.setAttribute('role','tablist');
+    D.filter(function(d){return d.group===g;}).forEach(function(d){
+      var b=document.createElement('button'); b.type='button'; b.className='ex-tab'; b.id='ex-tab-'+d.id;
+      b.setAttribute('role','tab'); b.setAttribute('aria-selected','false'); b.setAttribute('aria-controls','ex-stage'); b.dataset.dept=d.id;
+      b.innerHTML='<i class="fas '+d.icon+'"></i><span><b></b><small></small></span>';
+      b.querySelector('b').textContent=d.name; b.querySelector('small').textContent=d.tag;
+      b.addEventListener('click',function(){ select(d.id,true); });
+      tabs.appendChild(b);
+    });
+    wrap.appendChild(tabs); rail.appendChild(wrap);
+  });
+
+  /* preload every screen once the page is idle, so the first swap never shows a blank */
+  var warm=function(){ D.forEach(function(d){ var i=new Image(); i.src=d.img; }); };
+  if('requestIdleCallback' in window) requestIdleCallback(warm,{timeout:3000}); else setTimeout(warm,1200);
+
+  var cur=-1, timer=null, tick=null, paused=false, userStopped=false, DWELL=7000, t0=0;
+  function render(d){
+    el.eyebrow.textContent=d.eyebrow; el.head.textContent=d.head; el.body.textContent=d.body;
+    el.chips.innerHTML=''; d.chips.forEach(function(c){ var s=document.createElement('span'); s.textContent=c; el.chips.appendChild(s); });
+    el.writes.innerHTML=''; var w=document.createElement('span'); w.textContent='Writes into the shared record: '; var wb=document.createElement('b'); wb.textContent=d.writes; el.writes.appendChild(w); el.writes.appendChild(wb);
+    el.frame.setAttribute('data-frame',d.frame); el.img.alt=d.alt; el.img.src=d.img;
+  }
+  function select(id,byUser){
+    var i=-1; D.forEach(function(d,k){ if(d.id===id) i=k; }); if(i<0||i===cur) { if(byUser) stopTour(); return; }
+    var d=D[i]; cur=i;
+    rail.querySelectorAll('.ex-tab').forEach(function(t){ t.setAttribute('aria-selected', t.dataset.dept===id ? 'true':'false'); });
+    if(reduce){ render(d); } else {
+      stage.classList.add('is-swapping');
+      setTimeout(function(){ render(d); requestAnimationFrame(function(){ stage.classList.remove('is-swapping'); }); }, 300);
+    }
+    if(el.glow) el.glow.style.transform='rotate('+(i*24)+'deg)';
+    if(byUser){ stopTour(); if(history.replaceState){ try{ history.replaceState(null,'','#dept-'+id); }catch(e){} }
+      /* on a phone the picker sits below the stage — bring the screen they just chose into view */
+      if(window.matchMedia('(max-width:1039px)').matches){ stage.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); } }
+    restart();
+  }
+  /* the tour: advance while nobody is touching it; a click stops it for good */
+  function restart(){ clearInterval(tick); clearTimeout(timer); if(reduce||userStopped) { el.bar.style.width=userStopped?'0':'0'; return; }
+    t0=Date.now(); el.bar.style.width='0';
+    tick=setInterval(function(){ if(paused){ t0+=250; return; } el.bar.style.width=Math.min(100,(Date.now()-t0)/DWELL*100)+'%'; },250);
+    timer=setTimeout(function next(){ if(paused){ timer=setTimeout(next,600); return; } select(D[(cur+1)%D.length].id,false); },DWELL);
+  }
+  function stopTour(){ userStopped=true; stage.classList.add('is-paused'); if(el.hint) el.hint.textContent='Tap any department'; clearInterval(tick); clearTimeout(timer); el.bar.style.width='0'; }
+  stage.addEventListener('mouseenter',function(){ paused=true; stage.classList.add('is-paused'); });
+  stage.addEventListener('mouseleave',function(){ paused=false; if(!userStopped) stage.classList.remove('is-paused'); });
+  stage.addEventListener('focusin',function(){ paused=true; }); stage.addEventListener('focusout',function(){ paused=false; });
+  /* only tour while it is on screen */
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ es.forEach(function(e){ paused=!e.isIntersecting||stage.matches(':hover'); }); },{threshold:.35}).observe(stage);
+  }
+  /* keyboard: arrows move along the rail */
+  rail.addEventListener('keydown',function(e){
+    if(e.key!=='ArrowDown'&&e.key!=='ArrowUp'&&e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
+    e.preventDefault(); var n=(e.key==='ArrowDown'||e.key==='ArrowRight')?1:-1; var k=(cur+n+D.length)%D.length;
+    select(D[k].id,true); var b=document.getElementById('ex-tab-'+D[k].id); if(b) b.focus();
+  });
+  /* a gentle tilt that follows the pointer — never on touch, never under reduced motion */
+  if(!reduce && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    var dev=stage.querySelector('.ex-device');
+    dev.addEventListener('mousemove',function(e){ var r=dev.getBoundingClientRect(); var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      el.frame.style.transform='rotateY('+(x*6)+'deg) rotateX('+(-y*5)+'deg)'; });
+    dev.addEventListener('mouseleave',function(){ el.frame.style.transform=''; });
+  }
+  /* deep link, else start at the till */
+  var m=/#dept-([a-z]+)/.exec(location.hash); var start=(m&&D.some(function(d){return d.id===m[1];}))?m[1]:'pos';
+  select(start,false);
+  /* a shared link like #dept-hr is not an element id, so the browser lands at the top of the page —
+     take the visitor to what they were sent */
+  if(m){ stopTour(); setTimeout(function(){ document.getElementById('dept-explorer').scrollIntoView({behavior:'auto',block:'start'}); },60); }
 })();
 </script>
 </body>
