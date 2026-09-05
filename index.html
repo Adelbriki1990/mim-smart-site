@@ -746,6 +746,26 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
   .sheet .row2{grid-template-columns:1fr}
 }
 
+
+/* ---------- the till ---------- */
+#till{background:#fff}
+.till-shot{
+  background:#11151C;border-radius:18px;padding:12px;margin-top:36px;
+  box-shadow:0 34px 74px rgba(15,27,46,.26),inset 0 0 0 1.5px rgba(255,255,255,.08);
+}
+.till-shot img{width:100%;border-radius:9px;display:block;background:#0F172A}
+.till-points{display:grid;grid-template-columns:repeat(auto-fit,minmax(236px,1fr));gap:20px;margin-top:32px}
+.till-points>*{min-width:0}
+.till-point{display:flex;gap:14px;align-items:flex-start}
+.till-point i{color:var(--gold-ink);font-size:1.05rem;margin-top:4px;width:20px;text-align:center;flex:none}
+.till-point b{display:block;font-size:.97rem;margin-bottom:4px}
+.till-point span{font-size:.87rem;color:var(--ink-2);line-height:1.6}
+@media (max-width:760px){
+  .till-shot{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:8px}
+  .till-shot::-webkit-scrollbar{display:none}
+  .till-shot img{min-width:880px;border-radius:6px}
+}
+
 /* ---------- glass ---------- */
 #departments,#loyalty,#calc{position:relative;background:var(--navy-900);overflow:hidden}
 #departments::before,#loyalty::before,#calc::before{
@@ -969,6 +989,7 @@ html,body{max-width:100%;overflow-x:clip}
       <span class="wordmark">Smart <em>MiM</em></span>
     </a>
     <ul class="nav-links" id="navLinks">
+      <li><a href="#till">The till</a></li>
       <li><a href="#departments">Departments</a></li>
       <li><a href="#foodcost">Food cost</a></li>
       <li><a href="#owner">Owner app</a></li>
@@ -999,7 +1020,7 @@ html,body{max-width:100%;overflow-x:clip}
           <div><div class="number">6</div><div class="label">Brands</div></div>
           <div><div class="number">17</div><div class="label">Branches</div></div>
           <div><div class="number">15</div><div class="label">Departments</div></div>
-          <div><div class="number">239</div><div class="label">Safety gates</div></div>
+          <div><div class="number">240</div><div class="label">Safety gates</div></div>
         </div>
       </div>
 
@@ -1046,6 +1067,27 @@ html,body{max-width:100%;overflow-x:clip}
       <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-kitchen-set"></i></div><h4>Central Kitchen</h4><p>Produce and supply the branches</p><span class="badge">Live</span></div>
       <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-cake-candles"></i></div><h4>Central Pastry</h4><p>Bake and supply the branches</p><span class="badge">Live</span></div>
       <div class="dept-card featured reveal-s"><div class="icon"><i class="fas fa-crown"></i></div><h4>Head Office</h4><p>Every branch, one screen</p><span class="badge gold">Command</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE TILL ===== -->
+<section id="till">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">Where the money actually enters</div>
+      <h2 class="section-title reveal">The screen your staff <span class="gold">touch all day</span></h2>
+      <p class="section-sub mx-auto reveal">Fast enough for a Thursday night, and every tap on it is already a row in the stock ledger, the P&amp;L and the day close. Nothing gets re-typed anywhere, ever.</p>
+    </div>
+    <div class="till-shot reveal-s"><img src="images/till.svg" alt="The MiM till — dine-in check for table 4, category rail, item grid with an 86'd dish, the allergy row, totals and every payment route including the aggregators" loading="lazy" /></div>
+    <p class="swipe-hint" style="color:var(--ink-3)">swipe the screen to read it</p>
+    <div class="till-points">
+      <div class="till-point reveal"><i class="fas fa-bolt"></i><div><b>Three taps to a check</b><span>Category, item, done. The grid is built for a thumb at speed, not a mouse at leisure.</span></div></div>
+      <div class="till-point reveal"><i class="fas fa-triangle-exclamation"></i><div><b>The allergy question is asked, not hoped for</b><span>It appears on the check and travels to the kitchen screen with the order. Undetermined never reads as "free".</span></div></div>
+      <div class="till-point reveal"><i class="fas fa-ban"></i><div><b>86'd is 86'd everywhere</b><span>Mark a dish off at the till and it goes off the guest app and the aggregators too — not four tablets, four times.</span></div></div>
+      <div class="till-point reveal"><i class="fas fa-plug-circle-xmark"></i><div><b>It keeps selling with the line down</b><span>Orders queue locally and settle when the link returns. An empty answer is never mistaken for a real zero.</span></div></div>
+      <div class="till-point reveal"><i class="fas fa-arrow-right-arrow-left"></i><div><b>Every payment route, one screen</b><span>Cash, card, your own app, your own drivers, and each aggregator — with the commission taken off before the profit line.</span></div></div>
+      <div class="till-point reveal"><i class="fas fa-language"></i><div><b>Arabic, right to left</b><span>Including the receipt. The layout flips; nothing ends up reading backwards.</span></div></div>
     </div>
   </div>
 </section>
@@ -1474,7 +1516,7 @@ html,body{max-width:100%;overflow-x:clip}
       <div class="proof-stats">
         <div class="proof-stat"><div class="n">6</div><div class="l">Brands on one database</div></div>
         <div class="proof-stat"><div class="n">17</div><div class="l">Branches in the group</div></div>
-        <div class="proof-stat"><div class="n">239</div><div class="l">Gates that must pass to ship</div></div>
+        <div class="proof-stat"><div class="n">240</div><div class="l">Gates that must pass to ship</div></div>
         <div class="proof-stat"><div class="n">0</div><div class="l">Numbers re-typed between screens</div></div>
       </div>
     </div>
@@ -1488,7 +1530,7 @@ html,body{max-width:100%;overflow-x:clip}
     <h2 class="section-title reveal">Why you can <span class="gold">trust the number</span></h2>
     <p class="section-sub mx-auto reveal">Trust is earned by what a system refuses to ship, not by what it promises.</p>
     <div class="tile-grid">
-      <div class="tile reveal-s"><span class="big">239</span><h4>Gates</h4><p>Every one runs the real code. None just reads it.</p></div>
+      <div class="tile reveal-s"><span class="big">240</span><h4>Gates</h4><p>Every one runs the real code. None just reads it.</p></div>
       <div class="tile reveal-s"><i class="fas fa-clock-rotate-left"></i><h4>Permanent journal</h4><p>Append-only. A correction is added, never an edit.</p></div>
       <div class="tile reveal-s"><i class="fas fa-plug-circle-xmark"></i><h4>Offline-first</h4><p>The till keeps selling when the line drops.</p></div>
       <div class="tile reveal-s"><i class="fas fa-database"></i><h4>Restores tested</h4><p>A backup nobody restored is not a backup.</p></div>
@@ -1672,6 +1714,7 @@ html,body{max-width:100%;overflow-x:clip}
         <div>
           <h5>Product</h5>
           <ul>
+            <li><a href="#till">The till</a></li>
             <li><a href="#departments">Departments</a></li>
             <li><a href="#screens">Screens</a></li>
             <li><a href="#owner">Owner app</a></li>

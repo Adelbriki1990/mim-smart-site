@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
+<rect width="1200" height="800" fill="#0F172A"/>
+<rect x="0" y="0" width="1200" height="58" fill="#0A1428"/>
+<text x="26" y="37" font-size="17" font-weight="800" fill="#F8FAFC">T-04 · 4 covers</text>
+<rect x="230" y="14" width="106" height="31" rx="15.5" fill="#C9A227"/>
+<text x="283" y="35" font-size="13.5" font-weight="700" fill="#1A1400" text-anchor="middle">Dine-in</text>
+<rect x="348" y="14" width="106" height="31" rx="15.5" fill="rgba(255,255,255,0.07)"/>
+<text x="401" y="35" font-size="13.5" font-weight="700" fill="#94A3B8" text-anchor="middle">Takeaway</text>
+<rect x="466" y="14" width="106" height="31" rx="15.5" fill="rgba(255,255,255,0.07)"/>
+<text x="519" y="35" font-size="13.5" font-weight="700" fill="#94A3B8" text-anchor="middle">Delivery</text>
+<text x="1174" y="37" font-size="14" fill="#94A3B8" text-anchor="end">Fatima S. · Al Sadd</text>
+<rect x="20" y="76" width="168" height="52" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="38" y="100" font-size="14.5" font-weight="700" fill="#E2E8F0">All</text>
+<text x="38" y="118" font-size="11.5" fill="#64748B">399 items</text>
+<rect x="20" y="138" width="168" height="52" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="38" y="162" font-size="14.5" font-weight="700" fill="#E2E8F0">Starters</text>
+<text x="38" y="180" font-size="11.5" fill="#64748B">46 items</text>
+<rect x="20" y="200" width="168" height="52" rx="12" fill="#C9A227" stroke="none"/>
+<text x="38" y="224" font-size="14.5" font-weight="700" fill="#1A1400">Grills</text>
+<text x="38" y="242" font-size="11.5" fill="rgba(26,20,0,.6)">38 items</text>
+<rect x="20" y="262" width="168" height="52" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="38" y="286" font-size="14.5" font-weight="700" fill="#E2E8F0">Pasta</text>
+<text x="38" y="304" font-size="11.5" fill="#64748B">22 items</text>
+<rect x="20" y="324" width="168" height="52" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="38" y="348" font-size="14.5" font-weight="700" fill="#E2E8F0">Seafood</text>
+<text x="38" y="366" font-size="11.5" fill="#64748B">19 items</text>
+<rect x="20" y="386" width="168" height="52" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="38" y="410" font-size="14.5" font-weight="700" fill="#E2E8F0">Burgers</text>
+<text x="38" y="428" font-size="11.5" fill="#64748B">24 items</text>
+<rect x="20" y="448" width="168" height="52" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="38" y="472" font-size="14.5" font-weight="700" fill="#E2E8F0">Sides</text>
+<text x="38" y="490" font-size="11.5" fill="#64748B">31 items</text>
+<rect x="20" y="510" width="168" height="52" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="38" y="534" font-size="14.5" font-weight="700" fill="#E2E8F0">Desserts</text>
+<text x="38" y="552" font-size="11.5" fill="#64748B">18 items</text>
+<rect x="20" y="572" width="168" height="52" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+<text x="38" y="596" font-size="14.5" font-weight="700" fill="#E2E8F0">Drinks</text>
+<text x="38" y="614" font-size="11.5" fill="#64748B">57 items</text>
+<rect x="208" y="76" width="196" height="134" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<rect x="209" y="77" width="194" height="72" rx="13" fill="rgba(255,255,255,0.045)"/>
+<text x="306" y="122" font-size="30" text-anchor="middle" opacity="0.5">🍽</text>
+<text x="222" y="172" font-size="13.5" font-weight="600" fill="#E2E8F0">Ribeye 300g</text>
+<text x="222" y="194" font-size="15" font-weight="800" fill="#E8CE7A">128.00</text>
+<rect x="420" y="76" width="196" height="134" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<rect x="421" y="77" width="194" height="72" rx="13" fill="rgba(255,255,255,0.045)"/>
+<text x="518" y="122" font-size="30" text-anchor="middle" opacity="0.5">🍽</text>
+<text x="434" y="172" font-size="13.5" font-weight="600" fill="#E2E8F0">Lamb chops</text>
+<text x="434" y="194" font-size="15" font-weight="800" fill="#E8CE7A">145.00</text>
+<rect x="632" y="76" width="196" height="134" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<rect x="633" y="77" width="194" height="72" rx="13" fill="rgba(255,255,255,0.045)"/>
+<text x="730" y="122" font-size="30" text-anchor="middle" opacity="0.5">🍽</text>
+<text x="646" y="172" font-size="13.5" font-weight="600" fill="#E2E8F0">Mixed grill</text>
+<text x="646" y="194" font-size="15" font-weight="800" fill="#E8CE7A">210.00</text>
+<rect x="208" y="226" width="196" height="134" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<rect x="209" y="227" width="194" height="72" rx="13" fill="rgba(255,255,255,0.045)"/>
+<text x="306" y="272" font-size="30" text-anchor="middle" opacity="0.5">🍽</text>
+<text x="222" y="322" font-size="13.5" font-weight="600" fill="#E2E8F0">Shish tawook</text>
+<text x="222" y="344" font-size="15" font-weight="800" fill="#E8CE7A">78.00</text>
+<rect x="420" y="226" width="196" height="134" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<rect x="421" y="227" width="194" height="72" rx="13" fill="rgba(255,255,255,0.045)"/>
+<text x="518" y="272" font-size="30" text-anchor="middle" opacity="0.5">🍽</text>
+<text x="434" y="322" font-size="13.5" font-weight="600" fill="#E2E8F0">Kofta</text>
+<text x="434" y="344" font-size="15" font-weight="800" fill="#E8CE7A">82.00</text>
+<rect x="556" y="330" width="48" height="20" rx="10" fill="#F43F5E" fill-opacity="0.18" stroke="#F43F5E" stroke-opacity="0.5"/>
+<text x="580.0" y="344" font-size="11" font-weight="700" fill="#F43F5E" text-anchor="middle">86'd</text>
+<rect x="632" y="226" width="196" height="134" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<rect x="633" y="227" width="194" height="72" rx="13" fill="rgba(255,255,255,0.045)"/>
+<text x="730" y="272" font-size="30" text-anchor="middle" opacity="0.5">🍽</text>
+<text x="646" y="322" font-size="13.5" font-weight="600" fill="#E2E8F0">Chicken musakhan</text>
+<text x="646" y="344" font-size="15" font-weight="800" fill="#E8CE7A">96.00</text>
+<rect x="208" y="376" width="196" height="134" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<rect x="209" y="377" width="194" height="72" rx="13" fill="rgba(255,255,255,0.045)"/>
+<text x="306" y="422" font-size="30" text-anchor="middle" opacity="0.5">🍽</text>
+<text x="222" y="472" font-size="13.5" font-weight="600" fill="#E2E8F0">Lamb kabsa</text>
+<text x="222" y="494" font-size="15" font-weight="800" fill="#E8CE7A">165.00</text>
+<rect x="420" y="376" width="196" height="134" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<rect x="421" y="377" width="194" height="72" rx="13" fill="rgba(255,255,255,0.045)"/>
+<text x="518" y="422" font-size="30" text-anchor="middle" opacity="0.5">🍽</text>
+<text x="434" y="472" font-size="13.5" font-weight="600" fill="#E2E8F0">Beef skewers</text>
+<text x="434" y="494" font-size="15" font-weight="800" fill="#E8CE7A">112.00</text>
+<rect x="632" y="376" width="196" height="134" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
+<rect x="633" y="377" width="194" height="72" rx="13" fill="rgba(255,255,255,0.045)"/>
+<text x="730" y="422" font-size="30" text-anchor="middle" opacity="0.5">🍽</text>
+<text x="646" y="472" font-size="13.5" font-weight="600" fill="#E2E8F0">Grilled hammour</text>
+<text x="646" y="494" font-size="15" font-weight="800" fill="#E8CE7A">185.00</text>
+<rect x="776" y="480" width="40" height="20" rx="10" fill="#F59E0B" fill-opacity="0.18" stroke="#F59E0B" stroke-opacity="0.5"/>
+<text x="796.0" y="494" font-size="11" font-weight="700" fill="#F59E0B" text-anchor="middle">low</text>
+<rect x="858" y="76" width="322" height="708" rx="16" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+<text x="882" y="106" font-size="12" font-weight="700" fill="#94A3B8" letter-spacing="1.4">THE CHECK · #1847</text>
+<text x="882" y="146" font-size="13.5" font-weight="600" fill="#E2E8F0">2 × Ribeye 300g</text>
+<text x="1156" y="146" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">256.00</text>
+<text x="882" y="164" font-size="11.5" fill="#E8CE7A">↳ medium rare</text>
+<text x="882" y="190" font-size="13.5" font-weight="600" fill="#E2E8F0">1 × Mixed grill</text>
+<text x="1156" y="190" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">210.00</text>
+<text x="882" y="220" font-size="13.5" font-weight="600" fill="#E2E8F0">4 × Shish tawook</text>
+<text x="1156" y="220" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">312.00</text>
+<text x="882" y="238" font-size="11.5" fill="#E8CE7A">↳ no garlic</text>
+<text x="882" y="264" font-size="13.5" font-weight="600" fill="#E2E8F0">2 × Hummus</text>
+<text x="1156" y="264" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">36.00</text>
+<text x="882" y="294" font-size="13.5" font-weight="600" fill="#E2E8F0">4 × Soft drink</text>
+<text x="1156" y="294" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">48.00</text>
+<rect x="878" y="386" width="282" height="52" rx="11" fill="#F43F5E" fill-opacity="0.12" stroke="#F43F5E" stroke-opacity="0.45"/>
+<text x="894" y="410" font-size="12.5" font-weight="800" fill="#FB7185">⚠ ALLERGY ASKED — table 4</text>
+<text x="894" y="429" font-size="11.5" fill="#CBD5E1">Nuts · Sesame — the kitchen has it too</text>
+<rect x="878" y="458" width="282" height="1" fill="rgba(255,255,255,0.1)"/>
+<text x="882" y="486" font-size="13.5" font-weight="500" fill="#94A3B8">Subtotal</text>
+<text x="1156" y="486" font-size="13.5" font-weight="600" fill="#E2E8F0" text-anchor="end">862.00</text>
+<text x="882" y="516" font-size="13.5" font-weight="500" fill="#94A3B8">Service 10%</text>
+<text x="1156" y="516" font-size="13.5" font-weight="600" fill="#E2E8F0" text-anchor="end">86.20</text>
+<text x="882" y="546" font-size="15" font-weight="800" fill="#F8FAFC">Total</text>
+<text x="1156" y="546" font-size="19" font-weight="800" fill="#E8CE7A" text-anchor="end">948.20</text>
+<text x="882" y="596" font-size="12" font-weight="700" fill="#94A3B8" letter-spacing="1.4">TAKE PAYMENT</text>
+<rect x="878" y="614" width="136" height="40" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="946" y="639" font-size="12.5" font-weight="700" fill="#CBD5E1" text-anchor="middle">Cash</text>
+<rect x="1022" y="614" width="136" height="40" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="1090" y="639" font-size="12.5" font-weight="700" fill="#CBD5E1" text-anchor="middle">Card</text>
+<rect x="878" y="664" width="136" height="40" rx="10" fill="rgba(201,162,39,0.16)" stroke="rgba(201,162,39,.5)"/>
+<text x="946" y="689" font-size="12.5" font-weight="700" fill="#E8CE7A" text-anchor="middle">WITHSTAND App</text>
+<rect x="1022" y="664" width="136" height="40" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="1090" y="689" font-size="12.5" font-weight="700" fill="#CBD5E1" text-anchor="middle">Talabat</text>
+<rect x="878" y="714" width="136" height="40" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="946" y="739" font-size="12.5" font-weight="700" fill="#CBD5E1" text-anchor="middle">Snoonu</text>
+<rect x="1022" y="714" width="136" height="40" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)"/>
+<text x="1090" y="739" font-size="12.5" font-weight="700" fill="#CBD5E1" text-anchor="middle">Own delivery</text>
+<text x="882" y="775" font-size="11.5" fill="#64748B">Every line here is already a row in the P&amp;L, the stock ledger and the day close.</text>
+</svg>
