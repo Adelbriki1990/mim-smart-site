@@ -437,6 +437,33 @@ nav .container{display:flex;justify-content:space-between;align-items:center;gap
   .pace-note{grid-template-columns:1fr;padding:24px}
 }
 
+
+/* ---------- food cost + staff self-service ---------- */
+#foodcost{background:var(--navy-900);color:#fff}
+.fc-shot{
+  background:#11151C;border-radius:16px;padding:11px;margin-top:36px;
+  box-shadow:0 30px 66px rgba(4,12,28,.5),inset 0 0 0 1.5px rgba(255,255,255,.09);
+}
+.fc-shot img{width:100%;border-radius:8px;display:block;background:#0F172A}
+.fc-laws{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:34px}
+.fc-law{border-left:3px solid var(--gold-500);padding:4px 0 4px 18px}
+.fc-law h4{font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px}
+.fc-law p{font-size:.88rem;color:rgba(255,255,255,.74);line-height:1.65}
+.fc-law p b{color:var(--gold-300)}
+
+.self-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:center;margin-top:36px}
+.self-phone{max-width:262px;margin:0 auto;background:#11151C;border-radius:32px;padding:11px;position:relative;
+  box-shadow:0 26px 60px rgba(15,27,46,.22),inset 0 0 0 1.5px rgba(255,255,255,.08)}
+.self-phone::after{content:'';position:absolute;top:20px;left:50%;transform:translateX(-50%);width:78px;height:18px;border-radius:11px;background:#080B11}
+.self-phone img{width:100%;border-radius:23px;display:block;background:#0F172A}
+.self-points{list-style:none}
+.self-points li{display:flex;gap:15px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.self-points li:last-child{border-bottom:none}
+.self-points i{color:var(--gold-ink);margin-top:4px;width:19px;text-align:center;flex:none}
+.self-points b{display:block;font-size:.98rem;margin-bottom:3px}
+.self-points span{font-size:.89rem;color:var(--ink-2);line-height:1.6}
+@media (max-width:992px){.self-grid{grid-template-columns:1fr;gap:34px}}
+
 /* ---------- qatar + engineering ---------- */
 .tile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:18px;margin-top:34px}
 .tile{
@@ -749,6 +776,7 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
       <li><a href="#problem">The Gap</a></li>
       <li><a href="#screens">Screens</a></li>
       <li><a href="#owner">Owner app</a></li>
+      <li><a href="#foodcost">Food cost</a></li>
       <li><a href="#calc">Calculator</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#qatar">Qatar</a></li>
@@ -1054,6 +1082,45 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
         <div class="row"><div class="k">…because they used the full day</div><div class="v" style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.7)">A number that is wrong every day until closing</div></div>
         <div class="row good"><div class="k">What MiM shows</div><div class="v">▲ 12% &nbsp;vs Wednesday · by 15:47</div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOD COST ===== -->
+<section id="foodcost">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">The number most systems quietly invent</div>
+      <h2 class="section-title reveal">What the plate <span class="gold">should have cost</span></h2>
+      <p class="section-sub mx-auto reveal">Theoretical against actual, per ingredient, per room. The gap in kilos <em>and</em> in riyals — and an honest blank where the answer isn't known.</p>
+    </div>
+    <div class="fc-shot reveal-s"><img src="images/food-cost.svg" alt="Food cost screen — theoretical 29.4% against actual 32.1%, the gap by category, worst ingredients by value, and 50 uncosted dishes quarantined" loading="lazy" /></div>
+    <div class="fc-laws">
+      <div class="fc-law reveal"><h4>Unknown is never zero</h4><p>Saffron ran 12g short but has no price on file. The shortage is <b>real</b>; the money is <b>unknown</b>. It is never rounded to zero to make the report look complete.</p></div>
+      <div class="fc-law reveal"><h4>Blind is not variance</h4><p>50 dishes are sold without a recipe. They are <b>quarantined</b>, not counted as a saving — a dish nobody costed is a hole in the map, not good news.</p></div>
+      <div class="fc-law reveal"><h4>Grams never become pieces</h4><p>“20g of saffron” against a kilo shelf used to read as 20kg — a <b>1000× lie</b> in the food cost and a shelf that empties on paper. Conversions are same-dimension only, or they refuse.</p></div>
+      <div class="fc-law reveal"><h4>Nothing is seeded</h4><p>No dish is given a made-up cost at 30% of its price to fill the table. Uncosted means <b>uncosted</b>, and it says so on the screen until someone enters the recipe.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STAFF SELF-SERVICE ===== -->
+<section id="selfservice" style="background:#fff">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">Every question HR gets asked, answered without HR</div>
+      <h2 class="section-title reveal">Each person, <span class="gold">their own phone</span></h2>
+      <p class="section-sub mx-auto reveal">A thousand staff cannot share a four-digit PIN pad. Each person scans one personal code and their own phone becomes their self-service — and nothing else.</p>
+    </div>
+    <div class="self-grid">
+      <div class="reveal-l"><div class="self-phone"><img src="images/staff-phone.svg" alt="Staff self-service phone — leave balance, payslip behind a personal PIN, document expiry dates, and requests to HR" loading="lazy" /></div></div>
+      <ul class="self-points reveal-r">
+        <li><i class="fas fa-umbrella-beach"></i><div><b>Their leave, to the day</b><span>Days owed and what they are worth, accrued to today. The figure on the phone and the figure in HR are the same code run twice — a test compares both on the same data and fails on a single riyal of disagreement.</span></div></li>
+        <li><i class="fas fa-lock"></i><div><b>Their payslip, behind their own PIN</b><span>Not their manager's PIN. Five wrong tries locks that phone for fifteen minutes.</span></div></li>
+        <li><i class="fas fa-id-card"></i><div><b>Their documents, before they expire</b><span>Health card, residence permit, passport — with the date, so nobody works a shift on an expired card by accident.</span></div></li>
+        <li><i class="fas fa-inbox"></i><div><b>Requests that cannot get lost</b><span>Leave, a salary certificate, a punch correction. Each one is a line in an append-only ledger HR pulls from — not a WhatsApp message that scrolls away.</span></div></li>
+        <li><i class="fas fa-eye-slash"></i><div><b>And nothing that isn't theirs</b><span>No colleague's salary, no IBANs, no PINs, no company data. The phone is served a person-sized view — it is not a till with a smaller screen.</span></div></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1375,6 +1442,8 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
       <li><a href="#owner">Owner app</a></li>
       <li><a href="#calc">Calculator</a></li>
       <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#foodcost">Food cost</a></li>
+            <li><a href="#selfservice">Staff phones</a></li>
             <li><a href="#integrations">Integrations</a></li>
             <li><a href="#loyalty">Loyalty</a></li>
             <li><a href="#pricing">Pricing</a></li>
