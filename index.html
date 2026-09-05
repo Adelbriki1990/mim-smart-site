@@ -528,13 +528,30 @@ footer .bottom{
 }
 
 /* ---------- reveal ---------- */
-/* content is visible by default; only a live script may hide it to animate it in */
-.js .reveal,.js .reveal-l,.js .reveal-r,.js .reveal-s{opacity:0;transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.3,1)}
-.js .reveal{transform:translateY(26px)}
-.js .reveal-l{transform:translateX(-26px)}
-.js .reveal-r{transform:translateX(26px)}
-.js .reveal-s{transform:scale(.96)}
-.js .visible{opacity:1;transform:none}
+/* content is visible by default; only a live script may hide it to animate it in.
+   Depth comes from real 3D transforms — perspective + rotate + Z — not just fade. */
+.js .reveal,.js .reveal-l,.js .reveal-r,.js .reveal-s{
+  opacity:0;will-change:transform,opacity;
+  transition:opacity .8s cubic-bezier(.16,.84,.32,1),transform .9s cubic-bezier(.16,.84,.32,1);
+  transition-delay:calc(var(--i,0) * 60ms);
+}
+.js .reveal  {transform:perspective(1200px) rotateX(9deg)  translate3d(0,34px,-60px)}
+.js .reveal-l{transform:perspective(1200px) rotateY(9deg)  translate3d(-34px,14px,-70px)}
+.js .reveal-r{transform:perspective(1200px) rotateY(-9deg) translate3d(34px,14px,-70px)}
+.js .reveal-s{transform:perspective(1200px) rotateX(12deg) translate3d(0,30px,-90px) scale(.955)}
+.js .visible{opacity:1;transform:perspective(1200px) rotateX(0) rotateY(0) translate3d(0,0,0) scale(1)}
+.js .visible{will-change:auto}
+/* the grids the cards sit in need a shared vanishing point */
+.dept-grid,.tile-grid,.int-grid,.tier-row,.price-grid,.sec-grid,.owner-phones,.fc-laws,.preview-grid,.calc-out{perspective:1400px;perspective-origin:50% 20%}
+/* cards lift toward the reader on hover, in the same space */
+.dept-card,.tile,.int-item,.price-card,.sec-card,.tier-card{transform-style:preserve-3d}
+.dept-card:hover,.tile:hover,.int-item:hover{transform:translate3d(0,-6px,26px)}
+.price-card:hover{transform:translate3d(0,-6px,22px)}
+.tier-card:hover{transform:translate3d(0,-7px,30px) rotateX(2deg)}
+/* hero device drifts as you scroll, and tips toward you on hover */
+.ipad{will-change:transform}
+.owner-phone .frame,.self-phone,.phone-frame{transition:transform .6s cubic-bezier(.16,.84,.32,1)}
+.owner-phone:hover .frame{transform:translate3d(0,-8px,40px) rotateY(-5deg)}
 /* bars must also read correctly with no script */
 html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
 #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:9999;background:var(--gold-grad);transition:width .1s linear}
@@ -665,6 +682,56 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
 .device-label b{color:var(--ink);display:block;font-size:.92rem;margin-bottom:2px}
 @media (max-width:992px){.device-band{grid-template-columns:1fr;gap:40px}}
 
+
+
+/* ---------- glass ---------- */
+#departments,#loyalty,#calc{position:relative;background:var(--navy-900);overflow:hidden}
+#departments::before,#loyalty::before,#calc::before{
+  content:'';position:absolute;inset:-14% -8%;z-index:0;pointer-events:none;
+  background:var(--liquid);opacity:.5;filter:blur(46px);
+  animation:drift 26s ease-in-out infinite alternate;
+}
+#departments .container,#loyalty .container,#calc .container{position:relative;z-index:1}
+@keyframes drift{
+  0%{transform:translate3d(0,0,0) scale(1.04)}
+  100%{transform:translate3d(-3%,2%,0) scale(1.13)}
+}
+.glass{
+  background:linear-gradient(158deg,rgba(255,255,255,.115),rgba(255,255,255,.03));
+  backdrop-filter:blur(17px) saturate(155%);
+  -webkit-backdrop-filter:blur(17px) saturate(155%);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 18px 46px rgba(4,12,28,.4),inset 0 1px 0 rgba(255,255,255,.22);
+}
+.dept-card,.loyalty-card,.calc-card,.calc-inputs,.pace-note{
+  background:linear-gradient(158deg,rgba(255,255,255,.115),rgba(255,255,255,.03))!important;
+  backdrop-filter:blur(17px) saturate(155%);
+  -webkit-backdrop-filter:blur(17px) saturate(155%);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 18px 46px rgba(4,12,28,.4),inset 0 1px 0 rgba(255,255,255,.22);
+}
+.dept-card::before,.loyalty-card::before,.calc-card::before{display:none}
+.dept-card:hover{border-color:rgba(201,162,39,.6);box-shadow:0 26px 58px rgba(4,12,28,.5),inset 0 1px 0 rgba(255,255,255,.3)}
+.pace-note{border-color:rgba(201,162,39,.36)!important}
+/* backdrop-filter is expensive; phones get the look without the blur cost */
+@media (max-width:760px){
+  .dept-card,.loyalty-card,.calc-card,.calc-inputs,.pace-note,.glass{
+    backdrop-filter:none;-webkit-backdrop-filter:none;
+    background:linear-gradient(158deg,rgba(30,55,92,.86),rgba(12,24,44,.9))!important;
+  }
+  #departments::before,#loyalty::before,#calc::before{animation:none;filter:blur(34px)}
+}
+
+/* ---------- no sideways drift, ever ---------- */
+/* grid & flex children default to min-width:auto and refuse to shrink below
+   their content — that is what pushes a page wider than the phone */
+.hero-grid>*,.dept-grid>*,.split-grid>*,.preview-grid>*,.device-band>*,.serve-cols>*,
+.int-grid>*,.loyalty-grid>*,.tier-row>*,.tc-foot>*,.tile-grid>*,.calc-wrap>*,.calc-out>*,
+.owner-phones>*,.self-grid>*,.fc-laws>*,.sec-grid>*,.price-grid>*,.price-how>*,
+.proof-wrap>*,.proof-stats>*,.pace-note>*,.pace-demo>*,footer .cols>*{min-width:0}
+.pace-demo .row .v,.tc-foot b,.calc-card .v,.preview-item .value{overflow-wrap:anywhere}
+html,body{max-width:100%;overflow-x:clip}
+
 /* ---------- responsive ---------- */
 @media (max-width:1150px){
   .nav-links,.nav-actions .btn{display:none}
@@ -774,6 +841,9 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .js .reveal,.js .reveal-l,.js .reveal-r,.js .reveal-s{opacity:1;transform:none}
+  .dept-card:hover,.tile:hover,.int-item:hover,.price-card:hover,.tier-card:hover,
+  .owner-phone:hover .frame{transform:none}
+  #departments::before,#loyalty::before,#calc::before{animation:none}
 }
 :focus-visible{outline:2px solid var(--gold-400);outline-offset:3px;border-radius:4px}
 </style>
@@ -1141,7 +1211,7 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
         <p>So the app compares today to <strong>the same minute</strong> of the day you are measuring against. At 15:47 on a Thursday it reads last Wednesday's takings <strong>up to 15:47</strong> — and says so on the chip, so you know what you are being told.</p>
       </div>
       <div class="pace-demo">
-        <div class="row bad"><div class="k">What most systems show at 15:47</div><div class="v">QR 14,632 &nbsp;vs&nbsp; QR 31,400 &nbsp;·&nbsp; ▼ 53%</div></div>
+        <div class="row bad"><div class="k">What most systems show at 15:47</div><div class="v">QR 14,632 vs QR 31,400 · ▼ 53%</div></div>
         <div class="row"><div class="k">…because they used the full day</div><div class="v" style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.7)">A number that is wrong every day until closing</div></div>
         <div class="row good"><div class="k">What MiM shows</div><div class="v">▲ 12% &nbsp;vs Wednesday · by 15:47</div></div>
       </div>
@@ -1241,7 +1311,7 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
       <div class="loyalty-card reveal-l">
         <i class="fas fa-star top-ico"></i>
         <div class="points">1,284</div>
-        <div class="worth">points &nbsp;·&nbsp; worth <strong>QR 642.00</strong></div>
+        <div class="worth">points · worth <strong>QR 642.00</strong></div>
         <ul>
           <li><i class="fas fa-equals"></i> Every point is worth exactly <strong>QR 0.50</strong>. One rate, every branch.</li>
           <li><i class="fas fa-qrcode"></i> Scan to spend. The till asks the engine, never its own copy.</li>
@@ -1614,6 +1684,33 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
     });
   }
   var targets = document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-s');
+
+  /* stagger: each card in a grid leaves a beat after the one before it */
+  document.querySelectorAll('.dept-grid,.tile-grid,.int-grid,.tier-row,.price-grid,.sec-grid,.fc-laws,.owner-phones,.calc-out')
+    .forEach(function(grid){
+      var kids = grid.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-s');
+      kids.forEach(function(el,i){ el.style.setProperty('--i', Math.min(i,9)); });
+    });
+
+  /* scroll-linked depth: the hero device recedes, the copy drifts up */
+  if (!reduce) {
+    var pad = document.querySelector('.ipad'),
+        heroCopy = document.querySelector('#hero .hero-grid > div:first-child'),
+        pTick = false;
+    var park = function(){
+      var y = window.scrollY;
+      if (y < 900) {
+        if (pad) pad.style.transform =
+          'perspective(1400px) rotateY(' + (-7 + y*0.006) + 'deg) rotateX(' + (3 - y*0.004) + 'deg) translate3d(0,' + (y*-0.05) + 'px,' + (y*-0.12) + 'px)';
+        if (heroCopy) heroCopy.style.transform = 'translate3d(0,' + (y*0.06) + 'px,0)';
+      }
+      pTick = false;
+    };
+    window.addEventListener('scroll', function(){
+      if (pTick) return; pTick = true; requestAnimationFrame(park);
+    }, { passive:true });
+    park();
+  }
   if (reduce || !('IntersectionObserver' in window)) {
     targets.forEach(function(el){ el.classList.add('visible'); });
     document.querySelectorAll('.preview-card').forEach(fill);
