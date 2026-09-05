@@ -445,7 +445,7 @@ nav .container{display:flex;justify-content:space-between;align-items:center;gap
   background:#11151C;border-radius:16px;padding:11px;margin-top:36px;
   box-shadow:0 30px 66px rgba(4,12,28,.5),inset 0 0 0 1.5px rgba(255,255,255,.09);
 }
-.fc-shot img{width:100%;border-radius:8px;display:block;background:#0F172A}
+.fc-shot img,.fc-shot picture{width:100%;border-radius:8px;display:block;background:#0F172A}
 .fc-laws{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:34px}
 .fc-law{border-left:3px solid var(--gold-500);padding:4px 0 4px 18px}
 .fc-law h4{font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px}
@@ -678,7 +678,7 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
   background:#11151C;border-radius:16px;padding:11px;
   box-shadow:0 30px 66px rgba(4,12,28,.28),inset 0 0 0 1.5px rgba(255,255,255,.09);
 }
-.kds-frame img{width:100%;border-radius:8px;display:block;background:#0F172A}
+.kds-frame img,.kds-frame picture{width:100%;border-radius:8px;display:block;background:#0F172A}
 .device-label{text-align:center;margin-top:14px;font-size:.82rem;color:var(--ink-3);line-height:1.55}
 .device-label b{color:var(--ink);display:block;font-size:.92rem;margin-bottom:2px}
 @media (max-width:992px){.device-band{grid-template-columns:1fr;gap:40px}}
@@ -861,12 +861,9 @@ html,body{max-width:100%;overflow-x:clip}
 
 /* ================= PHONE ================= */
 @media (max-width:760px){
-  /* wide product shots stay LEGIBLE and scroll, rather than shrinking to mush */
-  .fc-shot,.kds-frame{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;
-    scrollbar-width:none;padding:8px}
-  .fc-shot::-webkit-scrollbar,.kds-frame::-webkit-scrollbar{display:none}
-  .fc-shot img{min-width:860px;border-radius:6px}
-  .kds-frame img{min-width:720px;border-radius:6px}
+  /* the phone is served PORTRAIT versions of the wide shots — nothing scrolls sideways */
+  .fc-shot,.kds-frame{padding:8px}
+  .fc-shot img,.kds-frame img{width:100%;max-width:420px;margin:0 auto;border-radius:9px;min-width:0}
   .swipe-hint{
     display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;
     font-size:.76rem;color:rgba(255,255,255,.5);letter-spacing:.04em;
@@ -1144,8 +1141,12 @@ html,body{max-width:100%;overflow-x:clip}
         <div class="device-label"><b>The owner's phone</b>Today's money, wherever you are — and the alert that says which dishes moved.</div>
       </div>
       <div class="reveal-r">
-        <div class="kds-frame"><img src="images/chef-display.svg" alt="Chef display — tickets in New, Preparing and Ready columns with a timer on each" loading="lazy" /></div>
-        <p class="swipe-hint">swipe to read</p>
+        <div class="kds-frame">
+          <picture>
+            <source media="(max-width:760px)" srcset="images/chef-display-mobile.svg" />
+            <img src="images/chef-display.svg" alt="Chef display — tickets in New, Preparing and Ready columns with a timer on each" loading="lazy" />
+          </picture>
+        </div>
         <div class="device-label"><b>The chef display</b>Every plate moves New → Preparing → Ready. The clock on each ticket is the one the guest is feeling.</div>
       </div>
     </div>
@@ -1335,8 +1336,12 @@ html,body{max-width:100%;overflow-x:clip}
       <h2 class="section-title reveal">What the plate <span class="gold">should have cost</span></h2>
       <p class="section-sub mx-auto reveal">Theoretical against actual, per ingredient, per room. The gap in kilos <em>and</em> in riyals — and an honest blank where the answer isn't known.</p>
     </div>
-    <div class="fc-shot reveal-s"><img src="images/food-cost.svg" alt="Food cost screen — theoretical 29.4% against actual 32.1%, the gap by category, worst ingredients by value, and 50 uncosted dishes quarantined" loading="lazy" /></div>
-    <p class="swipe-hint">swipe the screen to read it</p>
+    <div class="fc-shot reveal-s">
+      <picture>
+        <source media="(max-width:760px)" srcset="images/food-cost-mobile.svg" />
+        <img src="images/food-cost.svg" alt="Food cost screen — theoretical 29.4% against actual 32.1%, the gap by category, worst ingredients by value, and 50 uncosted dishes quarantined" loading="lazy" />
+      </picture>
+    </div>
     <div class="fc-laws">
       <div class="fc-law reveal"><h4>Unknown is never zero</h4><p>Saffron ran 12g short but has no price on file. The shortage is <b>real</b>; the money is <b>unknown</b>. It is never rounded to zero to make the report look complete.</p></div>
       <div class="fc-law reveal"><h4>Blind is not variance</h4><p>50 dishes are sold without a recipe. They are <b>quarantined</b>, not counted as a saving — a dish nobody costed is a hole in the map, not good news.</p></div>
