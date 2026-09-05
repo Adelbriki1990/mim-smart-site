@@ -220,6 +220,71 @@ nav .container{display:flex;justify-content:space-between;align-items:center;gap
 }
 .device-caption .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(47,163,107,.22)}
 
+/* ---------- spotlights: three scenes built from MiM's own screens ----------
+   The Owner's references were a chart floating over a food photograph, a floor plan on a
+   tablet, and a till on a stand with a handheld beside it. Those are compositions, and
+   compositions can be rebuilt with our own product — the screens below are the real MiM UI. */
+.spot-grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:40px}
+@media(min-width:960px){.spot-grid{grid-template-columns:1fr 1fr}.spot-wide{grid-column:1/-1}}
+.spot{position:relative;min-width:0;border-radius:24px;overflow:hidden;
+  background:linear-gradient(160deg,#123056 0%,#0B1E3A 55%,#08172E 100%);
+  border:1px solid rgba(255,255,255,.12);box-shadow:0 28px 64px rgba(4,12,28,.5)}
+.spot-copy{padding:34px 34px 8px;position:relative;z-index:2}
+.spot-copy .eyebrow{color:var(--gold-300);margin-bottom:6px}
+.spot h3{font-size:clamp(1.35rem,2.4vw,1.75rem);font-weight:800;line-height:1.12;color:#fff;margin:0 0 10px;text-wrap:balance}
+.spot p{color:rgba(255,255,255,.72);max-width:46ch;font-size:.97rem;line-height:1.55;margin:0}
+.spot-copy .spot-pts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.spot-pts span{font-size:.74rem;font-weight:700;padding:5px 11px;border-radius:30px;
+  background:rgba(232,206,122,.12);border:1px solid rgba(232,206,122,.35);color:var(--gold-300);white-space:nowrap}
+
+/* scene 1 — the chart over the plate (the burger reference, honestly) */
+.scene-food{position:relative;display:grid;grid-template-columns:1fr;align-items:center;isolation:isolate}
+@media(min-width:960px){.scene-food{grid-template-columns:.95fr 1.05fr}}
+/* the warm "photograph" is the whole scene's ground — it glows behind the WORDS, the way the
+   burger sits behind the headline in the reference, and the chart floats over its far edge */
+.plate{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.plate::before{content:'';position:absolute;inset:-35% -10% -25% -25%;
+  background:
+    radial-gradient(38% 46% at 24% 58%,rgba(255,196,84,.92) 0%,rgba(236,120,42,.85) 32%,rgba(150,52,24,.62) 56%,rgba(8,23,46,0) 76%),
+    radial-gradient(22% 26% at 40% 34%,rgba(255,236,170,.5) 0%,rgba(255,236,170,0) 70%);
+  filter:blur(8px) saturate(1.1)}
+.plate::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(8,23,46,.15) 0%,rgba(8,23,46,.55) 48%,rgba(8,23,46,.92) 100%),
+             linear-gradient(0deg,rgba(8,23,46,.55) 0%,rgba(8,23,46,0) 45%)}
+.plate .grain{position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;
+  background-image:radial-gradient(rgba(255,255,255,.7) .6px,transparent .6px);background-size:3px 3px}
+.scene-food .spot-copy{padding-bottom:30px}
+.chart-wrap{position:relative;z-index:2;padding:0 26px 30px}
+@media(min-width:960px){.chart-wrap{padding:30px 30px 30px 0}}
+.chart-float{border-radius:16px;overflow:hidden;background:#fff;
+  box-shadow:0 34px 70px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.14)}
+.chart-float img{display:block;width:100%;height:auto}
+
+/* scene 2 — the floor plan on a tablet */
+.tablet-wrap{padding:6px 28px 32px;position:relative;z-index:2}
+.tablet{position:relative;border-radius:26px;background:#0B0F16;padding:14px;
+  box-shadow:0 34px 70px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.09)}
+.tablet::before{content:'';position:absolute;top:6px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#26324a}
+.tablet img{display:block;width:100%;height:auto;border-radius:14px;background:#fff}
+
+/* scene 3 — the till on its stand, a phone beside it */
+.stand-wrap{position:relative;padding:6px 30px 26px;z-index:2}
+.terminal{position:relative;width:78%}
+.terminal .screen{border-radius:18px;background:#0B0F16;padding:11px;box-shadow:0 30px 60px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.09)}
+.terminal .screen img{display:block;width:100%;height:auto;border-radius:10px;background:#fff}
+.terminal .neck{width:22%;height:30px;margin:0 auto;background:linear-gradient(#171d28,#0B0F16)}
+.terminal .foot{width:54%;height:12px;margin:0 auto;border-radius:0 0 14px 14px;background:linear-gradient(#0B0F16,#050810);box-shadow:0 18px 30px rgba(0,0,0,.5)}
+.handheld{position:absolute;right:0;bottom:22px;width:27%;border-radius:22px;background:#0B0F16;padding:7px;
+  box-shadow:0 26px 50px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.1);transform:rotate(-4deg)}
+.handheld img{display:block;width:100%;height:auto;border-radius:16px;background:#fff}
+
+/* the fifteen, grouped by the area they serve — the grouping is the information */
+.dept-groups{display:grid;gap:30px;margin-top:52px}
+.dept-group h5{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-300);margin:0 0 12px;display:flex;align-items:center;gap:12px}
+.dept-group h5::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(232,206,122,.45),rgba(232,206,122,0))}
+.dept-group .dept-grid{margin-top:0}
+.spot,.spot *,.dept-grid>*{min-width:0}
+
 /* ---------- department cards: the blue ground ---------- */
 #departments{background:var(--navy-900);color:#fff}
 .dept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:16px;margin-top:34px}
@@ -1046,24 +1111,96 @@ html,body{max-width:100%;overflow-x:clip}
     <div class="text-center">
       <div class="eyebrow">Fifteen departments, one database</div>
       <h2 class="section-title reveal">Everyone gets <span class="gold">their own screen</span></h2>
-      <p class="section-sub mx-auto reveal">Each department has its own staff, its own sign-in, and screens built for that job — writing into the same record as everyone else.</p>
+      <p class="section-sub mx-auto reveal">Each department has its own staff, its own sign-in, and screens built for that job — writing into the same record as everyone else. Three of those screens, as they actually look.</p>
     </div>
-    <div class="dept-grid">
+
+    <div class="spot-grid">
+      <!-- 1 · the chart over the plate -->
+      <div class="spot spot-wide reveal-s">
+        <div class="scene-food">
+          <div class="spot-copy">
+            <div class="eyebrow">Finance · food cost</div>
+            <h3>What every dish really costs — against what it should</h3>
+            <p>The theoretical cost of each recipe, next to what the kitchen actually used. The gap is named, in riyals, dish by dish — not discovered at month end.</p>
+            <div class="spot-pts"><span>Recipe · yield · packaging</span><span>Actual vs target</span><span>Waste, priced</span></div>
+          </div>
+          <div class="plate"><div class="grain"></div></div>
+          <div class="chart-wrap">
+            <div class="chart-float">
+              <picture>
+                <source media="(max-width:760px)" srcset="images/food-cost-mobile.svg" />
+                <img src="images/food-cost.svg" alt="MiM food cost — theoretical against actual cost per dish, with the gap shown in riyals" loading="lazy" />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 · the floor on a tablet -->
+      <div class="spot reveal-s">
+        <div class="spot-copy">
+          <div class="eyebrow">Hostess desk · reservations</div>
+          <h3>The floor, as a room</h3>
+          <p>Every table lit by its state, the waitlist with its quoted time against the clock, and a guest's history the moment their number is typed.</p>
+          <div class="spot-pts"><span>Covers pacing</span><span>Waitlist timers</span><span>Guest memory</span></div>
+        </div>
+        <div class="tablet-wrap"><div class="tablet"><img src="images/floor-plan.svg" alt="MiM hostess desk — the floor plan with tables lit by state, the waitlist and reservations" loading="lazy" /></div></div>
+      </div>
+
+      <!-- 3 · the till on its stand -->
+      <div class="spot reveal-s">
+        <div class="spot-copy">
+          <div class="eyebrow">Till · staff phone</div>
+          <h3>One record, from the counter to the pocket</h3>
+          <p>The till the cashier touches all day, and the phone each member of staff carries — clock-in, shifts, leave, payslip — writing into the same ledger.</p>
+          <div class="spot-pts"><span>Three taps to a check</span><span>Clock in by code + location</span><span>Nine languages</span></div>
+        </div>
+        <div class="stand-wrap">
+          <div class="terminal">
+            <div class="screen"><picture><source media="(max-width:760px)" srcset="images/till-mobile.svg" /><img src="images/till.svg" alt="The MiM till" loading="lazy" /></picture></div>
+            <div class="neck"></div><div class="foot"></div>
+          </div>
+          <div class="handheld"><img src="images/staff-phone.svg" alt="The MiM staff phone" loading="lazy" /></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dept-groups">
+      <div class="dept-group reveal">
+        <h5>Front of house</h5>
+        <div class="dept-grid">
       <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-cash-register"></i></div><h4>Restaurant POS</h4><p>Register · tables · kitchen</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-coins"></i></div><h4>Finance</h4><p>Sales · food cost · targets · EOD</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-users"></i></div><h4>Human Resources</h4><p>People · attendance · Qatar law</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-warehouse"></i></div><h4>Central Store</h4><p>Requests · purchasing · suppliers</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-clipboard-list"></i></div><h4>Ordering</h4><p>Order · wastage · inventory counts</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-bullhorn"></i></div><h4>Marketing</h4><p>Campaigns · plans · budgets</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-laptop"></i></div><h4>IT</h4><p>Staff access · PIN resets · printers</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-mobile-screen"></i></div><h4>Staff Self-Service</h4><p>Leave · certificates · requests</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-screwdriver-wrench"></i></div><h4>Maintenance</h4><p>Report · fix · cost straight to P&amp;L</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-house-user"></i></div><h4>Accommodation</h4><p>Staff housing — villas, beds, occupancy</p><span class="badge">Live</span></div>
+      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-mobile-screen"></i></div><h4>Staff Self-Service</h4><p>Clock-in · shifts · leave · payslip</p><span class="badge">Live</span></div>
       <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-headset"></i></div><h4>Customer Service</h4><p>Complaints · calls · reviews</p><span class="badge">Live</span></div>
-      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-graduation-cap"></i></div><h4>Quality &amp; Training</h4><p>Food safety · academy · exams</p><span class="badge">Live</span></div>
+        </div>
+      </div>
+      <div class="dept-group reveal">
+        <h5>Kitchen &amp; supply</h5>
+        <div class="dept-grid">
       <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-kitchen-set"></i></div><h4>Central Kitchen</h4><p>Produce and supply the branches</p><span class="badge">Live</span></div>
       <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-cake-candles"></i></div><h4>Central Pastry</h4><p>Bake and supply the branches</p><span class="badge">Live</span></div>
-      <div class="dept-card featured reveal-s"><div class="icon"><i class="fas fa-crown"></i></div><h4>Head Office</h4><p>Every branch, one screen</p><span class="badge gold">Command</span></div>
+      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-warehouse"></i></div><h4>Central Store</h4><p>Requests · purchasing · suppliers</p><span class="badge">Live</span></div>
+      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-clipboard-list"></i></div><h4>Ordering</h4><p>Order · wastage · inventory counts</p><span class="badge">Live</span></div>
+        </div>
+      </div>
+      <div class="dept-group reveal">
+        <h5>The office</h5>
+        <div class="dept-grid">
+      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-coins"></i></div><h4>Finance</h4><p>Sales · food cost · targets · EOD</p><span class="badge">Live</span></div>
+      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-bullhorn"></i></div><h4>Marketing</h4><p>Campaigns · plans · budgets</p><span class="badge">Live</span></div>
+      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-laptop"></i></div><h4>IT</h4><p>Staff access · PIN resets · printers</p><span class="badge">Live</span></div>
+      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-screwdriver-wrench"></i></div><h4>Maintenance</h4><p>Report · fix · cost straight to finance</p><span class="badge">Live</span></div>
+        </div>
+      </div>
+      <div class="dept-group reveal">
+        <h5>People &amp; place</h5>
+        <div class="dept-grid">
+      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-users"></i></div><h4>Human Resources</h4><p>People · attendance · Qatar law</p><span class="badge">Live</span></div>
+      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-house-user"></i></div><h4>Accommodation</h4><p>Staff housing — villas, beds, occupancy</p><span class="badge">Live</span></div>
+      <div class="dept-card reveal-s"><div class="icon"><i class="fas fa-graduation-cap"></i></div><h4>Quality &amp; Training</h4><p>Food safety · academy · exams</p><span class="badge">Live</span></div>
+      <div class="dept-card featured reveal-s"><div class="icon"><i class="fas fa-crown"></i></div><h4>Head Office</h4><p>Every branch, one screen</p><span class="badge">Live</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
