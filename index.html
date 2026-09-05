@@ -684,6 +684,63 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
 
 
 
+
+/* ---------- demo request sheet ---------- */
+.sheet-back{
+  position:fixed;inset:0;z-index:2000;background:rgba(6,12,24,.72);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:opacity .3s ease;
+}
+.sheet-back.open{opacity:1;pointer-events:auto}
+.sheet{
+  width:100%;max-width:520px;max-height:92vh;overflow-y:auto;border-radius:20px;padding:30px;
+  background:linear-gradient(158deg,rgba(28,48,78,.97),rgba(10,20,38,.98));
+  border:1px solid rgba(255,255,255,.16);color:#fff;
+  box-shadow:0 30px 80px rgba(4,12,28,.6),inset 0 1px 0 rgba(255,255,255,.2);
+  transform:perspective(1200px) rotateX(8deg) translateY(30px) scale(.96);
+  transition:transform .42s cubic-bezier(.16,.84,.32,1);
+}
+.sheet-back.open .sheet{transform:perspective(1200px) rotateX(0) translateY(0) scale(1)}
+.sheet h3{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:600;margin-bottom:6px}
+.sheet .lede{font-size:.9rem;color:rgba(255,255,255,.72);margin-bottom:22px;line-height:1.6}
+.sheet label{display:block;margin-bottom:14px}
+.sheet label span{display:block;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px}
+.sheet input,.sheet textarea,.sheet select{
+  width:100%;padding:13px 15px;border-radius:10px;font:inherit;font-size:.95rem;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:#fff;
+  transition:border-color .2s,background .2s;min-height:48px;
+}
+.sheet textarea{min-height:88px;resize:vertical}
+.sheet input:focus,.sheet textarea:focus,.sheet select:focus{outline:none;border-color:var(--gold-400);background:rgba(255,255,255,.1)}
+.sheet input::placeholder,.sheet textarea::placeholder{color:rgba(255,255,255,.34)}
+.sheet .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sheet .row2>*{min-width:0}
+.sheet .acts{display:flex;gap:11px;margin-top:20px}
+.sheet .acts .btn{flex:1;justify-content:center;min-height:50px}
+.sheet .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.sheet-close{
+  position:absolute;top:14px;right:16px;width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);color:#fff;
+  font-size:1.2rem;cursor:pointer;line-height:1;
+}
+.sheet-wrap{position:relative;width:100%;max-width:520px}
+.sheet-msg{margin-top:16px;padding:14px 16px;border-radius:11px;font-size:.9rem;line-height:1.6;display:none}
+.sheet-msg.ok{display:block;background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.45);color:#6EE7B7}
+.sheet-msg.err{display:block;background:rgba(244,63,94,.13);border:1px solid rgba(244,63,94,.45);color:#FDA4AF}
+.sheet-msg .copybox{
+  margin-top:11px;padding:11px;border-radius:8px;background:rgba(0,0,0,.34);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.76rem;color:#CBD5E1;
+  white-space:pre-wrap;max-height:150px;overflow-y:auto;
+}
+.sheet-msg .cbtn{margin-top:9px;padding:9px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.09);color:#fff;font:inherit;font-size:.84rem;font-weight:600;cursor:pointer;min-height:42px}
+@media (max-width:560px){
+  .sheet-back{padding:0;align-items:flex-end}
+  .sheet-wrap{max-width:100%}
+  .sheet{max-width:100%;border-radius:20px 20px 0 0;max-height:94vh;padding:26px 20px 30px}
+  .sheet .row2{grid-template-columns:1fr}
+}
+
 /* ---------- glass ---------- */
 #departments,#loyalty,#calc{position:relative;background:var(--navy-900);overflow:hidden}
 #departments::before,#loyalty::before,#calc::before{
@@ -1556,6 +1613,45 @@ html,body{max-width:100%;overflow-x:clip}
 </section>
 
 <!-- ===== FOOTER ===== -->
+
+<!-- ===== DEMO REQUEST SHEET ===== -->
+<div class="sheet-back" id="sheetBack" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-wrap">
+    <button class="sheet-close" id="sheetClose" aria-label="Close">✕</button>
+    <form class="sheet" id="demoForm" novalidate>
+      <h3 id="sheetTitle">Book a demo</h3>
+      <p class="lede">Tell us the shape of your group. We reply with a written answer, not a sales call.</p>
+      <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
+      <div class="row2">
+        <label><span>Your name *</span><input name="name" required autocomplete="name" placeholder="Adel Briki" /></label>
+        <label><span>Restaurant / group *</span><input name="company" required autocomplete="organization" placeholder="Al Sadd Group" /></label>
+      </div>
+      <div class="row2">
+        <label><span>Email *</span><input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="you@yourgroup.com" /></label>
+        <label><span>Phone / WhatsApp</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+974 …" /></label>
+      </div>
+      <div class="row2">
+        <label><span>Branches *</span>
+          <select name="branches" required>
+            <option value="">Choose…</option><option>1</option><option>2–5</option><option>6–15</option><option>16–40</option><option>More than 40</option>
+          </select>
+        </label>
+        <label><span>Running today</span>
+          <select name="current">
+            <option value="">Choose…</option><option>Foodics</option><option>Another POS</option><option>POS + spreadsheets</option><option>Spreadsheets only</option><option>Opening soon</option>
+          </select>
+        </label>
+      </div>
+      <label><span>What hurts most today?</span><textarea name="pain" placeholder="Food cost is guesswork, payroll takes three days, nobody knows the daily profit…"></textarea></label>
+      <div class="acts">
+        <button type="submit" class="btn btn-gold" id="sheetSend">Send it</button>
+        <button type="button" class="btn btn-ghost" id="sheetCancel">Cancel</button>
+      </div>
+      <div class="sheet-msg" id="sheetMsg"></div>
+    </form>
+  </div>
+</div>
+
 <footer>
   <div class="container">
     <div class="cols">
@@ -1672,6 +1768,76 @@ html,body{max-width:100%;overflow-x:clip}
     }
     [rev,br,fc,lc].forEach(function(i){ i.addEventListener('input',run); });
     run();
+  })();
+
+
+  /* ---- demo request sheet ---- */
+  (function(){
+    /* Paste a Web3Forms access key here and the form posts straight to the inbox.
+       Get one free in 30 seconds at web3forms.com — no signup, they email you the key.
+       Empty = the form still works: it composes the message and offers copy + email. */
+    var ACCESS_KEY = '';
+
+    var back=document.getElementById('sheetBack'), form=document.getElementById('demoForm'),
+        msg=document.getElementById('sheetMsg'), send=document.getElementById('sheetSend'), lastFocus=null;
+    if(!back||!form) return;
+
+    function open(e){ if(e) e.preventDefault(); lastFocus=document.activeElement;
+      back.classList.add('open'); document.body.style.overflow='hidden';
+      setTimeout(function(){ var f=form.querySelector('input[name=name]'); if(f) f.focus(); },320); }
+    function close(){ back.classList.remove('open'); document.body.style.overflow='';
+      msg.className='sheet-msg'; msg.innerHTML=''; if(lastFocus) lastFocus.focus(); }
+
+    /* every mail link and every demo button opens the sheet instead */
+    document.querySelectorAll('a[href^="mailto:"], a[href="#contact"].btn').forEach(function(a){
+      a.addEventListener('click', open);
+    });
+    document.getElementById('sheetClose').addEventListener('click', close);
+    document.getElementById('sheetCancel').addEventListener('click', close);
+    back.addEventListener('click', function(e){ if(e.target===back) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && back.classList.contains('open')) close(); });
+
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      if(form.botcheck.value) return;                     /* honeypot */
+      var d=Object.fromEntries(new FormData(form).entries());
+      if(!d.name||!d.company||!d.email||!d.branches){
+        msg.className='sheet-msg err'; msg.textContent='Please fill in name, group, email and branches.'; return;
+      }
+      var body='Name: '+d.name+'\nGroup: '+d.company+'\nEmail: '+d.email+
+               '\nPhone: '+(d.phone||'—')+'\nBranches: '+d.branches+
+               '\nRunning today: '+(d.current||'—')+'\nWhat hurts: '+(d.pain||'—');
+      send.disabled=true; send.textContent='Sending…';
+
+      if(ACCESS_KEY){
+        try{
+          var r=await fetch('https://api.web3forms.com/submit',{
+            method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+            body:JSON.stringify({access_key:ACCESS_KEY,subject:'Smart MiM demo request — '+d.company,
+              from_name:'Smart MiM website',...d})});
+          var j=await r.json();
+          if(j.success){ msg.className='sheet-msg ok';
+            msg.textContent='Thank you — that reached us. We reply within one working day.';
+            form.reset(); send.disabled=false; send.textContent='Send it'; return; }
+          throw new Error(j.message||'rejected');
+        }catch(err){ /* fall through to the manual route */ }
+      }
+      /* no key, or the post failed: hand the visitor a message they can send in one tap */
+      send.disabled=false; send.textContent='Send it';
+      msg.className='sheet-msg ok';
+      msg.innerHTML='<b>Nearly there — one tap to send.</b><br>Your mail app should open. If it does not, copy this and email it to <b>hello@mim-smart.com</b>.'+
+        '<div class="copybox" id="cbx">'+body.replace(/[<>&]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;'}[c];})+'</div>'+
+        '<button type="button" class="cbtn" id="cbtn">Copy the message</button>';
+      document.getElementById('cbtn').addEventListener('click',function(){
+        var t=document.getElementById('cbx').textContent;
+        (navigator.clipboard? navigator.clipboard.writeText(t):Promise.reject())
+          .then(function(){ this.textContent='Copied ✓'; }.bind(this))
+          .catch(function(){ var r=document.createRange(); r.selectNode(document.getElementById('cbx'));
+            getSelection().removeAllRanges(); getSelection().addRange(r); this.textContent='Select and copy'; }.bind(this));
+      });
+      window.location.href='mailto:hello@mim-smart.com?subject='+
+        encodeURIComponent('Demo request — '+d.company)+'&body='+encodeURIComponent(body);
+    });
   })();
 
   /* reveal + chart fills */
