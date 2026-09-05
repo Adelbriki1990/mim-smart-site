@@ -93,8 +93,10 @@ a{text-decoration:none;color:inherit}
   background:var(--gold-grad-ink);-webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;
 }
+/* background-IMAGE, never the `background` shorthand: the shorthand resets
+   background-clip back to border-box and the gradient paints as a solid block */
 #departments .section-title .gold,#loyalty .section-title .gold,
-#contact .section-title .gold{background:var(--gold-grad-lit)}
+#contact .section-title .gold{background-image:var(--gold-grad-lit)}
 .section-sub{font-size:1.08rem;max-width:660px;color:var(--ink-2);margin-bottom:40px}
 /* dark sections: text must come from the light set, never inherit the ink set */
 #departments,#loyalty,#contact{color:#fff}
@@ -360,6 +362,47 @@ nav .container{display:flex;justify-content:space-between;align-items:center;gap
 .loyalty-card ul li:last-child{border-bottom:none}
 .loyalty-card ul li i{color:var(--gold-400);width:18px;text-align:center;margin-top:4px;flex:none}
 .loyalty-card .foot{margin-top:18px;font-size:.8rem;color:rgba(255,255,255,.58)}
+
+
+/* ---------- loyalty tier cards ---------- */
+.tier-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:18px;margin-top:34px}
+.tier-card{
+  border-radius:16px;overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:0 14px 34px rgba(4,12,28,.34);transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s;
+}
+.tier-card:hover{transform:translateY(-6px);box-shadow:0 22px 46px rgba(4,12,28,.44)}
+.tc-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 16px;font-size:.8rem}
+.tc-brand{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.04em}
+.tc-brand svg{width:17px;height:17px;flex:none;opacity:.9}
+.tc-thresh{font-weight:700;font-size:.72rem;opacity:.78;white-space:nowrap}
+.tc-body{padding:14px 16px 18px}
+.tc-label{font-size:.62rem;font-weight:700;letter-spacing:.16em;opacity:.72;margin-bottom:2px}
+.tc-points{font-size:2.9rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.tc-foot{display:grid;grid-template-columns:1.1fr .9fr .8fr;gap:8px;padding:12px 16px 15px;border-top:1px solid rgba(0,0,0,.13)}
+.tc-foot span{display:block;font-size:.58rem;font-weight:700;letter-spacing:.14em;opacity:.68;margin-bottom:3px}
+.tc-foot b{font-size:.86rem;font-weight:700;white-space:nowrap}
+
+.tier-card.bronze{background:linear-gradient(150deg,#9A6335 0%,#C68A55 42%,#7C4A26 100%);color:#fff}
+.tier-card.bronze .tc-top{background:rgba(0,0,0,.16)}
+.tier-card.silver{background:linear-gradient(150deg,#A9AFB6 0%,#E3E7EB 42%,#9BA2AA 100%);color:#141821}
+.tier-card.silver .tc-top{background:rgba(255,255,255,.34)}
+.tier-card.gold{background:linear-gradient(150deg,#C79E1F 0%,#EDD378 42%,#B4880F 100%);color:#1A1400}
+.tier-card.gold .tc-top{background:rgba(255,255,255,.28)}
+.tier-card.platinum{background:linear-gradient(150deg,#B6BBC0 0%,#EDEFF1 42%,#C3C7CB 100%);color:#141821}
+.tier-card.platinum .tc-top{background:rgba(255,255,255,.4)}
+.tier-note{
+  margin-top:22px;text-align:center;font-size:.87rem;color:rgba(255,255,255,.72);line-height:1.6;
+  max-width:760px;margin-left:auto;margin-right:auto;
+}
+.tier-note b{color:var(--gold-300)}
+@media (max-width:600px){
+  .tier-row{grid-template-columns:1fr 1fr;gap:11px}
+  .tc-points{font-size:2rem}
+  .tc-foot{grid-template-columns:1fr;gap:6px}
+  .tc-foot b{font-size:.78rem}
+  .tc-brand{font-size:.7rem}
+  .tc-thresh{font-size:.62rem}
+}
 
 /* ---------- qatar + engineering ---------- */
 .tile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:18px;margin-top:34px}
@@ -947,9 +990,49 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
   <div class="container">
     <div class="text-center">
       <div class="eyebrow">Points are money, so they are audited like money</div>
-      <h2 class="section-title reveal">The <span class="gold">loyalty card</span></h2>
+      <h2 class="section-title reveal">Smart <span class="gold">Loyalty</span></h2>
       <p class="section-sub mx-auto reveal">The balance lives on the engine, not on the card — so it cannot be edited at the till.</p>
     </div>
+    <div class="tier-row">
+      <div class="tier-card bronze reveal-s">
+        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> YOUR BRAND</span><span class="tc-thresh">0+ points</span></div>
+        <div class="tc-body"><div class="tc-label">POINTS</div><div class="tc-points">137</div></div>
+        <div class="tc-foot">
+          <div><span>VALUE</span><b>≈ QR 68.50</b></div>
+          <div><span>TIER</span><b>BRONZE</b></div>
+          <div><span>MEMBER</span><b>Sara</b></div>
+        </div>
+      </div>
+      <div class="tier-card silver reveal-s">
+        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> YOUR BRAND</span><span class="tc-thresh">500+ points</span></div>
+        <div class="tc-body"><div class="tc-label">POINTS</div><div class="tc-points">640</div></div>
+        <div class="tc-foot">
+          <div><span>VALUE</span><b>≈ QR 320.00</b></div>
+          <div><span>TIER</span><b>SILVER</b></div>
+          <div><span>MEMBER</span><b>Omar</b></div>
+        </div>
+      </div>
+      <div class="tier-card gold reveal-s">
+        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> YOUR BRAND</span><span class="tc-thresh">1,000+ points</span></div>
+        <div class="tc-body"><div class="tc-label">POINTS</div><div class="tc-points">1,180</div></div>
+        <div class="tc-foot">
+          <div><span>VALUE</span><b>≈ QR 590.00</b></div>
+          <div><span>TIER</span><b>GOLD</b></div>
+          <div><span>MEMBER</span><b>Mona</b></div>
+        </div>
+      </div>
+      <div class="tier-card platinum reveal-s">
+        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> YOUR BRAND</span><span class="tc-thresh">1,500+ points</span></div>
+        <div class="tc-body"><div class="tc-label">POINTS</div><div class="tc-points">1,760</div></div>
+        <div class="tc-foot">
+          <div><span>VALUE</span><b>≈ QR 880.00</b></div>
+          <div><span>TIER</span><b>♛ PLATINUM</b></div>
+          <div><span>MEMBER</span><b>Adel</b></div>
+        </div>
+      </div>
+    </div>
+    <p class="tier-note">Tiers, thresholds and rewards are yours to set — these are an example. The card carries <b>your</b> brand and your colours, never ours. Every balance above is simply points × <b>QR 0.50</b>, the same rate at every branch.</p>
+
     <div class="loyalty-grid">
       <div class="loyalty-card reveal-l">
         <i class="fas fa-star top-ico"></i>
