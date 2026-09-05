@@ -117,7 +117,7 @@ section{padding:84px 0}
 /* ---------- buttons ---------- */
 .btn{
   display:inline-flex;align-items:center;gap:9px;
-  padding:14px 30px;border-radius:8px;font-weight:600;font-size:.98rem;
+  padding:14px 30px;border-radius:8px;font-weight:600;font-size:.98rem;white-space:nowrap;
   border:1.5px solid transparent;cursor:pointer;transition:transform .22s,box-shadow .22s,background .22s;
 }
 .btn-gold{background:var(--gold-grad);color:var(--navy-900);box-shadow:0 6px 20px rgba(201,162,39,.28)}
@@ -132,7 +132,7 @@ section{padding:84px 0}
 /* ---------- logo ---------- */
 .brandmark{display:flex;align-items:center;gap:11px}
 .brandmark svg{width:38px;height:38px;flex:none}
-.brandmark .wordmark{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:700;letter-spacing:-.01em}
+.brandmark .wordmark{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
 .brandmark .wordmark em{
   font-style:normal;background:var(--gold-grad);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
@@ -144,8 +144,8 @@ nav{
   background:rgba(8,17,36,.86);backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(255,255,255,.08);padding:13px 0;color:#fff;
 }
-nav .container{display:flex;justify-content:space-between;align-items:center;gap:20px}
-.nav-links{display:flex;gap:26px;list-style:none;font-weight:500;font-size:.92rem}
+nav .container{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:nowrap}
+.nav-links{display:flex;gap:22px;list-style:none;font-weight:500;font-size:.9rem;white-space:nowrap}
 .nav-links a{color:rgba(255,255,255,.74);position:relative;padding:4px 0;transition:color .2s}
 .nav-links a::after{
   content:'';position:absolute;left:0;bottom:0;height:2px;width:0;
@@ -666,8 +666,11 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
 @media (max-width:992px){.device-band{grid-template-columns:1fr;gap:40px}}
 
 /* ---------- responsive ---------- */
-@media (max-width:992px){
+@media (max-width:1150px){
   .nav-links,.nav-actions .btn{display:none}
+  .menu-toggle{display:block}
+}
+@media (max-width:992px){
   .menu-toggle{display:block}
   .nav-links.open{
     display:flex;flex-direction:column;gap:16px;position:absolute;top:64px;left:0;width:100%;
@@ -706,6 +709,68 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
   .inv-item .nm{width:38%}
   footer .links{gap:32px}
 }
+
+/* ================= PHONE ================= */
+@media (max-width:760px){
+  /* wide product shots stay LEGIBLE and scroll, rather than shrinking to mush */
+  .fc-shot,.kds-frame{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;padding:8px}
+  .fc-shot::-webkit-scrollbar,.kds-frame::-webkit-scrollbar{display:none}
+  .fc-shot img{min-width:860px;border-radius:6px}
+  .kds-frame img{min-width:720px;border-radius:6px}
+  .swipe-hint{
+    display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;
+    font-size:.76rem;color:rgba(255,255,255,.5);letter-spacing:.04em;
+  }
+  .swipe-hint::before{content:'←'} .swipe-hint::after{content:'→'}
+  #selfservice .swipe-hint{color:var(--ink-3)}
+}
+@media (min-width:761px){ .swipe-hint{display:none} }
+
+@media (max-width:600px){
+  section{padding:52px 0}
+  .section-title{font-size:1.72rem}
+  .section-sub{font-size:.98rem;margin-bottom:28px}
+  .eyebrow{font-size:.66rem;letter-spacing:.14em}
+  /* every tap target reaches 44px */
+  .btn{padding:15px 26px;min-height:48px;width:100%;justify-content:center}
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .nav-links.open a{padding:11px 0;display:block;min-height:44px}
+  .nav-actions .btn{width:auto}
+  .faq-item summary{padding:16px 18px;min-height:52px}
+  .price-card .btn,.int-item,.serve-row{min-height:48px}
+  /* stacks */
+  .owner-phones{gap:38px}
+  .owner-phone .frame,.self-phone{max-width:280px}
+  .fc-laws{gap:22px}
+  .fc-law{padding-left:14px}
+  .device-band{gap:32px;margin:26px 0 34px}
+  .int-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .int-item{padding:16px 8px}
+  .int-item i{font-size:1.35rem}
+  .int-item h4{font-size:.76rem}
+  .tile-grid{grid-template-columns:1fr 1fr;gap:11px}
+  .tile{padding:20px 12px}
+  .tile h4{font-size:.88rem}
+  .tile p{font-size:.74rem}
+  .tile .big{font-size:1.7rem}
+  .price-how{grid-template-columns:1fr;padding:20px;gap:20px}
+  .price-card{padding:24px}
+  .calc-inputs{padding:22px}
+  .calc-card .v{font-size:1.6rem}
+  .contact-lines{flex-direction:column;gap:12px}
+  .hero h1{letter-spacing:-.02em}
+  .hero .lede{font-size:1.04rem}
+  .device-caption,.device-label span{font-size:.79rem}
+  footer .cols{gap:26px}
+  footer .links{gap:26px}
+}
+@media (max-width:380px){
+  .dept-grid,.tile-grid,.int-grid,.tier-row{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .proof-stats{grid-template-columns:1fr}
+}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .js .reveal,.js .reveal-l,.js .reveal-r,.js .reveal-s{opacity:1;transform:none}
@@ -773,13 +838,10 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#departments">Departments</a></li>
-      <li><a href="#problem">The Gap</a></li>
-      <li><a href="#screens">Screens</a></li>
-      <li><a href="#owner">Owner app</a></li>
       <li><a href="#foodcost">Food cost</a></li>
+      <li><a href="#owner">Owner app</a></li>
       <li><a href="#calc">Calculator</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#qatar">Qatar</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-actions">
@@ -905,6 +967,7 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
       </div>
       <div class="reveal-r">
         <div class="kds-frame"><img src="images/chef-display.svg" alt="Chef display — tickets in New, Preparing and Ready columns with a timer on each" loading="lazy" /></div>
+        <p class="swipe-hint">swipe to read</p>
         <div class="device-label"><b>The chef display</b>Every plate moves New → Preparing → Ready. The clock on each ticket is the one the guest is feeling.</div>
       </div>
     </div>
@@ -1095,6 +1158,7 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
       <p class="section-sub mx-auto reveal">Theoretical against actual, per ingredient, per room. The gap in kilos <em>and</em> in riyals — and an honest blank where the answer isn't known.</p>
     </div>
     <div class="fc-shot reveal-s"><img src="images/food-cost.svg" alt="Food cost screen — theoretical 29.4% against actual 32.1%, the gap by category, worst ingredients by value, and 50 uncosted dishes quarantined" loading="lazy" /></div>
+    <p class="swipe-hint">swipe the screen to read it</p>
     <div class="fc-laws">
       <div class="fc-law reveal"><h4>Unknown is never zero</h4><p>Saffron ran 12g short but has no price on file. The shortage is <b>real</b>; the money is <b>unknown</b>. It is never rounded to zero to make the report look complete.</p></div>
       <div class="fc-law reveal"><h4>Blind is not variance</h4><p>50 dishes are sold without a recipe. They are <b>quarantined</b>, not counted as a saving — a dish nobody costed is a hole in the map, not good news.</p></div>
