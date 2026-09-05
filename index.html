@@ -714,6 +714,10 @@ html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
 .sheet textarea{min-height:88px;resize:vertical}
 .sheet input:focus,.sheet textarea:focus,.sheet select:focus{outline:none;border-color:var(--gold-400);background:rgba(255,255,255,.1)}
 .sheet input::placeholder,.sheet textarea::placeholder{color:rgba(255,255,255,.34)}
+
+.sheet .bad input,.sheet .bad textarea,.sheet .bad select{border-color:#F43F5E;background:rgba(244,63,94,.09)}
+.sheet .bad span{color:#FDA4AF}
+.sheet .req{font-size:.78rem;color:rgba(255,255,255,.5);margin:-8px 0 16px}
 .sheet .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .sheet .row2>*{min-width:0}
 .sheet .acts{display:flex;gap:11px;margin-top:20px}
@@ -1621,6 +1625,7 @@ html,body{max-width:100%;overflow-x:clip}
     <form class="sheet" id="demoForm" novalidate>
       <h3 id="sheetTitle">Book a demo</h3>
       <p class="lede">Tell us the shape of your group. We reply with a written answer, not a sales call.</p>
+      <p class="req">All fields are needed so we can answer properly — it takes under a minute.</p>
       <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
       <div class="row2">
         <label><span>Your name *</span><input name="name" required autocomplete="name" placeholder="Adel Briki" /></label>
@@ -1628,7 +1633,7 @@ html,body{max-width:100%;overflow-x:clip}
       </div>
       <div class="row2">
         <label><span>Email *</span><input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="you@yourgroup.com" /></label>
-        <label><span>Phone / WhatsApp</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+974 …" /></label>
+        <label><span>Phone / WhatsApp *</span><input type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="+974 …" /></label>
       </div>
       <div class="row2">
         <label><span>Branches *</span>
@@ -1636,13 +1641,13 @@ html,body{max-width:100%;overflow-x:clip}
             <option value="">Choose…</option><option>1</option><option>2–5</option><option>6–15</option><option>16–40</option><option>More than 40</option>
           </select>
         </label>
-        <label><span>Running today</span>
-          <select name="current">
+        <label><span>Running today *</span>
+          <select name="current" required>
             <option value="">Choose…</option><option>Foodics</option><option>Another POS</option><option>POS + spreadsheets</option><option>Spreadsheets only</option><option>Opening soon</option>
           </select>
         </label>
       </div>
-      <label><span>What hurts most today?</span><textarea name="pain" placeholder="Food cost is guesswork, payroll takes three days, nobody knows the daily profit…"></textarea></label>
+      <label><span>What hurts most today? *</span><textarea name="pain" required minlength="10" placeholder="Food cost is guesswork, payroll takes three days, nobody knows the daily profit…"></textarea></label>
       <div class="acts">
         <button type="submit" class="btn btn-gold" id="sheetSend">Send it</button>
         <button type="button" class="btn btn-ghost" id="sheetCancel">Cancel</button>
@@ -1802,8 +1807,22 @@ html,body{max-width:100%;overflow-x:clip}
       e.preventDefault();
       if(form.botcheck.value) return;                     /* honeypot */
       var d=Object.fromEntries(new FormData(form).entries());
-      if(!d.name||!d.company||!d.email||!d.branches){
-        msg.className='sheet-msg err'; msg.textContent='Please fill in name, group, email and branches.'; return;
+      var need=[['name','your name'],['company','restaurant / group'],['email','email'],
+                ['phone','phone'],['branches','branches'],['current','what you run today'],['pain','what hurts most']];
+      form.querySelectorAll('label').forEach(function(l){ l.classList.remove('bad'); });
+      var missing=[], first=null;
+      need.forEach(function(f){
+        var el=form.elements[f[0]], v=(d[f[0]]||'').trim();
+        var bad = !v || (f[0]==='email' && !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v)) || (f[0]==='pain' && v.length<10);
+        if(bad){ missing.push(f[1]); if(el&&el.closest('label')) el.closest('label').classList.add('bad'); if(!first) first=el; }
+      });
+      if(missing.length){
+        msg.className='sheet-msg err';
+        msg.textContent = missing.length===1
+          ? 'Still needed: '+missing[0]+'.'
+          : 'Still needed: '+missing.slice(0,-1).join(', ')+' and '+missing[missing.length-1]+'.';
+        if(first){ first.focus(); first.scrollIntoView({block:'center',behavior:'smooth'}); }
+        return;
       }
       var body='Name: '+d.name+'\nGroup: '+d.company+'\nEmail: '+d.email+
                '\nPhone: '+(d.phone||'—')+'\nBranches: '+d.branches+
