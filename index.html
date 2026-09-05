@@ -6,6 +6,7 @@
 <title>Smart MiM — One Truth, No Seams</title>
 <link rel="canonical" href="https://www.mim-smart.com/" />
 <meta name="robots" content="index, follow" />
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
 <meta name="theme-color" content="#081124" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Smart MiM" />
@@ -1806,7 +1807,7 @@ html,body{max-width:100%;overflow-x:clip}
     form.addEventListener('submit', async function(e){
       e.preventDefault();
       if(form.botcheck.value) return;                     /* honeypot */
-      var d=Object.fromEntries(new FormData(form).entries());
+      var d=Object.fromEntries(new FormData(form).entries()), why='';
       var need=[['name','your name'],['company','restaurant / group'],['email','email'],
                 ['phone','phone'],['branches','branches'],['current','what you run today'],['pain','what hurts most']];
       form.querySelectorAll('label').forEach(function(l){ l.classList.remove('bad'); });
@@ -1839,13 +1840,18 @@ html,body{max-width:100%;overflow-x:clip}
           if(j.success){ msg.className='sheet-msg ok';
             msg.textContent='Thank you — that reached us. We reply within one working day.';
             form.reset(); send.disabled=false; send.textContent='Send it'; return; }
-          throw new Error(j.message||'rejected');
-        }catch(err){ /* fall through to the manual route */ }
+          throw new Error((j && j.message) || ('HTTP ' + r.status));
+        }catch(err){
+          /* never swallow the reason — a silent fallback is a bug nobody can diagnose */
+          why = String((err && err.message) || err);
+          try{ console.error('[Smart MiM] demo form could not post:', why); }catch(e){}
+        }
       }
       /* no key, or the post failed: hand the visitor a message they can send in one tap */
       send.disabled=false; send.textContent='Send it';
       msg.className='sheet-msg ok';
       msg.innerHTML='<b>Nearly there — one tap to send.</b><br>Your mail app should open. If it does not, copy this and email it to <b>hello@mim-smart.com</b>.'+
+        (why? '<br><span style="opacity:.6;font-size:.82em">('+why.replace(/[<>&]/g,'')+' — try reloading the page)</span>':'')+
         '<div class="copybox" id="cbx">'+body.replace(/[<>&]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;'}[c];})+'</div>'+
         '<button type="button" class="cbtn" id="cbtn">Copy the message</button>';
       document.getElementById('cbtn').addEventListener('click',function(){
