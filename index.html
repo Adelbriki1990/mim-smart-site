@@ -1773,10 +1773,11 @@ html,body{max-width:100%;overflow-x:clip}
 
   /* ---- demo request sheet ---- */
   (function(){
-    /* Paste a Web3Forms access key here and the form posts straight to the inbox.
-       Get one free in 30 seconds at web3forms.com — no signup, they email you the key.
-       Empty = the form still works: it composes the message and offers copy + email. */
-    var ACCESS_KEY = '';
+    /* Web3Forms access key. This is a PUBLIC key by design — it only lets a
+       submission be delivered to the address registered against it, so it is
+       safe in client-side HTML. If the post ever fails the form still works:
+       it composes the message, opens the mail app and offers a copy button. */
+    var ACCESS_KEY = '01a47e3a-548f-4940-9f89-5e367b619aaa';
 
     var back=document.getElementById('sheetBack'), form=document.getElementById('demoForm'),
         msg=document.getElementById('sheetMsg'), send=document.getElementById('sheetSend'), lastFocus=null;
