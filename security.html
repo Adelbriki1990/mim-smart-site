@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Security &amp; your data — Smart MiM</title>
+<link rel="canonical" href="https://www.mim-smart.com/security.html" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#081124" />
+<meta name="description" content="What Smart MiM does with your sales, payroll and bank data: keys, what the till never holds, the append-only journal, daily backups, 240 gates, offline rules and one-tap device revocation." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Smart MiM" />
+<meta property="og:url" content="https://www.mim-smart.com/security.html" />
+<meta property="og:title" content="Security &amp; your data — Smart MiM" />
+<meta property="og:locale" content="en_US" />
+<link rel="alternate" hreflang="en" href="https://www.mim-smart.com/security.html" />
+<link rel="alternate" hreflang="ar" href="https://www.mim-smart.com/ar/security.html" />
+<link rel="alternate" hreflang="x-default" href="https://www.mim-smart.com/security.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+:root{--navy:#081124;--ink:#0F1B2E;--ink-2:#475569;--ink-3:#8494A8;--line:#E3E9F1;--gold-ink:#8F6F12;
+  --gold-grad:linear-gradient(135deg,#C9A227 0%,#E8CE7A 45%,#B98F1E 100%)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:17px;line-height:1.7}
+a{color:#0A4174;text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{background:var(--navy);color:#fff}
+.topbar .in{max-width:760px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.wordmark{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:700;letter-spacing:-.01em;color:#fff;white-space:nowrap}
+.wordmark em{font-style:normal;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.lang{font-size:.85rem;font-weight:600;color:#E8CE7A;letter-spacing:.02em}
+.lang:hover{color:#F5E9C4;text-decoration:none}
+main{max-width:760px;margin:0 auto;padding:56px 20px 72px}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:12px}
+.eyebrow i{margin-right:6px}
+h1{font-family:'Fraunces',Georgia,serif;font-size:2.6rem;font-weight:600;line-height:1.08;letter-spacing:-.01em;margin:0 0 10px}
+.dated{color:var(--ink-3);font-size:.9rem;font-weight:500;margin:0 0 28px}
+.intro{font-size:1.15rem;line-height:1.65;color:var(--ink-2);margin:0 0 48px;padding-bottom:36px;border-bottom:1px solid var(--line)}
+main{counter-reset:sec}
+section{margin:0 0 40px}
+h2{font-family:'Fraunces',Georgia,serif;font-size:1.55rem;font-weight:600;line-height:1.2;margin:0 0 12px;display:flex;align-items:baseline;gap:12px}
+h2::before{counter-increment:sec;content:counter(sec);font-family:'Inter',sans-serif;font-size:.8rem;font-weight:800;color:var(--gold-ink);letter-spacing:.06em;min-width:1.4em}
+p{margin:0 0 14px}
+p:last-child{margin-bottom:0}
+b{font-weight:600;color:var(--ink)}
+.tc{display:inline-block;background:#FFF4CC;color:#7A5E0D;font-size:.78em;font-weight:700;padding:1px 7px;border-radius:5px;vertical-align:baseline;white-space:nowrap}
+footer{border-top:1px solid var(--line);color:var(--ink-3);font-size:.88rem}
+footer .in{max-width:760px;margin:0 auto;padding:24px 20px 40px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+footer a{color:var(--ink-2);font-weight:500}
+@media (max-width:520px){h1{font-size:2.05rem}body{font-size:16px}main{padding-top:40px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="in">
+    <a href="/" class="wordmark" aria-label="Smart MiM home">Smart <em>MiM</em></a>
+    <a href="/ar/security.html" class="lang" lang="ar" hreflang="ar">عربي</a>
+  </div>
+</header>
+
+<main>
+  <div class="eyebrow"><i class="fas fa-shield-halved" aria-hidden="true"></i>Legal · Security</div>
+  <h1>Security &amp; your data</h1>
+  <p class="dated">Last updated 9 September 2026</p>
+
+  <p class="intro">You are handing us your sales, your payroll and your bank matching. This page says in plain words what we do to protect them, and where we are still on the road. It lists only what is built and running today: no certification we do not hold, no audit we have not had. We would rather tell you now than on the install day.</p>
+
+  <section>
+    <h2>Who can talk to the engine</h2>
+    <p>Every request from a till to the engine carries a key. Today one engine key is shared within a group. The moment a group brings its second branch on, each branch is issued its own key, so one branch's key is never another's.</p>
+    <p>The factory key that shipped with the early installs was <b>retired on 1 September 2026</b>, and strict key checking is on: a request without a valid key is refused, not tolerated.</p>
+  </section>
+
+  <section>
+    <h2>What the till does not hold</h2>
+    <p>A till is the most exposed machine in a restaurant. It stands on the floor, staff share it, and it can walk out of the door. So we keep it thin.</p>
+    <p>The till holds <b>no salaries, no PINs and no IBANs</b>. A manager's PIN is stored as a hash and is verified by the engine, never by the till itself. The tokens that connect your Instagram and TikTok accounts are redacted from anything a till can read; the till never sees them.</p>
+  </section>
+
+  <section>
+    <h2>The permanent journal</h2>
+    <p>Sales, voids, refunds and wage changes are written to a permanent journal that only accepts additions. A correction is a new line that points at the old one. <b>Nothing is edited, and nothing is edited away.</b></p>
+    <p>If a number was wrong on Tuesday, on Friday you can still see what it said on Tuesday, and the line that corrected it.</p>
+  </section>
+
+  <section>
+    <h2>Backups and restores</h2>
+    <p>The database is backed up every day. A backup that has never been restored is a hope, not a backup, so we test the restore as well: a copy is brought back and checked that it works.</p>
+  </section>
+
+  <section>
+    <h2>How we prove a fix is a fix</h2>
+    <p>When we fix a defect we do not only fix it. We write a test, then put the defect back on purpose to prove the test catches it, then take it out again. Only then does the fix ship.</p>
+    <p>Today <b>240 of these gates</b> stand between any change and your till. A change that fails one of them does not go out.</p>
+  </section>
+
+  <section>
+    <h2>When the line drops</h2>
+    <p>The till keeps selling with no connection. What matters is what it believes when the answer from the engine comes back empty: nothing. <b>An empty answer is never treated as truth</b>, not as a zero and not as "there is nothing". Unknown is never zero. The till waits for a real answer and carries on with what it knew.</p>
+  </section>
+
+  <section>
+    <h2>Devices: one code each, revoked in a tap</h2>
+    <p>The Owner app, waiter tablets, chef displays and staff phones each join by scanning a one-time QR code. The code works once. If a tablet is lost, or a phone leaves with a member of staff, its access is <b>revoked in a tap</b> and the device is out.</p>
+  </section>
+
+  <section>
+    <h2>What this page does not claim</h2>
+    <p>We hold no ISO or SOC certification, and this page claims none. We make no claim of an independent penetration test. When either of those changes, this page will say so, with the date. <span class="tc">[to confirm]</span></p>
+  </section>
+
+  <section>
+    <h2>Questions</h2>
+    <p>Write to <a href="mailto:hello@mim-smart.com">hello@mim-smart.com</a>. If you find a weakness, we want to hear about it there first.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="in">
+    <span>&copy; 2026 Smart MiM · Doha, Qatar · <a href="mailto:hello@mim-smart.com">hello@mim-smart.com</a></span>
+    <span>·</span>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/ar/security.html" lang="ar" hreflang="ar">هذه الصفحة بالعربية</a>
+  </div>
+</footer>
+</body>
+</html>

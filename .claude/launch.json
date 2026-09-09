@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mim-site-static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8790", "--directory", "/private/tmp/claude-501/-Users-tamara/461fd656-62bf-4956-8164-67e2ebdb5609/scratchpad/mim-site"],
+      "port": 8790
+    }
+  ]
+}

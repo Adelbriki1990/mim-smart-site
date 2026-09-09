@@ -15,6 +15,9 @@
 <meta property="og:description" content="One database for the whole restaurant group: till, kitchen, stock, payroll and the P&amp;L. Built in Doha, running 17 branches every day." />
 <meta property="og:image" content="https://www.mim-smart.com/images/share-card.svg" />
 <meta property="og:locale" content="en_US" />
+<link rel="alternate" hreflang="en" href="https://www.mim-smart.com/" />
+<link rel="alternate" hreflang="ar" href="https://www.mim-smart.com/ar/" />
+<link rel="alternate" hreflang="x-default" href="https://www.mim-smart.com/" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Smart MiM — One truth, no seams" />
 <meta name="twitter:description" content="One database for the whole restaurant group. Built in Doha." />
@@ -1008,8 +1011,53 @@ html,body{max-width:100%;overflow-x:clip}
   #departments::before,#loyalty::before,#calc::before{animation:none}
 }
 :focus-visible{outline:2px solid var(--gold-400);outline-offset:3px;border-radius:4px}
+/* ===== 9 Sept 2026 — the rooms the site never showed ===== */
+.lang-switch{display:inline-flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:3px;font-size:.78rem;font-weight:800;color:#fff;white-space:nowrap}
+.lang-switch span,.lang-switch a{padding:5px 10px;border-radius:999px;color:rgba(255,255,255,.8)}
+.lang-switch .on{background:#fff;color:var(--navy-900)}
+.btn-wa{background:#2FA36B;color:#fff;box-shadow:0 6px 20px rgba(47,163,107,.28)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(47,163,107,.36)}
+.wa-only{display:none!important}
+html.has-wa .wa-only{display:inline-flex!important}
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:60;width:56px;height:56px;border-radius:50%;background:#2FA36B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 12px 30px rgba(47,163,107,.4)}
+.week-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:8px}
+.week-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.week-card .d{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink)}
+.week-card h4{font-family:'Fraunces',Georgia,serif;font-size:1.2rem;font-weight:600;margin:8px 0 8px}
+.week-card p{font-size:.88rem;color:var(--ink-2);line-height:1.6}
+.mk-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
+.mk-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.mk-card h4{font-family:'Fraunces',Georgia,serif;font-size:1.3rem;font-weight:600}
+.mk-card .k{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink)}
+.mk-card ul{list-style:none;margin:0;display:flex;flex-direction:column;gap:7px}
+.mk-card li{display:flex;gap:10px;font-size:.88rem;color:var(--ink-2);line-height:1.55}
+.mk-card li i{color:var(--gold-ink);margin-top:4px;flex:none;font-size:.8rem}
+.ui{font-family:-apple-system,'SF Pro Text','Segoe UI',system-ui,sans-serif;color:#0f172a;font-size:12px;line-height:1.35}
+.ui .num{font-variant-numeric:tabular-nums}
+.ui .cap{font-size:9px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#94a3b8}
+.ui .row{display:flex;align-items:center;gap:8px}
+.ctl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:30px}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.step-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px;color:#fff}
+.step-card .n{font-family:'Fraunces',Georgia,serif;font-size:2.2rem;font-weight:600;line-height:1;background:var(--gold-grad-lit);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.step-card h4{font-size:1rem;font-weight:800;margin:8px 0 8px}
+.step-card p{font-size:.86rem;color:rgba(255,255,255,.72);line-height:1.6}
+#howitstarts{background:var(--navy-800);color:#fff}
+#howitstarts .section-title{color:#fff}#howitstarts .section-sub{color:rgba(255,255,255,.8)}#howitstarts .section-title .gold{background-image:var(--gold-grad-lit)}#howitstarts .eyebrow{color:var(--gold-300)}
+.rcpt-phone{width:100%;max-width:330px;margin:0 auto;background:#eef2f7;border-radius:34px;overflow:hidden;box-shadow:0 40px 90px rgba(4,12,28,.45);border:6px solid #0b0f16}
+.two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hw-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.hw-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.hw-card h4{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.hw-card ul{list-style:none;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+.hw-card li{display:flex;gap:9px;font-size:.87rem;color:var(--ink-2);line-height:1.5}
+.hw-card li i{color:var(--gold-ink);margin-top:4px;flex:none;font-size:.78rem}
+@media (max-width:900px){.mk-grid,.two-col,.hw-grid,.hw-card ul{grid-template-columns:1fr}nav .lang-switch{display:none}}
 </style>
 <script>
+/* THE ONE PLACE THE NUMBER LIVES. Fill it in (digits only, e.g. 97455001122) and every WhatsApp button on the site appears, all pointing here. Empty = the buttons stay hidden. */
+var WA_NUMBER = '';
+(function(){ if(!/^\d{8,15}$/.test(WA_NUMBER)) return; document.documentElement.classList.add('has-wa'); var href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent('Hello Smart MiM — I run a restaurant group and I would like a 20-minute demo.'); document.querySelectorAll('.wa-link').forEach(function(a){ a.setAttribute('href',href); a.setAttribute('target','_blank'); a.setAttribute('rel','noopener'); }); var f=document.createElement('a'); f.className='wa-float'; f.href=href; f.target='_blank'; f.rel='noopener'; f.setAttribute('aria-label','WhatsApp'); f.innerHTML='<i class="fab fa-whatsapp"></i>'; document.body.appendChild(f); })();
 /* Hide-to-animate ONLY while a working script is present. If the reveal script
    never runs (error, blocked CDN, snapshot renderer), the page un-hides itself. */
 (function(d){
@@ -1070,14 +1118,16 @@ html,body{max-width:100%;overflow-x:clip}
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#till">The till</a></li>
+      <li><a href="#kitchen">Kitchen</a></li>
       <li><a href="#departments">Departments</a></li>
-      <li><a href="#foodcost">Food cost</a></li>
+      <li><a href="#marketing">Marketing</a></li>
       <li><a href="#owner">Owner app</a></li>
-      <li><a href="#calc">Calculator</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-actions">
+      <span class="lang-switch"><span class="on">EN</span><a href="/ar/" lang="ar" hreflang="ar">عربي</a></span>
+      <a href="#contact" class="btn btn-wa wa-only wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       <a href="#contact" class="btn btn-gold">Book a demo</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
     </div>
@@ -1093,7 +1143,8 @@ html,body{max-width:100%;overflow-x:clip}
         <h1>One truth,<br><span class="gold">no seams.</span></h1>
         <p class="lede">The waiter's tap, the food that left the shelf, the wage that was signed, the riyal that reached the bank — all of it is the same record, written once and read everywhere.</p>
         <div class="hero-cta">
-          <a href="#contact" class="btn btn-gold"><i class="fas fa-calendar-check"></i> Book a demo</a>
+          <a href="#contact" class="btn btn-wa wa-only wa-link"><i class="fab fa-whatsapp"></i> WhatsApp us</a>
+          <a href="#contact" class="btn btn-gold"><i class="fas fa-calendar-check"></i> A 20-minute demo</a>
           <a href="#departments" class="btn btn-ghost">See the departments</a>
         </div>
         <div class="hero-stats">
@@ -1105,20 +1156,45 @@ html,body{max-width:100%;overflow-x:clip}
       </div>
 
       <div class="reveal-s">
-        <div class="device-wrap">
-          <div class="ipad">
-            <div class="ipad-screen">
-              <img src="images/floor-plan.svg" alt="Smart MiM floor plan — 18 tables coloured by how long each party has been seated"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-              <div class="shot-fallback" style="display:none">
-                <i class="fas fa-image"></i>
-                <div>Drop your floor-plan screenshot here as<br><code>images/floor-plan.svg</code></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="device-caption"><span class="dot"></span> Demo floor. Green under 45 min, amber 45–75, red over 75 — a table that has sat too long is visible from the door.</div>
+        <!-- the guest's own receipt: the real page behind the QR on every printed bill, not a drawing -->
+        <div class="rcpt-phone ui">
+  <div style="color:#fff;padding:16px 16px 18px;background-color:#0A4174;background-image:radial-gradient(115% 95% at 12% 100%,rgba(56,132,214,.28) 0%,rgba(0,29,57,0) 68%),linear-gradient(135deg,#001D39,#0A4174)">
+    <div class="row" style="justify-content:space-between"><div class="row" style="gap:9px"><div style="width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px">J</div><div><div style="font-size:14px;font-weight:900;letter-spacing:2.5px">JUNO</div><div style="font-size:9.5px;opacity:.8">West Walk · Mim restaurants</div></div></div>
+      <div class="row" style="gap:0;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:2px"><span style="font-size:9px;font-weight:900;padding:4px 8px;border-radius:999px;background:#fff;color:#001D39">EN</span><span style="font-size:9px;font-weight:900;padding:4px 8px">العربية</span></div></div>
+    <div class="row" style="margin-top:16px;justify-content:space-between;align-items:flex-end"><div><div class="cap" style="color:rgba(255,255,255,.65)">Total paid</div><div class="num" style="font-size:28px;font-weight:900;line-height:1;margin-top:3px">QR 132.00</div></div>
+      <div style="background:rgba(110,231,183,.16);border:1px solid #6EE7B7;color:#6EE7B7;border-radius:999px;padding:4px 9px;font-size:9px;font-weight:900;letter-spacing:1px">✓ PAID</div></div>
+  </div>
+  <div style="margin:-10px 10px 0;background:#fff;border-radius:20px;padding:10px 13px;display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;box-shadow:0 1px 2px rgba(15,23,42,.06)">
+    <div><div class="cap">Receipt</div><div class="num" style="font-size:11px;font-weight:800;margin-top:2px">#1200029</div></div><div><div class="cap">Date</div><div class="num" style="font-size:11px;font-weight:800;margin-top:2px">8 Sept · 21:14</div></div><div><div class="cap">Table</div><div class="num" style="font-size:11px;font-weight:800;margin-top:2px">T2 · 2</div></div><div><div class="cap">Server</div><div style="font-size:11px;font-weight:800;margin-top:2px">Raza</div></div>
+  </div>
+  <div style="margin:9px 10px 0;background:#fff;border-radius:20px;padding:4px 13px 8px;box-shadow:0 1px 2px rgba(15,23,42,.06)">
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div class="row" style="gap:8px"><span class="num" style="font-weight:900;color:#475569;font-size:11px">1×</span><span style="font-weight:800">Kale Salad</span></div><span class="num" style="font-weight:800">48.00</span></div>
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div class="row" style="gap:8px"><span class="num" style="font-weight:900;color:#475569;font-size:11px">1×</span><span style="font-weight:800">J Fire Bird</span></div><span class="num" style="font-weight:800">75.00</span></div>
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div class="row" style="gap:8px"><span class="num" style="font-weight:900;color:#475569;font-size:11px">1×</span><span style="font-weight:800">Parmesan Fries <span style="font-size:8px;font-weight:900;letter-spacing:1px;color:#047857;background:#ECFDF5;border-radius:5px;padding:2px 5px">ON US</span></span></div><span class="num" style="font-weight:800;color:#94a3b8;text-decoration:line-through">0.00</span></div>
+    <div class="row" style="justify-content:space-between;padding:9px 0 3px"><span class="cap" style="color:#475569">Total</span><span class="num" style="font-size:17px;font-weight:900;color:#001D39">QR 132.00</span></div>
+  </div>
+  <div style="margin:9px 10px 0;background:#fff;border-radius:20px;padding:12px 13px;box-shadow:0 1px 2px rgba(15,23,42,.06)"><div class="cap">WITHSTAND card</div><div style="font-size:11.5px;font-weight:800;margin-top:2px">This bill earned <b style="color:#047857">+13 points</b></div><div style="margin-top:8px;height:38px;border-radius:12px;background:#0A4174;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">Add your card to Apple Wallet</div></div>
+  <div class="row" style="margin:9px 10px 12px;gap:7px"><div style="flex:1;height:38px;border-radius:12px;background:#047857;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">WhatsApp</div><div style="flex:1;height:38px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">Save PDF</div></div>
+</div>
+        <div class="device-caption" style="text-align:center;margin-top:16px"><span class="dot"></span> The guest's receipt, as the software really draws it — bilingual, with the points that bill earned, and a private door to the manager.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THIS WEEK ===== -->
+<section id="thisweek" style="background:#fff;padding:64px 0">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">Proof of motion</div>
+      <h2 class="section-title reveal">What shipped <span class="gold">this week</span></h2>
+      <p class="section-sub mx-auto reveal">A product that moves every week says more than a promise. Each line below is dated, and each one passed 240 gates on its way out.</p>
+    </div>
+    <div class="week-grid">
+      <div class="week-card reveal-s"><div class="d">9 Sept 2026</div><h4>The guest's receipt</h4><p>Opened from the QR on the paper bill: English or Arabic, the points it earned, a WhatsApp share, and a private door to the manager before Google.</p></div>
+      <div class="week-card reveal-s"><div class="d">9 Sept 2026</div><h4>One sheet for every reason</h4><p>Taking a dish off sale, a refund, a booking — typed on one sheet with the keypad inside it. No floating keyboard, one exit, a button that sleeps until the record is complete.</p></div>
+      <div class="week-card reveal-s"><div class="d">8 Sept 2026</div><h4>The Pass</h4><p>The whole order on one card, courses in the law's order. Start releases a course to its stations; Away is allowed only when the course before it is away.</p></div>
+      <div class="week-card reveal-s"><div class="d">8 Sept 2026</div><h4>Marketing answerable to the till</h4><p>A post joins to the dish it names and to that dish's plates from the permanent book — a lift with a named baseline, never a like count.</p></div>
     </div>
   </div>
 </section>
@@ -1176,6 +1252,36 @@ html,body{max-width:100%;overflow-x:clip}
       <div class="till-point reveal"><i class="fas fa-plug-circle-xmark"></i><div><b>It keeps selling with the line down</b><span>Orders queue locally and settle when the link returns. An empty answer is never mistaken for a real zero.</span></div></div>
       <div class="till-point reveal"><i class="fas fa-arrow-right-arrow-left"></i><div><b>Every payment route, one screen</b><span>Cash, card, your own app, your own drivers, and each aggregator — with the commission taken off before the profit line.</span></div></div>
       <div class="till-point reveal"><i class="fas fa-language"></i><div><b>Arabic, right to left</b><span>Including the receipt. The layout flips; nothing ends up reading backwards.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KITCHEN ===== -->
+<section id="kitchen" style="background:#fff">
+  <div class="container">
+    <div class="two-col">
+      <div class="reveal-l">
+        <div class="eyebrow">Kitchen · The Pass</div>
+        <h2 class="section-title">The whole order on one card, <span class="gold">course by course</span></h2>
+        <p class="section-sub">A chef works a table, not a list of plates. The Pass shows every course in the order the law of service says they go out — and the rule is in the software, not on a sticky note.</p>
+        <div class="till-points">
+          <div class="till-point"><i class="fas fa-play"></i><div><b>Start releases a course to its stations</b><span>Each station sees only the plates released to it, and a "coming" strip of what is queued — so a branch with nobody on the pass still cooks everything.</span></div></div>
+          <div class="till-point"><i class="fas fa-lock"></i><div><b>Away only when the course before is away</b><span>A main cannot leave ahead of a starter that still owes a plate. The button says why it is asleep: "Soup still owes 2 plates". The waiter's fire overrides it, on purpose.</span></div></div>
+          <div class="till-point"><i class="fas fa-triangle-exclamation"></i><div><b>An unanswered allergy question is amber on the pass itself</b><span>The one screen that sends the plate is the one that must see it. A declared allergy is red with its handling line. Silence never reads as "no allergy".</span></div></div>
+          <div class="till-point"><i class="fas fa-tablet-screen-button"></i><div><b>Chef tablets pair by QR</b><span>Every plate moves New → Preparing → Ready on the tablet; the clock on each ticket is the one the guest is feeling. Paid is not cooked — a paid ticket stays until the chef bumps it.</span></div></div>
+        </div>
+      </div>
+      <div class="reveal-r"><div class="ui" style="background:#1e293b;border-radius:16px;padding:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px">
+  <div style="font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#cbd5e1;text-align:center;padding:3px 0 6px">On the go (3)</div>
+  <div style="background:#fff;border-radius:14px;padding:10px">
+    <div class="row" style="gap:6px;font-weight:900"><span>#1200031 · Dine-in T4</span><span style="color:#64748b;font-weight:700">· 4 covers</span><span style="margin-left:auto;font-size:9px;color:#64748b">now: Mains</span></div>
+    <div style="margin-top:6px;border-radius:10px;background:#fef3c7;text-align:center;font-weight:900;font-size:10px;padding:5px;text-transform:uppercase">⚠ Allergy question not answered<span style="display:block;text-transform:none;font-weight:600;font-size:9px">ask the table before this food leaves the pass</span></div>
+    <div style="margin-top:6px;border-radius:10px;padding:7px;background:#ecfdf5"><div class="row" style="gap:6px;font-size:9px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#0c4a6e"><span style="width:16px;height:16px;border-radius:50%;background:#0c4a6e;color:#fff;display:inline-flex;align-items:center;justify-content:center">1</span>Starters<span style="margin-left:auto;text-transform:none;letter-spacing:0;color:#64748b;font-weight:700">✓ away</span></div></div>
+    <div style="margin-top:6px;border-radius:10px;padding:7px;background:#f0f9ff"><div class="row" style="gap:6px;font-size:9px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#0c4a6e"><span style="width:16px;height:16px;border-radius:50%;background:#0c4a6e;color:#fff;display:inline-flex;align-items:center;justify-content:center">2</span>Mains<span style="margin-left:auto;text-transform:none;letter-spacing:0;color:#64748b;font-weight:700">2 of 3 started · 1 owed · 🔥 fired</span></div></div>
+    <div style="margin-top:6px;border-radius:10px;padding:7px;background:#f8fafc"><div class="row" style="gap:6px;font-size:9px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#0c4a6e"><span style="width:16px;height:16px;border-radius:50%;background:#0c4a6e;color:#fff;display:inline-flex;align-items:center;justify-content:center">3</span>Desserts<span style="margin-left:auto;text-transform:none;letter-spacing:0;color:#64748b;font-weight:700">queued</span></div></div>
+    <div class="row" style="gap:6px;margin-top:8px"><div style="flex:1;border-radius:8px;background:#0c4a6e;color:#fff;text-align:center;padding:6px;font-size:9.5px;font-weight:900;text-transform:uppercase">▶ Start Mains · 1</div><div style="flex:1;border-radius:8px;background:#e2e8f0;color:#94a3b8;text-align:center;padding:6px;font-size:9.5px;font-weight:900;text-transform:uppercase">⏳ Mains still owes 1</div></div>
+  </div>
+</div><div class="device-caption" style="margin-top:14px;color:var(--ink-3)"><span class="dot"></span> The Pass on the till's kitchen board, demo data. The same rule runs the chef tablet.</div></div>
     </div>
   </div>
 </section>
@@ -1415,6 +1521,68 @@ html,body{max-width:100%;overflow-x:clip}
   </div>
 </section>
 
+<!-- ===== MARKETING ===== -->
+<section id="marketing" style="background:#F6F8FB">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">Marketing · answerable to the till</div>
+      <h2 class="section-title reveal">Did the post <span class="gold">sell food?</span></h2>
+      <p class="section-sub mx-auto reveal">Every marketing tool can say a post got 286 likes. Only the till holds the bill. MiM joins each post to the dish it names and to that dish's plates from the permanent book — and it refuses the marketing the kitchen cannot honour. Four screens, one law: a like belongs to Meta, a plate belongs to you.</p>
+    </div>
+    <div class="mk-grid">
+      <div class="mk-card reveal-s"><div class="k">1 · The room — analyse</div><h4>What each post did to the kitchen</h4><div class="ui" style="border:1px solid #E2E8F0;border-radius:16px;overflow:hidden;background:#fff">
+  <div style="padding:12px;min-height:84px;background:linear-gradient(150deg,#7C2D12,#431407);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;gap:4px"><div class="row" style="gap:5px"><span style="font-size:8.5px;font-weight:900;letter-spacing:.8px;background:rgba(255,255,255,.16);padding:2px 6px;border-radius:5px">VIDEO</span><span style="font-size:8.5px;opacity:.7;margin-left:auto">no photo read — caption only</span></div><div style="font-size:12.5px;font-weight:800;line-height:1.3">Jalapeño sliders, the way the kitchen eats them</div><div style="font-size:9px;opacity:.8">Tue 1 Sept · 18:40</div></div>
+  <div class="row" style="padding:8px 12px;border-bottom:1px solid #f1f5f9"><div style="flex:1"><div style="font-size:12px;font-weight:900">286</div><div class="cap" style="letter-spacing:.3px">likes</div></div><div style="flex:1"><div style="font-size:12px;font-weight:900">5</div><div class="cap" style="letter-spacing:.3px">comments</div></div><div style="flex:2;text-align:right;font-size:9.5px;font-weight:800;color:#0A4174">open on Instagram ↗</div></div>
+  <div style="padding:8px 12px 10px;background:#f8fafc"><div class="row"><span style="font-size:8.5px;font-weight:900;letter-spacing:.9px;color:#0A4174">WHAT THE TILL DID</span><span style="flex:1"></span><span style="font-size:14px;font-weight:900;color:#059669">+128%</span></div>
+    <div class="row" style="gap:2px;height:30px;align-items:flex-end;margin-top:6px"><div style="flex:1;height:10px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:12px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:11px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:11px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:13px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:11px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:12px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:11px;border-radius:2px;background:#7BBDE8"></div><div style="flex:1;height:26px;border-radius:2px;background:#0A4174"></div><div style="flex:1;height:28px;border-radius:2px;background:#0A4174"></div><div style="flex:1;height:24px;border-radius:2px;background:#0A4174"></div><div style="flex:1;height:18px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:14px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:13px;border-radius:2px;background:#BDD8E9"></div></div>
+    <div class="row" style="margin-top:5px"><span style="font-size:10px;font-weight:700">Micro Sliders : Jalapeño</span><span style="flex:1"></span><span style="font-size:9px;color:#64748b"><b style="color:#0f172a">18</b> → <b style="color:#0f172a">41</b> plates/day</span></div></div>
+</div><ul>
+        <li><i class="fas fa-check"></i><span>The lift is the 72 hours after the post against that dish's own 28-day mean — a correlation with a named baseline, never proof, and it says so.</span></li>
+        <li><i class="fas fa-check"></i><span>A post whose window has not closed shows <b>no figure, not a zero</b>. Bills with a refund or a void are left out of every baseline.</span></li>
+        <li><i class="fas fa-check"></i><span>The verdict reads in one sentence: "6 posts named a dish. 2 moved it. One named a dish the kitchen could not serve."</span></li>
+      </ul></div>
+      <div class="mk-card reveal-s"><div class="k">2 · What to post next — decide</div><h4>Picked from margin, from what is slow, and from what the kitchen can serve</h4><div class="ui" style="border:1px solid #E2E8F0;border-radius:16px;background:#fff;padding:12px;display:flex;flex-direction:column;gap:8px">
+  <div class="row"><span class="cap" style="color:#0A4174">Worth pushing</span><span style="flex:1"></span><span class="cap" style="letter-spacing:.3px">servable · margin known</span></div>
+  <div class="row" style="gap:8px;padding:5px 0;border-top:1px solid #f1f5f9"><span style="width:18px;height:18px;border-radius:50%;background:#0A4174;color:#fff;font-size:9px;font-weight:900;display:inline-flex;align-items:center;justify-content:center">1</span><span style="font-weight:800;flex:1">Stuffed Burrata</span><span class="num" style="font-weight:900;color:#0A4174">71%</span><span style="font-size:8px;font-weight:900;color:#065F46;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:5px;padding:2px 5px">✓ SERVABLE</span></div>
+  <div class="row" style="gap:8px;padding:5px 0;border-top:1px solid #f1f5f9"><span style="width:18px;height:18px;border-radius:50%;background:#E2E8F0;color:#334155;font-size:9px;font-weight:900;display:inline-flex;align-items:center;justify-content:center">2</span><span style="font-weight:800;flex:1">Kale Salad</span><span class="num" style="font-weight:900;color:#0A4174">68%</span><span style="font-size:8px;font-weight:900;color:#065F46;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:5px;padding:2px 5px">✓ SERVABLE</span></div>
+  <div style="border:1.5px solid #FCA5A5;background:#FEF2F2;border-radius:10px;padding:8px 10px"><div class="cap" style="color:#991B1B">🚫 Refused — the kitchen cannot serve</div><div style="font-size:10.5px;color:#7F1D1D;margin-top:2px"><b>Tea</b> — off sale at Sareea · West Walk · equipment broken · 1,260h</div></div>
+  <div class="row"><span class="cap" style="color:#0A4174">⏰ When to post</span><span style="flex:1"></span><span style="font-size:12px;font-weight:900;color:#059669">Thu 17:00</span></div><div style="display:grid;grid-template-columns:30px repeat(8,minmax(0,1fr));gap:2px;align-items:center"><div></div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">12</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">13</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">14</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">17</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">18</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">19</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">20</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">21</div><div style="font-size:8.5px;color:#64748b;font-weight:800">Sun</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="font-size:8.5px;color:#64748b;font-weight:800">Mon</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="font-size:8.5px;color:#64748b;font-weight:800">Tue</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(23,79,129);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="font-size:8.5px;color:#64748b;font-weight:800">Wed</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="font-size:8.5px;color:#64748b;font-weight:800">Thu</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(10,65,116);outline:2px solid #059669;outline-offset:1px"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(23,79,129);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="font-size:8.5px;color:#64748b;font-weight:800">Fri</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(23,79,129);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(23,79,129);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="font-size:8.5px;color:#64748b;font-weight:800">Sat</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(23,79,129);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div></div>
+  <div style="font-size:9px;color:#64748b">likes low → high · hatched = kitchen at capacity · ring = best slot</div>
+</div><ul>
+        <li><i class="fas fa-check"></i><span>Ranked by margin, then by how slow the dish is. A margin the till never stamped is <b>unknown, never zero</b> — it says "not costed yet".</span></li>
+        <li><i class="fas fa-check"></i><span>A dish off sale anywhere the post would be seen is <b>refused, not ranked</b>. Meta does not know your oven is broken; the 86 list does.</span></li>
+        <li><i class="fas fa-check"></i><span>The best hour to post is the peak of engagement on a kitchen that was <b>not at capacity</b> — a post that works on a full kitchen makes the wait worse.</span></li>
+      </ul></div>
+      <div class="mk-card reveal-s"><div class="k">3 · Who to bring back — act</div><h4>The regular who stopped coming, with what they used to order</h4><div class="ui" style="border:1px solid #E2E8F0;border-radius:16px;background:#fff;overflow:hidden">
+  <div style="display:grid;grid-template-columns:2fr .7fr 1.6fr .8fr;gap:8px;padding:8px 12px;background:#f8fafc" class="cap"><span style="color:#0A4174">Guest</span><span style="color:#0A4174">Visits</span><span style="color:#0A4174">Usually orders</span><span style="color:#0A4174">Quiet for</span></div>
+  <div style="display:grid;grid-template-columns:2fr .7fr 1.6fr .8fr;gap:8px;padding:8px 12px;border-top:1px solid #f1f5f9;align-items:center"><div><div style="font-weight:800">Maryam A.</div><div style="font-size:9.5px;color:#B45309">“sits by the window, no ice”</div></div><div class="num" style="font-weight:900">9</div><div>Stuffed Burrata <span style="color:#94a3b8;font-weight:700">×7</span></div><div class="num" style="font-weight:900;color:#B3261E">41d</div></div>
+  <div style="display:grid;grid-template-columns:2fr .7fr 1.6fr .8fr;gap:8px;padding:8px 12px;border-top:1px solid #f1f5f9;align-items:center"><div><div style="font-weight:800">Ahmed K.</div><div style="font-size:9.5px;color:#94a3b8">…9018</div></div><div class="num" style="font-weight:900">7</div><div>Micro Sliders <span style="color:#94a3b8;font-weight:700">×9</span></div><div class="num" style="font-weight:900;color:#B3261E">38d</div></div>
+  <div style="display:grid;grid-template-columns:2fr .7fr 1.6fr .8fr;gap:8px;padding:8px 12px;border-top:1px solid #f1f5f9;align-items:center"><div><div style="font-weight:800">Sara N.</div><div style="font-size:9.5px;color:#B45309">“birthday 14 Oct — ask about the cake”</div></div><div class="num" style="font-weight:900">6</div><div>Kale Salad <span style="color:#94a3b8;font-weight:700">×5</span></div><div class="num" style="font-weight:900;color:#B45309">36d</div></div>
+  <div style="padding:8px 12px;border-top:1px solid #f1f5f9;background:#F0F7FC;font-size:10px;color:#475569">Rewarding a regular costs food at cost, not menu price — the cheapest marketing in the building.</div>
+</div><ul>
+        <li><i class="fas fa-check"></i><span>Three or more paid visits, then thirty days of silence. Identity is the phone on the bill — the same number the hostess desk remembers, with her note.</span></li>
+        <li><i class="fas fa-check"></i><span>The only marketing here whose result you can prove: the phone rings the till again, or it does not.</span></li>
+        <li><i class="fas fa-check"></i><span>Points and offers ride the WITHSTAND card; the balance lives on the engine and every earn and spend is a journal line.</span></li>
+      </ul></div>
+      <div class="mk-card reveal-s"><div class="k">4 · Instagram, per brand — listen</div><h4>Every comment, in the guest's own language</h4><div class="ui" style="border:1px solid #E2E8F0;border-radius:16px;background:#fff;overflow:hidden">
+  <div style="padding:12px;color:#fff;background:linear-gradient(135deg,#0A4174 0%,#49769F 78%,#6EA2B3 100%)"><div class="row" style="gap:10px"><div style="width:34px;height:34px;border-radius:50%;padding:2px;background:linear-gradient(150deg,#F58529,#DD2A7B,#8134AF)"><div style="width:100%;height:100%;border-radius:50%;background:#001D39;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900">MiM</div></div><div><div style="font-size:13px;font-weight:900">@mimerpqatar <span style="font-size:8px;font-weight:900;padding:2px 6px;border-radius:5px;background:rgba(52,199,89,.25);color:#BBF7D0">● CONNECTED</span></div><div style="font-size:9px;opacity:.85">linked to the Mim Facebook Page · page token never expires</div></div></div>
+    <div class="row" style="gap:5px;margin-top:9px;flex-wrap:wrap"><span style="font-size:8px;font-weight:900;letter-spacing:1px;opacity:.6">BRANDS</span><span style="font-size:9px;font-weight:800;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35)">Mim</span><span style="font-size:9px;font-weight:800;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35)">Juno</span><span style="font-size:9px;font-weight:800;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35)">Asmar</span><span style="font-size:9px;font-weight:800;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35)">Sareea</span><span style="font-size:8.5px;opacity:.7">one account per brand, one token each</span></div></div>
+  <div style="padding:6px 12px"><div class="row" style="gap:8px;padding:7px 0;border-top:1px solid #f1f5f9;align-items:flex-start"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(150deg,#6EA2B3,#0A4174);color:#fff;font-size:8px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">FA</div><div style="flex:1;min-width:0"><div dir="auto" style="font-size:10.5px;text-align:start"><b>@fatima.alk</b> الله يعطيكم العافية 😍 متى تفتحون في الوكرة؟</div><div class="row" style="gap:6px;margin-top:2px"><span style="font-size:8.5px;color:#94a3b8">under: Jalapeño sliders · 2h ago</span><span style="font-size:7.5px;font-weight:900;padding:1px 5px;border-radius:4px;background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0">UNDER A POST THAT SOLD</span></div></div></div><div class="row" style="gap:8px;padding:7px 0;border-top:1px solid #f1f5f9;align-items:flex-start"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(150deg,#6EA2B3,#0A4174);color:#fff;font-size:8px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">RM</div><div style="flex:1;min-width:0"><div dir="auto" style="font-size:10.5px;text-align:start"><b>@rami_eats_doha</b> Best sliders in Doha, not even close</div><div class="row" style="gap:6px;margin-top:2px"><span style="font-size:8.5px;color:#94a3b8">under: Jalapeño sliders · 5h ago</span><span style="font-size:7.5px;font-weight:900;padding:1px 5px;border-radius:4px;background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0">UNDER A POST THAT SOLD</span></div></div></div><div class="row" style="gap:8px;padding:7px 0;border-top:1px solid #f1f5f9;align-items:flex-start"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(150deg,#6EA2B3,#0A4174);color:#fff;font-size:8px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">NS</div><div style="flex:1;min-width:0"><div dir="auto" style="font-size:10.5px;text-align:start"><b>@noor.s</b> Is the burrata available at West Walk too?</div><div class="row" style="gap:6px;margin-top:2px"><span style="font-size:8.5px;color:#94a3b8">under: Stuffed burrata · 1d ago</span></div></div></div></div>
+</div><ul>
+        <li><i class="fas fa-check"></i><span>One Meta app, one token per brand, the company account as the fallback — connected once, read hourly, the token kept on the engine, never on a till.</span></li>
+        <li><i class="fas fa-check"></i><span>Comments arrive in Arabic or English under the post they belong to, and a comment under a post that sold is marked so.</span></li>
+        <li><i class="fas fa-check"></i><span>Reach, saves and publishing are marked <b>coming</b>, not promised — the screen says what it could not see.</span></li>
+      </ul></div>
+    </div>
+    <div class="ctl-grid">
+      <div class="sec-card reveal-s"><i class="fas fa-eye-slash"></i><h4>Marketing is money-blind</h4><p>The marketing department sees demand in <b>portions</b> — never a riyal, never a price, never a cost. A gate refuses any marketing screen that reaches for money.</p></div>
+      <div class="sec-card reveal-s"><i class="fas fa-ban"></i><h4>The 86 list is the editor</h4><p>Nothing can be drafted for a dish that is off sale where the post would be seen. The refusal is the same fact the End-of-day screen already holds.</p></div>
+      <div class="sec-card reveal-s"><i class="fas fa-clipboard-check"></i><h4>Campaigns with an approval trail</h4><p>A campaign is planned, budgeted and asked for; Finance approves the spend. Its uplift is measured in portions of the named dishes, during against before — calculated, so it cannot be flattered.</p></div>
+      <div class="sec-card reveal-s"><i class="fas fa-star-half-stroke"></i><h4>Reviews, routed honestly</h4><p>From the guest's receipt: loved it → the branch's own Google review link; not quite → a private note to the manager and the Owner's phone, never the internet.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== FOOD COST ===== -->
 <section id="foodcost">
   <div class="container">
@@ -1529,6 +1697,44 @@ html,body{max-width:100%;overflow-x:clip}
           <li><i class="fas fa-scale-balanced"></i> Points outstanding appear on the P&amp;L as the liability they are.</li>
         </ul>
         <p class="foot">Twelve audit holes were found and closed before this shipped.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RECEIPT ===== -->
+<section id="receipt" style="background:#fff">
+  <div class="container">
+    <div class="two-col">
+      <div class="reveal-l"><div class="rcpt-phone ui">
+  <div style="color:#fff;padding:16px 16px 18px;background-color:#0A4174;background-image:radial-gradient(115% 95% at 12% 100%,rgba(56,132,214,.28) 0%,rgba(0,29,57,0) 68%),linear-gradient(135deg,#001D39,#0A4174)">
+    <div class="row" style="justify-content:space-between"><div class="row" style="gap:9px"><div style="width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px">J</div><div><div style="font-size:14px;font-weight:900;letter-spacing:2.5px">JUNO</div><div style="font-size:9.5px;opacity:.8">West Walk · Mim restaurants</div></div></div>
+      <div class="row" style="gap:0;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:2px"><span style="font-size:9px;font-weight:900;padding:4px 8px;border-radius:999px;background:#fff;color:#001D39">EN</span><span style="font-size:9px;font-weight:900;padding:4px 8px">العربية</span></div></div>
+    <div class="row" style="margin-top:16px;justify-content:space-between;align-items:flex-end"><div><div class="cap" style="color:rgba(255,255,255,.65)">Total paid</div><div class="num" style="font-size:28px;font-weight:900;line-height:1;margin-top:3px">QR 132.00</div></div>
+      <div style="background:rgba(110,231,183,.16);border:1px solid #6EE7B7;color:#6EE7B7;border-radius:999px;padding:4px 9px;font-size:9px;font-weight:900;letter-spacing:1px">✓ PAID</div></div>
+  </div>
+  <div style="margin:-10px 10px 0;background:#fff;border-radius:20px;padding:10px 13px;display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;box-shadow:0 1px 2px rgba(15,23,42,.06)">
+    <div><div class="cap">Receipt</div><div class="num" style="font-size:11px;font-weight:800;margin-top:2px">#1200029</div></div><div><div class="cap">Date</div><div class="num" style="font-size:11px;font-weight:800;margin-top:2px">8 Sept · 21:14</div></div><div><div class="cap">Table</div><div class="num" style="font-size:11px;font-weight:800;margin-top:2px">T2 · 2</div></div><div><div class="cap">Server</div><div style="font-size:11px;font-weight:800;margin-top:2px">Raza</div></div>
+  </div>
+  <div style="margin:9px 10px 0;background:#fff;border-radius:20px;padding:4px 13px 8px;box-shadow:0 1px 2px rgba(15,23,42,.06)">
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div class="row" style="gap:8px"><span class="num" style="font-weight:900;color:#475569;font-size:11px">1×</span><span style="font-weight:800">Kale Salad</span></div><span class="num" style="font-weight:800">48.00</span></div>
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div class="row" style="gap:8px"><span class="num" style="font-weight:900;color:#475569;font-size:11px">1×</span><span style="font-weight:800">J Fire Bird</span></div><span class="num" style="font-weight:800">75.00</span></div>
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div class="row" style="gap:8px"><span class="num" style="font-weight:900;color:#475569;font-size:11px">1×</span><span style="font-weight:800">Parmesan Fries <span style="font-size:8px;font-weight:900;letter-spacing:1px;color:#047857;background:#ECFDF5;border-radius:5px;padding:2px 5px">ON US</span></span></div><span class="num" style="font-weight:800;color:#94a3b8;text-decoration:line-through">0.00</span></div>
+    <div class="row" style="justify-content:space-between;padding:9px 0 3px"><span class="cap" style="color:#475569">Total</span><span class="num" style="font-size:17px;font-weight:900;color:#001D39">QR 132.00</span></div>
+  </div>
+  <div style="margin:9px 10px 0;background:#fff;border-radius:20px;padding:12px 13px;box-shadow:0 1px 2px rgba(15,23,42,.06)"><div class="cap">WITHSTAND card</div><div style="font-size:11.5px;font-weight:800;margin-top:2px">This bill earned <b style="color:#047857">+13 points</b></div><div style="margin-top:8px;height:38px;border-radius:12px;background:#0A4174;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">Add your card to Apple Wallet</div></div>
+  <div class="row" style="margin:9px 10px 12px;gap:7px"><div style="flex:1;height:38px;border-radius:12px;background:#047857;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">WhatsApp</div><div style="flex:1;height:38px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">Save PDF</div></div>
+</div></div>
+      <div class="reveal-r">
+        <div class="eyebrow">The guest's receipt · e-invoice ready</div>
+        <h2 class="section-title">Their bill, <span class="gold">for ever</span></h2>
+        <p class="section-sub">Every printed receipt carries a QR. Behind it is the guest's own copy of that bill — a link that lives exactly as long as the permanent record does, which is for ever. No login, no personal data in the address, and an unknown link answers one constant "not found".</p>
+        <div class="till-points">
+          <div class="till-point"><i class="fas fa-language"></i><div><b>English or Arabic, one tap</b><span>Both languages ride the page; the switch flips it right-to-left without a reload.</span></div></div>
+          <div class="till-point"><i class="fas fa-gift"></i><div><b>The points that bill earned</b><span>The WITHSTAND card is offered exactly where every guest already is — on their bill — with Add to Apple Wallet.</span></div></div>
+          <div class="till-point"><i class="fas fa-comments"></i><div><b>Happy → Google. Not quite → the manager, privately</b><span>The unhappy road lands in the manager's inbox and the Owner's phone. It never appears on the internet.</span></div></div>
+          <div class="till-point"><i class="fas fa-file-invoice"></i><div><b>Qatar e-invoicing, ready on time</b><span>The same receipt answers as a structured document today — seller, sequential number, lines, tax totals. When the General Tax Authority publishes its formats, the fiscal strip is a mapping, not a rebuild. Nothing here is called a tax invoice before the law says so.</span></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1655,6 +1861,23 @@ html,body{max-width:100%;overflow-x:clip}
   </div>
 </section>
 
+<!-- ===== HOW IT STARTS ===== -->
+<section id="howitstarts">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">How it starts</div>
+      <h2 class="section-title reveal">First branch live <span class="gold">inside a week</span></h2>
+      <p class="section-sub mx-auto reveal">The switch is the part people fear more than the price. Here is the whole of it.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal-s"><div class="n">1</div><h4>A 20-minute demo on WhatsApp video</h4><p>The same screens we run our own restaurants on, with demo data. Bring your menu; we type three dishes in front of you.</p></div>
+      <div class="step-card reveal-s"><div class="n">2</div><h4>Install day</h4><p>The till app on your machine from a USB, the engine key on a wallet card, printers found on the network. Your Mac, POSBANK or Windows till — nothing new to buy unless you want to.</p></div>
+      <div class="step-card reveal-s"><div class="n">3</div><h4>Your data, from the spreadsheets you already have</h4><p>Menu, staff, suppliers and stock arrive through four templates. Every row gets a verdict; a blank is never turned into a zero.</p></div>
+      <div class="step-card reveal-s"><div class="n">4</div><h4>Tablets pair by QR</h4><p>Waiters, the chef, the hostess desk and each staff phone scan one code each. One device, one identity — a lost tablet is revoked in a tap.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== PRICING ===== -->
 <section id="pricing">
   <div class="container">
@@ -1713,6 +1936,24 @@ html,body{max-width:100%;overflow-x:clip}
       <div><h4>What costs extra</h4><p>Only <b>onboarding</b> — bringing in your menu, ingredients, suppliers and staff records, and the first branch install. Quoted once, never recurring.</p></div>
       <div><h4>How to get a number</h4><p>Tell us your <b>branch count</b> and what you run today. You get a written quote, not a call from a salesperson.</p></div>
     </div>
+    <div class="hw-grid reveal">
+      <div class="hw-card"><h4>What you need</h4><ul>
+        <li><i class="fas fa-check"></i>A till: your Mac, a POSBANK or any Windows machine</li>
+        <li><i class="fas fa-check"></i>80 mm receipt and kitchen printers on the network</li>
+        <li><i class="fas fa-check"></i>Android tablets for waiters, the chef and the hostess</li>
+        <li><i class="fas fa-check"></i>The Owner app on your iPhone</li>
+        <li><i class="fas fa-check"></i>Each staff member's own phone for self-service</li>
+        <li><i class="fas fa-check"></i>Internet — and the till keeps selling without it</li>
+      </ul></div>
+      <div class="hw-card"><h4>Included in every plan</h4><ul>
+        <li><i class="fas fa-check"></i>Every release, every week — nothing is an upgrade</li>
+        <li><i class="fas fa-check"></i>Training on the floor, in Arabic or English</li>
+        <li><i class="fas fa-check"></i>Your data out as a spreadsheet, any day</li>
+        <li><i class="fas fa-check"></i>The permanent journal, backed up and restore-tested</li>
+        <li><i class="fas fa-check"></i>The guest's digital receipt and the loyalty card</li>
+        <li><i class="fas fa-check"></i>Support on WhatsApp, same day</li>
+      </ul></div>
+    </div>
     <div class="price-note">
       <b>Coming from another system?</b> Your menu, your ingredients, your suppliers and your staff records come in from spreadsheets — there are ready templates for each. Every row is checked before it lands, and anything that cannot be read is reported back to you rather than guessed at. A blank cell is never treated as a zero.
     </div>
@@ -1746,6 +1987,7 @@ html,body{max-width:100%;overflow-x:clip}
     <h2 class="section-title reveal">Ready to close <span class="gold">the gap?</span></h2>
     <p class="section-sub mx-auto reveal">Send one line about your group — how many branches, and which system hurts most. We will show you the same screens we run our own restaurants on.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px" class="reveal">
+      <a href="#contact" class="btn btn-wa wa-only wa-link"><i class="fab fa-whatsapp"></i> WhatsApp us</a>
       <a href="mailto:hello@mim-smart.com?subject=MiM%20Smart%20—%20demo%20request&amp;body=Group%20name%3A%0ABranches%3A%0AWhat%20hurts%20most%20today%3A%0A" class="btn btn-gold"><i class="fas fa-envelope"></i> Book a demo</a>
     </div>
     <div class="contact-lines reveal">
@@ -1838,14 +2080,24 @@ html,body{max-width:100%;overflow-x:clip}
           <h5>Talk to us</h5>
           <ul>
             <li><a href="#contact">Book a demo</a></li>
+            <li><a href="#contact" class="wa-only wa-link">WhatsApp</a></li>
             <li><a href="mailto:hello@mim-smart.com">Email</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#calc">Savings calculator</a></li>
           </ul>
         </div>
+        <div>
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="security.html">Security &amp; your data</a></li>
+            <li><a href="/ar/" lang="ar">العربية</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="bottom">&copy; 2026 Smart MiM · Doha, Qatar · All rights reserved.</div>
+    <div class="bottom">&copy; 2026 Smart MiM · Doha, Qatar · All rights reserved. · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
   </div>
 </footer>
 
@@ -1964,6 +2216,8 @@ html,body{max-width:100%;overflow-x:clip}
         if(first){ first.focus(); first.scrollIntoView({block:'center',behavior:'smooth'}); }
         return;
       }
+      /* first, the engine: the request lands on the Owner's phone and in the admin inbox even if mail never arrives */
+      try { fetch('https://mim-smart.com/site/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:d.name,group:d.company,branches:d.branches,phone:d.phone,msg:(d.pain||'')+' · runs today: '+(d.current||'')+' · '+(d.email||''),lang:document.documentElement.lang||'en',website:form.botcheck.value})}).catch(function(){}); } catch(e){}
       var body='Name: '+d.name+'\nGroup: '+d.company+'\nEmail: '+d.email+
                '\nPhone: '+(d.phone||'—')+'\nBranches: '+d.branches+
                '\nRunning today: '+(d.current||'—')+'\nWhat hurts: '+(d.pain||'—');

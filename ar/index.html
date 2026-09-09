@@ -1,0 +1,2495 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smart MiM — حقيقة واحدة، بلا فواصل</title>
+<link rel="canonical" href="https://www.mim-smart.com/" />
+<meta name="robots" content="index, follow" />
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
+<meta name="theme-color" content="#081124" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Smart MiM" />
+<meta property="og:url" content="https://www.mim-smart.com/ar/" />
+<meta property="og:title" content="Smart MiM — حقيقة واحدة، بلا فواصل" />
+<meta property="og:description" content="قاعدة بيانات واحدة لمجموعة المطاعم كلها: الكاشير والمطبخ والمخزون والرواتب وقائمة P&amp;L. بُني في الدوحة، ويُشغّل 17 فرعاً كل يوم." />
+<meta property="og:image" content="https://www.mim-smart.com/images/share-card.svg" />
+<meta property="og:locale" content="ar_QA" />
+<link rel="alternate" hreflang="en" href="https://www.mim-smart.com/" />
+<link rel="alternate" hreflang="ar" href="https://www.mim-smart.com/ar/" />
+<link rel="alternate" hreflang="x-default" href="https://www.mim-smart.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Smart MiM — حقيقة واحدة، بلا فواصل" />
+<meta name="twitter:description" content="قاعدة بيانات واحدة لمجموعة المطاعم كلها. بُني في الدوحة." />
+<meta name="twitter:image" content="https://www.mim-smart.com/images/share-card.svg" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
+<meta name="description" content="قاعدة بيانات واحدة لمجموعة المطاعم كلها. بُني في الدوحة، ويُشغّل عمليات 17 فرعاً كل يوم." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+:root{
+  /* ---- palette taken from the logo ---- */
+  --navy-900:#081124;
+  --navy-800:#0D1B36;
+  --navy-700:#132747;
+  --ocean-700:#0A4174;
+  --ocean-500:#2E6BA8;
+  --ocean-400:#4A80BC;
+  --ocean-300:#6FA0D0;
+  --gold-500:#C9A227;
+  --gold-400:#D9B94F;
+  --gold-300:#E8CE7A;
+  --ink:#0F1B2E;
+  --ink-2:#475569;
+  --ink-3:#8494A8;
+  --paper:#F7F9FC;
+  --card:#FFFFFF;
+  --line:#E3E9F1;
+  --red:#D94A4A;
+  --amber:#E0A130;
+  --green:#2FA36B;
+
+  --gold-grad:linear-gradient(135deg,#C9A227 0%,#E8CE7A 45%,#B98F1E 100%);
+  /* gold is unreadable on white; light grounds get the deep bronze cut of the same hue */
+  --gold-ink:#8F6F12;
+  --gold-grad-ink:linear-gradient(135deg,#8F6F12 0%,#A8841A 48%,#7A5E0D 100%);
+  /* the blue liquid is mid-tone: gold text on it needs the pale cut */
+  --gold-grad-lit:linear-gradient(135deg,#E8CE7A 0%,#F5E9C4 45%,#D9B94F 100%);
+
+  /* the blue "liquid" ground, rebuilt from the reference image */
+  --liquid:
+    radial-gradient(58% 44% at 18% 12%, #6C9DD2 0%, rgba(108,157,210,0) 58%),
+    radial-gradient(46% 38% at 76% 26%, #5288C2 0%, rgba(82,136,194,0) 62%),
+    radial-gradient(68% 52% at 34% 76%, #24568C 0%, rgba(36,86,140,0) 62%),
+    radial-gradient(52% 42% at 88% 84%, #5F92CA 0%, rgba(95,146,202,0) 58%),
+    radial-gradient(40% 34% at 58% 48%, #3E76B4 0%, rgba(62,118,180,0) 65%),
+    linear-gradient(158deg,#3D74AE 0%,#2B5D94 48%,#1E4A7B 100%);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--paper); color:var(--ink);
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.text-center{text-align:center}
+.mx-auto{margin-left:auto;margin-right:auto}
+
+/* ---------- shared type ---------- */
+.eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold-ink);margin-bottom:10px;
+}
+#departments .eyebrow,#loyalty .eyebrow{color:var(--gold-300)}
+.section-title{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:clamp(1.9rem,4vw,2.9rem);font-weight:600;
+  letter-spacing:-.02em;line-height:1.12;text-wrap:balance;margin-bottom:12px;
+}
+.section-title .gold{
+  background:var(--gold-grad-ink);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+/* background-IMAGE, never the `background` shorthand: the shorthand resets
+   background-clip back to border-box and the gradient paints as a solid block */
+#departments .section-title .gold,#loyalty .section-title .gold,
+#contact .section-title .gold{background-image:var(--gold-grad-lit)}
+.section-sub{font-size:1.08rem;max-width:660px;color:var(--ink-2);margin-bottom:40px}
+/* dark sections: text must come from the light set, never inherit the ink set */
+#departments,#loyalty,#contact{color:#fff}
+#departments .section-title,#loyalty .section-title,#contact .section-title{color:#fff}
+#departments .section-sub,#loyalty .section-sub,#contact .section-sub{color:rgba(255,255,255,.82)}
+#departments .section-sub,#contact .section-sub{margin-left:auto;margin-right:auto}
+/* small text on the blue liquid needs the pale gold, not the deep one */
+#hero .eyebrow,#contact .eyebrow{color:#F0DFA6}
+.device-caption{color:rgba(255,255,255,.78)}
+.shot-fallback{color:rgba(255,255,255,.78)}
+.contact-lines{color:rgba(255,255,255,.86)}
+.dept-card p{color:rgba(255,255,255,.74)}
+.tile p{color:var(--ink-2)}
+.proof-stat .l{color:var(--ink-2)}
+
+section{padding:84px 0}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:14px 30px;border-radius:8px;font-weight:600;font-size:.98rem;white-space:nowrap;
+  border:1.5px solid transparent;cursor:pointer;transition:transform .22s,box-shadow .22s,background .22s;
+}
+.btn-gold{background:var(--gold-grad);color:var(--navy-900);box-shadow:0 6px 20px rgba(201,162,39,.28)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(201,162,39,.36)}
+.btn-ghost{border-color:rgba(255,255,255,.34);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.btn-navy{background:var(--navy-800);color:#fff}
+.btn-navy:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(13,27,54,.25)}
+.btn-line{border-color:var(--line);color:var(--ink);background:#fff}
+.btn-line:hover{border-color:var(--gold-500);transform:translateY(-2px)}
+
+/* ---------- logo ---------- */
+.brandmark{display:flex;align-items:center;gap:11px}
+.brandmark svg{width:38px;height:38px;flex:none}
+.brandmark .wordmark{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
+.brandmark .wordmark em{
+  font-style:normal;background:var(--gold-grad);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+
+/* ---------- nav ---------- */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  background:rgba(8,17,36,.86);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.08);padding:13px 0;color:#fff;
+}
+nav .container{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:nowrap}
+.nav-links{display:flex;gap:22px;list-style:none;font-weight:500;font-size:.9rem;white-space:nowrap}
+.nav-links a{color:rgba(255,255,255,.74);position:relative;padding:4px 0;transition:color .2s}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:var(--gold-grad);transition:width .25s;
+}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.nav-actions .btn{padding:10px 20px;font-size:.86rem}
+.menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+
+/* ---------- hero ---------- */
+#hero{
+  position:relative;padding:150px 0 90px;color:#fff;overflow:hidden;
+  background:var(--liquid);background-color:#2B5D94;
+}
+#hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,17,36,.42) 0%,rgba(8,17,36,.12) 40%,rgba(8,17,36,.5) 100%);
+}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{
+  font-family:'Fraunces',Georgia,serif;
+  font-size:clamp(2.6rem,5.6vw,4.3rem);font-weight:600;line-height:1.03;
+  letter-spacing:-.025em;margin-bottom:20px;text-wrap:balance;
+}
+.hero h1 .gold{background:var(--gold-grad-lit);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .lede{font-size:1.16rem;color:rgba(255,255,255,.9);max-width:520px;margin-bottom:32px;line-height:1.72}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,auto);gap:34px;justify-content:start;
+  margin-top:46px;padding-top:28px;border-top:1px solid rgba(255,255,255,.2);
+}
+.hero-stats .number{
+  font-family:'Fraunces',Georgia,serif;font-size:2.1rem;font-weight:600;line-height:1;
+  background:var(--gold-grad-lit);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  font-variant-numeric:tabular-nums;
+}
+.hero-stats .label{font-size:.8rem;color:rgba(255,255,255,.68);margin-top:6px;letter-spacing:.02em}
+
+/* ---------- iPad device frame ---------- */
+.device-wrap{display:flex;justify-content:center;perspective:1400px}
+.ipad{
+  width:100%;max-width:520px;background:#11151C;border-radius:26px;padding:14px 34px;
+  box-shadow:0 40px 90px rgba(4,12,28,.45),0 12px 30px rgba(4,12,28,.3),inset 0 0 0 1.5px rgba(255,255,255,.09);
+  transform:rotateY(-7deg) rotateX(3deg);transition:transform .7s cubic-bezier(.2,.7,.3,1);
+  position:relative;
+}
+.ipad:hover{transform:rotateY(-2deg) rotateX(1deg) scale(1.015)}
+.ipad::before{content:'';position:absolute;left:15px;top:50%;width:6px;height:6px;border-radius:50%;background:#2A3140;transform:translateY(-50%)}
+.ipad::after{content:'';position:absolute;right:12px;top:50%;width:26px;height:26px;border-radius:50%;border:1.5px solid #2A3140;transform:translateY(-50%)}
+.ipad-screen{
+  border-radius:6px;overflow:hidden;background:#F8FAFC;aspect-ratio:4/3;
+  display:flex;align-items:center;justify-content:center;
+}
+.ipad-screen img{width:100%;height:100%;object-fit:contain;background:#F8FAFC}
+/* graceful placeholder until the screenshot file is dropped in */
+.shot-fallback{
+  width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;background:#38484A;color:rgba(255,255,255,.62);text-align:center;padding:24px;
+  font-size:.82rem;line-height:1.5;
+}
+.shot-fallback i{font-size:1.9rem;color:var(--gold-400)}
+.shot-fallback code{
+  background:rgba(0,0,0,.3);padding:3px 8px;border-radius:5px;font-size:.76rem;
+  color:var(--gold-300);display:inline-block;margin-top:4px;
+}
+.device-caption{
+  text-align:center;margin-top:16px;font-size:.82rem;color:rgba(255,255,255,.6);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.device-caption .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(47,163,107,.22)}
+
+/* ---------- the department explorer ----------
+   Fifteen departments, one screen each, and you can USE it: pick a department on the rail and
+   the stage shows that department's real MiM screen in the device it actually runs on. It
+   advances on its own while nobody is touching it, and stops the moment somebody is. */
+.explorer{display:grid;grid-template-columns:1fr;gap:18px;margin-top:40px;min-width:0}
+/* under 1040px the rail would be fifteen tabs stacked ABOVE the stage — a phone user taps one and
+   sees nothing change until they scroll. So the stage goes first on a phone, the picker below it. */
+@media(max-width:1039px){.ex-stage{order:-1}}
+@media(min-width:1040px){.explorer{grid-template-columns:272px minmax(0,1fr);gap:26px;align-items:start}}
+
+/* the rail */
+.ex-rail{display:grid;gap:14px;min-width:0}
+.ex-group h5{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-300);margin:0 0 8px;display:flex;align-items:center;gap:10px}
+.ex-group h5::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(232,206,122,.45),rgba(232,206,122,0))}
+.ex-tabs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+@media(min-width:1040px){.ex-tabs{grid-template-columns:1fr}}
+.ex-tab{display:flex;align-items:center;gap:10px;text-align:left;min-width:0;cursor:pointer;
+  padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.1);color:#fff;
+  background:rgba(255,255,255,.04);transition:background .22s,border-color .22s,transform .22s}
+.ex-tab i{width:30px;height:30px;flex:none;display:grid;place-items:center;border-radius:9px;font-size:.9rem;
+  background:rgba(232,206,122,.1);color:var(--gold-300);transition:background .22s,color .22s}
+.ex-tab b{display:block;font-size:.88rem;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ex-tab small{display:block;font-size:.7rem;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ex-tab span{min-width:0}
+.ex-tab:hover{background:rgba(255,255,255,.08);border-color:rgba(232,206,122,.35)}
+.ex-tab[aria-selected="true"]{background:linear-gradient(135deg,rgba(232,206,122,.22),rgba(232,206,122,.08));border-color:rgba(232,206,122,.7);transform:translateX(3px)}
+.ex-tab[aria-selected="true"] i{background:var(--gold-grad);color:#0F1B2E}
+.ex-tab:focus-visible{outline:2px solid var(--gold-300);outline-offset:2px}
+
+/* the stage */
+.ex-stage{position:relative;min-width:0;border-radius:26px;overflow:hidden;isolation:isolate;
+  background:linear-gradient(160deg,#123056 0%,#0B1E3A 55%,#08172E 100%);
+  border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 70px rgba(4,12,28,.55)}
+.ex-glow{position:absolute;inset:-30% -20%;z-index:0;pointer-events:none;opacity:.9;
+  background:radial-gradient(34% 40% at 20% 30%,rgba(232,206,122,.22) 0%,rgba(232,206,122,0) 70%),
+             radial-gradient(40% 44% at 82% 78%,rgba(74,128,188,.28) 0%,rgba(74,128,188,0) 70%);
+  transition:transform 1.2s cubic-bezier(.2,.7,.3,1)}
+.ex-copy{position:relative;z-index:2;padding:30px 30px 6px;min-width:0}
+.ex-copy .eyebrow{color:var(--gold-300);margin-bottom:6px}
+.ex-copy h3{font-size:clamp(1.3rem,2.3vw,1.7rem);font-weight:800;line-height:1.12;color:#fff;margin:0 0 10px;text-wrap:balance}
+.ex-copy p{color:rgba(255,255,255,.74);max-width:62ch;font-size:.97rem;line-height:1.55;margin:0}
+.ex-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ex-chips span{font-size:.74rem;font-weight:700;padding:5px 11px;border-radius:30px;white-space:nowrap;
+  background:rgba(232,206,122,.12);border:1px solid rgba(232,206,122,.35);color:var(--gold-300)}
+.ex-writes{margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.55)}
+.ex-writes b{color:rgba(255,255,255,.85);font-weight:700}
+.ex-copy>*{transition:opacity .34s ease,transform .34s ease}
+.ex-stage.is-swapping .ex-copy>*{opacity:0;transform:translateY(8px)}
+
+/* the device — one stage, three frames, chosen per department */
+.ex-device{position:relative;z-index:2;padding:22px 30px 34px;min-width:0;perspective:1400px}
+.ex-frame{position:relative;margin:0 auto;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.ex-shot{position:relative;overflow:hidden;background:#fff}
+.ex-shot img{display:block;width:100%;height:auto;transition:opacity .4s ease}
+.ex-stage.is-swapping .ex-shot img{opacity:0}
+/* tablet */
+.ex-frame[data-frame="tablet"]{max-width:860px;border-radius:26px;background:#0B0F16;padding:14px;
+  box-shadow:0 36px 74px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.09)}
+.ex-frame[data-frame="tablet"]::before{content:'';position:absolute;top:6px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#26324a}
+.ex-frame[data-frame="tablet"] .ex-shot{border-radius:14px}
+/* terminal on a stand */
+.ex-frame[data-frame="terminal"]{max-width:760px;padding-bottom:0}
+.ex-frame[data-frame="terminal"] .ex-shot{border-radius:16px;box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 0 11px #0B0F16,0 0 0 12px rgba(255,255,255,.09)}
+.ex-frame[data-frame="terminal"]::after{content:'';display:block;width:22%;height:34px;margin:0 auto;background:linear-gradient(#171d28,#0B0F16);
+  box-shadow:0 12px 0 -6px #0B0F16, 0 14px 0 -6px rgba(255,255,255,.06);border-radius:0 0 4px 4px}
+/* phone */
+.ex-frame[data-frame="phone"]{max-width:300px;border-radius:38px;background:#0B0F16;padding:10px;
+  box-shadow:0 36px 74px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.1)}
+.ex-frame[data-frame="phone"]::before{content:'';position:absolute;top:14px;left:50%;width:84px;height:22px;margin-left:-42px;border-radius:14px;background:#0B0F16;z-index:3}
+.ex-frame[data-frame="phone"] .ex-shot{border-radius:30px}
+
+/* the timer under the device — the auto-advance made visible, so it never feels like a glitch */
+.ex-progress{position:absolute;left:30px;right:30px;bottom:14px;height:3px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden;z-index:2}
+.ex-progress i{display:block;height:100%;width:0;background:var(--gold-grad-lit);transition:width .25s linear}
+.ex-stage.is-paused .ex-progress{opacity:.35}
+.ex-hint{position:absolute;right:30px;top:30px;z-index:3;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);display:flex;align-items:center;gap:8px}
+.ex-hint .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(47,163,107,.22)}
+.ex-stage.is-paused .ex-hint .dot{background:rgba(255,255,255,.35);box-shadow:none}
+@media(max-width:1039px){.ex-hint{display:none}}
+.explorer,.explorer *{min-width:0}
+@media (prefers-reduced-motion:reduce){.ex-frame,.ex-glow,.ex-copy>*,.ex-shot img{transition:none}}
+
+/* ---------- department cards: the blue ground ---------- */
+#departments{background:var(--navy-900);color:#fff}
+.dept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:16px;margin-top:34px}
+.dept-card{
+  position:relative;border-radius:14px;padding:26px 16px 22px;text-align:center;overflow:hidden;
+  background:var(--liquid);background-color:#2B5D94;
+  border:1px solid rgba(255,255,255,.13);
+  transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s,border-color .28s;
+  box-shadow:0 4px 16px rgba(4,12,28,.3);
+}
+.dept-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(165deg,rgba(8,17,36,.34),rgba(8,17,36,.62));
+  transition:opacity .28s;
+}
+.dept-card:hover{transform:translateY(-5px);border-color:rgba(201,162,39,.55);box-shadow:0 18px 38px rgba(4,12,28,.44)}
+.dept-card:hover::before{opacity:.72}
+.dept-card > *{position:relative;z-index:1}
+.dept-card .icon{font-size:1.85rem;margin-bottom:10px;background:var(--gold-grad-lit);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.dept-card h4{font-size:.97rem;font-weight:700;margin-bottom:4px;color:#fff}
+.dept-card p{font-size:.76rem;color:rgba(255,255,255,.66);margin-bottom:11px;min-height:2.2em}
+.dept-card .badge{
+  display:inline-block;font-size:.68rem;font-weight:600;padding:3px 12px;border-radius:30px;
+  background:rgba(47,163,107,.2);color:#7BD9AC;border:1px solid rgba(47,163,107,.34);
+}
+.dept-card .badge.gold{background:rgba(201,162,39,.16);color:var(--gold-300);border-color:rgba(201,162,39,.4)}
+.dept-card.featured{border-color:rgba(201,162,39,.62);box-shadow:0 0 0 1px rgba(201,162,39,.25),0 10px 30px rgba(4,12,28,.4)}
+
+/* ---------- light cards ---------- */
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px;
+  box-shadow:0 1px 3px rgba(15,27,46,.05);transition:box-shadow .28s,transform .28s;
+}
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.card-problem{border-top:3px solid var(--red)}
+.card-solution{border-top:3px solid var(--gold-ink)}
+.card h3{font-family:'Fraunces',Georgia,serif;font-size:1.4rem;font-weight:600;display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.card ul{list-style:none;margin-top:16px}
+.card ul li{padding:7px 0;display:flex;gap:12px;color:var(--ink-2);font-size:.95rem;align-items:flex-start}
+.card ul li i{width:18px;text-align:center;margin-top:5px;flex:none}
+.pull{margin-top:14px;font-weight:600;color:var(--red);font-size:1.02rem}
+
+/* ---------- preview (data) cards — deliberately light so numbers read ---------- */
+.preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+.preview-card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;
+  box-shadow:0 1px 3px rgba(15,27,46,.05);transition:box-shadow .28s,border-color .28s;
+}
+.preview-card:hover{box-shadow:0 14px 32px rgba(15,27,46,.09);border-color:#CBD8E8}
+.preview-header{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  border-bottom:1px solid var(--line);padding-bottom:11px;margin-bottom:14px;
+}
+.preview-header .title{font-weight:700;font-size:.98rem;display:flex;align-items:center;gap:9px}
+.preview-header .title i{color:var(--ocean-500)}
+.preview-header .status{
+  font-size:.72rem;font-weight:600;padding:3px 11px;border-radius:30px;
+  background:rgba(46,107,168,.09);color:var(--ocean-700);white-space:nowrap;
+}
+.preview-header .status.warn{background:rgba(224,161,48,.12);color:#9A6B10}
+.preview-item{
+  display:flex;justify-content:space-between;gap:14px;padding:7px 0;
+  border-bottom:1px solid var(--line);font-size:.9rem;
+}
+.preview-item:last-child{border-bottom:none}
+.preview-item .label{color:var(--ink-2)}
+.preview-item .value{font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.preview-item .value.red{color:var(--red)}
+.preview-item .value.amber{color:#9A6B10}
+.preview-item .value.green{color:var(--green)}
+.hr-alert{
+  border-left:3px solid var(--red);background:rgba(217,74,74,.05);
+  padding:10px 14px;border-radius:0 8px 8px 0;margin:8px 0;
+}
+.hr-alert.warn{border-left-color:var(--amber);background:rgba(224,161,48,.07)}
+.hr-alert .alert-title{color:var(--red);font-weight:600;font-size:.88rem;line-height:1.4}
+.hr-alert.warn .alert-title{color:#9A6B10}
+.hr-alert .alert-detail{color:var(--ink-3);font-size:.79rem;margin-top:2px}
+.mini-chart{display:flex;align-items:flex-end;gap:6px;height:52px;margin-top:16px}
+.mini-chart .bar{
+  flex:1;border-radius:4px 4px 0 0;min-height:5px;height:5px;
+  background:linear-gradient(180deg,var(--ocean-400),var(--ocean-700));
+  transition:height .8s cubic-bezier(.2,.7,.3,1);
+}
+.mini-chart .bar.animate{height:calc(8px + var(--h,30) * .48px)}
+.inv-item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0;font-size:.87rem}
+.inv-item .nm{flex:none;width:34%}
+.inv-item .bar-bg{flex:1;height:7px;background:#EDF2F8;border-radius:4px;overflow:hidden}
+.inv-item .bar-bg .fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--ocean-700),var(--ocean-400));width:var(--w,0);transition:width .9s cubic-bezier(.2,.7,.3,1)}
+.js .inv-item .bar-bg .fill{width:0}
+.inv-item .bar-bg .fill.low{background:linear-gradient(90deg,#B03A3A,var(--red))}
+.inv-item .bar-bg .fill.mid{background:linear-gradient(90deg,#B8830F,var(--amber))}
+.inv-item .qty{flex:none;width:64px;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.demo-note{
+  margin-top:18px;font-size:.78rem;color:var(--ink-3);display:flex;align-items:center;
+  gap:8px;justify-content:center;
+}
+
+/* ---------- integrations ---------- */
+.int-group{margin-top:34px}
+.int-group h3{
+  font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:16px;display:flex;align-items:center;gap:10px;justify-content:center;
+}
+.int-group h3 .pip{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.int-group h3 .pip.soon{background:var(--amber)}
+.int-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:14px}
+.int-item{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 12px;text-align:center;
+  transition:transform .26s,border-color .26s,box-shadow .26s;
+}
+.int-item:hover{transform:translateY(-3px);border-color:var(--gold-500);box-shadow:0 12px 26px rgba(15,27,46,.08)}
+.int-item i{font-size:1.6rem;color:var(--ocean-500);margin-bottom:8px;display:block}
+.int-item h4{font-size:.83rem;font-weight:600;color:var(--ink-2)}
+.int-grid.soon .int-item{background:#FBFCFE;border-style:dashed}
+.int-grid.soon .int-item i{color:var(--ink-3)}
+
+/* ---------- loyalty ---------- */
+#loyalty{background:var(--navy-900);color:#fff}
+.loyalty-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+.loyalty-card{
+  position:relative;border-radius:16px;padding:34px;overflow:hidden;
+  background:var(--liquid);background-color:#2B5D94;border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 10px 34px rgba(4,12,28,.34);
+}
+.loyalty-card::before{content:'';position:absolute;inset:0;background:linear-gradient(165deg,rgba(8,17,36,.38),rgba(8,17,36,.66))}
+.loyalty-card > *{position:relative;z-index:1}
+.loyalty-card .top-ico{font-size:1.9rem;background:var(--gold-grad-lit);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.loyalty-card h4{font-family:'Fraunces',Georgia,serif;font-size:1.3rem;font-weight:600;margin-top:10px;color:#fff}
+.loyalty-card .points{
+  font-family:'Fraunces',Georgia,serif;font-size:3.4rem;font-weight:600;line-height:1.05;margin-top:6px;
+  background:var(--gold-grad-lit);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  font-variant-numeric:tabular-nums;
+}
+.loyalty-card .worth{font-size:.95rem;color:rgba(255,255,255,.8)}
+.loyalty-card ul{list-style:none;margin-top:20px}
+.loyalty-card ul li{
+  padding:9px 0;display:flex;gap:12px;align-items:flex-start;
+  color:rgba(255,255,255,.86);font-size:.93rem;border-bottom:1px solid rgba(255,255,255,.09);
+}
+.loyalty-card ul li:last-child{border-bottom:none}
+.loyalty-card ul li i{color:var(--gold-400);width:18px;text-align:center;margin-top:4px;flex:none}
+.loyalty-card .foot{margin-top:18px;font-size:.8rem;color:rgba(255,255,255,.58)}
+
+
+/* ---------- loyalty tier cards ---------- */
+.tier-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:18px;margin-top:34px}
+.tier-card{
+  border-radius:16px;overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:0 14px 34px rgba(4,12,28,.34);transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s;
+}
+.tier-card:hover{transform:translateY(-6px);box-shadow:0 22px 46px rgba(4,12,28,.44)}
+.tc-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 16px;font-size:.8rem}
+.tc-brand{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.04em}
+.tc-brand svg{width:17px;height:17px;flex:none;opacity:.9}
+.tc-thresh{font-weight:700;font-size:.72rem;opacity:.78;white-space:nowrap}
+.tc-body{padding:14px 16px 18px}
+.tc-label{font-size:.62rem;font-weight:700;letter-spacing:.16em;opacity:.72;margin-bottom:2px}
+.tc-points{font-size:2.9rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.tc-foot{display:grid;grid-template-columns:1.1fr .9fr .8fr;gap:8px;padding:12px 16px 15px;border-top:1px solid rgba(0,0,0,.13)}
+.tc-foot span{display:block;font-size:.58rem;font-weight:700;letter-spacing:.14em;opacity:.68;margin-bottom:3px}
+.tc-foot b{font-size:.86rem;font-weight:700;white-space:nowrap}
+
+.tier-card.bronze{background:linear-gradient(150deg,#9A6335 0%,#C68A55 42%,#7C4A26 100%);color:#fff}
+.tier-card.bronze .tc-top{background:rgba(0,0,0,.16)}
+.tier-card.silver{background:linear-gradient(150deg,#A9AFB6 0%,#E3E7EB 42%,#9BA2AA 100%);color:#141821}
+.tier-card.silver .tc-top{background:rgba(255,255,255,.34)}
+.tier-card.gold{background:linear-gradient(150deg,#C79E1F 0%,#EDD378 42%,#B4880F 100%);color:#1A1400}
+.tier-card.gold .tc-top{background:rgba(255,255,255,.28)}
+.tier-card.platinum{background:linear-gradient(150deg,#B6BBC0 0%,#EDEFF1 42%,#C3C7CB 100%);color:#141821}
+.tier-card.platinum .tc-top{background:rgba(255,255,255,.4)}
+.tier-note{
+  margin-top:22px;text-align:center;font-size:.87rem;color:rgba(255,255,255,.72);line-height:1.6;
+  max-width:760px;margin-left:auto;margin-right:auto;
+}
+.tier-note b{color:var(--gold-300)}
+@media (max-width:600px){
+  .tier-row{grid-template-columns:1fr 1fr;gap:11px}
+  .tc-points{font-size:2rem}
+  .tc-foot{grid-template-columns:1fr;gap:6px}
+  .tc-foot b{font-size:.78rem}
+  .tc-brand{font-size:.7rem}
+  .tc-thresh{font-size:.62rem}
+}
+
+
+/* ---------- owner app ---------- */
+#owner{background:var(--navy-900);color:#fff}
+.owner-phones{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:38px;align-items:start}
+.owner-phone .frame{
+  background:#11151C;border-radius:30px;padding:10px;max-width:250px;margin:0 auto;position:relative;
+  box-shadow:0 26px 60px rgba(4,12,28,.5),inset 0 0 0 1.5px rgba(255,255,255,.09);
+}
+.owner-phone .frame::after{content:'';position:absolute;top:19px;left:50%;transform:translateX(-50%);width:76px;height:18px;border-radius:11px;background:#080B11}
+.owner-phone img{width:100%;border-radius:22px;display:block;background:#0F172A}
+.owner-phone .cap{text-align:center;margin-top:16px}
+.owner-phone .cap b{display:block;font-size:1rem;font-weight:700;color:#fff;margin-bottom:5px}
+.owner-phone .cap span{font-size:.85rem;color:rgba(255,255,255,.66);line-height:1.6;display:block;max-width:270px;margin:0 auto}
+.pace-note{
+  margin-top:42px;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;
+  border:1px solid rgba(201,162,39,.34);border-radius:16px;padding:30px;background:rgba(201,162,39,.06);
+}
+.pace-note h3{font-family:'Fraunces',Georgia,serif;font-size:1.45rem;font-weight:600;color:#fff;margin-bottom:11px}
+.pace-note p{font-size:.95rem;color:rgba(255,255,255,.82);line-height:1.7}
+.pace-note p + p{margin-top:11px}
+.pace-demo{display:flex;flex-direction:column;gap:12px}
+.pace-demo .row{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:15px 18px}
+.pace-demo .row .k{font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:5px}
+.pace-demo .row .v{font-size:1.05rem;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
+.pace-demo .row.bad{border-color:rgba(244,63,94,.42);background:rgba(244,63,94,.09)}
+.pace-demo .row.bad .v{color:#FB7185}
+.pace-demo .row.good{border-color:rgba(16,185,129,.45);background:rgba(16,185,129,.09)}
+.pace-demo .row.good .v{color:#34D399}
+@media (max-width:992px){
+  .owner-phones{grid-template-columns:1fr;gap:44px}
+  .pace-note{grid-template-columns:1fr;padding:24px}
+}
+
+
+/* ---------- food cost + staff self-service ---------- */
+#foodcost{background:var(--navy-900);color:#fff}
+.fc-shot{
+  background:#11151C;border-radius:16px;padding:11px;margin-top:36px;
+  box-shadow:0 30px 66px rgba(4,12,28,.5),inset 0 0 0 1.5px rgba(255,255,255,.09);
+}
+.fc-shot img,.fc-shot picture{width:100%;border-radius:8px;display:block;background:#0F172A}
+.fc-laws{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:34px}
+.fc-law{border-left:3px solid var(--gold-500);padding:4px 0 4px 18px}
+.fc-law h4{font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px}
+.fc-law p{font-size:.88rem;color:rgba(255,255,255,.74);line-height:1.65}
+.fc-law p b{color:var(--gold-300)}
+
+.self-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:center;margin-top:36px}
+.self-phone{max-width:262px;margin:0 auto;background:#11151C;border-radius:32px;padding:11px;position:relative;
+  box-shadow:0 26px 60px rgba(15,27,46,.22),inset 0 0 0 1.5px rgba(255,255,255,.08)}
+.self-phone::after{content:'';position:absolute;top:20px;left:50%;transform:translateX(-50%);width:78px;height:18px;border-radius:11px;background:#080B11}
+.self-phone img{width:100%;border-radius:23px;display:block;background:#0F172A}
+.self-points{list-style:none}
+.self-points li{display:flex;gap:15px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.self-points li:last-child{border-bottom:none}
+.self-points i{color:var(--gold-ink);margin-top:4px;width:19px;text-align:center;flex:none}
+.self-points b{display:block;font-size:.98rem;margin-bottom:3px}
+.self-points span{font-size:.89rem;color:var(--ink-2);line-height:1.6}
+@media (max-width:992px){.self-grid{grid-template-columns:1fr;gap:34px}}
+
+/* ---------- qatar + engineering ---------- */
+.tile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:18px;margin-top:34px}
+.tile{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 18px;text-align:center;
+  transition:transform .26s,border-color .26s,box-shadow .26s;
+}
+.tile:hover{transform:translateY(-4px);border-color:var(--gold-500);box-shadow:0 14px 30px rgba(15,27,46,.09)}
+.tile i{font-size:1.75rem;margin-bottom:10px;display:block;background:var(--gold-grad-ink);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.tile h4{font-size:.98rem;font-weight:700;margin-bottom:3px}
+.tile p{font-size:.8rem;color:var(--ink-3);line-height:1.5}
+.tile .big{
+  font-family:'Fraunces',Georgia,serif;font-size:2.2rem;font-weight:600;line-height:1;
+  background:var(--gold-grad-ink);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  font-variant-numeric:tabular-nums;display:block;margin-bottom:6px;
+}
+
+/* ---------- proof / first-party story ---------- */
+#proof{background:#FFF}
+.proof-wrap{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;
+  border:1px solid var(--line);border-radius:18px;padding:44px;background:var(--paper);
+}
+.proof-wrap blockquote{
+  font-family:'Fraunces',Georgia,serif;font-size:1.32rem;font-weight:500;line-height:1.55;
+  color:var(--ink);border-left:3px solid var(--gold-500);padding-left:24px;
+}
+.proof-wrap .attrib{margin-top:16px;padding-left:27px;font-size:.9rem;color:var(--ink-2)}
+.proof-wrap .attrib strong{color:var(--ink);display:block;font-size:.98rem}
+.proof-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.proof-stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 16px}
+.proof-stat .n{
+  font-family:'Fraunces',Georgia,serif;font-size:1.75rem;font-weight:600;line-height:1;
+  color:var(--ocean-700);font-variant-numeric:tabular-nums;
+}
+.proof-stat .l{font-size:.76rem;color:var(--ink-3);margin-top:5px;line-height:1.4}
+
+/* ---------- contact ---------- */
+#contact{position:relative;color:#fff;background:var(--liquid);background-color:#2B5D94;overflow:hidden;padding:80px 0}
+#contact::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,17,36,.5),rgba(8,17,36,.66));pointer-events:none}
+#contact .container{position:relative;z-index:2}
+#contact .section-title{color:#fff}
+
+.contact-lines{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:26px;font-size:.92rem;color:rgba(255,255,255,.8)}
+.contact-lines a{display:flex;align-items:center;gap:9px;transition:color .2s}
+.contact-lines a:hover{color:var(--gold-300)}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy-900);color:rgba(255,255,255,.66);padding:56px 0 26px}
+footer .cols{display:flex;justify-content:space-between;flex-wrap:wrap;gap:36px}
+footer .brand{max-width:290px}
+footer .brand .wordmark{color:#fff}
+footer .brand p{margin-top:12px;font-size:.88rem;line-height:1.65;color:rgba(255,255,255,.5)}
+footer .links{display:flex;gap:52px;flex-wrap:wrap}
+footer .links h5{color:#fff;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+footer .links ul{list-style:none}
+footer .links li{margin-bottom:8px}
+footer .links a{font-size:.88rem;color:rgba(255,255,255,.55);transition:color .2s}
+footer .links a:hover{color:var(--gold-400)}
+footer .bottom{
+  margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);
+  text-align:center;font-size:.78rem;color:rgba(255,255,255,.4);
+}
+
+/* ---------- reveal ---------- */
+/* content is visible by default; only a live script may hide it to animate it in.
+   Depth comes from real 3D transforms — perspective + rotate + Z — not just fade. */
+.js .reveal,.js .reveal-l,.js .reveal-r,.js .reveal-s{
+  opacity:0;will-change:transform,opacity;
+  transition:opacity .8s cubic-bezier(.16,.84,.32,1),transform .9s cubic-bezier(.16,.84,.32,1);
+  transition-delay:calc(var(--i,0) * 60ms);
+}
+.js .reveal  {transform:perspective(1200px) rotateX(9deg)  translate3d(0,34px,-60px)}
+.js .reveal-l{transform:perspective(1200px) rotateY(9deg)  translate3d(-34px,14px,-70px)}
+.js .reveal-r{transform:perspective(1200px) rotateY(-9deg) translate3d(34px,14px,-70px)}
+.js .reveal-s{transform:perspective(1200px) rotateX(12deg) translate3d(0,30px,-90px) scale(.955)}
+.js .visible{opacity:1;transform:perspective(1200px) rotateX(0) rotateY(0) translate3d(0,0,0) scale(1)}
+.js .visible{will-change:auto}
+/* the grids the cards sit in need a shared vanishing point */
+.dept-grid,.tile-grid,.int-grid,.tier-row,.price-grid,.sec-grid,.owner-phones,.fc-laws,.preview-grid,.calc-out{perspective:1400px;perspective-origin:50% 20%}
+/* cards lift toward the reader on hover, in the same space */
+.dept-card,.tile,.int-item,.price-card,.sec-card,.tier-card{transform-style:preserve-3d}
+.dept-card:hover,.tile:hover,.int-item:hover{transform:translate3d(0,-6px,26px)}
+.price-card:hover{transform:translate3d(0,-6px,22px)}
+.tier-card:hover{transform:translate3d(0,-7px,30px) rotateX(2deg)}
+/* hero device drifts as you scroll, and tips toward you on hover */
+.ipad{will-change:transform}
+.owner-phone .frame,.self-phone,.phone-frame{transition:transform .6s cubic-bezier(.16,.84,.32,1)}
+.owner-phone:hover .frame{transform:translate3d(0,-8px,40px) rotateY(-5deg)}
+/* bars must also read correctly with no script */
+html:not(.js) .mini-chart .bar{height:calc(8px + var(--h,30) * .48px)}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:9999;background:var(--gold-grad);transition:width .1s linear}
+
+
+/* ---------- who we serve ---------- */
+.serve-cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:34px}
+.serve-col h3{font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+.serve-list{display:flex;flex-direction:column;gap:10px}
+.serve-row{
+  display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:15px 17px;transition:border-color .24s,transform .24s;
+}
+.serve-row:hover{border-color:var(--gold-ink);transform:translateX(3px)}
+.serve-row i{color:var(--ocean-500);font-size:1.05rem;margin-top:3px;width:20px;text-align:center;flex:none}
+.serve-row b{display:block;font-size:.95rem;margin-bottom:1px}
+.serve-row span{font-size:.83rem;color:var(--ink-2);line-height:1.5}
+
+/* ---------- calculator ---------- */
+#calc{background:var(--navy-900);color:#fff}
+.calc-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:26px;margin-top:34px;align-items:start}
+.calc-inputs{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+  border-radius:16px;padding:28px;backdrop-filter:blur(6px);
+}
+.calc-field{margin-bottom:20px}
+.calc-field:last-child{margin-bottom:0}
+.calc-field label{display:flex;justify-content:space-between;align-items:baseline;font-size:.86rem;font-weight:600;color:rgba(255,255,255,.86);margin-bottom:9px}
+.calc-field label output{font-family:'Fraunces',Georgia,serif;font-size:1.15rem;color:var(--gold-300);font-variant-numeric:tabular-nums}
+.calc-field input[type=range]{width:100%;height:5px;border-radius:4px;appearance:none;background:rgba(255,255,255,.18);outline:none}
+.calc-field input[type=range]::-webkit-slider-thumb{appearance:none;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#E8CE7A,#C9A227);cursor:pointer;border:2px solid #081124;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.calc-field input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#E8CE7A;cursor:pointer;border:2px solid #081124}
+.calc-out{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.calc-card{
+  position:relative;border-radius:14px;padding:22px;overflow:hidden;
+  background:var(--liquid);background-color:#2B5D94;border:1px solid rgba(255,255,255,.14);
+}
+.calc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(165deg,rgba(8,17,36,.42),rgba(8,17,36,.66))}
+.calc-card > *{position:relative;z-index:1}
+.calc-card.wide{grid-column:1 / -1}
+.calc-card .k{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.68);margin-bottom:7px}
+.calc-card .v{
+  font-family:'Fraunces',Georgia,serif;font-size:2rem;font-weight:600;line-height:1.05;
+  background:var(--gold-grad-lit);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  font-variant-numeric:tabular-nums;
+}
+.calc-card .n{font-size:.81rem;color:rgba(255,255,255,.72);margin-top:7px;line-height:1.5}
+.calc-verdict{
+  margin-top:14px;border-radius:12px;padding:15px 18px;font-size:.9rem;line-height:1.55;
+  border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);color:rgba(255,255,255,.9);
+}
+.calc-verdict b{color:var(--gold-300)}
+.calc-foot{margin-top:16px;font-size:.79rem;color:rgba(255,255,255,.55);line-height:1.6}
+
+/* ---------- security ---------- */
+.sec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:34px}
+.sec-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;transition:border-color .24s,box-shadow .24s}
+.sec-card:hover{border-color:var(--gold-ink);box-shadow:0 12px 28px rgba(15,27,46,.08)}
+.sec-card i{font-size:1.35rem;color:var(--ocean-500);margin-bottom:11px;display:block}
+.sec-card h4{font-size:1rem;font-weight:700;margin-bottom:6px}
+.sec-card p{font-size:.87rem;color:var(--ink-2);line-height:1.6}
+
+/* ---------- pricing ---------- */
+#pricing{background:var(--paper)}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:20px;margin-top:34px}
+.price-card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px;
+  display:flex;flex-direction:column;transition:border-color .24s,transform .24s,box-shadow .24s;
+}
+.price-card:hover{border-color:var(--gold-ink);transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,27,46,.09)}
+.price-card.mid{border-color:var(--gold-ink);border-width:2px}
+.price-card .tag{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:10px}
+.price-card h4{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:600;margin-bottom:5px}
+.price-card .who{font-size:.86rem;color:var(--ink-2);margin-bottom:18px;line-height:1.55}
+.price-card ul{list-style:none;margin:0 0 22px;flex:1}
+.price-card ul li{display:flex;gap:10px;padding:6px 0;font-size:.88rem;color:var(--ink-2);align-items:flex-start}
+.price-card ul li i{color:var(--gold-ink);margin-top:4px;width:15px;flex:none;font-size:.8rem}
+.price-card .btn{width:100%;justify-content:center}
+
+.price-band{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:14px 0;margin:0 0 18px;
+}
+.price-band .unit{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:5px}
+.price-band .note{font-size:.85rem;color:var(--ink-2);line-height:1.5}
+.price-how{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;
+  margin-top:34px;padding:26px;background:#fff;border:1px solid var(--line);border-radius:14px;
+}
+.price-how h4{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+.price-how p{font-size:.89rem;color:var(--ink-2);line-height:1.6}
+.price-how b{color:var(--ink)}
+.price-note{
+  margin-top:26px;border:1px dashed var(--line);border-radius:12px;padding:18px 22px;
+  font-size:.87rem;color:var(--ink-2);line-height:1.65;background:#fff;
+}
+.price-note b{color:var(--ink)}
+
+/* ---------- faq ---------- */
+.faq-list{max-width:820px;margin:34px auto 0;display:flex;flex-direction:column;gap:11px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .24s}
+.faq-item[open]{border-color:var(--gold-ink)}
+.faq-item summary{
+  cursor:pointer;padding:18px 22px;font-weight:600;font-size:.98rem;list-style:none;
+  display:flex;justify-content:space-between;gap:16px;align-items:center;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:1.4rem;font-weight:400;color:var(--gold-ink);flex:none;line-height:1;transition:transform .25s}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item .a{padding:0 22px 20px;font-size:.92rem;color:var(--ink-2);line-height:1.7}
+.faq-item .a b{color:var(--ink)}
+
+
+/* ---------- device band ---------- */
+.device-band{display:grid;grid-template-columns:.42fr .58fr;gap:34px;align-items:center;margin:34px 0 42px}
+.phone-frame{
+  width:100%;max-width:268px;margin:0 auto;background:#11151C;border-radius:34px;padding:11px;
+  box-shadow:0 30px 66px rgba(4,12,28,.28),inset 0 0 0 1.5px rgba(255,255,255,.09);position:relative;
+}
+.phone-frame::after{content:'';position:absolute;top:20px;left:50%;transform:translateX(-50%);width:82px;height:20px;border-radius:12px;background:#080B11}
+.phone-frame img{width:100%;border-radius:25px;display:block;background:#0F172A}
+.kds-frame{
+  background:#11151C;border-radius:16px;padding:11px;
+  box-shadow:0 30px 66px rgba(4,12,28,.28),inset 0 0 0 1.5px rgba(255,255,255,.09);
+}
+.kds-frame img,.kds-frame picture{width:100%;border-radius:8px;display:block;background:#0F172A}
+.device-label{text-align:center;margin-top:14px;font-size:.82rem;color:var(--ink-3);line-height:1.55}
+.device-label b{color:var(--ink);display:block;font-size:.92rem;margin-bottom:2px}
+@media (max-width:992px){.device-band{grid-template-columns:1fr;gap:40px}}
+
+
+
+
+/* ---------- demo request sheet ---------- */
+.sheet-back{
+  position:fixed;inset:0;z-index:2000;background:rgba(6,12,24,.72);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:opacity .3s ease;
+}
+.sheet-back.open{opacity:1;pointer-events:auto}
+.sheet{
+  width:100%;max-width:520px;max-height:92vh;overflow-y:auto;border-radius:20px;padding:30px;
+  background:linear-gradient(158deg,rgba(28,48,78,.97),rgba(10,20,38,.98));
+  border:1px solid rgba(255,255,255,.16);color:#fff;
+  box-shadow:0 30px 80px rgba(4,12,28,.6),inset 0 1px 0 rgba(255,255,255,.2);
+  transform:perspective(1200px) rotateX(8deg) translateY(30px) scale(.96);
+  transition:transform .42s cubic-bezier(.16,.84,.32,1);
+}
+.sheet-back.open .sheet{transform:perspective(1200px) rotateX(0) translateY(0) scale(1)}
+.sheet h3{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:600;margin-bottom:6px}
+.sheet .lede{font-size:.9rem;color:rgba(255,255,255,.72);margin-bottom:22px;line-height:1.6}
+.sheet label{display:block;margin-bottom:14px}
+.sheet label span{display:block;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px}
+.sheet input,.sheet textarea,.sheet select{
+  width:100%;padding:13px 15px;border-radius:10px;font:inherit;font-size:.95rem;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:#fff;
+  transition:border-color .2s,background .2s;min-height:48px;
+}
+.sheet textarea{min-height:88px;resize:vertical}
+.sheet input:focus,.sheet textarea:focus,.sheet select:focus{outline:none;border-color:var(--gold-400);background:rgba(255,255,255,.1)}
+.sheet input::placeholder,.sheet textarea::placeholder{color:rgba(255,255,255,.34)}
+
+.sheet .bad input,.sheet .bad textarea,.sheet .bad select{border-color:#F43F5E;background:rgba(244,63,94,.09)}
+.sheet .bad span{color:#FDA4AF}
+.sheet .req{font-size:.78rem;color:rgba(255,255,255,.5);margin:-8px 0 16px}
+.sheet .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sheet .row2>*{min-width:0}
+.sheet .acts{display:flex;gap:11px;margin-top:20px}
+.sheet .acts .btn{flex:1;justify-content:center;min-height:50px}
+.sheet .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.sheet-close{
+  position:absolute;top:14px;right:16px;width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);color:#fff;
+  font-size:1.2rem;cursor:pointer;line-height:1;
+}
+.sheet-wrap{position:relative;width:100%;max-width:520px}
+.sheet-msg{margin-top:16px;padding:14px 16px;border-radius:11px;font-size:.9rem;line-height:1.6;display:none}
+.sheet-msg.ok{display:block;background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.45);color:#6EE7B7}
+.sheet-msg.err{display:block;background:rgba(244,63,94,.13);border:1px solid rgba(244,63,94,.45);color:#FDA4AF}
+.sheet-msg .copybox{
+  margin-top:11px;padding:11px;border-radius:8px;background:rgba(0,0,0,.34);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.76rem;color:#CBD5E1;
+  white-space:pre-wrap;max-height:150px;overflow-y:auto;
+}
+.sheet-msg .cbtn{margin-top:9px;padding:9px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.09);color:#fff;font:inherit;font-size:.84rem;font-weight:600;cursor:pointer;min-height:42px}
+@media (max-width:560px){
+  .sheet-back{padding:0;align-items:flex-end}
+  .sheet-wrap{max-width:100%}
+  .sheet{max-width:100%;border-radius:20px 20px 0 0;max-height:94vh;padding:26px 20px 30px}
+  .sheet .row2{grid-template-columns:1fr}
+}
+
+
+/* ---------- the till ---------- */
+#till{background:#fff}
+.till-shot{
+  background:#11151C;border-radius:18px;padding:12px;margin-top:36px;
+  box-shadow:0 34px 74px rgba(15,27,46,.26),inset 0 0 0 1.5px rgba(255,255,255,.08);
+}
+.till-shot img,.till-shot picture{width:100%;border-radius:9px;display:block;background:#0F172A}
+.till-points{display:grid;grid-template-columns:repeat(auto-fit,minmax(236px,1fr));gap:20px;margin-top:32px}
+.till-points>*{min-width:0}
+.till-point{display:flex;gap:14px;align-items:flex-start}
+.till-point i{color:var(--gold-ink);font-size:1.05rem;margin-top:4px;width:20px;text-align:center;flex:none}
+.till-point b{display:block;font-size:.97rem;margin-bottom:4px}
+.till-point span{font-size:.87rem;color:var(--ink-2);line-height:1.6}
+@media (max-width:760px){
+  /* the phone is served a PORTRAIT till, so nothing needs to scroll sideways */
+  .till-shot{padding:8px}
+  .till-shot img{width:100%;max-width:420px;margin:0 auto;border-radius:9px}
+}
+
+/* ---------- glass ---------- */
+#departments,#loyalty,#calc{position:relative;background:var(--navy-900);overflow:hidden}
+#departments::before,#loyalty::before,#calc::before{
+  content:'';position:absolute;inset:-14% -8%;z-index:0;pointer-events:none;
+  background:var(--liquid);opacity:.5;filter:blur(46px);
+  animation:drift 26s ease-in-out infinite alternate;
+}
+#departments .container,#loyalty .container,#calc .container{position:relative;z-index:1}
+@keyframes drift{
+  0%{transform:translate3d(0,0,0) scale(1.04)}
+  100%{transform:translate3d(-3%,2%,0) scale(1.13)}
+}
+.glass{
+  background:linear-gradient(158deg,rgba(255,255,255,.115),rgba(255,255,255,.03));
+  backdrop-filter:blur(17px) saturate(155%);
+  -webkit-backdrop-filter:blur(17px) saturate(155%);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 18px 46px rgba(4,12,28,.4),inset 0 1px 0 rgba(255,255,255,.22);
+}
+.dept-card,.loyalty-card,.calc-card,.calc-inputs,.pace-note{
+  background:linear-gradient(158deg,rgba(255,255,255,.115),rgba(255,255,255,.03))!important;
+  backdrop-filter:blur(17px) saturate(155%);
+  -webkit-backdrop-filter:blur(17px) saturate(155%);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 18px 46px rgba(4,12,28,.4),inset 0 1px 0 rgba(255,255,255,.22);
+}
+.dept-card::before,.loyalty-card::before,.calc-card::before{display:none}
+.dept-card:hover{border-color:rgba(201,162,39,.6);box-shadow:0 26px 58px rgba(4,12,28,.5),inset 0 1px 0 rgba(255,255,255,.3)}
+.pace-note{border-color:rgba(201,162,39,.36)!important}
+/* backdrop-filter is expensive; phones get the look without the blur cost */
+@media (max-width:760px){
+  .dept-card,.loyalty-card,.calc-card,.calc-inputs,.pace-note,.glass{
+    backdrop-filter:none;-webkit-backdrop-filter:none;
+    background:linear-gradient(158deg,rgba(30,55,92,.86),rgba(12,24,44,.9))!important;
+  }
+  #departments::before,#loyalty::before,#calc::before{animation:none;filter:blur(34px)}
+}
+
+/* ---------- no sideways drift, ever ---------- */
+/* grid & flex children default to min-width:auto and refuse to shrink below
+   their content — that is what pushes a page wider than the phone */
+.hero-grid>*,.dept-grid>*,.split-grid>*,.preview-grid>*,.device-band>*,.serve-cols>*,
+.int-grid>*,.loyalty-grid>*,.tier-row>*,.tc-foot>*,.tile-grid>*,.calc-wrap>*,.calc-out>*,
+.owner-phones>*,.self-grid>*,.fc-laws>*,.sec-grid>*,.price-grid>*,.price-how>*,
+.proof-wrap>*,.proof-stats>*,.pace-note>*,.pace-demo>*,footer .cols>*{min-width:0}
+.pace-demo .row .v,.tc-foot b,.calc-card .v,.preview-item .value{overflow-wrap:anywhere}
+html,body{max-width:100%;overflow-x:clip}
+
+/* ---------- responsive ---------- */
+@media (max-width:1150px){
+  .nav-links,.nav-actions .btn{display:none}
+  .menu-toggle{display:block}
+}
+@media (max-width:992px){
+  .menu-toggle{display:block}
+  .nav-links.open{
+    display:flex;flex-direction:column;gap:16px;position:absolute;top:64px;left:0;width:100%;
+    background:rgba(8,17,36,.97);padding:24px;border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .nav-links.open a{font-size:1.05rem;color:rgba(255,255,255,.85)}
+  .hero-grid{grid-template-columns:1fr;gap:44px;text-align:center}
+  .hero .lede{margin-left:auto;margin-right:auto}
+  .hero-cta,.hero-stats{justify-content:center}
+  .hero-stats{grid-template-columns:repeat(4,1fr);gap:18px;text-align:center}
+  .ipad{transform:none;max-width:460px}
+  .ipad:hover{transform:scale(1.01)}
+  .split-grid,.preview-grid,.loyalty-grid,.proof-wrap{grid-template-columns:1fr}
+  .serve-cols,.calc-wrap{grid-template-columns:1fr}
+
+  .proof-wrap{padding:32px}
+}
+@media (max-width:600px){
+  section{padding:60px 0}
+  .container{padding:0 16px}
+  #hero{padding:124px 0 66px}
+  .hero-stats{grid-template-columns:repeat(2,1fr);gap:22px}
+  .hero-stats .number{font-size:1.7rem}
+  .dept-grid{grid-template-columns:repeat(2,1fr);gap:11px}
+  .dept-card{padding:20px 11px 18px}
+  .dept-card .icon{font-size:1.5rem}
+  .dept-card h4{font-size:.85rem}
+  .dept-card p{display:none}
+  .card,.preview-card,.loyalty-card{padding:22px}
+  .ipad{padding:10px 20px;border-radius:20px}
+  .ipad::after{display:none}
+  .proof-stats{grid-template-columns:1fr 1fr}
+  .calc-out{grid-template-columns:1fr}
+  .proof-wrap blockquote{font-size:1.1rem;padding-left:18px}
+  .proof-wrap .attrib{padding-left:21px}
+  .inv-item .nm{width:38%}
+  footer .links{gap:32px}
+}
+
+/* ================= PHONE ================= */
+@media (max-width:760px){
+  /* the phone is served PORTRAIT versions of the wide shots — nothing scrolls sideways */
+  .fc-shot,.kds-frame{padding:8px}
+  .fc-shot img,.kds-frame img{width:100%;max-width:420px;margin:0 auto;border-radius:9px;min-width:0}
+  .swipe-hint{
+    display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;
+    font-size:.76rem;color:rgba(255,255,255,.5);letter-spacing:.04em;
+  }
+  .swipe-hint::before{content:'←'} .swipe-hint::after{content:'→'}
+  #selfservice .swipe-hint{color:var(--ink-3)}
+}
+@media (min-width:761px){ .swipe-hint{display:none} }
+
+@media (max-width:600px){
+  section{padding:52px 0}
+  .section-title{font-size:1.72rem}
+  .section-sub{font-size:.98rem;margin-bottom:28px}
+  .eyebrow{font-size:.66rem;letter-spacing:.14em}
+  /* every tap target reaches 44px */
+  .btn{padding:15px 26px;min-height:48px;width:100%;justify-content:center}
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .nav-links.open a{padding:11px 0;display:block;min-height:44px}
+  .nav-actions .btn{width:auto}
+  .faq-item summary{padding:16px 18px;min-height:52px}
+  .price-card .btn,.int-item,.serve-row{min-height:48px}
+  /* stacks */
+  .owner-phones{gap:38px}
+  .owner-phone .frame,.self-phone{max-width:280px}
+  .fc-laws{gap:22px}
+  .fc-law{padding-left:14px}
+  .device-band{gap:32px;margin:26px 0 34px}
+  .int-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .int-item{padding:16px 8px}
+  .int-item i{font-size:1.35rem}
+  .int-item h4{font-size:.76rem}
+  .tile-grid{grid-template-columns:1fr 1fr;gap:11px}
+  .tile{padding:20px 12px}
+  .tile h4{font-size:.88rem}
+  .tile p{font-size:.74rem}
+  .tile .big{font-size:1.7rem}
+  .price-how{grid-template-columns:1fr;padding:20px;gap:20px}
+  .price-card{padding:24px}
+  .calc-inputs{padding:22px}
+  .calc-card .v{font-size:1.6rem}
+  .contact-lines{flex-direction:column;gap:12px}
+  .hero h1{letter-spacing:-.02em}
+  .hero .lede{font-size:1.04rem}
+  .device-caption,.device-label span{font-size:.79rem}
+  footer .cols{gap:26px}
+  footer .links{gap:26px}
+}
+@media (max-width:380px){
+  .dept-grid,.tile-grid,.int-grid,.tier-row{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .proof-stats{grid-template-columns:1fr}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .js .reveal,.js .reveal-l,.js .reveal-r,.js .reveal-s{opacity:1;transform:none}
+  .dept-card:hover,.tile:hover,.int-item:hover,.price-card:hover,.tier-card:hover,
+  .owner-phone:hover .frame{transform:none}
+  #departments::before,#loyalty::before,#calc::before{animation:none}
+}
+:focus-visible{outline:2px solid var(--gold-400);outline-offset:3px;border-radius:4px}
+/* ===== 9 Sept 2026 — the rooms the site never showed ===== */
+.lang-switch{display:inline-flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:3px;font-size:.78rem;font-weight:800;color:#fff;white-space:nowrap}
+.lang-switch span,.lang-switch a{padding:5px 10px;border-radius:999px;color:rgba(255,255,255,.8)}
+.lang-switch .on{background:#fff;color:var(--navy-900)}
+.btn-wa{background:#2FA36B;color:#fff;box-shadow:0 6px 20px rgba(47,163,107,.28)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(47,163,107,.36)}
+.wa-only{display:none!important}
+html.has-wa .wa-only{display:inline-flex!important}
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:60;width:56px;height:56px;border-radius:50%;background:#2FA36B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 12px 30px rgba(47,163,107,.4)}
+.week-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:8px}
+.week-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.week-card .d{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink)}
+.week-card h4{font-family:'Fraunces',Georgia,serif;font-size:1.2rem;font-weight:600;margin:8px 0 8px}
+.week-card p{font-size:.88rem;color:var(--ink-2);line-height:1.6}
+.mk-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
+.mk-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.mk-card h4{font-family:'Fraunces',Georgia,serif;font-size:1.3rem;font-weight:600}
+.mk-card .k{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink)}
+.mk-card ul{list-style:none;margin:0;display:flex;flex-direction:column;gap:7px}
+.mk-card li{display:flex;gap:10px;font-size:.88rem;color:var(--ink-2);line-height:1.55}
+.mk-card li i{color:var(--gold-ink);margin-top:4px;flex:none;font-size:.8rem}
+.ui{font-family:-apple-system,'SF Pro Text','Segoe UI',system-ui,sans-serif;color:#0f172a;font-size:12px;line-height:1.35}
+.ui .num{font-variant-numeric:tabular-nums}
+.ui .cap{font-size:9px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:#94a3b8}
+.ui .row{display:flex;align-items:center;gap:8px}
+.ctl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:30px}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.step-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px;color:#fff}
+.step-card .n{font-family:'Fraunces',Georgia,serif;font-size:2.2rem;font-weight:600;line-height:1;background:var(--gold-grad-lit);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.step-card h4{font-size:1rem;font-weight:800;margin:8px 0 8px}
+.step-card p{font-size:.86rem;color:rgba(255,255,255,.72);line-height:1.6}
+#howitstarts{background:var(--navy-800);color:#fff}
+#howitstarts .section-title{color:#fff}#howitstarts .section-sub{color:rgba(255,255,255,.8)}#howitstarts .section-title .gold{background-image:var(--gold-grad-lit)}#howitstarts .eyebrow{color:var(--gold-300)}
+.rcpt-phone{width:100%;max-width:330px;margin:0 auto;background:#eef2f7;border-radius:34px;overflow:hidden;box-shadow:0 40px 90px rgba(4,12,28,.45);border:6px solid #0b0f16}
+.two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hw-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.hw-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.hw-card h4{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.hw-card ul{list-style:none;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
+.hw-card li{display:flex;gap:9px;font-size:.87rem;color:var(--ink-2);line-height:1.5}
+.hw-card li i{color:var(--gold-ink);margin-top:4px;flex:none;font-size:.78rem}
+@media (max-width:900px){.mk-grid,.two-col,.hw-grid,.hw-card ul{grid-template-columns:1fr}nav .lang-switch{display:none}}
+</style>
+<script>
+/* THE ONE PLACE THE NUMBER LIVES. Fill it in (digits only, e.g. 97455001122) and every WhatsApp button on the site appears, all pointing here. Empty = the buttons stay hidden. */
+var WA_NUMBER = '';
+(function(){ if(!/^\d{8,15}$/.test(WA_NUMBER)) return; document.documentElement.classList.add('has-wa'); var href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent('Hello Smart MiM — I run a restaurant group and I would like a 20-minute demo.'); document.querySelectorAll('.wa-link').forEach(function(a){ a.setAttribute('href',href); a.setAttribute('target','_blank'); a.setAttribute('rel','noopener'); }); var f=document.createElement('a'); f.className='wa-float'; f.href=href; f.target='_blank'; f.rel='noopener'; f.setAttribute('aria-label','WhatsApp'); f.innerHTML='<i class="fab fa-whatsapp"></i>'; document.body.appendChild(f); })();
+/* Hide-to-animate ONLY while a working script is present. If the reveal script
+   never runs (error, blocked CDN, snapshot renderer), the page un-hides itself. */
+(function(d){
+  var h=d.documentElement; h.className+=' js';
+  setTimeout(function(){
+    if(!h.hasAttribute('data-reveal-ready')) h.className=h.className.replace(/\bjs\b/,'');
+  },1200);
+})(document);
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap">
+<style>
+html[dir=rtl] body,html[dir=rtl] .btn,html[dir=rtl] input,html[dir=rtl] textarea,html[dir=rtl] select,html[dir=rtl] button{font-family:'Tajawal','Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
+html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] h3,html[dir=rtl] h4,html[dir=rtl] .section-title,html[dir=rtl] .hero h1,html[dir=rtl] .wordmark,html[dir=rtl] .week-card h4,html[dir=rtl] .mk-card h4,html[dir=rtl] .price-card h4,html[dir=rtl] .sheet h3{font-family:'Tajawal','Fraunces',Georgia,serif;letter-spacing:0;font-weight:800}
+html[dir=rtl] .hero h1{line-height:1.18}html[dir=rtl] .section-title{line-height:1.25}
+html[dir=rtl] .eyebrow,html[dir=rtl] .cap,html[dir=rtl] .week-card .d,html[dir=rtl] .mk-card .k,html[dir=rtl] .price-card .tag,html[dir=rtl] .price-band .unit,html[dir=rtl] .hw-card h4,html[dir=rtl] .sheet label span,html[dir=rtl] footer .links h5{letter-spacing:0}
+html[dir=rtl] .nav-links a::after{left:auto;right:0}
+html[dir=rtl] .ui .num,html[dir=rtl] .hero-stats .number,html[dir=rtl] .calc-card .v{direction:ltr;unicode-bidi:isolate}
+html[dir=rtl] .sheet-close{right:auto;left:16px}
+html[dir=rtl] .wa-float{right:auto;left:18px}
+html[dir=rtl] .ipad::before{left:auto;right:15px}html[dir=rtl] .ipad::after{right:auto;left:12px}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- ===== reusable logo mark ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="goldg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#B98F1E"/><stop offset="42%" stop-color="#E8CE7A"/><stop offset="100%" stop-color="#C9A227"/>
+    </linearGradient>
+    <symbol id="mim-mark" viewBox="0 0 128 128">
+      <circle cx="64" cy="76" r="46" fill="#0D1B36"/>
+      <circle cx="64" cy="76" r="41" fill="none" stroke="url(#goldg)" stroke-width="2.8"/>
+      <!-- fork -->
+      <g fill="url(#goldg)">
+        <rect x="38.6" y="52" width="2.7" height="14" rx="1.35"/>
+        <rect x="43.3" y="52" width="2.7" height="14" rx="1.35"/>
+        <rect x="48" y="52" width="2.7" height="14" rx="1.35"/>
+        <path d="M38 63.5h13.3v3.9a4.6 4.6 0 0 1-3.4 4.4v28.4a3 3 0 0 1-6 0V71.8a4.6 4.6 0 0 1-3.9-4.4z"/>
+      </g>
+      <!-- spoon -->
+      <g fill="url(#goldg)">
+        <ellipse cx="87" cy="63.5" rx="8.4" ry="11.6"/>
+        <rect x="84.3" y="73" width="5.4" height="27.5" rx="2.7"/>
+      </g>
+      <!-- leaf sprig -->
+      <g>
+        <path d="M64 101c-1.6-9 -.6-16 .3-22" stroke="url(#goldg)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <path d="M64.4 76c-3.6-6.4-2.4-13.4.4-18.4 3 5 4 12 -.4 18.4z" fill="url(#goldg)"/>
+        <path d="M65.6 81c5-4.2 11.4-4.6 15-3.2-3 6-9.6 8.2-15 3.2z" fill="url(#goldg)"/>
+        <path d="M62.8 81c-5-4.2-11.4-4.6-15-3.2 3 6 9.6 8.2 15 3.2z" fill="url(#goldg)"/>
+      </g>
+      <!-- chef hat -->
+      <g fill="#FFFFFF">
+        <circle cx="47" cy="25" r="14"/><circle cx="81" cy="25" r="14"/><circle cx="64" cy="17" r="16.5"/>
+        <path d="M45 30h38v14.5a2.6 2.6 0 0 1-2.6 2.6H47.6a2.6 2.6 0 0 1-2.6-2.6z"/>
+      </g>
+      <g fill="#E7EAF0"><rect x="45" y="41" width="38" height="1.4"/></g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="container">
+    <a href="#hero" class="brandmark" aria-label="الصفحة الرئيسية لـ Smart MiM">
+      <svg><use href="#mim-mark"/></svg>
+      <span class="wordmark">Smart <em>MiM</em></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#till">الكاشير</a></li>
+      <li><a href="#kitchen">المطبخ</a></li>
+      <li><a href="#departments">الأقسام</a></li>
+      <li><a href="#marketing">التسويق</a></li>
+      <li><a href="#owner">تطبيق المالك</a></li>
+      <li><a href="#pricing">الأسعار</a></li>
+      <li><a href="#faq">الأسئلة الشائعة</a></li>
+    </ul>
+    <div class="nav-actions">
+      <span class="lang-switch"><a href="/" lang="en" hreflang="en">EN</a><span class="on">عربي</span></span>
+      <a href="#contact" class="btn btn-wa wa-only wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="#contact" class="btn btn-gold">احجز عرضاً</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="القائمة" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero" class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">تشغيل المطاعم · الدوحة</div>
+        <h1>حقيقة واحدة،<br><span class="gold">بلا فواصل.</span></h1>
+        <p class="lede">لمسة النادل، والطعام الذي خرج من الرفّ، والراتب الذي وُقِّع عليه، والريال الذي وصل إلى البنك — كلّها السجلّ نفسه، يُكتب مرّة واحدة ويُقرأ في كلّ مكان.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-wa wa-only wa-link"><i class="fab fa-whatsapp"></i> راسلنا على WhatsApp</a>
+          <a href="#contact" class="btn btn-gold"><i class="fas fa-calendar-check"></i> عرض توضيحي في 20 دقيقة</a>
+          <a href="#departments" class="btn btn-ghost">استعرض الأقسام</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="number">6</div><div class="label">علامات تجارية</div></div>
+          <div><div class="number">17</div><div class="label">فرعاً</div></div>
+          <div><div class="number">15</div><div class="label">قسماً</div></div>
+          <div><div class="number">240</div><div class="label">بوابة أمان</div></div>
+        </div>
+      </div>
+
+      <div class="reveal-s">
+        <!-- the guest's own receipt: the real page behind the QR on every printed bill, not a drawing -->
+        <div class="rcpt-phone ui">
+  <div style="color:#fff;padding:16px 16px 18px;background-color:#0A4174;background-image:radial-gradient(115% 95% at 12% 100%,rgba(56,132,214,.28) 0%,rgba(0,29,57,0) 68%),linear-gradient(135deg,#001D39,#0A4174)">
+    <div class="row" style="justify-content:space-between"><div class="row" style="gap:9px"><div style="width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px">J</div><div><div style="font-size:14px;font-weight:900;letter-spacing:2.5px">JUNO</div><div style="font-size:9.5px;opacity:.8">West Walk · مطاعم Mim</div></div></div>
+      <div class="row" style="gap:0;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:2px"><span style="font-size:9px;font-weight:900;padding:4px 8px;border-radius:999px;background:#fff;color:#001D39">EN</span><span style="font-size:9px;font-weight:900;padding:4px 8px">العربية</span></div></div>
+    <div class="row" style="margin-top:16px;justify-content:space-between;align-items:flex-end"><div><div class="cap" style="color:rgba(255,255,255,.65)">الإجمالي المدفوع</div><div class="num" style="font-size:28px;font-weight:900;line-height:1;margin-top:3px">132.00 ر.ق</div></div>
+      <div style="background:rgba(110,231,183,.16);border:1px solid #6EE7B7;color:#6EE7B7;border-radius:999px;padding:4px 9px;font-size:9px;font-weight:900;letter-spacing:1px">✓ مدفوع</div></div>
+  </div>
+  <div style="margin:-10px 10px 0;background:#fff;border-radius:20px;padding:10px 13px;display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;box-shadow:0 1px 2px rgba(15,23,42,.06)">
+    <div><div class="cap">الإيصال</div><div class="num" style="font-size:11px;font-weight:800;margin-top:2px">#1200029</div></div><div><div class="cap">التاريخ</div><div class="num" style="font-size:11px;font-weight:800;margin-top:2px">8 سبتمبر · 21:14</div></div><div><div class="cap">الطاولة</div><div class="num" style="font-size:11px;font-weight:800;margin-top:2px">T2 · 2</div></div><div><div class="cap">النادل</div><div style="font-size:11px;font-weight:800;margin-top:2px">Raza</div></div>
+  </div>
+  <div style="margin:9px 10px 0;background:#fff;border-radius:20px;padding:4px 13px 8px;box-shadow:0 1px 2px rgba(15,23,42,.06)">
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div class="row" style="gap:8px"><span class="num" style="font-weight:900;color:#475569;font-size:11px">1×</span><span style="font-weight:800">Kale Salad</span></div><span class="num" style="font-weight:800">48.00</span></div>
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div class="row" style="gap:8px"><span class="num" style="font-weight:900;color:#475569;font-size:11px">1×</span><span style="font-weight:800">J Fire Bird</span></div><span class="num" style="font-weight:800">75.00</span></div>
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div class="row" style="gap:8px"><span class="num" style="font-weight:900;color:#475569;font-size:11px">1×</span><span style="font-weight:800">Parmesan Fries <span style="font-size:8px;font-weight:900;letter-spacing:1px;color:#047857;background:#ECFDF5;border-radius:5px;padding:2px 5px">ضيافة</span></span></div><span class="num" style="font-weight:800;color:#94a3b8;text-decoration:line-through">0.00</span></div>
+    <div class="row" style="justify-content:space-between;padding:9px 0 3px"><span class="cap" style="color:#475569">الإجمالي</span><span class="num" style="font-size:17px;font-weight:900;color:#001D39">132.00 ر.ق</span></div>
+  </div>
+  <div style="margin:9px 10px 0;background:#fff;border-radius:20px;padding:12px 13px;box-shadow:0 1px 2px rgba(15,23,42,.06)"><div class="cap">بطاقة WITHSTAND</div><div style="font-size:11.5px;font-weight:800;margin-top:2px">هذه الفاتورة أكسبتك <b style="color:#047857">+13 نقطة</b></div><div style="margin-top:8px;height:38px;border-radius:12px;background:#0A4174;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">أضف بطاقتك إلى Apple Wallet</div></div>
+  <div class="row" style="margin:9px 10px 12px;gap:7px"><div style="flex:1;height:38px;border-radius:12px;background:#047857;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">WhatsApp</div><div style="flex:1;height:38px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">حفظ PDF</div></div>
+</div>
+        <div class="device-caption" style="text-align:center;margin-top:16px"><span class="dot"></span> إيصال الضيف كما يرسمه البرنامج فعلاً — بلغتين، ومعه النقاط التي كسبها من هذه الفاتورة، وباب خاص يصل منه إلى المدير.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THIS WEEK ===== -->
+<section id="thisweek" style="background:#fff;padding:64px 0">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">دليل التقدّم</div>
+      <h2 class="section-title reveal">ما أطلقناه <span class="gold">هذا الأسبوع</span></h2>
+      <p class="section-sub mx-auto reveal">منتج يتقدّم كل أسبوع يقول أكثر مما يقوله أي وعد. كل سطر أدناه مؤرَّخ، وكل واحد منها اجتاز 240 بوابة أمان قبل خروجه.</p>
+    </div>
+    <div class="week-grid">
+      <div class="week-card reveal-s"><div class="d">9 سبتمبر 2026</div><h4>إيصال الضيف</h4><p>يُفتح من رمز QR على الفاتورة الورقية: بالإنجليزية أو العربية، مع النقاط التي كسبها الضيف، ومشاركة عبر WhatsApp، وباب خاص إلى المدير قبل Google.</p></div>
+      <div class="week-card reveal-s"><div class="d">9 سبتمبر 2026</div><h4>نافذة واحدة لكل سبب</h4><p>إيقاف صنف عن البيع، أو استرداد، أو حجز — تُكتب كلها في نافذة واحدة ولوحة الأرقام بداخلها. لا لوحة مفاتيح عائمة، ومخرج واحد، وزر يظلّ نائماً حتى يكتمل السجل.</p></div>
+      <div class="week-card reveal-s"><div class="d">8 سبتمبر 2026</div><h4>ممرّ التسليم (The Pass)</h4><p>الطلب كاملاً على بطاقة واحدة، ومراحل الوجبة بالترتيب الذي تقضي به أصول الخدمة. زر «ابدأ» يُطلق المرحلة إلى محطاتها؛ وزر «خرج» لا يُتاح إلا بعد أن تخرج المرحلة التي قبلها.</p></div>
+      <div class="week-card reveal-s"><div class="d">8 سبتمبر 2026</div><h4>تسويق مُساءَل أمام الكاشير</h4><p>المنشور يُربط بالصنف الذي يذكره وبأطباق ذلك الصنف المبيعة من السجلّ الدائم — ارتفاع له خط أساس مسمّى، لا عدد إعجابات أبداً.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DEPARTMENTS ===== -->
+<section id="departments">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">خمسة عشر قسماً، قاعدة بيانات واحدة</div>
+      <h2 class="section-title reveal">لكلّ قسم <span class="gold">شاشته الخاصة</span></h2>
+      <p class="section-sub mx-auto reveal">لكلّ قسم موظفوه، وتسجيل دخوله الخاص، وشاشات مصمّمة لعمله تحديداً — وكلّها تكتب في السجلّ نفسه الذي يكتب فيه الجميع. اختر قسماً. كلّ شاشة هنا مأخوذة من برنامج MiM الحقيقي: التصميم نفسه، والقواعد نفسها، وبيانات عرض توضيحي.</p>
+    </div>
+
+    <div class="explorer" id="dept-explorer">
+      <div class="ex-rail" role="navigation" aria-label="الأقسام" id="ex-rail"></div>
+      <div class="ex-stage" id="ex-stage" aria-live="polite">
+        <div class="ex-glow" id="ex-glow"></div>
+        <div class="ex-hint" id="ex-hint"><span class="dot"></span><span id="ex-hint-text">جولة تلقائية · اضغط على أي قسم لإيقافها</span></div>
+        <div class="ex-copy">
+          <div class="eyebrow" id="ex-eyebrow"></div>
+          <h3 id="ex-head"></h3>
+          <p id="ex-body"></p>
+          <div class="ex-chips" id="ex-chips"></div>
+          <div class="ex-writes" id="ex-writes"></div>
+        </div>
+        <div class="ex-device">
+          <div class="ex-frame" id="ex-frame" data-frame="tablet">
+            <div class="ex-shot"><img id="ex-img" src="/images/till.svg" alt="" width="1200" height="800" /></div>
+          </div>
+        </div>
+        <div class="ex-progress" aria-hidden="true"><i id="ex-bar"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE TILL ===== -->
+<section id="till">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">من هنا يدخل المال فعلاً</div>
+      <h2 class="section-title reveal">الشاشة التي يلمسها فريقك <span class="gold">طوال اليوم</span></h2>
+      <p class="section-sub mx-auto reveal">سريعة بما يكفي لليلة خميس، وكل لمسة عليها هي أصلاً سطرٌ في سجلّ المخزون وفي قائمة P&amp;L وفي إقفال اليوم. لا شيء يُعاد إدخاله في أي مكان، أبداً.</p>
+    </div>
+    <div class="till-shot reveal-s">
+      <picture>
+        <source media="(max-width:760px)" srcset="images/till-mobile.svg" />
+        <img src="/images/till.svg" alt="كاشير MiM — حساب داخل المطعم للطاولة 4، شريط الفئات، شبكة الأصناف وفيها صنف موقوف عن البيع (86)، صف الحساسية، الإجماليات وكل طرق الدفع بما فيها منصّات التوصيل" loading="lazy" />
+      </picture>
+    </div>
+    <div class="till-points">
+      <div class="till-point reveal"><i class="fas fa-bolt"></i><div><b>ثلاث لمسات إلى الحساب</b><span>الفئة، الصنف، انتهى. الشبكة مصمّمة لإبهامٍ مستعجل، لا لفأرةٍ على مهل.</span></div></div>
+      <div class="till-point reveal"><i class="fas fa-triangle-exclamation"></i><div><b>سؤال الحساسية يُطرح، لا يُترك للأمل</b><span>يظهر على الحساب ويسافر مع الطلب إلى شاشة المطبخ. «غير محدَّد» لا يُقرأ أبداً على أنه «خالٍ».</span></div></div>
+      <div class="till-point reveal"><i class="fas fa-ban"></i><div><b>إيقاف الصنف عن البيع (86) يسري في كل مكان</b><span>أوقف صنفاً عن البيع من الكاشير فيتوقف في تطبيق الضيف وفي منصّات التوصيل أيضاً — لا على أربعة أجهزة، أربع مرات.</span></div></div>
+      <div class="till-point reveal"><i class="fas fa-plug-circle-xmark"></i><div><b>يواصل البيع والاتصال مقطوع</b><span>تصطفّ الطلبات محلياً وتُسوّى حين يعود الاتصال. الجواب الفارغ لا يُحسب أبداً صفراً حقيقياً.</span></div></div>
+      <div class="till-point reveal"><i class="fas fa-arrow-right-arrow-left"></i><div><b>كل طرق الدفع على شاشة واحدة</b><span>نقداً، بالبطاقة، عبر تطبيقك الخاص، بسائقيك أنت، وعبر كل منصّة توصيل — مع خصم العمولة قبل سطر الربح.</span></div></div>
+      <div class="till-point reveal"><i class="fas fa-language"></i><div><b>عربي، من اليمين إلى اليسار</b><span>بما في ذلك الإيصال. التخطيط ينقلب كاملاً؛ لا شيء يُقرأ بالمقلوب.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KITCHEN ===== -->
+<section id="kitchen" style="background:#fff">
+  <div class="container">
+    <div class="two-col">
+      <div class="reveal-l">
+        <div class="eyebrow">المطبخ · ممرّ التسليم</div>
+        <h2 class="section-title">الطلب كاملاً على بطاقة واحدة، <span class="gold">مرحلةً بعد مرحلة</span></h2>
+        <p class="section-sub">الشيف يعمل على طاولة، لا على قائمة صحون. ممرّ التسليم يعرض كل مرحلة بالترتيب الذي تقضي به أصول الخدمة — والقاعدة داخل البرنامج، لا على ورقة لاصقة.</p>
+        <div class="till-points">
+          <div class="till-point"><i class="fas fa-play"></i><div><b>زر «ابدأ» يُرسل المرحلة إلى محطاتها</b><span>كل محطة ترى فقط الصحون التي أُرسلت إليها، وشريط «قادم» لما ينتظر دوره — فحتى الفرع الذي لا يقف فيه أحد على ممرّ التسليم يطبخ كل شيء.</span></div></div>
+          <div class="till-point"><i class="fas fa-lock"></i><div><b>لا تخرج مرحلة إلا بعد خروج المرحلة التي قبلها</b><span>الطبق الرئيسي لا يخرج قبل مقبّلات ما زال ينقصها صحن. والزر يقول لماذا هو نائم: «الشوربة ما زال ينقصها صحنان». وأمر التجهيز (fire) من النادل يتجاوز ذلك، عن قصد.</span></div></div>
+          <div class="till-point"><i class="fas fa-triangle-exclamation"></i><div><b>سؤال الحساسية بلا جواب يظهر باللون الكهرماني على ممرّ التسليم نفسه</b><span>الشاشة الوحيدة التي تُرسل الصحن هي التي يجب أن تراه. الحساسية المُصرَّح بها تظهر بالأحمر مع سطر طريقة التعامل معها. والصمت لا يُقرأ أبداً على أنه «لا حساسية».</span></div></div>
+          <div class="till-point"><i class="fas fa-tablet-screen-button"></i><div><b>أجهزة الشيف اللوحية تقترن بـ QR</b><span>كل صحن ينتقل على الجهاز من جديد ← قيد التحضير ← جاهز؛ والساعة على كل تذكرة هي نفسها التي يشعر بها الضيف. والدفع لا يعني الطبخ — التذكرة المدفوعة تبقى حتى يُنهيها الشيف بنفسه.</span></div></div>
+        </div>
+      </div>
+      <div class="reveal-r"><div class="ui" style="background:#1e293b;border-radius:16px;padding:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px">
+  <div style="font-size:9px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#cbd5e1;text-align:center;padding:3px 0 6px">قيد التنفيذ (3)</div>
+  <div style="background:#fff;border-radius:14px;padding:10px">
+    <div class="row" style="gap:6px;font-weight:900"><span>#1200031 · صالة T4</span><span style="color:#64748b;font-weight:700">· 4 أشخاص</span><span style="margin-left:auto;font-size:9px;color:#64748b">الآن: الرئيسي</span></div>
+    <div style="margin-top:6px;border-radius:10px;background:#fef3c7;text-align:center;font-weight:900;font-size:10px;padding:5px;text-transform:uppercase">⚠ سؤال الحساسية بلا جواب<span style="display:block;text-transform:none;font-weight:600;font-size:9px">اسأل الطاولة قبل أن يخرج هذا الطعام من ممرّ التسليم</span></div>
+    <div style="margin-top:6px;border-radius:10px;padding:7px;background:#ecfdf5"><div class="row" style="gap:6px;font-size:9px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#0c4a6e"><span style="width:16px;height:16px;border-radius:50%;background:#0c4a6e;color:#fff;display:inline-flex;align-items:center;justify-content:center">1</span>المقبلات<span style="margin-left:auto;text-transform:none;letter-spacing:0;color:#64748b;font-weight:700">✓ خرجت</span></div></div>
+    <div style="margin-top:6px;border-radius:10px;padding:7px;background:#f0f9ff"><div class="row" style="gap:6px;font-size:9px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#0c4a6e"><span style="width:16px;height:16px;border-radius:50%;background:#0c4a6e;color:#fff;display:inline-flex;align-items:center;justify-content:center">2</span>الأطباق الرئيسية<span style="margin-left:auto;text-transform:none;letter-spacing:0;color:#64748b;font-weight:700">بدأ 2 من 3 · ينقص 1 · 🔥 أمر تجهيز</span></div></div>
+    <div style="margin-top:6px;border-radius:10px;padding:7px;background:#f8fafc"><div class="row" style="gap:6px;font-size:9px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#0c4a6e"><span style="width:16px;height:16px;border-radius:50%;background:#0c4a6e;color:#fff;display:inline-flex;align-items:center;justify-content:center">3</span>الحلويات<span style="margin-left:auto;text-transform:none;letter-spacing:0;color:#64748b;font-weight:700">في الانتظار</span></div></div>
+    <div class="row" style="gap:6px;margin-top:8px"><div style="flex:1;border-radius:8px;background:#0c4a6e;color:#fff;text-align:center;padding:6px;font-size:9.5px;font-weight:900;text-transform:uppercase">▶ ابدأ الرئيسي · 1</div><div style="flex:1;border-radius:8px;background:#e2e8f0;color:#94a3b8;text-align:center;padding:6px;font-size:9.5px;font-weight:900;text-transform:uppercase">⏳ الرئيسي ما زال ينقصه 1</div></div>
+  </div>
+</div><div class="device-caption" style="margin-top:14px;color:var(--ink-3)"><span class="dot"></span> ممرّ التسليم على لوحة المطبخ في الكاشير، بيانات عرض توضيحي. القاعدة نفسها تُشغّل جهاز الشيف اللوحي.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROBLEM / SOLUTION ===== -->
+<section id="problem">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">لماذا تخسر مجموعات المطاعم مالاً لا تراه أبداً</div>
+      <h2 class="section-title reveal">ثمن <span class="gold">الفجوة</span></h2>
+    </div>
+    <div class="split-grid">
+      <div class="card card-problem reveal-l">
+        <h3><i class="fas fa-triangle-exclamation" style="color:var(--red)"></i> خمسة أنظمة، خمس حقائق</h3>
+        <p style="color:var(--ink-2)">مجموعة المطاعم لا تعمل على نظام واحد. بل تعمل على كاشير، وجدول بيانات، ومجموعة WhatsApp، وملف عند المحاسب، وأربعة أجهزة لوحية لمنصّات التوصيل. وكلٌّ منها يحمل نسخة مختلفة من الحقيقة.</p>
+        <p class="pull">كلّ وصلة بين نظامين هي موضع يتسرّب منه المال.</p>
+        <ul>
+          <li><i class="fas fa-xmark" style="color:var(--red)"></i> الكاشير يعرف البيع — لكنه لا يعرف كم كلّف الطبق.</li>
+          <li><i class="fas fa-xmark" style="color:var(--red)"></i> جدول البيانات يعرف المخزون — إلى أن ينسى أحدهم تحديثه.</li>
+          <li><i class="fas fa-xmark" style="color:var(--red)"></i> كل جهاز لوحي لمنصّات التوصيل يحتاج إلى إيقاف الصنف عن البيع (86) على حدة.</li>
+          <li><i class="fas fa-xmark" style="color:var(--red)"></i> المحاسب يعرف الشهر الماضي — ولا يعرف منه إلا ما أُعيد إدخاله يدوياً.</li>
+        </ul>
+      </div>
+      <div class="card card-solution reveal-r">
+        <h3><i class="fas fa-circle-check" style="color:var(--gold-ink)"></i> نظام واحد، من أوّله إلى آخره</h3>
+        <p style="color:var(--ink-2)">ليس MiM نظامَ نقاط بيع أُلصقت به التقارير إلصاقاً. بل هو <strong>قاعدة بيانات واحدة</strong> يكتب فيها كل قسم ويقرأ منها — فلكل رقم نسخة واحدة فقط، وهي نسخة <strong>اليوم</strong>.</p>
+        <ul>
+          <li><i class="fas fa-check" style="color:var(--gold-ink)"></i> المال يُدخَل مرة واحدة، عند الكاشير، ولا يُعاد إدخاله أبداً.</li>
+          <li><i class="fas fa-check" style="color:var(--gold-ink)"></i> قائمة P&amp;L ولوحة القيادة تُجريان الحساب نفسه.</li>
+          <li><i class="fas fa-check" style="color:var(--gold-ink)"></i> كل ريال يخرج يُطابَق سطراً بسطر مع كشف البنك.</li>
+          <li><i class="fas fa-check" style="color:var(--gold-ink)"></i> التسويق يرى الطلب بالحصص — ولا يرى ريالاً واحداً.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCREENS ===== -->
+<section id="screens" style="background:#fff">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">بيانات عرض توضيحي · ليس فرعاً حقيقياً</div>
+      <h2 class="section-title reveal">ما الذي تقوله <span class="gold">الشاشات</span> فعلاً</h2>
+      <p class="section-sub mx-auto reveal">أيّ عدد هنا يعني أن على أحدهم أن يتحرّك. كل رقم في الأسفل يقود إلى شخص، أو رفّ، أو سطر في كشف البنك.</p>
+    </div>
+
+    <div class="device-band">
+      <div class="reveal-l">
+        <div class="phone-frame"><img src="/images/cockpit-phone.svg" alt="لوحة قيادة المالك على الهاتف — المبيعات، إجمالي الربح، هامش الربح، الأصناف الأعلى مبيعاً وتنبيه تكلفة الطعام" loading="lazy" /></div>
+        <div class="device-label"><b>هاتف المالك</b>أموال اليوم أينما كنت — والتنبيه الذي يخبرك أيّ الأطباق تحرّكت.</div>
+      </div>
+      <div class="reveal-r">
+        <div class="kds-frame">
+          <picture>
+            <source media="(max-width:760px)" srcset="images/chef-display-mobile.svg" />
+            <img src="/images/chef-display.svg" alt="شاشة المطبخ — الطلبات في أعمدة جديد وقيد التحضير وجاهز، ومع كل طلب مؤقّت" loading="lazy" />
+          </picture>
+        </div>
+        <div class="device-label"><b>شاشة المطبخ</b>كل طبق ينتقل من جديد ← قيد التحضير ← جاهز. والساعة على كل طلب هي نفسها التي يشعر بها الضيف.</div>
+      </div>
+    </div>
+
+    <div class="preview-grid">
+      <div class="preview-card reveal-l">
+        <div class="preview-header">
+          <span class="title"><i class="fas fa-user-clock"></i> الموظفون وقانون العمل القطري</span>
+          <span class="status warn">3 تحتاج إلى إجراء</span>
+        </div>
+        <div class="hr-alert">
+          <div class="alert-title">أحمد ر. يعمل من دون بطاقة صحية سارية</div>
+          <div class="alert-detail">وزارة الصحة العامة · منتهية منذ 12 يوماً — جدّدها قبل الوردية القادمة</div>
+        </div>
+        <div class="hr-alert warn">
+          <div class="alert-title">موعد الرواتب بعد 6 أيام — 2 من الموظفين لا يمكن صرف رواتبهم</div>
+          <div class="alert-detail">لا يوجد IBAN مسجَّل لنظام WPS: فاطمة س. · راجيش ك.</div>
+        </div>
+        <div class="preview-item"><span class="label">مستندات تنتهي خلال 30 يوماً</span><span class="value amber">4</span></div>
+        <div class="preview-item"><span class="label">رصيد الإجازات المستحق اليوم</span><span class="value">18,420.00 ر.ق</span></div>
+        <div class="preview-item"><span class="label">في الوردية الآن</span><span class="value">31 / 48</span></div>
+        <div class="preview-item"><span class="label">تحت الحدّ الأدنى القانوني للأجر</span><span class="value green">0</span></div>
+      </div>
+
+      <div class="preview-card reveal-r">
+        <div class="preview-header">
+          <span class="title"><i class="fas fa-chart-simple"></i> اليوم، فرع السد</span>
+          <span class="status">مباشر</span>
+        </div>
+        <div class="preview-item"><span class="label">الضيوف الجالسون</span><span class="value">184</span></div>
+        <div class="preview-item"><span class="label">الفواتير المدفوعة</span><span class="value">67</span></div>
+        <div class="preview-item"><span class="label">متوسط الفاتورة</span><span class="value">218.40 ر.ق</span></div>
+        <div class="preview-item"><span class="label">إجمالي المبيعات</span><span class="value green">14,632.80 ر.ق</span></div>
+        <div class="preview-item"><span class="label">تكلفة الطعام النظرية</span><span class="value">4,243.50 ر.ق · 29.0%</span></div>
+        <div class="preview-item"><span class="label">تكلفة الطعام الفعلية</span><span class="value amber">4,678.20 ر.ق · 32.0%</span></div>
+        <div class="preview-item"><span class="label">فرق غير مفسَّر</span><span class="value red">434.70 ر.ق</span></div>
+        <div class="mini-chart" aria-hidden="true">
+          <div class="bar" style="--h:62"></div><div class="bar" style="--h:74"></div><div class="bar" style="--h:58"></div>
+          <div class="bar" style="--h:81"></div><div class="bar" style="--h:95"></div><div class="bar" style="--h:88"></div>
+          <div class="bar" style="--h:70"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-grid">
+      <div class="preview-card reveal-l">
+        <div class="preview-header">
+          <span class="title"><i class="fas fa-boxes-stacked"></i> المخزون المتوفر</span>
+          <span class="status warn">2 تحت الحدّ الأدنى</span>
+        </div>
+        <div class="inv-item"><span class="nm">صدر دجاج</span><div class="bar-bg"><div class="fill" style="--w:62%"></div></div><span class="qty">24 كجم</span></div>
+        <div class="inv-item"><span class="nm" style="color:var(--red)">فيليه سلمون</span><div class="bar-bg"><div class="fill low" style="--w:22%"></div></div><span class="qty">8 كجم</span></div>
+        <div class="inv-item"><span class="nm">طماطم</span><div class="bar-bg"><div class="fill" style="--w:84%"></div></div><span class="qty">120 حبة</span></div>
+        <div class="inv-item"><span class="nm" style="color:#9A6B10">زيت زيتون</span><div class="bar-bg"><div class="fill mid" style="--w:34%"></div></div><span class="qty">3 لتر</span></div>
+        <div class="inv-item"><span class="nm">دقيق خبز</span><div class="bar-bg"><div class="fill" style="--w:66%"></div></div><span class="qty">18 كجم</span></div>
+        <div class="inv-item"><span class="nm" style="color:var(--red)">زبدة</span><div class="bar-bg"><div class="fill low" style="--w:18%"></div></div><span class="qty">2 كجم</span></div>
+      </div>
+
+      <div class="preview-card reveal-r">
+        <div class="preview-header">
+          <span class="title"><i class="fas fa-money-bill-transfer"></i> الأموال الخارجة، مطابَقة</span>
+          <span class="status">مطابَق مع البنك</span>
+        </div>
+        <div class="preview-item"><span class="label">تسويات البطاقات المطابَقة</span><span class="value green">62 / 62</span></div>
+        <div class="preview-item"><span class="label">تحويلات منصّات التوصيل المطابَقة</span><span class="value amber">14 / 16</span></div>
+        <div class="preview-item"><span class="label">فرق الكاشير هذا الأسبوع</span><span class="value">12.50 ر.ق</span></div>
+        <div class="preview-item"><span class="label">مصروفات نثرية بانتظار الاعتماد</span><span class="value amber">3 · 1,180.00 ر.ق</span></div>
+        <div class="preview-item"><span class="label">فواتير تجاوزت مهلة الـ30 يوماً</span><span class="value red">2 · 8,940.00 ر.ق</span></div>
+        <div class="preview-item"><span class="label">إقفال يوم غير موقَّع</span><span class="value green">0</span></div>
+      </div>
+    </div>
+
+    <p class="demo-note"><i class="fas fa-circle-info"></i> هذه اللوحات تعرض بيانات عرض توضيحي. وفي التركيب الفعلي تقرأ من فروعك أنت.</p>
+  </div>
+</section>
+
+<!-- ===== WHO WE SERVE ===== -->
+<section id="who">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">لمن صُمِّم</div>
+      <h2 class="section-title reveal">صُنع للمجموعات التي <span class="gold">لم يعد جدول البيانات يكفيها</span></h2>
+      <p class="section-sub mx-auto reveal">إن كان أحد موظفيك لا يزال يُعيد إدخال أرقام الأمس في ملف كل صباح، فهذا النظام صُنع لك.</p>
+    </div>
+    <div class="serve-cols">
+      <div class="serve-col reveal-l">
+        <h3>بحسب شكل المنشأة</h3>
+        <div class="serve-list">
+          <div class="serve-row"><i class="fas fa-store"></i><div><b>مطعم واحد</b><span>النظام كاملاً لفرع واحد. المحرّك نفسه، ولا شيء مُعطَّل.</span></div></div>
+          <div class="serve-row"><i class="fas fa-sitemap"></i><div><b>المجموعات متعددة العلامات</b><span>ست علامات تجارية تحت مالك واحد، لكل منها قائمتها وأسعارها وهويتها، ودفاتر حسابات واحدة.</span></div></div>
+          <div class="serve-row"><i class="fas fa-warehouse"></i><div><b>عمليات المطبخ المركزي</b><span>مطبخ أو معمل حلويات يُنتج للفروع، ويحتاج أن ترافق التكلفةُ الصينيةَ أينما ذهبت.</span></div></div>
+          <div class="serve-row"><i class="fas fa-user-tie"></i><div><b>مُلّاك يقرؤون الأرقام بأنفسهم</b><span>لوحة القيادة لمن يوقّع الشيكات، لا للمحاسب وحده.</span></div></div>
+        </div>
+      </div>
+      <div class="serve-col reveal-r">
+        <h3>بحسب أسلوب الخدمة</h3>
+        <div class="serve-list">
+          <div class="serve-row"><i class="fas fa-utensils"></i><div><b>المطاعم العادية والراقية</b><span>طاولات، وتسلسل الأطباق، وحساسيات الضيف عند الطاولة، ومكتب استقبال، وسجلّ للخدمة.</span></div></div>
+          <div class="serve-row"><i class="fas fa-mug-saucer"></i><div><b>المقاهي والمخابز</b><span>خدمة سريعة على الكاونتر، وتغليف الطلبات الخارجية محسوب التكلفة، وحلويات تُنتج مركزياً.</span></div></div>
+          <div class="serve-row"><i class="fas fa-bag-shopping"></i><div><b>الطلبات الخارجية والتوصيل</b><span>توصيلك الخاص وتطبيقات التوصيل، مع خصم العمولة قبل سطر الربح.</span></div></div>
+          <div class="serve-row"><i class="fas fa-champagne-glasses"></i><div><b>البارات واللاونجات</b><span>طاولات البار على مخطط الصالة، وليالي العمل المتأخرة تُحسب على يوم العمل الصحيح.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INTEGRATIONS ===== -->
+<section id="integrations">
+  <div class="container text-center">
+    <div class="eyebrow">حالة صادقة، لا قائمة أمنيات</div>
+    <h2 class="section-title reveal">ما الذي <span class="gold">يتّصل به</span></h2>
+    <p class="section-sub mx-auto reveal">كل ما يحمل علامة «قريباً» ليس متصلاً بعد. نفضّل أن نخبرك الآن لا يوم التركيب.</p>
+
+    <div class="int-group reveal">
+      <h3><span class="pip"></span> يعمل اليوم</h3>
+      <div class="int-grid">
+        <div class="int-item"><i class="fas fa-file-invoice-dollar"></i><h4>WPS / وزارة العمل</h4></div>
+        <div class="int-item"><i class="fas fa-mobile-screen-button"></i><h4>تطبيق الضيف</h4></div>
+        <div class="int-item"><i class="fas fa-qrcode"></i><h4>الولاء ورمز QR</h4></div>
+        <div class="int-item"><i class="fab fa-instagram"></i><h4>Instagram</h4></div>
+        <div class="int-item"><i class="fas fa-tablet-screen-button"></i><h4>أجهزة النادل اللوحية</h4></div>
+        <div class="int-item"><i class="fas fa-fire-burner"></i><h4>شاشات المطبخ</h4></div>
+        <div class="int-item"><i class="fas fa-print"></i><h4>طابعات المطبخ</h4></div>
+        <div class="int-item"><i class="fas fa-bell"></i><h4>التنبيهات الفورية</h4></div>
+      </div>
+    </div>
+
+    <div class="int-group reveal">
+      <h3><span class="pip soon"></span> قريباً</h3>
+      <div class="int-grid soon">
+        <div class="int-item"><i class="fas fa-motorcycle"></i><h4>Talabat</h4></div>
+        <div class="int-item"><i class="fas fa-motorcycle"></i><h4>Snoonu</h4></div>
+        <div class="int-item"><i class="fas fa-motorcycle"></i><h4>Rafeeq</h4></div>
+        <div class="int-item"><i class="fas fa-motorcycle"></i><h4>Keeta</h4></div>
+        <div class="int-item"><i class="fas fa-receipt"></i><h4>الفاتورة الإلكترونية (GTA)</h4></div>
+        <div class="int-item"><i class="fas fa-calculator"></i><h4>تصدير محاسبي</h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OWNER APP ===== -->
+<section id="owner">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">على هاتف المالك، لا في المكتب فقط</div>
+      <h2 class="section-title reveal">الشاشة الوحيدة التي تتفقّدها <span class="gold">من السيارة</span></h2>
+      <p class="section-sub mx-auto reveal">ثلاثة تبويبات. ليس تقريراً تطلبه، بل يومك كما يجري لحظةً بلحظة، والأمران اللذان يحتاجان إليك.</p>
+    </div>
+
+    <div class="owner-phones">
+      <div class="owner-phone reveal-l">
+        <div class="frame"><img src="/images/owner-sales.svg" alt="تبويب المبيعات في تطبيق المالك — إيرادات اليوم، ووتيرة البيع مقارنةً بالدقيقة نفسها من الأربعاء الماضي، وأعمدة الساعات، ومقارنة الفروع" loading="lazy" /></div>
+        <div class="cap"><b>المبيعات</b><span>اليوم، والأمس، والأسبوع، والشهر، والسنة. كل الفروع جنباً إلى جنب، وكل بطاقة تسحبها إلى الترتيب الذي تقرأ به فعلاً.</span></div>
+      </div>
+      <div class="owner-phone reveal-s">
+        <div class="frame"><img src="/images/owner-inbox.svg" alt="تبويب الوارد في تطبيق المالك — حالات عجز الدرج مستخرَجة من ملاحظات إقفال اليوم، مع المبالغ ومن وقّع عليها" loading="lazy" /></div>
+        <div class="cap"><b>الوارد</b><span>كل عجز وإلغاء ومصروف غير معتمد من إقفال ليلة أمس — مستخرَجة من الملاحظات، فلا شيء ينتظر أن تذهب للبحث عنه بنفسك.</span></div>
+      </div>
+      <div class="owner-phone reveal-r">
+        <div class="frame"><img src="/images/owner-reviews.svg" alt="تبويب التقييمات في تطبيق المالك — معدّل مرجَّح، وعدد التقييمات الغاضبة، وتصنيف المواضيع بالعربية والإنجليزية، والأسوأ أولاً" loading="lazy" /></div>
+        <div class="cap"><b>التقييمات</b><span>العدد أولاً، ثم الأسوأ أولاً. المواضيع مصنَّفة بالعربية والإنجليزية، فالشكوى بأيٍّ من اللغتين تقع في الخانة نفسها.</span></div>
+      </div>
+    </div>
+
+    <div class="pace-note reveal-s">
+      <div>
+        <h3>«المبيعات صاعدة أم هابطة؟» — جواب صادق</h3>
+        <p>في الثالثة عصراً، مقارنة إيرادات اليوم مع <em>يوم أمس كاملاً</em> لا تخبرك بشيء. ستبدو دائماً في انخفاض، وستتعلّم أن تتجاهل الرقم.</p>
+        <p>لذلك يقارن التطبيق اليوم مع <strong>الدقيقة نفسها</strong> من اليوم الذي تقيس عليه. عند الساعة 15:47 من يوم خميس، يقرأ إيرادات الأربعاء الماضي <strong>حتى 15:47</strong> — ويقولها صراحةً على الوسم، لتعرف تماماً ما الذي يُعرَض عليك.</p>
+      </div>
+      <div class="pace-demo">
+        <div class="row bad"><div class="k">ما تعرضه معظم الأنظمة عند 15:47</div><div class="v">14,632 ر.ق مقابل 31,400 ر.ق · ▼ 53%</div></div>
+        <div class="row"><div class="k">…لأنها قارنت باليوم كاملاً</div><div class="v" style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.7)">رقم خاطئ كل يوم حتى الإقفال</div></div>
+        <div class="row good"><div class="k">ما يعرضه MiM</div><div class="v">▲ 12% &nbsp;مقابل الأربعاء · حتى 15:47</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARKETING ===== -->
+<section id="marketing" style="background:#F6F8FB">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">التسويق · مُساءَل أمام الكاشير</div>
+      <h2 class="section-title reveal">هل باع المنشور <span class="gold">طعاماً؟</span></h2>
+      <p class="section-sub mx-auto reveal">كل أداة تسويق تستطيع أن تقول إن المنشور حصد 286 إعجاباً. لكن الفاتورة لا يملكها إلا الكاشير. يربط MiM كل منشور بالطبق الذي يذكره، وبما بيع من ذلك الطبق في السجلّ الدائم — ويرفض التسويق الذي لا يستطيع المطبخ الوفاء به. أربع شاشات وقانون واحد: الإعجاب ملك Meta، والطبق ملكك أنت.</p>
+    </div>
+    <div class="mk-grid">
+      <div class="mk-card reveal-s"><div class="k">1 · الغرفة — التحليل</div><h4>ما الذي فعله كل منشور بالمطبخ</h4><div class="ui" style="border:1px solid #E2E8F0;border-radius:16px;overflow:hidden;background:#fff">
+  <div style="padding:12px;min-height:84px;background:linear-gradient(150deg,#7C2D12,#431407);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;gap:4px"><div class="row" style="gap:5px"><span style="font-size:8.5px;font-weight:900;letter-spacing:.8px;background:rgba(255,255,255,.16);padding:2px 6px;border-radius:5px">فيديو</span><span style="font-size:8.5px;opacity:.7;margin-left:auto">لم تُقرأ الصورة — نصّ المنشور فقط</span></div><div style="font-size:12.5px;font-weight:800;line-height:1.3">Jalapeño sliders، كما يأكلها المطبخ نفسه</div><div style="font-size:9px;opacity:.8">الثلاثاء 1 سبتمبر · 18:40</div></div>
+  <div class="row" style="padding:8px 12px;border-bottom:1px solid #f1f5f9"><div style="flex:1"><div style="font-size:12px;font-weight:900">286</div><div class="cap" style="letter-spacing:.3px">إعجاب</div></div><div style="flex:1"><div style="font-size:12px;font-weight:900">5</div><div class="cap" style="letter-spacing:.3px">تعليقات</div></div><div style="flex:2;text-align:right;font-size:9.5px;font-weight:800;color:#0A4174">افتح على Instagram ↗</div></div>
+  <div style="padding:8px 12px 10px;background:#f8fafc"><div class="row"><span style="font-size:8.5px;font-weight:900;letter-spacing:.9px;color:#0A4174">ما الذي فعله الكاشير</span><span style="flex:1"></span><span style="font-size:14px;font-weight:900;color:#059669">+128%</span></div>
+    <div class="row" style="gap:2px;height:30px;align-items:flex-end;margin-top:6px"><div style="flex:1;height:10px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:12px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:11px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:11px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:13px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:11px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:12px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:11px;border-radius:2px;background:#7BBDE8"></div><div style="flex:1;height:26px;border-radius:2px;background:#0A4174"></div><div style="flex:1;height:28px;border-radius:2px;background:#0A4174"></div><div style="flex:1;height:24px;border-radius:2px;background:#0A4174"></div><div style="flex:1;height:18px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:14px;border-radius:2px;background:#BDD8E9"></div><div style="flex:1;height:13px;border-radius:2px;background:#BDD8E9"></div></div>
+    <div class="row" style="margin-top:5px"><span style="font-size:10px;font-weight:700">Micro Sliders : Jalapeño</span><span style="flex:1"></span><span style="font-size:9px;color:#64748b">من <b style="color:#0f172a">18</b> إلى <b style="color:#0f172a">41</b> طبقاً في اليوم</span></div></div>
+</div><ul>
+        <li><i class="fas fa-check"></i><span>الارتفاع هو الـ72 ساعة التي تلي المنشور، مقارنةً بمتوسط الطبق نفسه خلال 28 يوماً — ارتباطٌ بخط أساس مُسمّى، لا دليل، والشاشة تقول ذلك صراحةً.</span></li>
+        <li><i class="fas fa-check"></i><span>المنشور الذي لم تُقفَل نافذته بعد يظهر <b>بلا رقم، لا بصفر</b>. والفواتير التي فيها استرداد أو إلغاء تُستبعد من كل خط أساس.</span></li>
+        <li><i class="fas fa-check"></i><span>الحكم يُقرأ في جملة واحدة: «6 منشورات ذكرت طبقاً. 2 منها حرّكاه. وواحد ذكر طبقاً لم يستطع المطبخ تقديمه».</span></li>
+      </ul></div>
+      <div class="mk-card reveal-s"><div class="k">2 · ماذا تنشر بعد ذلك — القرار</div><h4>يُختار من هامش الربح، ومما يبيع ببطء، ومما يستطيع المطبخ تقديمه</h4><div class="ui" style="border:1px solid #E2E8F0;border-radius:16px;background:#fff;padding:12px;display:flex;flex-direction:column;gap:8px">
+  <div class="row"><span class="cap" style="color:#0A4174">يستحق الترويج</span><span style="flex:1"></span><span class="cap" style="letter-spacing:.3px">قابل للتقديم · الهامش معروف</span></div>
+  <div class="row" style="gap:8px;padding:5px 0;border-top:1px solid #f1f5f9"><span style="width:18px;height:18px;border-radius:50%;background:#0A4174;color:#fff;font-size:9px;font-weight:900;display:inline-flex;align-items:center;justify-content:center">1</span><span style="font-weight:800;flex:1">Stuffed Burrata</span><span class="num" style="font-weight:900;color:#0A4174">71%</span><span style="font-size:8px;font-weight:900;color:#065F46;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:5px;padding:2px 5px">✓ قابل للتقديم</span></div>
+  <div class="row" style="gap:8px;padding:5px 0;border-top:1px solid #f1f5f9"><span style="width:18px;height:18px;border-radius:50%;background:#E2E8F0;color:#334155;font-size:9px;font-weight:900;display:inline-flex;align-items:center;justify-content:center">2</span><span style="font-weight:800;flex:1">Kale Salad</span><span class="num" style="font-weight:900;color:#0A4174">68%</span><span style="font-size:8px;font-weight:900;color:#065F46;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:5px;padding:2px 5px">✓ قابل للتقديم</span></div>
+  <div style="border:1.5px solid #FCA5A5;background:#FEF2F2;border-radius:10px;padding:8px 10px"><div class="cap" style="color:#991B1B">🚫 مرفوض — المطبخ لا يستطيع تقديمه</div><div style="font-size:10.5px;color:#7F1D1D;margin-top:2px"><b>Tea</b> — موقوف عن البيع في Sareea · West Walk · عطل في المعدات · 1,260 ساعة</div></div>
+  <div class="row"><span class="cap" style="color:#0A4174">⏰ متى تنشر</span><span style="flex:1"></span><span style="font-size:12px;font-weight:900;color:#059669">الخميس 17:00</span></div><div style="display:grid;grid-template-columns:30px repeat(8,minmax(0,1fr));gap:2px;align-items:center"><div></div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">12</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">13</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">14</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">17</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">18</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">19</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">20</div><div style="font-size:8px;color:#94a3b8;text-align:center;font-weight:700">21</div><div style="font-size:8.5px;color:#64748b;font-weight:800">أحد</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="font-size:8.5px;color:#64748b;font-weight:800">اثنين</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="font-size:8.5px;color:#64748b;font-weight:800">ثلاثاء</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(23,79,129);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="font-size:8.5px;color:#64748b;font-weight:800">أربعاء</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="font-size:8.5px;color:#64748b;font-weight:800">خميس</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(10,65,116);outline:2px solid #059669;outline-offset:1px"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(23,79,129);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(85,148,193);"></div><div style="font-size:8.5px;color:#64748b;font-weight:800">جمعة</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(23,79,129);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(23,79,129);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="font-size:8.5px;color:#64748b;font-weight:800">سبت</div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(60,120,168);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(35,93,142);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(23,79,129);"></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(48,106,155);"><div style="position:absolute;inset:0;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px)"></div></div><div style="position:relative;height:14px;border-radius:3px;background:rgb(73,134,180);"></div></div>
+  <div style="font-size:9px;color:#64748b">الإعجابات من الأقل إلى الأكثر · المخطَّط = المطبخ في أقصى طاقته · الإطار = أفضل موعد</div>
+</div><ul>
+        <li><i class="fas fa-check"></i><span>مرتَّبة حسب هامش الربح، ثم حسب بطء بيع الطبق. والهامش الذي لم يختمه الكاشير قط <b>مجهول، لا صفر أبداً</b> — والشاشة تقول «لم تُحسب تكلفته بعد».</span></li>
+        <li><i class="fas fa-check"></i><span>الطبق الموقوف عن البيع في أي مكان سيُرى فيه المنشور <b>يُرفض ولا يُرتَّب</b>. Meta لا تعرف أن فرنك معطّل؛ أما قائمة إيقاف الصنف عن البيع (86) فتعرف.</span></li>
+        <li><i class="fas fa-check"></i><span>أفضل ساعة للنشر هي ذروة التفاعل في وقتٍ كان فيه المطبخ <b>دون أقصى طاقته</b> — فالمنشور الذي ينجح على مطبخ ممتلئ يزيد الانتظار سوءاً.</span></li>
+      </ul></div>
+      <div class="mk-card reveal-s"><div class="k">3 · مَن تستعيده — التنفيذ</div><h4>الزبون الدائم الذي انقطع، ومعه ما اعتاد أن يطلبه</h4><div class="ui" style="border:1px solid #E2E8F0;border-radius:16px;background:#fff;overflow:hidden">
+  <div style="display:grid;grid-template-columns:2fr .7fr 1.6fr .8fr;gap:8px;padding:8px 12px;background:#f8fafc" class="cap"><span style="color:#0A4174">الضيف</span><span style="color:#0A4174">الزيارات</span><span style="color:#0A4174">يطلب عادةً</span><span style="color:#0A4174">منقطع منذ</span></div>
+  <div style="display:grid;grid-template-columns:2fr .7fr 1.6fr .8fr;gap:8px;padding:8px 12px;border-top:1px solid #f1f5f9;align-items:center"><div><div style="font-weight:800">مريم أ.</div><div style="font-size:9.5px;color:#B45309">«تجلس قرب النافذة، بلا ثلج»</div></div><div class="num" style="font-weight:900">9</div><div>Stuffed Burrata <span style="color:#94a3b8;font-weight:700">×7</span></div><div class="num" style="font-weight:900;color:#B3261E">41 يوماً</div></div>
+  <div style="display:grid;grid-template-columns:2fr .7fr 1.6fr .8fr;gap:8px;padding:8px 12px;border-top:1px solid #f1f5f9;align-items:center"><div><div style="font-weight:800">أحمد ك.</div><div style="font-size:9.5px;color:#94a3b8">…9018</div></div><div class="num" style="font-weight:900">7</div><div>Micro Sliders <span style="color:#94a3b8;font-weight:700">×9</span></div><div class="num" style="font-weight:900;color:#B3261E">38 يوماً</div></div>
+  <div style="display:grid;grid-template-columns:2fr .7fr 1.6fr .8fr;gap:8px;padding:8px 12px;border-top:1px solid #f1f5f9;align-items:center"><div><div style="font-weight:800">سارة ن.</div><div style="font-size:9.5px;color:#B45309">«عيد ميلادها 14 أكتوبر — اسأل عن الكعكة»</div></div><div class="num" style="font-weight:900">6</div><div>Kale Salad <span style="color:#94a3b8;font-weight:700">×5</span></div><div class="num" style="font-weight:900;color:#B45309">36 يوماً</div></div>
+  <div style="padding:8px 12px;border-top:1px solid #f1f5f9;background:#F0F7FC;font-size:10px;color:#475569">مكافأة الزبون الدائم تكلّفك الطعام بسعر التكلفة لا بسعر القائمة — أرخص تسويق في المبنى كله.</div>
+</div><ul>
+        <li><i class="fas fa-check"></i><span>ثلاث زيارات مدفوعة أو أكثر، ثم ثلاثون يوماً من الصمت. الهوية هي رقم الهاتف على الفاتورة — الرقم نفسه الذي يتذكّره مكتب الاستقبال، ومعه ملاحظة المضيفة.</span></li>
+        <li><i class="fas fa-check"></i><span>التسويق الوحيد هنا الذي تستطيع إثبات نتيجته: إما أن يعود ذلك الرقم إلى الكاشير من جديد، أو لا يعود.</span></li>
+        <li><i class="fas fa-check"></i><span>النقاط والعروض تُحمل على بطاقة WITHSTAND؛ الرصيد يعيش على المحرّك، وكل كسب وكل إنفاق سطرٌ في السجلّ.</span></li>
+      </ul></div>
+      <div class="mk-card reveal-s"><div class="k">4 · Instagram لكل علامة — الإصغاء</div><h4>كل تعليق، بلغة الضيف نفسها</h4><div class="ui" style="border:1px solid #E2E8F0;border-radius:16px;background:#fff;overflow:hidden">
+  <div style="padding:12px;color:#fff;background:linear-gradient(135deg,#0A4174 0%,#49769F 78%,#6EA2B3 100%)"><div class="row" style="gap:10px"><div style="width:34px;height:34px;border-radius:50%;padding:2px;background:linear-gradient(150deg,#F58529,#DD2A7B,#8134AF)"><div style="width:100%;height:100%;border-radius:50%;background:#001D39;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900">MiM</div></div><div><div style="font-size:13px;font-weight:900">@mimerpqatar <span style="font-size:8px;font-weight:900;padding:2px 6px;border-radius:5px;background:rgba(52,199,89,.25);color:#BBF7D0">● متصل</span></div><div style="font-size:9px;opacity:.85">مرتبط بصفحة Mim على Facebook · رمز وصول الصفحة لا تنتهي صلاحيته</div></div></div>
+    <div class="row" style="gap:5px;margin-top:9px;flex-wrap:wrap"><span style="font-size:8px;font-weight:900;letter-spacing:1px;opacity:.6">العلامات</span><span style="font-size:9px;font-weight:800;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35)">Mim</span><span style="font-size:9px;font-weight:800;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35)">Juno</span><span style="font-size:9px;font-weight:800;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35)">Asmar</span><span style="font-size:9px;font-weight:800;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35)">Sareea</span><span style="font-size:8.5px;opacity:.7">حساب لكل علامة، ورمز وصول لكل حساب</span></div></div>
+  <div style="padding:6px 12px"><div class="row" style="gap:8px;padding:7px 0;border-top:1px solid #f1f5f9;align-items:flex-start"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(150deg,#6EA2B3,#0A4174);color:#fff;font-size:8px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">FA</div><div style="flex:1;min-width:0"><div dir="auto" style="font-size:10.5px;text-align:start"><b>@fatima.alk</b> الله يعطيكم العافية 😍 متى تفتحون في الوكرة؟</div><div class="row" style="gap:6px;margin-top:2px"><span style="font-size:8.5px;color:#94a3b8">تحت منشور: Jalapeño sliders · قبل ساعتين</span><span style="font-size:7.5px;font-weight:900;padding:1px 5px;border-radius:4px;background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0">تحت منشور باع</span></div></div></div><div class="row" style="gap:8px;padding:7px 0;border-top:1px solid #f1f5f9;align-items:flex-start"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(150deg,#6EA2B3,#0A4174);color:#fff;font-size:8px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">RM</div><div style="flex:1;min-width:0"><div dir="auto" style="font-size:10.5px;text-align:start"><b>@rami_eats_doha</b> Best sliders in Doha, not even close</div><div class="row" style="gap:6px;margin-top:2px"><span style="font-size:8.5px;color:#94a3b8">تحت منشور: Jalapeño sliders · قبل 5 ساعات</span><span style="font-size:7.5px;font-weight:900;padding:1px 5px;border-radius:4px;background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0">تحت منشور باع</span></div></div></div><div class="row" style="gap:8px;padding:7px 0;border-top:1px solid #f1f5f9;align-items:flex-start"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(150deg,#6EA2B3,#0A4174);color:#fff;font-size:8px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0">NS</div><div style="flex:1;min-width:0"><div dir="auto" style="font-size:10.5px;text-align:start"><b>@noor.s</b> Is the burrata available at West Walk too?</div><div class="row" style="gap:6px;margin-top:2px"><span style="font-size:8.5px;color:#94a3b8">تحت منشور: Stuffed burrata · قبل يوم</span></div></div></div></div>
+</div><ul>
+        <li><i class="fas fa-check"></i><span>تطبيق Meta واحد، ورمز وصول لكل علامة، وحساب الشركة احتياطاً — يُربط مرة واحدة، ويُقرأ كل ساعة، والرمز محفوظ على المحرّك ولا يوضع على أي كاشير.</span></li>
+        <li><i class="fas fa-check"></i><span>التعليقات تصل بالعربية أو الإنجليزية تحت المنشور الذي تنتمي إليه، والتعليق تحت منشور باع يُعلَّم بذلك.</span></li>
+        <li><i class="fas fa-check"></i><span>الوصول والحفظ والنشر معلَّمة بـ<b>«قريباً»</b> لا موعودة — الشاشة تقول ما لم تستطع رؤيته.</span></li>
+      </ul></div>
+    </div>
+    <div class="ctl-grid">
+      <div class="sec-card reveal-s"><i class="fas fa-eye-slash"></i><h4>التسويق لا يرى المال</h4><p>قسم التسويق يرى الطلب <b>حصصاً</b> — لا ريالاً، ولا سعراً، ولا تكلفة. وبوابة أمان ترفض أي شاشة تسويق تمدّ يدها إلى المال.</p></div>
+      <div class="sec-card reveal-s"><i class="fas fa-ban"></i><h4>قائمة 86 هي المحرِّر</h4><p>لا يمكن صياغة أي شيء لطبق موقوف عن البيع حيث سيُرى المنشور. والرفض هو الحقيقة نفسها التي تحملها شاشة إقفال اليوم أصلاً.</p></div>
+      <div class="sec-card reveal-s"><i class="fas fa-clipboard-check"></i><h4>حملات لها مسار اعتماد</h4><p>تُخطَّط الحملة وتُحدَّد ميزانيتها ويُطلب اعتمادها؛ والمالية هي من توافق على الإنفاق. ويُقاس ارتفاعها بحصص الأطباق المسمّاة، أثناء الحملة مقابل ما قبلها — محسوبٌ، فلا يمكن تجميله.</p></div>
+      <div class="sec-card reveal-s"><i class="fas fa-star-half-stroke"></i><h4>تقييمات تُوجَّه بأمانة</h4><p>من إيصال الضيف: أعجبه؟ إلى رابط تقييم الفرع نفسه على Google؛ لم يُعجبه تماماً؟ ملاحظة خاصة إلى المدير وهاتف المالك، ولا إلى الإنترنت أبداً.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOD COST ===== -->
+<section id="foodcost">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">الرقم الذي تختلقه أغلب الأنظمة بصمت</div>
+      <h2 class="section-title reveal">كم <span class="gold">كان يجب أن يكلّف</span> الطبق</h2>
+      <p class="section-sub mx-auto reveal">النظري مقابل الفعلي، لكل مكوّن ولكل صالة. الفرق بالكيلو <em>وبالريال</em> — وخانة فارغة بصدق حين تكون الإجابة مجهولة.</p>
+    </div>
+    <div class="fc-shot reveal-s">
+      <picture>
+        <source media="(max-width:760px)" srcset="images/food-cost-mobile.svg" />
+        <img src="/images/food-cost.svg" alt="شاشة تكلفة الطعام — النظري 29.4% مقابل الفعلي 32.1%، الفرق حسب الفئة، أسوأ المكوّنات حسب القيمة، و50 طبقاً بلا تكلفة معزولة" loading="lazy" />
+      </picture>
+    </div>
+    <div class="fc-laws">
+      <div class="fc-law reveal"><h4>المجهول ليس صفراً أبداً</h4><p>نقص الزعفران 12 جم لكن لا سعر مسجّلاً له. النقص <b>حقيقي</b>، والمبلغ <b>مجهول</b>. ولا يُقرَّب إلى الصفر أبداً كي يبدو التقرير مكتملاً.</p></div>
+      <div class="fc-law reveal"><h4>ما لا نراه ليس فرقاً</h4><p>يُباع 50 طبقاً بلا وصفة. هذه الأطباق <b>معزولة</b> ولا تُحسب وفراً — فالطبق الذي لم يحسب أحد تكلفته ثغرة في الخريطة، لا بشرى.</p></div>
+      <div class="fc-law reveal"><h4>الجرامات لا تصير قطعاً أبداً</h4><p>«20 جم زعفران» أمام رفّ محسوب بالكيلو كانت تُقرأ 20 كجم — <b>كذبة مضروبة في 1000</b> في تكلفة الطعام ورفّ يفرغ على الورق. التحويل لا يكون إلا بين وحدات من البُعد نفسه، وإلا رُفض.</p></div>
+      <div class="fc-law reveal"><h4>لا أرقام مزروعة</h4><p>لا يُمنح أي طبق تكلفة مختلَقة بنسبة 30% من سعره لملء الجدول. بلا تكلفة تعني <b>بلا تكلفة</b>، والشاشة تقولها صراحةً حتى يُدخل أحدهم الوصفة.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STAFF SELF-SERVICE ===== -->
+<section id="selfservice" style="background:#fff">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">كل سؤال يُطرح على الموارد البشرية، مُجاب عنه من دون الموارد البشرية</div>
+      <h2 class="section-title reveal">لكل شخص، <span class="gold">هاتفه الخاص</span></h2>
+      <p class="section-sub mx-auto reveal">ألف موظف لا يتشاركون لوحة رقم سري من أربع خانات. يمسح كل شخص رمزاً شخصياً واحداً، فيصبح هاتفه هو خدمته الذاتية — ولا شيء غير ذلك.</p>
+    </div>
+    <div class="self-grid">
+      <div class="reveal-l"><div class="self-phone"><img src="/images/staff-phone.svg" alt="هاتف الخدمة الذاتية للموظف — رصيد الإجازات، وقسيمة الراتب خلف رقم سري شخصي، وتواريخ انتهاء المستندات، والطلبات المرسلة إلى الموارد البشرية" loading="lazy" /></div></div>
+      <ul class="self-points reveal-r">
+        <li><i class="fas fa-umbrella-beach"></i><div><b>إجازته، محسوبة حتى اليوم</b><span>الأيام المستحقة له وما تساويه، متراكمة حتى تاريخ اليوم. الرقم على الهاتف والرقم لدى الموارد البشرية هما الكود نفسه يعمل مرتين — واختبار يقارن بينهما على البيانات نفسها، ويفشل عند اختلاف ريال واحد.</span></div></li>
+        <li><i class="fas fa-lock"></i><div><b>قسيمة راتبه، خلف رقمه السري هو</b><span>لا رقم مديره السري. خمس محاولات خاطئة تقفل ذلك الهاتف خمس عشرة دقيقة.</span></div></li>
+        <li><i class="fas fa-id-card"></i><div><b>مستنداته، قبل أن تنتهي صلاحيتها</b><span>البطاقة الصحية، والإقامة، وجواز السفر — مع التاريخ، حتى لا يعمل أحد وردية ببطاقة منتهية الصلاحية عن غير قصد.</span></div></li>
+        <li><i class="fas fa-inbox"></i><div><b>طلبات لا يمكن أن تضيع</b><span>إجازة، أو شهادة راتب، أو تصحيح بصمة حضور. كل طلب سطر في سجلّ يُضاف إليه ولا يُحذف منه، تسحب منه الموارد البشرية — لا رسالة WhatsApp تنزلق بعيداً مع التمرير.</span></div></li>
+        <li><i class="fas fa-eye-slash"></i><div><b>ولا شيء ليس له</b><span>لا راتب زميل، ولا أرقام IBAN، ولا أرقام سرية، ولا بيانات الشركة. يُقدَّم للهاتف عرض على قياس شخص واحد — فهو ليس كاشيراً بشاشة أصغر.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOYALTY ===== -->
+<section id="loyalty">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">النقاط مال، لذلك تُدقَّق كما يُدقَّق المال</div>
+      <h2 class="section-title reveal"><span class="gold">الولاء</span> الذكي</h2>
+      <p class="section-sub mx-auto reveal">الرصيد يعيش في المحرّك لا على البطاقة — فلا يمكن تعديله من الكاشير.</p>
+    </div>
+    <div class="tier-row">
+      <div class="tier-card bronze reveal-s">
+        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> علامتك التجارية</span><span class="tc-thresh">من 0 نقطة</span></div>
+        <div class="tc-body"><div class="tc-label">النقاط</div><div class="tc-points">137</div></div>
+        <div class="tc-foot">
+          <div><span>القيمة</span><b>≈ 68.50 ر.ق</b></div>
+          <div><span>الفئة</span><b>برونزية</b></div>
+          <div><span>العضو</span><b>سارة</b></div>
+        </div>
+      </div>
+      <div class="tier-card silver reveal-s">
+        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> علامتك التجارية</span><span class="tc-thresh">من 500 نقطة</span></div>
+        <div class="tc-body"><div class="tc-label">النقاط</div><div class="tc-points">640</div></div>
+        <div class="tc-foot">
+          <div><span>القيمة</span><b>≈ 320.00 ر.ق</b></div>
+          <div><span>الفئة</span><b>فضية</b></div>
+          <div><span>العضو</span><b>عمر</b></div>
+        </div>
+      </div>
+      <div class="tier-card gold reveal-s">
+        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> علامتك التجارية</span><span class="tc-thresh">من 1,000 نقطة</span></div>
+        <div class="tc-body"><div class="tc-label">النقاط</div><div class="tc-points">1,180</div></div>
+        <div class="tc-foot">
+          <div><span>القيمة</span><b>≈ 590.00 ر.ق</b></div>
+          <div><span>الفئة</span><b>ذهبية</b></div>
+          <div><span>العضو</span><b>منى</b></div>
+        </div>
+      </div>
+      <div class="tier-card platinum reveal-s">
+        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> علامتك التجارية</span><span class="tc-thresh">من 1,500 نقطة</span></div>
+        <div class="tc-body"><div class="tc-label">النقاط</div><div class="tc-points">1,760</div></div>
+        <div class="tc-foot">
+          <div><span>القيمة</span><b>≈ 880.00 ر.ق</b></div>
+          <div><span>الفئة</span><b>♛ بلاتينية</b></div>
+          <div><span>العضو</span><b>عادل</b></div>
+        </div>
+      </div>
+    </div>
+    <p class="tier-note">الفئات وحدودها ومكافآتها أنت من يحدّدها — وما تراه هنا مجرّد مثال. البطاقة تحمل علامتك <b>أنت</b> وألوانك، لا علامتنا أبداً. وكل رصيد أعلاه هو ببساطة عدد النقاط × <b>0.50 ر.ق</b>، بالمعدّل نفسه في كل فرع.</p>
+
+    <div class="loyalty-grid">
+      <div class="loyalty-card reveal-l">
+        <i class="fas fa-star top-ico"></i>
+        <div class="points">1,284</div>
+        <div class="worth">نقطة · تساوي <strong>642.00 ر.ق</strong></div>
+        <ul>
+          <li><i class="fas fa-equals"></i> كل نقطة تساوي بالضبط <strong>0.50 ر.ق</strong>. معدّل واحد في كل الفروع.</li>
+          <li><i class="fas fa-qrcode"></i> امسح الرمز لتنفق النقاط. الكاشير يسأل المحرّك عن الرصيد، لا نسخته الخاصة أبداً.</li>
+          <li><i class="fas fa-rotate-left"></i> الاسترداد يعيد النقاط نقاطاً — لا نقداً أبداً.</li>
+          <li><i class="fas fa-lock"></i> لا يستطيع أي مدير، مهما كانت صلاحياته، أن يصنع نقطة من لا شيء.</li>
+        </ul>
+      </div>
+      <div class="loyalty-card reveal-r">
+        <i class="fas fa-shield-halved top-ico"></i>
+        <h4>لماذا يمكن الوثوق بالرصيد</h4>
+        <ul>
+          <li><i class="fas fa-book"></i> كل نقطة تُكسب وكل نقطة تُنفق سطرٌ في السجلّ الدائم.</li>
+          <li><i class="fas fa-wifi"></i> دون اتصال، يضع الكاشير عملية الإنفاق في قائمة الانتظار — ولا يخمّن الرصيد أبداً.</li>
+          <li><i class="fas fa-user-shield"></i> رقم هاتف الضيف ملكه هو؛ وشاشات الموظفين لا تعرضه كاملاً أبداً.</li>
+          <li><i class="fas fa-scale-balanced"></i> النقاط غير المستخدمة تظهر في قائمة الأرباح والخسائر (P&amp;L) بوصفها التزاماً مالياً، لأنها كذلك فعلاً.</li>
+        </ul>
+        <p class="foot">عُثر على اثنتي عشرة ثغرة تدقيق وأُغلقت جميعها قبل إطلاق هذه الميزة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RECEIPT ===== -->
+<section id="receipt" style="background:#fff">
+  <div class="container">
+    <div class="two-col">
+      <div class="reveal-l"><div class="rcpt-phone ui">
+  <div style="color:#fff;padding:16px 16px 18px;background-color:#0A4174;background-image:radial-gradient(115% 95% at 12% 100%,rgba(56,132,214,.28) 0%,rgba(0,29,57,0) 68%),linear-gradient(135deg,#001D39,#0A4174)">
+    <div class="row" style="justify-content:space-between"><div class="row" style="gap:9px"><div style="width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px">J</div><div><div style="font-size:14px;font-weight:900;letter-spacing:2.5px">JUNO</div><div style="font-size:9.5px;opacity:.8">West Walk · مطاعم Mim</div></div></div>
+      <div class="row" style="gap:0;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:2px"><span style="font-size:9px;font-weight:900;padding:4px 8px;border-radius:999px;background:#fff;color:#001D39">EN</span><span style="font-size:9px;font-weight:900;padding:4px 8px">العربية</span></div></div>
+    <div class="row" style="margin-top:16px;justify-content:space-between;align-items:flex-end"><div><div class="cap" style="color:rgba(255,255,255,.65)">المبلغ المدفوع</div><div class="num" style="font-size:28px;font-weight:900;line-height:1;margin-top:3px">132.00 ر.ق</div></div>
+      <div style="background:rgba(110,231,183,.16);border:1px solid #6EE7B7;color:#6EE7B7;border-radius:999px;padding:4px 9px;font-size:9px;font-weight:900;letter-spacing:1px">✓ مدفوع</div></div>
+  </div>
+  <div style="margin:-10px 10px 0;background:#fff;border-radius:20px;padding:10px 13px;display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;box-shadow:0 1px 2px rgba(15,23,42,.06)">
+    <div><div class="cap">الإيصال</div><div class="num" style="font-size:11px;font-weight:800;margin-top:2px">#1200029</div></div><div><div class="cap">التاريخ</div><div class="num" style="font-size:11px;font-weight:800;margin-top:2px">8 سبتمبر · 21:14</div></div><div><div class="cap">الطاولة</div><div class="num" style="font-size:11px;font-weight:800;margin-top:2px">T2 · 2</div></div><div><div class="cap">النادل</div><div style="font-size:11px;font-weight:800;margin-top:2px">Raza</div></div>
+  </div>
+  <div style="margin:9px 10px 0;background:#fff;border-radius:20px;padding:4px 13px 8px;box-shadow:0 1px 2px rgba(15,23,42,.06)">
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div class="row" style="gap:8px"><span class="num" style="font-weight:900;color:#475569;font-size:11px">1×</span><span style="font-weight:800">Kale Salad</span></div><span class="num" style="font-weight:800">48.00</span></div>
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div class="row" style="gap:8px"><span class="num" style="font-weight:900;color:#475569;font-size:11px">1×</span><span style="font-weight:800">J Fire Bird</span></div><span class="num" style="font-weight:800">75.00</span></div>
+    <div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #f1f5f9"><div class="row" style="gap:8px"><span class="num" style="font-weight:900;color:#475569;font-size:11px">1×</span><span style="font-weight:800">Parmesan Fries <span style="font-size:8px;font-weight:900;letter-spacing:1px;color:#047857;background:#ECFDF5;border-radius:5px;padding:2px 5px">ضيافة</span></span></div><span class="num" style="font-weight:800;color:#94a3b8;text-decoration:line-through">0.00</span></div>
+    <div class="row" style="justify-content:space-between;padding:9px 0 3px"><span class="cap" style="color:#475569">الإجمالي</span><span class="num" style="font-size:17px;font-weight:900;color:#001D39">132.00 ر.ق</span></div>
+  </div>
+  <div style="margin:9px 10px 0;background:#fff;border-radius:20px;padding:12px 13px;box-shadow:0 1px 2px rgba(15,23,42,.06)"><div class="cap">بطاقة WITHSTAND</div><div style="font-size:11.5px;font-weight:800;margin-top:2px">هذه الفاتورة كسبت <b style="color:#047857">+13 نقطة</b></div><div style="margin-top:8px;height:38px;border-radius:12px;background:#0A4174;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">أضِف بطاقتك إلى Apple Wallet</div></div>
+  <div class="row" style="margin:9px 10px 12px;gap:7px"><div style="flex:1;height:38px;border-radius:12px;background:#047857;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">WhatsApp</div><div style="flex:1;height:38px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900">حفظ PDF</div></div>
+</div></div>
+      <div class="reveal-r">
+        <div class="eyebrow">إيصال الضيف · جاهز للفوترة الإلكترونية</div>
+        <h2 class="section-title">فاتورة الضيف، <span class="gold">إلى الأبد</span></h2>
+        <p class="section-sub">كل إيصال مطبوع يحمل رمز QR. خلفه نسخة الضيف الخاصة من تلك الفاتورة: رابط يعيش ما عاش السجلّ الدائم، أي إلى الأبد. لا تسجيل دخول، ولا بيانات شخصية في العنوان، وأي رابط غير معروف لا يلقى إلا جواباً واحداً ثابتاً: «غير موجود».</p>
+        <div class="till-points">
+          <div class="till-point"><i class="fas fa-language"></i><div><b>العربية أو الإنجليزية بلمسة واحدة</b><span>اللغتان محمّلتان في الصفحة نفسها، والمبدّل يقلبها من اليمين إلى اليسار دون إعادة تحميل.</span></div></div>
+          <div class="till-point"><i class="fas fa-gift"></i><div><b>النقاط التي كسبتها هذه الفاتورة</b><span>بطاقة WITHSTAND تُعرض حيث يكون كل ضيف أصلاً: على فاتورته، ومعها زر الإضافة إلى Apple Wallet.</span></div></div>
+          <div class="till-point"><i class="fas fa-comments"></i><div><b>راضٍ ← Google. غير راضٍ تماماً ← المدير، على انفراد</b><span>طريق غير الراضين ينتهي في بريد المدير وهاتف المالك، ولا يظهر على الإنترنت أبداً.</span></div></div>
+          <div class="till-point"><i class="fas fa-file-invoice"></i><div><b>الفوترة الإلكترونية في قطر، جاهزة في وقتها</b><span>الإيصال نفسه يُقدَّم اليوم كمستند مُهيكل: البائع، والرقم المتسلسل، والبنود، وإجماليات الضريبة. وحين تنشر الهيئة العامة للضرائب (GTA) صيغها، يكون الشريط الضريبي مجرّد ربط للحقول، لا إعادة بناء. ولا شيء هنا يُسمّى فاتورة ضريبية قبل أن يقول القانون ذلك.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QATAR ===== -->
+<section id="qatar" style="background:#fff">
+  <div class="container text-center">
+    <div class="eyebrow">ليست صفحة إعدادات</div>
+    <h2 class="section-title reveal">مبنيّ من أجل <span class="gold">قطر</span></h2>
+    <p class="section-sub mx-auto reveal">القواعد المحلية ليست خانةً أضفناها إلى النظام. هي الطريقة التي يحسب بها النظام أصلاً.</p>
+    <div class="tile-grid">
+      <div class="tile reveal-s"><i class="fas fa-file-invoice-dollar"></i><h4>ملف رواتب WPS</h4><p>صيغة SIF الحقيقية التي يقبلها البنك</p></div>
+      <div class="tile reveal-s"><i class="fas fa-scale-balanced"></i><h4>قانون العمل رقم 14 لسنة 2004</h4><p>مكافأة نهاية الخدمة، أجر يوم الراحة، الحدّ الأدنى للأجور، المادة 70</p></div>
+      <div class="tile reveal-s"><i class="fas fa-moon"></i><h4>التقويم الهجري</h4><p>رمضان والعيد يُحسبان، لا يُكتبان يدوياً</p></div>
+      <div class="tile reveal-s"><i class="fas fa-language"></i><h4>العربية، من اليمين إلى اليسار</h4><p>كل شاشة، بما فيها الإيصال</p></div>
+      <div class="tile reveal-s"><i class="fas fa-clock"></i><h4>يوم العمل ينتهي الساعة 4 فجراً</h4><p>ليلة الخميس تُحسب على الخميس</p></div>
+      <div class="tile reveal-s"><i class="fas fa-wheat-awn"></i><h4>مسببات الحساسية، قائمة دول الخليج</h4><p>14 فئة · «غير محدَّد» لا يعني أبداً «خالٍ»</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CALCULATOR ===== -->
+<section id="calc">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">أرقامك أنت، والحساب حسابك</div>
+      <h2 class="section-title reveal">كم تساوي <span class="gold">نقطة واحدة</span> عندك؟</h2>
+      <p class="section-sub mx-auto reveal">التكلفة الأولية هي تكلفة الطعام زائد العمالة. حرّك أشرطة التمرير إلى أرقام مجموعتك وانظر حجم المكسب — قبل أن يعدك أحد بأي شيء.</p>
+    </div>
+    <div class="calc-wrap">
+      <div class="calc-inputs reveal-l">
+        <div class="calc-field">
+          <label for="cRev">المبيعات الشهرية لكل فرع <output id="oRev">400,000 ر.ق</output></label>
+          <input type="range" id="cRev" min="50000" max="2000000" step="25000" value="400000" />
+        </div>
+        <div class="calc-field">
+          <label for="cBr">الفروع <output id="oBr">6</output></label>
+          <input type="range" id="cBr" min="1" max="40" step="1" value="6" />
+        </div>
+        <div class="calc-field">
+          <label for="cFc">تكلفة الطعام اليوم <output id="oFc">32%</output></label>
+          <input type="range" id="cFc" min="18" max="50" step="0.5" value="32" />
+        </div>
+        <div class="calc-field">
+          <label for="cLc">تكلفة العمالة اليوم <output id="oLc">28%</output></label>
+          <input type="range" id="cLc" min="12" max="50" step="0.5" value="28" />
+        </div>
+        <div class="calc-verdict" id="cVerdict"></div>
+      </div>
+      <div class="reveal-r">
+        <div class="calc-out">
+          <div class="calc-card"><div class="k">مبيعات المجموعة في السنة</div><div class="v" id="oYear">—</div><div class="n">عبر كل فرع حدّدته أعلاه.</div></div>
+          <div class="calc-card"><div class="k">التكلفة الأولية</div><div class="v" id="oPrime">—</div><div class="n" id="oPrimeN">الطعام زائد العمالة، كنسبة من المبيعات.</div></div>
+          <div class="calc-card"><div class="k">نقطة واحدة أقل في تكلفة الطعام</div><div class="v" id="oFood1">—</div><div class="n">في السنة. هذا ما تساويه نقطة مئوية واحدة.</div></div>
+          <div class="calc-card"><div class="k">نصف نقطة أقل في العمالة</div><div class="v" id="oLab1">—</div><div class="n">في السنة. جداول مناوبات تطابق التوقّع، لا العادة.</div></div>
+          <div class="calc-card wide"><div class="k">ما تدفعه مقابل ألّا تعرف</div><div class="v" id="oGap">—</div><div class="n">هذا ليس توفيراً نعدك به. إنه المبلغ الذي يتحرك حين تتحرك تكلفة طعامك نقطة واحدة وعمالتك نصف نقطة — وهو النطاق الذي يجده معظم المشغّلين قابعاً في الفجوات بين أنظمتهم. ما تفعله به شأنك؛ وشأننا أن نجعله مرئياً في اليوم الذي يحدث فيه، لا في نهاية الشهر.</div></div>
+        </div>
+        <p class="calc-foot">معيار التكلفة الأولية: أقل من 55% صحي لمعظم مطاعم الخدمة الكاملة، وما بين 55 و65% يستحق المراقبة، وفوق 65% يعني غالباً أن قائمة الطعام أو جدول المناوبات يحمل مشكلة. لا شيء هنا يُرسَل إلى أي مكان — الحساب يجري في متصفحك.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROOF ===== -->
+<section id="proof">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">العميل رقم واحد</div>
+      <h2 class="section-title reveal">أموالنا نحن <span class="gold">تمرّ عبره</span></h2>
+      <p class="section-sub mx-auto reveal">لم يُبنَ MiM من أجل سوق. بُني لأننا كنا بحاجة إليه، ونحن أوّل من يجب أن يكون صائباً في حقّهم.</p>
+    </div>
+    <div class="proof-wrap reveal-s">
+      <div>
+        <blockquote>لم نبدأ لنبيع برنامجاً. بدأنا لنكفّ عن خسارة المال في الفجوات بين خمسة أنظمة — ثم لم نعد نقدر على العودة إلى الطريقة القديمة.</blockquote>
+        <div class="attrib">
+          <strong>عادل بريكي</strong>
+          المؤسّس · مطاعم WITHSTAND، الدوحة
+        </div>
+      </div>
+      <div class="proof-stats">
+        <div class="proof-stat"><div class="n">6</div><div class="l">علامات تجارية على قاعدة بيانات واحدة</div></div>
+        <div class="proof-stat"><div class="n">17</div><div class="l">فرعاً في المجموعة</div></div>
+        <div class="proof-stat"><div class="n">240</div><div class="l">بوابة أمان يجب أن تنجح قبل أي إصدار</div></div>
+        <div class="proof-stat"><div class="n">0</div><div class="l">أرقام تُعاد كتابتها بين الشاشات</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ENGINEERING ===== -->
+<section id="engineering" style="background:#fff">
+  <div class="container text-center">
+    <div class="eyebrow">برمجيات تتعامل مع المال</div>
+    <h2 class="section-title reveal">لماذا يمكنك أن <span class="gold">تثق بالرقم</span></h2>
+    <p class="section-sub mx-auto reveal">الثقة تُكتسب بما يرفض النظام إطلاقه، لا بما يعِد به.</p>
+    <div class="tile-grid">
+      <div class="tile reveal-s"><span class="big">240</span><h4>بوابة أمان</h4><p>كلّ واحدة منها تشغّل الكود الحقيقي. ولا واحدة تكتفي بقراءته.</p></div>
+      <div class="tile reveal-s"><i class="fas fa-clock-rotate-left"></i><h4>السجلّ الدائم</h4><p>للإضافة فقط. التصحيح يُضاف سطراً جديداً، ولا يُعدَّل شيء أبداً.</p></div>
+      <div class="tile reveal-s"><i class="fas fa-plug-circle-xmark"></i><h4>يعمل دون اتصال</h4><p>الكاشير يواصل البيع حين ينقطع الاتصال.</p></div>
+      <div class="tile reveal-s"><i class="fas fa-database"></i><h4>الاستعادة مُختبَرة</h4><p>النسخة الاحتياطية التي لم يستعدها أحد ليست نسخة احتياطية.</p></div>
+      <div class="tile reveal-s"><i class="fas fa-vial-circle-check"></i><h4>كل إصلاح محروس</h4><p>نعيد زرع الخلل لنثبت أن الاختبار يلتقطه.</p></div>
+      <div class="tile reveal-s"><i class="fas fa-equals"></i><h4>قاعدة واحدة، شاشتان</h4><p>لوحة القيادة وقائمة P&amp;L تتشاركان الكود نفسه.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECURITY ===== -->
+<section id="security" style="background:#fff">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">السؤال الثالث الذي يطرحه كل مشترٍ جادّ</div>
+      <h2 class="section-title reveal">أين <span class="gold">تُحفَظ</span> بياناتك</h2>
+      <p class="section-sub mx-auto reveal">أنت تسلّمنا الرواتب ومطابقة كشوف البنك وكل عملية بيع تُجريها. وهذا بالضبط ما يحدث لها.</p>
+    </div>
+    <div class="sec-grid">
+      <div class="sec-card reveal-s"><i class="fas fa-database"></i><h4>قاعدة بيانات واحدة، بنسخة احتياطية يومية</h4><p>PostgreSQL على خطة مدفوعة مع نسخ احتياطي تلقائي كل يوم. ليست خطة مجانية، وليست ملفاً على جهاز في المكتب الخلفي.</p></div>
+      <div class="sec-card reveal-s"><i class="fas fa-lock"></i><h4>باب البيانات العام مُغلَق</h4><p>لا توجد واجهة API مفتوحة تقرأ جداولك. كل طلب يمرّ عبر المحرّك بمفتاح، ولكل تثبيت مفتاحه الخاص.</p></div>
+      <div class="sec-card reveal-s"><i class="fas fa-scroll"></i><h4>لا شيء يُمحى بالتعديل أبداً</h4><p>المبيعات والإلغاءات والاستردادات وتغييرات الأجور تُضاف إلى سجلّ دائم. التصحيح سطر جديد، فيبقى الأصل مقروءاً إلى الأبد.</p></div>
+      <div class="sec-card reveal-s"><i class="fas fa-user-shield"></i><h4>الموظف لا يرى إلا ما يخصّه</h4><p>الرواتب وأرقام الهوية والمستندات محفوظة خلف مفتاح مستقل للموارد البشرية. شاشة النادل لا تصل إليها، ولا شاشة المدير من دونه.</p></div>
+      <div class="sec-card reveal-s"><i class="fas fa-plug-circle-xmark"></i><h4>قد ينقطع الاتصال</h4><p>يواصل الكاشير البيع من دون اتصال ويحفظ كل عملية بيع في قائمة الانتظار. وحين يعود الاتصال يسوّي كل شيء — والجواب الفارغ لا يُحسَب صفراً حقيقياً أبداً.</p></div>
+      <div class="sec-card reveal-s"><i class="fas fa-file-export"></i><h4>أرقامك ترحل معك</h4><p>كل جدول يُصدَّر إلى ملف جدول بيانات. وإن توقفت يوماً عن الدفع لنا، يبقى تاريخك معك — وهذا هو مغزى السجلّ الدائم.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT STARTS ===== -->
+<section id="howitstarts">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">كيف تبدأ</div>
+      <h2 class="section-title reveal">فرعك الأول يعمل <span class="gold">خلال أسبوع</span></h2>
+      <p class="section-sub mx-auto reveal">الانتقال هو ما يخشاه الناس أكثر من السعر نفسه. وإليك الأمر كلّه.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal-s"><div class="n">1</div><h4>عرض توضيحي لمدة 20 دقيقة عبر مكالمة فيديو على WhatsApp</h4><p>الشاشات نفسها التي نُدير بها مطاعمنا، ببيانات تجريبية. أحضر قائمة طعامك، وسنُدخل ثلاثة أطباق أمامك.</p></div>
+      <div class="step-card reveal-s"><div class="n">2</div><h4>يوم التركيب</h4><p>تطبيق الكاشير يُثبَّت على جهازك من USB، ومفتاح المحرّك على بطاقة تضعها في محفظتك، والطابعات تُكتشف على الشبكة. كاشيرك الحالي، Mac أو POSBANK أو Windows — لا حاجة لشراء شيء جديد إلا إذا أردت.</p></div>
+      <div class="step-card reveal-s"><div class="n">3</div><h4>بياناتك، من جداول البيانات التي لديك أصلاً</h4><p>القائمة والموظفون والموردون والمخزون تصل عبر أربعة قوالب. كل صفّ يحصل على حكم، والخانة الفارغة لا تتحوّل أبداً إلى صفر.</p></div>
+      <div class="step-card reveal-s"><div class="n">4</div><h4>الأجهزة اللوحية تقترن برمز QR</h4><p>النادلون والشيف ومكتب الاستقبال وهاتف كل موظف، كلٌّ يمسح رمزاً واحداً. جهاز واحد، هوية واحدة — والجهاز اللوحي المفقود تُسحب صلاحيته بلمسة واحدة.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section id="pricing">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">لا قائمة وحدات مخفيّة</div>
+      <h2 class="section-title reveal">كيف <span class="gold">تُحسَب الأسعار</span></h2>
+      <p class="section-sub mx-auto reveal">كل قسم مشمول في كل باقة — لن يُباع لك «قسم الموارد البشرية» بعد سنة. السعر يُحدَّد لكل مجموعة على حدة، لأن مقهى بفرعين ومجموعة بسبعة عشر فرعاً ليسا العمل نفسه.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card reveal-s">
+        <div class="tag">فرع واحد</div>
+        <h4>فردي</h4>
+        <p class="who">مطعم واحد، مطبخ واحد، ومهما كان عدد أجهزة الكاشير التي تحتاجها في الصالة.</p>
+        <div class="price-band"><div class="unit">لكل فرع · شهرياً</div><div class="note">فرع واحد، مهما كان عدد أجهزة الكاشير</div></div>
+        <ul>
+          <li><i class="fas fa-check"></i> كل الأقسام الـ15</li>
+          <li><i class="fas fa-check"></i> عدد غير محدود من أجهزة الكاشير وأجهزة النادل اللوحية</li>
+          <li><i class="fas fa-check"></i> شاشات المطبخ وطابعات المطبخ</li>
+          <li><i class="fas fa-check"></i> الرواتب عبر WPS وأحكام قانون العمل القطري</li>
+          <li><i class="fas fa-check"></i> تطبيق الضيف وبرنامج الولاء</li>
+        </ul>
+        <a href="mailto:hello@mim-smart.com?subject=Quote%20request%20%E2%80%94%20Single&amp;body=Group%20name%3A%0ANumber%20of%20branches%3A%0ATills%20per%20branch%3A%0AWhat%20you%20run%20today%3A%0A" class="btn btn-line">اطلب عرض سعر</a>
+      </div>
+      <div class="price-card mid reveal-s">
+        <div class="tag">معظم المجموعات تبدأ من هنا</div>
+        <h4>مجموعة</h4>
+        <p class="who">عدة فروع، علامة تجارية أو أكثر، ومكتب رئيسي يريد شاشة واحدة لكل ذلك.</p>
+        <div class="price-band"><div class="unit">لكل فرع · شهرياً</div><div class="note">لكل فرع، والمكتب الرئيسي مشمول</div></div>
+        <ul>
+          <li><i class="fas fa-check"></i> كل ما في باقة «فردي»، لكل فرع</li>
+          <li><i class="fas fa-check"></i> لوحة قيادة المكتب الرئيسي عبر كل الفروع</li>
+          <li><i class="fas fa-check"></i> المخزن المركزي، والمطبخ المركزي، والمعجنات</li>
+          <li><i class="fas fa-check"></i> التحويلات بين الفروع محسوبة التكلفة</li>
+          <li><i class="fas fa-check"></i> قائمة P&amp;L موحّدة وتكلفة طعام موحّدة</li>
+        </ul>
+        <a href="mailto:hello@mim-smart.com?subject=Quote%20request%20%E2%80%94%20Group&amp;body=Group%20name%3A%0ANumber%20of%20branches%3A%0ATills%20per%20branch%3A%0AWhat%20you%20run%20today%3A%0A" class="btn btn-navy">اطلب عرض سعر</a>
+      </div>
+      <div class="price-card reveal-s">
+        <div class="tag">للعمليات الكبيرة</div>
+        <h4>مؤسسات</h4>
+        <p class="who">علامات تجارية كثيرة، أو شركاء امتياز، أو مجموعة تحتاج تثبيتاً خاصاً بها ومفاتيح خاصة بها.</p>
+        <div class="price-band"><div class="unit">لكل فرع · شهرياً</div><div class="note">محرّك خاص بك، والسعر يُحدَّد على العملية كاملة</div></div>
+        <ul>
+          <li><i class="fas fa-check"></i> كل ما في باقة «مجموعة»</li>
+          <li><i class="fas fa-check"></i> محرّكك الخاص ومفاتيحك الخاصة</li>
+          <li><i class="fas fa-check"></i> الإعداد الأولي ونقل البيانات</li>
+          <li><i class="fas fa-check"></i> مسؤول دعم محدّد بالاسم</li>
+          <li><i class="fas fa-check"></i> أولوية في خارطة الطريق</li>
+        </ul>
+        <a href="mailto:hello@mim-smart.com?subject=Quote%20request%20%E2%80%94%20Enterprise&amp;body=Group%20name%3A%0ANumber%20of%20branches%3A%0ATills%20per%20branch%3A%0AWhat%20you%20run%20today%3A%0A" class="btn btn-line">تحدّث معنا</a>
+      </div>
+    </div>
+    <div class="price-how reveal">
+      <div><h4>ما الذي يحدّد السعر</h4><p><b>الفروع وأجهزة الكاشير.</b> لا الوحدات، ولا تراخيص المستخدمين، ولا عدد من يسجّلون الدخول. أضف قسماً ولن يتغيّر شيء في فاتورتك.</p></div>
+      <div><h4>ما المشمول دائماً</h4><p>كل <b>الأقسام الـ15</b>، وحسابات موظفين بلا حدود، وأجهزة النادل اللوحية، وشاشات المطبخ، وتطبيق الضيف وبرنامج الولاء، وكل تحديث نُصدره.</p></div>
+      <div><h4>ما الذي له تكلفة إضافية</h4><p><b>الإعداد الأولي</b> فقط — إدخال قائمتك ومكوّناتك ومورّديك وسجلات موظفيك، وتثبيت الفرع الأول. يُسعَّر مرة واحدة، ولا يتكرر أبداً.</p></div>
+      <div><h4>كيف تحصل على رقم</h4><p>أخبرنا <b>بعدد فروعك</b> وبما تعمل به اليوم. يصلك عرض سعر مكتوب، لا مكالمة من مندوب مبيعات.</p></div>
+    </div>
+    <div class="hw-grid reveal">
+      <div class="hw-card"><h4>ما تحتاجه</h4><ul>
+        <li><i class="fas fa-check"></i>كاشير: جهاز Mac لديك، أو POSBANK، أو أي جهاز Windows</li>
+        <li><i class="fas fa-check"></i>طابعات إيصالات ومطبخ بعرض 80 مم على الشبكة</li>
+        <li><i class="fas fa-check"></i>أجهزة Android لوحية للنُدُل والشيف وموظفة الاستقبال</li>
+        <li><i class="fas fa-check"></i>تطبيق المالك على iPhone الخاص بك</li>
+        <li><i class="fas fa-check"></i>الهاتف الخاص بكل موظف للخدمة الذاتية</li>
+        <li><i class="fas fa-check"></i>الإنترنت — والكاشير يواصل البيع من دونه</li>
+      </ul></div>
+      <div class="hw-card"><h4>مشمول في كل باقة</h4><ul>
+        <li><i class="fas fa-check"></i>كل إصدار، كل أسبوع — لا شيء منها يُباع كترقية</li>
+        <li><i class="fas fa-check"></i>تدريب في الصالة، بالعربية أو الإنجليزية</li>
+        <li><i class="fas fa-check"></i>بياناتك تخرج كجدول بيانات، في أي يوم</li>
+        <li><i class="fas fa-check"></i>السجلّ الدائم، منسوخ احتياطياً ومختبَر الاستعادة</li>
+        <li><i class="fas fa-check"></i>الإيصال الرقمي للضيف وبطاقة الولاء</li>
+        <li><i class="fas fa-check"></i>دعم عبر WhatsApp، في اليوم نفسه</li>
+      </ul></div>
+    </div>
+    <div class="price-note">
+      <b>قادم من نظام آخر؟</b> قائمتك ومكوّناتك ومورّدوك وسجلات موظفيك تدخل من جداول بيانات — ولكلٍّ منها قالب جاهز. كل صف يُفحص قبل أن يُسجَّل، وكل ما تعذّرت قراءته نُبلغك به بدل أن نخمّنه. والخلية الفارغة لا تُعامَل أبداً كصفر.
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" style="background:#fff">
+  <div class="container">
+    <div class="text-center">
+      <div class="eyebrow">أجوبة صريحة</div>
+      <h2 class="section-title reveal">أسئلة <span class="gold">نسمعها كثيراً</span></h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item reveal"><summary>ماذا يحدث عندما ينقطع الإنترنت؟</summary><div class="a">الكاشير يواصل البيع. الطلبات والمدفوعات والإلغاءات تنتظر في طابور محلي ثم تُسوّى مع المحرّك حين يعود الاتصال. القاعدة الوحيدة التي تهمّ: <b>الجواب الفارغ لا يُعامَل أبداً على أنه الحقيقة</b> — فإذا تعذّر على الكاشير الوصول إلى المحرّك، فإنه يعرض آخر ما يعرفه من مخطّط الصالة وقائمة الطعام وقائمة الفروع، بدل شاشة فارغة تبدو كأن المطعم مغلق.</div></details>
+      <details class="faq-item reveal"><summary>هل يتعامل مع قانون العمل القطري ونظام WPS كما ينبغي؟</summary><div class="a">نعم، وليس على هيئة تقرير تصدّره إلى مكان آخر. ملف الرواتب يصدر بـ<b>صيغة SIF الحقيقية</b> التي يقبلها البنك. مكافأة نهاية الخدمة، وأجر يوم الراحة، وسقف المادة 70، والحدود الدنيا للأجور بموجب القانون رقم 17 لسنة 2020 كلها يحسبها النظام، وينبّهك إلى أي راتب يقلّ عن الحد الأدنى القانوني قبل يوم الصرف لا بعده.</div></details>
+      <details class="faq-item reveal"><summary>هل أستطيع إخراج بياناتي؟</summary><div class="a">كل جدول يُصدَّر إلى ملف جداول بيانات، والسجلّ الدائم الذي يقوم عليه النظام لا يقبل إلا الإضافة ولا يُمحى منه شيء — فتاريخك كامل، لا لقطة من اليوم فقط. وإن قرّرت الرحيل يوماً، ترحل بالسجل كاملاً. نفضّل أن نستحق التجديد على أن نحتجز أرقامك رهينة.</div></details>
+      <details class="faq-item reveal"><summary>هل عليّ إدخال كل الوصفات قبل أن يصبح النظام مفيداً؟</summary><div class="a">لا. الكاشير والصالة والرواتب والمخزن وحساب P&amp;L كلها تعمل من اليوم الأول. تكلفة الطعام هي الجزء الذي يحتاج إلى الوصفات — وإلى أن تُسجَّل للطبق وصفة، يقول النظام <b>«لم تُحسب تكلفته بعد»</b> بدل أن يخترع رقماً. المجهول لا يظهر أبداً على أنه صفر، ولا يُدمَج بهدوء في متوسط هامش ربحك.</div></details>
+      <details class="faq-item reveal"><summary>وماذا عن اللغة العربية؟</summary><div class="a">كل شاشة تعمل بالعربية من اليمين إلى اليسار، بما فيها الإيصال. وليست طبقة ترجمة أُلصقت فوق النظام — بل التخطيط نفسه ينقلب، فلا شيء يُقرأ بالمقلوب ولا عنصر يتداخل مع آخر.</div></details>
+      <details class="faq-item reveal"><summary>هل يتصل بـ Talabat وSnoonu وغيرهما؟</summary><div class="a">ليس بعد، ولن نقول لك غير ذلك. جسر التوصيل مبنيّ وجاهز، لكنه غير مفعّل بعد؛ وطلب الشراكة مع Talabat قيد الإجراء. كل ما هو متصل حالياً مدرج تحت <a href="#integrations" style="color:var(--gold-ink);font-weight:600">التكاملات</a> بوصفه «يعمل اليوم»، وكل ما ليس متصلاً مدرج بوصفه «قريباً». نفضّل أن نخسر صفقة على أن يُكشف أمرنا يوم التركيب.</div></details>
+      <details class="faq-item reveal"><summary>من يستخدمه فعلاً؟</summary><div class="a">نحن. يدير MiM مجموعة من 17 فرعاً وست علامات تجارية في الدوحة، وقد بُني لأننا كنا نخسر المال في الفجوات بين خمسة أنظمة. نحن العميل رقم واحد، وليست لدينا بعد دراسات حالة من عملاء آخرين نعرضها عليك — وحين تتوفر، ستكون حقيقية وبأسماء أصحابها.</div></details>
+      <details class="faq-item reveal"><summary>ما الأجهزة التي أحتاجها؟</summary><div class="a">جهاز Mac أو Windows للكاشير، وأي جهاز لوحي فيه متصفح للنُدُل وشاشة المطبخ ومكتب الاستقبال — الأجهزة اللوحية تقترن بمسح رمز QR وتبقى مقترنة بذلك الفرع وحده. وطابعات مطبخ قياسية بعرض 80 مم. وإن كانت لديك أجهزة كاشير بالفعل، سننظر في إمكانية إعادة استخدامها قبل أن تشتري أي شيء.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container text-center">
+    <div class="eyebrow">الدوحة، قطر</div>
+    <h2 class="section-title reveal">مستعدّ لسدّ <span class="gold">الفجوة؟</span></h2>
+    <p class="section-sub mx-auto reveal">أرسل لنا سطراً واحداً عن مجموعتك — كم فرعاً لديك، وأيّ نظام يُتعبك أكثر. وسنُريك الشاشات نفسها التي نُدير بها مطاعمنا.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px" class="reveal">
+      <a href="#contact" class="btn btn-wa wa-only wa-link"><i class="fab fa-whatsapp"></i> راسلنا على WhatsApp</a>
+      <a href="mailto:hello@mim-smart.com?subject=MiM%20Smart%20—%20demo%20request&amp;body=Group%20name%3A%0ABranches%3A%0AWhat%20hurts%20most%20today%3A%0A" class="btn btn-gold"><i class="fas fa-envelope"></i> احجز عرضاً توضيحياً</a>
+    </div>
+    <div class="contact-lines reveal">
+      <a href="mailto:hello@mim-smart.com"><i class="fas fa-envelope"></i> hello@mim-smart.com</a>
+      <span><i class="fas fa-location-dot"></i> الدوحة، قطر</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+
+<!-- ===== DEMO REQUEST SHEET ===== -->
+<div class="sheet-back" id="sheetBack" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-wrap">
+    <button class="sheet-close" id="sheetClose" aria-label="إغلاق">✕</button>
+    <form class="sheet" id="demoForm" novalidate>
+      <h3 id="sheetTitle">احجز عرضاً توضيحياً</h3>
+      <p class="lede">أخبرنا عن شكل مجموعتك. نردّ عليك بجواب مكتوب، لا بمكالمة مبيعات.</p>
+      <p class="req">كل الحقول مطلوبة حتى نجيبك إجابة وافية — ولا يستغرق الأمر أكثر من دقيقة.</p>
+      <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
+      <div class="row2">
+        <label><span>اسمك *</span><input name="name" required autocomplete="name" placeholder="عادل بريكي" /></label>
+        <label><span>المطعم / المجموعة *</span><input name="company" required autocomplete="organization" placeholder="مجموعة السد" /></label>
+      </div>
+      <div class="row2">
+        <label><span>البريد الإلكتروني *</span><input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="you@yourgroup.com" /></label>
+        <label><span>الهاتف / WhatsApp *</span><input type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="+974 …" /></label>
+      </div>
+      <div class="row2">
+        <label><span>عدد الفروع *</span>
+          <select name="branches" required>
+            <option value="">اختر…</option><option>1</option><option>2–5</option><option>6–15</option><option>16–40</option><option>أكثر من 40</option>
+          </select>
+        </label>
+        <label><span>نظامك الحالي *</span>
+          <select name="current" required>
+            <option value="">اختر…</option><option>Foodics</option><option>نظام كاشير آخر</option><option>كاشير + جداول بيانات</option><option>جداول بيانات فقط</option><option>نفتتح قريباً</option>
+          </select>
+        </label>
+      </div>
+      <label><span>ما أكثر ما يؤلمك اليوم؟ *</span><textarea name="pain" required minlength="10" placeholder="تكلفة الطعام تخمين، الرواتب تأخذ ثلاثة أيام، لا أحد يعرف ربح اليوم…"></textarea></label>
+      <div class="acts">
+        <button type="submit" class="btn btn-gold" id="sheetSend">إرسال</button>
+        <button type="button" class="btn btn-ghost" id="sheetCancel">إلغاء</button>
+      </div>
+      <div class="sheet-msg" id="sheetMsg"></div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="cols">
+      <div class="brand">
+        <div class="brandmark">
+          <svg><use href="#mim-mark"/></svg>
+          <span class="wordmark" style="color:#fff">Smart <em>MiM</em></span>
+        </div>
+        <p>حقيقة واحدة، بلا فواصل. بُني في الدوحة على يد من يديرون المطاعم، لمن يديرون المطاعم.</p>
+      </div>
+      <div class="links">
+        <div>
+          <h5>المنتج</h5>
+          <ul>
+            <li><a href="#till">الكاشير</a></li>
+            <li><a href="#departments">الأقسام</a></li>
+            <li><a href="#screens">الشاشات</a></li>
+            <li><a href="#owner">تطبيق المالك</a></li>
+      <li><a href="#owner">تطبيق المالك</a></li>
+      <li><a href="#calc">الحاسبة</a></li>
+      <li><a href="#pricing">الأسعار</a></li>
+            <li><a href="#foodcost">تكلفة الطعام</a></li>
+            <li><a href="#selfservice">هواتف الموظفين</a></li>
+            <li><a href="#integrations">التكاملات</a></li>
+            <li><a href="#loyalty">برنامج الولاء</a></li>
+            <li><a href="#pricing">الأسعار</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>لماذا MiM؟</h5>
+          <ul>
+            <li><a href="#problem">الفجوة</a></li>
+            <li><a href="#qatar">صُنع لقطر</a></li>
+            <li><a href="#engineering">الهندسة</a></li>
+            <li><a href="#proof">مجموعة مطاعمنا</a></li>
+            <li><a href="#security">بياناتك</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>تواصل معنا</h5>
+          <ul>
+            <li><a href="#contact">احجز عرضاً توضيحياً</a></li>
+            <li><a href="#contact" class="wa-only wa-link">WhatsApp</a></li>
+            <li><a href="mailto:hello@mim-smart.com">البريد الإلكتروني</a></li>
+            <li><a href="#faq">الأسئلة الشائعة</a></li>
+            <li><a href="#calc">حاسبة التوفير</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>الشؤون القانونية</h5>
+          <ul>
+            <li><a href="privacy.html">الخصوصية</a></li>
+            <li><a href="terms.html">الشروط</a></li>
+            <li><a href="security.html">الأمان وبياناتك</a></li>
+            <li><a href="/ar/" lang="ar">العربية</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">&copy; 2026 Smart MiM · الدوحة، قطر · جميع الحقوق محفوظة. · <a href="privacy.html">الخصوصية</a> · <a href="terms.html">الشروط</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  document.documentElement.setAttribute('data-reveal-ready','');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* nav */
+  var toggle = document.getElementById('menuToggle'),
+      links  = document.getElementById('navLinks');
+  if (toggle && links) {
+    toggle.addEventListener('click', function(){
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    links.addEventListener('click', function(e){
+      if (e.target.closest('a')) { links.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+    });
+  }
+
+  /* scroll progress */
+  var bar = document.getElementById('progress'), ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+      ticking = false;
+    });
+  }, { passive:true });
+
+
+  /* ---- prime-cost calculator: plain arithmetic on the visitor's own figures ---- */
+  (function(){
+    var el=function(i){return document.getElementById(i)},
+        rev=el('cRev'), br=el('cBr'), fc=el('cFc'), lc=el('cLc');
+    if(!rev) return;
+    var qr=function(n){return Math.round(n).toLocaleString('en-US')+' ر.ق'};
+    var kq=function(n){
+      if(n>=1e6) return (n/1e6).toFixed(n>=1e7?0:1).replace(/\.0$/,'')+' مليون ر.ق';
+      if(n>=1e3) return Math.round(n/1e3).toLocaleString('en-US')+' ألف ر.ق';
+      return qr(n);
+    };
+    function run(){
+      var R=+rev.value, N=+br.value, F=+fc.value, L=+lc.value,
+          year=R*N*12, prime=F+L,
+          food1=year*0.01, lab1=year*0.005;
+      el('oRev').textContent=qr(R); el('oBr').textContent=N;
+      el('oFc').textContent=F.toFixed(1).replace(/\.0$/,'')+'%';
+      el('oLc').textContent=L.toFixed(1).replace(/\.0$/,'')+'%';
+      el('oYear').textContent=kq(year);
+      el('oPrime').textContent=prime.toFixed(1).replace(/\.0$/,'')+'%';
+      el('oPrimeN').textContent=qr(year*prime/100)+' في السنة تذهب إلى الطعام والأجور.';
+      el('oFood1').textContent=kq(food1);
+      el('oLab1').textContent=kq(lab1);
+      el('oGap').textContent=kq(food1+lab1);
+      var v;
+      if(prime<55) v='عند <b>'+prime.toFixed(1).replace(/\.0$/,'')+'%</b> تكلفتك الأولية في منطقة صحية. الفائدة هنا ليست في الإنقاذ، بل في <b>إبقائها عند هذا المستوى</b> وأنت تفتح الفرع التالي — وهنا بالضبط تخسرها معظم المجموعات.';
+      else if(prime<=65) v='عند <b>'+prime.toFixed(1).replace(/\.0$/,'')+'%</b> أنت في النطاق الذي يستحق المراقبة. نقطة واحدة من تكلفة الطعام تساوي <b>'+kq(food1)+' في السنة</b> — والنقطة تتحرك بهدوء، على مدى أسابيع، في جدول لا يقرأه أحد حتى نهاية الشهر.';
+      else v='عند <b>'+prime.toFixed(1).replace(/\.0$/,'')+'%</b> هناك مشكلة تحملها قائمة الطعام أو جدول المناوبات. عند هذا المستوى ليست المهمة الأولى برنامجاً، بل معرفة <b>أي الأطباق وأي المناوبات</b> تسبّبها. وهذا هو السؤال الذي بُنيت شاشتا تكلفة الطعام والعمالة لتجيبا عنه.';
+      el('cVerdict').innerHTML=v;
+    }
+    [rev,br,fc,lc].forEach(function(i){ i.addEventListener('input',run); });
+    run();
+  })();
+
+
+  /* ---- demo request sheet ---- */
+  (function(){
+    /* Web3Forms access key. This is a PUBLIC key by design — it only lets a
+       submission be delivered to the address registered against it, so it is
+       safe in client-side HTML. If the post ever fails the form still works:
+       it composes the message, opens the mail app and offers a copy button. */
+    var ACCESS_KEY = '01a47e3a-548f-4940-9f89-5e367b619aaa';
+
+    var back=document.getElementById('sheetBack'), form=document.getElementById('demoForm'),
+        msg=document.getElementById('sheetMsg'), send=document.getElementById('sheetSend'), lastFocus=null;
+    if(!back||!form) return;
+
+    function open(e){ if(e) e.preventDefault(); lastFocus=document.activeElement;
+      back.classList.add('open'); document.body.style.overflow='hidden';
+      setTimeout(function(){ var f=form.querySelector('input[name=name]'); if(f) f.focus(); },320); }
+    function close(){ back.classList.remove('open'); document.body.style.overflow='';
+      msg.className='sheet-msg'; msg.innerHTML=''; if(lastFocus) lastFocus.focus(); }
+
+    /* every mail link and every demo button opens the sheet instead */
+    document.querySelectorAll('a[href^="mailto:"], a[href="#contact"].btn').forEach(function(a){
+      a.addEventListener('click', open);
+    });
+    document.getElementById('sheetClose').addEventListener('click', close);
+    document.getElementById('sheetCancel').addEventListener('click', close);
+    back.addEventListener('click', function(e){ if(e.target===back) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && back.classList.contains('open')) close(); });
+
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      if(form.botcheck.value) return;                     /* honeypot */
+      var d=Object.fromEntries(new FormData(form).entries()), why='';
+      var need=[['name','اسمك'],['company','المطعم / المجموعة'],['email','البريد الإلكتروني'],
+                ['phone','رقم الهاتف'],['branches','عدد الفروع'],['current','ما تستخدمه اليوم'],['pain','ما يؤلمك أكثر']];
+      form.querySelectorAll('label').forEach(function(l){ l.classList.remove('bad'); });
+      var missing=[], first=null;
+      need.forEach(function(f){
+        var el=form.elements[f[0]], v=(d[f[0]]||'').trim();
+        var bad = !v || (f[0]==='email' && !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v)) || (f[0]==='pain' && v.length<10);
+        if(bad){ missing.push(f[1]); if(el&&el.closest('label')) el.closest('label').classList.add('bad'); if(!first) first=el; }
+      });
+      if(missing.length){
+        msg.className='sheet-msg err';
+        msg.textContent = missing.length===1
+          ? 'ما زال ينقص: '+missing[0]+'.'
+          : 'ما زال ينقص: '+missing.slice(0,-1).join('، ')+' و'+missing[missing.length-1]+'.';
+        if(first){ first.focus(); first.scrollIntoView({block:'center',behavior:'smooth'}); }
+        return;
+      }
+      /* first, the engine: the request lands on the Owner's phone and in the admin inbox even if mail never arrives */
+      try { fetch('https://mim-smart.com/site/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:d.name,group:d.company,branches:d.branches,phone:d.phone,msg:(d.pain||'')+' · runs today: '+(d.current||'')+' · '+(d.email||''),lang:document.documentElement.lang||'en',website:form.botcheck.value})}).catch(function(){}); } catch(e){}
+      var body='الاسم: '+d.name+'\nالمجموعة: '+d.company+'\nالبريد الإلكتروني: '+d.email+
+               '\nالهاتف: '+(d.phone||'—')+'\nالفروع: '+d.branches+
+               '\nالنظام الحالي: '+(d.current||'—')+'\nأكثر ما يؤلم: '+(d.pain||'—');
+      send.disabled=true; send.textContent='جارٍ الإرسال…';
+
+      if(ACCESS_KEY){
+        try{
+          var r=await fetch('https://api.web3forms.com/submit',{
+            method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+            body:JSON.stringify({access_key:ACCESS_KEY,subject:'Smart MiM demo request — '+d.company,
+              from_name:'Smart MiM website',...d})});
+          var j=await r.json();
+          if(j.success){ msg.className='sheet-msg ok';
+            msg.textContent='شكراً لك — وصلتنا رسالتك. نردّ خلال يوم عمل واحد.';
+            form.reset(); send.disabled=false; send.textContent='إرسال'; return; }
+          throw new Error((j && j.message) || ('HTTP ' + r.status));
+        }catch(err){
+          /* never swallow the reason — a silent fallback is a bug nobody can diagnose */
+          why = String((err && err.message) || err);
+          try{ console.error('[Smart MiM] demo form could not post:', why); }catch(e){}
+        }
+      }
+      /* no key, or the post failed: hand the visitor a message they can send in one tap */
+      send.disabled=false; send.textContent='إرسال';
+      msg.className='sheet-msg ok';
+      msg.innerHTML='<b>بقيت خطوة واحدة — ضغطة واحدة للإرسال.</b><br>من المفترض أن يفتح تطبيق البريد لديك. إن لم يفتح، انسخ هذه الرسالة وأرسلها إلى <b>hello@mim-smart.com</b>.'+
+        (why? '<br><span style="opacity:.6;font-size:.82em">('+why.replace(/[<>&]/g,'')+' — جرّب إعادة تحميل الصفحة)</span>':'')+
+        '<div class="copybox" id="cbx">'+body.replace(/[<>&]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;'}[c];})+'</div>'+
+        '<button type="button" class="cbtn" id="cbtn">انسخ الرسالة</button>';
+      document.getElementById('cbtn').addEventListener('click',function(){
+        var t=document.getElementById('cbx').textContent;
+        (navigator.clipboard? navigator.clipboard.writeText(t):Promise.reject())
+          .then(function(){ this.textContent='تم النسخ ✓'; }.bind(this))
+          .catch(function(){ var r=document.createRange(); r.selectNode(document.getElementById('cbx'));
+            getSelection().removeAllRanges(); getSelection().addRange(r); this.textContent='حدّد وانسخ'; }.bind(this));
+      });
+      window.location.href='mailto:hello@mim-smart.com?subject='+
+        encodeURIComponent('طلب عرض توضيحي — '+d.company)+'&body='+encodeURIComponent(body);
+    });
+  })();
+
+  /* reveal + chart fills */
+  function fill(el){
+    el.querySelectorAll('.mini-chart .bar').forEach(function(b,i){
+      setTimeout(function(){ b.classList.add('animate'); }, 80 + i*70);
+    });
+    el.querySelectorAll('.inv-item .fill').forEach(function(f,i){
+      setTimeout(function(){ f.style.width = getComputedStyle(f).getPropertyValue('--w'); }, 100 + i*80);
+    });
+  }
+  var targets = document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-s');
+
+  /* stagger: each card in a grid leaves a beat after the one before it */
+  document.querySelectorAll('.dept-grid,.tile-grid,.int-grid,.tier-row,.price-grid,.sec-grid,.fc-laws,.owner-phones,.calc-out')
+    .forEach(function(grid){
+      var kids = grid.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-s');
+      kids.forEach(function(el,i){ el.style.setProperty('--i', Math.min(i,9)); });
+    });
+
+  /* scroll-linked depth: the hero device recedes, the copy drifts up */
+  if (!reduce) {
+    var pad = document.querySelector('.ipad'),
+        heroCopy = document.querySelector('#hero .hero-grid > div:first-child'),
+        pTick = false;
+    var park = function(){
+      var y = window.scrollY;
+      if (y < 900) {
+        if (pad) pad.style.transform =
+          'perspective(1400px) rotateY(' + (-7 + y*0.006) + 'deg) rotateX(' + (3 - y*0.004) + 'deg) translate3d(0,' + (y*-0.05) + 'px,' + (y*-0.12) + 'px)';
+        if (heroCopy) heroCopy.style.transform = 'translate3d(0,' + (y*0.06) + 'px,0)';
+      }
+      pTick = false;
+    };
+    window.addEventListener('scroll', function(){
+      if (pTick) return; pTick = true; requestAnimationFrame(park);
+    }, { passive:true });
+    park();
+  }
+  if (reduce || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('visible'); });
+    document.querySelectorAll('.preview-card').forEach(fill);
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        en.target.classList.add('visible');
+        fill(en.target);
+        io.unobserve(en.target);
+      });
+    }, { threshold:.12, rootMargin:'0px 0px -40px 0px' });
+    targets.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+
+<script>
+/* ═══ the department explorer ═══════════════════════════════════════════════════════════════
+   Data first, so the fifteen are one list in one place. Every screen is the real MiM UI. */
+(function(){
+  var D = [
+    {id:'pos',group:'الصالة',icon:'fa-cash-register',name:'كاشير المطعم',tag:'الصندوق · الطاولات · المطبخ',
+     eyebrow:'الصالة · الكاشير',head:'ثلاث لمسات حتى الحساب — وكل لمسة أصبحت سطراً في السجلّ',
+     body:'الفئة، الصنف، انتهى: مصمّم لإبهامٍ في ليلة خميس. نقد، بطاقة، تطبيقك الخاص — شاشة واحدة، وتواصل البيع حتى مع انقطاع الإنترنت.',
+     chips:['الحساسية تُسأل، لا تُفترض','الموقوف عن البيع (86) موقوف في كل مكان','يبيع دون إنترنت'],writes:'سجلّ المخزون · P&L · تقرير Z لليوم',
+     img:'images/till.svg',frame:'terminal',alt:'كاشير MiM — حساب طاولة، شريط الفئات، شبكة الأصناف وصفّ الحساسية'},
+    {id:'me',group:'الصالة',icon:'fa-mobile-screen',name:'الخدمة الذاتية للموظفين',tag:'تسجيل الحضور · المناوبات · الإجازات · قسيمة الراتب',
+     eyebrow:'الصالة · في كل جيب',head:'الهاتف الذي يحمله كل موظف — بلغته هو',
+     body:'سجّل حضورك برمز الكاشير وموقعك. اطّلع على المناوبات التي جدولها مديرك. أبلغ عن مرض، اطلب إجازة، اقرأ قسيمة راتبك خلف رمز PIN. وتصل طلباتك إلى الموارد البشرية بالإنجليزية.',
+     chips:['تسع لغات','حضور بالرمز + GPS','قسيمة الراتب خلف PIN'],writes:'الحضور · الإجازات · طلبات الموارد البشرية',
+     img:'images/staff-phone.svg',frame:'phone',alt:'هاتف موظف MiM — اليوم، المناوبات، الطلبات والمستندات'},
+    {id:'cs',group:'الصالة',icon:'fa-headset',name:'خدمة العملاء',tag:'الشكاوى · المكالمات · التقييمات',
+     eyebrow:'الصالة · صوت الضيف',head:'كل شكوى لها عدّاد زمني',
+     body:'المكالمات والتقييمات وملاحظات التطبيق تصل إلى صندوق وارد واحد بمهلة ردّ 24 ساعة. وما جرى فعله — المكالمة، الضيافة، تنبيه المطبخ — هو السجلّ.',
+     chips:['حلقة مهلة 24 ساعة','تقييمات تنتظر ردّاً','الفرع مُسمّى'],writes:'الحالات · الردود على التقييمات · الضيافة',
+     img:'images/customer-service.svg',frame:'tablet',alt:'خدمة عملاء MiM — صندوق الحالات وشكوى مفتوحة بخطّها الزمني'},
+    {id:'ck',group:'المطبخ والتوريد',icon:'fa-kitchen-set',name:'المطبخ المركزي',tag:'إنتاج وتوريد للفروع',
+     eyebrow:'المطبخ · ممرّ التسليم (The Pass)',head:'الحالة على الطبق، لا على التذكرة',
+     body:'كل طبق يرسله الشيف يُختم بلحظة خروجه. الأصناف المعلّقة تبقى معلّقة؛ والصالة ترى اللوحة نفسها التي يراها ممرّ التسليم.',
+     chips:['حالة لكل طبق','التسليم لا يُجزّأ','استرجاع خلال 90 ثانية'],writes:'إرساليات المطبخ · زمن الانتظار · الإنتاج',
+     img:'images/chef-display.svg',frame:'tablet',alt:'شاشة مطبخ MiM — التذاكر حسب مرحلة الوجبة مع حالة كل طبق'},
+    {id:'pastry',group:'المطبخ والتوريد',icon:'fa-cake-candles',name:'المخبز المركزي',tag:'خَبز وتوريد للفروع',
+     eyebrow:'المطبخ · المخبز',head:'خُبز، عُدّ، أُرسل — والناتج مسجّل',
+     body:'خطة اليوم مقابل ما خرج من الفرن، وما يصل إلى كل فرع. خمسة وعشرون كيلو دقيق صارت 212 كرواسون — رقم تراه المالية.',
+     chips:['المنتَج مقابل المخطّط','إرسال لكل فرع','الناتج متتبَّع'],writes:'دفعات الإنتاج · الإرساليات · الناتج',
+     img:'images/central-pastry.svg',frame:'tablet',alt:'المخبز المركزي في MiM — خطة الإنتاج وقائمة الإرسال والناتج'},
+    {id:'store',group:'المطبخ والتوريد',icon:'fa-warehouse',name:'المخزن المركزي',tag:'الطلبات · المشتريات · الموردون',
+     eyebrow:'التوريد · المخزن',head:'التسليم الناقص يُسجَّل ناقصاً',
+     body:'طلبات الفروع تتحوّل إلى أوامر شراء؛ والبضاعة المستلمة تُعدّ مقابلها. ثمانية عشر كرتوناً من عشرين تُسجَّل ثمانية عشر — ورصيد المورّد يعرف ذلك.',
+     chips:['الطلبات → أوامر الشراء','إشعار استلام مقابل أمر الشراء','أرصدة الموردين'],writes:'أوامر الشراء · إشعارات الاستلام · الذمم الدائنة',
+     img:'images/central-store.svg',frame:'tablet',alt:'المخزن المركزي في MiM — طلبات الفروع وأمر شراء وأرصدة الموردين'},
+    {id:'ordering',group:'المطبخ والتوريد',icon:'fa-clipboard-list',name:'الطلبيات',tag:'الطلب · الهدر · جرد المخزون',
+     eyebrow:'التوريد · جرد الفرع',head:'الخانة الفارغة في الجرد مجهولة — وليست صفراً أبداً',
+     body:'الحدود الدنيا، ما عُدّ، وما يجب طلبه. الرفّ الذي لم يعدّه أحد يبقى فارغاً؛ ولن يخترع النظام صفراً ويطلب على أساسه.',
+     chips:['فارغ ≠ صفر','طلب مقترح','الهدر مسعّر'],writes:'الجرد · الطلبات · الهدر',
+     img:'images/ordering.svg',frame:'tablet',alt:'طلبيات MiM — ورقة الجرد بالحدود الدنيا والطلب إلى المخزن'},
+    {id:'finance',group:'الإدارة',icon:'fa-coins',name:'المالية',tag:'المبيعات · تكلفة الطعام · الأهداف · إقفال اليوم',
+     eyebrow:'الإدارة · المالية',head:'ما يكلّفه كل طبق فعلاً — مقابل ما يجب أن يكلّفه',
+     body:'التكلفة النظرية من الوصفة إلى جانب ما استهلكه المطبخ فعلاً، طبقاً طبقاً، بالريال. والفجوة تُسمّى في يومها، لا تُكتشف في نهاية الشهر.',
+     chips:['النظري مقابل الفعلي','موافقات بتوقيع اليد','رواتب WPS'],writes:'P&L · تكلفة الطعام · دورات الرواتب',
+     img:'images/food-cost.svg',frame:'tablet',alt:'تكلفة الطعام في MiM — التكلفة النظرية مقابل الفعلية لكل طبق، والفجوة بالريال'},
+    {id:'marketing',group:'الإدارة',icon:'fa-bullhorn',name:'التسويق',tag:'الحملات · الخطط · الميزانيات',
+     eyebrow:'الإدارة · التسويق',head:'صوّر الطبق الذي يبيع ولا صورة له',
+     body:'الخطة مبنية على ما بيع فعلاً. طبق يبيع 214 في الأسبوع بلا صورة هو أرخص ما على اللوحة — واللوحة تقول ذلك.',
+     chips:['تقويم المنشورات','نبض التقييمات','الميزانية مقابل المصروف'],writes:'الحملات · الميزانيات · المحتوى',
+     img:'images/marketing.svg',frame:'tablet',alt:'تسويق MiM — تقويم المنشورات، ما يُصوَّر هذا الأسبوع ونبض التقييمات'},
+    {id:'it',group:'الإدارة',icon:'fa-laptop',name:'تقنية المعلومات',tag:'صلاحيات الموظفين · إعادة تعيين PIN · الطابعات',
+     eyebrow:'الإدارة · تقنية المعلومات',head:'لكل جهاز اسم وفرع وآخر ظهور',
+     body:'الكاشير، الأجهزة اللوحية، شاشات المطبخ، هواتف الموظفين — تُقرن برمز QR يعمل مرة واحدة وينتهي خلال عشر دقائق. ألغِ جهازاً واحداً فيختفي من كل مكان.',
+     chips:['اقتران لمرة واحدة','إلغاء من أي مكان','الطابعات مراقَبة'],writes:'الأجهزة · الصلاحيات · إعادة تعيين PIN',
+     img:'images/it.svg',frame:'tablet',alt:'تقنية المعلومات في MiM — الأجهزة المقترنة ورمز QR للاقتران وحالة الطابعات'},
+    {id:'maint',group:'الإدارة',icon:'fa-screwdriver-wrench',name:'الصيانة',tag:'بلّغ · أصلح · التكلفة مباشرة إلى المالية',
+     eyebrow:'الإدارة · الصيانة',head:'بُلّغ، أُصلح — والتكلفة تذهب مباشرة إلى المالية',
+     body:'ثلاجة تفقد برودتها في السد هي بطاقة عليها عمرها. وعند إصلاحها لا تحتاج الفاتورة إلى إعادة كتابة في أي مكان.',
+     chips:['الأولوية والعمر','الإنفاق لكل فرع','التكلفة → P&L'],writes:'الأعمال · تكاليف الإصلاح · الأصول',
+     img:'images/maintenance.svg',frame:'tablet',alt:'صيانة MiM — أعمال الإصلاح حسب الحالة وإنفاق هذا الشهر حسب الفرع'},
+    {id:'hr',group:'الأفراد والمكان',icon:'fa-users',name:'الموارد البشرية',tag:'الموظفون · الحضور · القانون القطري',
+     eyebrow:'الأفراد · الموارد البشرية',head:'قانون قطر مبنيّ في النظام — لا يُبحث عنه',
+     body:'إجازة المادة 79، مكافأة المادة 54، رواتب WPS، وانتهاء البطاقة الشخصية وشهادة MOPH بلون وعدّ تنازلي. طلب إجازة مكتوب بالهندية يصل بالإنجليزية، والأصل محفوظ بجانبه.',
+     chips:['الانتهاءات مرتّبة','الإجازات والمكافأة','طلبات مترجمة تلقائياً'],writes:'الموظفون · الحضور · مدخلات الرواتب',
+     img:'images/hr.svg',frame:'tablet',alt:'الموارد البشرية في MiM — ملف موظف بمستنداته وإجازاته وطلباته المترجمة'},
+    {id:'accom',group:'الأفراد والمكان',icon:'fa-house-user',name:'السكن',tag:'الفلل · الأسرّة · الإشغال',
+     eyebrow:'الأفراد · السكن',head:'الفلل والأسرّة وباص الصباح',
+     body:'من ينام أين، أي فيلا ممتلئة، أي إصلاح ما زال مفتوحاً، ومتى يغادر الباص عين خالد. السكن جزء من صورة الرواتب، لذلك يعيش في السجلّ نفسه.',
+     chips:['الإشغال لكل فيلا','إصلاحات مفتوحة','رحلات النقل'],writes:'السكن · الإشغال · تكاليف الإصلاح',
+     img:'images/accommodation.svg',frame:'tablet',alt:'سكن MiM — الفلل بإشغالها وقائمة الأسرّة ورحلات النقل'},
+    {id:'quality',group:'الأفراد والمكان',icon:'fa-graduation-cap',name:'الجودة والتدريب',tag:'سلامة الغذاء · الأكاديمية · الاختبارات',
+     eyebrow:'الأفراد · الجودة',head:'الثلاجة التي انحرفت حرارتها على التدقيق، بالأحمر',
+     body:'سجلات الحرارة، مصفوفة مسبّبات الحساسية الموقّعة، محطات غسل اليدين — ومن يحمل شهادة متداول أغذية سارية من MOPH، ومن شارفت شهادته على الانتهاء، ومن لا شهادة له.',
+     chips:['قائمة التدقيق','شرائط الحرارة','الشهادات متتبَّعة'],writes:'التدقيقات · الشهادات · درجات الاختبارات',
+     img:'images/quality.svg',frame:'tablet',alt:'جودة MiM — قائمة تدقيق فرع وشريط حرارة وشهادات تدريب'},
+    {id:'hq',group:'الأفراد والمكان',icon:'fa-crown',name:'المكتب الرئيسي',tag:'كل الفروع، شاشة واحدة',
+     eyebrow:'المكتب الرئيسي · شاشة المالك',head:'كل الفروع، شاشة واحدة، في جيب المالك',
+     body:'وتيرة المبيعات ساعة بساعة، صندوق ما ينتظر قراراً، والتقييمات لحظة وصولها. مبنيّ من الصفوف نفسها التي كتبها كل قسم — لا شيء أُعيد إدخاله، ولا شيء لُخّص باليد.',
+     chips:['الوتيرة بالساعة','صندوق القرارات','تقييمات مباشرة'],writes:'يقرأ كل شيء · يوقّع الموافقات',
+     img:'images/owner-sales.svg',frame:'tablet',alt:'شاشة المالك في MiM — وتيرة المبيعات حسب الفرع وحسب الساعة'}
+  ];
+  var rail=document.getElementById('ex-rail'), stage=document.getElementById('ex-stage');
+  if(!rail||!stage) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var el={eyebrow:document.getElementById('ex-eyebrow'),head:document.getElementById('ex-head'),body:document.getElementById('ex-body'),
+          chips:document.getElementById('ex-chips'),writes:document.getElementById('ex-writes'),img:document.getElementById('ex-img'),
+          frame:document.getElementById('ex-frame'),bar:document.getElementById('ex-bar'),hint:document.getElementById('ex-hint-text'),glow:document.getElementById('ex-glow')};
+
+  /* the rail, grouped — the grouping is the information */
+  var groups=[]; D.forEach(function(d){ if(groups.indexOf(d.group)<0) groups.push(d.group); });
+  groups.forEach(function(g){
+    var wrap=document.createElement('div'); wrap.className='ex-group';
+    var h=document.createElement('h5'); h.textContent=g; wrap.appendChild(h);
+    var tabs=document.createElement('div'); tabs.className='ex-tabs'; tabs.setAttribute('role','tablist');
+    D.filter(function(d){return d.group===g;}).forEach(function(d){
+      var b=document.createElement('button'); b.type='button'; b.className='ex-tab'; b.id='ex-tab-'+d.id;
+      b.setAttribute('role','tab'); b.setAttribute('aria-selected','false'); b.setAttribute('aria-controls','ex-stage'); b.dataset.dept=d.id;
+      b.innerHTML='<i class="fas '+d.icon+'"></i><span><b></b><small></small></span>';
+      b.querySelector('b').textContent=d.name; b.querySelector('small').textContent=d.tag;
+      b.addEventListener('click',function(){ select(d.id,true); });
+      tabs.appendChild(b);
+    });
+    wrap.appendChild(tabs); rail.appendChild(wrap);
+  });
+
+  /* preload every screen once the page is idle, so the first swap never shows a blank */
+  var warm=function(){ D.forEach(function(d){ var i=new Image(); i.src=d.img; }); };
+  if('requestIdleCallback' in window) requestIdleCallback(warm,{timeout:3000}); else setTimeout(warm,1200);
+
+  var cur=-1, timer=null, tick=null, paused=false, userStopped=window.matchMedia('(max-width:1039px)').matches, DWELL=12000, t0=0;
+  function render(d){
+    el.eyebrow.textContent=d.eyebrow; el.head.textContent=d.head; el.body.textContent=d.body;
+    el.chips.innerHTML=''; d.chips.forEach(function(c){ var s=document.createElement('span'); s.textContent=c; el.chips.appendChild(s); });
+    el.writes.innerHTML=''; var w=document.createElement('span'); w.textContent='يكتب في السجلّ المشترك: '; var wb=document.createElement('b'); wb.textContent=d.writes; el.writes.appendChild(w); el.writes.appendChild(wb);
+    el.frame.setAttribute('data-frame',d.frame); el.img.alt=d.alt; el.img.src=d.img;
+  }
+  function select(id,byUser){
+    var i=-1; D.forEach(function(d,k){ if(d.id===id) i=k; }); if(i<0||i===cur) { if(byUser) stopTour(); return; }
+    var d=D[i]; cur=i;
+    rail.querySelectorAll('.ex-tab').forEach(function(t){ t.setAttribute('aria-selected', t.dataset.dept===id ? 'true':'false'); });
+    if(reduce){ render(d); } else {
+      stage.classList.add('is-swapping');
+      setTimeout(function(){ render(d); requestAnimationFrame(function(){ stage.classList.remove('is-swapping'); }); }, 300);
+    }
+    if(el.glow) el.glow.style.transform='rotate('+(i*24)+'deg)';
+    if(byUser){ stopTour(); if(history.replaceState){ try{ history.replaceState(null,'','#dept-'+id); }catch(e){} }
+      /* on a phone the picker sits below the stage — bring the screen they just chose into view */
+      if(window.matchMedia('(max-width:1039px)').matches){ stage.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); } }
+    restart();
+  }
+  /* the tour: advance while nobody is touching it; a click stops it for good */
+  function restart(){ clearInterval(tick); clearTimeout(timer); if(reduce||userStopped) { el.bar.style.width=userStopped?'0':'0'; return; }
+    t0=Date.now(); el.bar.style.width='0';
+    tick=setInterval(function(){ if(paused){ t0+=250; return; } el.bar.style.width=Math.min(100,(Date.now()-t0)/DWELL*100)+'%'; },250);
+    timer=setTimeout(function next(){ if(paused){ timer=setTimeout(next,600); return; } select(D[(cur+1)%D.length].id,false); },DWELL);
+  }
+  function stopTour(){ userStopped=true; stage.classList.add('is-paused'); if(el.hint) el.hint.textContent='اضغط على أي قسم'; clearInterval(tick); clearTimeout(timer); el.bar.style.width='0'; }
+  stage.addEventListener('mouseenter',function(){ paused=true; stage.classList.add('is-paused'); });
+  stage.addEventListener('mouseleave',function(){ paused=false; if(!userStopped) stage.classList.remove('is-paused'); });
+  stage.addEventListener('focusin',function(){ paused=true; }); stage.addEventListener('focusout',function(){ paused=false; });
+  /* only tour while it is on screen */
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ es.forEach(function(e){ paused=!e.isIntersecting||stage.matches(':hover'); }); },{threshold:.35}).observe(stage);
+  }
+  /* keyboard: arrows move along the rail */
+  rail.addEventListener('keydown',function(e){
+    if(e.key!=='ArrowDown'&&e.key!=='ArrowUp'&&e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
+    e.preventDefault(); var n=(e.key==='ArrowDown'||e.key==='ArrowRight')?1:-1; var k=(cur+n+D.length)%D.length;
+    select(D[k].id,true); var b=document.getElementById('ex-tab-'+D[k].id); if(b) b.focus();
+  });
+  /* a gentle tilt that follows the pointer — never on touch, never under reduced motion */
+  if(!reduce && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    var dev=stage.querySelector('.ex-device');
+    dev.addEventListener('mousemove',function(e){ var r=dev.getBoundingClientRect(); var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      el.frame.style.transform='rotateY('+(x*6)+'deg) rotateX('+(-y*5)+'deg)'; });
+    dev.addEventListener('mouseleave',function(){ el.frame.style.transform=''; });
+  }
+  /* deep link, else start at the till */
+  var m=/#dept-([a-z]+)/.exec(location.hash); var start=(m&&D.some(function(d){return d.id===m[1];}))?m[1]:'pos';
+  select(start,false);
+  /* a shared link like #dept-hr is not an element id, so the browser lands at the top of the page —
+     take the visitor to what they were sent */
+  if(m){ stopTour(); setTimeout(function(){ document.getElementById('dept-explorer').scrollIntoView({behavior:'auto',block:'start'}); },60); }
+})();
+</script>
+</body>
+</html>
