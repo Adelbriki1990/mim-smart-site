@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Smart MiM — حقيقة واحدة، بلا فواصل</title>
-<link rel="canonical" href="https://www.mim-smart.com/" />
+<link rel="canonical" href="https://www.mim-smart.com/ar/" />
 <meta name="robots" content="index, follow" />
 <meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />
 <meta name="theme-color" content="#081124" />
@@ -1057,7 +1057,18 @@ html.has-wa .wa-only{display:inline-flex!important}
 <script>
 /* THE ONE PLACE THE NUMBER LIVES. Fill it in (digits only, e.g. 97455001122) and every WhatsApp button on the site appears, all pointing here. Empty = the buttons stay hidden. */
 var WA_NUMBER = '';
-(function(){ if(!/^\d{8,15}$/.test(WA_NUMBER)) return; document.documentElement.classList.add('has-wa'); var href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent('Hello Smart MiM — I run a restaurant group and I would like a 20-minute demo.'); document.querySelectorAll('.wa-link').forEach(function(a){ a.setAttribute('href',href); a.setAttribute('target','_blank'); a.setAttribute('rel','noopener'); }); var f=document.createElement('a'); f.className='wa-float'; f.href=href; f.target='_blank'; f.rel='noopener'; f.setAttribute('aria-label','WhatsApp'); f.innerHTML='<i class="fab fa-whatsapp"></i>'; document.body.appendChild(f); })();
+(function(){ if(!/^\d{8,15}$/.test(WA_NUMBER)) return;
+  /* the class can go on <html> straight away — the buttons are already in the CSS.
+     Everything that touches the DOM waits for the body: this script sits in <head>. */
+  document.documentElement.classList.add('has-wa');
+  var href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(document.documentElement.lang==='ar'
+    ? 'مرحباً Smart MiM — أدير مجموعة مطاعم وأرغب في عرض توضيحي مدته ٢٠ دقيقة.'
+    : 'Hello Smart MiM — I run a restaurant group and I would like a 20-minute demo.');
+  var wire=function(){ document.querySelectorAll('.wa-link').forEach(function(a){ a.setAttribute('href',href); a.setAttribute('target','_blank'); a.setAttribute('rel','noopener'); });
+    if(document.querySelector('.wa-float')) return;
+    var f=document.createElement('a'); f.className='wa-float'; f.href=href; f.target='_blank'; f.rel='noopener'; f.setAttribute('aria-label','WhatsApp'); f.innerHTML='<i class="fab fa-whatsapp"></i>'; document.body.appendChild(f); };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire); else wire();
+})();
 /* Hide-to-animate ONLY while a working script is present. If the reveal script
    never runs (error, blocked CDN, snapshot renderer), the page un-hides itself. */
 (function(d){
@@ -1164,7 +1175,7 @@ html[dir=rtl] .ipad::before{left:auto;right:15px}html[dir=rtl] .ipad::after{righ
           <div><div class="number">6</div><div class="label">علامات تجارية</div></div>
           <div><div class="number">17</div><div class="label">فرعاً</div></div>
           <div><div class="number">15</div><div class="label">قسماً</div></div>
-          <div><div class="number">240</div><div class="label">بوابة أمان</div></div>
+          <div><div class="number">297</div><div class="label">بوابة أمان</div></div>
         </div>
       </div>
 
@@ -1201,7 +1212,7 @@ html[dir=rtl] .ipad::before{left:auto;right:15px}html[dir=rtl] .ipad::after{righ
     <div class="text-center">
       <div class="eyebrow">دليل التقدّم</div>
       <h2 class="section-title reveal">ما أطلقناه <span class="gold">هذا الأسبوع</span></h2>
-      <p class="section-sub mx-auto reveal">منتج يتقدّم كل أسبوع يقول أكثر مما يقوله أي وعد. كل سطر أدناه مؤرَّخ، وكل واحد منها اجتاز 240 بوابة أمان قبل خروجه.</p>
+      <p class="section-sub mx-auto reveal">منتج يتقدّم كل أسبوع يقول أكثر مما يقوله أي وعد. كل سطر أدناه مؤرَّخ، وكل واحد منها اجتاز 297 بوابة أمان قبل خروجه.</p>
     </div>
     <div class="week-grid">
       <div class="week-card reveal-s"><div class="d">9 سبتمبر 2026</div><h4>إيصال الضيف</h4><p>يُفتح من رمز QR على الفاتورة الورقية: بالإنجليزية أو العربية، مع النقاط التي كسبها الضيف، ومشاركة عبر WhatsApp، وباب خاص إلى المدير قبل Google.</p></div>
@@ -1831,7 +1842,7 @@ html[dir=rtl] .ipad::before{left:auto;right:15px}html[dir=rtl] .ipad::after{righ
       <div class="proof-stats">
         <div class="proof-stat"><div class="n">6</div><div class="l">علامات تجارية على قاعدة بيانات واحدة</div></div>
         <div class="proof-stat"><div class="n">17</div><div class="l">فرعاً في المجموعة</div></div>
-        <div class="proof-stat"><div class="n">240</div><div class="l">بوابة أمان يجب أن تنجح قبل أي إصدار</div></div>
+        <div class="proof-stat"><div class="n">297</div><div class="l">بوابة أمان يجب أن تنجح قبل أي إصدار</div></div>
         <div class="proof-stat"><div class="n">0</div><div class="l">أرقام تُعاد كتابتها بين الشاشات</div></div>
       </div>
     </div>
@@ -1845,7 +1856,7 @@ html[dir=rtl] .ipad::before{left:auto;right:15px}html[dir=rtl] .ipad::after{righ
     <h2 class="section-title reveal">لماذا يمكنك أن <span class="gold">تثق بالرقم</span></h2>
     <p class="section-sub mx-auto reveal">الثقة تُكتسب بما يرفض النظام إطلاقه، لا بما يعِد به.</p>
     <div class="tile-grid">
-      <div class="tile reveal-s"><span class="big">240</span><h4>بوابة أمان</h4><p>كلّ واحدة منها تشغّل الكود الحقيقي. ولا واحدة تكتفي بقراءته.</p></div>
+      <div class="tile reveal-s"><span class="big">297</span><h4>بوابة أمان</h4><p>كلّ واحدة منها تشغّل الكود الحقيقي. ولا واحدة تكتفي بقراءته.</p></div>
       <div class="tile reveal-s"><i class="fas fa-clock-rotate-left"></i><h4>السجلّ الدائم</h4><p>للإضافة فقط. التصحيح يُضاف سطراً جديداً، ولا يُعدَّل شيء أبداً.</p></div>
       <div class="tile reveal-s"><i class="fas fa-plug-circle-xmark"></i><h4>يعمل دون اتصال</h4><p>الكاشير يواصل البيع حين ينقطع الاتصال.</p></div>
       <div class="tile reveal-s"><i class="fas fa-database"></i><h4>الاستعادة مُختبَرة</h4><p>النسخة الاحتياطية التي لم يستعدها أحد ليست نسخة احتياطية.</p></div>
@@ -2105,7 +2116,7 @@ html[dir=rtl] .ipad::before{left:auto;right:15px}html[dir=rtl] .ipad::after{righ
             <li><a href="privacy.html">الخصوصية</a></li>
             <li><a href="terms.html">الشروط</a></li>
             <li><a href="security.html">الأمان وبياناتك</a></li>
-            <li><a href="/ar/" lang="ar">العربية</a></li>
+            <li><a href="/" lang="en" hreflang="en">English</a></li>
           </ul>
         </div>
       </div>

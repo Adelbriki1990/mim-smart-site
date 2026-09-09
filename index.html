@@ -1057,7 +1057,18 @@ html.has-wa .wa-only{display:inline-flex!important}
 <script>
 /* THE ONE PLACE THE NUMBER LIVES. Fill it in (digits only, e.g. 97455001122) and every WhatsApp button on the site appears, all pointing here. Empty = the buttons stay hidden. */
 var WA_NUMBER = '';
-(function(){ if(!/^\d{8,15}$/.test(WA_NUMBER)) return; document.documentElement.classList.add('has-wa'); var href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent('Hello Smart MiM — I run a restaurant group and I would like a 20-minute demo.'); document.querySelectorAll('.wa-link').forEach(function(a){ a.setAttribute('href',href); a.setAttribute('target','_blank'); a.setAttribute('rel','noopener'); }); var f=document.createElement('a'); f.className='wa-float'; f.href=href; f.target='_blank'; f.rel='noopener'; f.setAttribute('aria-label','WhatsApp'); f.innerHTML='<i class="fab fa-whatsapp"></i>'; document.body.appendChild(f); })();
+(function(){ if(!/^\d{8,15}$/.test(WA_NUMBER)) return;
+  /* the class can go on <html> straight away — the buttons are already in the CSS.
+     Everything that touches the DOM waits for the body: this script sits in <head>. */
+  document.documentElement.classList.add('has-wa');
+  var href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(document.documentElement.lang==='ar'
+    ? 'مرحباً Smart MiM — أدير مجموعة مطاعم وأرغب في عرض توضيحي مدته ٢٠ دقيقة.'
+    : 'Hello Smart MiM — I run a restaurant group and I would like a 20-minute demo.');
+  var wire=function(){ document.querySelectorAll('.wa-link').forEach(function(a){ a.setAttribute('href',href); a.setAttribute('target','_blank'); a.setAttribute('rel','noopener'); });
+    if(document.querySelector('.wa-float')) return;
+    var f=document.createElement('a'); f.className='wa-float'; f.href=href; f.target='_blank'; f.rel='noopener'; f.setAttribute('aria-label','WhatsApp'); f.innerHTML='<i class="fab fa-whatsapp"></i>'; document.body.appendChild(f); };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire); else wire();
+})();
 /* Hide-to-animate ONLY while a working script is present. If the reveal script
    never runs (error, blocked CDN, snapshot renderer), the page un-hides itself. */
 (function(d){
@@ -1151,7 +1162,7 @@ var WA_NUMBER = '';
           <div><div class="number">6</div><div class="label">Brands</div></div>
           <div><div class="number">17</div><div class="label">Branches</div></div>
           <div><div class="number">15</div><div class="label">Departments</div></div>
-          <div><div class="number">240</div><div class="label">Safety gates</div></div>
+          <div><div class="number">297</div><div class="label">Safety gates</div></div>
         </div>
       </div>
 
@@ -1188,7 +1199,7 @@ var WA_NUMBER = '';
     <div class="text-center">
       <div class="eyebrow">Proof of motion</div>
       <h2 class="section-title reveal">What shipped <span class="gold">this week</span></h2>
-      <p class="section-sub mx-auto reveal">A product that moves every week says more than a promise. Each line below is dated, and each one passed 240 gates on its way out.</p>
+      <p class="section-sub mx-auto reveal">A product that moves every week says more than a promise. Each line below is dated, and each one passed 297 gates on its way out.</p>
     </div>
     <div class="week-grid">
       <div class="week-card reveal-s"><div class="d">9 Sept 2026</div><h4>The guest's receipt</h4><p>Opened from the QR on the paper bill: English or Arabic, the points it earned, a WhatsApp share, and a private door to the manager before Google.</p></div>
@@ -1818,7 +1829,7 @@ var WA_NUMBER = '';
       <div class="proof-stats">
         <div class="proof-stat"><div class="n">6</div><div class="l">Brands on one database</div></div>
         <div class="proof-stat"><div class="n">17</div><div class="l">Branches in the group</div></div>
-        <div class="proof-stat"><div class="n">240</div><div class="l">Gates that must pass to ship</div></div>
+        <div class="proof-stat"><div class="n">297</div><div class="l">Gates that must pass to ship</div></div>
         <div class="proof-stat"><div class="n">0</div><div class="l">Numbers re-typed between screens</div></div>
       </div>
     </div>
@@ -1832,7 +1843,7 @@ var WA_NUMBER = '';
     <h2 class="section-title reveal">Why you can <span class="gold">trust the number</span></h2>
     <p class="section-sub mx-auto reveal">Trust is earned by what a system refuses to ship, not by what it promises.</p>
     <div class="tile-grid">
-      <div class="tile reveal-s"><span class="big">240</span><h4>Gates</h4><p>Every one runs the real code. None just reads it.</p></div>
+      <div class="tile reveal-s"><span class="big">297</span><h4>Gates</h4><p>Every one runs the real code. None just reads it.</p></div>
       <div class="tile reveal-s"><i class="fas fa-clock-rotate-left"></i><h4>Permanent journal</h4><p>Append-only. A correction is added, never an edit.</p></div>
       <div class="tile reveal-s"><i class="fas fa-plug-circle-xmark"></i><h4>Offline-first</h4><p>The till keeps selling when the line drops.</p></div>
       <div class="tile reveal-s"><i class="fas fa-database"></i><h4>Restores tested</h4><p>A backup nobody restored is not a backup.</p></div>

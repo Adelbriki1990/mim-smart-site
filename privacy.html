@@ -82,13 +82,13 @@ footer a:hover{color:var(--gold)}
   <section>
     <h2><span class="n">2.</span>Your restaurant's data</h2>
     <p>When a restaurant group runs on Smart MiM, the system holds what the group puts into it: menus; staff records; the sales journal (every sale, void and refund); bookings; and guests' phone numbers, kept for the loyalty card and for bookings.</p>
-    <p>This is your data. Your group decides what goes in and who on your team may see it; we store it and run the system on it. It lives in your own engine database, not in a shared pool with other restaurants. Nobody outside your team and Smart MiM has access to it. <span class="tc">[to confirm]</span></p>
+    <p>This is your data. Your group decides what goes in and who on your team may see it; we store it and run the system on it. Each group's data is separated by its own keys; a group on the Enterprise plan runs on an engine of its own. Nobody outside your team and Smart MiM has access to it. <span class="tc">[to confirm]</span></p>
   </section>
 
   <section>
     <h2><span class="n">3.</span>Where it lives and how it is protected</h2>
     <ul>
-      <li>Your engine database is hosted on Railway with a managed PostgreSQL provider.</li>
+      <li>Your engine runs on Railway; its PostgreSQL database is held by Supabase, a managed database provider.</li>
       <li>It is backed up every day, and we test the restore. A backup nobody has restored from is a hope, not a backup.</li>
       <li>The permanent journal is append-only. A sale, a void, a refund or a wage change is a new line; a correction is another new line on top. Nothing is edited away, so the original stays readable.</li>
       <li>A staff member's phone shows that person their own record and nothing else.</li>
@@ -108,7 +108,7 @@ footer a:hover{color:var(--gold)}
     <h2><span class="n">5.</span>This website (www.mim-smart.com)</h2>
     <ul>
       <li>The website sets no tracking cookies.</li>
-      <li>The "book a demo" form sends your name, group, number of branches, phone, email and message to Smart MiM — our engine and a mail relay that delivers it to our inbox — and to no one else.</li>
+      <li>The "book a demo" form sends your name, group, number of branches, phone, email and message to our own engine, and to Web3Forms, the form-to-email service that delivers it to our inbox. If that service is unreachable, your own mail app opens with the message for you to send. It goes nowhere else.</li>
       <li>The savings calculator runs entirely in your browser. It sends nothing; close the tab and the numbers are gone.</li>
       <li>Fonts and icons are loaded from Google Fonts and cdnjs when the page opens, as on most websites.</li>
     </ul>

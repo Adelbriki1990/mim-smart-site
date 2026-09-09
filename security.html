@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://www.mim-smart.com/security.html" />
 <meta name="robots" content="index, follow" />
 <meta name="theme-color" content="#081124" />
-<meta name="description" content="What Smart MiM does with your sales, payroll and bank data: keys, what the till never holds, the append-only journal, daily backups, 240 gates, offline rules and one-tap device revocation." />
+<meta name="description" content="What Smart MiM does with your sales, payroll and bank data: keys, what the till never holds, the append-only journal, daily backups, 297 gates, offline rules and one-tap device revocation." />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Smart MiM" />
 <meta property="og:url" content="https://www.mim-smart.com/security.html" />
@@ -73,14 +73,14 @@ footer a{color:var(--ink-2);font-weight:500}
 
   <section>
     <h2>Who can talk to the engine</h2>
-    <p>Every request from a till to the engine carries a key. Today one engine key is shared within a group. The moment a group brings its second branch on, each branch is issued its own key, so one branch's key is never another's.</p>
+    <p>Every request from a till to the engine carries a key. Today one engine key is shared within a group. Per-branch keys — so that one branch's key is never another's — are built and waiting on the rollout; when they are in place this page will say so, with the date. <span class="tc">[to confirm]</span></p>
     <p>The factory key that shipped with the early installs was <b>retired on 1 September 2026</b>, and strict key checking is on: a request without a valid key is refused, not tolerated.</p>
   </section>
 
   <section>
     <h2>What the till does not hold</h2>
     <p>A till is the most exposed machine in a restaurant. It stands on the floor, staff share it, and it can walk out of the door. So we keep it thin.</p>
-    <p>The till holds <b>no salaries, no PINs and no IBANs</b>. A manager's PIN is stored as a hash and is verified by the engine, never by the till itself. The tokens that connect your Instagram and TikTok accounts are redacted from anything a till can read; the till never sees them.</p>
+    <p>The till holds <b>no salaries and no IBANs</b>. A PIN is never stored anywhere as a PIN: it is kept only as a salted hash (PBKDF2, 60,000 rounds), so a stolen till yields hashes, not PINs. The two things that move money — a refund, and a void of a bill already paid — are checked again by the engine before they are booked, whatever the till thinks. The tokens that connect your Instagram and TikTok accounts are redacted from anything a till can read; the till never sees them.</p>
   </section>
 
   <section>
@@ -97,7 +97,7 @@ footer a{color:var(--ink-2);font-weight:500}
   <section>
     <h2>How we prove a fix is a fix</h2>
     <p>When we fix a defect we do not only fix it. We write a test, then put the defect back on purpose to prove the test catches it, then take it out again. Only then does the fix ship.</p>
-    <p>Today <b>240 of these gates</b> stand between any change and your till. A change that fails one of them does not go out.</p>
+    <p>Today <b>297 of these gates</b> stand between any change and your till. A change that fails one of them does not go out.</p>
   </section>
 
   <section>
@@ -107,7 +107,7 @@ footer a{color:var(--ink-2);font-weight:500}
 
   <section>
     <h2>Devices: one code each, revoked in a tap</h2>
-    <p>The Owner app, waiter tablets, chef displays and staff phones each join by scanning a one-time QR code. The code works once. If a tablet is lost, or a phone leaves with a member of staff, its access is <b>revoked in a tap</b> and the device is out.</p>
+    <p>Waiter tablets, chef displays, hostess desks and staff phones each join by scanning a QR code that works once and is then dead. The Owner app is different: it connects with a company code and the Owner's own PIN, and every Owner session can be ended at once from Head Office. If a tablet is lost, or a phone leaves with a member of staff, its access is <b>revoked in a tap</b> and the device is out.</p>
   </section>
 
   <section>
