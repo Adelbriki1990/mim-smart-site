@@ -118,7 +118,7 @@ section + section{border-top:1px solid var(--line)}
 
 /* the language switch: two round choices, the current one filled — the Head Office sidebar's own */
 .lang-switch{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
-.lang-switch span,.lang-switch a{display:inline-flex;align-items:center;height:36px;padding:0 13px;
+.lang-switch span,.lang-switch a{display:inline-flex;align-items:center;height:40px;padding:0 13px;
   border-radius:999px;font-size:13px;font-weight:600;color:var(--ink);background:var(--card)}
 .lang-switch .on{background:var(--accent);color:#fff}
 
@@ -148,7 +148,14 @@ nav .container{display:flex;align-items:center;gap:14px;height:68px;position:rel
   font-size:14px;font-weight:600;color:var(--ink)}
 .nav-links a:hover{background:var(--card)}
 .nav-actions{display:flex;align-items:center;gap:8px}
-.menu-toggle{display:none;width:44px;height:44px;border:0;border-radius:50%;background:var(--card);
+/* ⚖️ ONE HEIGHT ACROSS THE BAR. Measured at 1440: the row held four heights — the mark at 34, the
+   links at 40, the language pills at 36 and the demo button at 44. Every one was centred, so
+   nothing looked broken, but the sizes stepped up and down along the row and the button sat taller
+   than the pills beside it — what the Owner saw in Chrome on the Mac. The links already set the
+   rhythm at 40, so the switch and the button join it; the demo still stands out, by its colour
+   rather than by its size. .btn stays 44 everywhere else on the page — this is the nav only. */
+.nav-actions .btn{height:40px}
+.menu-toggle{display:none;width:40px;height:40px;border:0;border-radius:50%;background:var(--card);
   color:var(--ink);align-items:center;justify-content:center;cursor:pointer}
 @media(max-width:1099px){
   .nav-links{display:none}
@@ -173,9 +180,9 @@ nav .container{display:flex;align-items:center;gap:14px;height:68px;position:rel
 }
 @media(max-width:519px){
   .nav-actions{gap:6px}
-  .nav-actions .btn{height:40px;padding:0 12px;font-size:13px}
-  .lang-switch span,.lang-switch a{height:36px;padding:0 10px}
-  .menu-toggle{width:40px;height:40px}
+  .nav-actions .btn{height:38px;padding:0 12px;font-size:13px}
+  .lang-switch span,.lang-switch a{height:38px;padding:0 10px}
+  .menu-toggle{width:38px;height:38px}
   .wordmark{font-size:16px}.brandmark svg{width:30px;height:30px}
   /* 🌍 the switch shows only the OTHER language on a phone. "عربي" on its own already says "read
      this in Arabic" — and "EN" the reverse on the Arabic page — so the chip for the language you
@@ -188,9 +195,9 @@ nav .container{display:flex;align-items:center;gap:14px;height:68px;position:rel
   .brandmark svg{width:28px;height:28px}
   .wordmark{font-size:15px}
   .nav-actions{gap:5px}
-  .lang-switch span,.lang-switch a{height:34px;padding:0 9px}
-  .nav-actions .btn{height:38px;padding:0 11px;font-size:12.5px}
-  .menu-toggle{width:38px;height:38px}
+  .lang-switch span,.lang-switch a{height:36px;padding:0 9px}
+  .nav-actions .btn{height:36px;padding:0 11px;font-size:12.5px}
+  .menu-toggle{width:36px;height:36px}
 }
 @media(max-width:349px){
   .wordmark{display:none}
