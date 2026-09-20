@@ -632,6 +632,11 @@ footer li a:hover{color:var(--accent)}
 footer .bottom{border-top:1px solid var(--line);margin-top:28px;padding-top:18px;font-size:13px;color:var(--sub)}
 footer .bottom a{color:var(--sub)}
 footer .bottom a:hover{color:var(--accent)}
+
+/* 🔗 AN ANCHOR MUST LAND ON ITS SECTION, NOT NEAR IT. The nav is position:sticky at top:0 and
+   measures 69px, so a native jump puts the section's own heading UNDERNEATH it. 84px is the value
+   the explorer's sticky stage already uses for the same reason; the extra clears the border. */
+[id]{scroll-margin-top:84px}
 </style>
 <script>
 /* THE ONE PLACE THE NUMBER LIVES. Fill it in (digits only, e.g. 97455001122) and every WhatsApp button on the site appears, all pointing here. Empty = the buttons stay hidden. */
@@ -2041,6 +2046,23 @@ var WA_NUMBER = '';
   /* a shared link like #dept-hr is not an element id, so the browser lands at the top of the page —
      take the visitor to what they were sent */
   if(m){ stopTour(); setTimeout(function(){ document.getElementById('dept-explorer').scrollIntoView({behavior:'auto',block:'start'}); },60); }
+})();
+</script>
+<script>
+/* 🔗 …and the second half of the same fault. The 15 rows in #departments are BUILT BY SCRIPT, so at
+   the instant the browser honours "See the departments" that section is still short — it then grows
+   by the height of the rail and carries the reader back up to the hero, which is exactly what the
+   Owner saw: the address said #departments and the screen showed the top of the page.
+   scroll-margin-top above fixes the offset; this re-lands the jump once the page has its real
+   height. Guarded: no hash, nothing happens; a bad selector cannot throw. */
+(function(){
+  function land(){
+    if(!location.hash || location.hash.length < 2) return;
+    var t = null;
+    try { t = document.querySelector(location.hash); } catch (e) { return; }
+    if (t) t.scrollIntoView({ block: 'start' });
+  }
+  window.addEventListener('load', function(){ land(); setTimeout(land, 150); });
 })();
 </script>
 </body>
