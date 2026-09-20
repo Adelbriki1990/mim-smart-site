@@ -135,6 +135,12 @@ nav{position:sticky;top:0;z-index:60;background:var(--ground);border-bottom:1px 
 nav .container{display:flex;align-items:center;gap:14px;height:68px;position:relative}
 .brandmark{display:flex;align-items:center;gap:10px}
 .brandmark svg{width:34px;height:34px;flex-shrink:0}
+/* 📱 THE NAME NEVER BREAKS IN TWO. This bar is one flex row that may not wrap, so when the actions
+   beside it want more room than a phone has, the only thing that can give is the brand — and it
+   gave: on a 375-px iPhone "Smart MiM" was squeezed to 45px and broke onto two lines, which is what
+   the Owner saw. The brand now holds its size; the room comes from the ladder below instead. */
+.brandmark{flex-shrink:0}
+.wordmark{white-space:nowrap}
 .wordmark{font-size:17px;font-weight:600;letter-spacing:-.2px}
 .wordmark em{font-weight:700;color:var(--accent)}
 .nav-links{list-style:none;display:flex;gap:2px;margin-inline-start:auto}
@@ -150,12 +156,44 @@ nav .container{display:flex;align-items:center;gap:14px;height:68px;position:rel
     background:var(--ground);border-bottom:1px solid var(--line);padding:10px 8px 16px;gap:2px;margin-inline-start:0}
   .menu-toggle{display:inline-flex}
 }
+/* 📐 THE BAR'S LADDER, measured rather than guessed. Under 1100px the links fold into the ☰ menu,
+   so what is left must fit one row: the mark and the name, the language, the demo, the menu.
+   Measured need vs room (room = width − 32px of padding): 375 → 339/343 ✓, 360 → 339/328 ✗,
+   320 → 339/288 ✗. So the pieces step down twice, and nothing is dropped until 350px — where a
+   2016 SE keeps the mark and loses only the word beside it. The demo button, which is why this
+   page exists, keeps its full words at every width. */
+@media(max-width:1159px){
+  /* 💬 the WhatsApp pill is dormant while WA_NUMBER is empty — the day it is filled in it would
+     break this bar all over again, and not only on phones: measured with it armed, the English row
+     is 23px over at 1100px and 3px over at 1120px, because that is where the seven links come back.
+     It fits from 1160px, which is exactly this container's max-width. Below that its form is the
+     floating bubble this page already appends to the body, not a fourth pill in the row.
+     The selector must out-specify html.has-wa .wa-only, which carries !important. */
+  html.has-wa .nav-actions .wa-only{display:none!important}
+}
 @media(max-width:519px){
   .nav-actions{gap:6px}
   .nav-actions .btn{height:40px;padding:0 12px;font-size:13px}
   .lang-switch span,.lang-switch a{height:36px;padding:0 10px}
   .menu-toggle{width:40px;height:40px}
   .wordmark{font-size:16px}.brandmark svg{width:30px;height:30px}
+  /* 🌍 the switch shows only the OTHER language on a phone. "عربي" on its own already says "read
+     this in Arabic" — and "EN" the reverse on the Arabic page — so the chip for the language you
+     are already reading is the one thing here that can go. It buys the 42px the name needed. */
+  .lang-switch .on{display:none}
+}
+@media(max-width:399px){
+  nav .container{gap:8px}
+  .brandmark{gap:8px}
+  .brandmark svg{width:28px;height:28px}
+  .wordmark{font-size:15px}
+  .nav-actions{gap:5px}
+  .lang-switch span,.lang-switch a{height:34px;padding:0 9px}
+  .nav-actions .btn{height:38px;padding:0 11px;font-size:12.5px}
+  .menu-toggle{width:38px;height:38px}
+}
+@media(max-width:349px){
+  .wordmark{display:none}
 }
 
 /* ── reveal (the script needs these targets; a calm 10px fade, nothing more) ───────────────── */
