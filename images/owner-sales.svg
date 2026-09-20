@@ -1,60 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 866" width="400" height="866" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
-<defs><linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8CE7A"/><stop offset="26%" stop-color="#C9A227"/><stop offset="100%" stop-color="#0A4174"/></linearGradient></defs>
-<rect width="400" height="866" fill="#0F172A"/>
-<text x="26" y="44" font-size="14" font-weight="700" fill="#F8FAFC">9:41</text>
-<text x="374" y="44" font-size="12" fill="#94A3B8" text-anchor="end">▮▮▮ ▲ ▮▮▮</text>
-<text x="26" y="92" font-size="22" font-weight="800" fill="#F8FAFC">Al Sadd</text>
-<text x="26" y="114" font-size="12.5" fill="#94A3B8">Sales</text>
-<rect x="26" y="132" width="348" height="132" rx="15" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.075)"/>
-<text x="44" y="160" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="1.3">TODAY</text>
-<text x="44" y="206" font-size="38" font-weight="800" fill="#F8FAFC">QR 14,632</text>
-<rect x="44" y="222" width="212" height="26" rx="13" fill="#10B981" fill-opacity="0.16" stroke="#10B981" stroke-opacity="0.45"/>
-<text x="56" y="240" font-size="12" font-weight="700" fill="#34D399">▲ 12%  vs Wednesday · by 15:47</text>
-<rect x="26" y="278" width="57.0" height="27" rx="13.5" fill="#C9A227"/>
-<text x="54.5" y="296" font-size="11.5" font-weight="700" fill="#1A1400" text-anchor="middle">Today</text>
-<rect x="89.0" y="278" width="85.0" height="27" rx="13.5" fill="rgba(255,255,255,0.06)"/>
-<text x="131.5" y="296" font-size="11.5" font-weight="700" fill="#94A3B8" text-anchor="middle">Yesterday</text>
-<rect x="180.0" y="278" width="50.0" height="27" rx="13.5" fill="rgba(255,255,255,0.06)"/>
-<text x="205.0" y="296" font-size="11.5" font-weight="700" fill="#94A3B8" text-anchor="middle">Week</text>
-<rect x="236.0" y="278" width="57.0" height="27" rx="13.5" fill="rgba(255,255,255,0.06)"/>
-<text x="264.5" y="296" font-size="11.5" font-weight="700" fill="#94A3B8" text-anchor="middle">Month</text>
-<rect x="299.0" y="278" width="50.0" height="27" rx="13.5" fill="rgba(255,255,255,0.06)"/>
-<text x="324.0" y="296" font-size="11.5" font-weight="700" fill="#94A3B8" text-anchor="middle">Year</text>
-<rect x="26" y="322" width="348" height="148" rx="15" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.075)"/>
-<text x="44" y="348" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="1.3">BY THE HOUR · DOHA</text>
-<rect x="44" y="434" width="20" height="18" rx="4" fill="url(#bar)"/>
-<rect x="76" y="426" width="20" height="26" rx="4" fill="url(#bar)"/>
-<rect x="108" y="398" width="20" height="54" rx="4" fill="url(#bar)"/>
-<rect x="140" y="364" width="20" height="88" rx="4" fill="url(#bar)"/>
-<rect x="172" y="406" width="20" height="46" rx="4" fill="url(#bar)"/>
-<rect x="204" y="422" width="20" height="30" rx="4" fill="url(#bar)"/>
-<rect x="236" y="390" width="20" height="62" rx="4" fill="url(#bar)"/>
-<rect x="268" y="356" width="20" height="96" rx="4" fill="url(#bar)"/>
-<rect x="300" y="378" width="20" height="74" rx="4" fill="url(#bar)"/>
-<rect x="332" y="412" width="20" height="40" rx="4" fill="url(#bar)"/>
-<text x="44" y="466" font-size="9" fill="#64748B">12p</text><text x="356" y="466" font-size="9" fill="#64748B" text-anchor="end">1a</text>
-<rect x="26" y="486" width="348" height="178" rx="15" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.075)"/>
-<text x="44" y="512" font-size="10.5" font-weight="700" fill="#94A3B8" letter-spacing="1.3">BRANCHES</text>
-<text x="44" y="542" font-size="13.5" font-weight="600" fill="#E2E8F0">Al Sadd</text>
-<text x="286" y="542" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">14,632</text>
-<text x="356" y="542" font-size="11.5" font-weight="700" fill="#34D399" text-anchor="end">▲ 12%</text>
-<text x="44" y="573" font-size="13.5" font-weight="600" fill="#E2E8F0">The Pearl</text>
-<text x="286" y="573" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">11,208</text>
-<text x="356" y="573" font-size="11.5" font-weight="700" fill="#34D399" text-anchor="end">▲ 4%</text>
-<text x="44" y="604" font-size="13.5" font-weight="600" fill="#E2E8F0">Lusail</text>
-<text x="286" y="604" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">8,940</text>
-<text x="356" y="604" font-size="11.5" font-weight="700" fill="#FB7185" text-anchor="end">▼ 9%</text>
-<text x="44" y="635" font-size="13.5" font-weight="600" fill="#E2E8F0">Msheireb</text>
-<text x="286" y="635" font-size="13.5" font-weight="700" fill="#F8FAFC" text-anchor="end">6,415</text>
-<text x="356" y="635" font-size="11.5" font-weight="700" fill="#34D399" text-anchor="end">▲ 1%</text>
-<rect x="26" y="682" width="348" height="76" rx="15" fill="#C9A227" fill-opacity="0.1" stroke="#C9A227" stroke-opacity="0.35"/>
-<text x="44" y="710" font-size="12.5" font-weight="800" fill="#E8CE7A">⇅ Drag any card to reorder</text>
-<text x="44" y="734" font-size="11.5" fill="#94A3B8">Your order, kept on your phone</text>
-<rect x="26" y="784" width="348" height="1" fill="rgba(255,255,255,0.09)"/>
-<text x="84" y="822" font-size="19" fill="#E8CE7A" text-anchor="middle">◔</text>
-<text x="84" y="842" font-size="10.5" font-weight="600" fill="#E8CE7A" text-anchor="middle">Sales</text>
-<text x="200" y="822" font-size="19" fill="#64748B" text-anchor="middle">✉</text>
-<text x="200" y="842" font-size="10.5" font-weight="600" fill="#64748B" text-anchor="middle">Inbox</text>
-<text x="316" y="822" font-size="19" fill="#64748B" text-anchor="middle">★</text>
-<text x="316" y="842" font-size="10.5" font-weight="600" fill="#64748B" text-anchor="middle">Reviews</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 866" width="400" height="866" font-family="-apple-system, BlinkMacSystemFont, &quot;SF Pro Text&quot;, &quot;Helvetica Neue&quot;, sans-serif" font-variant-numeric="tabular-nums">
+<rect x="0" y="0" width="400" height="866" fill="#FFFFFF"/>
+<text x="24" y="34" font-size="14" font-weight="600" fill="#16161D">9:41</text>
+<rect x="352" y="25" width="24" height="12" rx="3.5" fill="none" stroke="#16161D" stroke-width="1.2"/>
+<rect x="354" y="27" width="20" height="8" rx="2" fill="#16161D"/>
+<rect x="377.5" y="29" width="1.8" height="4" rx="0.9" fill="#16161D"/>
+<g transform="translate(326 22) scale(0.75)" fill="none" stroke="#16161D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a10 10 0 0 1 14 0 M8.5 16a5 5 0 0 1 7 0 M12 19.5h.01 M2 9a15 15 0 0 1 20 0"/></g>
+<rect x="300" y="33.5" width="3.4" height="3.5" rx="1.2" fill="#16161D"/>
+<rect x="305.2" y="30.9" width="3.4" height="6.1" rx="1.2" fill="#16161D"/>
+<rect x="310.4" y="28.3" width="3.4" height="8.7" rx="1.2" fill="#16161D"/>
+<rect x="315.6" y="25.7" width="3.4" height="11.3" rx="1.2" fill="#16161D"/>
+<text x="20" y="76" font-size="26" font-weight="700" fill="#16161D">Al Sadd</text>
+<text x="20" y="96" font-size="14" fill="#62626E">Sales</text>
+<rect x="20" y="120" width="360" height="142" rx="28" fill="#F2F2F6"/>
+<text x="40" y="153" font-size="15" font-weight="600" fill="#16161D">Today</text>
+<text x="40" y="205" font-size="44" font-weight="700" fill="#16161D">QR 14,632</text>
+<rect x="40.28" y="219" width="59.72" height="22" rx="11" fill="#DDF3E4"/>
+<path d="M49.28 233.87L58.28 233.87L53.78 226.13Z" fill="#17663A"/>
+<text x="63.28" y="234.62" font-size="13" font-weight="700" fill="#17663A">12%</text>
+<text x="110" y="234.62" font-size="13" fill="#62626E">vs Wednesday · by 15:47</text>
+<rect x="20" y="272" width="60.08" height="34" rx="17" fill="#5B3FE0"/>
+<text x="50.04" y="293.62" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">Today</text>
+<rect x="86.08" y="272" width="85.91" height="34" rx="17" fill="#F2F2F6"/>
+<text x="129.03" y="293.62" font-size="13" font-weight="600" fill="#16161D" text-anchor="middle">Yesterday</text>
+<rect x="177.99" y="272" width="55.91" height="34" rx="17" fill="#F2F2F6"/>
+<text x="205.94" y="293.62" font-size="13" font-weight="600" fill="#16161D" text-anchor="middle">Week</text>
+<rect x="239.9" y="272" width="59.94" height="34" rx="17" fill="#F2F2F6"/>
+<text x="269.87" y="293.62" font-size="13" font-weight="600" fill="#16161D" text-anchor="middle">Month</text>
+<rect x="305.84" y="272" width="52.81" height="34" rx="17" fill="#F2F2F6"/>
+<text x="332.24" y="293.62" font-size="13" font-weight="600" fill="#16161D" text-anchor="middle">Year</text>
+<rect x="20" y="316" width="360" height="170" rx="26" fill="#F2F2F6"/>
+<text x="40" y="349" font-size="17" font-weight="600" fill="#16161D">By the hour · Doha</text>
+<rect x="40" y="434" width="20" height="16" rx="4" fill="#C5B9F5"/>
+<rect x="73.33" y="427" width="20" height="23" rx="4" fill="#C5B9F5"/>
+<rect x="106.66" y="401" width="20" height="49" rx="4" fill="#C5B9F5"/>
+<rect x="139.99" y="371" width="20" height="79" rx="4" fill="#C5B9F5"/>
+<rect x="173.32" y="409" width="20" height="41" rx="4" fill="#C5B9F5"/>
+<rect x="206.65" y="423" width="20" height="27" rx="4" fill="#C5B9F5"/>
+<rect x="239.98" y="394" width="20" height="56" rx="4" fill="#C5B9F5"/>
+<rect x="273.31" y="364" width="20" height="86" rx="4" fill="#5B3FE0"/>
+<rect x="306.64" y="383" width="20" height="67" rx="4" fill="#C5B9F5"/>
+<rect x="339.97" y="414" width="20" height="36" rx="4" fill="#C5B9F5"/>
+<text x="40" y="470" font-size="11" fill="#62626E">12p</text>
+<text x="360" y="470" font-size="11" fill="#62626E" text-anchor="end">1a</text>
+<rect x="20" y="496" width="360" height="199" rx="26" fill="#F2F2F6"/>
+<text x="40" y="529" font-size="17" font-weight="600" fill="#16161D">Branches</text>
+<rect x="40" y="546" width="320" height="30" rx="16" fill="#FFFFFF"/>
+<text x="52" y="565.62" font-size="13" font-weight="600" fill="#16161D">Al Sadd</text>
+<rect x="288.28" y="550" width="59.72" height="22" rx="11" fill="#DDF3E4"/>
+<path d="M297.28 564.87L306.28 564.87L301.78 557.13Z" fill="#17663A"/>
+<text x="311.28" y="565.62" font-size="13" font-weight="700" fill="#17663A">12%</text>
+<text x="274.28" y="565.62" font-size="13" font-weight="700" fill="#16161D" text-anchor="end">14,632</text>
+<rect x="40" y="579" width="320" height="30" rx="16" fill="#FFFFFF"/>
+<text x="52" y="598.62" font-size="13" font-weight="600" fill="#16161D">The Pearl</text>
+<rect x="288.28" y="583" width="59.72" height="22" rx="11" fill="#DDF3E4"/>
+<path d="M301.18 597.87L310.18 597.87L305.68 590.13Z" fill="#17663A"/>
+<text x="315.18" y="598.62" font-size="13" font-weight="700" fill="#17663A">4%</text>
+<text x="274.28" y="598.62" font-size="13" font-weight="700" fill="#16161D" text-anchor="end">11,208</text>
+<rect x="40" y="612" width="320" height="30" rx="16" fill="#FFFFFF"/>
+<text x="52" y="631.62" font-size="13" font-weight="600" fill="#16161D">Lusail</text>
+<rect x="288.28" y="616" width="59.72" height="22" rx="11" fill="#FCE6DA"/>
+<path d="M301.18 623.13L310.18 623.13L305.68 630.87Z" fill="#9A3412"/>
+<text x="315.18" y="631.62" font-size="13" font-weight="700" fill="#9A3412">9%</text>
+<text x="274.28" y="631.62" font-size="13" font-weight="700" fill="#16161D" text-anchor="end">8,940</text>
+<rect x="40" y="645" width="320" height="30" rx="16" fill="#FFFFFF"/>
+<text x="52" y="664.62" font-size="13" font-weight="600" fill="#16161D">Msheireb</text>
+<rect x="288.28" y="649" width="59.72" height="22" rx="11" fill="#DDF3E4"/>
+<path d="M301.18 663.87L310.18 663.87L305.68 656.13Z" fill="#17663A"/>
+<text x="315.18" y="664.62" font-size="13" font-weight="700" fill="#17663A">1%</text>
+<text x="274.28" y="664.62" font-size="13" font-weight="700" fill="#16161D" text-anchor="end">6,415</text>
+<rect x="20" y="705" width="360" height="72" rx="26" fill="#EEEAFD"/>
+<g transform="translate(34 722) scale(0.75)" fill="none" stroke="#5B3FE0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v18M8 3 4 7M8 3l4 4M16 21V3M16 21l4-4M16 21l-4-4"/></g>
+<text x="64" y="736" font-size="14" font-weight="600" fill="#5B3FE0">Drag any card to reorder</text>
+<text x="64" y="758" font-size="13" fill="#62626E">Your order, kept on your phone</text>
+<path d="M0 790H400" stroke="#EEEEF3" stroke-width="1" fill="none"/>
+<g transform="translate(56.17 805.5) scale(0.88)" fill="none" stroke="#5B3FE0" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12z M15 2.5A10 10 0 0 1 21.5 9H15z"/></g>
+<text x="66.67" y="840" font-size="11" font-weight="600" fill="#5B3FE0" text-anchor="middle">Sales</text>
+<g transform="translate(189.5 805.5) scale(0.88)" fill="none" stroke="#62626E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2 M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></g>
+<text x="200" y="840" font-size="11" font-weight="600" fill="#62626E" text-anchor="middle">Inbox</text>
+<g transform="translate(322.83 805.5) scale(0.88)" fill="none" stroke="#62626E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z"/></g>
+<text x="333.33" y="840" font-size="11" font-weight="600" fill="#62626E" text-anchor="middle">Reviews</text>
 </svg>

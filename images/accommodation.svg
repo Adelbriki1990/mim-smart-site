@@ -1,110 +1,109 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
-<title>Accommodation — four staff villas with occupancy bars, the bed list for Villa 3 Ain Khaled with one free bed held for a new joiner, open repairs, and the morning bus run with pickup times per villa.</title>
-<rect width="1200" height="800" fill="#0F172A"/>
-<text x="30" y="46" font-size="23" font-weight="800" fill="#F8FAFC">Accommodation — 4 villas · September 2026</text>
-<text x="1170" y="46" font-size="15" fill="#94A3B8" text-anchor="end">48 beds · 44 occupied · 4 free · 3 repairs open</text>
-<rect x="24" y="66" width="1152" height="2" fill="#1E293B"/>
-<rect x="24" y="94" width="300" height="96" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
-<text x="44" y="124" font-size="14.5" font-weight="700" fill="#E2E8F0">Villa 1 — Abu Hamour</text>
-<text x="304" y="124" font-size="15" font-weight="800" fill="#FBBF24" text-anchor="end">12 / 12</text>
-<rect x="254" y="136" width="50" height="20" rx="10" fill="#FBBF24" fill-opacity="0.18" stroke="#FBBF24" stroke-opacity="0.5"/>
-<text x="279" y="150" font-size="11" font-weight="700" fill="#FBBF24" text-anchor="middle">FULL</text>
-<rect x="44" y="166" width="260" height="8" rx="4" fill="rgba(255,255,255,0.08)"/>
-<rect x="44" y="166" width="260" height="8" rx="4" fill="#FBBF24"/>
-<rect x="24" y="202" width="300" height="96" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
-<text x="44" y="232" font-size="14.5" font-weight="700" fill="#E2E8F0">Villa 2 — Al Wakrah</text>
-<text x="304" y="232" font-size="15" font-weight="800" fill="#E2E8F0" text-anchor="end">13 / 14</text>
-<rect x="44" y="274" width="260" height="8" rx="4" fill="rgba(255,255,255,0.08)"/>
-<rect x="44" y="274" width="241" height="8" rx="4" fill="#4A80BC"/>
-<rect x="24" y="310" width="300" height="96" rx="14" fill="rgba(232,206,122,0.10)" stroke="rgba(232,206,122,0.5)"/>
-<text x="44" y="340" font-size="14.5" font-weight="700" fill="#F8FAFC">Villa 3 — Ain Khaled</text>
-<text x="304" y="340" font-size="15" font-weight="800" fill="#E8CE7A" text-anchor="end">11 / 12</text>
-<rect x="44" y="382" width="260" height="8" rx="4" fill="rgba(255,255,255,0.08)"/>
-<rect x="44" y="382" width="238" height="8" rx="4" fill="#4A80BC"/>
-<rect x="24" y="418" width="300" height="96" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
-<text x="44" y="448" font-size="14.5" font-weight="700" fill="#E2E8F0">Villa 4 — Mesaimeer</text>
-<text x="304" y="448" font-size="15" font-weight="800" fill="#E2E8F0" text-anchor="end">8 / 10</text>
-<rect x="44" y="490" width="260" height="8" rx="4" fill="rgba(255,255,255,0.08)"/>
-<rect x="44" y="490" width="208" height="8" rx="4" fill="#4A80BC"/>
-<rect x="24" y="534" width="300" height="152" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
-<text x="44" y="564" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">REPAIRS OPEN</text>
-<text x="44" y="612" font-size="36" font-weight="800" fill="#FBBF24">3</text>
-<text x="44" y="642" font-size="12.5" fill="#CBD5E1">Villa 2 · split AC, room 3 · <tspan fill="#F87171" font-weight="700">4 days</tspan></text>
-<text x="44" y="662" font-size="12.5" fill="#64748B">Water heater, Villa 1 · Gate lock, Villa 3</text>
-<rect x="340" y="94" width="488" height="592" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
-<text x="362" y="124" font-size="12" font-weight="700" fill="#94A3B8" letter-spacing="1.4">VILLA 3 — AIN KHALED · 11 OF 12 BEDS</text>
-<rect x="356" y="146" width="440" height="42" rx="9" fill="rgba(255,255,255,0.03)"/>
-<text x="372" y="172" font-size="14" font-weight="600" fill="#E2E8F0">Bed 6 · Suresh Nair <tspan font-size="12" font-weight="400" fill="#64748B"> chef de partie</tspan></text>
-<text x="782" y="172" font-size="13" fill="#CBD5E1" text-anchor="end">14 Mar 2024</text>
-<rect x="356" y="196" width="440" height="42" rx="9" fill="rgba(255,255,255,0.03)"/>
-<text x="372" y="222" font-size="14" font-weight="600" fill="#E2E8F0">Bed 7 · Bikash Tamang <tspan font-size="12" font-weight="400" fill="#64748B"> waiter</tspan></text>
-<text x="782" y="222" font-size="13" fill="#CBD5E1" text-anchor="end">2 Jun 2025</text>
-<rect x="356" y="246" width="440" height="42" rx="9" fill="rgba(255,255,255,0.03)"/>
-<text x="372" y="272" font-size="14" font-weight="600" fill="#E2E8F0">Bed 8 · Mahmoud Hegazy <tspan font-size="12" font-weight="400" fill="#64748B"> grill cook</tspan></text>
-<text x="782" y="272" font-size="13" fill="#CBD5E1" text-anchor="end">9 Nov 2023</text>
-<rect x="356" y="296" width="440" height="42" rx="9" fill="rgba(255,255,255,0.03)"/>
-<text x="372" y="322" font-size="14" font-weight="600" fill="#E2E8F0">Bed 9 · Joel Dela Cruz <tspan font-size="12" font-weight="400" fill="#64748B"> barista</tspan></text>
-<text x="782" y="322" font-size="13" fill="#CBD5E1" text-anchor="end">21 Jan 2026</text>
-<rect x="356" y="346" width="440" height="42" rx="9" fill="rgba(255,255,255,0.03)"/>
-<text x="372" y="372" font-size="14" font-weight="600" fill="#E2E8F0">Bed 10 · Nuwan Perera <tspan font-size="12" font-weight="400" fill="#64748B"> steward</tspan></text>
-<text x="782" y="372" font-size="13" fill="#CBD5E1" text-anchor="end">30 Aug 2026</text>
-<rect x="356" y="396" width="440" height="42" rx="9" fill="rgba(255,255,255,0.03)"/>
-<text x="372" y="422" font-size="14" font-weight="600" fill="#E2E8F0">Bed 11 · Ramesh Gurung <tspan font-size="12" font-weight="400" fill="#64748B"> runner</tspan></text>
-<text x="782" y="422" font-size="13" fill="#CBD5E1" text-anchor="end">1 Sep 2026</text>
-<rect x="356" y="446" width="440" height="42" rx="9" fill="rgba(232,206,122,0.10)" stroke="rgba(232,206,122,0.5)"/>
-<text x="372" y="472" font-size="14" font-weight="700" fill="#E8CE7A">Bed 12 · free <tspan font-size="12.5" font-weight="400" fill="#CBD5E1"> · held for Kiran Thapa</tspan></text>
-<text x="782" y="472" font-size="13" font-weight="700" fill="#E8CE7A" text-anchor="end">7 Sep 2026</text>
-<rect x="808" y="146" width="4" height="342" rx="2" fill="rgba(255,255,255,0.06)"/>
-<rect x="808" y="290" width="4" height="198" rx="2" fill="rgba(255,255,255,0.2)"/>
-<rect x="356" y="516" width="456" height="100" rx="12" fill="rgba(232,206,122,0.10)" stroke="rgba(232,206,122,0.5)"/>
-<text x="376" y="552" font-size="14" font-weight="800" fill="#E8CE7A">Kiran Thapa · lands Mon 7 Sep</text>
-<text x="376" y="578" font-size="12.5" fill="#CBD5E1">Commis, Juno Al Sadd · 06:45 pickup · last seat</text>
-<rect x="700" y="548" width="96" height="36" rx="10" fill="#E8CE7A"/>
-<text x="748" y="571" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">Assign bed</text>
-<rect x="844" y="94" width="332" height="592" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
-<text x="866" y="124" font-size="12" font-weight="700" fill="#94A3B8" letter-spacing="1.4">TRANSPORT · MORNING BUS</text>
-<text x="866" y="150" font-size="12.5" fill="#CBD5E1">Coaster · 26 seats · driver Anil Shrestha</text>
-<rect x="883" y="194" width="2" height="270" fill="#38BDF8" fill-opacity="0.35"/>
-<rect x="862" y="284" width="298" height="36" rx="9" fill="rgba(232,206,122,0.10)" stroke="rgba(232,206,122,0.5)"/>
-<circle cx="884" cy="194" r="6" fill="#38BDF8"/>
-<text x="902" y="199" font-size="13.5" font-weight="600" fill="#E2E8F0"><tspan font-weight="800" fill="#38BDF8">06:10</tspan>  Villa 1 · Abu Hamour <tspan font-size="12" font-weight="400" fill="#64748B"> · 9 on</tspan></text>
-<circle cx="884" cy="248" r="6" fill="#38BDF8"/>
-<text x="902" y="253" font-size="13.5" font-weight="600" fill="#E2E8F0"><tspan font-weight="800" fill="#38BDF8">06:25</tspan>  Villa 2 · Al Wakrah <tspan font-size="12" font-weight="400" fill="#64748B"> · 7 on</tspan></text>
-<circle cx="884" cy="302" r="6" fill="#E8CE7A"/>
-<text x="902" y="307" font-size="13.5" font-weight="600" fill="#F8FAFC"><tspan font-weight="800" fill="#E8CE7A">06:45</tspan>  Villa 3 · Ain Khaled <tspan font-size="12" font-weight="400" fill="#CBD5E1"> · 6 on</tspan></text>
-<circle cx="884" cy="356" r="6" fill="#38BDF8"/>
-<text x="902" y="361" font-size="13.5" font-weight="600" fill="#E2E8F0"><tspan font-weight="800" fill="#38BDF8">07:00</tspan>  Villa 4 · Mesaimeer <tspan font-size="12" font-weight="400" fill="#64748B"> · 3 on</tspan></text>
-<circle cx="884" cy="410" r="6" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
-<text x="902" y="415" font-size="13.5" font-weight="600" fill="#E2E8F0"><tspan font-weight="800" fill="#38BDF8">07:25</tspan>  Juno Al Sadd <tspan font-size="12" font-weight="400" fill="#64748B"> · 17 off</tspan></text>
-<circle cx="884" cy="464" r="6" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
-<text x="902" y="469" font-size="13.5" font-weight="600" fill="#E2E8F0"><tspan font-weight="800" fill="#38BDF8">07:40</tspan>  Sumac West Walk <tspan font-size="12" font-weight="400" fill="#64748B"> · 8 off</tspan></text>
-<text x="866" y="524" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">SEATS · 25 OF 26 BOARDING</text>
-<rect x="866" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="888" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="910" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="932" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="954" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="976" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="998" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="1020" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="1042" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="1064" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="1086" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="1108" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="1130" y="540" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="866" y="564" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="888" y="564" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="910" y="564" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="932" y="564" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="954" y="564" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="976" y="564" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="998" y="564" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="1020" y="564" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="1042" y="564" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="1064" y="564" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="1086" y="564" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="1108" y="564" width="18" height="18" rx="4" fill="#38BDF8" fill-opacity="0.55"/>
-<rect x="1130" y="564" width="18" height="18" rx="4" fill="rgba(232,206,122,0.15)" stroke="#E8CE7A" stroke-width="1.5"/>
-<text x="866" y="660" font-size="11.5" fill="#64748B">Evening return · Al Sadd 23:40 · West Walk 23:55</text>
-<text x="24" y="770" font-size="12.5" fill="#64748B">Every bed is company housing, so no QR 500 housing allowance is owed in WPS pay (Law 17 of 2020) — a resident with no bed is flagged to Payroll the same day.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="-apple-system, BlinkMacSystemFont, &quot;SF Pro Text&quot;, &quot;Helvetica Neue&quot;, sans-serif" font-variant-numeric="tabular-nums">
+<title>Accommodation — villas with occupancy, a bed list and the transport runs.</title>
+<rect x="0" y="0" width="1200" height="800" fill="#FFFFFF"/>
+<text x="28" y="54" font-size="24" font-weight="700" fill="#16161D">Accommodation — 4 villas · September 2026</text>
+<text x="1172" y="54" font-size="14" fill="#62626E" text-anchor="end">48 beds · 44 occupied · 4 free · 3 repairs open</text>
+<rect x="28" y="84" width="316" height="72" rx="26" fill="#F2F2F6"/>
+<text x="48" y="112" font-size="14" font-weight="600" fill="#16161D">Villa 1 — Abu Hamour</text>
+<text x="324" y="112" font-size="13" fill="#62626E" text-anchor="end"> / 12</text>
+<text x="297.22" y="112" font-size="16" font-weight="700" fill="#16161D" text-anchor="end">12</text>
+<rect x="48" y="124" width="276" height="6" rx="3" fill="#E2E2EA"/>
+<rect x="48" y="124" width="276" height="6" rx="3" fill="#5B3FE0"/>
+<rect x="48" y="134" width="38.61" height="18" rx="9" fill="#EEEAFD"/>
+<text x="67.3" y="146.91" font-size="11" font-weight="700" fill="#5B3FE0" text-anchor="middle">Full</text>
+<rect x="28" y="168" width="316" height="72" rx="26" fill="#F2F2F6"/>
+<text x="48" y="196" font-size="14" font-weight="600" fill="#16161D">Villa 2 — Al Wakrah</text>
+<text x="324" y="196" font-size="13" fill="#62626E" text-anchor="end"> / 14</text>
+<text x="297.22" y="196" font-size="16" font-weight="700" fill="#16161D" text-anchor="end">13</text>
+<rect x="48" y="208" width="276" height="6" rx="3" fill="#E2E2EA"/>
+<rect x="48" y="208" width="256.29" height="6" rx="3" fill="#5B3FE0"/>
+<rect x="28" y="252" width="316" height="72" rx="26" fill="#F2F2F6"/>
+<text x="48" y="280" font-size="14" font-weight="600" fill="#16161D">Villa 3 — Ain Khaled</text>
+<text x="324" y="280" font-size="13" fill="#62626E" text-anchor="end"> / 12</text>
+<text x="297.22" y="280" font-size="16" font-weight="700" fill="#16161D" text-anchor="end">11</text>
+<rect x="48" y="292" width="276" height="6" rx="3" fill="#E2E2EA"/>
+<rect x="48" y="292" width="253" height="6" rx="3" fill="#5B3FE0"/>
+<rect x="28" y="336" width="316" height="72" rx="26" fill="#F2F2F6"/>
+<text x="48" y="364" font-size="14" font-weight="600" fill="#16161D">Villa 4 — Mesaimeer</text>
+<text x="324" y="364" font-size="13" fill="#62626E" text-anchor="end"> / 10</text>
+<text x="297.22" y="364" font-size="16" font-weight="700" fill="#16161D" text-anchor="end">8</text>
+<rect x="48" y="376" width="276" height="6" rx="3" fill="#E2E2EA"/>
+<rect x="48" y="376" width="220.8" height="6" rx="3" fill="#5B3FE0"/>
+<rect x="28" y="424" width="316" height="160" rx="26" fill="#F2F2F6"/>
+<text x="48" y="454" font-size="17" font-weight="600" fill="#16161D">Repairs open</text>
+<circle cx="310" cy="448" r="11" fill="#9A3412"/>
+<text x="310" y="452" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<rect x="48" y="470" width="276" height="44" rx="16" fill="#FFFFFF"/>
+<text x="60" y="496.44" font-size="12.5" font-weight="600" fill="#16161D">Villa 2 · split AC, room 3</text>
+<rect x="259.39" y="482" width="52.61" height="20" rx="10" fill="#FCE6DA"/>
+<text x="285.69" y="495.9" font-size="11" font-weight="700" fill="#9A3412" text-anchor="middle">4 days</text>
+<text x="48" y="538" font-size="12.5" fill="#62626E">Water heater, Villa 1 ·</text>
+<text x="48" y="558" font-size="12.5" fill="#62626E">Gate lock, Villa 3</text>
+<rect x="360" y="84" width="444" height="300" rx="26" fill="#F2F2F6"/>
+<text x="380" y="114" font-size="17" font-weight="600" fill="#16161D">Villa 3 — Ain Khaled · 11 of 12 beds</text>
+<rect x="380" y="130" width="404" height="30" rx="16" fill="#FFFFFF"/>
+<text x="392" y="149.62" font-size="13" font-weight="600" fill="#16161D">Bed 6 · Suresh Nair</text>
+<text x="540" y="149.26" font-size="12" fill="#62626E"> chef de partie</text>
+<text x="772" y="149.26" font-size="12" fill="#62626E" text-anchor="end">14 Mar 2024</text>
+<rect x="380" y="163" width="404" height="30" rx="16" fill="#FFFFFF"/>
+<text x="392" y="182.62" font-size="13" font-weight="600" fill="#16161D">Bed 7 · Bikash Tamang</text>
+<text x="540" y="182.26" font-size="12" fill="#62626E"> waiter</text>
+<text x="772" y="182.26" font-size="12" fill="#62626E" text-anchor="end">2 Jun 2025</text>
+<rect x="380" y="196" width="404" height="30" rx="16" fill="#FFFFFF"/>
+<text x="392" y="215.62" font-size="13" font-weight="600" fill="#16161D">Bed 8 · Mahmoud Hegazy</text>
+<text x="540" y="215.26" font-size="12" fill="#62626E"> grill cook</text>
+<text x="772" y="215.26" font-size="12" fill="#62626E" text-anchor="end">9 Nov 2023</text>
+<rect x="380" y="229" width="404" height="30" rx="16" fill="#FFFFFF"/>
+<text x="392" y="248.62" font-size="13" font-weight="600" fill="#16161D">Bed 9 · Joel Dela Cruz</text>
+<text x="540" y="248.26" font-size="12" fill="#62626E"> barista</text>
+<text x="772" y="248.26" font-size="12" fill="#62626E" text-anchor="end">21 Jan 2026</text>
+<rect x="380" y="262" width="404" height="30" rx="16" fill="#FFFFFF"/>
+<text x="392" y="281.62" font-size="13" font-weight="600" fill="#16161D">Bed 10 · Nuwan Perera</text>
+<text x="540" y="281.26" font-size="12" fill="#62626E"> steward</text>
+<text x="772" y="281.26" font-size="12" fill="#62626E" text-anchor="end">30 Aug 2026</text>
+<rect x="380" y="295" width="404" height="30" rx="16" fill="#FFFFFF"/>
+<text x="392" y="314.62" font-size="13" font-weight="600" fill="#16161D">Bed 11 · Ramesh Gurung</text>
+<text x="540" y="314.26" font-size="12" fill="#62626E"> runner</text>
+<text x="772" y="314.26" font-size="12" fill="#62626E" text-anchor="end">1 Sep 2026</text>
+<rect x="380" y="328" width="404" height="30" rx="16" fill="#EEEAFD"/>
+<text x="392" y="347.62" font-size="13" font-weight="600" fill="#5B3FE0">Bed 12 · free</text>
+<text x="540" y="347.26" font-size="12" fill="#5B3FE0">· held for Kiran Thapa</text>
+<text x="772" y="347.26" font-size="12" fill="#62626E" text-anchor="end">7 Sep 2026</text>
+<rect x="360" y="400" width="444" height="140" rx="26" fill="#F2F2F6"/>
+<text x="380" y="432" font-size="15" font-weight="600" fill="#16161D">Kiran Thapa · lands Mon 7 Sep</text>
+<text x="380" y="454" font-size="12.5" fill="#62626E">Commis, Juno Al Sadd · 06:45 pickup · last seat</text>
+<rect x="380" y="476" width="117.17" height="40" rx="20" fill="#5B3FE0"/>
+<text x="438.59" y="500.97" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle">Assign bed</text>
+<rect x="820" y="84" width="352" height="456" rx="26" fill="#F2F2F6"/>
+<text x="840" y="114" font-size="17" font-weight="600" fill="#16161D">Transport · morning bus</text>
+<text x="840" y="134" font-size="13" fill="#62626E">Coaster · 26 seats · driver Anil Shrestha</text>
+<rect x="840" y="160" width="312" height="34" rx="16" fill="#FFFFFF"/>
+<text x="852" y="181.44" font-size="12.5" font-weight="700" fill="#5B3FE0">06:10</text>
+<text x="904" y="181.44" font-size="12.5" fill="#16161D">Villa 1 · Abu Hamour</text>
+<text x="1140" y="181.26" font-size="12" font-weight="600" fill="#62626E" text-anchor="end">9 on</text>
+<rect x="840" y="197" width="312" height="34" rx="16" fill="#FFFFFF"/>
+<text x="852" y="218.44" font-size="12.5" font-weight="700" fill="#5B3FE0">06:25</text>
+<text x="904" y="218.44" font-size="12.5" fill="#16161D">Villa 2 · Al Wakrah</text>
+<text x="1140" y="218.26" font-size="12" font-weight="600" fill="#62626E" text-anchor="end">7 on</text>
+<rect x="840" y="234" width="312" height="34" rx="16" fill="#FFFFFF"/>
+<text x="852" y="255.44" font-size="12.5" font-weight="700" fill="#5B3FE0">06:45</text>
+<text x="904" y="255.44" font-size="12.5" fill="#16161D">Villa 3 · Ain Khaled</text>
+<text x="1140" y="255.26" font-size="12" font-weight="600" fill="#62626E" text-anchor="end">6 on</text>
+<rect x="840" y="271" width="312" height="34" rx="16" fill="#FFFFFF"/>
+<text x="852" y="292.44" font-size="12.5" font-weight="700" fill="#5B3FE0">07:00</text>
+<text x="904" y="292.44" font-size="12.5" fill="#16161D">Villa 4 · Mesaimeer</text>
+<text x="1140" y="292.26" font-size="12" font-weight="600" fill="#62626E" text-anchor="end">3 on</text>
+<rect x="840" y="308" width="312" height="34" rx="16" fill="#FFFFFF"/>
+<text x="852" y="329.44" font-size="12.5" font-weight="700" fill="#5B3FE0">07:25</text>
+<text x="904" y="329.44" font-size="12.5" fill="#16161D">Juno Al Sadd</text>
+<text x="1140" y="329.26" font-size="12" font-weight="600" fill="#62626E" text-anchor="end">17 off</text>
+<rect x="840" y="345" width="312" height="34" rx="16" fill="#FFFFFF"/>
+<text x="852" y="366.44" font-size="12.5" font-weight="700" fill="#5B3FE0">07:40</text>
+<text x="904" y="366.44" font-size="12.5" fill="#16161D">Sumac West Walk</text>
+<text x="1140" y="366.26" font-size="12" font-weight="600" fill="#62626E" text-anchor="end">8 off</text>
+<rect x="840" y="388" width="312" height="36" rx="16" fill="#EEEAFD"/>
+<text x="852" y="410.97" font-size="14" font-weight="700" fill="#5B3FE0">Seats · 25 of 26 boarding</text>
+<text x="840" y="456" font-size="12.5" fill="#62626E">Evening return · Al Sadd 23:40 ·</text>
+<text x="840" y="474" font-size="12.5" fill="#62626E">West Walk 23:55</text>
+<text x="28" y="752" font-size="12.5" fill="#62626E">Every bed is company housing, so no QR 500 housing allowance is owed in WPS pay (Law 17 of 2020) — a resident with no bed is flagged to Payroll the same day.</text>
 </svg>

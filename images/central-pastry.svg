@@ -1,76 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif">
-<title>Central Pastry bake and dispatch board at 06:52 — three production lines against plan, seven branch dispatches, and an 88% croissant yield that leaves West Bay 28 short</title>
-<rect width="1200" height="800" fill="#0F172A"/>
-<text x="30" y="46" font-size="23" font-weight="800" fill="#F8FAFC">Central Pastry — Sun 6 Sept · morning bake</text>
-<text x="1170" y="46" font-size="15" fill="#94A3B8" text-anchor="end">06:52 · Ramesh Thapa, head baker</text>
-<rect x="24" y="66" width="1152" height="2" fill="#1E293B"/>
-<rect x="24" y="84" width="96" height="30" rx="15" fill="#E0A130"/>
-<text x="72" y="104" font-size="13" font-weight="700" fill="#0F172A" text-anchor="middle">Board</text>
-<rect x="128" y="84" width="96" height="30" rx="15" fill="rgba(255,255,255,0.07)"/>
-<text x="176" y="104" font-size="13" font-weight="700" fill="#94A3B8" text-anchor="middle">Orders</text>
-<rect x="232" y="84" width="96" height="30" rx="15" fill="rgba(255,255,255,0.07)"/>
-<text x="280" y="104" font-size="13" font-weight="700" fill="#94A3B8" text-anchor="middle">Recipes</text>
-<rect x="24" y="132" width="560" height="360" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
-<text x="46" y="162" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">TODAY'S BAKE · PLANNED vs MADE</text>
-<text x="46" y="216" font-size="14" font-weight="600" fill="#E2E8F0">Croissant</text>
-<text x="562" y="216" font-size="14" font-weight="700" fill="#E0A130" text-anchor="end">212<tspan fill="#64748B"> / 240</tspan></text>
-<rect x="46" y="228" width="516" height="10" rx="5" fill="#4A80BC" fill-opacity="0.25"/>
-<rect x="46" y="228" width="456" height="10" rx="5" fill="#E0A130"/>
-<text x="46" y="256" font-size="11.5" fill="#64748B">batch 1 out 06:20 · 28 more proofing, out 07:45</text>
-<text x="46" y="316" font-size="14" font-weight="600" fill="#E2E8F0">Kunafa</text>
-<text x="562" y="316" font-size="14" font-weight="700" fill="#34D399" text-anchor="end">60<tspan fill="#64748B"> / 60</tspan></text>
-<rect x="46" y="328" width="516" height="10" rx="5" fill="#4A80BC" fill-opacity="0.25"/>
-<rect x="46" y="328" width="516" height="10" rx="5" fill="#34D399"/>
-<text x="46" y="356" font-size="11.5" fill="#64748B">2 trays · out 06:10 · all 60 made</text>
-<text x="46" y="416" font-size="14" font-weight="600" fill="#E2E8F0">Date cake</text>
-<text x="562" y="416" font-size="14" font-weight="700" fill="#E0A130" text-anchor="end">11<tspan fill="#64748B"> / 18</tspan></text>
-<rect x="46" y="428" width="516" height="10" rx="5" fill="#4A80BC" fill-opacity="0.25"/>
-<rect x="46" y="428" width="315" height="10" rx="5" fill="#E0A130"/>
-<text x="46" y="456" font-size="11.5" fill="#64748B">batch 2 in the oven · out 07:05</text>
-<rect x="24" y="512" width="560" height="150" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
-<text x="46" y="550" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">YIELD · CROISSANT BATCH 1</text>
-<text x="46" y="606" font-size="36" font-weight="800" fill="#E0A130">88%</text>
-<text x="166" y="594" font-size="14" font-weight="600" fill="#E2E8F0">25 kg flour → 212 croissants</text>
-<text x="166" y="618" font-size="12.5" fill="#64748B">recipe expects 240 from 25 kg · 28 short · logged against batch 1</text>
-<rect x="604" y="132" width="572" height="530" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
-<text x="626" y="162" font-size="11" font-weight="700" fill="#94A3B8" letter-spacing="1.4">DISPATCH · 7 BRANCHES · VAN 1 LEFT 06:40</text>
-<rect x="620" y="182" width="540" height="56" rx="9" fill="rgba(255,255,255,0.03)"/>
-<text x="636" y="205" font-size="14" font-weight="600" fill="#E2E8F0">Al Sadd</text>
-<text x="636" y="225" font-size="11.5" fill="#94A3B8">6 cases · 40 croissant · 12 kunafa · 4 date cake</text>
-<rect x="1046" y="199" width="98" height="22" rx="11" fill="#34D399" fill-opacity="0.16" stroke="#34D399" stroke-opacity="0.5"/>
-<text x="1095" y="214" font-size="11.5" font-weight="700" fill="#34D399" text-anchor="middle">sent 06:40</text>
-<rect x="620" y="246" width="540" height="56" rx="9" fill="rgba(255,255,255,0.03)"/>
-<text x="636" y="269" font-size="14" font-weight="600" fill="#E2E8F0">West Walk</text>
-<text x="636" y="289" font-size="11.5" fill="#94A3B8">5 cases · 36 croissant · 10 kunafa · 3 date cake</text>
-<rect x="1046" y="263" width="98" height="22" rx="11" fill="#34D399" fill-opacity="0.16" stroke="#34D399" stroke-opacity="0.5"/>
-<text x="1095" y="278" font-size="11.5" font-weight="700" fill="#34D399" text-anchor="middle">sent 06:40</text>
-<rect x="620" y="310" width="540" height="56" rx="9" fill="rgba(255,255,255,0.03)"/>
-<text x="636" y="333" font-size="14" font-weight="600" fill="#E2E8F0">Vendome Mall</text>
-<text x="636" y="353" font-size="11.5" fill="#94A3B8">4 cases · 30 croissant · 8 kunafa · 2 date cake</text>
-<rect x="1046" y="327" width="98" height="22" rx="11" fill="#34D399" fill-opacity="0.16" stroke="#34D399" stroke-opacity="0.5"/>
-<text x="1095" y="342" font-size="11.5" font-weight="700" fill="#34D399" text-anchor="middle">sent 06:40</text>
-<rect x="620" y="374" width="540" height="56" rx="9" fill="rgba(255,255,255,0.03)"/>
-<text x="636" y="397" font-size="14" font-weight="600" fill="#E2E8F0">Old Port</text>
-<text x="636" y="417" font-size="11.5" fill="#94A3B8">3 cases · 24 croissant · 8 kunafa · 2 date cake</text>
-<rect x="1046" y="391" width="98" height="22" rx="11" fill="#38BDF8" fill-opacity="0.16" stroke="#38BDF8" stroke-opacity="0.5"/>
-<text x="1095" y="406" font-size="11.5" font-weight="700" fill="#38BDF8" text-anchor="middle">packing</text>
-<rect x="620" y="438" width="540" height="56" rx="9" fill="rgba(255,255,255,0.03)"/>
-<text x="636" y="461" font-size="14" font-weight="600" fill="#E2E8F0">MOQ</text>
-<text x="636" y="481" font-size="11.5" fill="#94A3B8">3 cases · 24 croissant · 8 kunafa</text>
-<rect x="1046" y="455" width="98" height="22" rx="11" fill="#38BDF8" fill-opacity="0.16" stroke="#38BDF8" stroke-opacity="0.5"/>
-<text x="1095" y="470" font-size="11.5" font-weight="700" fill="#38BDF8" text-anchor="middle">packing</text>
-<rect x="620" y="502" width="540" height="56" rx="9" fill="rgba(255,255,255,0.03)"/>
-<text x="636" y="525" font-size="14" font-weight="600" fill="#E2E8F0">DFC</text>
-<text x="636" y="545" font-size="11.5" fill="#94A3B8">5 cases · 38 croissant · 8 kunafa · 3 date cake, still in the oven</text>
-<rect x="1046" y="519" width="98" height="22" rx="11" fill="rgba(255,255,255,0.07)"/>
-<text x="1095" y="534" font-size="11.5" font-weight="700" fill="#94A3B8" text-anchor="middle">waiting</text>
-<rect x="620" y="566" width="540" height="56" rx="9" fill="#FBBF24" fill-opacity="0.1" stroke="#FBBF24" stroke-opacity="0.42"/>
-<text x="636" y="589" font-size="14" font-weight="700" fill="#FBBF24">West Bay</text>
-<text x="636" y="609" font-size="11.5" fill="#CBD5E1">6 cases · <tspan fill="#FBBF24" font-weight="700">48 croissant ordered, 20 left</tspan> · 6 kunafa · 4 date cake</text>
-<rect x="1046" y="583" width="98" height="22" rx="11" fill="#FBBF24" fill-opacity="0.16" stroke="#FBBF24" stroke-opacity="0.5"/>
-<text x="1095" y="598" font-size="11.5" font-weight="800" fill="#FBBF24" text-anchor="middle">short 28</text>
-<rect x="24" y="686" width="1152" height="68" rx="14" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.08)"/>
-<text x="48" y="726" font-size="13.5" fill="#CBD5E1"><tspan fill="#E8CE7A" font-weight="700">3 of 7 branches sent</tspan> · van 2 loads Old Port + MOQ, leaves 07:10 · West Bay's 28 croissants rebake, out 07:45 on van 3</text>
-<text x="1152" y="731" font-size="30" font-weight="800" fill="#34D399" text-anchor="end">15 / 32<tspan font-size="13" font-weight="600" fill="#94A3B8"> cases</tspan></text>
-<text x="24" y="784" font-size="12.5" fill="#64748B">every case is a stock transfer — it leaves the pastry ledger and lands in the branch's ledger the moment it is scanned in</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="-apple-system, BlinkMacSystemFont, &quot;SF Pro Text&quot;, &quot;Helvetica Neue&quot;, sans-serif" font-variant-numeric="tabular-nums">
+<title>Central pastry — the production plan, dispatch list and yield.</title>
+<rect x="0" y="0" width="1200" height="800" fill="#FFFFFF"/>
+<text x="28" y="54" font-size="24" font-weight="700" fill="#16161D">Central Pastry — Sun 6 Sept · morning bake</text>
+<text x="1172" y="54" font-size="14" fill="#62626E" text-anchor="end">06:52 · Ramesh Thapa, head baker</text>
+<rect x="28" y="78" width="73.01" height="40" rx="20" fill="#5B3FE0"/>
+<text x="64.5" y="102.97" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle">Board</text>
+<rect x="109.01" y="78" width="80.83" height="40" rx="20" fill="#F2F2F6"/>
+<text x="149.42" y="102.97" font-size="14" font-weight="600" fill="#16161D" text-anchor="middle">Orders</text>
+<rect x="197.84" y="78" width="85.18" height="40" rx="20" fill="#F2F2F6"/>
+<text x="240.43" y="102.97" font-size="14" font-weight="600" fill="#16161D" text-anchor="middle">Recipes</text>
+<rect x="28" y="140" width="776" height="460" rx="26" fill="#F2F2F6"/>
+<text x="48" y="170" font-size="17" font-weight="600" fill="#16161D">Dispatch · 7 branches · van 1 left 06:40</text>
+<rect x="48" y="190" width="736" height="38" rx="16" fill="#FFFFFF"/>
+<text x="60" y="213.62" font-size="13" font-weight="600" fill="#16161D">Al Sadd</text>
+<text x="180" y="213.26" font-size="12" fill="#62626E">6 cases · 40 croissant · 12 kunafa · 4 date cake</text>
+<rect x="698.9" y="199" width="73.1" height="20" rx="10" fill="#DDF3E4"/>
+<text x="735.45" y="212.91" font-size="11" font-weight="700" fill="#17663A" text-anchor="middle">sent 06:40</text>
+<rect x="48" y="232" width="736" height="38" rx="16" fill="#FFFFFF"/>
+<text x="60" y="255.62" font-size="13" font-weight="600" fill="#16161D">West Walk</text>
+<text x="180" y="255.26" font-size="12" fill="#62626E">5 cases · 36 croissant · 10 kunafa · 3 date cake</text>
+<rect x="698.9" y="241" width="73.1" height="20" rx="10" fill="#DDF3E4"/>
+<text x="735.45" y="254.91" font-size="11" font-weight="700" fill="#17663A" text-anchor="middle">sent 06:40</text>
+<rect x="48" y="274" width="736" height="38" rx="16" fill="#FFFFFF"/>
+<text x="60" y="297.62" font-size="13" font-weight="600" fill="#16161D">Vendome Mall</text>
+<text x="180" y="297.26" font-size="12" fill="#62626E">4 cases · 30 croissant · 8 kunafa · 2 date cake</text>
+<rect x="698.9" y="283" width="73.1" height="20" rx="10" fill="#DDF3E4"/>
+<text x="735.45" y="296.9" font-size="11" font-weight="700" fill="#17663A" text-anchor="middle">sent 06:40</text>
+<rect x="48" y="316" width="736" height="38" rx="16" fill="#FFFFFF"/>
+<text x="60" y="339.62" font-size="13" font-weight="600" fill="#16161D">Old Port</text>
+<text x="180" y="339.26" font-size="12" fill="#62626E">3 cases · 24 croissant · 8 kunafa · 2 date cake</text>
+<rect x="713.7" y="325" width="58.3" height="20" rx="10" fill="#EEEAFD"/>
+<text x="742.85" y="338.9" font-size="11" font-weight="700" fill="#5B3FE0" text-anchor="middle">packing</text>
+<rect x="48" y="358" width="736" height="38" rx="16" fill="#FFFFFF"/>
+<text x="60" y="381.62" font-size="13" font-weight="600" fill="#16161D">MOQ</text>
+<text x="180" y="381.26" font-size="12" fill="#62626E">3 cases · 24 croissant · 8 kunafa</text>
+<rect x="713.7" y="367" width="58.3" height="20" rx="10" fill="#EEEAFD"/>
+<text x="742.85" y="380.9" font-size="11" font-weight="700" fill="#5B3FE0" text-anchor="middle">packing</text>
+<rect x="48" y="400" width="736" height="38" rx="16" fill="#FFFFFF"/>
+<text x="60" y="423.62" font-size="13" font-weight="600" fill="#16161D">DFC</text>
+<text x="180" y="423.26" font-size="12" fill="#62626E">5 cases · 38 croissant · 8 kunafa · 3 date cake, still in the oven</text>
+<rect x="715.06" y="409" width="56.94" height="20" rx="10" fill="#FFF0E6"/>
+<text x="743.53" y="422.9" font-size="11" font-weight="700" fill="#B45309" text-anchor="middle">waiting</text>
+<rect x="48" y="442" width="736" height="38" rx="16" fill="#FFF0E6"/>
+<text x="60" y="465.62" font-size="13" font-weight="600" fill="#16161D">West Bay</text>
+<text x="180" y="465.26" font-size="12" fill="#9A3412">6 cases · 48 croissant ordered, 20 left · 6 kunafa · 4 date cake</text>
+<rect x="709.37" y="451" width="62.63" height="20" rx="10" fill="#FCE6DA"/>
+<text x="740.69" y="464.9" font-size="11" font-weight="700" fill="#9A3412" text-anchor="middle">short 28</text>
+<rect x="48" y="488" width="736" height="36" rx="16" fill="#EEEAFD"/>
+<text x="772" y="511.68" font-size="16" font-weight="700" fill="#5B3FE0" text-anchor="end">15 / 32 cases</text>
+<text x="48" y="552" font-size="12.5" fill="#62626E">3 of 7 branches sent · van 2 loads Old Port + MOQ, leaves 07:10 ·</text>
+<text x="48" y="570" font-size="12.5" fill="#62626E">West Bay's 28 croissants rebake, out 07:45 on van 3</text>
+<rect x="820" y="140" width="352" height="288" rx="26" fill="#F2F2F6"/>
+<text x="840" y="170" font-size="17" font-weight="600" fill="#16161D">Today's bake · planned vs made</text>
+<rect x="840" y="190" width="312" height="70" rx="16" fill="#FFFFFF"/>
+<text x="852" y="214" font-size="14" font-weight="600" fill="#16161D">Croissant</text>
+<text x="1140" y="214" font-size="13" fill="#62626E" text-anchor="end"> / 240</text>
+<text x="1105.68" y="214" font-size="15" font-weight="700" fill="#16161D" text-anchor="end">212</text>
+<rect x="852" y="224" width="288" height="6" rx="3" fill="#E2E2EA"/>
+<rect x="852" y="224" width="254.4" height="6" rx="3" fill="#5B3FE0"/>
+<text x="852" y="248" font-size="11" fill="#62626E">batch 1 out 06:20 · 28 more proofing, out 07:45</text>
+<rect x="840" y="268" width="312" height="70" rx="16" fill="#FFFFFF"/>
+<text x="852" y="292" font-size="14" font-weight="600" fill="#16161D">Kunafa</text>
+<text x="1140" y="292" font-size="13" fill="#62626E" text-anchor="end"> / 60</text>
+<text x="1113.22" y="292" font-size="15" font-weight="700" fill="#16161D" text-anchor="end">60</text>
+<rect x="852" y="302" width="288" height="6" rx="3" fill="#E2E2EA"/>
+<rect x="852" y="302" width="288" height="6" rx="3" fill="#5B3FE0"/>
+<text x="852" y="326" font-size="11" fill="#62626E">2 trays · out 06:10 · all 60 made</text>
+<rect x="840" y="346" width="312" height="70" rx="16" fill="#FFFFFF"/>
+<text x="852" y="370" font-size="14" font-weight="600" fill="#16161D">Date cake</text>
+<text x="1140" y="370" font-size="13" fill="#62626E" text-anchor="end"> / 18</text>
+<text x="1113.22" y="370" font-size="15" font-weight="700" fill="#16161D" text-anchor="end">11</text>
+<rect x="852" y="380" width="288" height="6" rx="3" fill="#E2E2EA"/>
+<rect x="852" y="380" width="176" height="6" rx="3" fill="#5B3FE0"/>
+<text x="852" y="404" font-size="11" fill="#62626E">batch 2 in the oven · out 07:05</text>
+<rect x="820" y="444" width="352" height="180" rx="26" fill="#F2F2F6"/>
+<text x="840" y="474" font-size="17" font-weight="600" fill="#16161D">Yield · croissant batch 1</text>
+<text x="840" y="528" font-size="40" font-weight="700" fill="#16161D">88%</text>
+<text x="840" y="552" font-size="13" fill="#16161D">25 kg flour → 212 croissants</text>
+<text x="840" y="578" font-size="12" fill="#62626E">recipe expects 240 from 25 kg · 28 short ·</text>
+<text x="840" y="596" font-size="12" fill="#62626E">logged against batch 1</text>
+<text x="28" y="752" font-size="12.5" fill="#62626E">every case is a stock transfer — it leaves the pastry ledger and lands in the branch's ledger the moment it is scanned in</text>
 </svg>
