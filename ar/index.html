@@ -637,6 +637,16 @@ footer .bottom a:hover{color:var(--accent)}
    measures 69px, so a native jump puts the section's own heading UNDERNEATH it. 84px is the value
    the explorer's sticky stage already uses for the same reason; the extra clears the border. */
 [id]{scroll-margin-top:84px}
+
+/* 👁 NOTHING ABOVE THE FOLD WAITS FOR A SCROLL. The hero's two columns carried .reveal/.reveal-s
+   like every other block, so they began at opacity 0 and depended on the IntersectionObserver
+   firing. When it did not, the right-hand column — the guest's receipt — was simply an empty half
+   of the screen, which is what the Owner saw and reported. The first thing a visitor looks at may
+   not be conditional on anything. */
+html.js #hero .reveal,
+html.js #hero .reveal-l,
+html.js #hero .reveal-r,
+html.js #hero .reveal-s{opacity:1;transform:none}
 </style>
 <script>
 /* THE ONE PLACE THE NUMBER LIVES. Fill it in (digits only, e.g. 97455001122) and every WhatsApp button on the site appears, all pointing here. Empty = the buttons stay hidden. */
@@ -1884,7 +1894,9 @@ var WA_NUMBER = '';
         fill(en.target);
         io.unobserve(en.target);
       });
-    }, { threshold:.12, rootMargin:'0px 0px -40px 0px' });
+    }, { threshold:0, rootMargin:'0px 0px 10% 0px' });   /* ⚠️ threshold:0, not .12 — the ratio is
+       visible area ÷ ELEMENT area, so a block taller than the viewport can never reach 12% and
+       would stay hidden for good. Any part of it entering is enough. */
     targets.forEach(function(el){ io.observe(el); });
   }
 })();
