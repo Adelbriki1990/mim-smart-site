@@ -238,6 +238,84 @@ html.js .visible{opacity:1;transform:none}
 .ui .cap{font-size:9px;font-weight:600;color:var(--sub)}
 .ui .row{display:flex;align-items:center;gap:8px}
 .rcpt-phone{width:100%;max-width:330px;margin:0 auto;background:var(--ground);border-radius:34px;overflow:hidden;border:6px solid var(--ink)}
+/* ── the screen kit: every product screen on the page is drawn from these classes, so eighteen hands
+   draw ONE family (the hero's receipt is the standard). A shot is a fixed canvas — data-w wide, its
+   height fixed by kind — that .ui-fit shrinks with zoom to the room it has, never grows. Tokens only;
+   logical properties only, so the Arabic twin mirrors under dir=rtl with the same lines. ──────── */
+.ui-shot{position:relative;box-sizing:border-box;overflow:hidden;display:flex;flex-direction:column;
+  background:var(--inner);color:var(--ink);text-align:start;flex-shrink:0}
+.ui-shot[data-kind=terminal],.ui-shot[data-kind=tablet]{border-radius:18px;border:1px solid var(--line)}
+.ui-shot[data-kind=terminal]{width:1120px;height:700px}
+.ui-shot[data-kind=tablet]{width:960px;height:640px}
+.ui-shot[data-kind=phone]{width:300px;height:620px;border-radius:34px;border:6px solid var(--ink);background:var(--ground);margin-inline:auto}
+.ui-fit{width:100%;min-width:0}
+.ui .grow{flex:1;min-width:0}
+.ui .muted{color:var(--sub)}
+.ui-title{font-size:13px;font-weight:700;line-height:1.2}
+.ui-title.lg{font-size:14px}
+/* the back office's shell: a top strip, then a left rail of tabs beside the main room */
+.ui-nav{display:flex;align-items:center;gap:10px;height:44px;padding:0 12px;border-bottom:1px solid var(--line);background:var(--inner);flex-shrink:0}
+.ui-who{display:flex;align-items:center;gap:6px;margin-inline-start:auto;line-height:1.15;min-width:0}
+.ui-who b{display:block;font-size:11px;white-space:nowrap}
+.ui-who small{display:block;font-size:9px;font-weight:600;color:var(--sub);white-space:nowrap}
+.ui-body{display:flex;flex:1;min-height:0}
+.ui-side{width:160px;flex-shrink:0;padding:10px 8px;display:flex;flex-direction:column;gap:2px;background:var(--card);border-inline-end:1px solid var(--line);overflow:hidden}
+.ui-side>span{display:flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:9px;font-size:11px;font-weight:600;color:var(--sub);white-space:nowrap;overflow:hidden}
+.ui-side>span>.grow{overflow:hidden;text-overflow:ellipsis}
+.ui-side>.on{background:var(--accent);color:#fff}
+.ui-side>.cap{padding:8px 10px 2px}
+.ui-side .ic{width:14px;height:14px}
+.ui-main{flex:1;min-width:0;padding:12px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+/* surfaces */
+.ui-top{background:var(--accent);color:#fff;padding:14px 16px;flex-shrink:0}
+.ui-top .cap,.ui-top .muted{color:rgba(255,255,255,.72)}
+.ui-main>.ui-top{border-radius:20px}
+.ui-card{background:var(--card);border-radius:20px;padding:12px;min-width:0}
+.ui-cell{background:var(--inner);border-radius:12px;padding:8px 10px;min-width:0}
+.ui-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ui-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.ui-grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+/* words on pills, never colour alone */
+.ui-pill{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:999px;font-size:9px;font-weight:700;line-height:1;white-space:nowrap;background:var(--card);color:var(--ink);vertical-align:middle;flex-shrink:0}
+.ui-card .ui-pill{background:var(--inner)}
+.ui-pill.good{background:var(--good-bg);color:var(--good)}
+.ui-pill.bad{background:var(--bad-bg);color:var(--bad)}
+.ui-pill.warn{background:var(--warn-bg);color:var(--amber)}
+.ui-pill.accent{background:var(--pale);color:var(--accent)}
+.ui-pill.sub{background:var(--track);color:var(--sub)}
+.ui-pill .ic{width:12px;height:12px}
+.ui-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;font-size:11px;font-weight:600;background:var(--card);color:var(--ink);white-space:nowrap;flex-shrink:0}
+.ui-card .ui-btn{background:var(--inner)}
+.ui-btn.accent{background:var(--accent);color:#fff}
+.ui-btn.good{background:var(--good-bg);color:var(--good)}
+.ui-btn.wide{display:flex;width:100%}
+.ui-btn .ic{width:14px;height:14px}
+.ui-kpi{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ui-kpi .num{font-size:20px;font-weight:700;letter-spacing:-.4px;line-height:1.1;white-space:nowrap}
+.ui-kpi .num.big{font-size:28px;letter-spacing:-.5px}
+.ui-kpi .num.sm{font-size:16px;letter-spacing:-.2px}
+.ui-bar{position:relative;height:6px;border-radius:999px;background:var(--track);overflow:hidden}
+.ui-bar::after{content:"";position:absolute;inset-block:0;inset-inline-start:0;width:var(--v,0%);border-radius:999px;background:var(--accent)}
+.ui-bar.good::after{background:var(--good)}
+.ui-bar.bad::after{background:var(--bad)}
+.ui-bar.warn::after{background:var(--amber)}
+.ui-tabs{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.ui-tabs>span{display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 10px;border-radius:999px;font-size:11px;font-weight:600;color:var(--sub);background:var(--card);white-space:nowrap}
+.ui-card .ui-tabs>:where(span){background:var(--inner)}
+.ui-tabs>.on{background:var(--accent);color:#fff}
+.ui-rail{display:flex;flex-direction:column;gap:4px}
+.ui-rail>span{display:flex;align-items:center;gap:6px;height:30px;padding:0 10px;border-radius:10px;font-size:11px;font-weight:600;color:var(--sub);background:var(--card);white-space:nowrap;overflow:hidden}
+.ui-card .ui-rail>:where(span){background:var(--inner)}
+.ui-rail>.on{background:var(--accent);color:#fff}
+.ui-list{display:flex;flex-direction:column;min-width:0}
+.ui-li{display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1px solid var(--line);min-width:0}
+.ui-li:first-child{border-top:0}
+.ui-li>.num{font-weight:700;white-space:nowrap}
+.ui-avatar{width:28px;height:28px;border-radius:50%;background:var(--pale);color:var(--accent);display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.ui-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--accent);color:#fff;font-size:9px;font-weight:700;line-height:1;flex-shrink:0}
+.ui-badge.bad{background:var(--bad)}
+.ui-badge.good{background:var(--good)}
+.ui-side>.on .ui-badge,.ui-tabs>.on .ui-badge{background:#fff;color:var(--accent)}
 .shot{background:var(--card);border-radius:var(--rh);padding:16px;min-width:0}
 .shot img{border-radius:var(--ri);width:100%}
 /* 520–760 shows the phone-shaped drawings (the <picture> sources switch at 760); at 600px wide a
@@ -2171,6 +2249,24 @@ var WA_NUMBER = '';
     if (t) t.scrollIntoView({ block: 'start' });
   }
   window.addEventListener('load', function(){ land(); setTimeout(land, 150); });
+})();
+/* 🖼 the screen kit's scaler (the mock harness carries these same lines). A product screen is a fixed
+   canvas — data-w px wide — shrunk with zoom to the room its .ui-fit wrapper has, never grown: a
+   phone stays 300px and centres. Runs at load and again whenever a wrapper changes width. */
+function uiFit(){
+  document.querySelectorAll('.ui-fit').forEach(function(f){
+    var w = f.clientWidth; if (!w) return;
+    f.querySelectorAll('.ui-shot').forEach(function(s){
+      var cw = parseFloat(s.getAttribute('data-w')) || 960;
+      s.style.zoom = String(Math.min(1, w / cw));
+    });
+  });
+}
+(function(){
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', uiFit); else uiFit();
+  window.addEventListener('load', uiFit);
+  if (window.ResizeObserver) { var ro = new ResizeObserver(uiFit); document.querySelectorAll('.ui-fit').forEach(function(f){ ro.observe(f); }); }
+  else window.addEventListener('resize', uiFit);
 })();
 </script>
 </body>
