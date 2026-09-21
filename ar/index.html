@@ -576,7 +576,11 @@ html.js .visible{opacity:1;transform:none}
 /* ── staff self-service ───────────────────────────────────────────────────────────────────── */
 .self-grid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:16px;align-items:start}
 @media(max-width:819px){.self-grid{grid-template-columns:minmax(0,300px) minmax(0,1fr)}}
-@media(max-width:599px){.self-grid{grid-template-columns:minmax(0,1fr)}}
+/* 520–759: beside a 300px phone the five points kept ~150px of text (five words a line, rendered
+   and seen at 600), so here the phone is centred like the hero's and the points take the full
+   width under it. ≤519 already stacked; the phone there keeps its full width */
+@media(max-width:759px){.self-grid{grid-template-columns:minmax(0,1fr)}}
+@media(min-width:520px) and (max-width:759px){.self-phone{max-width:332px;margin-inline:auto}}
 .self-phone{background:var(--card);border-radius:var(--rh);padding:16px}
 .self-phone img{border-radius:var(--ri);width:100%}
 .self-points{list-style:none;background:var(--card);border-radius:var(--rc);padding:20px;
