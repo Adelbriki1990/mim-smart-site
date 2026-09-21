@@ -100,9 +100,14 @@ section + section{border-top:1px solid var(--line)}
 .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:1039px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:819px){.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:599px){.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}}
 .two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:center}
-@media(max-width:1039px){.two-col{grid-template-columns:minmax(0,1fr);gap:24px}}
+/* 📐 THE MIDDLE TIER, 600–1039. Every grid below used to fall to one column at 819 or 1039, which
+   on a 600–1006px window left a lone phone or a 900px-wide card with 100-character lines. Now the
+   4-up and 3-up grids run two columns from 600, the two-column blocks pair from 760 (the hero's
+   own breakpoint), and a phone drawing sits beside its caption instead of alone. ≤519 is untouched. */
+@media(max-width:1039px){.two-col{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}}
+@media(max-width:759px){.two-col{grid-template-columns:minmax(0,1fr)}}
 
 /* ── pills and buttons: fully round, 44 high, 14/600 ──────────────────────────────────────── */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;
@@ -157,11 +162,25 @@ nav .container{display:flex;align-items:center;gap:14px;height:68px;position:rel
 .nav-actions .btn{height:40px}
 .menu-toggle{display:none;width:40px;height:40px;border:0;border-radius:50%;background:var(--card);
   color:var(--ink);align-items:center;justify-content:center;cursor:pointer}
-@media(max-width:1099px){
+/* 💻 THE MAC TIER (920–1099). The Owner's browser window is ~1006px wide, and at that width the
+   seven links were folded into the ☰ menu although there was room for them: measured, the row needs
+   ~855px at 13px/9px padding and has 872 at 920. So the links stay out down to 920 and only step
+   down in size; the pill for the language you are already reading goes (the other language alone
+   already says "switch"), and the demo button keeps its words. Under 920 the menu takes over. */
+@media(min-width:920px) and (max-width:1099px){
+  .nav-links{gap:0}
+  .nav-links a{font-size:13px;padding:0 9px}
+  .lang-switch .on{display:none}
+  .nav-actions .btn{padding:0 14px}
+}
+@media(max-width:919px){
   .nav-links{display:none}
   .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;inset-inline:0;
     background:var(--ground);border-bottom:1px solid var(--line);padding:10px 8px 16px;gap:2px;margin-inline-start:0}
   .menu-toggle{display:inline-flex}
+  /* the links carried the auto margin that pushed the actions to the end; with the links folded
+     away the actions sat against the brand and the right half of the bar was empty */
+  .nav-actions{margin-inline-start:auto}
 }
 /* 📐 THE BAR'S LADDER, measured rather than guessed. Under 1100px the links fold into the ☰ menu,
    so what is left must fit one row: the mark and the name, the language, the demo, the menu.
@@ -221,6 +240,9 @@ html.js .visible{opacity:1;transform:none}
 .rcpt-phone{width:100%;max-width:330px;margin:0 auto;background:var(--ground);border-radius:34px;overflow:hidden;border:6px solid var(--ink)}
 .shot{background:var(--card);border-radius:var(--rh);padding:16px;min-width:0}
 .shot img{border-radius:var(--ri);width:100%}
+/* 520–760 shows the phone-shaped drawings (the <picture> sources switch at 760); at 600px wide a
+   phone drawing ran 1,200px tall, so the card is capped and centred, like the hero's phone */
+@media(min-width:520px) and (max-width:760px){.shot{max-width:452px;margin-inline:auto}}
 .shot-in{background:var(--inner);border-radius:var(--ri);padding:12px;overflow:hidden}
 .cap-line{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--sub);line-height:1.45;margin-top:12px}
 .cap-line .dot{margin-top:5px}
@@ -228,6 +250,20 @@ html.js .visible{opacity:1;transform:none}
 /* ── hero ─────────────────────────────────────────────────────────────────────────────────── */
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:36px;align-items:center}
 @media(max-width:1039px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}}
+/* two columns from 760: at 1006 the text column measures 540px, the h1 stays on its two lines, the
+   stats 4-up, and the receipt phone (300 wide here, 330 from 1040) sits whole beside the text */
+@media(min-width:760px) and (max-width:1039px){
+  .hero-grid{grid-template-columns:minmax(0,1fr) minmax(280px,.72fr);gap:28px}
+  #hero .rcpt-phone,#hero .cap-line{max-width:300px}
+}
+/* 520–759: stacked, but composed — everything centred, the phone centred under the copy */
+@media(min-width:520px) and (max-width:759px){
+  .hero-grid > div:first-child{text-align:center}
+  .lede,.hero-stats{margin-inline:auto}
+  .hero-cta{justify-content:center}
+  #hero .rcpt-phone,#hero .cap-line{max-width:300px}
+}
+@media(min-width:520px){#hero .cap-line{max-width:330px;margin-inline:auto}}
 .lede{font-size:17px;color:var(--sub);line-height:1.5;margin:16px 0 22px;max-width:560px}
 .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
 .hero-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;
@@ -239,7 +275,7 @@ html.js .visible{opacity:1;transform:none}
 /* ── this week ────────────────────────────────────────────────────────────────────────────── */
 .week-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 @media(max-width:1039px){.week-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:819px){.week-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:599px){.week-grid{grid-template-columns:minmax(0,1fr)}}
 .week-card{background:var(--card);border-radius:var(--rc);padding:20px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .week-card .d{display:inline-flex;align-self:flex-start;align-items:center;height:28px;padding:0 12px;
   border-radius:999px;background:var(--pale);color:var(--accent);font-size:12px;font-weight:600}
@@ -256,7 +292,7 @@ html.js .visible{opacity:1;transform:none}
 .tile .big{font-size:32px;font-weight:700;letter-spacing:-.6px;color:var(--accent)}
 .tile-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 @media(max-width:1039px){.tile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:819px){.tile-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:599px){.tile-grid{grid-template-columns:minmax(0,1fr)}}
 /* inside a two-column block the points stack as rows, not tiles */
 .point-list{display:flex;flex-direction:column;gap:4px}
 .point-list .pt{background:var(--card);border-radius:var(--ri);padding:12px 14px;display:flex;gap:12px;align-items:flex-start}
@@ -265,7 +301,7 @@ html.js .visible{opacity:1;transform:none}
 .point-list span{display:block;font-size:13px;color:var(--sub);line-height:1.45}
 .till-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 @media(max-width:1039px){.till-points{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:819px){.till-points{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:599px){.till-points{grid-template-columns:minmax(0,1fr)}}
 
 /* ── the department explorer ──────────────────────────────────────────────────────────────── */
 .explorer{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}
@@ -312,7 +348,7 @@ html.js .visible{opacity:1;transform:none}
 
 /* ── problem / solution ───────────────────────────────────────────────────────────────────── */
 .split-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-@media(max-width:819px){.split-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:759px){.split-grid{grid-template-columns:minmax(0,1fr)}}
 .split-grid h3{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600}
 .split-grid > div{display:flex;flex-direction:column;gap:12px}
 .split-grid p{font-size:15px;line-height:1.5;color:var(--sub)}
@@ -332,13 +368,21 @@ html.js .visible{opacity:1;transform:none}
 /* ── the screen panels ────────────────────────────────────────────────────────────────────── */
 .device-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:16px;margin-bottom:16px}
 @media(max-width:1039px){.device-band{grid-template-columns:minmax(0,1fr)}}
+/* the owner's phone beside its caption rather than alone with an empty right half; the chef
+   display the same while it is the phone-shaped drawing (≤760), full width when it is the board */
+@media(min-width:520px) and (max-width:1039px){
+  .device-band > div{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:16px;align-items:center}
+  .device-band .device-label{margin-top:0}
+  .device-band .phone-frame{max-width:none}
+}
+@media(min-width:761px) and (max-width:1039px){.device-band > div:last-child{grid-template-columns:minmax(0,1fr)}}
 .phone-frame,.kds-frame{background:var(--card);border-radius:var(--rh);padding:16px}
 .phone-frame img,.kds-frame img{border-radius:var(--ri);width:100%}
 .phone-frame{max-width:360px}
 .device-label{font-size:13px;color:var(--sub);line-height:1.45;margin-top:10px}
 .device-label b{display:block;font-size:15px;font-weight:600;color:var(--ink);margin-bottom:2px}
 .preview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:16px}
-@media(max-width:819px){.preview-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:759px){.preview-grid{grid-template-columns:minmax(0,1fr)}}
 .preview-card{background:var(--card);border-radius:var(--rc);padding:20px;display:flex;
   flex-direction:column;gap:3px;min-width:0}
 .preview-header{display:flex;align-items:center;gap:10px;margin-bottom:9px}
@@ -376,7 +420,7 @@ html.js .visible{opacity:1;transform:none}
 
 /* ── who we serve ─────────────────────────────────────────────────────────────────────────── */
 .serve-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-@media(max-width:819px){.serve-cols{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:599px){.serve-cols{grid-template-columns:minmax(0,1fr)}}
 .serve-col{background:var(--card);border-radius:var(--rc);padding:20px}
 .serve-col h3{margin-bottom:12px}
 .serve-list{display:flex;flex-direction:column;gap:4px}
@@ -401,13 +445,18 @@ html.js .visible{opacity:1;transform:none}
 /* ── owner app ────────────────────────────────────────────────────────────────────────────── */
 .owner-phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:16px}
 @media(max-width:819px){.owner-phones{grid-template-columns:minmax(0,1fr)}}
+/* 520–819: each phone beside its caption (a 400×866 drawing at full width was 1,600px tall) */
+@media(min-width:520px) and (max-width:819px){
+  .owner-phone{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:16px;align-items:center}
+  .owner-phone .cap{margin-top:0}
+}
 .owner-phone .frame{background:var(--card);border-radius:var(--rh);padding:16px}
 .owner-phone .frame img{border-radius:var(--ri);width:100%}
 .owner-phone .cap{font-size:13px;color:var(--sub);line-height:1.45;margin-top:10px}
 .owner-phone .cap b{display:block;font-size:15px;font-weight:600;color:var(--ink);margin-bottom:2px}
 .pace-note{background:var(--card);border-radius:var(--rh);padding:28px;display:grid;
   grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:center}
-@media(max-width:819px){.pace-note{grid-template-columns:minmax(0,1fr);padding:20px;gap:18px}}
+@media(max-width:819px){.pace-note{grid-template-columns:minmax(0,1fr);padding:20px;gap:18px}.pace-note p{max-width:560px}}
 .pace-note h3{margin-bottom:10px}
 .pace-note p{font-size:15px;color:var(--sub);line-height:1.5;margin-bottom:10px}
 .pace-demo{display:flex;flex-direction:column;gap:6px}
@@ -422,7 +471,7 @@ html.js .visible{opacity:1;transform:none}
 
 /* ── marketing: four screens, each a card holding a picture and its rules ─────────────────── */
 .mk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:16px}
-@media(max-width:1039px){.mk-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:759px){.mk-grid{grid-template-columns:minmax(0,1fr)}}
 .mk-card{background:var(--card);border-radius:var(--rc);padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
 .mk-card .k{display:inline-flex;align-self:flex-start;align-items:center;height:28px;padding:0 12px;
   border-radius:999px;background:var(--pale);color:var(--accent);font-size:12px;font-weight:600}
@@ -435,12 +484,12 @@ html.js .visible{opacity:1;transform:none}
 .mk-card li .ic{color:var(--accent);margin-top:1px}
 .ctl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 @media(max-width:1039px){.ctl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:819px){.ctl-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:599px){.ctl-grid{grid-template-columns:minmax(0,1fr)}}
 
 /* ── food cost ────────────────────────────────────────────────────────────────────────────── */
 .fc-laws{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 @media(max-width:1039px){.fc-laws{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:819px){.fc-laws{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:599px){.fc-laws{grid-template-columns:minmax(0,1fr)}}
 .fc-law{background:var(--card);border-radius:var(--rc);padding:20px}
 .fc-law h4{font-size:15px;font-weight:600;color:var(--accent);margin-bottom:8px}
 .fc-law p{font-size:14px;color:var(--sub);line-height:1.5}
@@ -448,7 +497,8 @@ html.js .visible{opacity:1;transform:none}
 
 /* ── staff self-service ───────────────────────────────────────────────────────────────────── */
 .self-grid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:16px;align-items:start}
-@media(max-width:819px){.self-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:819px){.self-grid{grid-template-columns:minmax(0,300px) minmax(0,1fr)}}
+@media(max-width:599px){.self-grid{grid-template-columns:minmax(0,1fr)}}
 .self-phone{background:var(--card);border-radius:var(--rh);padding:16px}
 .self-phone img{border-radius:var(--ri);width:100%}
 .self-points{list-style:none;background:var(--card);border-radius:var(--rc);padding:20px;
@@ -496,6 +546,7 @@ html.js .visible{opacity:1;transform:none}
 #loyalty .tier-card.platinum .tc-top{background:rgba(255,255,255,.4)}
 #loyalty .tier-row>*,#loyalty .tc-foot>*{min-width:0}
 #loyalty .tc-foot b{overflow-wrap:anywhere}
+@media(max-width:1039px){#loyalty .tier-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){
   #loyalty .tier-row{grid-template-columns:1fr 1fr;gap:11px}
   #loyalty .tc-points{font-size:2rem}
@@ -508,7 +559,7 @@ html.js .visible{opacity:1;transform:none}
 #loyalty .tier-note{font-size:13px;color:var(--sub);line-height:1.5;margin:14px 0 24px;max-width:820px}
 #loyalty .tier-note b{color:var(--ink)}
 .loyalty-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-@media(max-width:819px){.loyalty-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:599px){.loyalty-grid{grid-template-columns:minmax(0,1fr)}}
 .loyalty-card{background:var(--card);border-radius:var(--rc);padding:20px;display:flex;
   flex-direction:column;gap:12px}
 .loyalty-card .top-ico{width:40px;height:40px;border-radius:50%;background:var(--inner);
@@ -564,7 +615,7 @@ blockquote{font-size:19px;font-weight:600;line-height:1.45;letter-spacing:-.2px;
 /* ── how it starts ────────────────────────────────────────────────────────────────────────── */
 .steps-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 @media(max-width:1039px){.steps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:819px){.steps-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:599px){.steps-grid{grid-template-columns:minmax(0,1fr)}}
 .step-card{background:var(--card);border-radius:var(--rc);padding:20px;display:flex;flex-direction:column;gap:10px}
 .step-card .n{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;
   font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center}
@@ -573,7 +624,7 @@ blockquote{font-size:19px;font-weight:600;line-height:1.45;letter-spacing:-.2px;
 
 /* ── pricing ──────────────────────────────────────────────────────────────────────────────── */
 .price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:16px}
-@media(max-width:819px){.price-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:759px){.price-grid{grid-template-columns:minmax(0,1fr)}}
 .price-card{background:var(--card);border-radius:var(--rh);padding:24px;display:flex;
   flex-direction:column;gap:12px}
 .price-card.mid{background:var(--pale)}
@@ -593,12 +644,12 @@ blockquote{font-size:19px;font-weight:600;line-height:1.45;letter-spacing:-.2px;
 .price-card .btn:not(.btn-accent){background:var(--inner)}
 .price-how{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:16px}
 @media(max-width:1039px){.price-how{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:819px){.price-how{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:599px){.price-how{grid-template-columns:minmax(0,1fr)}}
 .price-how > div{background:var(--card);border-radius:var(--rc);padding:18px}
 .price-how h4{font-size:15px;font-weight:600;color:var(--accent);margin-bottom:6px}
 .price-how p{font-size:14px;color:var(--sub);line-height:1.5}
 .hw-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:16px}
-@media(max-width:819px){.hw-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:599px){.hw-grid{grid-template-columns:minmax(0,1fr)}}
 .hw-card{background:var(--card);border-radius:var(--rc);padding:20px}
 .hw-card h4{font-size:17px;font-weight:600;margin-bottom:12px}
 .hw-card ul{list-style:none;display:flex;flex-direction:column;gap:4px}
@@ -944,8 +995,8 @@ var WA_NUMBER = '';
     </div>
     <div class="shot reveal-s" style="margin-bottom:16px">
       <picture>
-        <source media="(max-width:760px)" srcset="/images/till-mobile.svg?v=20260920b" />
-        <img src="/images/till.svg?v=20260920b" alt="The MiM till — dine-in check for table 4, category rail, item grid with an 86'd dish, the allergy row, totals and every payment route including the aggregators" loading="lazy" />
+        <source media="(max-width:760px)" srcset="/images/till-mobile.svg?v=20260920b" width="420" height="880" />
+        <img src="/images/till.svg?v=20260920b" width="1200" height="800" alt="The MiM till — dine-in check for table 4, category rail, item grid with an 86'd dish, the allergy row, totals and every payment route including the aggregators" loading="lazy" />
       </picture>
     </div>
     <div class="till-points">
@@ -1026,14 +1077,14 @@ var WA_NUMBER = '';
 
     <div class="device-band">
       <div class="reveal-l">
-        <div class="phone-frame"><img src="/images/cockpit-phone.svg?v=20260920b" alt="Owner cockpit on a phone — sales, gross profit, margin, top items and a food-cost warning" loading="lazy" /></div>
+        <div class="phone-frame"><img src="/images/cockpit-phone.svg?v=20260920b" width="400" height="866" alt="Owner cockpit on a phone — sales, gross profit, margin, top items and a food-cost warning" loading="lazy" /></div>
         <div class="device-label"><b>The owner's phone</b>Today's money, wherever you are — and the alert that says which dishes moved.</div>
       </div>
       <div class="reveal-r">
         <div class="kds-frame">
           <picture>
-            <source media="(max-width:760px)" srcset="/images/chef-display-mobile.svg?v=20260920b" />
-            <img src="/images/chef-display.svg?v=20260920b" alt="Chef display — tickets in New, Preparing and Ready columns with a timer on each" loading="lazy" />
+            <source media="(max-width:760px)" srcset="/images/chef-display-mobile.svg?v=20260920b" width="420" height="900" />
+            <img src="/images/chef-display.svg?v=20260920b" width="1200" height="900" alt="Chef display — tickets in New, Preparing and Ready columns with a timer on each" loading="lazy" />
           </picture>
         </div>
         <div class="device-label"><b>The chef display</b>Every plate moves New → Preparing → Ready. The clock on each ticket is the one the guest is feeling.</div>
@@ -1189,15 +1240,15 @@ var WA_NUMBER = '';
 
     <div class="owner-phones">
       <div class="owner-phone reveal-l">
-        <div class="frame"><img src="/images/owner-sales.svg?v=20260920b" alt="Owner app Sales tab — today's takings, pace against the same minute of last Wednesday, hourly bars and branch comparison" loading="lazy" /></div>
+        <div class="frame"><img src="/images/owner-sales.svg?v=20260920b" width="400" height="866" alt="Owner app Sales tab — today's takings, pace against the same minute of last Wednesday, hourly bars and branch comparison" loading="lazy" /></div>
         <div class="cap"><b>Sales</b>Today, yesterday, week, month, year. Every branch side by side, and each card draggable into the order you actually read in.</div>
       </div>
       <div class="owner-phone reveal-s">
-        <div class="frame"><img src="/images/owner-inbox.svg?v=20260920b" alt="Owner app Inbox tab — drawer shorts pulled out of the day-close notes, with amounts and who signed" loading="lazy" /></div>
+        <div class="frame"><img src="/images/owner-inbox.svg?v=20260920b" width="400" height="866" alt="Owner app Inbox tab — drawer shorts pulled out of the day-close notes, with amounts and who signed" loading="lazy" /></div>
         <div class="cap"><b>Inbox</b>Every short, void and unapproved spend from last night's close — lifted out of the notes so nothing waits for you to go looking.</div>
       </div>
       <div class="owner-phone reveal-r">
-        <div class="frame"><img src="/images/owner-reviews.svg?v=20260920b" alt="Owner app Reviews tab — weighted rating, angry review count, Arabic and English theme buckets, worst reviews first" loading="lazy" /></div>
+        <div class="frame"><img src="/images/owner-reviews.svg?v=20260920b" width="400" height="866" alt="Owner app Reviews tab — weighted rating, angry review count, Arabic and English theme buckets, worst reviews first" loading="lazy" /></div>
         <div class="cap"><b>Reviews</b>Counted first, then worst first. Themes are grouped in Arabic and English, so a complaint in either language lands in the same bucket.</div>
       </div>
     </div>
@@ -1266,8 +1317,8 @@ var WA_NUMBER = '';
     </div>
     <div class="shot reveal-s" style="margin-bottom:16px">
       <picture>
-        <source media="(max-width:760px)" srcset="/images/food-cost-mobile.svg?v=20260920b" />
-        <img src="/images/food-cost.svg?v=20260920b" alt="Food cost screen — theoretical 29.4% against actual 32.1%, the gap by category, worst ingredients by value, and 50 uncosted dishes quarantined" loading="lazy" />
+        <source media="(max-width:760px)" srcset="/images/food-cost-mobile.svg?v=20260920b" width="420" height="940" />
+        <img src="/images/food-cost.svg?v=20260920b" width="1200" height="900" alt="Food cost screen — theoretical 29.4% against actual 32.1%, the gap by category, worst ingredients by value, and 50 uncosted dishes quarantined" loading="lazy" />
       </picture>
     </div>
     <div class="fc-laws">
@@ -1287,7 +1338,7 @@ var WA_NUMBER = '';
       <p class="s-sub mx reveal">A thousand staff cannot share a four-digit PIN pad. Each person scans one personal code and their own phone becomes their self-service — and nothing else.</p>
     </div>
     <div class="self-grid">
-      <div class="reveal-l"><div class="self-phone"><img src="/images/staff-phone.svg?v=20260920b" alt="Staff self-service phone — leave balance, payslip behind a personal PIN, document expiry dates, and requests to HR" loading="lazy" /></div></div>
+      <div class="reveal-l"><div class="self-phone"><img src="/images/staff-phone.svg?v=20260920b" width="400" height="866" alt="Staff self-service phone — leave balance, payslip behind a personal PIN, document expiry dates, and requests to HR" loading="lazy" /></div></div>
       <ul class="self-points reveal-r">
         <li><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg><div><b>Their leave, to the day</b><span>Days owed and what they are worth, accrued to today. The figure on the phone and the figure in HR are the same code run twice — a test compares both on the same data and fails on a single riyal of disagreement.</span></div></li>
         <li><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><div><b>Their payslip, behind their own PIN</b><span>Not their manager's PIN. Five wrong tries locks that phone for fifteen minutes.</span></div></li>
