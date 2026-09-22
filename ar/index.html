@@ -381,47 +381,78 @@ html.js .visible{opacity:1;transform:none}
 @media(max-width:599px){.till-points{grid-template-columns:minmax(0,1fr)}}
 
 /* ── the department explorer ──────────────────────────────────────────────────────────────── */
+/* ≥1040: the rail on the left, the stage on the right — a compact header (eyebrow · h4 · body | chips ·
+   writes) above the department's own screen at the stage's full width. The screen sits in a box of a
+   FIXED height per width (3:2, never under 632px from 940 up, so a 300×620 phone fits whole), so the
+   stage never jumps between departments. ≤1039: the rail comes FIRST as scroll-snapping strips (one
+   per shelf; ≤767 one continuous strip with the shelf names in it), the stage right under it. */
 .explorer{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}
 @media(min-width:1040px){.ex-stage{position:sticky;top:84px}}
-@media(max-width:1039px){.explorer{grid-template-columns:minmax(0,1fr)}
-  .ex-rail{order:2}.ex-stage{order:1}}
-.ex-rail{display:flex;flex-direction:column;gap:14px}
-.ex-group h5{padding:2px 12px 4px}
+.ex-rail{display:flex;flex-direction:column;gap:14px;min-width:0}
+.ex-group{min-width:0}
+.ex-glabel{font-size:13px;font-weight:600;color:var(--sub);padding:2px 14px 4px;line-height:1.35}
 .ex-tabs{display:flex;flex-direction:column;gap:2px}
-@media(max-width:1039px){.ex-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:4px}}
 .ex-tab{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:0 14px;
   border:0;border-radius:999px;background:transparent;font:inherit;color:var(--ink);
   text-align:start;cursor:pointer}
 .ex-tab:hover{background:var(--card)}
+.ex-tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .ex-tab span{min-width:0}
 .ex-tab b{display:block;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ex-tab small{display:block;font-size:12px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ex-tab[aria-selected="true"]{background:var(--accent);color:#fff}
 .ex-tab[aria-selected="true"] small{color:rgba(255,255,255,.78)}
-.ex-stage{background:var(--card);border-radius:var(--rh);padding:24px;display:grid;gap:16px 24px;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  grid-template-areas:"hint hint" "copy dev" "prog prog"}
-@media(max-width:1039px){.ex-stage{grid-template-columns:minmax(0,1fr);
-  grid-template-areas:"hint" "dev" "copy" "prog"}}
-.ex-glow{display:none}
-.ex-hint{grid-area:hint;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--sub)}
-.ex-copy{grid-area:copy;display:flex;flex-direction:column;gap:12px;min-width:0;transition:opacity .28s ease}
-.ex-copy #ex-eyebrow{font-size:13px;font-weight:600;color:var(--sub)}
-.ex-copy h3{font-size:22px;font-weight:700;letter-spacing:-.4px;line-height:1.2}
-.ex-copy p{font-size:15px;color:var(--sub);line-height:1.5}
-.ex-chips{display:flex;flex-wrap:wrap;gap:8px}
-.ex-chips span{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;
-  background:var(--inner);font-size:13px;font-weight:600}
-.ex-writes{font-size:13px;color:var(--sub)}
+.ex-stage{background:var(--card);border-radius:var(--rh);padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.ex-stage:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ex-hint{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--sub)}
+.ex-copy{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:12px 28px;align-items:start;transition:opacity .28s ease}
+.ex-lead,.ex-meta{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ex-meta{gap:10px}
+.ex-eyebrow{font-size:13px;font-weight:600;color:var(--sub)}
+.ex-head{font-size:20px;font-weight:700;letter-spacing:-.4px;line-height:1.25}
+.ex-body{font-size:14px;color:var(--sub);line-height:1.5}
+.ex-chips{display:flex;flex-wrap:wrap;gap:6px}
+.ex-chips span{display:inline-flex;align-items:center;min-height:30px;padding:4px 12px;border-radius:999px;
+  background:var(--inner);font-size:13px;font-weight:600;line-height:1.25}
+.ex-writes{font-size:13px;color:var(--sub);line-height:1.45}
 .ex-writes b{color:var(--accent);font-weight:600}
-.ex-device{grid-area:dev;min-width:0;transition:opacity .28s ease}
-.ex-frame{background:var(--inner);border-radius:var(--ri);padding:10px}
-.ex-frame[data-frame="phone"]{max-width:300px;margin:0 auto}
-.ex-shot img{width:100%;border-radius:8px}
+.ex-device{min-width:0;transition:opacity .28s ease;container-type:inline-size}
+/* the box's height comes from the stage's WIDTH (cqw), never from min-height: a min-height on an
+   aspect-ratio box is carried back into its width and pushes the screen out of the stage */
+.ex-box{aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;overflow:hidden;min-width:0;width:100%}
+@supports (height:1cqw){.ex-box{aspect-ratio:auto;height:66.667cqw}}
+@media(min-width:940px){@supports (height:1cqw){.ex-box{height:max(632px,66.667cqw)}}}
+@media(max-width:939px){.ex-box[data-kind=phone]{aspect-ratio:auto;height:632px}}
+.ex-box>.ui-fit{width:100%}
 .is-swapping .ex-copy,.is-swapping .ex-device{opacity:0}
-.ex-progress{grid-area:prog;height:4px;border-radius:4px;background:var(--track);overflow:hidden}
+.ex-progress{height:4px;border-radius:4px;background:var(--track);overflow:hidden;visibility:hidden}
+.is-touring .ex-progress{visibility:visible}
 .ex-progress i{display:block;height:100%;width:0;border-radius:4px;background:var(--accent);transition:width .25s linear}
 .is-paused .ex-progress{opacity:.35}
+.ex-exit{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+@media(max-width:1039px){
+  .explorer{grid-template-columns:minmax(0,1fr);gap:12px}
+  .ex-rail{gap:10px}
+  .ex-glabel{padding:0 2px 6px}
+  .ex-tabs{flex-direction:row;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+    scrollbar-width:none;margin-inline:-24px;padding-inline:24px;scroll-padding-inline:24px}
+  .ex-tabs::-webkit-scrollbar{display:none}
+  .ex-tab{flex:0 0 auto;width:auto;min-height:50px;padding:0 16px;background:var(--card);scroll-snap-align:start}
+  .ex-tab b,.ex-tab small{overflow:visible;text-overflow:clip}
+  .ex-progress{display:none}
+}
+@media(max-width:819px){
+  .ex-tabs{margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}
+  .ex-stage{padding:16px}
+}
+@media(max-width:759px){.ex-copy{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:767px){
+  .ex-rail{flex-direction:row;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+    scrollbar-width:none;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}
+  .ex-rail::-webkit-scrollbar{display:none}
+  .ex-group{flex:0 0 auto}
+  .ex-tabs{overflow:visible;margin-inline:0;padding-inline:0;scroll-snap-type:none}
+}
 
 /* ── problem / solution ───────────────────────────────────────────────────────────────────── */
 .split-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
@@ -1044,24 +1075,1146 @@ var WA_NUMBER = '';
     </div>
 
     <div class="explorer" id="dept-explorer">
-      <div class="ex-rail" role="navigation" aria-label="الأقسام" id="ex-rail"></div>
-      <div class="ex-stage" id="ex-stage" aria-live="polite">
-        <div class="ex-glow" id="ex-glow"></div>
-        <div class="ex-hint" id="ex-hint"><span class="dot"></span><span id="ex-hint-text">جولة تلقائية · اضغط على أي قسم لإيقافها</span></div>
+      <div class="ex-rail" id="ex-rail">
+        <div class="ex-group">
+          <h3 class="ex-glabel" id="ex-g1">الصالة</h3>
+          <div class="ex-tabs" role="tablist" aria-labelledby="ex-g1">
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-pos" aria-controls="ex-stage" aria-selected="true" tabindex="0" title="المطعم — الحساب · الطاولات · المطبخ"><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span><b>المطعم</b><small>الحساب · الطاولات · المطبخ</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-me" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="الخدمة الذاتية — الحضور · الإجازات · قسيمة الراتب"><svg class="ic" aria-hidden="true"><use href="#i-mobile"/></svg><span><b>الخدمة الذاتية</b><small>الحضور · الإجازات · قسيمة الراتب</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-cs" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="خدمة العملاء — الشكاوى · المكالمات · التقييمات"><svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg><span><b>خدمة العملاء</b><small>الشكاوى · المكالمات · التقييمات</small></span></button>
+          </div>
+        </div>
+        <div class="ex-group">
+          <h3 class="ex-glabel" id="ex-g2">المطبخ والتوريد</h3>
+          <div class="ex-tabs" role="tablist" aria-labelledby="ex-g2">
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-ck" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="المطبخ المركزي — إنتاج وتوريد للفروع"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg><span><b>المطبخ المركزي</b><small>إنتاج وتوريد للفروع</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-pastry" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="قسم الحلويات — خَبز وتوريد للفروع"><svg class="ic" aria-hidden="true"><use href="#i-cake"/></svg><span><b>قسم الحلويات</b><small>خَبز وتوريد للفروع</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-store" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="المخزن المركزي — الاستلام · الطلبات · المخزون"><svg class="ic" aria-hidden="true"><use href="#i-warehouse"/></svg><span><b>المخزن المركزي</b><small>الاستلام · الطلبات · المخزون</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-ordering" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="الطلبات — الطلب · الهدر · الجرد"><svg class="ic" aria-hidden="true"><use href="#i-clipboard"/></svg><span><b>الطلبات</b><small>الطلب · الهدر · الجرد</small></span></button>
+          </div>
+        </div>
+        <div class="ex-group">
+          <h3 class="ex-glabel" id="ex-g3">الإدارة</h3>
+          <div class="ex-tabs" role="tablist" aria-labelledby="ex-g3">
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-finance" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="المالية — الموافقات · السجلات · الشهر"><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span><b>المالية</b><small>الموافقات · السجلات · الشهر</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-marketing" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="التسويق — المنشورات بحكم الكاشير"><svg class="ic" aria-hidden="true"><use href="#i-megaphone"/></svg><span><b>التسويق</b><small>المنشورات بحكم الكاشير</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-it" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="تقنية المعلومات — الكاشيرات · الأجهزة · الصلاحيات"><svg class="ic" aria-hidden="true"><use href="#i-laptop"/></svg><span><b>تقنية المعلومات</b><small>الكاشيرات · الأجهزة · الصلاحيات</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-maint" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="الصيانة — بلّغ · أصلح · التكلفة إلى المالية"><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg><span><b>الصيانة</b><small>بلّغ · أصلح · التكلفة إلى المالية</small></span></button>
+          </div>
+        </div>
+        <div class="ex-group">
+          <h3 class="ex-glabel" id="ex-g4">الأفراد والمكان</h3>
+          <div class="ex-tabs" role="tablist" aria-labelledby="ex-g4">
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-hr" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="الموارد البشرية — الموظفون · المستندات · الرواتب"><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span><b>الموارد البشرية</b><small>الموظفون · المستندات · الرواتب</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-accom" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="السكن — الفلل · الأسرّة · الإشغال"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span><b>السكن</b><small>الفلل · الأسرّة · الإشغال</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-quality" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="الجودة والتدريب — سلامة الغذاء · الأكاديمية · الفحوص"><svg class="ic" aria-hidden="true"><use href="#i-cap"/></svg><span><b>الجودة والتدريب</b><small>سلامة الغذاء · الأكاديمية · الفحوص</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-hq" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="المكتب الرئيسي — كل الفروع، شاشة واحدة"><svg class="ic" aria-hidden="true"><use href="#i-crown"/></svg><span><b>المكتب الرئيسي</b><small>كل الفروع، شاشة واحدة</small></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="ex-stage" id="ex-stage" role="tabpanel" aria-labelledby="ex-tab-pos" tabindex="0">
+        <div class="ex-hint"><span class="dot"></span><span id="ex-hint-text">اضغط على أي قسم</span></div>
         <div class="ex-copy">
-          <div id="ex-eyebrow"></div>
-          <h3 id="ex-head"></h3>
-          <p id="ex-body"></p>
-          <div class="ex-chips" id="ex-chips"></div>
-          <div class="ex-writes" id="ex-writes"></div>
+          <div class="ex-lead">
+            <div class="ex-eyebrow" id="ex-eyebrow">الصالة · الكاشير</div>
+            <h4 class="ex-head" id="ex-head">حساب على الطاولة — وكل لمسة سطرٌ في السجلّ</h4>
+            <p class="ex-body" id="ex-body">الفئة، الصنف، انتهى: مصمّم لإبهامٍ في ليلة مزدحمة. الحساسية تُسأل على الطاولة وتصل إلى المطبخ، والطبق الموقوف عن البيع (86) يظهر نافداً على كل كاشير، والبيع يستمر حتى مع انقطاع الإنترنت.</p>
+          </div>
+          <div class="ex-meta">
+            <div class="ex-chips" id="ex-chips"><span>الحساسية تُسأل، لا تُفترض</span><span>الموقوف عن البيع (86) موقوف في كل مكان</span><span>يبيع دون إنترنت</span></div>
+            <div class="ex-writes" id="ex-writes"><span>يكتب في السجلّ المشترك: </span><b>سجلّ المخزون · P&amp;L · تقرير Z لليوم</b></div>
+          </div>
         </div>
         <div class="ex-device">
-          <div class="ex-frame" id="ex-frame" data-frame="tablet">
-            <div class="ex-shot"><img id="ex-img" src="/images/till.svg?v=20260920b" alt="" width="1200" height="800" /></div>
+          <div class="ex-box" id="ex-box" data-kind="terminal"><div class="ui-fit" id="ex-fit"><div class="ui ui-shot" data-kind="terminal" data-w="1120" role="img" aria-label="صندوق MiM في JUNO ويست ووك يوم 8 سبتمبر الساعة 20:34: الطاولة T2 لشخصين مفتوحة على الفاتورة #1200029 ولم يُرسل منها شيء بعد، رضا ك. مسجّل الدخول، شريط الفئات وشبكة الأصناف وفيها الكاليماري المقرمش موقوف «86 · نفد»، الفاتورة وفيها سلطة الكيل وجي فاير بيرد وبطاطس بالبارميزان ضيافة، شارات الحساسية التي سُئل عنها على الطاولة (مكسرات، سمسم)، الإجمالي 132.00 ر.ق وزر إرسال الطلب" style="width:1120px;height:700px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-pill accent" style="height:26px;font-size:11px">JUNO</span>
+    <span style="line-height:1.15"><b style="display:block;font-size:11px">ويست ووك</b><small style="display:block;font-size:9px;font-weight:600;color:var(--sub)">الصندوق 1</small></span>
+    <div class="ui-who"><span class="ui-avatar">ر</span><span><b>رضا ك.</b><small>نادل · JUNO ويست ووك</small></span></div>
+  </div>
+  <div class="ui-body" style="padding:12px;gap:12px">
+    <div class="ui-card" style="flex:0 0 60%;display:flex;flex-direction:column;gap:8px;min-height:0">
+      <div class="row">
+        <span class="ui-cell grow muted" style="height:30px;display:flex;align-items:center;padding-block:0">🔍 ابحث في القائمة · Search items</span>
+        <span class="ui-btn">☰ التوفر</span>
+      </div>
+      <div class="ui-tabs"><span class="on">كل الأصناف</span><span>المقبلات</span><span>الأطباق الرئيسية</span><span>الجانبية</span><span>الحلويات</span><span>المشروبات</span></div>
+      <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);gap:8px;flex:1;min-height:0">
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>سلطة الكيل</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">48.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>بوراتا وطماطم</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">52.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px;background:var(--bad-bg)"><b class="muted">كاليماري مقرمش</b><span style="font-size:11px;font-weight:700;color:var(--bad)">86 · نفد</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>أجنحة دجاج</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">44.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>تاتاكي لحم</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">58.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>جي فاير بيرد</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">84.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>ريب آي 300 غ</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">128.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>ريش غنم</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">145.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>سلمون مشوي</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">96.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>سماش برجر</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">62.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>ريزوتو الفطر</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">68.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>هامور مشوي</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">98.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>بطاطس بالبارميزان</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">24.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>ذرة مشوية</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">18.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>سلطة خضراء</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">22.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>بطاطس مهروسة بالكمأة</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">26.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>فوندان الشوكولاتة</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">38.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>تشيز كيك</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">36.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>ليموناضة طازجة</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">22.00 ر.ق</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>مياه غازية</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">14.00 ر.ق</span></div>
+      </div>
+    </div>
+    <div class="ui-card" style="flex:1;display:flex;flex-direction:column;gap:8px;min-height:0">
+      <div class="row" style="justify-content:space-between;align-items:flex-start">
+        <span><span class="cap">طاولة مفتوحة</span><br><b style="font-size:16px;line-height:1.2">الطاولة T2 · 2 👥</b></span>
+        <span class="ui-btn">إغلاق الطاولة</span>
+      </div>
+      <div class="row" style="gap:4px;flex-wrap:wrap"><span class="ui-pill bad">🚨 مكسرات</span><span class="ui-pill bad">🚨 سمسم</span></div>
+      <div class="muted" style="font-size:10px">0 أصناف أُرسلت · المجموع حتى الآن 0.00 ر.ق</div>
+      <div class="ui-cell" style="flex:1;min-height:0;padding-block:2px 6px">
+        <div class="ui-list">
+          <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
+            <div class="row" style="justify-content:space-between"><b>سلطة الكيل</b><span class="num" style="font-weight:700">48.00 ر.ق</span></div>
+            <div class="row" style="gap:4px"><span class="ui-pill sub">تعليق</span><span class="ui-pill sub">مقعد 1</span><span class="ui-pill sub">%</span><span class="row" style="margin-inline-start:auto;gap:6px"><span class="ui-pill sub">−</span><b class="num">1</b><span class="ui-pill sub">+</span></span></div>
+            <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">ملاحظة (بدون بصل...)</div>
           </div>
+          <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
+            <div class="row" style="justify-content:space-between"><b>جي فاير بيرد</b><span class="num" style="font-weight:700">84.00 ر.ق</span></div>
+            <div class="row" style="gap:4px"><span class="ui-pill sub">تعليق</span><span class="ui-pill sub">مقعد 2</span><span class="ui-pill sub">%</span><span class="row" style="margin-inline-start:auto;gap:6px"><span class="ui-pill sub">−</span><b class="num">1</b><span class="ui-pill sub">+</span></span></div>
+            <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">ملاحظة (بدون بصل...)</div>
+          </div>
+          <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
+            <div class="row" style="justify-content:space-between"><span><b>بطاطس بالبارميزان</b> <span class="ui-pill good" style="height:16px;padding:0 6px">ضيافة</span></span><span class="num" style="font-weight:700"><s class="muted" style="font-weight:600">24.00 ر.ق</s> 0.00 ر.ق</span></div>
+            <div class="row" style="gap:4px"><span class="ui-pill sub">تعليق</span><span class="ui-pill sub">مقعد 1</span><span class="ui-pill sub">%</span><span class="row" style="margin-inline-start:auto;gap:6px"><span class="ui-pill sub">−</span><b class="num">1</b><span class="ui-pill sub">+</span></span></div>
+            <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">ملاحظة (بدون بصل...)</div>
+          </div>
+        </div>
+      </div>
+      <div class="row muted" style="justify-content:space-between"><span>المجموع الفرعي</span><span class="num">132.00 ر.ق</span></div>
+      <div class="row" style="justify-content:space-between"><span style="font-size:13px;font-weight:700">الإجمالي</span><span class="num" style="font-size:22px;font-weight:700;letter-spacing:-.4px">132.00 ر.ق</span></div>
+      <span class="ui-btn accent wide">🍽️ إرسال الطلب · 132.00 ر.ق</span>
+    </div>
+  </div>
+</div></div></div>
         </div>
         <div class="ex-progress" aria-hidden="true"><i id="ex-bar"></i></div>
       </div>
+      <template data-dept="me"><div class="ui ui-shot" data-kind="phone" data-w="300" role="img" aria-label="هاتف رضا ك. الخاص للخدمة الذاتية في JUNO ويست ووك يوم 8 سبتمبر، على تبويب اليوم: سجّل الحضور الساعة 16:58 وهو في الدوام منذ 4h 16m، زر تسجيل الانصراف، وبطاقة الإبلاغ عن مرض؛ وخلف التبويبات الأخرى 176 ساعة هذا الشهر، و18 يوم إجازة متبقية، وصافي راتب أغسطس 3,450 ر.ق، وطلب واحد قيد المراجعة عند نور" style="width:300px;height:620px;overflow:hidden">
+  <div class="ui-top row" style="gap:10px;padding:16px 16px 14px">
+    <span class="ui-avatar" style="width:38px;height:38px;font-size:13px;background:rgba(255,255,255,.18);color:#fff">ر</span>
+    <span class="grow" style="line-height:1.15"><span style="display:block;font-size:15px;font-weight:700">رضا ك.</span><span class="muted" style="display:block;font-size:10px;font-weight:700;margin-top:2px">نادل</span><span class="muted" style="display:block;font-size:10px;margin-top:1px">JUNO · ويست ووك</span></span>
+  </div>
+  <div style="flex:1;min-height:0;padding:10px;display:flex;flex-direction:column;gap:8px;overflow:hidden">
+    <div class="ui-card" style="padding:12px 14px;background:var(--good-bg)">
+      <div class="row" style="gap:10px">
+        <span aria-hidden="true" style="font-size:22px;line-height:1">🟢</span>
+        <span class="grow"><span class="ui-title lg" style="color:var(--good)">أنت في الدوام</span><span style="display:block;font-size:11px;font-weight:600;margin-top:2px;color:var(--good);opacity:.72">4h 16m حتى الآن</span></span>
+      </div>
+      <div style="height:1px;background:var(--good);opacity:.35;margin:10px 0"></div>
+      <div class="row" style="flex-wrap:wrap;gap:6px">
+        <span class="ui-pill num" style="background:var(--inner);color:var(--good)">↓ حضور 16:58</span>
+      </div>
+    </div>
+    <div class="ui-card" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+      <span class="cap">🕐 تسجيل الحضور / الانصراف</span>
+      <span class="muted" style="font-size:10px;line-height:1.4">اكتب الرقم الظاهر على شاشة الكاشير، ثم اضغط الزر. التطبيق يعرف بنفسه إن كان المطلوب منك حضوراً أو انصرافاً.</span>
+      <div class="ui-cell num" style="text-align:center;font-size:20px;font-weight:700;letter-spacing:.24em;color:var(--dash);padding:6px 10px">······</div>
+      <span class="ui-btn accent wide" style="height:36px;font-size:12px;font-weight:700">تسجيل الانصراف</span>
+    </div>
+    <div class="ui-card" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+      <span class="cap">🤒 الإبلاغ عن مرض</span>
+      <span class="muted" style="font-size:10px;line-height:1.4">أبلغنا قبل 3 ساعات على الأقل من بداية دوامك حتى يمكن تدبير بديل. وإذا كنت مريضاً بالفعل وتأخر الوقت عن ذلك، أبلغ على أي حال — البلاغ يُسجَّل دائماً، وأن تخبرنا متأخراً أفضل بكثير من ألا تخبرنا.</span>
+      <span class="ui-btn wide" style="height:36px;font-size:12px;font-weight:700;background:var(--inner);border:2px solid var(--amber);color:var(--amber)">أنا مريض اليوم</span>
+    </div>
+  </div>
+  <div class="row" style="flex-shrink:0;height:46px;border-top:1px solid var(--line);background:var(--inner);padding:0 6px;gap:0">
+    <span style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:700;color:var(--accent)"><svg class="ic" aria-hidden="true" style="width:16px;height:16px"><use href="#i-home"/></svg>اليوم</span>
+    <span style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:600;color:var(--dash)"><svg class="ic" aria-hidden="true" style="width:16px;height:16px"><use href="#i-calendar"/></svg>الورديات</span>
+    <span style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:600;color:var(--dash)"><svg class="ic" aria-hidden="true" style="width:16px;height:16px"><use href="#i-mail"/></svg>الطلبات</span>
+    <span style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:600;color:var(--dash)"><svg class="ic" aria-hidden="true" style="width:16px;height:16px"><use href="#i-idcard"/></svg>حسابي</span>
+  </div>
+</div></template>
+      <template data-dept="cs"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="خدمة العملاء يوم الثلاثاء 8 سبتمبر: سجل الشكاوى والاتصالات وفيه حالتا اليوم محلولتان، إحداهما فُتحت تلقائياً من تقييم 3 نجوم على Google في لوسيل، وبجانبه تقرير Google بتقييم كل فرع والتقييمين الجديدين" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🎧 خدمة العملاء</span>
+    <span class="ui-pill accent">مطاعم Mim · 6 فروع</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026</span>
+    <div class="ui-who"><span class="ui-avatar">ب</span><span><b>بريا ن.</b><small>خدمة العملاء · المكتب الرئيسي</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">📞 خدمة العملاء</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span><span class="ui-badge">1</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">لوحة المعلومات</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg><span class="grow">الشكاوى والاتصالات</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><span class="grow">تقييمات جوجل</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg><span class="grow">العملاء</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top row" style="justify-content:space-between">
+        <span><span class="ui-title">📞 الشكاوى والاتصالات — كل مسألة ضيف، في السجل</span><br><span class="muted" style="font-size:10px">سجّل الشكوى · سجّل كل اتصال وتوضيح · حُلّها أو ارفعها — <b style="color:#fff">كل شيء يصل إلى المالك</b>.</span></span>
+      </div>
+      <div class="ui-grid2" style="flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="justify-content:space-between;margin-bottom:6px"><span class="ui-title">➕ حالة جديدة</span><span class="cap">الفرع وما حدث — مطلوبان</span></div>
+            <div class="row" style="gap:6px;margin-bottom:6px">
+              <span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--sub)">— الفرع —<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+              <span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--ink)">مكالمة<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+              <span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--ink)">جودة الطعام<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+            </div>
+            <div class="row" style="gap:6px;margin-bottom:6px">
+              <span class="ui-pill sub grow" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);justify-content:flex-start">اسم العميل</span>
+              <span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);justify-content:flex-start;width:84px;flex-shrink:0">الهاتف</span>
+              <span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);width:112px;justify-content:flex-start">رقم الطلب (اختياري)</span>
+            </div>
+            <div class="ui-pill sub" style="display:flex;height:26px;font-size:11px;font-weight:600;color:var(--sub);justify-content:flex-start;margin-bottom:6px">ما حدث — كلمات الضيف، والموقف…</div>
+            <div class="row"><span class="ui-btn accent">افتح الحالة → ويُبلَّغ المالك</span></div>
+          </div>
+          <div class="ui-tabs"><span>🔴 مفتوحة (0)</span><span class="on">✅ محلولة (2)</span><span>الكل (2)</span></div>
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="gap:6px"><span class="ui-pill good">محلولة</span><b>تقييم منخفض</b><span class="muted" style="font-size:10px;margin-inline-start:auto;white-space:nowrap">08/09 19:30 · بواسطة بريا ن.</span></div>
+            <div class="muted" style="font-size:10px;margin-top:3px">JUNO · لوسيل · تقييم على Google</div>
+            <div style="margin-top:5px">👤 ضيف — «★★★ — انتظرنا 25 دقيقة للأطباق الرئيسية.»</div>
+            <div class="muted" style="font-size:10px;margin-top:4px;padding-inline-start:8px;border-inline-start:2px solid var(--line)">📞 08/09 19:30 · <b>بريا ن.</b>: حُوّلت إلى مدير لوسيل</div>
+            <div style="margin-top:6px;background:var(--pale);color:var(--accent);border-radius:10px;padding:6px 8px;font-size:11px">✅ <b>الحل:</b> رُدّ عليها على Google الساعة 19:52 من مدير لوسيل</div>
+          </div>
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="gap:6px"><span class="ui-pill good">محلولة</span><b>جودة الطعام</b><span class="muted" style="font-size:10px;margin-inline-start:auto;white-space:nowrap">08/09 16:05 · بواسطة بريا ن.</span></div>
+            <div class="muted" style="font-size:10px;margin-top:3px">Bake &amp; Co · فيلاجيو · حضورياً</div>
+            <div style="margin-top:5px">👤 ضيف — «القهوة وصلت باردة.»</div>
+            <div style="margin-top:6px;background:var(--pale);color:var(--accent);border-radius:10px;padding:6px 8px;font-size:11px">✅ <b>الحل:</b> استُبدلت، ضيافة 18.00 ر.ق — أُبلغ المالك</div>
+          </div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="row" style="justify-content:space-between"><span class="ui-title">⭐ تقييمات جوجل</span><span class="cap">واجهة Google Places الرسمية · تُقرأ كل 6 ساعات</span></div>
+          <div class="ui-cell" style="padding:10px"><div class="ui-grid3">
+            <div class="ui-kpi"><span class="cap">تقييم المجموعة</span><span class="num">⭐ 4.52</span><span class="muted" style="font-size:10px">على 6 فروع</span></div>
+            <div class="ui-kpi"><span class="cap">🥇 الأفضل</span><span class="num sm">السد ⭐ 4.7</span><span class="muted" style="font-size:10px">Saffron House</span></div>
+            <div class="ui-kpi"><span class="cap">⚠️ يحتاج انتباهاً</span><span class="num sm">مشيرب ⭐ 4.3</span><span class="muted" style="font-size:10px">Bake &amp; Co</span></div>
+          </div></div>
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="justify-content:space-between;margin-bottom:3px"><span class="cap">📊 التقييم حسب المطعم</span><span class="cap">من 5 · أقل من 4★ يحتاج انتباهاً</span></div>
+            <div class="ui-list" style="font-size:11px">
+              <div class="ui-li"><span style="width:150px;flex-shrink:0">Saffron House · السد</span><div class="ui-bar grow" style="--v:94%"></div><span class="num">4.7</span></div>
+              <div class="ui-li"><span style="width:150px;flex-shrink:0">JUNO · ويست ووك</span><div class="ui-bar grow" style="--v:92%"></div><span class="num">4.6</span></div>
+              <div class="ui-li"><span style="width:150px;flex-shrink:0">Bake &amp; Co · فيلاجيو</span><div class="ui-bar grow" style="--v:92%"></div><span class="num">4.6</span></div>
+              <div class="ui-li"><span style="width:150px;flex-shrink:0">Saffron House · اللؤلؤة</span><div class="ui-bar grow" style="--v:90%"></div><span class="num">4.5</span></div>
+              <div class="ui-li"><span style="width:150px;flex-shrink:0">JUNO · لوسيل</span><div class="ui-bar grow" style="--v:88%"></div><span class="num">4.4</span></div>
+              <div class="ui-li"><span style="width:150px;flex-shrink:0">Bake &amp; Co · مشيرب</span><div class="ui-bar grow" style="--v:86%"></div><span class="num">4.3</span></div>
+            </div>
+          </div>
+          <div class="ui-cell" style="padding:10px;flex:1;min-height:0">
+            <div class="cap">JUNO · ويست ووك — أحدث الآراء</div>
+            <div class="row" style="gap:6px;font-size:11px;margin-top:6px"><b>⭐⭐⭐⭐⭐</b><span style="font-weight:600">ضيف</span><span class="muted" style="margin-inline-start:auto">قبل ساعة</span></div>
+            <div class="muted" style="line-height:1.6;margin-top:2px">جي فاير بيرد يستحق المشوار.</div>
+            <div class="cap" style="margin-top:9px;padding-top:9px;border-top:1px solid var(--line)">JUNO · لوسيل — أحدث الآراء</div>
+            <div class="row" style="gap:6px;font-size:11px;margin-top:6px"><b>⭐⭐⭐</b><span style="font-weight:600">ضيف</span><span class="muted" style="margin-inline-start:auto">قبل ساعتين</span></div>
+            <div class="muted" style="line-height:1.6;margin-top:2px">انتظرنا 25 دقيقة للأطباق الرئيسية.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="ck"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="المطبخ المركزي يوم الثلاثاء 8 سبتمبر، تبويب طلبات الفروع: طلب Saffron House السد من قاعدة الحمص وخلطة بهارات المجبوس بانتظار الإرسال، وقائمة ما ورّد حديثاً إلى ويست ووك ولوسيل واللؤلؤة والسد، والقيمة المورَّدة هذا الشهر" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🍳 المطبخ المركزي</span>
+    <span class="ui-pill accent">المنطقة الصناعية · يورّد 6 فروع</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026 · 07:30</span>
+    <div class="ui-who"><span class="ui-avatar">ط</span><span><b>طارق م.</b><small>مدير المطبخ المركزي · المنطقة الصناعية</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">الوحدة المركزية</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span><span class="ui-badge">1</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">لوحة المعلومات</span></span>
+      <span class="cap">الإنتاج</span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-clipboard"/></svg><span class="grow">طلبات الفروع</span><span class="ui-badge">1</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span class="grow">أصنافي ووصفاتي</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calculator"/></svg><span class="grow">أرقامي</span></span>
+      <span class="cap">المخزون</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-swap"/></svg><span class="grow">التحويلات</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg><span class="grow">مخزوني</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-store"/></svg><span class="grow">الطلب من المخزن المركزي</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-ban"/></svg><span class="grow">الهدر</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboardcheck"/></svg><span class="grow">الجرد</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top row" style="justify-content:space-between">
+        <span class="grow"><span class="ui-title">🍳 المطبخ المركزي — طلبات الفروع</span><br><span class="muted" style="font-size:10px">تصل هنا الأصناف التي توردها أنت فقط. أنتجها، ثم أرسل ما صنعته فعلاً — فيعدّه الفرع عند الاستلام، وتُحمّل القيمة على ذلك الفرع.</span></span>
+        <span class="ui-kpi" style="text-align:end;flex-shrink:0"><span class="cap">المورَّد هذا الشهر</span><span class="num">19,640 ر.ق</span></span>
+      </div>
+      <div class="ui-card" style="display:flex;flex-direction:column;gap:8px">
+        <div class="row" style="gap:6px"><span class="ui-pill sub">🏪 الفرع</span><b class="grow" style="font-size:12px">Saffron House · السد</b><span class="ui-pill accent">📅 مطلوب قبل 9 سبتمبر</span><span class="muted" style="font-size:10px">بواسطة فاطمة س. · 8 سبتمبر، 06:05</span></div>
+        <span class="muted" style="font-size:10px;margin-top:-4px">📝 الخميس ليلة المجبوس — خلطة البهارات أولاً من فضلكم</span>
+        <div class="ui-cell">
+          <div class="ui-list">
+            <div class="ui-li" style="padding-top:2px"><span class="cap grow">الصنف</span><span class="cap" style="width:56px;text-align:end">المطلوب</span><span class="cap" style="width:56px;text-align:end">المُرسَل</span><span class="cap" style="width:90px;text-align:end">القيمة</span></div>
+            <div class="ui-li"><span class="grow"><b>قاعدة حمص</b> <span class="muted">كغ</span></span><span class="muted" style="width:56px;text-align:end">12</span><span class="num" style="width:56px;text-align:end">12</span><span class="muted" style="width:90px;text-align:end">14.00 ر.ق/كغ</span></div>
+            <div class="ui-li"><span class="grow"><b>خلطة بهارات المجبوس</b> <span class="muted">كغ</span></span><span class="muted" style="width:56px;text-align:end">4</span><span class="num" style="width:56px;text-align:end">4</span><span class="muted" style="width:90px;text-align:end">62.00 ر.ق/كغ</span></div>
+          </div>
+        </div>
+        <div class="row" style="gap:6px"><span class="ui-btn accent">🚚 أرسل ما صنعته</span><span class="ui-btn"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>لا يمكن التوريد</span></div>
+      </div>
+      <div class="ui-card">
+        <div class="ui-title" style="margin-bottom:4px">📜 ما ورّد حديثاً</div>
+        <div class="ui-list">
+          <div class="ui-li"><span class="grow">JUNO · ويست ووك — 3 أصناف</span><span class="num">1,236.00 ر.ق</span><span class="muted" style="font-size:10px;width:52px;text-align:end">8 سبتمبر</span></div>
+          <div class="ui-li"><span class="grow">JUNO · لوسيل — صنفان</span><span class="num">742.00 ر.ق</span><span class="muted" style="font-size:10px;width:52px;text-align:end">8 سبتمبر</span></div>
+          <div class="ui-li"><span class="grow">Saffron House · اللؤلؤة — 4 أصناف</span><span class="num">918.00 ر.ق</span><span class="muted" style="font-size:10px;width:52px;text-align:end">7 سبتمبر</span></div>
+          <div class="ui-li"><span class="grow">JUNO · ويست ووك — 3 أصناف</span><span class="num">1,180.00 ر.ق</span><span class="muted" style="font-size:10px;width:52px;text-align:end">7 سبتمبر</span></div>
+          <div class="ui-li"><span class="grow">Saffron House · السد — 3 أصناف</span><span class="num">640.00 ر.ق</span><span class="muted" style="font-size:10px;width:52px;text-align:end">7 سبتمبر</span></div>
+          <div class="ui-li"><span class="grow">JUNO · لوسيل — صنفان</span><span class="num">698.00 ر.ق</span><span class="muted" style="font-size:10px;width:52px;text-align:end">6 سبتمبر</span></div>
+          <div class="ui-li"><span class="grow">Saffron House · اللؤلؤة — 3 أصناف</span><span class="num">804.00 ر.ق</span><span class="muted" style="font-size:10px;width:52px;text-align:end">6 سبتمبر</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="pastry"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="قسم الحلويات، طلبات الفروع يوم الثلاثاء 8 سبتمبر: طلبان من Bake &amp; Co بانتظار الإرسال، مشيرب وفيلاجيو، 14 سطراً بينها كرواسون 240 وكيك فستق 6، سطران يُرسَلان ناقصين، 25,641.00 ر.ق مورَّدة هذا الشهر، وتوريدات الأمس أسفلها؛ أحمد ر. مسجّل الدخول" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🧁 قسم الحلويات</span>
+    <span class="ui-pill accent">مطاعم Mim · المنطقة الصناعية</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026</span>
+    <div class="ui-who"><span class="ui-avatar">أ</span><span><b>أحمد ر.</b><small>شيف حلويات · قسم الحلويات</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">الوحدة المركزية</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">لوحة المعلومات</span></span>
+      <span class="cap">الإنتاج</span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-clipboard"/></svg><span class="grow">طلبات الفروع</span><span class="ui-badge">2</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span class="grow">أصنافي ووصفاتي</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calculator"/></svg><span class="grow">أرقامي</span></span>
+      <span class="cap">المخزون</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-swap"/></svg><span class="grow">التحويلات</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg><span class="grow">مخزوني</span></span>
+      <span style="white-space:normal;height:auto;min-height:28px;padding-block:3px;line-height:1.15"><svg class="ic" aria-hidden="true"><use href="#i-store"/></svg><span class="grow">الطلب من المخزن المركزي</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-ban"/></svg><span class="grow">الهدر</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboardcheck"/></svg><span class="grow">الجرد</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top" style="display:flex;align-items:center;gap:14px">
+        <div style="flex:1;min-width:0">
+          <div class="ui-title">🧁 قسم الحلويات — طلبات الفروع</div>
+          <div class="muted" style="font-size:10px;margin-top:3px;text-wrap:balance">تصل هنا الأصناف التي توردها أنت فقط. أنتجها، ثم أرسل ما صنعته فعلاً — فيعدّه الفرع عند الاستلام، وتُحمّل القيمة على ذلك الفرع.</div>
+        </div>
+        <div class="ui-kpi" style="text-align:end;flex-shrink:0"><span class="cap">المورَّد هذا الشهر</span><span class="num">25,641.00 ر.ق</span></div>
+      </div>
+      <div class="ui-grid2" style="align-items:start">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:6px">
+          <div class="row" style="gap:6px;flex-wrap:wrap">
+            <span class="ui-pill sub">🏪 الفرع</span><b>Bake &amp; Co · مشيرب</b><span class="ui-pill bad">📅 مطلوب قبل <span dir="ltr">2026-09-08</span></span><span class="muted" style="font-size:10px">07 سبتمبر، 22:10</span>
+          </div>
+          <table style="width:100%;border-collapse:collapse">
+            <thead><tr><th class="cap" style="text-align:start;padding:2px 0 4px;font-weight:600">الصنف</th><th class="cap" style="text-align:end;padding:2px 0 4px;font-weight:600">المطلوب</th><th class="cap" style="text-align:end;padding:2px 0 4px;font-weight:600">المُرسَل</th><th class="cap" style="text-align:end;padding:2px 0 4px;font-weight:600">القيمة</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>كرواسون</b> <span class="muted" style="font-size:10px">قطعة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">240</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">240</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">2.50 ر.ق/قطعة</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>كيك فستق</b> <span class="muted" style="font-size:10px">كيكة · 12 شريحة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">6</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">5</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">96.00 ر.ق/كيكة</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>بان أو شوكولا</b> <span class="muted" style="font-size:10px">قطعة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">120</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">120</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">3.00 ر.ق/قطعة</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>تشيز كيك</b> <span class="muted" style="font-size:10px">كيكة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">4</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">4</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">84.00 ر.ق/كيكة</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>مافن</b> <span class="muted" style="font-size:10px">قطعة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">60</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">60</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">2.50 ر.ق/قطعة</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>كوكيز</b> <span class="muted" style="font-size:10px">قطعة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">90</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">90</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">1.50 ر.ق/قطعة</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>رولات قرفة</b> <span class="muted" style="font-size:10px">قطعة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">48</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">48</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">3.00 ر.ق/قطعة</td></tr>
+            </tbody>
+          </table>
+          <div class="row" style="gap:6px;margin-top:2px"><span class="ui-btn good">🚚 أرسل ما صنعته</span><span class="ui-btn" style="color:var(--bad)">✕ لا يمكن التوريد</span></div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:6px">
+          <div class="row" style="gap:6px;flex-wrap:wrap">
+            <span class="ui-pill sub">🏪 الفرع</span><b>Bake &amp; Co · فيلاجيو</b><span class="ui-pill bad">📅 مطلوب قبل <span dir="ltr">2026-09-08</span></span><span class="muted" style="font-size:10px">07 سبتمبر، 22:35</span>
+          </div>
+          <table style="width:100%;border-collapse:collapse">
+            <thead><tr><th class="cap" style="text-align:start;padding:2px 0 4px;font-weight:600">الصنف</th><th class="cap" style="text-align:end;padding:2px 0 4px;font-weight:600">المطلوب</th><th class="cap" style="text-align:end;padding:2px 0 4px;font-weight:600">المُرسَل</th><th class="cap" style="text-align:end;padding:2px 0 4px;font-weight:600">القيمة</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>كرواسون لوز</b> <span class="muted" style="font-size:10px">قطعة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">96</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">72</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">3.50 ر.ق/قطعة</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>بان أو شوكولا</b> <span class="muted" style="font-size:10px">قطعة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">72</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">72</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">3.00 ر.ق/قطعة</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>تشيز كيك</b> <span class="muted" style="font-size:10px">كيكة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">3</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">3</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">84.00 ر.ق/كيكة</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>كيك تمر</b> <span class="muted" style="font-size:10px">كيكة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">3</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">3</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">60.00 ر.ق/كيكة</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>براونيز</b> <span class="muted" style="font-size:10px">قطعة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">72</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">72</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">2.50 ر.ق/قطعة</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>كوكيز</b> <span class="muted" style="font-size:10px">قطعة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">60</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">60</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">1.50 ر.ق/قطعة</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>رولات قرفة</b> <span class="muted" style="font-size:10px">قطعة</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">36</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">36</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">3.00 ر.ق/قطعة</td></tr>
+            </tbody>
+          </table>
+          <div class="row" style="gap:6px;margin-top:2px"><span class="ui-btn good">🚚 أرسل ما صنعته</span><span class="ui-btn" style="color:var(--bad)">✕ لا يمكن التوريد</span></div>
+        </div>
+      </div>
+      <div class="ui-card">
+        <div class="ui-title" style="margin-bottom:2px">📜 ما ورّد حديثاً</div>
+        <div class="ui-list">
+          <div class="ui-li" style="padding:5px 0"><span class="grow">Bake &amp; Co · مشيرب — 7 أصناف</span><span class="num">2,301.00 ر.ق</span><span class="muted" style="font-size:10px;min-width:56px;text-align:end">07/09/2026</span></div>
+          <div class="ui-li" style="padding:5px 0"><span class="grow">Bake &amp; Co · فيلاجيو — 7 أصناف</span><span class="num">1,362.00 ر.ق</span><span class="muted" style="font-size:10px;min-width:56px;text-align:end">07/09/2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="store"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="المخزن يوم الثلاثاء 8 سبتمبر: أمر الشراء PO-2291 من Doha Fresh Produce (4,860.00 ر.ق، سداد خلال 30 يوماً، الاستحقاق 8 أكتوبر) يُستلَم سطراً سطراً والطماطم أغلى بـ9% من آخر توريد، وطلب ويست ووك الصباحي بأسطره الـ12 بانتظار التوجيه على المكتب والكيل ناقص على الرف (4 من 6 كغ مطلوبة)، ومخزون المخزن نفسه مع مراقبة الانتهاء" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">📦 المخزن</span>
+    <span class="ui-pill accent">مطاعم Mim · المنطقة الصناعية</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026</span>
+    <div class="ui-who"><span class="ui-avatar">ح</span><span><b>حسن م.</b><small>أمين المخزن · المخزن</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">المخزن</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">لوحة المعلومات</span></span>
+      <span class="cap">العمليات</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-swap"/></svg><span class="grow">مكتب التوجيه</span><span class="ui-badge">1</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg><span class="grow">المشتريات</span><span class="ui-badge">1</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span class="grow">الموردون</span></span>
+      <span class="cap">المخزون</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-rotate"/></svg><span class="grow">التحويلات</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-warehouse"/></svg><span class="grow">مخزوني</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calculator"/></svg><span class="grow">التسوية</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-ban"/></svg><span class="grow">الهدر</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboardcheck"/></svg><span class="grow">الجرد</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top">
+        <span class="grow"><span class="ui-title">📥 إشعار استلام — أمر شراء رقم PO-2291 · Doha Fresh Produce</span><br><span class="muted" style="font-size:10px">عُدّ ما نزل فعلاً من الشاحنة — لا يدخل المخزن إلا البضاعة السليمة، وتُنبَّه المالية ألا تدفع كامل المبلغ.</span></span>
+      </div>
+      <div class="ui-card" style="padding-block:10px">
+        <table style="width:100%;border-collapse:collapse;font-size:11px;line-height:1.25">
+          <thead><tr>
+            <th class="cap" style="text-align:start;padding:3px 6px;border-bottom:1px solid var(--line)">الصنف</th>
+            <th class="cap" style="text-align:start;padding:3px 6px;border-bottom:1px solid var(--line)">العلامة</th>
+            <th class="cap" style="text-align:end;padding:3px 6px;border-bottom:1px solid var(--line)">المطلوب</th>
+            <th class="cap" style="text-align:end;padding:3px 6px;border-bottom:1px solid var(--line)">المستلَم</th>
+            <th class="cap" style="text-align:end;padding:3px 6px;border-bottom:1px solid var(--line)">التالف</th>
+            <th class="cap" style="text-align:start;padding:3px 12px;border-bottom:1px solid var(--line)">الانتهاء</th>
+            <th class="cap" style="text-align:end;padding:3px 6px;border-bottom:1px solid var(--line)">الحالة</th>
+          </tr></thead>
+          <tbody>
+            <tr><td style="padding:4px 6px"><b>طماطم</b> <span class="muted">/كغ</span><br><b style="font-size:9px;color:var(--bad)">▲ 9% عن آخر توريد</b></td><td style="padding:4px 6px">محلي</td><td class="num" style="text-align:end;padding:4px 6px;color:var(--sub)">120</td><td class="num" style="text-align:end;padding:4px 6px"><b>120</b></td><td class="num" style="text-align:end;padding:4px 6px">0</td><td style="padding:4px 12px">12 سبتمبر</td><td style="text-align:end;padding:4px 6px"><b style="color:var(--good)">✓ كامل</b></td></tr>
+            <tr><td style="padding:4px 6px;border-top:1px solid var(--line)"><b>كيل</b> <span class="muted">/كغ</span></td><td style="padding:4px 6px;border-top:1px solid var(--line)">محلي</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line);color:var(--sub)">40</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b>40</b></td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)">0</td><td style="padding:4px 12px;border-top:1px solid var(--line)">11 سبتمبر</td><td style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b style="color:var(--good)">✓ كامل</b></td></tr>
+            <tr><td style="padding:4px 6px;border-top:1px solid var(--line)"><b>ليمون</b> <span class="muted">/كغ</span></td><td style="padding:4px 6px;border-top:1px solid var(--line)">—</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line);color:var(--sub)">60</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b>54</b></td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)">0</td><td style="padding:4px 12px;border-top:1px solid var(--line)">20 سبتمبر</td><td style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b style="color:var(--amber)">📉 ناقص 6.00</b></td></tr>
+            <tr><td style="padding:4px 6px;border-top:1px solid var(--line)"><b>بصل</b> <span class="muted">/كغ</span></td><td style="padding:4px 6px;border-top:1px solid var(--line)">—</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line);color:var(--sub)">200</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b>200</b></td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)">0</td><td style="padding:4px 12px;border-top:1px solid var(--line)">30 سبتمبر</td><td style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b style="color:var(--good)">✓ كامل</b></td></tr>
+            <tr><td style="padding:4px 6px;border-top:1px solid var(--line)"><b>بطاطس</b> <span class="muted">/كغ</span></td><td style="padding:4px 6px;border-top:1px solid var(--line)">—</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line);color:var(--sub)">300</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b>300</b></td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)">0</td><td style="padding:4px 12px;border-top:1px solid var(--line)">5 أكتوبر</td><td style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b style="color:var(--good)">✓ كامل</b></td></tr>
+            <tr><td style="padding:4px 6px;border-top:1px solid var(--line)"><b>أعشاب مشكّلة</b> <span class="muted">/كغ</span></td><td style="padding:4px 6px;border-top:1px solid var(--line)">محلي</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line);color:var(--sub)">30</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b>30</b></td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b style="color:var(--bad)">2</b></td><td style="padding:4px 12px;border-top:1px solid var(--line)">10 سبتمبر</td><td style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b style="color:var(--bad)">💥 متلف</b></td></tr>
+          </tbody>
+        </table>
+        <div class="row" style="justify-content:space-between;margin-top:8px;gap:8px"><span class="row" style="gap:6px"><span class="ui-btn good"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>سجّل إشعار الاستلام</span><span class="ui-btn">إلغاء</span></span><span class="muted" style="font-size:10px">▲ أي زيادة تتجاوز 5% عن آخر توريد تُبلَّغ للمالية والمكتب الرئيسي</span></div>
+      </div>
+      <div class="ui-grid2" style="flex:1;min-height:0">
+        <div class="ui-card" style="overflow:hidden">
+          <div class="row" style="justify-content:space-between;margin-bottom:4px"><span class="ui-title">🔀 مكتب التوجيه <span class="ui-badge">1</span></span><span class="cap">📥 طلبات جديدة — تحتاج إجراء</span></div>
+          <div class="ui-cell">
+            <div class="row" style="justify-content:space-between;gap:6px"><span class="grow"><b>JUNO · ويست ووك</b><br><span class="muted">بواسطة نور ح. · 8 سبتمبر 07:05 · 12 سطراً</span></span></div>
+            <div class="ui-list" style="margin-top:4px">
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>صدر دجاج</b> <span class="muted">18 كغ</span></span><span class="muted" style="font-size:10px">في المخزن</span><b style="color:var(--good)">42</b><span class="ui-pill sub">🏬 المخزن المركزي</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>كيل</b> <span class="muted">6 كغ</span></span><span class="muted" style="font-size:10px">في المخزن</span><b style="color:var(--bad)">4 ⚠️</b><span class="ui-pill sub">🏬 المخزن المركزي</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>بارميزان</b> <span class="muted">2 كغ</span></span><span class="muted" style="font-size:10px">في المخزن</span><b style="color:var(--good)">5</b><span class="ui-pill sub">🏬 المخزن المركزي</span></div>
+            </div>
+            <span class="muted" style="font-size:10px">+9 أسطر أخرى</span>
+          </div>
+          <div class="muted" style="font-size:10px;margin-top:8px"><b style="color:var(--ink)">المخزن هو المحور</b> — المخزن المركزي وحده يشتري.</div>
+        </div>
+        <div class="ui-card" style="overflow:hidden">
+          <div class="row" style="justify-content:space-between;margin-bottom:6px"><span class="ui-title">📦 مخزوني — المخزن</span><span class="cap">غرفتك وحدك</span></div>
+          <div class="ui-cell"><div class="ui-grid3"><div class="ui-kpi"><span class="cap">منتهي</span><span class="num sm">0</span></div><div class="ui-kpi"><span class="cap">ينتهي خلال 7 أيام</span><span class="num sm" style="color:var(--amber)">3</span></div><div class="ui-kpi"><span class="cap">تحت الحد الأدنى</span><span class="num sm" style="color:var(--amber)">1</span></div></div></div>
+          <div class="cap" style="margin-top:8px">⏰ مراقبة الانتهاء — استخدمه أو انقله أو أعدمه</div>
+          <div class="ui-list">
+            <div class="ui-li" style="padding:5px 0"><span class="grow"><b>طماطم</b> <span class="muted">· آخر توريد</span></span><span class="muted">18 كغ</span><span class="ui-pill warn">🟡 باقٍ يومان</span></div>
+            <div class="ui-li" style="padding:5px 0"><span class="grow"><b>صدر دجاج</b></span><span class="muted">24 كغ</span><span class="ui-pill warn">🟡 باقٍ 3 أيام</span></div>
+            <div class="ui-li" style="padding:5px 0"><span class="grow"><b>أعشاب مشكّلة</b> <span class="muted">· محلي</span></span><span class="muted">1.5 كغ</span><span class="ui-pill warn">🟡 باقٍ يوم واحد</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="ordering"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="الطلبات في JUNO ويست ووك يوم الثلاثاء 8 سبتمبر، تبويب الطلب من المخزن المركزي: نموذج طلب الفرع من المخزن وفي السلة كيل، وثلاثة طلبات للفرع — طلب هذا الصباح من 12 سطراً تم تسليمه وصُرف منه 10 و2 ناقصان (الكيل 4 من 6 كجم) بانتظار تأكيد الاستلام من نور ح.، وطلبا الصباحين السابقين مستلَمان ومقيّدان في تكلفة الطعام؛ وتبويبا الهدر وجرد المخزون (ورقة جرد سبتمبر ليوم السبت) في الشريط الجانبي" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🛒 الطلبات</span>
+    <span class="ui-pill accent">JUNO · ويست ووك</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026</span>
+    <div class="ui-who"><span class="ui-avatar">ن</span><span><b>نور ح.</b><small>مديرة الفرع · JUNO ويست ووك</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">🛒 الطلبات</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span><span class="ui-badge">1</span></span>
+      <span class="on" style="height:auto;padding-block:5px"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg><span class="grow" style="white-space:normal;line-height:1.2">الطلب من المخزن المركزي</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-ban"/></svg><span class="grow">الهدر</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboardcheck"/></svg><span class="grow">جرد المخزون</span></span>
+      <span class="cap">👥 الموظفون</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span class="grow">جدول العمل</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-scale"/></svg><span class="grow">المخطط مقابل الفعلي</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span class="grow">رمز الحضور</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top">
+        <span class="ui-title">🛒 طلب مخزن — JUNO · ويست ووك</span><br><span class="muted" style="font-size:10px">رمزك يعرّفك ويعرّف فرعك — وهذا الطلب مختوم JUNO · ويست ووك، أرسله نور ح. طعام خام، بار، غير غذائي، تنظيف، تغليف.</span>
+      </div>
+      <div class="ui-card" style="display:flex;flex-direction:column;gap:6px">
+        <div class="row" style="gap:6px"><span class="ui-cell grow muted">الصنف (اكتبه أو اختره)</span></div>
+        <div class="row" style="gap:6px"><span class="ui-cell muted" style="width:150px">العلامة — اخترها أو اكتبها</span><span class="ui-cell muted" style="width:40px;text-align:end">الكمية</span><span class="ui-cell">كجم</span><span class="ui-cell">🥩 طعام — خام</span><span class="ui-btn" style="padding:0 10px">＋</span></div>
+        <div class="ui-cell" style="padding:6px 10px"><div class="row" style="gap:8px"><span>🥩</span><span class="muted" style="font-size:10px;font-weight:700">118</span><span class="grow" style="font-weight:600">كيل</span><span class="muted">2 كجم</span><span style="color:var(--bad);font-size:10px;font-weight:700">✕</span></div></div>
+        <div class="row" style="gap:6px"><span class="ui-cell">عادي</span><span class="ui-cell"><span class="muted">📅 مطلوب قبل</span> الخميس 10 سبتمبر</span><span class="ui-cell grow muted">ملاحظة للمشتريات (اختياري)</span><span class="ui-btn accent"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg>أرسل إلى المشتريات</span></div>
+      </div>
+      <div class="ui-card" style="display:flex;flex-direction:column;gap:2px">
+        <span class="ui-title">طلبات الفرع</span>
+        <span class="cap">مسجّل الدخول بالرمز: نور ح. · مديرة الفرع · JUNO ويست ووك</span>
+        <div class="ui-list">
+          <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
+            <div class="row"><span class="ui-pill good">تم التسليم</span><span class="muted" style="font-size:11px">08 سبتمبر، 06:40 · بواسطة نور ح.</span></div>
+            <div style="font-size:11px">102 صدور دجاج × 18 كجم · 118 كيل × 6 كجم · 131 بارميزان × 2 كجم · +9 أخرى</div>
+            <div style="font-size:11px;color:var(--amber)">✏️ عدّلها حسن م.: سطران ناقصان — الكيل 4 من 6 كجم؛ والباقي صُرف</div>
+            <span class="ui-btn good" style="align-self:flex-start"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>تأكيد الاستلام — قيّده في تكلفة الطعام</span>
+          </div>
+          <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
+            <div class="row"><span class="ui-pill sub">مستلَم</span><span class="muted" style="font-size:11px">07 سبتمبر، 06:35 · بواسطة نور ح.</span></div>
+            <div style="font-size:11px">102 صدور دجاج × 16 كجم · 118 كيل × 5 كجم · 131 بارميزان × 2 كجم · +7 أخرى</div>
+            <div style="font-size:11px;color:var(--good)">🤝 استلمه نور ح. · 2,140.00 ر.ق قُيّد على مصروفات طعام JUNO</div>
+          </div>
+          <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
+            <div class="row"><span class="ui-pill sub">مستلَم</span><span class="muted" style="font-size:11px">06 سبتمبر، 06:38 · بواسطة نور ح.</span></div>
+            <div style="font-size:11px">102 صدور دجاج × 15 كجم · 118 كيل × 5 كجم · 131 بارميزان × 2 كجم · +6 أخرى</div>
+            <div style="font-size:11px;color:var(--good)">🤝 استلمه نور ح. · 1,980.00 ر.ق قُيّد على مصروفات طعام JUNO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="finance"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="الصفحة الرئيسية للمالية يوم الثلاثاء 8 سبتمبر، ليلى ت. مسجّلة الدخول: أغسطس أُقفل نظيفاً، حكم الصباح مركّب من الصناديق، سطر تسرّب الأمس، خمس بطاقات نظرة سريعة، صرفان نقديان بانتظار توقيعها الأقدم أولاً، شريط الفروقات مع تحويل اللؤلؤة 40 ر.ق، الشهر بحسب الفرع، المستحقات بحسب تاريخ الاستحقاق والمواعيد الثابتة" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">💰 المالية</span>
+    <span class="ui-pill accent">مطاعم Mim · 6 فروع</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026</span>
+    <div class="ui-who"><span class="ui-avatar">ل</span><span><b>ليلى ت.</b><small>مديرة المالية · المكتب الرئيسي</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">اليوم</span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span class="grow">الرئيسية</span><span class="ui-badge">2</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg><span class="grow">إقفال اليوم</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span class="grow">الدرج والمدفوعات</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">الوارد</span></span>
+      <span class="cap">بانتظار التوقيع</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><span class="grow">الرواتب</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboardcheck"/></svg><span class="grow">الموافقات الموقّعة</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboard"/></svg><span class="grow">طلبات الفروع</span></span>
+      <span class="cap">الأموال الخارجة</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-receipt"/></svg><span class="grow">المصاريف</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg><span class="grow">النقد</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="row" style="gap:6px;font-size:11px;font-weight:600;color:var(--good)"><svg class="ic" aria-hidden="true" style="width:14px;height:14px"><use href="#i-lock"/></svg><span>أُقفل <span dir="ltr">2026-08</span> نظيفاً بتوقيع ليلى ت. — وبدأ <span dir="ltr">2026-09</span> من جديد.</span></div>
+      <div class="ui-top" style="padding:10px 16px;display:flex;flex-direction:column;gap:3px">
+        <div class="row" style="gap:10px"><span style="width:10px;height:10px;border-radius:50%;background:var(--amber);flex-shrink:0"></span><span class="ui-title grow">أمر واحد يحتاجك هذا الصباح: وقّع بندين (الأقدم انتظر يومين). كل ما عداه ضمن حدوده.</span></div>
+        <span class="cap" style="padding-inline-start:20px">يُكتب مباشرة من الصناديق — لا يُدخَل يدوياً</span>
+      </div>
+      <div class="ui-cell row" style="flex-wrap:wrap;gap:2px 9px;padding:5px 10px;font-size:9.5px;font-weight:700;color:var(--sub)"><span class="cap">الأمس · <span dir="ltr">2026-09-07</span></span><span>💰 58,900.00 ر.ق · 447 طلباً</span><span style="color:var(--amber)">🏷 خصومات 1,240.00 ر.ق · 31 مرة</span><span style="color:var(--bad)">↩️ استرجاعات 310.00 ر.ق · مرتان</span><span style="color:var(--bad)">🗑 إلغاءات 5 مرات · 172.00 ر.ق</span><span class="muted" style="font-size:9px">التسرّب = 1,550.00 ر.ق = 2.6% من اليوم</span></div>
+      <div class="ui-grid4" style="grid-template-columns:repeat(5,minmax(0,1fr))">
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">⏳ بانتظار التوقيع</span><span class="num sm">2 · 240.00 ر.ق</span><span style="font-size:10px;font-weight:700;color:var(--amber)">الأقدم منذ يومين</span></div></div>
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">💵 نقد في الطريق</span><span class="num sm">0.00 ر.ق</span><span style="font-size:10px;font-weight:700;color:var(--good)">وصل كله</span></div></div>
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">🧾 مستحقات الموردين</span><span class="num sm">4,860.00 ر.ق</span><span style="font-size:10px;font-weight:700;color:var(--good)">0.00 ر.ق مستحق / متأخر</span></div></div>
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">📊 إيرادات الشهر</span><span class="num sm">1,280,000.00 ر.ق</span><span class="muted" style="font-size:10px;font-weight:700">لا أساس للشهر الماضي بعد</span></div></div>
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">🍔 تكلفة الطعام (النظرية)</span><span class="num sm">30.6%</span><span class="muted" style="font-size:10px;font-weight:700">مسجّلة عند كل بيع</span></div></div>
+      </div>
+      <div class="ui-grid2" style="grid-template-columns:7fr 5fr;flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;min-height:0;overflow:hidden">
+          <span class="ui-title">⏳ بانتظارك</span><span class="cap" style="display:block">الأقدم أولاً، لا بحسب المبلغ — الحالة كاملة على شاشتها</span>
+          <div class="ui-list" style="margin-top:4px">
+            <div class="ui-li" style="padding:6px 0"><span class="ui-avatar" style="border-radius:8px">💸</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">صرف نقدي · لوسيل بوليفارد</b><span class="muted" style="display:block;font-size:11px">"تنظيف" · رفعه طارق س. ← أنت</span></span><span class="ui-pill warn">منذ يومين</span><span class="num">180.00 ر.ق</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">مراجعة وتوقيع</span></div>
+            <div class="ui-li" style="padding:6px 0"><span class="ui-avatar" style="border-radius:8px">💸</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">صرف نقدي · السد</b><span class="muted" style="display:block;font-size:11px">"ثلج" · رفعته فاطمة س. ← أنت</span></span><span class="ui-pill sub">6 س</span><span class="num">60.00 ر.ق</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">مراجعة وتوقيع</span></div>
+          </div>
+          <span class="cap" style="margin-top:auto;padding-top:6px">لا توقيع جماعي — التوقيع قرار، ولكل واحد قراءته على شاشته.</span>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;min-height:0;overflow:hidden">
+          <span class="ui-title">📡 ما اختلف</span><span class="cap" style="display:block">الاستثناءات فقط — الفراغ هو الحالة الجيدة</span>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-top:6px">
+            <div class="ui-cell" style="padding:6px 8px;border-inline-start:3px solid var(--bad);border-start-start-radius:4px;border-end-start-radius:4px"><div class="row" style="justify-content:space-between"><b>موافقة واحدة انتظرت أكثر من يومين</b><b style="white-space:nowrap">180.00 ر.ق</b></div><span class="muted" style="display:block;font-size:11px">الأقدم: صرف نقدي · لوسيل بوليفارد — وقّعها أو ارفضها، لكن قرّر</span></div>
+            <div class="ui-cell" style="padding:6px 8px;border-inline-start:3px solid var(--amber);border-start-start-radius:4px;border-end-start-radius:4px"><div class="row" style="justify-content:space-between"><b>اللؤلؤة · التحويل وصل ناقصاً/زائداً</b><b style="white-space:nowrap">40.00 ر.ق</b></div><span class="muted" style="display:block;font-size:11px"><span dir="ltr">2026-09-08</span> — المعدود يختلف عمّا أعلنه الصندوق</span></div>
+          </div>
+          <span class="cap" style="margin-top:auto;padding-top:6px">يغادر الفرق حين يقول صندوقه إنه سُوّي — لا شيء هنا يُغلق يدوياً.</span>
+        </div>
+      </div>
+      <div class="ui-grid3">
+        <div class="ui-card">
+          <span class="ui-title">📊 الشهر حتى الآن، بحسب الفرع</span>
+          <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px">
+            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">JUNO · ويست ووك</span><b>309,790.00 ر.ق</b></div><div class="ui-bar" style="--v:92%;margin-top:2px"></div></div>
+            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">بيت الزعفران · السد</span><b>336,050.00 ر.ق</b></div><div class="ui-bar" style="--v:100%;margin-top:2px"></div></div>
+            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">Bake &amp; Co · فيلاجيو</span><b>124,660.00 ر.ق</b></div><div class="ui-bar" style="--v:37%;margin-top:2px"></div></div>
+          </div>
+          <span class="cap" style="display:block;margin-top:6px">لا هدف محدد = لا نسبة مُدّعاة</span>
+        </div>
+        <div class="ui-card">
+          <span class="ui-title">🧾 المستحقات، بحسب تاريخ الاستحقاق</span>
+          <div class="ui-bar" style="--v:100%;height:8px;margin-top:8px"></div>
+          <div class="row" style="flex-wrap:wrap;gap:2px 10px;margin-top:5px;font-size:9px;font-weight:700;color:var(--sub)"><span><i style="display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--accent);margin-inline-end:3px;vertical-align:0"></i>غير مستحق 4,860.00 ر.ق</span><span><i style="display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--soft);margin-inline-end:3px;vertical-align:0"></i>يستحق خلال 7 أيام 0.00 ر.ق</span><span><i style="display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--amber);margin-inline-end:3px;vertical-align:0"></i>متأخر 0.00 ر.ق</span><span><i style="display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--bad);margin-inline-end:3px;vertical-align:0"></i>متأخر +30 يوماً 0.00 ر.ق</span></div>
+          <span class="cap" style="display:block;margin-top:8px">مورد واحد = رقم واحد: الفاتورة، وإلا البضاعة المستلمة، وإلا الطلب. تواريخ الاستحقاق من شروط كل مورد.</span>
+        </div>
+        <div class="ui-card">
+          <span class="ui-title">🗓 مواعيد ثابتة</span>
+          <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px;font-size:11px">
+            <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">👥</span><span class="grow"><b style="display:block;line-height:1.15">رواتب WPS</b><span class="muted">لا إرسال بعد — الموارد البشرية تبدأه</span></span></div>
+            <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">🧾</span><span class="grow"><b style="display:block;line-height:1.15">موردون يستحقون خلال 7 أيام</b><span class="muted">لا شيء يستحق هذا الأسبوع</span></span></div>
+            <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">🔒</span><span class="grow"><b style="display:block;line-height:1.15">إقفال <span dir="ltr">2026-09</span> في نهاية الشهر</b><span class="muted">بقي 22 يوماً · لم يُقفل بعد</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="marketing"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="التسويق يوم الثلاثاء 8 سبتمبر، الغرفة لعلامة JUNO: الحكم أن 6 منشورات ذكرت طبقاً و2 منها حرّكاه، ومنشور مرفوض لأن الشاي موقوف عن البيع في ويست ووك، وفيديو سلايدرز الهالبينو يوم 1 سبتمبر الذي رفع طبقه من 18 إلى 41 طبقاً في اليوم، وبجانبه كيف يجد المنشور طبقه؛ مريم ك. مسجّلة الدخول" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">📣 التسويق</span>
+    <span class="ui-pill accent">مطاعم Mim · 3 علامات</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026</span>
+    <div class="ui-who"><span class="ui-avatar">م</span><span><b>مريم ك.</b><small>التسويق · المكتب الرئيسي</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">📣 التسويق</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg><span class="grow">ماذا تفعل بعد ذلك</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-megaphone"/></svg><span class="grow">الغرفة</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span class="grow">صنّاع المحتوى الذين نستضيفهم</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-fork"/></svg><span class="grow">الأطباق التي سوّقناها</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg><span class="grow">Instagram</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-fork"/></svg><span class="grow">ماذا تنشر بعد ذلك</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-history"/></svg><span class="grow">مَن تستعيده</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><span class="grow">نصائح</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">هذا الأسبوع</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg><span class="grow">بطاقة WITHSTAND</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top">
+        <div class="ui-title lg">📣 الغرفة — هل باع شيء مما نشرناه طعاماً؟</div>
+        <div class="muted" style="font-size:10px;margin-top:4px;line-height:1.4">كل أداة تسويق تستطيع أن تقول إن المنشور حصد 286 إعجاباً. لكن الفاتورة لا يملكها إلا هذا البرنامج. المنشور يُربط بالطبق الذي يذكره، والطبق بأطباقه المبيعة في السجلّ الدائم.</div>
+        <div class="row" style="gap:6px;margin-top:10px"><span class="ui-glass" style="background:#fff;color:var(--accent);border-color:#fff">JUNO</span><span class="ui-glass">Saffron House</span><span class="ui-glass">Bake &amp; Co</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:8px">
+        <div class="ui-card" style="background:var(--inner);border:2px solid var(--accent);display:flex;flex-direction:column;gap:4px">
+          <span class="cap">الحكم</span>
+          <div style="font-size:14px;font-weight:700;line-height:1.4">6 منشورات ذكرت طبقاً. <b style="color:var(--good)">2 منها حرّكاه</b>. وواحد ذكر طبقاً لم يستطع المطبخ تقديمه.</div>
+          <div class="muted" style="font-size:10px;line-height:1.35">الـ72 ساعة التي تلي كل منشور، مقارنةً بمتوسط الطبق نفسه خلال 28 يوماً · الفواتير التي فيها استرداد أو إلغاء مستبعدة</div>
+        </div>
+        <div class="ui-card" style="background:var(--bad-bg);display:flex;flex-direction:column;gap:4px">
+          <span class="cap" style="color:var(--bad)">🚫 منشور واحد روّج لطبق لا يستطيع المطبخ تقديمه</span>
+          <div style="font-size:11px;line-height:1.4;color:var(--bad)"><b>Tea</b> موقوف عن البيع في JUNO · ويست ووك · عطل في المعدات</div>
+          <div style="font-size:10px;line-height:1.35;color:var(--bad)">Meta لا تعرف أن معدّاتك معطّلة. أما قائمة الإيقاف (86) فتعرف.</div>
+        </div>
+      </div>
+      <div class="row"><span class="ui-title">المنشورات — وما الذي فعله كل منشور بالمطبخ</span><span class="grow"></span><span class="muted" style="font-size:10px">6 منشورات · 6 تذكر طبقاً · الأحدث أولاً</span></div>
+      <div class="ui-grid2" style="align-items:start">
+        <div class="ui-card" style="padding:8px"><div class="ui" style="background:#FFFFFF;border-radius:16px;overflow:hidden"><div style="padding:12px;min-height:84px;background:#EEEAFD;display:flex;flex-direction:column;justify-content:flex-end;gap:5px"><div class="row" style="gap:6px"><span style="font-size:8.5px;font-weight:700;background:#5B3FE0;color:#fff;padding:2px 7px;border-radius:999px">فيديو</span><span style="font-size:8.5px;color:#62626E;margin-inline-start:auto">لم تُقرأ الصورة — نصّ المنشور فقط</span></div><div style="font-size:12.5px;font-weight:600;line-height:1.3;color:#16161D">Jalapeño sliders، كما يأكلها المطبخ نفسه</div><div style="font-size:9px;color:#62626E">الثلاثاء 1 سبتمبر · 18:40</div></div><div class="row" style="padding:8px 12px;border-top:1px solid #EEEEF3"><div style="flex:1"><div class="num" style="font-size:12px;font-weight:700;color:#16161D">286</div><div style="font-size:9px;font-weight:600;color:#62626E">إعجاب</div></div><div style="flex:1"><div class="num" style="font-size:12px;font-weight:700;color:#16161D">5</div><div style="font-size:9px;font-weight:600;color:#62626E">تعليقات</div></div><div style="flex:2;text-align:end;font-size:9.5px;font-weight:600;color:#5B3FE0">افتح على Instagram ↗</div></div><div style="padding:9px 12px 11px;background:#F2F2F6"><div class="row"><span style="font-size:8.5px;font-weight:700;color:#62626E">ما الذي فعله الكاشير</span><span style="flex:1"></span><span class="num" style="font-size:14px;font-weight:700;color:#17663A">+128%</span></div><div class="row" style="gap:3px;height:30px;align-items:flex-end;margin-top:7px"><span style="flex:1;height:10px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:12px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:11px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:11px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:13px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:11px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:12px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:11px;border-radius:3px;background:#A796EF"></span><span style="flex:1;height:26px;border-radius:3px;background:#5B3FE0"></span><span style="flex:1;height:28px;border-radius:3px;background:#5B3FE0"></span><span style="flex:1;height:24px;border-radius:3px;background:#5B3FE0"></span><span style="flex:1;height:18px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:14px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:13px;border-radius:3px;background:#DDD6F9"></span></div><div class="row" style="margin-top:6px"><span style="font-size:10px;font-weight:600;color:#16161D">Micro Sliders : Jalapeño</span><span style="flex:1"></span><span class="num" style="font-size:9px;color:#62626E">من <b style="color:#16161D">18</b> إلى <b style="color:#16161D">41</b> طبقاً في اليوم</span></div></div></div></div>
+        <div class="ui-card" style="border:1.5px dashed var(--dash);background:var(--ground);display:flex;flex-direction:column;gap:6px;padding:14px">
+          <span class="ui-title" style="color:var(--accent)">كيف يجد المنشور طبقه</span>
+          <span style="font-size:11px;line-height:1.5;color:var(--sub)">أطول اسم كامل من القائمة داخل نصّ المنشور، من أربعة أحرف أو أكثر. كلمة «Sliders» وحدها لا تكفي — أما «Micro Sliders : Jalapeño» فموجود في القائمة، فيُربط الفيديو به. والنصّ الذي لا يذكر اسماً من القائمة لا يُربط بشيء، ويقول ذلك.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="it"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="قسم تقنية المعلومات يوم الثلاثاء 8 سبتمبر: الأجهزة والإصدارات — كل نقطة بيع أبلغت يوماً، 11 نقطة بيع في 6 فروع كلها على الإصدار 2026-09-07، لا متأخرة ولا صامتة" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">💻 تقنية المعلومات</span>
+    <span class="ui-pill accent">مطاعم Mim · 6 فروع</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026</span>
+    <div class="ui-who"><span class="ui-avatar">ع</span><span><b>علي ف.</b><small>تقنية المعلومات · المكتب الرئيسي</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">تقنية المعلومات</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span></span>
+      <span class="cap">الأمان</span>
+      <span style="font-size:10px;padding:0 8px;gap:5px"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><span class="grow">الصلاحيات والأرقام السرية</span></span>
+      <span class="cap">الأجهزة</span>
+      <span style="font-size:10px;padding:0 8px;gap:5px"><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg><span class="grow">الطابعات وأجهزة الكاشير</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-tablet"/></svg><span class="grow">أجهزة الويتر</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-mobile"/></svg><span class="grow">هواتف الموظفين</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-fork"/></svg><span class="grow">شاشات المطبخ</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg><span class="grow">أجهزة المضيفة</span></span>
+      <span class="cap">التطبيقات</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-qr"/></svg><span class="grow">تطبيق الضيوف</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg><span class="grow">الربط والتكامل</span></span>
+      <span class="cap">الحالة</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">حالة الفروع</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-shieldcheck"/></svg><span class="grow">حالة النظام</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-laptop"/></svg><span class="grow">الأجهزة والإصدارات</span></span>
+      <span class="cap">الدعم</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg><span class="grow">التذاكر</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top row" style="justify-content:space-between;gap:12px">
+        <span class="grow"><span class="ui-title lg">🖥 الأجهزة والإصدارات</span><br><span class="muted" style="font-size:10px">كل جهاز أبلغ يوماً — بماذا يعمل، ومتى سُمع منه آخر مرة.</span></span>
+        <span class="ui-btn" style="background:var(--inner)">🔄 تحديث</span>
+      </div>
+      <div class="ui-grid4">
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">نقاط البيع المُبلِّغة</span><span class="num">11</span><span class="muted" style="font-size:10px">ظهرت مرة واحدة على الأقل</span></div></div>
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">محدَّثة</span><span class="num" style="color:var(--good)">11</span><span class="muted" style="font-size:10px">على أحدث إصدار</span></div></div>
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">متأخرة</span><span class="num" style="color:var(--good)">0</span><span class="muted" style="font-size:10px">لا شيء</span></div></div>
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">صامتة</span><span class="num" style="color:var(--good)">0</span><span class="muted" style="font-size:10px">لا اتصال منذ أكثر من ساعة</span></div></div>
+      </div>
+      <div class="ui-card" style="overflow:hidden">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;line-height:1.2;white-space:nowrap">
+          <thead><tr><th class="cap" style="text-align:start;padding:4px 6px;border-bottom:1px solid var(--line);font-weight:600">الفرع</th><th class="cap" style="text-align:start;padding:4px 6px;border-bottom:1px solid var(--line);font-weight:600">نقطة البيع</th><th class="cap" style="text-align:start;padding:4px 6px;border-bottom:1px solid var(--line);font-weight:600">الإصدار الذي يعمل به</th><th class="cap" style="text-align:start;padding:4px 6px;border-bottom:1px solid var(--line);font-weight:600">الحالة</th><th class="cap" style="text-align:end;padding:4px 6px;border-bottom:1px solid var(--line);font-weight:600">آخر اتصال</th></tr></thead>
+          <tbody>
+            <tr><td style="padding:6px 6px"><b>JUNO · ويست ووك</b></td><td class="num" style="padding:6px 6px">#1</td><td class="num" style="padding:6px 6px">2026-09-07</td><td style="padding:3px 6px"><span class="ui-pill good" style="height:18px;padding:0 7px">محدَّث</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px">للتو</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>JUNO · ويست ووك</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#2</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">محدَّث</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">للتو</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>JUNO · لوسيل بوليفارد</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#1</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">محدَّث</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">للتو</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>JUNO · لوسيل بوليفارد</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#2</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">محدَّث</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">قبل 3 دقائق</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Saffron House · السد</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#1</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">محدَّث</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">للتو</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Saffron House · السد</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#2</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">محدَّث</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">للتو</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Saffron House · اللؤلؤة</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#1</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">محدَّث</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">للتو</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Saffron House · اللؤلؤة</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#2</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">محدَّث</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">قبل 8 دقائق</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Bake &amp; Co · مشيرب</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#1</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">محدَّث</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">للتو</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Bake &amp; Co · فيلاجيو</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#1</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">محدَّث</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">للتو</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Bake &amp; Co · فيلاجيو</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#2</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">محدَّث</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">للتو</td></tr>
+          </tbody>
+        </table>
+        <div class="muted" style="font-size:11px;margin-top:8px">هذا الجهاز يعمل بـ<b dir="ltr">2026-09-07</b>. و«قديم» تعني أن نقطة بيع أخرى تعمل بإصدار أحدث — ثبّت أحدث تطبيق على ذلك الجهاز.</div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="maint"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="الصيانة يوم الثلاثاء 8 سبتمبر: لوحة أعمال كل الفروع وفيها أربعة أوامر عمل مفتوحة في مساراتها — إضاءة لوحة اللؤلؤة بُلّغ عنها للتو، وضاغط غرفة التبريد في ويست ووك بالتعاقد وعرض سعره 1,200 ر.ق بانتظار المالية، ومجفف الأيدي في لوسيل وتسريب الفيلا 3 غرفة 4 قيد التنفيذ مع جمال أ. — لا شيء بانتظار التأكيد، وقائمة المغلقة بأحد عشر عملاً تمتد إلى أسفل الشاشة" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🔧 الصيانة</span>
+    <span class="ui-pill accent">مطاعم Mim · 6 فروع</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026</span>
+    <div class="ui-who"><span class="ui-avatar">ج</span><span><b>جمال أ.</b><small>مسؤول الصيانة · المجموعة</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">🔧 الصيانة</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">لوحة المعلومات</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg><span class="grow">أوامر العمل</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg><span class="grow">الأصول</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top">
+        <span class="ui-title">🔧 الصيانة — لوحة الأعمال، كل الفروع</span><br><span class="muted" style="font-size:10px">خذ العمل ← أصلحه ← أدخل التكلفة ← تُرحَّل تلقائياً إلى مصروفات ذلك الفرع وحساب أرباحه وخسائره. الفرع يؤكد الإغلاق.</span>
+      </div>
+      <div class="ui-grid2" style="flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="row" style="justify-content:space-between"><span class="ui-title">⏳ جديد — قرّر: داخلياً أم بالتعاقد (1)</span></div>
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="gap:6px"><b class="grow">إضاءة اللوحة الخارجية معطّلة <span class="muted" style="font-weight:400;font-size:11px">· Saffron House · اللؤلؤة</span></b></div>
+            <div class="muted" style="font-size:10px;margin-top:3px">الواجهة / اللوحات · كهرباء · مدير اللؤلؤة · 08 سبتمبر 09:05</div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-btn accent">🏠 إصلاح داخلي</span><span class="ui-btn accent">🏢 تعاقد خارجي</span><span class="ui-btn">✕ إنهاء</span></div>
+          </div>
+          <div class="row" style="justify-content:space-between;margin-top:2px"><span class="ui-title">📑 بالتعاقد — عروض الأسعار والاعتمادات (المالية + المدير العام) (1)</span></div>
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="gap:6px"><b class="grow">ضاغط غرفة التبريد <span class="muted" style="font-weight:400;font-size:11px">· JUNO · ويست ووك</span></b><span class="ui-pill accent">📤 بانتظار المالية</span></div>
+            <div class="muted" style="font-size:10px;margin-top:3px">المطبخ · تبريد / تجميد · نور هـ. · 08 سبتمبر 07:12 · 🏢 بالتعاقد</div>
+            <div style="margin-top:8px;background:var(--pale);border-radius:12px;padding:8px 10px;font-size:11px">
+              <div style="color:var(--accent);font-weight:700">📨 عروض الأسعار — طُلبت 1 · وصلت 1</div>
+              <div class="ui-cell" style="margin-top:6px">
+                <div class="row" style="gap:6px"><b class="grow">Gulf Cooling Services</b><span class="num" style="font-weight:700;white-space:nowrap">1,200.00 ر.ق</span></div>
+                <div class="muted" style="margin-top:2px">يوم واحد للإنجاز · صالح حتى 2026-10-08</div>
+                <div class="muted" style="margin-top:2px">استبدال الضاغط · الفني الساعة 15:00 اليوم</div>
+                <div class="muted" style="margin-top:2px;font-size:10px">سجّله جمال أ. · 08 سبتمبر</div>
+              </div>
+              <div style="margin-top:6px;color:var(--sub)">📤 أُرسل للاعتماد بواسطة جمال أ. · بانتظار توقيع مدير المالية</div>
+            </div>
+            <div class="row" style="gap:6px;margin-top:6px"><span class="ui-pill sub" style="height:40px;padding:0 12px;border-radius:10px"><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg>صورة · 07:12</span></div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-btn">✕ إنهاء</span></div>
+          </div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="row" style="justify-content:space-between"><span class="ui-title">🔧 قيد التنفيذ (2)</span></div>
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="gap:6px"><b class="grow">مجفف الأيدي لا يعمل <span class="muted" style="font-weight:400;font-size:11px">· JUNO · لوسيل</span></b></div>
+            <div class="muted" style="font-size:10px;margin-top:3px">دورات المياه · كهرباء · مشرف لوسيل · 08 سبتمبر 10:20 · 🏠 داخلياً · 🔧 جمال أ.</div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);width:80px;justify-content:flex-end">التكلفة ر.ق</span><span class="ui-pill sub grow" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);justify-content:flex-start">ما الذي أُنجز</span><span class="ui-btn good">✅ تم الإصلاح</span></div>
+            <div class="row" style="gap:6px;margin-top:10px;padding-top:8px;border-top:1px solid var(--line)"><b class="grow">تسريب ماء في الغرفة 4</b></div>
+            <div class="muted" style="font-size:10px;margin-top:3px">🏠 الفيلا 3 · يوسف إ. · 08 سبتمبر 08:20 · 🏠 داخلياً · 🔧 جمال أ.</div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);width:80px;justify-content:flex-end">التكلفة ر.ق</span><span class="ui-pill sub grow" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);justify-content:flex-start">ما الذي أُنجز</span><span class="ui-btn good">✅ تم الإصلاح</span></div>
+          </div>
+          <div class="row" style="justify-content:space-between;margin-top:2px"><span class="ui-title">✅ تم الإصلاح — بانتظار تأكيد الفرع (0)</span></div>
+          <div class="ui-cell" style="padding:8px 10px"><span class="muted">—</span></div>
+          <div class="row" style="justify-content:space-between;margin-top:2px"><span class="ui-title">📁 مغلقة (آخر 15) (11)</span></div>
+          <div class="ui-cell" style="padding:4px 10px">
+            <div class="ui-list">
+              <div class="ui-li"><span class="grow"><b>انسداد تصريف غسالة الصحون</b><br><span class="muted" style="font-size:10px">Saffron House · السد · 🏠 داخلياً · 🔧 جمال أ.</span></span><span class="ui-pill good">✓ فاطمة س.</span></div>
+              <div class="ui-li"><span class="grow"><b>المكيّف لا يبرّد صالة الطعام</b><br><span class="muted" style="font-size:10px">JUNO · ويست ووك · 🏢 بالتعاقد</span></span><span class="ui-pill good">✓ نور هـ.</span></div>
+              <div class="ui-li"><span class="grow"><b>إشعال الشواية معطّل</b><br><span class="muted" style="font-size:10px">JUNO · ويست ووك · 🏠 داخلياً · 🔧 جمال أ.</span></span><span class="ui-pill good">✓ نور هـ.</span></div>
+              <div class="ui-li"><span class="grow"><b>سخّان الماء لا يسخّن</b><br><span class="muted" style="font-size:10px">🏠 الفيلا 1 · 🏠 داخلياً · 🔧 جمال أ.</span></span><span class="ui-pill good">✓ يوسف إ.</span></div>
+              <div class="ui-li"><span class="grow"><b>تسريب في ماكينة الثلج</b><br><span class="muted" style="font-size:10px">Saffron House · السد · 🏢 بالتعاقد</span></span><span class="ui-pill good">✓ فاطمة س.</span></div>
+              <div class="ui-li"><span class="grow"><b>تمزّق عازل باب غرفة التبريد</b><br><span class="muted" style="font-size:10px">المخزن المركزي · المنطقة الصناعية · 🏠 داخلياً · 🔧 جمال أ.</span></span><span class="ui-pill good">✓ حسن م.</span></div>
+              <div class="ui-li"><span class="grow"><b>ثرموستات الفرن غير دقيق</b><br><span class="muted" style="font-size:10px">قسم الحلويات · المنطقة الصناعية · 🏢 بالتعاقد</span></span><span class="ui-pill good">✓ أحمد ر.</span></div>
+              <div class="ui-li"><span class="grow"><b>ضجيج مروحة شفاط المطبخ</b><br><span class="muted" style="font-size:10px">JUNO · ويست ووك · 🏠 داخلياً · 🔧 جمال أ.</span></span><span class="ui-pill good">✓ نور هـ.</span></div>
+              <div class="ui-li"><span class="grow"><b>تنقيط من وحدة المكيّف</b><br><span class="muted" style="font-size:10px">🏠 الفيلا 2 · 🏢 بالتعاقد</span></span><span class="ui-pill good">✓ يوسف إ.</span></div>
+              <div class="ui-li"><span class="grow"><b>إضاءة ثلاجة العرض معطّلة</b><br><span class="muted" style="font-size:10px">Saffron House · السد · 🏠 داخلياً · 🔧 جمال أ.</span></span><span class="ui-pill good">✓ فاطمة س.</span></div>
+              <div class="ui-li"><span class="grow"><b>كراسي الصالة مرتخية</b><br><span class="muted" style="font-size:10px">JUNO · ويست ووك · 🏠 داخلياً · 🔧 جمال أ.</span></span><span class="ui-pill good">✓ نور هـ.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="hr"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="الموارد البشرية يوم الثلاثاء 8 سبتمبر: قائمة الصباح مرتّبة من الأسوأ، بطاقة صحية واحدة منتهية وثلاث بطاقات QID للتجديد، أربع بطاقات للموظفين والطلبات والمستندات ورواتب سبتمبر بقيمة 296,950 ر.ق معتمدة من المالية، المستندات التي تنتهي، أربعة عشر على الوردية في ويست ووك، 61 من 84 موظفاً على هواتف الخدمة الذاتية، وإجازات مستحقة بقيمة 187,440 ر.ق" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">👥 الموارد البشرية</span>
+    <span class="ui-pill accent">مطاعم Mim · 84 موظفاً</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026</span>
+    <div class="ui-who"><span class="ui-avatar">ع</span><span><b>عمر ب.</b><small>مدير الموارد البشرية · المكتب الرئيسي</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">👔 اليوم</span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">لوحة المعلومات</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span></span>
+      <span class="cap">الأشخاص</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span class="grow">دليل الموظفين</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><span class="grow">ملف الموظف</span></span>
+      <span class="cap">الوقت والرواتب</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span class="grow">الحضور</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span class="grow">جدول العمل</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span class="grow">الرواتب</span></span>
+      <span class="cap">الطلبات</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg><span class="grow">الإجازات والطلبات</span></span>
+      <span class="cap">الالتزام</span>
+      <span style="padding-inline:8px 5px;gap:4px"><svg class="ic" aria-hidden="true"><use href="#i-scroll"/></svg><span class="grow" style="font-size:9.5px;letter-spacing:-.25px">المستندات والتأشيرات</span><span class="ui-badge bad" style="min-width:16px;padding:0 4px">4</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg><span class="grow">الكفالة</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span class="grow">السكن</span></span>
+      <span class="cap">السجلات</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg><span class="grow">سجلات الموظفين</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top" style="padding:8px 16px">
+        <div class="ui-title lg">مساء الخير يا عمر 👋</div>
+        <div class="muted" style="font-size:10px;margin-top:2px">ما يحتاجك اليوم — مرتّب، الأسوأ أولاً؛ وكل سطر يفتح غرفته</div>
+      </div>
+      <div class="ui-card" style="padding:3px 12px">
+        <div class="ui-list">
+          <div class="ui-li" style="padding:4px 0"><span class="num" style="width:16px;text-align:center;color:var(--bad);font-size:16px">①</span><span class="grow"><b>بلال ر. يعمل دون وثيقة سارية (البطاقة الصحية (MOPH)) — منتهية منذ 3 يوماً.</b><br><span class="muted" style="font-size:10px">جدّدها قبل أي شيء آخر في هذه القائمة — فهي سؤال التفتيش الذي تتبعه غرامة</span></span><span class="ui-pill bad">منتهٍ</span><span class="cap" style="color:var(--accent)">فتح →</span></div>
+          <div class="ui-li" style="padding:4px 0"><span class="num" style="width:16px;text-align:center;color:var(--dash);font-size:16px">②</span><span class="grow"><b>يحين تجديد QID / الإقامة لـحسن م. خلال 9 يوماً — ابدأ الآن، فالتجديد يستغرق أسابيع.</b><br><span class="muted" style="font-size:10px">هادئ، لكنه يبقى في القائمة حتى يُحجز موعده</span></span><span class="ui-pill sub">9d</span><span class="cap" style="color:var(--accent)">فتح →</span></div>
+          <div class="ui-li" style="padding:4px 0"><span class="num" style="width:16px;text-align:center;color:var(--dash);font-size:16px">③</span><span class="grow"><b>يحين تجديد QID / الإقامة لـجمال أ. خلال 18 يوماً — ابدأ الآن، فالتجديد يستغرق أسابيع.</b><br><span class="muted" style="font-size:10px">هادئ، لكنه يبقى في القائمة حتى يُحجز موعده</span></span><span class="ui-pill sub">18d</span><span class="cap" style="color:var(--accent)">فتح →</span></div>
+        </div>
+      </div>
+      <div class="ui-grid4">
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">الموظفون</span><span class="num">84</span><span class="muted" style="font-size:10px">6 من 6 فرع فيها موظفون · 0 موظف غير نشط</span></div></div>
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">ينتظرك</span><span class="num">0</span><span class="muted" style="font-size:10px">لا شيء معلّق</span></div></div>
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">تنتهي خلال ≤ 60 يوماً</span><span class="num" style="color:var(--amber)">4</span><span style="font-size:10px;color:var(--amber);font-weight:600">البطاقة الصحية · QID</span></div></div>
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">رواتب 2026-09</span><span class="num">296,950 ر.ق</span><span style="font-size:10px;color:var(--amber);font-weight:600">معتمد من المالية</span></div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:8px;flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="ui-cell" style="padding:6px 10px">
+            <div class="row" style="justify-content:space-between"><span class="cap">⏳ ينتظرك</span><span class="cap" style="color:var(--accent)">افتح الكل →</span></div>
+            <div class="muted" style="font-size:11px;margin-top:4px">لا شيء ينتظر — كل طلب أُجيب عنه.</div>
+          </div>
+          <div class="ui-cell" style="padding:6px 10px">
+            <div class="row" style="justify-content:space-between"><span class="cap">📄 مستندات تنتهي</span><span class="cap" style="color:var(--accent)">المستندات والتأشيرات →</span></div>
+            <div class="ui-list">
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>بلال ر.</b> <span class="muted" style="font-size:10px">البطاقة الصحية (MOPH)</span></span><span class="ui-pill bad">منتهٍ</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>حسن م.</b> <span class="muted" style="font-size:10px">QID / الإقامة</span></span><span class="ui-pill bad">بعد 9 يوم</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>جمال أ.</b> <span class="muted" style="font-size:10px">QID / الإقامة</span></span><span class="ui-pill warn">بعد 18 يوم</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>يوسف إ.</b> <span class="muted" style="font-size:10px">QID / الإقامة</span></span><span class="ui-pill warn">بعد 27 يوم</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:6px;min-height:0">
+          <div class="ui-cell" style="padding:5px 10px">
+            <span class="cap">🖐 على الوردية الآن</span>
+            <div class="row" style="align-items:baseline;gap:6px"><span class="num" style="font-size:24px;font-weight:700;letter-spacing:-.4px">14</span><span class="muted" style="font-size:11px">ويست ووك</span></div>
+            <div class="muted" style="font-size:10px">14 سجّلوا الحضور اليوم</div>
+          </div>
+          <div class="ui-cell" style="padding:5px 10px">
+            <span class="cap">📲 هواتف الموظفين</span>
+            <div class="row" style="align-items:baseline;gap:6px"><span class="num" style="font-size:24px;font-weight:700;letter-spacing:-.4px">61</span><span class="muted" style="font-size:11px">/ 84</span></div>
+            <div class="muted" style="font-size:10px">على الخدمة الذاتية · والباقي يحتاج رمزاً من 👥 دليل الموظفين</div>
+          </div>
+          <div class="ui-cell" style="padding:5px 10px">
+            <span class="cap">🏖 الإجازات المستحقة، اليوم</span>
+            <div class="num" style="font-size:20px;font-weight:700;letter-spacing:-.3px">187,440 ر.ق</div>
+            <div class="muted" style="font-size:10px">الأيام غير المأخوذة × الأجر اليومي (المادة 80) — تُستحق لو انصرف الجميع غداً</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="accom"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="السكن يوم الثلاثاء 8 سبتمبر: تبويب السكن لفلل الموظفين الأربع في المجموعة — لا أحد ينتظر سريراً، 88 من 96 سريراً مشغولة (92%)، الفيلا 1 ممتلئة، رضا ك. في الفيلا 2، تسريب ماء في الفيلا 3 أُبلغ عنه للصيانة كعمل؛ يوسف إ. مسجّل الدخول" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🏠 السكن</span>
+    <span class="ui-pill accent">مطاعم Mim · 4 فلل</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026</span>
+    <div class="ui-who"><span class="ui-avatar">ي</span><span><b>يوسف إ.</b><small>مسؤول السكن · المجموعة</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">🏠 السكن</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">لوحة المعلومات</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span class="grow">السكن</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-card row" style="padding:8px 12px;justify-content:space-between">
+        <span class="row" style="gap:8px"><span class="ui-title" style="white-space:nowrap">🛏 القادمون — جهّز مكاناً</span><span class="muted" style="font-size:10px">تؤشّر الموارد البشرية الموظف الجديد كـ«سكن شركة» فيصل الطلب هنا فوراً — الاسم والوظيفة والفرع ويوم الوصول.</span></span>
+        <span class="muted" style="flex-shrink:0;padding-inline:8px">لا أحد ينتظر سريراً.</span>
+      </div>
+      <div class="ui-top row" style="justify-content:space-between">
+        <span><span class="ui-title">🏠 سكن الموظفين — الفلل والأسرّة والإشغال</span><br><span class="muted" style="font-size:10px">سجّل كل فيلا أو شقة، وأسند الموظفين بالأرقام، وراقب الإشغال. والإيجار يُقيَّد على مصروفات المجموعة.</span></span>
+        <span class="ui-pill good" style="flex-shrink:0">🛏 88 / 96 سريراً · 92%</span>
+      </div>
+      <div class="ui-grid2" style="flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="ui-cell">
+            <div class="ui-title">➕ تسجيل عقار</div>
+            <div class="row" style="gap:6px;margin-top:6px"><span class="ui-pill sub grow" style="height:26px;font-size:10px;font-weight:600;color:var(--sub);justify-content:flex-start;min-width:0">الاسم — فيلا 3، شقة 12B…</span><span class="ui-pill sub" style="height:26px;width:44px;font-size:10px;font-weight:600;color:var(--sub)">الأسرّة</span><span class="ui-btn accent">تسجيل</span></div>
+          </div>
+          <div class="row" style="justify-content:space-between"><span class="ui-title">🏘 الفلل — الأسرّة والإشغال</span><span class="cap">4 فلل · 96 سريراً</span></div>
+          <div class="ui-cell">
+            <div class="row" style="gap:6px"><b class="grow">فيلا 1</b><span class="ui-pill bad">🛏 24/24 سريراً</span></div>
+            <div class="ui-bar bad" style="--v:100%;margin-top:6px"></div>
+          </div>
+          <div class="ui-cell">
+            <div class="row" style="gap:6px"><b class="grow">فيلا 2</b><span class="ui-pill good">🛏 23/24 سريراً</span></div>
+            <div class="ui-bar" style="--v:95.8%;margin-top:6px"></div>
+            <div class="ui-list" style="margin-top:4px">
+              <div class="ui-li" style="padding:6px 0 2px"><span class="ui-avatar" style="width:24px;height:24px;font-size:10px">ر</span><span class="grow"><b>رضا ك.</b> <span class="muted" style="font-size:10px">نادل</span></span><span class="ui-pill sub">↩ إخلاء</span></div>
+            </div>
+            <div class="row" style="gap:6px;margin-top:6px"><span class="ui-pill sub grow" style="height:26px;font-size:10px;font-weight:600;color:var(--sub);justify-content:flex-start">— أسند موظفاً —</span><span class="ui-btn accent">إسناد سرير</span></div>
+          </div>
+          <div class="ui-cell">
+            <div class="row" style="gap:6px"><b class="grow">فيلا 3</b><span class="ui-pill good">🛏 20/24 سريراً</span></div>
+            <div class="ui-bar" style="--v:83.3%;margin-top:6px"></div>
+          </div>
+          <div class="ui-cell">
+            <div class="row" style="gap:6px"><b class="grow">فيلا 4</b><span class="ui-pill good">🛏 21/24 سريراً</span></div>
+            <div class="ui-bar" style="--v:87.5%;margin-top:6px"></div>
+          </div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="ui-cell">
+            <div class="row" style="justify-content:space-between"><span class="ui-title" style="white-space:nowrap">🚐 جدول السائق — توصيل الموظفين</span><span class="ui-btn" style="flex-shrink:0">＋ إضافة رحلة</span></div>
+            <div class="muted" style="font-size:10px;margin-top:2px">كل رحلة: السائق والوقت والفيلا → الفرع والأيام. اطبعه وعلّقه في كل فيلا.</div>
+            <div class="muted" style="margin-top:6px">لا رحلات بعد.</div>
+          </div>
+          <div class="ui-cell">
+            <div class="ui-title">🛒 طلب شراء للسكن</div>
+            <div class="muted" style="font-size:10px;margin-top:2px">مراتب، غاز، تنظيف… يصل الطلب إلى صندوق المخزن المركزي، بعلامة 🏠 السكن.</div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-pill sub grow" style="height:26px;font-size:10px;font-weight:600;color:var(--sub);justify-content:flex-start">ما المطلوب شراؤه</span><span class="ui-pill sub" style="height:26px;width:44px;font-size:10px;font-weight:600;color:var(--sub)">الكمية</span><span class="ui-pill sub" style="height:26px;width:40px;font-size:10px;font-weight:600;color:var(--sub)">قطعة</span><span class="ui-btn good">إرسال</span></div>
+          </div>
+          <div class="ui-cell" style="flex:1;min-height:0">
+            <div class="ui-title">🔧 الإبلاغ عن صيانة فيلا</div>
+            <div class="muted" style="font-size:10px;margin-top:2px">مكيّف معطّل، تسريب، كهرباء — يصبح عملاً حقيقياً في قسم الصيانة.</div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-pill sub" style="height:26px;font-size:10px;font-weight:600">🏠 فيلا 3</span><span class="ui-pill sub grow" style="height:26px;font-size:10px;font-weight:600;justify-content:flex-start">تسريب ماء، فيلا 3</span><span class="ui-btn accent">إبلاغ</span></div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-pill good"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>🔧 أُرسل إلى الصيانة</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="quality"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="الجودة والتدريب يوم الثلاثاء 8 سبتمبر: لوحة الالتزام بتغطية المطبخ 91% و3 بانتظار الجدولة، لا أوراق قانونية تنتهي خلال الستين يوماً القادمة، برامج سلامة الغذاء الاثنا عشر لوزارة الصحة العامة كلها منشورة، فحص ثلاجات اليوم مع قراءة واحدة خارج النطاق صُحّحت، إقرار مسببات الحساسية ساري لـ14 فئة على قائمة JUNO، و94% نجحوا في آخر اختبار" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🧪 الجودة والتدريب</span>
+    <span class="ui-pill accent">مطاعم Mim · 6 فروع</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026</span>
+    <div class="ui-who"><span class="ui-avatar">س</span><span><b>سارة ق.</b><small>الجودة والتدريب · على مستوى المجموعة</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">✅ الجودة</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">لوحة المعلومات</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboardcheck"/></svg><span class="grow">فحوصات الفروع</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-scale"/></svg><span class="grow">ما ترسله الفروع</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span class="grow">الإجراءات والمعايير</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-cap"/></svg><span class="grow">الأكاديمية</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top">
+        <span class="ui-title">🧪 الجودة والتدريب — الالتزام بنظرة واحدة</span><br><span class="muted" style="font-size:10px">مباشرة من سجلات الأكاديمية والأوراق القانونية للشركة.</span>
+      </div>
+      <div class="ui-grid4">
+        <div class="ui-card" style="padding:10px 12px"><div class="ui-kpi"><span class="cap">🎓 الالتزام</span><span class="num">91%</span><span class="muted" style="font-size:10px">المطبخ ومتداولو الطعام</span></div></div>
+        <div class="ui-card" style="padding:10px 12px"><div class="ui-kpi"><span class="cap">⌛ شهادات منتهية</span><span class="num">0</span></div></div>
+        <div class="ui-card" style="padding:10px 12px"><div class="ui-kpi"><span class="cap">📝 بانتظار التدريب</span><span class="num">3</span><span class="muted" style="font-size:10px">0 دورات تجاوزت موعدها</span></div></div>
+        <div class="ui-card" style="padding:10px 12px"><div class="ui-kpi"><span class="cap">📄 أوراق ≤60 يوماً</span><span class="num">0</span></div></div>
+      </div>
+      <div class="ui-card row" style="padding:8px 12px;justify-content:space-between;gap:10px">
+        <span class="ui-title">📄 أوراق قانونية على وشك الانتهاء — تصرّف قبل الغرامة</span>
+        <span class="muted" style="font-size:11px;white-space:nowrap">لا شيء ينتهي خلال الستين يوماً القادمة ✓</span>
+      </div>
+      <div class="ui-grid2" style="flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div>
+            <div class="cap" style="margin-bottom:2px">🎓 تبويب الأكاديمية</div>
+            <div class="row" style="justify-content:space-between"><span class="ui-title">📋 منهج وزارة الصحة العامة لسلامة الغذاء</span><span class="ui-pill good">12/12 منشورة</span></div>
+          </div>
+          <div class="ui-cell" style="padding:5px 10px">
+            <div class="ui-list" style="font-size:11px">
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">النظافة الشخصية</span><span class="cap" dir="ltr">§6.7.1–6.7.5</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">التداول الآمن للطعام</span><span class="cap" dir="ltr">§6.7.3, 7.1</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">ضبط التلوث</span><span class="cap" dir="ltr">§6.7.7.7.a, 7.1</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">ضبط درجات حرارة الطعام</span><span class="cap" dir="ltr">§6.8.2, 6.9, 7.2–7.6</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">التنظيف والتطهير</span><span class="cap" dir="ltr">§6.5, 7.1.6</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">إدارة مسببات الحساسية</span><span class="cap" dir="ltr">§6.7.2.4, 6.9.1, 7.9</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">الاستخدام الآمن للمعدات</span><span class="cap" dir="ltr">§6.6.2, 7.1.5</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">العمليات عالية الخطورة</span><span class="cap" dir="ltr">§6.7.7.7.j, 7.4, 7.9</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">صيانة المعدات</span><span class="cap" dir="ltr">§6.6.4</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">معايرة موازين الحرارة</span><span class="cap" dir="ltr">§6.6.5</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">مكافحة الآفات</span><span class="cap" dir="ltr">§6.4</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">التتبع والسحب وعدم المطابقة</span><span class="cap" dir="ltr">§8.1–8.3</span></div>
+            </div>
+          </div>
+          <div class="ui-cell" style="padding:8px 10px;flex:1;min-height:0">
+            <div class="row" style="justify-content:space-between;margin-bottom:5px"><span class="ui-title">🍳 تغطية المطبخ ومتداولي الطعام</span><span class="ui-pill good">91% مدرَّبون بالكامل</span></div>
+            <div class="ui-bar good" style="--v:91%"></div>
+            <div class="row" style="justify-content:space-between;margin-top:5px;font-size:11px"><span><b>3 بانتظار الجدولة</b></span><span><b>94%</b> <span class="cap">نجحوا · آخر اختبار</span></span></div>
+            <div class="muted" style="font-size:10px;margin-top:4px">🟢 ساري · 🟠 التجديد متأخر · 🔴 لم يُنجز</div>
+          </div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div>
+            <div class="cap" style="margin-bottom:2px">✅ تبويب فحوصات الفروع</div>
+            <div class="row" style="justify-content:space-between"><span class="ui-title">✅ فحوصات الفروع — النظافة وسلامة الغذاء</span></div>
+          </div>
+          <div class="ui-cell" style="padding:8px 10px">
+            <div class="cap" style="margin-bottom:4px">🌡 ضبط درجات الحرارة</div>
+            <div class="row" style="gap:6px;font-size:11px"><span class="grow">🚨 الثلاجات 0–5°م والمجمدات −18°م أو أقل، مسجلة اليوم</span><span class="ui-pill good">✓</span><span class="ui-pill sub">✕</span><span class="ui-pill sub">—</span></div>
+            <div class="muted" style="font-size:10px;margin-top:4px">ثلاجتان مسجلتان · قراءة واحدة خارج النطاق عند 05:50 — 6.1°م ← صُحّحت إلى 3.9°م، والدفعة محجوزة</div>
+          </div>
+          <div class="ui-cell" style="padding:8px 10px">
+            <div class="cap" style="margin-bottom:4px">📄 المستندات</div>
+            <div class="row" style="gap:6px;font-size:11px"><span class="grow">🚨 معلومات مسببات الحساسية متوفرة ومحدّثة</span><span class="ui-pill good">✓</span><span class="ui-pill sub">✕</span><span class="ui-pill sub">—</span></div>
+            <div class="muted" style="font-size:10px;margin-top:4px">الفئات الخليجية الأربع عشرة (GSO 9) · قائمة JUNO موقّعة — كل مكوّن أُجيب عنه، والفراغ ليس أماناً</div>
+          </div>
+          <div class="ui-cell" style="padding:8px 10px;flex:1;min-height:0">
+            <div class="cap" style="margin-bottom:4px">🧼 النظافة الشخصية</div>
+            <div class="row" style="gap:6px;font-size:11px"><span class="grow">🚨 بطاقات صحية سارية لكل متداول طعام في الوردية</span><span class="ui-pill good">✓</span><span class="ui-pill sub">✕</span><span class="ui-pill sub">—</span></div>
+            <div class="row" style="gap:6px;font-size:11px;margin-top:4px;padding-top:4px;border-top:1px solid var(--line)"><span class="grow">🚨 حوض غسل اليدين مجهّز (صابون ومناشف) ومستخدَم</span><span class="ui-pill good">✓</span><span class="ui-pill sub">✕</span><span class="ui-pill sub">—</span></div>
+            <div class="muted" style="font-size:10px;margin-top:4px">أي إخفاق 🚨 حرج يُسقط الزيارة مهما كانت النتيجة — الفراغ ليس نجاحاً</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="hq"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="المكتب الرئيسي بمظهر المالك يوم الثلاثاء 8 سبتمبر — اللوحة المباشرة: الفروع الستة 61,400 ر.ق اليوم، الفواتير المدفوعة ومتوسط الفاتورة وتكلفة الطعام والربح الإجمالي، المبيعات حسب الساعة وذروتها عند 20:00، المبيعات حسب المطعم وطرق الدفع كحلقتين، كل فرع مرتّباً من بيت الزعفران السد إلى بيك آند كو فيلاجيو، وآخر سبعة أيام للمجموعة مقابل وسيطها؛ وصندوق الوارد في الشريط يحمل 4" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-body">
+    <div class="ui-side" style="width:176px">
+      <span style="height:76px;margin:-10px -8px 0;padding:0 14px;gap:8px;border-bottom:1px solid var(--line);flex-shrink:0"><span class="ui-avatar" style="width:28px;height:28px;border-radius:9px;background:var(--accent);color:#fff;font-size:12px">م</span><span class="grow" style="line-height:1.15"><b style="display:block;font-size:12px;font-weight:800;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">مطاعم Mim</b><small style="display:block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">المكتب الرئيسي</small></span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span><span class="ui-badge bad">4</span></span>
+      <span style="height:1px;padding:0;margin:3px 10px;background:var(--line)"></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg><span class="grow">اليوم</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span class="grow">المال</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">الأداء</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-megaphone"/></svg><span class="grow">المؤثرون والتسويق</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><span class="grow">الضيوف</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span class="grow">فريقي</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg><span class="grow">السجلات</span></span>
+      <span style="height:1px;padding:0;margin:3px 10px;background:var(--line)"></span>
+      <span class="cap">أنت وحدك</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><span class="grow">أداء الموظفين</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calculator"/></svg><span class="grow">ما يمكن قياسه</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><span class="grow">الجودة</span></span>
+      <span style="margin-top:auto;height:auto;padding:6px 2px 0;gap:6px"><span class="ui-btn" style="height:26px;padding:0 12px;font-size:10px;background:var(--inner)">EN</span><span class="ui-btn accent" style="height:26px;padding:0 12px;font-size:10px">العربية</span></span>
+    </div>
+    <div class="ui-main" style="gap:6px">
+      <div style="display:flex;align-items:flex-end;gap:12px;height:76px;margin:-12px -12px 0;padding:10px 16px 8px;border-bottom:1px solid var(--line);flex-shrink:0">
+        <div class="grow" style="display:flex;flex-direction:column;gap:2px">
+          <span class="cap" style="font-size:10px">اليوم · اللوحة المباشرة</span>
+          <span class="ui-title lg" style="font-size:20px;letter-spacing:-.3px">اللوحة المباشرة</span>
+          <span class="muted" style="font-size:11px">ما يُباع الآن، في كل الفروع</span>
+        </div>
+        <span class="ui-avatar" style="width:34px;height:34px;background:var(--card);color:var(--ink)"><svg class="ic" aria-hidden="true" style="width:16px;height:16px"><use href="#i-search"/></svg></span>
+      </div>
+      <div class="ui-tabs"><span>مركز القيادة</span><span class="on">اللوحة المباشرة</span><span>تحليل اليوم</span><span>إغلاق اليوم</span><span>فروقات الدرج ومدفوعات المنصات</span><span>تطبيق المالك</span></div>
+      <div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:8px">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:4px">
+          <div class="row"><span class="grow" style="font-weight:600">كل الفروع · اليوم</span><span class="row" style="gap:5px;font-size:10px;color:var(--sub)"><span style="width:7px;height:7px;border-radius:50%;background:var(--good)"></span>الثلاثاء 8 سبتمبر · مباشر</span></div>
+          <div class="ui-kpi"><span class="num big" style="font-size:26px">61,400 ر.ق</span></div>
+          <span class="muted" style="font-size:10px">إجمالي المبيعات: كل فاتورة مدفوعة اليوم · دون المرتجعات والفواتير المدمجة</span>
+          <div class="ui-grid4">
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">فواتير مدفوعة</span><b style="display:block;font-size:14px">489</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">مدفوعة، غير مرتجعة</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">متوسط الفاتورة</span><b style="display:block;font-size:14px">125.56 ر.ق</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">÷ الفواتير المدفوعة</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">تكلفة الطعام</span><b style="display:block;font-size:14px;color:var(--bad)">18,297 ر.ق</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">30% من المبيعات</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">الربح الإجمالي</span><b style="display:block;font-size:14px;color:var(--good)">43,103 ر.ق</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">بعد تكلفة الطعام</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">طاولات مفتوحة</span><b style="display:block;font-size:14px">0</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">ما زالت مفتوحة</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">ضيوف جالسون</span><b style="display:block;font-size:14px">0</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">الضيوف عليها الآن</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">في المطبخ</span><b style="display:block;font-size:14px">0</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">جديد أو قيد الطهي</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">غير مدفوع</span><b style="display:block;font-size:14px">0.00 ر.ق</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">على فواتير لم تُدفع بعد</span></div>
+          </div>
+          <div class="row" style="align-items:baseline;gap:8px;flex-wrap:wrap"><span style="font-size:11px;font-weight:600">المبيعات حسب الساعة</span><span class="muted" style="font-size:9px">بتوقيت الدوحة · يوم العمل من 04:00 إلى 03:00 · الفواتير المدفوعة، كل المجموعة</span><span style="font-size:10px;font-weight:700;color:var(--accent);margin-inline-start:auto;white-space:nowrap">الذروة 20:00 · 7,480 ر.ق</span></div>
+          <div style="display:flex;align-items:flex-end;gap:3px;height:36px">
+            <span style="flex:1 1 0;height:2px;border-radius:4px;background:var(--track)"></span><span style="flex:1 1 0;height:2px;border-radius:4px;background:var(--track)"></span><span style="flex:1 1 0;height:2px;border-radius:4px;background:var(--track)"></span><span style="flex:1 1 0;height:2px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:6px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:8px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:7px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:10px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:19px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:22px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:16px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:9px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:8px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:11px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:17px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:29px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:36px;border-radius:4px;background:var(--accent)"></span><span style="flex:1 1 0;height:33px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:25px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:17px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:11px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:5px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:3px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:2px;border-radius:4px;background:var(--track)"></span>
+          </div>
+          <div style="display:flex;gap:3px;font-size:9px;color:var(--sub);height:11px;line-height:11px">
+            <span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap">04:00</span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap">08:00</span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap">12:00</span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap">16:00</span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap">20:00</span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap">00:00</span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+          <div class="ui-card" style="display:flex;flex-direction:column;gap:6px;flex:1">
+            <div><span class="ui-title">المبيعات حسب المطعم · اليوم</span><span class="cap" style="display:block">حصة كل علامة من مبيعات اليوم المدفوعة</span></div>
+            <div class="row" style="gap:8px;flex:1">
+              <div style="position:relative;width:84px;height:84px;flex-shrink:0">
+                <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true" style="display:block;transform:rotate(-90deg)"><circle cx="42" cy="42" r="36" fill="none" stroke="var(--track)" stroke-width="12"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--accent)" stroke-width="12" stroke-dasharray="90.3 135.9" stroke-dashoffset="0"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--soft)" stroke-width="12" stroke-dasharray="90.0 136.2" stroke-dashoffset="-90.3"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--soft)" stroke-width="12" stroke-dasharray="45.9 180.3" stroke-dashoffset="-180.3"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--pale)" stroke-width="10" stroke-dasharray="45.9 180.3" stroke-dashoffset="-180.3"/></svg>
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;gap:2px"><b style="font-size:11px">61.4k</b><span class="cap">ر.ق اليوم</span></div>
+              </div>
+              <div class="grow" style="display:flex;flex-direction:column;gap:4px;font-size:10px">
+                <div class="row" style="gap:4px"><span class="ui-avatar" style="width:16px;height:16px;font-size:9px;border:2px solid var(--accent);box-sizing:border-box">J</span><span class="grow" style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">JUNO</span><b style="width:26px;text-align:end">40%</b><span class="muted" style="width:52px;text-align:end;white-space:nowrap">24,500 ر.ق</span></div>
+                <div class="row" style="gap:4px"><span class="ui-avatar" style="width:16px;height:16px;font-size:9px;border:2px solid var(--soft);box-sizing:border-box">S</span><span class="grow" style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">بيت الزعفران</span><b style="width:26px;text-align:end">40%</b><span class="muted" style="width:52px;text-align:end;white-space:nowrap">24,440 ر.ق</span></div>
+                <div class="row" style="gap:4px"><span class="ui-avatar" style="width:16px;height:16px;font-size:9px;border:2px solid var(--soft);background:var(--inner);box-sizing:border-box">B</span><span class="grow" style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">بيك آند كو</span><b style="width:26px;text-align:end">20%</b><span class="muted" style="width:52px;text-align:end;white-space:nowrap">12,460 ر.ق</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-card" style="display:flex;flex-direction:column;gap:6px;flex:1">
+            <div><span class="ui-title">طرق الدفع · اليوم</span><span class="cap" style="display:block">كل جزء من فاتورة مقسّمة يُحسب وحده</span></div>
+            <div class="row" style="gap:8px;flex:1">
+              <div style="position:relative;width:84px;height:84px;flex-shrink:0">
+                <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true" style="display:block;transform:rotate(-90deg)"><circle cx="42" cy="42" r="36" fill="none" stroke="var(--track)" stroke-width="12"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--accent)" stroke-width="12" stroke-dasharray="147.8 78.4" stroke-dashoffset="0"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--soft)" stroke-width="12" stroke-dasharray="57.7 168.5" stroke-dashoffset="-147.8"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--soft)" stroke-width="12" stroke-dasharray="20.7 205.5" stroke-dashoffset="-205.5"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--pale)" stroke-width="10" stroke-dasharray="20.7 205.5" stroke-dashoffset="-205.5"/></svg>
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;gap:2px"><b style="font-size:11px">61.4k</b><span class="cap">ر.ق اليوم</span></div>
+              </div>
+              <div class="grow" style="display:flex;flex-direction:column;gap:4px;font-size:10px">
+                <div class="row" style="gap:5px"><span style="width:10px;height:10px;margin-inline:3px;border-radius:50%;background:var(--accent);flex-shrink:0"></span><span class="grow" style="font-weight:600">البطاقة</span><b style="width:26px;text-align:end">65%</b><span class="muted" style="width:52px;text-align:end;white-space:nowrap">40,120 ر.ق</span></div>
+                <div class="row" style="gap:5px"><span style="width:10px;height:10px;margin-inline:3px;border-radius:50%;background:var(--soft);flex-shrink:0"></span><span class="grow" style="font-weight:600">النقد</span><b style="width:26px;text-align:end">26%</b><span class="muted" style="width:52px;text-align:end;white-space:nowrap">15,660 ر.ق</span></div>
+                <div class="row" style="gap:5px"><span style="width:10px;height:10px;margin-inline:3px;border-radius:50%;background:var(--pale);border:1px solid var(--soft);box-sizing:border-box;flex-shrink:0"></span><span class="grow" style="font-weight:600">التطبيق</span><b style="width:26px;text-align:end">9%</b><span class="muted" style="width:52px;text-align:end;white-space:nowrap">5,620 ر.ق</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1.95fr) minmax(0,1fr);gap:8px;flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:4px;min-height:0;overflow:hidden">
+          <div><span class="ui-title">اليوم · كل فرع بأرقام حقيقية</span><span class="cap" style="display:block">الأعلى مبيعاً أولاً · الفرع بلا مبيعات لا يُدرج</span></div>
+          <div style="display:flex;align-items:center;gap:8px;padding:0 10px;font-size:9px;font-weight:600;color:var(--sub);min-height:12px"><span class="grow">الفرع</span><span style="width:40px;text-align:end">الطلبات</span><span style="width:72px;text-align:end">الإيرادات</span><span style="width:62px;text-align:end">متوسط الفاتورة</span></div>
+          <div style="display:flex;flex-direction:column;gap:1px;font-size:11px">
+            <div class="ui-cell" style="display:flex;align-items:center;gap:8px;min-height:18px;padding:0 10px;padding-inline-start:6px"><span class="ui-avatar" style="width:18px;height:18px;font-size:9px">S</span><b class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">بيت الزعفران · السد</b><span style="width:40px;text-align:end">96</span><b style="width:72px;text-align:end">16,120 ر.ق</b><span style="width:62px;text-align:end">167.92 ر.ق</span></div>
+            <div class="ui-cell" style="display:flex;align-items:center;gap:8px;min-height:18px;padding:0 10px;padding-inline-start:6px"><span class="ui-avatar" style="width:18px;height:18px;font-size:9px">J</span><b class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">JUNO · ويست ووك</b><span style="width:40px;text-align:end">83</span><b style="width:72px;text-align:end">14,860 ر.ق</b><span style="width:62px;text-align:end">179.04 ر.ق</span></div>
+            <div class="ui-cell" style="display:flex;align-items:center;gap:8px;min-height:18px;padding:0 10px;padding-inline-start:6px"><span class="ui-avatar" style="width:18px;height:18px;font-size:9px">J</span><b class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">JUNO · لوسيل بوليفارد</b><span style="width:40px;text-align:end">74</span><b style="width:72px;text-align:end">9,640 ر.ق</b><span style="width:62px;text-align:end">130.27 ر.ق</span></div>
+            <div class="ui-cell" style="display:flex;align-items:center;gap:8px;min-height:18px;padding:0 10px;padding-inline-start:6px"><span class="ui-avatar" style="width:18px;height:18px;font-size:9px">S</span><b class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">بيت الزعفران · اللؤلؤة</b><span style="width:40px;text-align:end">69</span><b style="width:72px;text-align:end">8,320 ر.ق</b><span style="width:62px;text-align:end">120.58 ر.ق</span></div>
+            <div class="ui-cell" style="display:flex;align-items:center;gap:8px;min-height:18px;padding:0 10px;padding-inline-start:6px"><span class="ui-avatar" style="width:18px;height:18px;font-size:9px">B</span><b class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">بيك آند كو · مشيرب</b><span style="width:40px;text-align:end">88</span><b style="width:72px;text-align:end">6,480 ر.ق</b><span style="width:62px;text-align:end">73.64 ر.ق</span></div>
+            <div class="ui-cell" style="display:flex;align-items:center;gap:8px;min-height:18px;padding:0 10px;padding-inline-start:6px"><span class="ui-avatar" style="width:18px;height:18px;font-size:9px">B</span><b class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">بيك آند كو · فيلاجيو</b><span style="width:40px;text-align:end">79</span><b style="width:72px;text-align:end">5,980 ر.ق</b><span style="width:62px;text-align:end">75.70 ر.ق</span></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;min-height:20px;padding:0 10px;border-radius:10px;background:var(--pale);color:var(--accent);font-weight:700;font-size:11px"><span class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">إجمالي المجموعة · 6 فروع</span><span style="width:40px;text-align:end">489</span><span style="width:72px;text-align:end">61,400 ر.ق</span><span style="width:62px;text-align:end">125.56 ر.ق</span></div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:4px;min-height:0;overflow:hidden">
+          <div><span class="ui-title">مبيعات المجموعة · آخر 7 أيام</span><span class="cap" style="display:block">الوسيط 58,900 ر.ق · 7 أيام عمل · ر.ق في اليوم</span></div>
+          <div style="display:flex;gap:3px;font-size:9px;color:var(--sub);height:11px;line-height:11px;margin-top:2px">
+            <span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap;font-weight:700;color:var(--accent)">61,400</span>
+          </div>
+          <div style="position:relative;display:flex;align-items:flex-end;gap:3px;height:80px;flex-shrink:0">
+            <span style="position:absolute;inset-inline:0;bottom:66px;border-top:1.5px dashed var(--dash)"></span>
+            <span style="flex:1 1 0;height:58px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:62px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:78px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:80px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:66px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:56px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:69px;border-radius:4px;background:var(--accent)"></span>
+          </div>
+          <div style="display:flex;gap:3px;font-size:9px;color:var(--sub);height:11px;line-height:11px">
+            <span style="flex:1 1 0;min-width:0;text-align:center">أربعاء</span><span style="flex:1 1 0;min-width:0;text-align:center">خميس</span><span style="flex:1 1 0;min-width:0;text-align:center">جمعة</span><span style="flex:1 1 0;min-width:0;text-align:center">سبت</span><span style="flex:1 1 0;min-width:0;text-align:center">أحد</span><span style="flex:1 1 0;min-width:0;text-align:center">اثنين</span><span style="flex:1 1 0;min-width:0;text-align:center;font-weight:700;color:var(--ink)">ثلاثاء</span>
+          </div>
+          <span class="muted" style="font-size:9px;margin-top:auto">اليوم هو العمود الأخير، حتى الآن · يوم بلا مبيعات يظهر شرطة</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+    </div>
+    <div class="ex-exit reveal">
+      <a href="#contact" class="btn btn-accent"><svg class="ic ic-s" aria-hidden="true"><use href="#i-calendar"/></svg> شاهده خلال 20 دقيقة</a>
+      <a href="#howitstarts" class="btn">كيف تبدأ</a>
     </div>
   </div>
 </section>
@@ -2624,160 +3777,273 @@ var WA_NUMBER = '';
 
 <script>
 /* ═══ the department explorer ═══════════════════════════════════════════════════════════════
-   Data first, so the fifteen are one list in one place. Every screen is the real MiM UI. */
+   The rail, the first department and every screen are in the HTML (fifteen <template>s hold the
+   product's own screens); this only swaps them. It tours only where the stage sits beside the rail
+   (≥1040) and motion is welcome; everywhere else it waits for a tap and says so. It never scrolls the
+   page on a tap — on a small screen the stage is already right under the strip. Announces nothing. */
 (function(){
   var D = [
-    {id:'pos',group:'الصالة',icon:'i-money',name:'كاشير المطعم',tag:'الصندوق · الطاولات · المطبخ',
-     eyebrow:'الصالة · الكاشير',head:'ثلاث لمسات حتى الحساب — وكل لمسة أصبحت سطراً في السجلّ',
-     body:'الفئة، الصنف، انتهى: مصمّم لإبهامٍ في ليلة خميس. نقد، بطاقة، تطبيقك الخاص — شاشة واحدة، وتواصل البيع حتى مع انقطاع الإنترنت.',
-     chips:['الحساسية تُسأل، لا تُفترض','الموقوف عن البيع (86) موقوف في كل مكان','يبيع دون إنترنت'],writes:'سجلّ المخزون · P&L · تقرير Z لليوم',
-     img:'/images/till.svg?v=20260920b',frame:'terminal',alt:'كاشير MiM — حساب طاولة، شريط الفئات، شبكة الأصناف وصفّ الحساسية'},
-    {id:'me',group:'الصالة',icon:'i-mobile',name:'الخدمة الذاتية للموظفين',tag:'تسجيل الحضور · المناوبات · الإجازات · قسيمة الراتب',
-     eyebrow:'الصالة · في كل جيب',head:'الهاتف الذي يحمله كل موظف — بلغته هو',
-     body:'سجّل حضورك برمز الكاشير وموقعك. اطّلع على المناوبات التي جدولها مديرك. أبلغ عن مرض، اطلب إجازة، اقرأ قسيمة راتبك خلف رمز PIN. وتصل طلباتك إلى الموارد البشرية بالإنجليزية.',
-     chips:['تسع لغات','حضور بالرمز + GPS','قسيمة الراتب خلف PIN'],writes:'الحضور · الإجازات · طلبات الموارد البشرية',
-     img:'/images/staff-phone.svg?v=20260920b',frame:'phone',alt:'هاتف موظف MiM — اليوم، المناوبات، الطلبات والمستندات'},
-    {id:'cs',group:'الصالة',icon:'i-headset',name:'خدمة العملاء',tag:'الشكاوى · المكالمات · التقييمات',
-     eyebrow:'الصالة · صوت الضيف',head:'كل شكوى لها عدّاد زمني',
-     body:'المكالمات والتقييمات وملاحظات التطبيق تصل إلى صندوق وارد واحد بمهلة ردّ 24 ساعة. وما جرى فعله — المكالمة، الضيافة، تنبيه المطبخ — هو السجلّ.',
-     chips:['حلقة مهلة 24 ساعة','تقييمات تنتظر ردّاً','الفرع مُسمّى'],writes:'الحالات · الردود على التقييمات · الضيافة',
-     img:'/images/customer-service.svg?v=20260920b',frame:'tablet',alt:'خدمة عملاء MiM — صندوق الحالات وشكوى مفتوحة بخطّها الزمني'},
-    {id:'ck',group:'المطبخ والتوريد',icon:'i-flame',name:'المطبخ المركزي',tag:'إنتاج وتوريد للفروع',
-     eyebrow:'المطبخ · ممرّ التسليم (The Pass)',head:'الحالة على الطبق، لا على التذكرة',
-     body:'كل طبق يرسله الشيف يُختم بلحظة خروجه. الأصناف المعلّقة تبقى معلّقة؛ والصالة ترى اللوحة نفسها التي يراها ممرّ التسليم.',
-     chips:['حالة لكل طبق','التسليم لا يُجزّأ','استرجاع خلال 90 ثانية'],writes:'إرساليات المطبخ · زمن الانتظار · الإنتاج',
-     img:'/images/chef-display.svg?v=20260920b',frame:'tablet',alt:'شاشة مطبخ MiM — التذاكر حسب مرحلة الوجبة مع حالة كل طبق'},
-    {id:'pastry',group:'المطبخ والتوريد',icon:'i-cake',name:'المخبز المركزي',tag:'خَبز وتوريد للفروع',
-     eyebrow:'المطبخ · المخبز',head:'خُبز، عُدّ، أُرسل — والناتج مسجّل',
-     body:'خطة اليوم مقابل ما خرج من الفرن، وما يصل إلى كل فرع. خمسة وعشرون كيلو دقيق صارت 212 كرواسون — رقم تراه المالية.',
-     chips:['المنتَج مقابل المخطّط','إرسال لكل فرع','الناتج متتبَّع'],writes:'دفعات الإنتاج · الإرساليات · الناتج',
-     img:'/images/central-pastry.svg?v=20260920b',frame:'tablet',alt:'المخبز المركزي في MiM — خطة الإنتاج وقائمة الإرسال والناتج'},
-    {id:'store',group:'المطبخ والتوريد',icon:'i-warehouse',name:'المخزن المركزي',tag:'الطلبات · المشتريات · الموردون',
-     eyebrow:'التوريد · المخزن',head:'التسليم الناقص يُسجَّل ناقصاً',
-     body:'طلبات الفروع تتحوّل إلى أوامر شراء؛ والبضاعة المستلمة تُعدّ مقابلها. ثمانية عشر كرتوناً من عشرين تُسجَّل ثمانية عشر — ورصيد المورّد يعرف ذلك.',
-     chips:['الطلبات → أوامر الشراء','إشعار استلام مقابل أمر الشراء','أرصدة الموردين'],writes:'أوامر الشراء · إشعارات الاستلام · الذمم الدائنة',
-     img:'/images/central-store.svg?v=20260920b',frame:'tablet',alt:'المخزن المركزي في MiM — طلبات الفروع وأمر شراء وأرصدة الموردين'},
-    {id:'ordering',group:'المطبخ والتوريد',icon:'i-clipboard',name:'الطلبات',tag:'الطلب · الهدر · جرد المخزون',
-     eyebrow:'التوريد · جرد الفرع',head:'الخانة الفارغة في الجرد مجهولة — وليست صفراً أبداً',
-     body:'الحدود الدنيا، ما عُدّ، وما يجب طلبه. الرفّ الذي لم يعدّه أحد يبقى فارغاً؛ ولن يخترع النظام صفراً ويطلب على أساسه.',
-     chips:['فارغ ≠ صفر','طلب مقترح','الهدر مسعّر'],writes:'الجرد · الطلبات · الهدر',
-     img:'/images/ordering.svg?v=20260920b',frame:'tablet',alt:'طلبيات MiM — ورقة الجرد بالحدود الدنيا والطلب إلى المخزن'},
-    {id:'finance',group:'الإدارة',icon:'i-money',name:'المالية',tag:'المبيعات · تكلفة الطعام · الأهداف · إقفال اليوم',
-     eyebrow:'الإدارة · المالية',head:'ما يكلّفه كل طبق فعلاً — مقابل ما يجب أن يكلّفه',
-     body:'التكلفة النظرية من الوصفة إلى جانب ما استهلكه المطبخ فعلاً، طبقاً طبقاً، بالريال. والفجوة تُسمّى في يومها، لا تُكتشف في نهاية الشهر.',
-     chips:['النظري مقابل الفعلي','موافقات بتوقيع اليد','رواتب WPS'],writes:'P&L · تكلفة الطعام · دورات الرواتب',
-     img:'/images/food-cost.svg?v=20260920b',frame:'tablet',alt:'تكلفة الطعام في MiM — التكلفة النظرية مقابل الفعلية لكل طبق، والفجوة بالريال'},
-    {id:'marketing',group:'الإدارة',icon:'i-megaphone',name:'التسويق',tag:'الحملات · الخطط · الميزانيات',
-     eyebrow:'الإدارة · التسويق',head:'صوّر الطبق الذي يبيع ولا صورة له',
-     body:'الخطة مبنية على ما بيع فعلاً. طبق يبيع 214 في الأسبوع بلا صورة هو أرخص ما على اللوحة — واللوحة تقول ذلك.',
-     chips:['تقويم المنشورات','نبض التقييمات','الميزانية مقابل المصروف'],writes:'الحملات · الميزانيات · المحتوى',
-     img:'/images/marketing.svg?v=20260920b',frame:'tablet',alt:'تسويق MiM — تقويم المنشورات، ما يُصوَّر هذا الأسبوع ونبض التقييمات'},
-    {id:'it',group:'الإدارة',icon:'i-laptop',name:'تقنية المعلومات',tag:'صلاحيات الموظفين · إعادة تعيين PIN · الطابعات',
-     eyebrow:'الإدارة · تقنية المعلومات',head:'لكل جهاز اسم وفرع وآخر ظهور',
-     body:'الكاشير، الأجهزة اللوحية، شاشات المطبخ، هواتف الموظفين — تُقرن برمز QR يعمل مرة واحدة وينتهي خلال عشر دقائق. ألغِ جهازاً واحداً فيختفي من كل مكان.',
-     chips:['اقتران لمرة واحدة','إلغاء من أي مكان','الطابعات مراقَبة'],writes:'الأجهزة · الصلاحيات · إعادة تعيين PIN',
-     img:'/images/it.svg?v=20260920b',frame:'tablet',alt:'تقنية المعلومات في MiM — الأجهزة المقترنة ورمز QR للاقتران وحالة الطابعات'},
-    {id:'maint',group:'الإدارة',icon:'i-wrench',name:'الصيانة',tag:'بلّغ · أصلح · التكلفة مباشرة إلى المالية',
-     eyebrow:'الإدارة · الصيانة',head:'بُلّغ، أُصلح — والتكلفة تذهب مباشرة إلى المالية',
-     body:'ثلاجة تفقد برودتها في السد هي بطاقة عليها عمرها. وعند إصلاحها لا تحتاج الفاتورة إلى إعادة كتابة في أي مكان.',
-     chips:['الأولوية والعمر','الإنفاق لكل فرع','التكلفة → P&L'],writes:'الأعمال · تكاليف الإصلاح · الأصول',
-     img:'/images/maintenance.svg?v=20260920b',frame:'tablet',alt:'صيانة MiM — أعمال الإصلاح حسب الحالة وإنفاق هذا الشهر حسب الفرع'},
-    {id:'hr',group:'الأفراد والمكان',icon:'i-team',name:'الموارد البشرية',tag:'الموظفون · الحضور · القانون القطري',
-     eyebrow:'الأفراد · الموارد البشرية',head:'قانون قطر مبنيّ في النظام — لا يُبحث عنه',
-     body:'إجازة المادة 79، مكافأة المادة 54، رواتب WPS، وانتهاء البطاقة الشخصية وشهادة MOPH بلون وعدّ تنازلي. طلب إجازة مكتوب بالهندية يصل بالإنجليزية، والأصل محفوظ بجانبه.',
-     chips:['الانتهاءات مرتّبة','الإجازات والمكافأة','طلبات مترجمة تلقائياً'],writes:'الموظفون · الحضور · مدخلات الرواتب',
-     img:'/images/hr.svg?v=20260920b',frame:'tablet',alt:'الموارد البشرية في MiM — ملف موظف بمستنداته وإجازاته وطلباته المترجمة'},
-    {id:'accom',group:'الأفراد والمكان',icon:'i-home',name:'السكن',tag:'الفلل · الأسرّة · الإشغال',
-     eyebrow:'الأفراد · السكن',head:'الفلل والأسرّة وباص الصباح',
-     body:'من ينام أين، أي فيلا ممتلئة، أي إصلاح ما زال مفتوحاً، ومتى يغادر الباص عين خالد. السكن جزء من صورة الرواتب، لذلك يعيش في السجلّ نفسه.',
-     chips:['الإشغال لكل فيلا','إصلاحات مفتوحة','رحلات النقل'],writes:'السكن · الإشغال · تكاليف الإصلاح',
-     img:'/images/accommodation.svg?v=20260920b',frame:'tablet',alt:'سكن MiM — الفلل بإشغالها وقائمة الأسرّة ورحلات النقل'},
-    {id:'quality',group:'الأفراد والمكان',icon:'i-cap',name:'الجودة والتدريب',tag:'سلامة الغذاء · الأكاديمية · الاختبارات',
-     eyebrow:'الأفراد · الجودة',head:'الثلاجة التي انحرفت حرارتها على التدقيق، بالأحمر',
-     body:'سجلات الحرارة، مصفوفة مسبّبات الحساسية الموقّعة، محطات غسل اليدين — ومن يحمل شهادة متداول أغذية سارية من MOPH، ومن شارفت شهادته على الانتهاء، ومن لا شهادة له.',
-     chips:['قائمة التدقيق','شرائط الحرارة','الشهادات متتبَّعة'],writes:'التدقيقات · الشهادات · درجات الاختبارات',
-     img:'/images/quality.svg?v=20260920b',frame:'tablet',alt:'جودة MiM — قائمة تدقيق فرع وشريط حرارة وشهادات تدريب'},
-    {id:'hq',group:'الأفراد والمكان',icon:'i-crown',name:'المكتب الرئيسي',tag:'كل الفروع، شاشة واحدة',
-     eyebrow:'المكتب الرئيسي · شاشة المالك',head:'كل الفروع، شاشة واحدة، في جيب المالك',
-     body:'وتيرة المبيعات ساعة بساعة، صندوق ما ينتظر قراراً، والتقييمات لحظة وصولها. مبنيّ من الصفوف نفسها التي كتبها كل قسم — لا شيء أُعيد إدخاله، ولا شيء لُخّص باليد.',
-     chips:['الوتيرة بالساعة','صندوق القرارات','تقييمات مباشرة'],writes:'يقرأ كل شيء · يوقّع الموافقات',
-     img:'/images/owner-sales.svg?v=20260920b',frame:'tablet',alt:'شاشة المالك في MiM — وتيرة المبيعات حسب الفرع وحسب الساعة'}
+   {
+    "id": "pos",
+    "eyebrow": "الصالة · الكاشير",
+    "head": "حساب على الطاولة — وكل لمسة سطرٌ في السجلّ",
+    "body": "الفئة، الصنف، انتهى: مصمّم لإبهامٍ في ليلة مزدحمة. الحساسية تُسأل على الطاولة وتصل إلى المطبخ، والطبق الموقوف عن البيع (86) يظهر نافداً على كل كاشير، والبيع يستمر حتى مع انقطاع الإنترنت.",
+    "chips": [
+     "الحساسية تُسأل، لا تُفترض",
+     "الموقوف عن البيع (86) موقوف في كل مكان",
+     "يبيع دون إنترنت"
+    ],
+    "writes": "سجلّ المخزون · P&L · تقرير Z لليوم"
+   },
+   {
+    "id": "me",
+    "eyebrow": "الصالة · في كل جيب",
+    "head": "الهاتف الذي يحمله كل موظف — بلغته هو",
+    "body": "سجّل حضورك بالرقم الظاهر على الكاشير. أبلغ عن مرضك بلمسة، اطلب إجازة، واقرأ قسيمة راتبك خلف رمز PIN. هذا هاتف رضا، في مناوبته منذ 16:58.",
+    "chips": [
+     "الحضور برمز الكاشير",
+     "الإبلاغ عن المرض",
+     "قسيمة الراتب خلف PIN"
+    ],
+    "writes": "الحضور · الإجازات · طلبات الموارد البشرية"
+   },
+   {
+    "id": "cs",
+    "eyebrow": "الصالة · صوت الضيف",
+    "head": "كل شكوى في السجلّ — وكل تقييم يصل إلى صاحبه",
+    "body": "المكالمات والشكاوى الحضورية وتقييمات Google تصل إلى سجلّ واحد والفرع مُسمّى. تقييم بثلاث نجوم في لوسيل فتح حالته بنفسه، ووصل إلى مدير لوسيل، ورُدّ عليه بعد 22 دقيقة.",
+    "chips": [
+     "حالات بحلّ موثّق",
+     "تقييمات Google كل 6 ساعات",
+     "التقييم لكل فرع"
+    ],
+    "writes": "الحالات · الردود على التقييمات · الضيافة"
+   },
+   {
+    "id": "ck",
+    "eyebrow": "المطبخ · وحدة الإنتاج",
+    "head": "لا يصلك إلا ما تورّده أنت",
+    "body": "طلبات الفروع تصل إلى المطبخ المركزي؛ ينتجها ويرسل ما أنتجه فعلاً. الفرع يعدّ ما استلمه، والقيمة تُحمَّل على ذلك الفرع — 19,640 ر.ق وُرّدت هذا الشهر.",
+    "chips": [
+     "طلبات الفروع",
+     "إرسال ما أُنتج فعلاً",
+     "القيمة على الفرع"
+    ],
+    "writes": "الإنتاج · الإرساليات · تحميل الفروع"
+   },
+   {
+    "id": "pastry",
+    "eyebrow": "المطبخ · وحدة الحلويات",
+    "head": "ما يُرسَل ناقصاً يُسجَّل ناقصاً",
+    "body": "طلبا بيك آند كو هذا الصباح، سطراً سطراً: ما طُلب، وما يُرسَل، وكم يكلّف الفرع. طُلبت ست كعكات فستق وأُرسلت خمس — والفرع يستلم خمساً.",
+    "chips": [
+     "المطلوب مقابل المُرسَل",
+     "إرسال لكل فرع",
+     "القيمة لكل سطر"
+    ],
+    "writes": "دفعات الإنتاج · الإرساليات · تحميل الفروع"
+   },
+   {
+    "id": "store",
+    "eyebrow": "التوريد · المخزن",
+    "head": "التسليم الناقص يُسجَّل ناقصاً",
+    "body": "ما نزل من الشاحنة يُعدّ مقابل أمر الشراء: 54 كغ ليمون من 60 تُسجَّل 54، والأعشاب التالفة لا تدخل المخزون، وأي زيادة في السعر فوق 5% تُبلَّغ بها المالية.",
+    "chips": [
+     "الاستلام مقابل أمر الشراء",
+     "زيادات الأسعار مُعلَّمة",
+     "مراقبة الصلاحية"
+    ],
+    "writes": "أوامر الشراء · إشعارات الاستلام · الذمم الدائنة"
+   },
+   {
+    "id": "ordering",
+    "eyebrow": "التوريد · الفرع",
+    "head": "الفرع يطلب، المخزن يجيب، والفرع يؤكّد",
+    "body": "طلب ويست ووك الصباحي عاد والكيل 4 من 6 كغ. تؤكّد نور ما وصل فعلاً — وعندها فقط يُرحَّل إلى تكلفة طعام الفرع.",
+    "chips": [
+     "الطلب من المخزن المركزي",
+     "تأكيد الاستلام",
+     "الهدر والجرد"
+    ],
+    "writes": "الطلبات · الاستلام · تكلفة الطعام"
+   },
+   {
+    "id": "finance",
+    "eyebrow": "الإدارة · المالية",
+    "head": "الصباح في جملة واحدة — وكل توقيع على شاشته",
+    "body": "الصفحة الرئيسية للمالية تُكتب مباشرة من السجلات: مبيعات الأمس وما تسرّب منها، وما ينتظر التوقيع الأقدم أولاً، وما انحرف. لا يوجد توقيع جماعي.",
+    "chips": [
+     "الأقدم أولاً، لا الأكبر",
+     "لا توقيع جماعي",
+     "الانحرافات فقط"
+    ],
+    "writes": "الموافقات · السجلات · P&L"
+   },
+   {
+    "id": "marketing",
+    "eyebrow": "الإدارة · التسويق",
+    "head": "هل باع المنشور طعاماً؟ الكاشير يجيب",
+    "body": "كل منشور يُربط بالطبق الذي يذكره، والطبق بما بيع منه في السجلّ الدائم. سلايدرز الهالبينو ارتفعت من 18 إلى 41 طبقاً في اليوم؛ والمنشور عن طبق لا يستطيع المطبخ تقديمه يُعلَّم.",
+    "chips": [
+     "المنشور مربوط بطبقه",
+     "الأثر مقابل خطّه الأساسي",
+     "لا يرى المال"
+    ],
+    "writes": "الخطط · الحملات · المحتوى"
+   },
+   {
+    "id": "it",
+    "eyebrow": "الإدارة · تقنية المعلومات",
+    "head": "كل كاشير، والإصدار الذي يعمل عليه، ومتى سُمع منه آخر مرة",
+    "body": "أحد عشر كاشيراً في ستة فروع، كلها على الإصدار 2026-09-07 — لا متأخر ولا صامت. ومن الغرفة نفسها تُقرَن أجهزة النُّدُل اللوحية وشاشات المطبخ وهواتف الموظفين، وتُعاد رموز PIN.",
+    "chips": [
+     "الكاشيرات والإصدارات",
+     "الأجهزة المقترنة",
+     "الصلاحيات ورموز PIN"
+    ],
+    "writes": "الأجهزة · الصلاحيات · إعادة تعيين PIN"
+   },
+   {
+    "id": "maint",
+    "eyebrow": "الإدارة · الصيانة",
+    "head": "بُلّغ، أُصلح — والتكلفة تذهب مباشرة إلى المالية",
+    "body": "لكل عمل مساره: جديد، أو خارجي بعروض أسعار، أو قيد التنفيذ، أو بانتظار تأكيد الفرع. ثلاجة ويست ووك تنتظر توقيع المالية على عرض بقيمة 1,200 ر.ق، والتكلفة تُرحَّل إلى P&L ذلك الفرع.",
+    "chips": [
+     "داخلي أو خارجي",
+     "عروض الأسعار إلى المالية",
+     "التكلفة → P&L"
+    ],
+    "writes": "الأعمال · تكاليف الإصلاح · الأصول"
+   },
+   {
+    "id": "hr",
+    "eyebrow": "الأفراد · الموارد البشرية",
+    "head": "قانون قطر مبنيّ في النظام — والأسوأ أولاً",
+    "body": "قائمة الصباح مرتّبة: بطاقة صحية منتهية قبل بطاقة شخصية تتجدّد بعد 9 أيام. الموظفون والطلبات والمستندات التي تقترب من الانتهاء ورواتب سبتمبر — المعتمدة من المالية — على شاشة واحدة.",
+    "chips": [
+     "الانتهاءات مرتّبة",
+     "سلسلة الرواتب",
+     "هواتف الخدمة الذاتية"
+    ],
+    "writes": "الموظفون · الحضور · مدخلات الرواتب"
+   },
+   {
+    "id": "accom",
+    "eyebrow": "الأفراد · السكن",
+    "head": "الفلل والأسرّة ومن ينام أين",
+    "body": "88 من 96 سريراً مشغولة في أربع فلل. خصّص سريراً برقم الموظف، وأخرِج من يغادر، وبلّغ عن تسرّب ماء — فيصبح عملاً حقيقياً في الصيانة.",
+    "chips": [
+     "الإشغال لكل فيلا",
+     "الأسرّة برقم الموظف",
+     "الإصلاحات → الصيانة"
+    ],
+    "writes": "السكن · الإشغال · تكاليف الإصلاح"
+   },
+   {
+    "id": "quality",
+    "eyebrow": "الأفراد · الجودة",
+    "head": "سلامة الغذاء بالأرقام — والثلاجة التي انحرفت مسجّلة",
+    "body": "كم من طاقم المطبخ أتمّ برامج سلامة الغذاء الاثني عشر من وزارة الصحة العامة، وأي الشهادات والأوراق القانونية تقترب من الانتهاء، وفحوص الفروع اليوم: ثلاجة عند 6.1 °م الساعة 05:50، صُحّحت إلى 3.9 °م.",
+    "chips": [
+     "12 برنامجاً من وزارة الصحة",
+     "الشهادات متتبَّعة",
+     "فحوص الحرارة"
+    ],
+    "writes": "التدقيقات · الشهادات · درجات الاختبارات"
+   },
+   {
+    "id": "hq",
+    "eyebrow": "المكتب الرئيسي · شاشة المالك",
+    "head": "كل الفروع، شاشة واحدة",
+    "body": "ما يُباع الآن في المجموعة كلها — بالساعة، وبالعلامة، وبطريقة الدفع، وكل فرع في ترتيبه — مبنيّ من الصفوف نفسها التي كتبها كل قسم. لا شيء أُعيد إدخاله، ولا شيء لُخّص باليد.",
+    "chips": [
+     "لوحة مباشرة",
+     "صندوق القرارات",
+     "كل الفروع مرتّبة"
+    ],
+    "writes": "يقرأ كل شيء · يوقّع الموافقات"
+   }
   ];
-  var rail=document.getElementById('ex-rail'), stage=document.getElementById('ex-stage');
-  if(!rail||!stage) return;
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var T = {"tour": "جولة تلقائية · اضغط على أي قسم لإيقافها", "tap": "اضغط على أي قسم", "writes": "يكتب في السجلّ المشترك: "};
+  var ex=document.getElementById('dept-explorer'); if(!ex) return;
+  var rail=document.getElementById('ex-rail'), stage=document.getElementById('ex-stage'),
+      fit=document.getElementById('ex-fit'), box=document.getElementById('ex-box');
+  var tabs=D.map(function(d){ return document.getElementById('ex-tab-'+d.id); });
+  if(!rail||!stage||!fit||tabs.some(function(t){ return !t; })) return;
   var el={eyebrow:document.getElementById('ex-eyebrow'),head:document.getElementById('ex-head'),body:document.getElementById('ex-body'),
-          chips:document.getElementById('ex-chips'),writes:document.getElementById('ex-writes'),img:document.getElementById('ex-img'),
-          frame:document.getElementById('ex-frame'),bar:document.getElementById('ex-bar'),hint:document.getElementById('ex-hint-text'),glow:document.getElementById('ex-glow')};
+          chips:document.getElementById('ex-chips'),writes:document.getElementById('ex-writes'),
+          bar:document.getElementById('ex-bar'),hint:document.getElementById('ex-hint-text')};
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var wide=window.matchMedia('(min-width:1040px)');
+  var rtl=(document.documentElement.getAttribute('dir')||'').toLowerCase()==='rtl';
 
-  /* the rail, grouped — the grouping is the information */
-  var groups=[]; D.forEach(function(d){ if(groups.indexOf(d.group)<0) groups.push(d.group); });
-  groups.forEach(function(g){
-    var wrap=document.createElement('div'); wrap.className='ex-group';
-    var h=document.createElement('h5'); h.textContent=g; wrap.appendChild(h);
-    var tabs=document.createElement('div'); tabs.className='ex-tabs'; tabs.setAttribute('role','tablist');
-    D.filter(function(d){return d.group===g;}).forEach(function(d){
-      var b=document.createElement('button'); b.type='button'; b.className='ex-tab'; b.id='ex-tab-'+d.id;
-      b.setAttribute('role','tab'); b.setAttribute('aria-selected','false'); b.setAttribute('aria-controls','ex-stage'); b.dataset.dept=d.id;
-      b.innerHTML='<svg class="ic" aria-hidden="true"><use href="#'+d.icon+'"/></svg><span><b></b><small></small></span>';
-      b.querySelector('b').textContent=d.name; b.querySelector('small').textContent=d.tag;
-      b.addEventListener('click',function(){ select(d.id,true); });
-      tabs.appendChild(b);
-    });
-    wrap.appendChild(tabs); rail.appendChild(wrap);
-  });
+  /* the screens: the first is on the stage already, the rest wait in their templates */
+  var shots={};
+  if(fit.firstElementChild) shots[D[0].id]=fit.firstElementChild.cloneNode(true);
+  ex.querySelectorAll('template[data-dept]').forEach(function(t){
+    var s=t.content&&t.content.querySelector('.ui-shot'); if(s) shots[t.getAttribute('data-dept')]=s; });
 
-  /* preload every screen once the page is idle, so the first swap never shows a blank */
-  var warm=function(){ D.forEach(function(d){ var i=new Image(); i.src=d.img; }); };
-  if('requestIdleCallback' in window) requestIdleCallback(warm,{timeout:3000}); else setTimeout(warm,1200);
-
-  var cur=-1, timer=null, tick=null, paused=false, userStopped=window.matchMedia('(max-width:1039px)').matches, DWELL=12000, t0=0;
   function render(d){
     el.eyebrow.textContent=d.eyebrow; el.head.textContent=d.head; el.body.textContent=d.body;
-    el.chips.innerHTML=''; d.chips.forEach(function(c){ var s=document.createElement('span'); s.textContent=c; el.chips.appendChild(s); });
-    el.writes.innerHTML=''; var w=document.createElement('span'); w.textContent='يكتب في السجلّ المشترك: '; var wb=document.createElement('b'); wb.textContent=d.writes; el.writes.appendChild(w); el.writes.appendChild(wb);
-    el.frame.setAttribute('data-frame',d.frame); el.img.alt=d.alt; el.img.src=d.img;
+    el.chips.textContent=''; d.chips.forEach(function(c){ var s=document.createElement('span'); s.textContent=c; el.chips.appendChild(s); });
+    el.writes.textContent=''; var w=document.createElement('span'); w.textContent=T.writes; var wb=document.createElement('b'); wb.textContent=d.writes;
+    el.writes.appendChild(w); el.writes.appendChild(wb);
+    var s=shots[d.id];
+    if(s){ var n=s.cloneNode(true); n.style.zoom=''; fit.textContent=''; fit.appendChild(n);
+      box.setAttribute('data-kind', n.getAttribute('data-kind')||'tablet');
+      if(typeof uiFit==='function') uiFit(); }
   }
-  function select(id,byUser){
-    var i=-1; D.forEach(function(d,k){ if(d.id===id) i=k; }); if(i<0||i===cur) { if(byUser) stopTour(); return; }
-    var d=D[i]; cur=i;
-    rail.querySelectorAll('.ex-tab').forEach(function(t){ t.setAttribute('aria-selected', t.dataset.dept===id ? 'true':'false'); });
-    if(reduce){ render(d); } else {
-      stage.classList.add('is-swapping');
-      setTimeout(function(){ render(d); requestAnimationFrame(function(){ stage.classList.remove('is-swapping'); }); }, 300);
-    }
-    if(el.glow) el.glow.style.transform='rotate('+(i*24)+'deg)';
-    if(byUser){ stopTour(); if(history.replaceState){ try{ history.replaceState(null,'','#dept-'+id); }catch(e){} }
-      /* on a phone the picker sits below the stage — bring the screen they just chose into view */
-      if(window.matchMedia('(max-width:1039px)').matches){ stage.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); } }
-    restart();
+  var cur=0, swapT=null, timer=null, tick=null, paused=false, touring=false, DWELL=12000, t0=0;
+  function mark(i){
+    tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected', on?'true':'false'); t.tabIndex=on?0:-1; });
+    stage.setAttribute('aria-labelledby', tabs[i].id);
   }
-  /* the tour: advance while nobody is touching it; a click stops it for good */
-  function restart(){ clearInterval(tick); clearTimeout(timer); if(reduce||userStopped) { el.bar.style.width=userStopped?'0':'0'; return; }
+  function select(i,byUser){
+    if(i===cur){ if(byUser) stopTour(); return; }
+    cur=i; mark(i);
+    if(reduce){ render(D[i]); }
+    else { stage.classList.add('is-swapping'); clearTimeout(swapT);
+      swapT=setTimeout(function(){ render(D[cur]); requestAnimationFrame(function(){ stage.classList.remove('is-swapping'); }); }, 280); }
+    if(byUser){ stopTour(); if(history.replaceState){ try{ history.replaceState(null,'','#dept-'+D[i].id); }catch(e){} } }
+    else if(touring) restart();
+  }
+  /* the tour: advance while nobody is touching it; a tap stops it for good */
+  function restart(){ clearInterval(tick); clearTimeout(timer); if(!touring) return;
     t0=Date.now(); el.bar.style.width='0';
     tick=setInterval(function(){ if(paused){ t0+=250; return; } el.bar.style.width=Math.min(100,(Date.now()-t0)/DWELL*100)+'%'; },250);
-    timer=setTimeout(function next(){ if(paused){ timer=setTimeout(next,600); return; } select(D[(cur+1)%D.length].id,false); },DWELL);
+    timer=setTimeout(function next(){ if(paused){ timer=setTimeout(next,600); return; } select((cur+1)%D.length,false); },DWELL);
   }
-  function stopTour(){ userStopped=true; stage.classList.add('is-paused'); if(el.hint) el.hint.textContent='اضغط على أي قسم'; clearInterval(tick); clearTimeout(timer); el.bar.style.width='0'; }
-  stage.addEventListener('mouseenter',function(){ paused=true; stage.classList.add('is-paused'); });
-  stage.addEventListener('mouseleave',function(){ paused=false; if(!userStopped) stage.classList.remove('is-paused'); });
+  function startTour(){ touring=true; stage.classList.add('is-touring'); el.hint.textContent=T.tour; restart(); }
+  function stopTour(){ touring=false; clearInterval(tick); clearTimeout(timer); el.bar.style.width='0';
+    stage.classList.remove('is-touring'); stage.classList.remove('is-paused'); el.hint.textContent=T.tap; }
+  stage.addEventListener('mouseenter',function(){ paused=true; if(touring) stage.classList.add('is-paused'); });
+  stage.addEventListener('mouseleave',function(){ paused=false; stage.classList.remove('is-paused'); });
   stage.addEventListener('focusin',function(){ paused=true; }); stage.addEventListener('focusout',function(){ paused=false; });
-  /* only tour while it is on screen */
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){ es.forEach(function(e){ paused=!e.isIntersecting||stage.matches(':hover'); }); },{threshold:.35}).observe(stage);
   }
-  /* keyboard: arrows move along the rail */
+  /* the window narrowed under 1040: the stage is no longer beside the rail, so the tour ends */
+  var onWide=function(e){ if(!e.matches&&touring) stopTour(); };
+  if(wide.addEventListener) wide.addEventListener('change',onWide); else if(wide.addListener) wide.addListener(onWide);
+
+  tabs.forEach(function(t,k){ t.addEventListener('click',function(){ select(k,true); }); });
+  /* keyboard: one tab stop for the rail; arrows (mirrored in Arabic), Home and End move along it */
   rail.addEventListener('keydown',function(e){
-    if(e.key!=='ArrowDown'&&e.key!=='ArrowUp'&&e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
-    e.preventDefault(); var n=(e.key==='ArrowDown'||e.key==='ArrowRight')?1:-1; var k=(cur+n+D.length)%D.length;
-    select(D[k].id,true); var b=document.getElementById('ex-tab-'+D[k].id); if(b) b.focus();
+    var k=e.key, n=0, fwd=rtl?'ArrowLeft':'ArrowRight', back=rtl?'ArrowRight':'ArrowLeft', to=-1;
+    if(k==='ArrowDown'||k===fwd) n=1; else if(k==='ArrowUp'||k===back) n=-1;
+    else if(k==='Home') to=0; else if(k==='End') to=D.length-1; else return;
+    e.preventDefault(); if(to<0) to=(cur+n+D.length)%D.length;
+    select(to,true); tabs[to].focus();
   });
-  /* deep link, else start at the till */
-  var m=/#dept-([a-z]+)/.exec(location.hash); var start=(m&&D.some(function(d){return d.id===m[1];}))?m[1]:'pos';
-  select(start,false);
+  /* deep link (#dept-hr): open that department, no tour; else tour where it can */
+  var m=/#dept-([a-z]+)/.exec(location.hash), start=-1;
+  if(m) D.forEach(function(d,k){ if(d.id===m[1]) start=k; });
+  if(start>0){ cur=start; mark(start); render(D[start]); }
+  if(start<0&&wide.matches&&!reduce) startTour(); else stopTour();
   /* a shared link like #dept-hr is not an element id, so the browser lands at the top of the page —
-     take the visitor to what they were sent */
-  if(m){ stopTour(); setTimeout(function(){ document.getElementById('dept-explorer').scrollIntoView({behavior:'auto',block:'start'}); },60); }
+     take the visitor to what they were sent, and bring the chosen tab into its strip */
+  if(start>=0){ setTimeout(function(){ ex.scrollIntoView({behavior:'auto',block:'start'});
+    try{ tabs[start].scrollIntoView({block:'nearest',inline:'center'}); }catch(e){} },60); }
 })();
 </script>
 <script>

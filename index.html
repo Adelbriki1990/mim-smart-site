@@ -381,47 +381,78 @@ html.js .visible{opacity:1;transform:none}
 @media(max-width:599px){.till-points{grid-template-columns:minmax(0,1fr)}}
 
 /* ── the department explorer ──────────────────────────────────────────────────────────────── */
+/* ≥1040: the rail on the left, the stage on the right — a compact header (eyebrow · h4 · body | chips ·
+   writes) above the department's own screen at the stage's full width. The screen sits in a box of a
+   FIXED height per width (3:2, never under 632px from 940 up, so a 300×620 phone fits whole), so the
+   stage never jumps between departments. ≤1039: the rail comes FIRST as scroll-snapping strips (one
+   per shelf; ≤767 one continuous strip with the shelf names in it), the stage right under it. */
 .explorer{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}
 @media(min-width:1040px){.ex-stage{position:sticky;top:84px}}
-@media(max-width:1039px){.explorer{grid-template-columns:minmax(0,1fr)}
-  .ex-rail{order:2}.ex-stage{order:1}}
-.ex-rail{display:flex;flex-direction:column;gap:14px}
-.ex-group h5{padding:2px 12px 4px}
+.ex-rail{display:flex;flex-direction:column;gap:14px;min-width:0}
+.ex-group{min-width:0}
+.ex-glabel{font-size:13px;font-weight:600;color:var(--sub);padding:2px 14px 4px;line-height:1.35}
 .ex-tabs{display:flex;flex-direction:column;gap:2px}
-@media(max-width:1039px){.ex-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:4px}}
 .ex-tab{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:0 14px;
   border:0;border-radius:999px;background:transparent;font:inherit;color:var(--ink);
   text-align:start;cursor:pointer}
 .ex-tab:hover{background:var(--card)}
+.ex-tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .ex-tab span{min-width:0}
 .ex-tab b{display:block;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ex-tab small{display:block;font-size:12px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ex-tab[aria-selected="true"]{background:var(--accent);color:#fff}
 .ex-tab[aria-selected="true"] small{color:rgba(255,255,255,.78)}
-.ex-stage{background:var(--card);border-radius:var(--rh);padding:24px;display:grid;gap:16px 24px;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  grid-template-areas:"hint hint" "copy dev" "prog prog"}
-@media(max-width:1039px){.ex-stage{grid-template-columns:minmax(0,1fr);
-  grid-template-areas:"hint" "dev" "copy" "prog"}}
-.ex-glow{display:none}
-.ex-hint{grid-area:hint;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--sub)}
-.ex-copy{grid-area:copy;display:flex;flex-direction:column;gap:12px;min-width:0;transition:opacity .28s ease}
-.ex-copy #ex-eyebrow{font-size:13px;font-weight:600;color:var(--sub)}
-.ex-copy h3{font-size:22px;font-weight:700;letter-spacing:-.4px;line-height:1.2}
-.ex-copy p{font-size:15px;color:var(--sub);line-height:1.5}
-.ex-chips{display:flex;flex-wrap:wrap;gap:8px}
-.ex-chips span{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;
-  background:var(--inner);font-size:13px;font-weight:600}
-.ex-writes{font-size:13px;color:var(--sub)}
+.ex-stage{background:var(--card);border-radius:var(--rh);padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.ex-stage:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ex-hint{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--sub)}
+.ex-copy{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:12px 28px;align-items:start;transition:opacity .28s ease}
+.ex-lead,.ex-meta{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ex-meta{gap:10px}
+.ex-eyebrow{font-size:13px;font-weight:600;color:var(--sub)}
+.ex-head{font-size:20px;font-weight:700;letter-spacing:-.4px;line-height:1.25}
+.ex-body{font-size:14px;color:var(--sub);line-height:1.5}
+.ex-chips{display:flex;flex-wrap:wrap;gap:6px}
+.ex-chips span{display:inline-flex;align-items:center;min-height:30px;padding:4px 12px;border-radius:999px;
+  background:var(--inner);font-size:13px;font-weight:600;line-height:1.25}
+.ex-writes{font-size:13px;color:var(--sub);line-height:1.45}
 .ex-writes b{color:var(--accent);font-weight:600}
-.ex-device{grid-area:dev;min-width:0;transition:opacity .28s ease}
-.ex-frame{background:var(--inner);border-radius:var(--ri);padding:10px}
-.ex-frame[data-frame="phone"]{max-width:300px;margin:0 auto}
-.ex-shot img{width:100%;border-radius:8px}
+.ex-device{min-width:0;transition:opacity .28s ease;container-type:inline-size}
+/* the box's height comes from the stage's WIDTH (cqw), never from min-height: a min-height on an
+   aspect-ratio box is carried back into its width and pushes the screen out of the stage */
+.ex-box{aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;overflow:hidden;min-width:0;width:100%}
+@supports (height:1cqw){.ex-box{aspect-ratio:auto;height:66.667cqw}}
+@media(min-width:940px){@supports (height:1cqw){.ex-box{height:max(632px,66.667cqw)}}}
+@media(max-width:939px){.ex-box[data-kind=phone]{aspect-ratio:auto;height:632px}}
+.ex-box>.ui-fit{width:100%}
 .is-swapping .ex-copy,.is-swapping .ex-device{opacity:0}
-.ex-progress{grid-area:prog;height:4px;border-radius:4px;background:var(--track);overflow:hidden}
+.ex-progress{height:4px;border-radius:4px;background:var(--track);overflow:hidden;visibility:hidden}
+.is-touring .ex-progress{visibility:visible}
 .ex-progress i{display:block;height:100%;width:0;border-radius:4px;background:var(--accent);transition:width .25s linear}
 .is-paused .ex-progress{opacity:.35}
+.ex-exit{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+@media(max-width:1039px){
+  .explorer{grid-template-columns:minmax(0,1fr);gap:12px}
+  .ex-rail{gap:10px}
+  .ex-glabel{padding:0 2px 6px}
+  .ex-tabs{flex-direction:row;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+    scrollbar-width:none;margin-inline:-24px;padding-inline:24px;scroll-padding-inline:24px}
+  .ex-tabs::-webkit-scrollbar{display:none}
+  .ex-tab{flex:0 0 auto;width:auto;min-height:50px;padding:0 16px;background:var(--card);scroll-snap-align:start}
+  .ex-tab b,.ex-tab small{overflow:visible;text-overflow:clip}
+  .ex-progress{display:none}
+}
+@media(max-width:819px){
+  .ex-tabs{margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}
+  .ex-stage{padding:16px}
+}
+@media(max-width:759px){.ex-copy{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:767px){
+  .ex-rail{flex-direction:row;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+    scrollbar-width:none;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}
+  .ex-rail::-webkit-scrollbar{display:none}
+  .ex-group{flex:0 0 auto}
+  .ex-tabs{overflow:visible;margin-inline:0;padding-inline:0;scroll-snap-type:none}
+}
 
 /* ── problem / solution ───────────────────────────────────────────────────────────────────── */
 .split-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
@@ -1044,24 +1075,1146 @@ var WA_NUMBER = '';
     </div>
 
     <div class="explorer" id="dept-explorer">
-      <div class="ex-rail" role="navigation" aria-label="Departments" id="ex-rail"></div>
-      <div class="ex-stage" id="ex-stage" aria-live="polite">
-        <div class="ex-glow" id="ex-glow"></div>
-        <div class="ex-hint" id="ex-hint"><span class="dot"></span><span id="ex-hint-text">Touring · tap any department to stop</span></div>
+      <div class="ex-rail" id="ex-rail">
+        <div class="ex-group">
+          <h3 class="ex-glabel" id="ex-g1">Front of house</h3>
+          <div class="ex-tabs" role="tablist" aria-labelledby="ex-g1">
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-pos" aria-controls="ex-stage" aria-selected="true" tabindex="0" title="Restaurant POS — Register · tables · kitchen"><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span><b>Restaurant POS</b><small>Register · tables · kitchen</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-me" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Staff Self-Service — Clock-in · leave · payslip"><svg class="ic" aria-hidden="true"><use href="#i-mobile"/></svg><span><b>Staff Self-Service</b><small>Clock-in · leave · payslip</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-cs" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Customer Service — Complaints · calls · reviews"><svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg><span><b>Customer Service</b><small>Complaints · calls · reviews</small></span></button>
+          </div>
+        </div>
+        <div class="ex-group">
+          <h3 class="ex-glabel" id="ex-g2">Kitchen &amp; supply</h3>
+          <div class="ex-tabs" role="tablist" aria-labelledby="ex-g2">
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-ck" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Central Kitchen — Produce and supply the branches"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg><span><b>Central Kitchen</b><small>Produce and supply the branches</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-pastry" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Central Pastry — Bake and supply the branches"><svg class="ic" aria-hidden="true"><use href="#i-cake"/></svg><span><b>Central Pastry</b><small>Bake and supply the branches</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-store" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Central Store — Receiving · requests · stock"><svg class="ic" aria-hidden="true"><use href="#i-warehouse"/></svg><span><b>Central Store</b><small>Receiving · requests · stock</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-ordering" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Ordering — Order · wastage · counts"><svg class="ic" aria-hidden="true"><use href="#i-clipboard"/></svg><span><b>Ordering</b><small>Order · wastage · counts</small></span></button>
+          </div>
+        </div>
+        <div class="ex-group">
+          <h3 class="ex-glabel" id="ex-g3">The office</h3>
+          <div class="ex-tabs" role="tablist" aria-labelledby="ex-g3">
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-finance" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Finance — Approvals · registers · the month"><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span><b>Finance</b><small>Approvals · registers · the month</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-marketing" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Marketing — Posts judged by the till"><svg class="ic" aria-hidden="true"><use href="#i-megaphone"/></svg><span><b>Marketing</b><small>Posts judged by the till</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-it" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="IT Department — Tills · devices · access"><svg class="ic" aria-hidden="true"><use href="#i-laptop"/></svg><span><b>IT Department</b><small>Tills · devices · access</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-maint" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Maintenance — Report · fix · cost to finance"><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg><span><b>Maintenance</b><small>Report · fix · cost to finance</small></span></button>
+          </div>
+        </div>
+        <div class="ex-group">
+          <h3 class="ex-glabel" id="ex-g4">People &amp; place</h3>
+          <div class="ex-tabs" role="tablist" aria-labelledby="ex-g4">
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-hr" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Human Resources — People · documents · payroll"><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span><b>Human Resources</b><small>People · documents · payroll</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-accom" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Accommodation — Villas · beds · occupancy"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span><b>Accommodation</b><small>Villas · beds · occupancy</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-quality" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Quality &amp; Training — Food safety · academy · checks"><svg class="ic" aria-hidden="true"><use href="#i-cap"/></svg><span><b>Quality &amp; Training</b><small>Food safety · academy · checks</small></span></button>
+            <button type="button" class="ex-tab" role="tab" id="ex-tab-hq" aria-controls="ex-stage" aria-selected="false" tabindex="-1" title="Head Office — Every branch, one screen"><svg class="ic" aria-hidden="true"><use href="#i-crown"/></svg><span><b>Head Office</b><small>Every branch, one screen</small></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="ex-stage" id="ex-stage" role="tabpanel" aria-labelledby="ex-tab-pos" tabindex="0">
+        <div class="ex-hint"><span class="dot"></span><span id="ex-hint-text">Tap any department</span></div>
         <div class="ex-copy">
-          <div id="ex-eyebrow"></div>
-          <h3 id="ex-head"></h3>
-          <p id="ex-body"></p>
-          <div class="ex-chips" id="ex-chips"></div>
-          <div class="ex-writes" id="ex-writes"></div>
+          <div class="ex-lead">
+            <div class="ex-eyebrow" id="ex-eyebrow">Front of house · the till</div>
+            <h4 class="ex-head" id="ex-head">A check at the table — and every tap is already a ledger row</h4>
+            <p class="ex-body" id="ex-body">Category, item, done: built for a thumb on a busy night. The allergy is asked at the table and travels to the kitchen, a dish that is 86’d is sold out on every till, and it keeps selling with the line down.</p>
+          </div>
+          <div class="ex-meta">
+            <div class="ex-chips" id="ex-chips"><span>Allergy asked, not hoped</span><span>86’d is 86’d everywhere</span><span>Sells offline</span></div>
+            <div class="ex-writes" id="ex-writes"><span>Writes into the shared record: </span><b>stock ledger · P&amp;L · the day’s Z</b></div>
+          </div>
         </div>
         <div class="ex-device">
-          <div class="ex-frame" id="ex-frame" data-frame="tablet">
-            <div class="ex-shot"><img id="ex-img" src="/images/till.svg?v=20260920b" alt="" width="1200" height="800" /></div>
+          <div class="ex-box" id="ex-box" data-kind="terminal"><div class="ui-fit" id="ex-fit"><div class="ui ui-shot" data-kind="terminal" data-w="1120" role="img" aria-label="The MiM till at JUNO West Walk on 8 September at 20:34: table T2 with 2 covers open on bill #1200029, nothing sent yet, Raza K. signed in, the category strip and item grid with the Crispy Calamari marked 86 · Sold out, the check with Kale Salad, J Fire Bird and the Parmesan Fries on us, the allergy chips asked at the table (tree nuts, sesame), the total QR 132.00 and the Place order button" style="width:1120px;height:700px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-pill accent" style="height:26px;font-size:11px">JUNO</span>
+    <span style="line-height:1.15"><b style="display:block;font-size:11px">West Walk</b><small style="display:block;font-size:9px;font-weight:600;color:var(--sub)">Till 1</small></span>
+    <div class="ui-who"><span class="ui-avatar">RK</span><span><b>Raza K.</b><small>Server · JUNO West Walk</small></span></div>
+  </div>
+  <div class="ui-body" style="padding:12px;gap:12px">
+    <div class="ui-card" style="flex:0 0 60%;display:flex;flex-direction:column;gap:8px;min-height:0">
+      <div class="row">
+        <span class="ui-cell grow muted" style="height:30px;display:flex;align-items:center;padding-block:0">🔍 Search items · ابحث في القائمة</span>
+        <span class="ui-btn">☰ availability</span>
+      </div>
+      <div class="ui-tabs"><span class="on">All Items</span><span>Starters</span><span>Mains</span><span>Sides</span><span>Desserts</span><span>Drinks</span></div>
+      <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);gap:8px;flex:1;min-height:0">
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Kale Salad</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 48.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Burrata &amp; Tomato</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 52.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px;background:var(--bad-bg)"><b class="muted">Crispy Calamari</b><span style="font-size:11px;font-weight:700;color:var(--bad)">86 · Sold out</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Chicken Wings</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 44.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Beef Tataki</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 58.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>J Fire Bird</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 84.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Ribeye 300 g</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 128.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Lamb Chops</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 145.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Grilled Salmon</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 96.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Smash Burger</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 62.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Mushroom Risotto</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 68.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Grilled Hammour</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 98.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Parmesan Fries</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 24.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Grilled Corn</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 18.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Garden Salad</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 22.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Truffle Mash</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 26.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Chocolate Fondant</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 38.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Cheesecake</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 36.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Fresh Lemonade</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 22.00</span></div>
+        <div class="ui-cell" style="display:flex;flex-direction:column;justify-content:flex-start;gap:2px"><b>Sparkling Water</b><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 14.00</span></div>
+      </div>
+    </div>
+    <div class="ui-card" style="flex:1;display:flex;flex-direction:column;gap:8px;min-height:0">
+      <div class="row" style="justify-content:space-between;align-items:flex-start">
+        <span><span class="cap">OPEN TABLE</span><br><b style="font-size:16px;line-height:1.2">Table T2 · 2 👥</b></span>
+        <span class="ui-btn">Close table</span>
+      </div>
+      <div class="row" style="gap:4px;flex-wrap:wrap"><span class="ui-pill bad">🚨 Tree nuts</span><span class="ui-pill bad">🚨 Sesame</span></div>
+      <div class="muted" style="font-size:10px">0 item(s) already sent · running QR 0.00</div>
+      <div class="ui-cell" style="flex:1;min-height:0;padding-block:2px 6px">
+        <div class="ui-list">
+          <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
+            <div class="row" style="justify-content:space-between"><b>Kale Salad</b><span class="num" style="font-weight:700">QR 48.00</span></div>
+            <div class="row" style="gap:4px"><span class="ui-pill sub">HOLD</span><span class="ui-pill sub">S1</span><span class="ui-pill sub">%</span><span class="row" style="margin-inline-start:auto;gap:6px"><span class="ui-pill sub">−</span><b class="num">1</b><span class="ui-pill sub">+</span></span></div>
+            <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">Note (no onions...)</div>
           </div>
+          <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
+            <div class="row" style="justify-content:space-between"><b>J Fire Bird</b><span class="num" style="font-weight:700">QR 84.00</span></div>
+            <div class="row" style="gap:4px"><span class="ui-pill sub">HOLD</span><span class="ui-pill sub">S2</span><span class="ui-pill sub">%</span><span class="row" style="margin-inline-start:auto;gap:6px"><span class="ui-pill sub">−</span><b class="num">1</b><span class="ui-pill sub">+</span></span></div>
+            <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">Note (no onions...)</div>
+          </div>
+          <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
+            <div class="row" style="justify-content:space-between"><span><b>Parmesan Fries</b> <span class="ui-pill good" style="height:16px;padding:0 6px">ON US</span></span><span class="num" style="font-weight:700"><s class="muted" style="font-weight:600">QR 24.00</s> QR 0.00</span></div>
+            <div class="row" style="gap:4px"><span class="ui-pill sub">HOLD</span><span class="ui-pill sub">S1</span><span class="ui-pill sub">%</span><span class="row" style="margin-inline-start:auto;gap:6px"><span class="ui-pill sub">−</span><b class="num">1</b><span class="ui-pill sub">+</span></span></div>
+            <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">Note (no onions...)</div>
+          </div>
+        </div>
+      </div>
+      <div class="row muted" style="justify-content:space-between"><span>Subtotal</span><span class="num">QR 132.00</span></div>
+      <div class="row" style="justify-content:space-between"><span style="font-size:13px;font-weight:700">Total</span><span class="num" style="font-size:22px;font-weight:700;letter-spacing:-.4px">QR 132.00</span></div>
+      <span class="ui-btn accent wide">🍽️ Place order · QR 132.00</span>
+    </div>
+  </div>
+</div></div></div>
         </div>
         <div class="ex-progress" aria-hidden="true"><i id="ex-bar"></i></div>
       </div>
+      <template data-dept="me"><div class="ui ui-shot" data-kind="phone" data-w="300" role="img" aria-label="Raza K.’s own staff phone at JUNO West Walk on 8 September, on its Today tab: clocked in at 16:58 and on shift for 4h 16m, the clock-out button, and the report-sick card; behind the other tabs sit 176 hours this month, 18 leave days left, August net pay QR 3,450 and one request pending with Noor" style="width:300px;height:620px;overflow:hidden">
+  <div class="ui-top row" style="gap:10px;padding:16px 16px 14px">
+    <span class="ui-avatar" style="width:38px;height:38px;font-size:13px;background:rgba(255,255,255,.18);color:#fff">RK</span>
+    <span class="grow" style="line-height:1.15"><span style="display:block;font-size:15px;font-weight:700">Raza K.</span><span class="muted" style="display:block;font-size:10px;font-weight:700;margin-top:2px">Server</span><span class="muted" style="display:block;font-size:10px;margin-top:1px">JUNO · West Walk</span></span>
+  </div>
+  <div style="flex:1;min-height:0;padding:10px;display:flex;flex-direction:column;gap:8px;overflow:hidden">
+    <div class="ui-card" style="padding:12px 14px;background:var(--good-bg)">
+      <div class="row" style="gap:10px">
+        <span aria-hidden="true" style="font-size:22px;line-height:1">🟢</span>
+        <span class="grow"><span class="ui-title lg" style="color:var(--good)">You are clocked in</span><span style="display:block;font-size:11px;font-weight:600;margin-top:2px;color:var(--good);opacity:.72">4h 16m so far</span></span>
+      </div>
+      <div style="height:1px;background:var(--good);opacity:.35;margin:10px 0"></div>
+      <div class="row" style="flex-wrap:wrap;gap:6px">
+        <span class="ui-pill num" style="background:var(--inner);color:var(--good)">↓ in 16:58</span>
+      </div>
+    </div>
+    <div class="ui-card" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+      <span class="cap">🕐 CLOCK IN / OUT</span>
+      <span class="muted" style="font-size:10px;line-height:1.4">Type the number showing on the till, then tap the button. The app knows whether you owe an in or an out.</span>
+      <div class="ui-cell num" style="text-align:center;font-size:20px;font-weight:700;letter-spacing:.24em;color:var(--dash);padding:6px 10px">······</div>
+      <span class="ui-btn accent wide" style="height:36px;font-size:12px;font-weight:700">Clock OUT</span>
+    </div>
+    <div class="ui-card" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+      <span class="cap">🤒 REPORT SICK</span>
+      <span class="muted" style="font-size:10px;line-height:1.4">Tell us at least 3 hours before your shift so cover can be found. If you are already unwell and it is later than that, still report it — it is always recorded, and being told late is far better than not being told.</span>
+      <span class="ui-btn wide" style="height:36px;font-size:12px;font-weight:700;background:var(--inner);border:2px solid var(--amber);color:var(--amber)">I am sick today</span>
+    </div>
+  </div>
+  <div class="row" style="flex-shrink:0;height:46px;border-top:1px solid var(--line);background:var(--inner);padding:0 6px;gap:0">
+    <span style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:700;color:var(--accent)"><svg class="ic" aria-hidden="true" style="width:16px;height:16px"><use href="#i-home"/></svg>Today</span>
+    <span style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:600;color:var(--dash)"><svg class="ic" aria-hidden="true" style="width:16px;height:16px"><use href="#i-calendar"/></svg>Shifts</span>
+    <span style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:600;color:var(--dash)"><svg class="ic" aria-hidden="true" style="width:16px;height:16px"><use href="#i-mail"/></svg>Requests</span>
+    <span style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:600;color:var(--dash)"><svg class="ic" aria-hidden="true" style="width:16px;height:16px"><use href="#i-idcard"/></svg>Me</span>
+  </div>
+</div></template>
+      <template data-dept="cs"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Customer Service on Tuesday 8 September: the complaints and calls log with the day's two cases resolved, one of them opened automatically from a 3-star Google review at Lusail, beside the Google report with every branch's rating and the two new reviews" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🎧 Customer Service</span>
+    <span class="ui-pill accent">Mim restaurants · 6 branches</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026</span>
+    <div class="ui-who"><span class="ui-avatar">PN</span><span><b>Priya N.</b><small>Customer Service · Head Office</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">📞 Customer Service</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span><span class="ui-badge">1</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">Dashboard</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg><span class="grow">Complaints &amp; calls</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><span class="grow">Google reviews</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg><span class="grow">Customers</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top row" style="justify-content:space-between">
+        <span><span class="ui-title">📞 Complaints &amp; calls — every guest issue, on the record</span><br><span class="muted" style="font-size:10px">Log the complaint · record every call &amp; explanation · resolve it or escalate — <b style="color:#fff">everything reports to the Owner</b>.</span></span>
+      </div>
+      <div class="ui-grid2" style="flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="justify-content:space-between;margin-bottom:6px"><span class="ui-title">➕ New case</span><span class="cap">branch and what happened — required</span></div>
+            <div class="row" style="gap:6px;margin-bottom:6px">
+              <span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--sub)">— branch —<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+              <span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--ink)">Call<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+              <span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--ink)">Food quality<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></span>
+            </div>
+            <div class="row" style="gap:6px;margin-bottom:6px">
+              <span class="ui-pill sub grow" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);justify-content:flex-start">Customer name</span>
+              <span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);justify-content:flex-start;width:84px;flex-shrink:0">Phone</span>
+              <span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);width:112px;justify-content:flex-start">Order # (optional)</span>
+            </div>
+            <div class="ui-pill sub" style="display:flex;height:26px;font-size:11px;font-weight:600;color:var(--sub);justify-content:flex-start;margin-bottom:6px">What happened — the guest's words, the situation…</div>
+            <div class="row"><span class="ui-btn accent">Open case → Owner informed</span></div>
+          </div>
+          <div class="ui-tabs"><span>🔴 Open (0)</span><span class="on">✅ Resolved (2)</span><span>All (2)</span></div>
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="gap:6px"><span class="ui-pill good">RESOLVED</span><b>Low review</b><span class="muted" style="font-size:10px;margin-inline-start:auto;white-space:nowrap">08/09 19:30 · by Priya N.</span></div>
+            <div class="muted" style="font-size:10px;margin-top:3px">JUNO · Lusail Boulevard · Google review</div>
+            <div style="margin-top:5px">👤 guest — “★★★ — Waited 25 minutes for mains.”</div>
+            <div class="muted" style="font-size:10px;margin-top:4px;padding-inline-start:8px;border-inline-start:2px solid var(--line)">📞 08/09 19:30 · <b>Priya N.</b>: routed to Lusail's manager</div>
+            <div style="margin-top:6px;background:var(--pale);color:var(--accent);border-radius:10px;padding:6px 8px;font-size:11px">✅ <b>Resolution:</b> answered on Google at 19:52 by Lusail's manager</div>
+          </div>
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="gap:6px"><span class="ui-pill good">RESOLVED</span><b>Food quality</b><span class="muted" style="font-size:10px;margin-inline-start:auto;white-space:nowrap">08/09 16:05 · by Priya N.</span></div>
+            <div class="muted" style="font-size:10px;margin-top:3px">Bake &amp; Co · Villaggio · In person</div>
+            <div style="margin-top:5px">👤 guest — “The coffee came cold.”</div>
+            <div style="margin-top:6px;background:var(--pale);color:var(--accent);border-radius:10px;padding:6px 8px;font-size:11px">✅ <b>Resolution:</b> replaced, comp QR 18.00 — Owner informed</div>
+          </div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="row" style="justify-content:space-between"><span class="ui-title">⭐ Google reviews</span><span class="cap">Official Google Places API · read every 6 h</span></div>
+          <div class="ui-cell" style="padding:10px"><div class="ui-grid3">
+            <div class="ui-kpi"><span class="cap">Group rating</span><span class="num">⭐ 4.52</span><span class="muted" style="font-size:10px">across 6 branches</span></div>
+            <div class="ui-kpi"><span class="cap">🥇 Best</span><span class="num sm">Al Sadd ⭐ 4.7</span><span class="muted" style="font-size:10px">Saffron House</span></div>
+            <div class="ui-kpi"><span class="cap">⚠️ Needs attention</span><span class="num sm">Msheireb ⭐ 4.3</span><span class="muted" style="font-size:10px">Bake &amp; Co</span></div>
+          </div></div>
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="justify-content:space-between;margin-bottom:3px"><span class="cap">📊 Rating by restaurant</span><span class="cap">out of 5 · under 4★ needs attention</span></div>
+            <div class="ui-list" style="font-size:11px">
+              <div class="ui-li"><span style="width:150px;flex-shrink:0">Saffron House · Al Sadd</span><div class="ui-bar grow" style="--v:94%"></div><span class="num">4.7</span></div>
+              <div class="ui-li"><span style="width:150px;flex-shrink:0">JUNO · West Walk</span><div class="ui-bar grow" style="--v:92%"></div><span class="num">4.6</span></div>
+              <div class="ui-li"><span style="width:150px;flex-shrink:0">Bake &amp; Co · Villaggio</span><div class="ui-bar grow" style="--v:92%"></div><span class="num">4.6</span></div>
+              <div class="ui-li"><span style="width:150px;flex-shrink:0">Saffron House · The Pearl</span><div class="ui-bar grow" style="--v:90%"></div><span class="num">4.5</span></div>
+              <div class="ui-li"><span style="width:150px;flex-shrink:0">JUNO · Lusail Boulevard</span><div class="ui-bar grow" style="--v:88%"></div><span class="num">4.4</span></div>
+              <div class="ui-li"><span style="width:150px;flex-shrink:0">Bake &amp; Co · Msheireb</span><div class="ui-bar grow" style="--v:86%"></div><span class="num">4.3</span></div>
+            </div>
+          </div>
+          <div class="ui-cell" style="padding:10px;flex:1;min-height:0">
+            <div class="cap">JUNO · West Walk — newest voices</div>
+            <div class="row" style="gap:6px;font-size:11px;margin-top:6px"><b>⭐⭐⭐⭐⭐</b><span style="font-weight:600">guest</span><span class="muted" style="margin-inline-start:auto">an hour ago</span></div>
+            <div class="muted" style="line-height:1.6;margin-top:2px">The fire bird is worth the drive.</div>
+            <div class="cap" style="margin-top:9px;padding-top:9px;border-top:1px solid var(--line)">JUNO · Lusail Boulevard — newest voices</div>
+            <div class="row" style="gap:6px;font-size:11px;margin-top:6px"><b>⭐⭐⭐</b><span style="font-weight:600">guest</span><span class="muted" style="margin-inline-start:auto">2 hours ago</span></div>
+            <div class="muted" style="line-height:1.6;margin-top:2px">Waited 25 minutes for mains.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="ck"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Central Kitchen on Tuesday 8 September, the Branch orders tab: Saffron House Al Sadd's order of hummus base and machboos spice mix waiting for dispatch, the list of what was recently supplied to West Walk, Lusail, The Pearl and Al Sadd, and the value supplied this month" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🍳 Central Kitchen</span>
+    <span class="ui-pill accent">Industrial Area · supplies 6 branches</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026 · 07:30</span>
+    <div class="ui-who"><span class="ui-avatar">TM</span><span><b>Tariq M.</b><small>Central Kitchen manager · Industrial Area</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">Central unit</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span><span class="ui-badge">1</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">Dashboard</span></span>
+      <span class="cap">Production</span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-clipboard"/></svg><span class="grow">Branch orders</span><span class="ui-badge">1</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span class="grow">My items &amp; recipes</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calculator"/></svg><span class="grow">My numbers</span></span>
+      <span class="cap">Stock</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-swap"/></svg><span class="grow">Transfers</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg><span class="grow">My stock</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-store"/></svg><span class="grow">Order from Central Store</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-ban"/></svg><span class="grow">Wastage</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboardcheck"/></svg><span class="grow">Inventory</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top row" style="justify-content:space-between">
+        <span class="grow"><span class="ui-title">🍳 Central Kitchen — branch orders</span><br><span class="muted" style="font-size:10px">Only the items YOU supply arrive here. Produce them, then dispatch what you actually made — the branch counts it in, and the value is charged to that branch.</span></span>
+        <span class="ui-kpi" style="text-align:end;flex-shrink:0"><span class="cap">SUPPLIED THIS MONTH</span><span class="num">QR 19,640</span></span>
+      </div>
+      <div class="ui-card" style="display:flex;flex-direction:column;gap:8px">
+        <div class="row" style="gap:6px"><span class="ui-pill sub">🏪 BRANCH</span><b class="grow" style="font-size:12px">Saffron House · Al Sadd</b><span class="ui-pill accent">📅 need by 9 Sept</span><span class="muted" style="font-size:10px">by Fatima S. · 08 Sep, 06:05</span></div>
+        <span class="muted" style="font-size:10px;margin-top:-4px">📝 Thursday is machboos night — the spice mix first, please</span>
+        <div class="ui-cell">
+          <div class="ui-list">
+            <div class="ui-li" style="padding-top:2px"><span class="cap grow">Item</span><span class="cap" style="width:56px;text-align:end">Asked</span><span class="cap" style="width:56px;text-align:end">Sending</span><span class="cap" style="width:90px;text-align:end">Value</span></div>
+            <div class="ui-li"><span class="grow"><b>Hummus base</b> <span class="muted">kg</span></span><span class="muted" style="width:56px;text-align:end">12</span><span class="num" style="width:56px;text-align:end">12</span><span class="muted" style="width:90px;text-align:end">QR 14.00/kg</span></div>
+            <div class="ui-li"><span class="grow"><b>Machboos spice mix</b> <span class="muted">kg</span></span><span class="muted" style="width:56px;text-align:end">4</span><span class="num" style="width:56px;text-align:end">4</span><span class="muted" style="width:90px;text-align:end">QR 62.00/kg</span></div>
+          </div>
+        </div>
+        <div class="row" style="gap:6px"><span class="ui-btn accent">🚚 Dispatch what I made</span><span class="ui-btn"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg>Cannot supply</span></div>
+      </div>
+      <div class="ui-card">
+        <div class="ui-title" style="margin-bottom:4px">📜 Recently supplied</div>
+        <div class="ui-list">
+          <div class="ui-li"><span class="grow">JUNO · West Walk — 3 items</span><span class="num">QR 1,236.00</span><span class="muted" style="font-size:10px;width:52px;text-align:end">8 Sept</span></div>
+          <div class="ui-li"><span class="grow">JUNO · Lusail — 2 items</span><span class="num">QR 742.00</span><span class="muted" style="font-size:10px;width:52px;text-align:end">8 Sept</span></div>
+          <div class="ui-li"><span class="grow">Saffron House · The Pearl — 4 items</span><span class="num">QR 918.00</span><span class="muted" style="font-size:10px;width:52px;text-align:end">7 Sept</span></div>
+          <div class="ui-li"><span class="grow">JUNO · West Walk — 3 items</span><span class="num">QR 1,180.00</span><span class="muted" style="font-size:10px;width:52px;text-align:end">7 Sept</span></div>
+          <div class="ui-li"><span class="grow">Saffron House · Al Sadd — 3 items</span><span class="num">QR 640.00</span><span class="muted" style="font-size:10px;width:52px;text-align:end">7 Sept</span></div>
+          <div class="ui-li"><span class="grow">JUNO · Lusail — 2 items</span><span class="num">QR 698.00</span><span class="muted" style="font-size:10px;width:52px;text-align:end">6 Sept</span></div>
+          <div class="ui-li"><span class="grow">Saffron House · The Pearl — 3 items</span><span class="num">QR 804.00</span><span class="muted" style="font-size:10px;width:52px;text-align:end">6 Sept</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="pastry"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Central Pastry, branch orders on Tuesday 8 September: two Bake &amp; Co orders waiting, Msheireb and Villaggio, 14 lines in all with croissants 240 and pistachio cake 6, two lines sending short, QR 25,641.00 supplied this month, and yesterday's dispatches below; Ahmed R. signed in" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🧁 Central Pastry</span>
+    <span class="ui-pill accent">Mim restaurants · Industrial Area</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026</span>
+    <div class="ui-who"><span class="ui-avatar">AR</span><span><b>Ahmed R.</b><small>Pastry chef · Central Pastry</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">Central unit</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">Dashboard</span></span>
+      <span class="cap">Production</span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-clipboard"/></svg><span class="grow">Branch orders</span><span class="ui-badge">2</span></span>
+      <span style="white-space:normal;height:auto;min-height:28px;padding-block:3px;line-height:1.15"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span class="grow">My items &amp; recipes</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calculator"/></svg><span class="grow">My numbers</span></span>
+      <span class="cap">Stock</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-swap"/></svg><span class="grow">Transfers</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg><span class="grow">My stock</span></span>
+      <span style="white-space:normal;height:auto;min-height:28px;padding-block:3px;line-height:1.15"><svg class="ic" aria-hidden="true"><use href="#i-store"/></svg><span class="grow">Order from Central Store</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-ban"/></svg><span class="grow">Wastage</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboardcheck"/></svg><span class="grow">Inventory</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top" style="display:flex;align-items:center;gap:14px">
+        <div style="flex:1;min-width:0">
+          <div class="ui-title">🧁 Central Pastry — branch orders</div>
+          <div class="muted" style="font-size:10px;margin-top:3px;text-wrap:balance">Only the items YOU supply arrive here. Produce them, then dispatch what you actually made — the branch counts it in, and the value is charged to that branch.</div>
+        </div>
+        <div class="ui-kpi" style="text-align:end;flex-shrink:0"><span class="cap">SUPPLIED THIS MONTH</span><span class="num">QR 25,641.00</span></div>
+      </div>
+      <div class="ui-grid2" style="align-items:start">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:6px">
+          <div class="row" style="gap:6px;flex-wrap:wrap">
+            <span class="ui-pill sub">🏪 BRANCH</span><b>Bake &amp; Co · Msheireb</b><span class="ui-pill bad">📅 need by 2026-09-08</span><span class="muted" style="font-size:10px">07 Sept, 22:10</span>
+          </div>
+          <table style="width:100%;border-collapse:collapse">
+            <thead><tr><th class="cap" style="text-align:start;padding:2px 0 4px;font-weight:600">Item</th><th class="cap" style="text-align:end;padding:2px 0 4px;font-weight:600">Asked</th><th class="cap" style="text-align:end;padding:2px 0 4px;font-weight:600">Sending</th><th class="cap" style="text-align:end;padding:2px 0 4px;font-weight:600">Value</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Croissants</b> <span class="muted" style="font-size:10px">pc</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">240</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">240</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 2.50/pc</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Pistachio cake</b> <span class="muted" style="font-size:10px">cake · 12 slices</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">6</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">5</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 96.00/cake</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Pain au chocolat</b> <span class="muted" style="font-size:10px">pc</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">120</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">120</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 3.00/pc</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Cheesecake</b> <span class="muted" style="font-size:10px">cake</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">4</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">4</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 84.00/cake</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Muffins</b> <span class="muted" style="font-size:10px">pc</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">60</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">60</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 2.50/pc</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Cookies</b> <span class="muted" style="font-size:10px">pc</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">90</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">90</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 1.50/pc</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Cinnamon rolls</b> <span class="muted" style="font-size:10px">pc</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">48</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">48</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 3.00/pc</td></tr>
+            </tbody>
+          </table>
+          <div class="row" style="gap:6px;margin-top:2px"><span class="ui-btn good">🚚 Dispatch what I made</span><span class="ui-btn" style="color:var(--bad)">✕ Cannot supply</span></div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:6px">
+          <div class="row" style="gap:6px;flex-wrap:wrap">
+            <span class="ui-pill sub">🏪 BRANCH</span><b>Bake &amp; Co · Villaggio</b><span class="ui-pill bad">📅 need by 2026-09-08</span><span class="muted" style="font-size:10px">07 Sept, 22:35</span>
+          </div>
+          <table style="width:100%;border-collapse:collapse">
+            <thead><tr><th class="cap" style="text-align:start;padding:2px 0 4px;font-weight:600">Item</th><th class="cap" style="text-align:end;padding:2px 0 4px;font-weight:600">Asked</th><th class="cap" style="text-align:end;padding:2px 0 4px;font-weight:600">Sending</th><th class="cap" style="text-align:end;padding:2px 0 4px;font-weight:600">Value</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Almond croissants</b> <span class="muted" style="font-size:10px">pc</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">96</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">72</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 3.50/pc</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Pain au chocolat</b> <span class="muted" style="font-size:10px">pc</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">72</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">72</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 3.00/pc</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Cheesecake</b> <span class="muted" style="font-size:10px">cake</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">3</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">3</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 84.00/cake</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Date cake</b> <span class="muted" style="font-size:10px">cake</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">3</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">3</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 60.00/cake</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Brownies</b> <span class="muted" style="font-size:10px">pc</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">72</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">72</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 2.50/pc</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Cookies</b> <span class="muted" style="font-size:10px">pc</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">60</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">60</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 1.50/pc</td></tr>
+              <tr><td style="padding:3px 0;border-top:1px solid var(--line)"><b>Cinnamon rolls</b> <span class="muted" style="font-size:10px">pc</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line)">36</td><td style="text-align:end;padding:3px 0;border-top:1px solid var(--line)"><span class="ui-cell" style="display:inline-block;padding:2px 8px;min-width:30px;text-align:end;border:1px solid var(--track)">36</span></td><td class="muted" style="text-align:end;border-top:1px solid var(--line);font-size:10px;white-space:nowrap">QR 3.00/pc</td></tr>
+            </tbody>
+          </table>
+          <div class="row" style="gap:6px;margin-top:2px"><span class="ui-btn good">🚚 Dispatch what I made</span><span class="ui-btn" style="color:var(--bad)">✕ Cannot supply</span></div>
+        </div>
+      </div>
+      <div class="ui-card">
+        <div class="ui-title" style="margin-bottom:2px">📜 Recently supplied</div>
+        <div class="ui-list">
+          <div class="ui-li" style="padding:5px 0"><span class="grow">Bake &amp; Co · Msheireb — 7 item(s)</span><span class="num">QR 2,301.00</span><span class="muted" style="font-size:10px;min-width:56px;text-align:end">07/09/2026</span></div>
+          <div class="ui-li" style="padding:5px 0"><span class="grow">Bake &amp; Co · Villaggio — 7 item(s)</span><span class="num">QR 1,362.00</span><span class="muted" style="font-size:10px;min-width:56px;text-align:end">07/09/2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="store"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Central Store on Tuesday 8 September: purchase order PO-2291 from Doha Fresh Produce (QR 4,860.00, net 30, due 8 October) received line by line with tomatoes 9% dearer than the last delivery, West Walk's 12-line morning order waiting on the routing desk with kale short on the shelf (4 of the 6 kg asked), and the store's own stock with its expiry watch" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">📦 Central Store</span>
+    <span class="ui-pill accent">Mim restaurants · Industrial Area</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026</span>
+    <div class="ui-who"><span class="ui-avatar">HM</span><span><b>Hassan M.</b><small>Storekeeper · Central Store</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">Store</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">Dashboard</span></span>
+      <span class="cap">Operations</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-swap"/></svg><span class="grow">Routing desk</span><span class="ui-badge">1</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg><span class="grow">Purchasing</span><span class="ui-badge">1</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span class="grow">Suppliers</span></span>
+      <span class="cap">Stock</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-rotate"/></svg><span class="grow">Transfers</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-warehouse"/></svg><span class="grow">My stock</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calculator"/></svg><span class="grow">Reconciliation</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-ban"/></svg><span class="grow">Wastage</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboardcheck"/></svg><span class="grow">Inventory</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top">
+        <span class="grow"><span class="ui-title">📥 Goods Received Note — PO #PO-2291 · Doha Fresh Produce</span><br><span class="muted" style="font-size:10px">Count what actually came off the truck — only good stock enters the store, and Finance is warned not to pay in full.</span></span>
+      </div>
+      <div class="ui-card" style="padding-block:10px">
+        <table style="width:100%;border-collapse:collapse;font-size:11px;line-height:1.25">
+          <thead><tr>
+            <th class="cap" style="text-align:start;padding:3px 6px;border-bottom:1px solid var(--line)">Item</th>
+            <th class="cap" style="text-align:start;padding:3px 6px;border-bottom:1px solid var(--line)">Brand</th>
+            <th class="cap" style="text-align:end;padding:3px 6px;border-bottom:1px solid var(--line)">Ordered</th>
+            <th class="cap" style="text-align:end;padding:3px 6px;border-bottom:1px solid var(--line)">Received</th>
+            <th class="cap" style="text-align:end;padding:3px 6px;border-bottom:1px solid var(--line)">Damaged</th>
+            <th class="cap" style="text-align:start;padding:3px 12px;border-bottom:1px solid var(--line)">Expiry</th>
+            <th class="cap" style="text-align:end;padding:3px 6px;border-bottom:1px solid var(--line)">Status</th>
+          </tr></thead>
+          <tbody>
+            <tr><td style="padding:4px 6px"><b>Tomatoes</b> <span class="muted">/kg</span><br><b style="font-size:9px;color:var(--bad)">▲ 9% vs last delivery</b></td><td style="padding:4px 6px">local</td><td class="num" style="text-align:end;padding:4px 6px;color:var(--sub)">120</td><td class="num" style="text-align:end;padding:4px 6px"><b>120</b></td><td class="num" style="text-align:end;padding:4px 6px">0</td><td style="padding:4px 12px">12 Sept</td><td style="text-align:end;padding:4px 6px"><b style="color:var(--good)">✓ full</b></td></tr>
+            <tr><td style="padding:4px 6px;border-top:1px solid var(--line)"><b>Kale</b> <span class="muted">/kg</span></td><td style="padding:4px 6px;border-top:1px solid var(--line)">local</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line);color:var(--sub)">40</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b>40</b></td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)">0</td><td style="padding:4px 12px;border-top:1px solid var(--line)">11 Sept</td><td style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b style="color:var(--good)">✓ full</b></td></tr>
+            <tr><td style="padding:4px 6px;border-top:1px solid var(--line)"><b>Lemons</b> <span class="muted">/kg</span></td><td style="padding:4px 6px;border-top:1px solid var(--line)">—</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line);color:var(--sub)">60</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b>54</b></td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)">0</td><td style="padding:4px 12px;border-top:1px solid var(--line)">20 Sept</td><td style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b style="color:var(--amber)">📉 short 6.00</b></td></tr>
+            <tr><td style="padding:4px 6px;border-top:1px solid var(--line)"><b>Onions</b> <span class="muted">/kg</span></td><td style="padding:4px 6px;border-top:1px solid var(--line)">—</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line);color:var(--sub)">200</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b>200</b></td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)">0</td><td style="padding:4px 12px;border-top:1px solid var(--line)">30 Sept</td><td style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b style="color:var(--good)">✓ full</b></td></tr>
+            <tr><td style="padding:4px 6px;border-top:1px solid var(--line)"><b>Potatoes</b> <span class="muted">/kg</span></td><td style="padding:4px 6px;border-top:1px solid var(--line)">—</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line);color:var(--sub)">300</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b>300</b></td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)">0</td><td style="padding:4px 12px;border-top:1px solid var(--line)">5 Oct</td><td style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b style="color:var(--good)">✓ full</b></td></tr>
+            <tr><td style="padding:4px 6px;border-top:1px solid var(--line)"><b>Mixed herbs</b> <span class="muted">/kg</span></td><td style="padding:4px 6px;border-top:1px solid var(--line)">local</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line);color:var(--sub)">30</td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b>30</b></td><td class="num" style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b style="color:var(--bad)">2</b></td><td style="padding:4px 12px;border-top:1px solid var(--line)">10 Sept</td><td style="text-align:end;padding:4px 6px;border-top:1px solid var(--line)"><b style="color:var(--bad)">💥 damaged</b></td></tr>
+          </tbody>
+        </table>
+        <div class="row" style="justify-content:space-between;margin-top:8px;gap:8px"><span class="row" style="gap:6px"><span class="ui-btn good"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Post the GRN</span><span class="ui-btn">Cancel</span></span><span class="muted" style="font-size:10px">▲ a rise over 5% vs the last delivery is told to Finance and Head Office</span></div>
+      </div>
+      <div class="ui-grid2" style="flex:1;min-height:0">
+        <div class="ui-card" style="overflow:hidden">
+          <div class="row" style="justify-content:space-between;margin-bottom:4px"><span class="ui-title">🔀 Routing desk <span class="ui-badge">1</span></span><span class="cap">📥 New requests — need action</span></div>
+          <div class="ui-cell">
+            <div class="row" style="justify-content:space-between;gap:6px"><span class="grow"><b>JUNO · West Walk</b><br><span class="muted">by Noor H. · 8 Sept 07:05 · 12 lines</span></span></div>
+            <div class="ui-list" style="margin-top:4px">
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Chicken breast</b> <span class="muted">18 kg</span></span><span class="muted" style="font-size:10px">in store</span><b style="color:var(--good)">42</b><span class="ui-pill sub">🏬 Central Store</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Kale</b> <span class="muted">6 kg</span></span><span class="muted" style="font-size:10px">in store</span><b style="color:var(--bad)">4 ⚠️</b><span class="ui-pill sub">🏬 Central Store</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Parmesan</b> <span class="muted">2 kg</span></span><span class="muted" style="font-size:10px">in store</span><b style="color:var(--good)">5</b><span class="ui-pill sub">🏬 Central Store</span></div>
+            </div>
+            <span class="muted" style="font-size:10px">+9 more lines</span>
+          </div>
+          <div class="muted" style="font-size:10px;margin-top:8px"><b style="color:var(--ink)">The store is the hub</b> — only the Central Store buys.</div>
+        </div>
+        <div class="ui-card" style="overflow:hidden">
+          <div class="row" style="justify-content:space-between;margin-bottom:6px"><span class="ui-title">📦 My stock — Central Store</span><span class="cap">your room only</span></div>
+          <div class="ui-cell"><div class="ui-grid3"><div class="ui-kpi"><span class="cap">Expired</span><span class="num sm">0</span></div><div class="ui-kpi"><span class="cap">Expiring ≤7d</span><span class="num sm" style="color:var(--amber)">3</span></div><div class="ui-kpi"><span class="cap">Below par</span><span class="num sm" style="color:var(--amber)">1</span></div></div></div>
+          <div class="cap" style="margin-top:8px">⏰ Expiry watch — use it, move it, or write it off</div>
+          <div class="ui-list">
+            <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Tomatoes</b> <span class="muted">· last delivery</span></span><span class="muted">18 kg</span><span class="ui-pill warn">🟡 2d left</span></div>
+            <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Chicken breast</b></span><span class="muted">24 kg</span><span class="ui-pill warn">🟡 3d left</span></div>
+            <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Mixed herbs</b> <span class="muted">· local</span></span><span class="muted">1.5 kg</span><span class="ui-pill warn">🟡 1d left</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="ordering"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Ordering at JUNO West Walk on Tuesday 8 September, the Order from Central Store tab: the branch's store order form with kale in the cart, and three branch requests — this morning's 12 lines delivered with 10 issued and 2 short (kale 4 of 6 kg) waiting for Noor H. to confirm receipt, and the two earlier mornings received and posted to food cost; the Wastage and Inventory count tabs (September's count sheet is for Saturday) sit in the rail" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🛒 Ordering</span>
+    <span class="ui-pill accent">JUNO · West Walk</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026</span>
+    <div class="ui-who"><span class="ui-avatar">NH</span><span><b>Noor H.</b><small>Branch manager · JUNO West Walk</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">🛒 Ordering</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span><span class="ui-badge">1</span></span>
+      <span class="on" style="height:auto;padding-block:5px"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg><span class="grow" style="white-space:normal;line-height:1.2">Order from Central Store</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-ban"/></svg><span class="grow">Wastage</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboardcheck"/></svg><span class="grow">Inventory count</span></span>
+      <span class="cap">👥 Staff</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span class="grow">Rota</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-scale"/></svg><span class="grow">Plan vs actual</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span class="grow">Clock-in code</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top">
+        <span class="ui-title">🛒 Store order — JUNO · West Walk</span><br><span class="muted" style="font-size:10px">Your PIN identifies you and your branch — this order is stamped JUNO · West Walk, sent by Noor H. Raw food, bar, non-food, cleaning, packaging.</span>
+      </div>
+      <div class="ui-card" style="display:flex;flex-direction:column;gap:6px">
+        <div class="row" style="gap:6px"><span class="ui-cell grow muted">Item (type or pick)</span></div>
+        <div class="row" style="gap:6px"><span class="ui-cell muted" style="width:150px">Brand — pick or type</span><span class="ui-cell muted" style="width:40px;text-align:end">Qty</span><span class="ui-cell">kg</span><span class="ui-cell">🥩 Food — raw</span><span class="ui-btn" style="padding:0 10px">＋</span></div>
+        <div class="ui-cell" style="padding:6px 10px"><div class="row" style="gap:8px"><span>🥩</span><span class="muted" style="font-size:10px;font-weight:700">118</span><span class="grow" style="font-weight:600">Kale</span><span class="muted">2 kg</span><span style="color:var(--bad);font-size:10px;font-weight:700">✕</span></div></div>
+        <div class="row" style="gap:6px"><span class="ui-cell">Normal</span><span class="ui-cell"><span class="muted">📅 Needed by</span> Thu 10 Sept</span><span class="ui-cell grow muted">Note for purchasing (optional)</span><span class="ui-btn accent"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg>Send to purchasing</span></div>
+      </div>
+      <div class="ui-card" style="display:flex;flex-direction:column;gap:2px">
+        <span class="ui-title">Branch requests</span>
+        <span class="cap">Signed in from PIN: Noor H. · Branch manager · JUNO West Walk</span>
+        <div class="ui-list">
+          <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
+            <div class="row"><span class="ui-pill good">Delivered</span><span class="muted" style="font-size:11px">08 Sep, 06:40 · by Noor H.</span></div>
+            <div style="font-size:11px">102 Chicken breast × 18kg · 118 Kale × 6kg · 131 Parmesan × 2kg · +9 more</div>
+            <div style="font-size:11px;color:var(--amber)">✏️ Edited by Hassan M.: 2 lines short — kale 4 of 6 kg; the rest issued</div>
+            <span class="ui-btn good" style="align-self:flex-start"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Confirm received — post to food cost</span>
+          </div>
+          <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
+            <div class="row"><span class="ui-pill sub">Received</span><span class="muted" style="font-size:11px">07 Sep, 06:35 · by Noor H.</span></div>
+            <div style="font-size:11px">102 Chicken breast × 16kg · 118 Kale × 5kg · 131 Parmesan × 2kg · +7 more</div>
+            <div style="font-size:11px;color:var(--good)">🤝 Received by Noor H. · QR 2,140.00 posted to JUNO food expenses</div>
+          </div>
+          <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
+            <div class="row"><span class="ui-pill sub">Received</span><span class="muted" style="font-size:11px">06 Sep, 06:38 · by Noor H.</span></div>
+            <div style="font-size:11px">102 Chicken breast × 15kg · 118 Kale × 5kg · 131 Parmesan × 2kg · +6 more</div>
+            <div style="font-size:11px;color:var(--good)">🤝 Received by Noor H. · QR 1,980.00 posted to JUNO food expenses</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="finance"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Finance Home on Tuesday 8 September, Layla T. signed in: August closed clean, the morning verdict composed from the registers, yesterday's leakage line, five glance tiles, two petty-cash paid-outs waiting for her signature oldest first, the drift rail with The Pearl's QR 40 remit, the month by branch, what is owed by due date and the fixed points" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">💰 Finance</span>
+    <span class="ui-pill accent">Mim restaurants · 6 branches</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026</span>
+    <div class="ui-who"><span class="ui-avatar">LT</span><span><b>Layla T.</b><small>Finance manager · Head Office</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">Today</span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span class="grow">Home</span><span class="ui-badge">2</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg><span class="grow">End of day</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span class="grow">Drawer &amp; payouts</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span></span>
+      <span class="cap">Waiting</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><span class="grow">Payroll</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboardcheck"/></svg><span class="grow">Signed approvals</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboard"/></svg><span class="grow">Branch requests</span></span>
+      <span class="cap">Money out</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-receipt"/></svg><span class="grow">Expenses</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg><span class="grow">Petty cash</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="row" style="gap:6px;font-size:11px;font-weight:600;color:var(--good)"><svg class="ic" aria-hidden="true" style="width:14px;height:14px"><use href="#i-lock"/></svg><span>2026-08 closed clean by Layla T. — 2026-09 started new.</span></div>
+      <div class="ui-top" style="padding:10px 16px;display:flex;flex-direction:column;gap:3px">
+        <div class="row" style="gap:10px"><span style="width:10px;height:10px;border-radius:50%;background:var(--amber);flex-shrink:0"></span><span class="ui-title grow">One thing needs you this morning: sign 2 items (oldest waited 2 days). Everything else is inside its lines.</span></div>
+        <span class="cap" style="padding-inline-start:20px">rewritten live from the registers — never hand-typed</span>
+      </div>
+      <div class="ui-cell row" style="flex-wrap:wrap;gap:2px 9px;padding:5px 10px;font-size:9.5px;font-weight:700;color:var(--sub)"><span class="cap" style="letter-spacing:.6px">Yesterday · 2026-09-07</span><span>💰 QR 58,900.00 · 447 order(s)</span><span style="color:var(--amber)">🏷 discounts QR 1,240.00 · 31×</span><span style="color:var(--bad)">↩️ refunds QR 310.00 · 2×</span><span style="color:var(--bad)">🗑 voids 5× QR 172.00</span><span class="muted" style="font-size:9px">leakage = QR 1,550.00 = 2.6% of the day</span></div>
+      <div class="ui-grid4" style="grid-template-columns:repeat(5,minmax(0,1fr))">
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">⏳ Awaiting signature</span><span class="num sm">2 · QR 240.00</span><span style="font-size:10px;font-weight:700;color:var(--amber)">oldest 2 days</span></div></div>
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">💵 Cash in transit</span><span class="num sm">QR 0.00</span><span style="font-size:10px;font-weight:700;color:var(--good)">all received</span></div></div>
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">🧾 We owe suppliers</span><span class="num sm">QR 4,860.00</span><span style="font-size:10px;font-weight:700;color:var(--good)">QR 0.00 due / overdue</span></div></div>
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">📊 Revenue this month</span><span class="num sm">QR 1,280,000.00</span><span class="muted" style="font-size:10px;font-weight:700">no last-month basis yet</span></div></div>
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">🍔 Food cost (theo.)</span><span class="num sm">30.6%</span><span class="muted" style="font-size:10px;font-weight:700">from costs stamped at each sale</span></div></div>
+      </div>
+      <div class="ui-grid2" style="grid-template-columns:7fr 5fr;flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;min-height:0;overflow:hidden">
+          <span class="ui-title">⏳ Waiting for you</span><span class="cap" style="display:block">oldest first, never by amount — the case in full on its own screen</span>
+          <div class="ui-list" style="margin-top:4px">
+            <div class="ui-li" style="padding:6px 0"><span class="ui-avatar" style="border-radius:8px">💸</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Paid-out · Lusail Boulevard</b><span class="muted" style="display:block;font-size:11px">"cleaning" · raised by Tariq S. → you</span></span><span class="ui-pill warn">2 days</span><span class="num">QR 180.00</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">Review &amp; sign</span></div>
+            <div class="ui-li" style="padding:6px 0"><span class="ui-avatar" style="border-radius:8px">💸</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Paid-out · Al Sadd</b><span class="muted" style="display:block;font-size:11px">"ice" · raised by Fatima S. → you</span></span><span class="ui-pill sub">6 h</span><span class="num">QR 60.00</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">Review &amp; sign</span></div>
+          </div>
+          <span class="cap" style="margin-top:auto;padding-top:6px">There is no bulk-sign — a signature is a decision, and each one gets its own read on its own screen.</span>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;min-height:0;overflow:hidden">
+          <span class="ui-title">📡 What drifted</span><span class="cap" style="display:block">exceptions only — empty is the good state</span>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-top:6px">
+            <div class="ui-cell" style="padding:6px 8px;border-inline-start:3px solid var(--bad);border-start-start-radius:4px;border-end-start-radius:4px"><div class="row" style="justify-content:space-between"><b>1 approval(s) waited over 2 days</b><b style="white-space:nowrap">QR 180.00</b></div><span class="muted" style="display:block;font-size:11px">oldest: Paid-out · Lusail Boulevard — sign it or refuse it, but decide</span></div>
+            <div class="ui-cell" style="padding:6px 8px;border-inline-start:3px solid var(--amber);border-start-start-radius:4px;border-end-start-radius:4px"><div class="row" style="justify-content:space-between"><b>The Pearl · remit arrived short/over</b><b style="white-space:nowrap">QR 40.00</b></div><span class="muted" style="display:block;font-size:11px">2026-09-08 — counted differs from what the till declared</span></div>
+          </div>
+          <span class="cap" style="margin-top:auto;padding-top:6px">A drift leaves when its register says it is resolved — nothing here is dismissed by hand.</span>
+        </div>
+      </div>
+      <div class="ui-grid3">
+        <div class="ui-card">
+          <span class="ui-title">📊 Month so far, by branch</span>
+          <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px">
+            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">JUNO · West Walk</span><b>QR 309,790.00</b></div><div class="ui-bar" style="--v:92%;margin-top:2px"></div></div>
+            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">Saffron House · Al Sadd</span><b>QR 336,050.00</b></div><div class="ui-bar" style="--v:100%;margin-top:2px"></div></div>
+            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">Bake &amp; Co · Villaggio</span><b>QR 124,660.00</b></div><div class="ui-bar" style="--v:37%;margin-top:2px"></div></div>
+          </div>
+          <span class="cap" style="display:block;margin-top:6px">No target set = no % claimed</span>
+        </div>
+        <div class="ui-card">
+          <span class="ui-title">🧾 We owe, by due date</span>
+          <div class="ui-bar" style="--v:100%;height:8px;margin-top:8px"></div>
+          <div class="row" style="flex-wrap:wrap;gap:2px 10px;margin-top:5px;font-size:9px;font-weight:700;color:var(--sub)"><span><i style="display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--accent);margin-inline-end:3px;vertical-align:0"></i>not due QR 4,860.00</span><span><i style="display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--soft);margin-inline-end:3px;vertical-align:0"></i>due ≤7d QR 0.00</span><span><i style="display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--amber);margin-inline-end:3px;vertical-align:0"></i>overdue QR 0.00</span><span><i style="display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--bad);margin-inline-end:3px;vertical-align:0"></i>30d+ late QR 0.00</span></div>
+          <span class="cap" style="display:block;margin-top:8px">One supplier = one number: invoice, else goods received, else the order. Due dates from each supplier's own terms.</span>
+        </div>
+        <div class="ui-card">
+          <span class="ui-title">🗓 Fixed points</span>
+          <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px;font-size:11px">
+            <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">👥</span><span class="grow"><b style="display:block;line-height:1.15">WPS payroll</b><span class="muted">no submission yet — HR starts it</span></span></div>
+            <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">🧾</span><span class="grow"><b style="display:block;line-height:1.15">Suppliers due ≤7 days</b><span class="muted">nothing falls due this week</span></span></div>
+            <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">🔒</span><span class="grow"><b style="display:block;line-height:1.15">2026-09 files at month end</b><span class="muted">22 day(s) left · not filed yet</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="marketing"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Marketing on Tuesday 8 September, The room for JUNO: the verdict that 6 posts named a dish and 2 moved it, one post refused because Tea is off sale at West Walk, and the jalapeño sliders reel of 1 September whose dish went from 18 to 41 plates a day, beside how a post finds its dish; Mariam K. signed in" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">📣 Marketing</span>
+    <span class="ui-pill accent">Mim restaurants · 3 brands</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026</span>
+    <div class="ui-who"><span class="ui-avatar">MK</span><span><b>Mariam K.</b><small>Marketing · Head Office</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">📣 Marketing</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg><span class="grow">What to do next</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-megaphone"/></svg><span class="grow">The room</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span class="grow">Creators we host</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-fork"/></svg><span class="grow">Which dishes we marketed</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg><span class="grow">Instagram</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-fork"/></svg><span class="grow">What to post next</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-history"/></svg><span class="grow">Who to bring back</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><span class="grow">Advice</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">This week</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg><span class="grow">WITHSTAND card</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top">
+        <div class="ui-title lg">📣 The room — did anything we posted sell food?</div>
+        <div class="muted" style="font-size:10px;margin-top:4px;line-height:1.4">Every marketing tool can say a post got 286 likes. Only this software holds the bill. A post joins to the dish it names, and the dish to its plates from the permanent book.</div>
+        <div class="row" style="gap:6px;margin-top:10px"><span class="ui-glass" style="background:#fff;color:var(--accent);border-color:#fff">JUNO</span><span class="ui-glass">Saffron House</span><span class="ui-glass">Bake &amp; Co</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:8px">
+        <div class="ui-card" style="background:var(--inner);border:2px solid var(--accent);display:flex;flex-direction:column;gap:4px">
+          <span class="cap">THE VERDICT</span>
+          <div style="font-size:14px;font-weight:700;line-height:1.4">6 posts named a dish. <b style="color:var(--good)">2 moved it</b>. One named a dish the kitchen could not serve.</div>
+          <div class="muted" style="font-size:10px;line-height:1.35">72 hours after each post, against that dish’s own 28-day mean · bills with a refund or a void left out</div>
+        </div>
+        <div class="ui-card" style="background:var(--bad-bg);display:flex;flex-direction:column;gap:4px">
+          <span class="cap" style="color:var(--bad)">🚫 1 post advertised a dish the kitchen cannot serve</span>
+          <div style="font-size:11px;line-height:1.4;color:var(--bad)"><b>Tea</b> is off sale at JUNO · West Walk · equipment broken</div>
+          <div style="font-size:10px;line-height:1.35;color:var(--bad)">Meta does not know your equipment is broken. The 86 list does.</div>
+        </div>
+      </div>
+      <div class="row"><span class="ui-title">Posts — and what each one did to the kitchen</span><span class="grow"></span><span class="muted" style="font-size:10px">6 posts · 6 name a dish · newest first</span></div>
+      <div class="ui-grid2" style="align-items:start">
+        <div class="ui-card" style="padding:8px"><div class="ui" style="background:#FFFFFF;border-radius:16px;overflow:hidden"><div style="padding:12px;min-height:84px;background:#EEEAFD;display:flex;flex-direction:column;justify-content:flex-end;gap:5px"><div class="row" style="gap:6px"><span style="font-size:8.5px;font-weight:700;background:#5B3FE0;color:#fff;padding:2px 7px;border-radius:999px">VIDEO</span><span style="font-size:8.5px;color:#62626E;margin-inline-start:auto">no photo read — caption only</span></div><div style="font-size:12.5px;font-weight:600;line-height:1.3;color:#16161D">Jalapeño sliders, the way the kitchen eats them</div><div style="font-size:9px;color:#62626E">Tue 1 Sept · 18:40</div></div><div class="row" style="padding:8px 12px;border-top:1px solid #EEEEF3"><div style="flex:1"><div class="num" style="font-size:12px;font-weight:700;color:#16161D">286</div><div style="font-size:9px;font-weight:600;color:#62626E">likes</div></div><div style="flex:1"><div class="num" style="font-size:12px;font-weight:700;color:#16161D">5</div><div style="font-size:9px;font-weight:600;color:#62626E">comments</div></div><div style="flex:2;text-align:end;font-size:9.5px;font-weight:600;color:#5B3FE0">open on Instagram ↗</div></div><div style="padding:9px 12px 11px;background:#F2F2F6"><div class="row"><span style="font-size:8.5px;font-weight:700;color:#62626E">WHAT THE TILL DID</span><span style="flex:1"></span><span class="num" style="font-size:14px;font-weight:700;color:#17663A">+128%</span></div><div class="row" style="gap:3px;height:30px;align-items:flex-end;margin-top:7px"><span style="flex:1;height:10px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:12px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:11px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:11px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:13px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:11px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:12px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:11px;border-radius:3px;background:#A796EF"></span><span style="flex:1;height:26px;border-radius:3px;background:#5B3FE0"></span><span style="flex:1;height:28px;border-radius:3px;background:#5B3FE0"></span><span style="flex:1;height:24px;border-radius:3px;background:#5B3FE0"></span><span style="flex:1;height:18px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:14px;border-radius:3px;background:#DDD6F9"></span><span style="flex:1;height:13px;border-radius:3px;background:#DDD6F9"></span></div><div class="row" style="margin-top:6px"><span style="font-size:10px;font-weight:600;color:#16161D">Micro Sliders : Jalapeño</span><span style="flex:1"></span><span class="num" style="font-size:9px;color:#62626E"><b style="color:#16161D">18</b> → <b style="color:#16161D">41</b> plates/day</span></div></div></div></div>
+        <div class="ui-card" style="border:1.5px dashed var(--dash);background:var(--ground);display:flex;flex-direction:column;gap:6px;padding:14px">
+          <span class="ui-title" style="color:var(--accent)">How a post finds its dish</span>
+          <span style="font-size:11px;line-height:1.5;color:var(--sub)">The longest whole menu name inside the caption, four letters or more. “Sliders” alone would not do it — “Micro Sliders : Jalapeño” is on the menu, so the reel joins to it. A caption with no menu name joins to nothing, and says so.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="it"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="IT Department on Tuesday 8 September: Tills &amp; versions — every till that has ever reported in, 11 tills across 6 branches all on build 2026-09-07, none behind and none gone quiet" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">💻 IT Department</span>
+    <span class="ui-pill accent">Mim restaurants · 6 branches</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026</span>
+    <div class="ui-who"><span class="ui-avatar">AF</span><span><b>Ali F.</b><small>IT · Head Office</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">IT</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span></span>
+      <span class="cap">Security</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><span class="grow">Access &amp; PINs</span></span>
+      <span class="cap">Hardware</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg><span class="grow">Printers &amp; tills</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-tablet"/></svg><span class="grow">Waiter tablets</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-mobile"/></svg><span class="grow">Staff phones</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-fork"/></svg><span class="grow">Chef displays</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg><span class="grow">Hostess tablets</span></span>
+      <span class="cap">Apps</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-qr"/></svg><span class="grow">Guest app</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg><span class="grow">Integrations</span></span>
+      <span class="cap">Health</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">Branch vitals</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-shieldcheck"/></svg><span class="grow">System health</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-laptop"/></svg><span class="grow">Tills &amp; versions</span></span>
+      <span class="cap">Support</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg><span class="grow">Tickets</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top row" style="justify-content:space-between;gap:12px">
+        <span class="grow"><span class="ui-title lg">🖥 Tills &amp; versions</span><br><span class="muted" style="font-size:10px">Every machine that has ever reported in — what it runs, and when it was last heard from.</span></span>
+        <span class="ui-btn" style="background:var(--inner)">🔄 Refresh</span>
+      </div>
+      <div class="ui-grid4">
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">Tills reporting</span><span class="num">11</span><span class="muted" style="font-size:10px">seen at least once</span></div></div>
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">Up to date</span><span class="num" style="color:var(--good)">11</span><span class="muted" style="font-size:10px">on the newest build</span></div></div>
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">Behind</span><span class="num" style="color:var(--good)">0</span><span class="muted" style="font-size:10px">none</span></div></div>
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">Gone quiet</span><span class="num" style="color:var(--good)">0</span><span class="muted" style="font-size:10px">no contact in over an hour</span></div></div>
+      </div>
+      <div class="ui-card" style="overflow:hidden">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;line-height:1.2;white-space:nowrap">
+          <thead><tr><th class="cap" style="text-align:start;padding:4px 6px;border-bottom:1px solid var(--line);font-weight:600">Branch</th><th class="cap" style="text-align:start;padding:4px 6px;border-bottom:1px solid var(--line);font-weight:600">Till</th><th class="cap" style="text-align:start;padding:4px 6px;border-bottom:1px solid var(--line);font-weight:600">Build it is running</th><th class="cap" style="text-align:start;padding:4px 6px;border-bottom:1px solid var(--line);font-weight:600">Status</th><th class="cap" style="text-align:end;padding:4px 6px;border-bottom:1px solid var(--line);font-weight:600">Last heard from</th></tr></thead>
+          <tbody>
+            <tr><td style="padding:6px 6px"><b>JUNO · West Walk</b></td><td class="num" style="padding:6px 6px">#1</td><td class="num" style="padding:6px 6px">2026-09-07</td><td style="padding:3px 6px"><span class="ui-pill good" style="height:18px;padding:0 7px">UP TO DATE</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px">just now</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>JUNO · West Walk</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#2</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">UP TO DATE</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">just now</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>JUNO · Lusail Boulevard</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#1</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">UP TO DATE</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">just now</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>JUNO · Lusail Boulevard</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#2</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">UP TO DATE</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">3 min ago</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Saffron House · Al Sadd</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#1</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">UP TO DATE</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">just now</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Saffron House · Al Sadd</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#2</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">UP TO DATE</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">just now</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Saffron House · The Pearl</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#1</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">UP TO DATE</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">just now</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Saffron House · The Pearl</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#2</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">UP TO DATE</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">8 min ago</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Bake &amp; Co · Msheireb</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#1</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">UP TO DATE</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">just now</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Bake &amp; Co · Villaggio</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#1</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">UP TO DATE</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">just now</td></tr>
+            <tr><td style="padding:6px 6px;border-top:1px solid var(--line)"><b>Bake &amp; Co · Villaggio</b></td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">#2</td><td class="num" style="padding:6px 6px;border-top:1px solid var(--line)">2026-09-07</td><td style="padding:3px 6px;border-top:1px solid var(--line)"><span class="ui-pill good" style="height:18px;padding:0 7px">UP TO DATE</span></td><td class="muted" style="text-align:end;padding:6px 6px;font-size:11px;border-top:1px solid var(--line)">just now</td></tr>
+          </tbody>
+        </table>
+        <div class="muted" style="font-size:11px;margin-top:8px">This machine is running <b>2026-09-07</b>. “Out of date” means another till is running a newer build — install the latest app on that machine.</div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="maint"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Maintenance on Tuesday 8 September: the job board for all branches with four open work orders in their lanes — The Pearl signage light just reported, the West Walk walk-in fridge compressor outsourced with a QR 1,200 quotation awaiting Finance, the Lusail hand-dryer and the Villa 3 room 4 leak in progress with Jamal A. — nothing awaiting confirmation, and the closed list of eleven jobs running off the bottom" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🔧 Maintenance</span>
+    <span class="ui-pill accent">Mim restaurants · 6 branches</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026</span>
+    <div class="ui-who"><span class="ui-avatar">JA</span><span><b>Jamal A.</b><small>Maintenance lead · group</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">🔧 Maintenance</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">Dashboard</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg><span class="grow">Work orders</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg><span class="grow">Assets</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top">
+        <span class="ui-title">🔧 Maintenance — job board, all branches</span><br><span class="muted" style="font-size:10px">Take a job → fix it → enter the cost → it posts to that branch's expenses and P&amp;L automatically. The branch confirms to close.</span>
+      </div>
+      <div class="ui-grid2" style="flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="row" style="justify-content:space-between"><span class="ui-title">⏳ New — decide: in-house or outsource (1)</span></div>
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="gap:6px"><b class="grow">Signage light out <span class="muted" style="font-weight:400;font-size:11px">· Saffron House · The Pearl</span></b></div>
+            <div class="muted" style="font-size:10px;margin-top:3px">Exterior / signage · Electrical · The Pearl manager · 08 Sep 09:05</div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-btn accent">🏠 In-house fix</span><span class="ui-btn accent">🏢 Outsource</span><span class="ui-btn">✕ End</span></div>
+          </div>
+          <div class="row" style="justify-content:space-between;margin-top:2px"><span class="ui-title">📑 Outsourced — quotations &amp; approvals (Finance + GM) (1)</span></div>
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="gap:6px"><b class="grow">Walk-in fridge compressor <span class="muted" style="font-weight:400;font-size:11px">· JUNO · West Walk</span></b><span class="ui-pill accent">📤 awaiting Finance</span></div>
+            <div class="muted" style="font-size:10px;margin-top:3px">Kitchen · Refrigeration / freezer · Noor H. · 08 Sep 07:12 · 🏢 outsourced</div>
+            <div style="margin-top:8px;background:var(--pale);border-radius:12px;padding:8px 10px;font-size:11px">
+              <div style="color:var(--accent);font-weight:700">📨 Quotations — asked 1 · received 1</div>
+              <div class="ui-cell" style="margin-top:6px">
+                <div class="row" style="gap:6px"><b class="grow">Gulf Cooling Services</b><span class="num" style="font-weight:700;white-space:nowrap">QR 1,200.00</span></div>
+                <div class="muted" style="margin-top:2px">1 day(s) to finish · valid to 2026-10-08</div>
+                <div class="muted" style="margin-top:2px">compressor replacement · technician 15:00 today</div>
+                <div class="muted" style="margin-top:2px;font-size:10px">recorded by Jamal A. · 08 Sep</div>
+              </div>
+              <div style="margin-top:6px;color:var(--sub)">📤 Sent for approval by Jamal A. · awaiting the Finance Manager's signature</div>
+            </div>
+            <div class="row" style="gap:6px;margin-top:6px"><span class="ui-pill sub" style="height:40px;padding:0 12px;border-radius:10px"><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg>photo · 07:12</span></div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-btn">✕ End</span></div>
+          </div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="row" style="justify-content:space-between"><span class="ui-title">🔧 In progress (2)</span></div>
+          <div class="ui-cell" style="padding:10px">
+            <div class="row" style="gap:6px"><b class="grow">Hand-dryer not working <span class="muted" style="font-weight:400;font-size:11px">· JUNO · Lusail Boulevard</span></b></div>
+            <div class="muted" style="font-size:10px;margin-top:3px">Toilets · Electrical · Lusail supervisor · 08 Sep 10:20 · 🏠 in-house · 🔧 Jamal A.</div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);width:72px;justify-content:flex-end">Cost QR</span><span class="ui-pill sub grow" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);justify-content:flex-start">What was done</span><span class="ui-btn good">✅ Fixed</span></div>
+            <div class="row" style="gap:6px;margin-top:10px;padding-top:8px;border-top:1px solid var(--line)"><b class="grow">Water leak in room 4</b></div>
+            <div class="muted" style="font-size:10px;margin-top:3px">🏠 Villa 3 · Yusuf E. · 08 Sep 08:20 · 🏠 in-house · 🔧 Jamal A.</div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-pill sub" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);width:72px;justify-content:flex-end">Cost QR</span><span class="ui-pill sub grow" style="height:26px;font-size:11px;font-weight:600;color:var(--sub);justify-content:flex-start">What was done</span><span class="ui-btn good">✅ Fixed</span></div>
+          </div>
+          <div class="row" style="justify-content:space-between;margin-top:2px"><span class="ui-title">✅ Fixed — awaiting branch confirm (0)</span></div>
+          <div class="ui-cell" style="padding:8px 10px"><span class="muted">—</span></div>
+          <div class="row" style="justify-content:space-between;margin-top:2px"><span class="ui-title">📁 Closed (last 15) (11)</span></div>
+          <div class="ui-cell" style="padding:4px 10px">
+            <div class="ui-list">
+              <div class="ui-li"><span class="grow"><b>Dishwasher drain blocked</b><br><span class="muted" style="font-size:10px">Saffron House · Al Sadd · 🏠 in-house · 🔧 Jamal A.</span></span><span class="ui-pill good">✓ Fatima S.</span></div>
+              <div class="ui-li"><span class="grow"><b>AC not cooling the dining area</b><br><span class="muted" style="font-size:10px">JUNO · West Walk · 🏢 outsourced</span></span><span class="ui-pill good">✓ Noor H.</span></div>
+              <div class="ui-li"><span class="grow"><b>Grill ignition faulty</b><br><span class="muted" style="font-size:10px">JUNO · West Walk · 🏠 in-house · 🔧 Jamal A.</span></span><span class="ui-pill good">✓ Noor H.</span></div>
+              <div class="ui-li"><span class="grow"><b>Water heater not heating</b><br><span class="muted" style="font-size:10px">🏠 Villa 1 · 🏠 in-house · 🔧 Jamal A.</span></span><span class="ui-pill good">✓ Yusuf E.</span></div>
+              <div class="ui-li"><span class="grow"><b>Ice machine leaking</b><br><span class="muted" style="font-size:10px">Saffron House · Al Sadd · 🏢 outsourced</span></span><span class="ui-pill good">✓ Fatima S.</span></div>
+              <div class="ui-li"><span class="grow"><b>Cold-room door seal torn</b><br><span class="muted" style="font-size:10px">Central Store · Industrial Area · 🏠 in-house · 🔧 Jamal A.</span></span><span class="ui-pill good">✓ Hassan M.</span></div>
+              <div class="ui-li"><span class="grow"><b>Oven thermostat drifting</b><br><span class="muted" style="font-size:10px">Central Pastry · Industrial Area · 🏢 outsourced</span></span><span class="ui-pill good">✓ Ahmed R.</span></div>
+              <div class="ui-li"><span class="grow"><b>Exhaust hood fan noisy</b><br><span class="muted" style="font-size:10px">JUNO · West Walk · 🏠 in-house · 🔧 Jamal A.</span></span><span class="ui-pill good">✓ Noor H.</span></div>
+              <div class="ui-li"><span class="grow"><b>Split AC unit dripping</b><br><span class="muted" style="font-size:10px">🏠 Villa 2 · 🏢 outsourced</span></span><span class="ui-pill good">✓ Yusuf E.</span></div>
+              <div class="ui-li"><span class="grow"><b>Chiller display light out</b><br><span class="muted" style="font-size:10px">Saffron House · Al Sadd · 🏠 in-house · 🔧 Jamal A.</span></span><span class="ui-pill good">✓ Fatima S.</span></div>
+              <div class="ui-li"><span class="grow"><b>Loose dining chairs</b><br><span class="muted" style="font-size:10px">JUNO · West Walk · 🏠 in-house · 🔧 Jamal A.</span></span><span class="ui-pill good">✓ Noor H.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="hr"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Human Resources on Tuesday 8 September: the morning queue ranked worst first with one expired health card and three QIDs to renew, four tiles for people, requests, expiring documents and the September payroll of QR 296,950 approved by Finance, the documents expiring, fourteen on shift at West Walk, 61 of 84 staff on self-service phones, and QR 187,440 of leave owed" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">👥 Human Resources</span>
+    <span class="ui-pill accent">Mim restaurants · 84 staff</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026</span>
+    <div class="ui-who"><span class="ui-avatar">OB</span><span><b>Omar B.</b><small>HR manager · Head Office</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">👔 Today</span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">Dashboard</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span></span>
+      <span class="cap">People</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span class="grow">Staff directory</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><span class="grow">Employee file</span></span>
+      <span class="cap">Time &amp; pay</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span class="grow">Attendance</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span class="grow">Rota</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span class="grow">Payroll</span></span>
+      <span class="cap">Requests</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg><span class="grow">Leave &amp; requests</span></span>
+      <span class="cap">Compliance</span>
+      <span style="padding-inline:8px 5px;gap:4px"><svg class="ic" aria-hidden="true"><use href="#i-scroll"/></svg><span class="grow" style="font-size:9.5px;letter-spacing:-.25px">Documents &amp; visas</span><span class="ui-badge bad" style="min-width:16px;padding:0 4px">4</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg><span class="grow">Sponsorship</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span class="grow">Housing</span></span>
+      <span class="cap">Records</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg><span class="grow">Staff records</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top" style="padding:8px 16px">
+        <div class="ui-title lg">Good evening, Omar 👋</div>
+        <div class="muted" style="font-size:10px;margin-top:2px">what needs you today — ranked, worst first; each line opens its room</div>
+      </div>
+      <div class="ui-card" style="padding:3px 12px">
+        <div class="ui-list">
+          <div class="ui-li" style="padding:4px 0"><span class="num" style="width:16px;text-align:center;color:var(--bad);font-size:16px">①</span><span class="grow"><b>Bilal R. is working without a valid Health card (MOPH) — 3 days expired.</b><br><span class="muted" style="font-size:10px">renew before anything else on this list — the inspection question with a fine attached</span></span><span class="ui-pill bad">EXPIRED</span><span class="cap" style="color:var(--accent)">open →</span></div>
+          <div class="ui-li" style="padding:4px 0"><span class="num" style="width:16px;text-align:center;color:var(--dash);font-size:16px">②</span><span class="grow"><b>Hassan M.'s QID / Residence renews in 9 days — start now, renewals take weeks.</b><br><span class="muted" style="font-size:10px">quiet, but on the list until it is booked</span></span><span class="ui-pill sub">9d</span><span class="cap" style="color:var(--accent)">open →</span></div>
+          <div class="ui-li" style="padding:4px 0"><span class="num" style="width:16px;text-align:center;color:var(--dash);font-size:16px">③</span><span class="grow"><b>Jamal A.'s QID / Residence renews in 18 days — start now, renewals take weeks.</b><br><span class="muted" style="font-size:10px">quiet, but on the list until it is booked</span></span><span class="ui-pill sub">18d</span><span class="cap" style="color:var(--accent)">open →</span></div>
+        </div>
+      </div>
+      <div class="ui-grid4">
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">PEOPLE</span><span class="num">84</span><span class="muted" style="font-size:10px">6 of 6 branches staffed · 0 inactive</span></div></div>
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">WAITING FOR YOU</span><span class="num">0</span><span class="muted" style="font-size:10px">nothing pending</span></div></div>
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">EXPIRING ≤ 60 DAYS</span><span class="num" style="color:var(--amber)">4</span><span style="font-size:10px;color:var(--amber);font-weight:600">Health · QID</span></div></div>
+        <div class="ui-card"><div class="ui-kpi"><span class="cap">2026-09 PAYROLL</span><span class="num">QR 296,950</span><span style="font-size:10px;color:var(--amber);font-weight:600">Approved by Finance</span></div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:8px;flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="ui-cell" style="padding:6px 10px">
+            <div class="row" style="justify-content:space-between"><span class="cap">⏳ WAITING FOR YOU</span><span class="cap" style="color:var(--accent)">Open all →</span></div>
+            <div class="muted" style="font-size:11px;margin-top:4px">Nothing is waiting — every request has been answered.</div>
+          </div>
+          <div class="ui-cell" style="padding:6px 10px">
+            <div class="row" style="justify-content:space-between"><span class="cap">📄 DOCUMENTS EXPIRING</span><span class="cap" style="color:var(--accent)">Documents &amp; visas →</span></div>
+            <div class="ui-list">
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Bilal R.</b> <span class="muted" style="font-size:10px">Health card (MOPH)</span></span><span class="ui-pill bad">EXPIRED</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Hassan M.</b> <span class="muted" style="font-size:10px">QID / Residence</span></span><span class="ui-pill bad">in 9 days</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Jamal A.</b> <span class="muted" style="font-size:10px">QID / Residence</span></span><span class="ui-pill warn">in 18 days</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Yusuf E.</b> <span class="muted" style="font-size:10px">QID / Residence</span></span><span class="ui-pill warn">in 27 days</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:6px;min-height:0">
+          <div class="ui-cell" style="padding:5px 10px">
+            <span class="cap">🖐 ON SHIFT NOW</span>
+            <div class="row" style="align-items:baseline;gap:6px"><span class="num" style="font-size:24px;font-weight:700;letter-spacing:-.4px">14</span><span class="muted" style="font-size:11px">West Walk</span></div>
+            <div class="muted" style="font-size:10px">14 clocked in today</div>
+          </div>
+          <div class="ui-cell" style="padding:5px 10px">
+            <span class="cap">📲 STAFF PHONES</span>
+            <div class="row" style="align-items:baseline;gap:6px"><span class="num" style="font-size:24px;font-weight:700;letter-spacing:-.4px">61</span><span class="muted" style="font-size:11px">/ 84</span></div>
+            <div class="muted" style="font-size:10px">on self-service · the rest still need a code from 👥 Staff directory</div>
+          </div>
+          <div class="ui-cell" style="padding:5px 10px">
+            <span class="cap">🏖 LEAVE OWED, TODAY</span>
+            <div class="num" style="font-size:20px;font-weight:700;letter-spacing:-.3px">QR 187,440</div>
+            <div class="muted" style="font-size:10px">untaken days × daily rate (Art. 80) — payable if everyone left tomorrow</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="accom"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Accommodation on Tuesday 8 September: the Housing tab for the group's four staff villas — nobody waiting for a bed, 88 of 96 beds occupied (92%), Villa 1 full, Raza K. placed in Villa 2, a water leak in Villa 3 reported to Maintenance as a job; Yusuf E. signed in" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🏠 Accommodation</span>
+    <span class="ui-pill accent">Mim restaurants · 4 villas</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026</span>
+    <div class="ui-who"><span class="ui-avatar">YE</span><span><b>Yusuf E.</b><small>Accommodation Officer · group</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">🏠 Accommodation</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">Dashboard</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span class="grow">Housing</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-card row" style="padding:8px 12px;justify-content:space-between">
+        <span class="row" style="gap:8px"><span class="ui-title" style="white-space:nowrap">🛏 Arrivals — prepare a place</span><span class="muted" style="font-size:10px">HR marks a new hire as “company accommodation” and the request lands here immediately — name, position, branch and the day they arrive.</span></span>
+        <span class="muted" style="flex-shrink:0;padding-inline:8px">Nobody is waiting for a bed.</span>
+      </div>
+      <div class="ui-top row" style="justify-content:space-between">
+        <span><span class="ui-title">🏠 Staff accommodation — villas, beds, occupancy</span><br><span class="muted" style="font-size:10px">Register every villa/flat, assign employees by number, watch occupancy. Rent posts to Group expenses.</span></span>
+        <span class="ui-pill good" style="flex-shrink:0">🛏 88 / 96 beds · 92%</span>
+      </div>
+      <div class="ui-grid2" style="flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="ui-cell">
+            <div class="ui-title">➕ Register a property</div>
+            <div class="row" style="gap:6px;margin-top:6px"><span class="ui-pill sub grow" style="height:26px;font-size:10px;font-weight:600;color:var(--sub);justify-content:flex-start;min-width:0">Name — Villa 3, Flat 12B…</span><span class="ui-pill sub" style="height:26px;width:44px;font-size:10px;font-weight:600;color:var(--sub)">Beds</span><span class="ui-btn accent">Register</span></div>
+          </div>
+          <div class="row" style="justify-content:space-between"><span class="ui-title">🏘 Villas — beds and occupancy</span><span class="cap">4 villas · 96 beds</span></div>
+          <div class="ui-cell">
+            <div class="row" style="gap:6px"><b class="grow">Villa 1</b><span class="ui-pill bad">🛏 24/24 beds</span></div>
+            <div class="ui-bar bad" style="--v:100%;margin-top:6px"></div>
+          </div>
+          <div class="ui-cell">
+            <div class="row" style="gap:6px"><b class="grow">Villa 2</b><span class="ui-pill good">🛏 23/24 beds</span></div>
+            <div class="ui-bar" style="--v:95.8%;margin-top:6px"></div>
+            <div class="ui-list" style="margin-top:4px">
+              <div class="ui-li" style="padding:6px 0 2px"><span class="ui-avatar" style="width:24px;height:24px;font-size:10px">RK</span><span class="grow"><b>Raza K.</b> <span class="muted" style="font-size:10px">Server</span></span><span class="ui-pill sub">↩ Move out</span></div>
+            </div>
+            <div class="row" style="gap:6px;margin-top:6px"><span class="ui-pill sub grow" style="height:26px;font-size:10px;font-weight:600;color:var(--sub);justify-content:flex-start">— assign employee —</span><span class="ui-btn accent">Assign bed</span></div>
+          </div>
+          <div class="ui-cell">
+            <div class="row" style="gap:6px"><b class="grow">Villa 3</b><span class="ui-pill good">🛏 20/24 beds</span></div>
+            <div class="ui-bar" style="--v:83.3%;margin-top:6px"></div>
+          </div>
+          <div class="ui-cell">
+            <div class="row" style="gap:6px"><b class="grow">Villa 4</b><span class="ui-pill good">🛏 21/24 beds</span></div>
+            <div class="ui-bar" style="--v:87.5%;margin-top:6px"></div>
+          </div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div class="ui-cell">
+            <div class="row" style="justify-content:space-between"><span class="ui-title" style="white-space:nowrap">🚐 Driver schedule — staff pick-up &amp; drop</span><span class="ui-btn" style="flex-shrink:0">＋ Add run</span></div>
+            <div class="muted" style="font-size:10px;margin-top:2px">Every run: driver, time, villa → branch, days. Print it and stick it in each villa.</div>
+            <div class="muted" style="margin-top:6px">No runs yet.</div>
+          </div>
+          <div class="ui-cell">
+            <div class="ui-title">🛒 Request a purchase for accommodation</div>
+            <div class="muted" style="font-size:10px;margin-top:2px">Mattresses, gas, cleaning… the request lands in the Central Store inbox, badged 🏠 ACCOM.</div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-pill sub grow" style="height:26px;font-size:10px;font-weight:600;color:var(--sub);justify-content:flex-start">What to buy</span><span class="ui-pill sub" style="height:26px;width:44px;font-size:10px;font-weight:600;color:var(--sub)">Qty</span><span class="ui-pill sub" style="height:26px;width:40px;font-size:10px;font-weight:600;color:var(--sub)">pc</span><span class="ui-btn good">SEND</span></div>
+          </div>
+          <div class="ui-cell" style="flex:1;min-height:0">
+            <div class="ui-title">🔧 Report villa maintenance</div>
+            <div class="muted" style="font-size:10px;margin-top:2px">AC broken, leak, electrical — becomes a real job in the Maintenance department.</div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-pill sub" style="height:26px;font-size:10px;font-weight:600">🏠 Villa 3</span><span class="ui-pill sub grow" style="height:26px;font-size:10px;font-weight:600;justify-content:flex-start">Water leak, Villa 3</span><span class="ui-btn accent">REPORT</span></div>
+            <div class="row" style="gap:6px;margin-top:8px"><span class="ui-pill good"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>🔧 Sent to Maintenance</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="quality"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Quality &amp; Training on Tuesday 8 September: the compliance dashboard with kitchen coverage at 91% and 3 to schedule, no legal papers expiring in the next 60 days, the twelve Qatar MoPH food-safety programs all published, today's fridge check with one out-of-range reading corrected, the allergen declaration current for 14 categories on the JUNO menu, and 94% passed on the last exam" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">🧪 Quality &amp; Training</span>
+    <span class="ui-pill accent">Mim restaurants · 6 branches</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026</span>
+    <div class="ui-who"><span class="ui-avatar">SQ</span><span><b>Sara Q.</b><small>Quality &amp; Training · group-wide</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">✅ Quality</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">Dashboard</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clipboardcheck"/></svg><span class="grow">Branch checks</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-scale"/></svg><span class="grow" style="font-size:10px;letter-spacing:-.3px">Branch submissions</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg><span class="grow">SOP &amp; SOS</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-cap"/></svg><span class="grow">Academy</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top">
+        <span class="ui-title">🧪 Quality &amp; Training — compliance at a glance</span><br><span class="muted" style="font-size:10px">Live from the Academy records and the company's legal papers.</span>
+      </div>
+      <div class="ui-grid4">
+        <div class="ui-card" style="padding:10px 12px"><div class="ui-kpi"><span class="cap">🎓 Compliance</span><span class="num">91%</span><span class="muted" style="font-size:10px">kitchen &amp; food handlers</span></div></div>
+        <div class="ui-card" style="padding:10px 12px"><div class="ui-kpi"><span class="cap">⌛ Expired certs</span><span class="num">0</span></div></div>
+        <div class="ui-card" style="padding:10px 12px"><div class="ui-kpi"><span class="cap">📝 Still to train</span><span class="num">3</span><span class="muted" style="font-size:10px">0 course(s) past deadline</span></div></div>
+        <div class="ui-card" style="padding:10px 12px"><div class="ui-kpi"><span class="cap">📄 Papers ≤60d</span><span class="num">0</span></div></div>
+      </div>
+      <div class="ui-card row" style="padding:8px 12px;justify-content:space-between;gap:10px">
+        <span class="ui-title">📄 Legal papers running out — act before the fine</span>
+        <span class="muted" style="font-size:11px;white-space:nowrap">Nothing expiring in the next 60 days ✓</span>
+      </div>
+      <div class="ui-grid2" style="flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div>
+            <div class="cap" style="margin-bottom:2px">🎓 Academy tab</div>
+            <div class="row" style="justify-content:space-between"><span class="ui-title">📋 Qatar MoPH food-safety curriculum</span><span class="ui-pill good">12/12 published</span></div>
+          </div>
+          <div class="ui-cell" style="padding:5px 10px">
+            <div class="ui-list" style="font-size:11px">
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">Personal Hygiene</span><span class="cap">§6.7.1–6.7.5</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">Safe Food Handling</span><span class="cap">§6.7.3, 7.1</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">Control of Contamination</span><span class="cap">§6.7.7.7.a, 7.1</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">Temperature Control of Foods</span><span class="cap">§6.8.2, 6.9, 7.2–7.6</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">Cleaning &amp; Disinfection</span><span class="cap">§6.5, 7.1.6</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">Allergen Management</span><span class="cap">§6.7.2.4, 6.9.1, 7.9</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">Safe Use of Equipment</span><span class="cap">§6.6.2, 7.1.5</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">Your High-Risk Processes</span><span class="cap">§6.7.7.7.j, 7.4, 7.9</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">Equipment Maintenance</span><span class="cap">§6.6.4</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">Thermometer Calibration</span><span class="cap">§6.6.5</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">Pest Management</span><span class="cap">§6.4</span></div>
+              <div class="ui-li" style="padding:0"><span class="ui-pill good" style="height:15px;padding:0 5px"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="grow">Traceability, Recall &amp; Non-Conformance</span><span class="cap">§8.1–8.3</span></div>
+            </div>
+          </div>
+          <div class="ui-cell" style="padding:8px 10px;flex:1;min-height:0">
+            <div class="row" style="justify-content:space-between;margin-bottom:5px"><span class="ui-title">🍳 Kitchen &amp; food-handler coverage</span><span class="ui-pill good">91% fully trained</span></div>
+            <div class="ui-bar good" style="--v:91%"></div>
+            <div class="row" style="justify-content:space-between;margin-top:5px;font-size:11px"><span><b>3 to schedule</b></span><span><b>94%</b> <span class="cap">passed · last exam</span></span></div>
+            <div class="muted" style="font-size:10px;margin-top:4px">🟢 current · 🟠 refresher overdue · 🔴 not done</div>
+          </div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:8px;min-height:0">
+          <div>
+            <div class="cap" style="margin-bottom:2px">✅ Branch checks tab</div>
+            <div class="row" style="justify-content:space-between"><span class="ui-title">✅ Branch checks — hygiene &amp; food safety</span></div>
+          </div>
+          <div class="ui-cell" style="padding:8px 10px">
+            <div class="cap" style="margin-bottom:4px">🌡 Temperature control</div>
+            <div class="row" style="gap:6px;font-size:11px"><span class="grow">🚨 Fridges 0–5°C, freezers −18°C or below, logged today</span><span class="ui-pill good">✓</span><span class="ui-pill sub">✕</span><span class="ui-pill sub">—</span></div>
+            <div class="muted" style="font-size:10px;margin-top:4px">2 fridges logged · 1 out of range at 05:50 — 6.1 °C → corrected to 3.9 °C, batch held</div>
+          </div>
+          <div class="ui-cell" style="padding:8px 10px">
+            <div class="cap" style="margin-bottom:4px">📄 Documents</div>
+            <div class="row" style="gap:6px;font-size:11px"><span class="grow">🚨 Allergen information available and current</span><span class="ui-pill good">✓</span><span class="ui-pill sub">✕</span><span class="ui-pill sub">—</span></div>
+            <div class="muted" style="font-size:10px;margin-top:4px">The fourteen GCC categories (GSO 9) · JUNO menu signed off — every ingredient answered, blank is never safe</div>
+          </div>
+          <div class="ui-cell" style="padding:8px 10px;flex:1;min-height:0">
+            <div class="cap" style="margin-bottom:4px">🧼 Personal hygiene</div>
+            <div class="row" style="gap:6px;font-size:11px"><span class="grow">🚨 Valid health cards for every food handler on shift</span><span class="ui-pill good">✓</span><span class="ui-pill sub">✕</span><span class="ui-pill sub">—</span></div>
+            <div class="row" style="gap:6px;font-size:11px;margin-top:4px;padding-top:4px;border-top:1px solid var(--line)"><span class="grow">🚨 Hand-wash basin stocked (soap, towels) and used</span><span class="ui-pill good">✓</span><span class="ui-pill sub">✕</span><span class="ui-pill sub">—</span></div>
+            <div class="muted" style="font-size:10px;margin-top:4px">A 🚨 critical failure fails the visit whatever the score — a blank is not a pass</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+      <template data-dept="hq"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Head Office in the Owner's look on Tuesday 8 September — the Live dashboard: all six branches QR 61,400 today, checks paid, average check, food cost and gross profit, sales by hour peaking at 20:00, sales by restaurant and payment methods as donuts, every branch ranked from Saffron House Al Sadd to Bake & Co Villaggio, and the group's last seven days against their median; the rail's Inbox holds 4" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-body">
+    <div class="ui-side" style="width:176px">
+      <span style="height:76px;margin:-10px -8px 0;padding:0 14px;gap:8px;border-bottom:1px solid var(--line);flex-shrink:0"><span class="ui-avatar" style="width:28px;height:28px;border-radius:9px;background:var(--accent);color:#fff;font-size:12px">M</span><span class="grow" style="line-height:1.15"><b style="display:block;font-size:12px;font-weight:800;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Mim restaurants</b><small style="display:block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Head Office</small></span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span><span class="ui-badge bad">4</span></span>
+      <span style="height:1px;padding:0;margin:3px 10px;background:var(--line)"></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg><span class="grow">Today</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span class="grow">Money</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">Performance</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-megaphone"/></svg><span class="grow">Creators &amp; marketing</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><span class="grow">Guests</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span class="grow">My team</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg><span class="grow">Records</span></span>
+      <span style="height:1px;padding:0;margin:3px 10px;background:var(--line)"></span>
+      <span class="cap">Only you</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><span class="grow">Staff performance</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calculator"/></svg><span class="grow">What can be counted</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><span class="grow">Quality</span></span>
+      <span style="margin-top:auto;height:auto;padding:6px 2px 0;gap:6px"><span class="ui-btn accent" style="height:26px;padding:0 12px;font-size:10px">EN</span><span class="ui-btn" style="height:26px;padding:0 12px;font-size:10px;background:var(--inner)">العربية</span></span>
+    </div>
+    <div class="ui-main" style="gap:6px">
+      <div style="display:flex;align-items:flex-end;gap:12px;height:76px;margin:-12px -12px 0;padding:10px 16px 8px;border-bottom:1px solid var(--line);flex-shrink:0">
+        <div class="grow" style="display:flex;flex-direction:column;gap:2px">
+          <span class="cap" style="font-size:10px">Today · Live dashboard</span>
+          <span class="ui-title lg" style="font-size:20px;letter-spacing:-.3px">Live dashboard</span>
+          <span class="muted" style="font-size:11px">What is selling right now, across every branch</span>
+        </div>
+        <span class="ui-avatar" style="width:34px;height:34px;background:var(--card);color:var(--ink)"><svg class="ic" aria-hidden="true" style="width:16px;height:16px"><use href="#i-search"/></svg></span>
+      </div>
+      <div class="ui-tabs"><span>Command Center</span><span class="on">Live dashboard</span><span>Day X-Ray</span><span>End of day</span><span>Drawer variance &amp; platform payouts</span><span>Owner app</span></div>
+      <div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:8px">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:4px">
+          <div class="row"><span class="grow" style="font-weight:600">All branches · today</span><span class="row" style="gap:5px;font-size:10px;color:var(--sub)"><span style="width:7px;height:7px;border-radius:50%;background:var(--good)"></span>Tue 8 Sept · live</span></div>
+          <div class="ui-kpi"><span class="num big" style="font-size:26px">QR 61,400</span></div>
+          <span class="muted" style="font-size:10px">Total sales: every paid bill today · refunds and merged bills left out</span>
+          <div class="ui-grid4">
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">Checks paid</span><b style="display:block;font-size:14px">489</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">paid, not refunded</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">Avg check</span><b style="display:block;font-size:14px">QR 125.56</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">÷ checks paid</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">Food cost</span><b style="display:block;font-size:14px;color:var(--bad)">QR 18,297</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">30% of sales</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">Gross profit</span><b style="display:block;font-size:14px;color:var(--good)">QR 43,103</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">sales − food cost</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">Open tables</span><b style="display:block;font-size:14px">0</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">dine-in, still open</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">Covers seated</span><b style="display:block;font-size:14px">0</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">guests at them now</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">In kitchen</span><b style="display:block;font-size:14px">0</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">new or cooking</span></div>
+            <div class="ui-cell" style="padding:5px 6px"><span class="cap" style="display:block">Unpaid</span><b style="display:block;font-size:14px">QR 0.00</b><span class="muted" style="display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">bills not paid yet</span></div>
+          </div>
+          <div class="row" style="align-items:baseline;gap:8px;flex-wrap:wrap"><span style="font-size:11px;font-weight:600">Sales by hour</span><span class="muted" style="font-size:9px">Doha time · the trading day runs 04:00 → 03:00 · paid bills, whole group</span><span style="font-size:10px;font-weight:700;color:var(--accent);margin-inline-start:auto;white-space:nowrap">Peak 20:00 · QR 7,480</span></div>
+          <div style="display:flex;align-items:flex-end;gap:3px;height:36px">
+            <span style="flex:1 1 0;height:2px;border-radius:4px;background:var(--track)"></span><span style="flex:1 1 0;height:2px;border-radius:4px;background:var(--track)"></span><span style="flex:1 1 0;height:2px;border-radius:4px;background:var(--track)"></span><span style="flex:1 1 0;height:2px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:6px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:8px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:7px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:10px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:19px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:22px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:16px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:9px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:8px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:11px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:17px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:29px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:36px;border-radius:4px;background:var(--accent)"></span><span style="flex:1 1 0;height:33px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:25px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:17px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:11px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:5px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:3px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:2px;border-radius:4px;background:var(--track)"></span>
+          </div>
+          <div style="display:flex;gap:3px;font-size:9px;color:var(--sub);height:11px;line-height:11px">
+            <span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap">04:00</span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap">08:00</span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap">12:00</span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap">16:00</span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap">20:00</span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap">00:00</span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+          <div class="ui-card" style="display:flex;flex-direction:column;gap:6px;flex:1">
+            <div><span class="ui-title">Sales by restaurant · today</span><span class="cap" style="display:block">Each brand's share of today's paid sales</span></div>
+            <div class="row" style="gap:8px;flex:1">
+              <div style="position:relative;width:84px;height:84px;flex-shrink:0">
+                <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true" style="display:block;transform:rotate(-90deg)"><circle cx="42" cy="42" r="36" fill="none" stroke="var(--track)" stroke-width="12"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--accent)" stroke-width="12" stroke-dasharray="90.3 135.9" stroke-dashoffset="0"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--soft)" stroke-width="12" stroke-dasharray="90.0 136.2" stroke-dashoffset="-90.3"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--soft)" stroke-width="12" stroke-dasharray="45.9 180.3" stroke-dashoffset="-180.3"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--pale)" stroke-width="10" stroke-dasharray="45.9 180.3" stroke-dashoffset="-180.3"/></svg>
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;gap:2px"><b style="font-size:11px">61.4k</b><span class="cap">QR today</span></div>
+              </div>
+              <div class="grow" style="display:flex;flex-direction:column;gap:4px;font-size:10px">
+                <div class="row" style="gap:4px"><span class="ui-avatar" style="width:16px;height:16px;font-size:9px;border:2px solid var(--accent);box-sizing:border-box">J</span><span class="grow" style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">JUNO</span><b style="width:26px;text-align:end">40%</b><span class="muted" style="width:52px;text-align:end;white-space:nowrap">QR 24,500</span></div>
+                <div class="row" style="gap:4px"><span class="ui-avatar" style="width:16px;height:16px;font-size:9px;border:2px solid var(--soft);box-sizing:border-box">S</span><span class="grow" style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Saffron House</span><b style="width:26px;text-align:end">40%</b><span class="muted" style="width:52px;text-align:end;white-space:nowrap">QR 24,440</span></div>
+                <div class="row" style="gap:4px"><span class="ui-avatar" style="width:16px;height:16px;font-size:9px;border:2px solid var(--soft);background:var(--inner);box-sizing:border-box">B</span><span class="grow" style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Bake &amp; Co</span><b style="width:26px;text-align:end">20%</b><span class="muted" style="width:52px;text-align:end;white-space:nowrap">QR 12,460</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-card" style="display:flex;flex-direction:column;gap:6px;flex:1">
+            <div><span class="ui-title">Payment methods · today</span><span class="cap" style="display:block">Each part of a split bill counts on its own</span></div>
+            <div class="row" style="gap:8px;flex:1">
+              <div style="position:relative;width:84px;height:84px;flex-shrink:0">
+                <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true" style="display:block;transform:rotate(-90deg)"><circle cx="42" cy="42" r="36" fill="none" stroke="var(--track)" stroke-width="12"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--accent)" stroke-width="12" stroke-dasharray="147.8 78.4" stroke-dashoffset="0"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--soft)" stroke-width="12" stroke-dasharray="57.7 168.5" stroke-dashoffset="-147.8"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--soft)" stroke-width="12" stroke-dasharray="20.7 205.5" stroke-dashoffset="-205.5"/><circle cx="42" cy="42" r="36" fill="none" stroke="var(--pale)" stroke-width="10" stroke-dasharray="20.7 205.5" stroke-dashoffset="-205.5"/></svg>
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;gap:2px"><b style="font-size:11px">61.4k</b><span class="cap">QR today</span></div>
+              </div>
+              <div class="grow" style="display:flex;flex-direction:column;gap:4px;font-size:10px">
+                <div class="row" style="gap:5px"><span style="width:10px;height:10px;margin-inline:3px;border-radius:50%;background:var(--accent);flex-shrink:0"></span><span class="grow" style="font-weight:600">Card</span><b style="width:26px;text-align:end">65%</b><span class="muted" style="width:52px;text-align:end;white-space:nowrap">QR 40,120</span></div>
+                <div class="row" style="gap:5px"><span style="width:10px;height:10px;margin-inline:3px;border-radius:50%;background:var(--soft);flex-shrink:0"></span><span class="grow" style="font-weight:600">Cash</span><b style="width:26px;text-align:end">26%</b><span class="muted" style="width:52px;text-align:end;white-space:nowrap">QR 15,660</span></div>
+                <div class="row" style="gap:5px"><span style="width:10px;height:10px;margin-inline:3px;border-radius:50%;background:var(--pale);border:1px solid var(--soft);box-sizing:border-box;flex-shrink:0"></span><span class="grow" style="font-weight:600">App</span><b style="width:26px;text-align:end">9%</b><span class="muted" style="width:52px;text-align:end;white-space:nowrap">QR 5,620</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1.95fr) minmax(0,1fr);gap:8px;flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:4px;min-height:0;overflow:hidden">
+          <div><span class="ui-title">Today · every branch, real numbers</span><span class="cap" style="display:block">Most sales first · a branch with no sale yet is not listed</span></div>
+          <div style="display:flex;align-items:center;gap:8px;padding:0 10px;font-size:9px;font-weight:600;color:var(--sub);min-height:12px"><span class="grow">Branch</span><span style="width:40px;text-align:end">Orders</span><span style="width:72px;text-align:end">Revenue</span><span style="width:62px;text-align:end">Avg check</span></div>
+          <div style="display:flex;flex-direction:column;gap:1px;font-size:11px">
+            <div class="ui-cell" style="display:flex;align-items:center;gap:8px;min-height:18px;padding:0 10px;padding-inline-start:6px"><span class="ui-avatar" style="width:18px;height:18px;font-size:9px">S</span><b class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Saffron House · Al Sadd</b><span style="width:40px;text-align:end">96</span><b style="width:72px;text-align:end">QR 16,120</b><span style="width:62px;text-align:end">QR 167.92</span></div>
+            <div class="ui-cell" style="display:flex;align-items:center;gap:8px;min-height:18px;padding:0 10px;padding-inline-start:6px"><span class="ui-avatar" style="width:18px;height:18px;font-size:9px">J</span><b class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">JUNO · West Walk</b><span style="width:40px;text-align:end">83</span><b style="width:72px;text-align:end">QR 14,860</b><span style="width:62px;text-align:end">QR 179.04</span></div>
+            <div class="ui-cell" style="display:flex;align-items:center;gap:8px;min-height:18px;padding:0 10px;padding-inline-start:6px"><span class="ui-avatar" style="width:18px;height:18px;font-size:9px">J</span><b class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">JUNO · Lusail Boulevard</b><span style="width:40px;text-align:end">74</span><b style="width:72px;text-align:end">QR 9,640</b><span style="width:62px;text-align:end">QR 130.27</span></div>
+            <div class="ui-cell" style="display:flex;align-items:center;gap:8px;min-height:18px;padding:0 10px;padding-inline-start:6px"><span class="ui-avatar" style="width:18px;height:18px;font-size:9px">S</span><b class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Saffron House · The Pearl</b><span style="width:40px;text-align:end">69</span><b style="width:72px;text-align:end">QR 8,320</b><span style="width:62px;text-align:end">QR 120.58</span></div>
+            <div class="ui-cell" style="display:flex;align-items:center;gap:8px;min-height:18px;padding:0 10px;padding-inline-start:6px"><span class="ui-avatar" style="width:18px;height:18px;font-size:9px">B</span><b class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Bake &amp; Co · Msheireb</b><span style="width:40px;text-align:end">88</span><b style="width:72px;text-align:end">QR 6,480</b><span style="width:62px;text-align:end">QR 73.64</span></div>
+            <div class="ui-cell" style="display:flex;align-items:center;gap:8px;min-height:18px;padding:0 10px;padding-inline-start:6px"><span class="ui-avatar" style="width:18px;height:18px;font-size:9px">B</span><b class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Bake &amp; Co · Villaggio</b><span style="width:40px;text-align:end">79</span><b style="width:72px;text-align:end">QR 5,980</b><span style="width:62px;text-align:end">QR 75.70</span></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;min-height:20px;padding:0 10px;border-radius:10px;background:var(--pale);color:var(--accent);font-weight:700;font-size:11px"><span class="grow" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Group total · 6 branches</span><span style="width:40px;text-align:end">489</span><span style="width:72px;text-align:end">QR 61,400</span><span style="width:62px;text-align:end">QR 125.56</span></div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;gap:4px;min-height:0;overflow:hidden">
+          <div><span class="ui-title">Group sales · last 7 days</span><span class="cap" style="display:block">Median QR 58,900 · 7 trading days · QR per day</span></div>
+          <div style="display:flex;gap:3px;font-size:9px;color:var(--sub);height:11px;line-height:11px;margin-top:2px">
+            <span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0"></span><span style="flex:1 1 0;min-width:0;text-align:center;white-space:nowrap;font-weight:700;color:var(--accent)">61,400</span>
+          </div>
+          <div style="position:relative;display:flex;align-items:flex-end;gap:3px;height:80px;flex-shrink:0">
+            <span style="position:absolute;inset-inline:0;bottom:66px;border-top:1.5px dashed var(--dash)"></span>
+            <span style="flex:1 1 0;height:58px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:62px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:78px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:80px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:66px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:56px;border-radius:4px;background:var(--soft)"></span><span style="flex:1 1 0;height:69px;border-radius:4px;background:var(--accent)"></span>
+          </div>
+          <div style="display:flex;gap:3px;font-size:9px;color:var(--sub);height:11px;line-height:11px">
+            <span style="flex:1 1 0;min-width:0;text-align:center">Wed</span><span style="flex:1 1 0;min-width:0;text-align:center">Thu</span><span style="flex:1 1 0;min-width:0;text-align:center">Fri</span><span style="flex:1 1 0;min-width:0;text-align:center">Sat</span><span style="flex:1 1 0;min-width:0;text-align:center">Sun</span><span style="flex:1 1 0;min-width:0;text-align:center">Mon</span><span style="flex:1 1 0;min-width:0;text-align:center;font-weight:700;color:var(--ink)">Tue</span>
+          </div>
+          <span class="muted" style="font-size:9px;margin-top:auto">Today is the last bar, so far · a day without trade shows a dash</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></template>
+    </div>
+    <div class="ex-exit reveal">
+      <a href="#contact" class="btn btn-accent"><svg class="ic ic-s" aria-hidden="true"><use href="#i-calendar"/></svg> See it in 20 minutes</a>
+      <a href="#howitstarts" class="btn">How it starts</a>
     </div>
   </div>
 </section>
@@ -2624,160 +3777,273 @@ var WA_NUMBER = '';
 
 <script>
 /* ═══ the department explorer ═══════════════════════════════════════════════════════════════
-   Data first, so the fifteen are one list in one place. Every screen is the real MiM UI. */
+   The rail, the first department and every screen are in the HTML (fifteen <template>s hold the
+   product's own screens); this only swaps them. It tours only where the stage sits beside the rail
+   (≥1040) and motion is welcome; everywhere else it waits for a tap and says so. It never scrolls the
+   page on a tap — on a small screen the stage is already right under the strip. Announces nothing. */
 (function(){
   var D = [
-    {id:'pos',group:'Front of house',icon:'i-money',name:'Restaurant POS',tag:'Register · tables · kitchen',
-     eyebrow:'Front of house · the till',head:'Three taps to a check — and every tap is already a ledger row',
-     body:'Category, item, done: built for a thumb on a Thursday night. Cash, card, your own app — one screen, and it keeps selling with the line down.',
-     chips:['Allergy asked, not hoped','86’d is 86’d everywhere','Sells offline'],writes:'stock ledger · P&L · the day’s Z',
-     img:'/images/till.svg?v=20260920b',frame:'terminal',alt:'The MiM till — a dine-in check, the category rail, the item grid and the allergy row'},
-    {id:'me',group:'Front of house',icon:'i-mobile',name:'Staff Self-Service',tag:'Clock-in · shifts · leave · payslip',
-     eyebrow:'Front of house · every pocket',head:'The phone each member of staff carries — in their own language',
-     body:'Clock in with the till’s code and your location. See the shifts your manager rostered. Report sick, ask for leave, read your payslip behind your PIN. HR receives it in English.',
-     chips:['Nine languages','Clock-in by code + GPS','Payslip behind a PIN'],writes:'attendance · leave · HR requests',
-     img:'/images/staff-phone.svg?v=20260920b',frame:'phone',alt:'The MiM staff phone — today, shifts, requests and documents'},
-    {id:'cs',group:'Front of house',icon:'i-headset',name:'Customer Service',tag:'Complaints · calls · reviews',
-     eyebrow:'Front of house · the guest’s voice',head:'Every complaint has a clock on it',
-     body:'Calls, reviews and app feedback land in one inbox with a 24-hour answer window. What was done — the call, the comp, the kitchen briefing — is the record.',
-     chips:['24-hour SLA ring','Reviews that need a reply','Branch named'],writes:'cases · review replies · comps',
-     img:'/images/customer-service.svg?v=20260920b',frame:'tablet',alt:'MiM customer service — the case inbox and an open complaint with its timeline'},
-    {id:'ck',group:'Kitchen & supply',icon:'i-flame',name:'Central Kitchen',tag:'Produce and supply the branches',
-     eyebrow:'Kitchen · the pass',head:'The plate carries the status, not the ticket',
-     body:'Every course a chef sends is stamped with the moment it left. Held items stay held; the front sees the same board the pass does.',
-     chips:['Per-plate status','Bumps are atomic','Recall within 90s'],writes:'kitchen sends · dwell time · production',
-     img:'/images/chef-display.svg?v=20260920b',frame:'tablet',alt:'The MiM chef display — tickets by course with per-plate status'},
-    {id:'pastry',group:'Kitchen & supply',icon:'i-cake',name:'Central Pastry',tag:'Bake and supply the branches',
-     eyebrow:'Kitchen · the bakery',head:'Baked, counted, dispatched — with the yield on record',
-     body:'Today’s plan against what came out of the oven, and what each branch gets. Twenty-five kilos of flour that became 212 croissants is a number finance sees.',
-     chips:['Made vs planned','Dispatch per branch','Yield tracked'],writes:'production runs · dispatches · yield',
-     img:'/images/central-pastry.svg?v=20260920b',frame:'tablet',alt:'MiM central pastry — the production plan, dispatch list and yield'},
-    {id:'store',group:'Kitchen & supply',icon:'i-warehouse',name:'Central Store',tag:'Requests · purchasing · suppliers',
-     eyebrow:'Supply · the store',head:'A short delivery is written down as short',
-     body:'Branch requests become purchase orders; goods received are counted against them. Eighteen cases of twenty is recorded as eighteen — and the supplier’s balance knows.',
-     chips:['Requests → purchase orders','GRN against PO','Supplier balances'],writes:'purchase orders · GRNs · payables',
-     img:'/images/central-store.svg?v=20260920b',frame:'tablet',alt:'MiM central store — branch requests, a purchase order and supplier balances'},
-    {id:'ordering',group:'Kitchen & supply',icon:'i-clipboard',name:'Ordering',tag:'Order · wastage · inventory counts',
-     eyebrow:'Supply · the branch count',head:'A blank count is unknown — never zero',
-     body:'Par levels, what was counted, what to order. A shelf nobody counted stays blank; the system will not invent a zero and order for it.',
-     chips:['Blank ≠ zero','Suggested order','Wastage priced'],writes:'counts · orders · waste',
-     img:'/images/ordering.svg?v=20260920b',frame:'tablet',alt:'MiM ordering — the count sheet with par levels and the order to the store'},
-    {id:'finance',group:'The office',icon:'i-money',name:'Finance',tag:'Sales · food cost · targets · EOD',
-     eyebrow:'The office · finance',head:'What every dish really costs — against what it should',
-     body:'Theoretical cost from the recipe next to what the kitchen actually used, dish by dish, in riyals. The gap is named on the day, not discovered at month end.',
-     chips:['Theoretical vs actual','Hand-signed approvals','WPS payroll'],writes:'P&L · food cost · pay runs',
-     img:'/images/food-cost.svg?v=20260920b',frame:'tablet',alt:'MiM food cost — theoretical against actual cost per dish, the gap in riyals'},
-    {id:'marketing',group:'The office',icon:'i-megaphone',name:'Marketing',tag:'Campaigns · plans · budgets',
-     eyebrow:'The office · marketing',head:'Shoot the dish that sells and has no photo',
-     body:'The plan is built from what actually sold. A dish moving 214 a week with no picture is the cheapest thing on the board — and the board says so.',
-     chips:['Post calendar','Review pulse','Budget vs spent'],writes:'campaigns · budgets · content',
-     img:'/images/marketing.svg?v=20260920b',frame:'tablet',alt:'MiM marketing — the post calendar, what to shoot this week and the review pulse'},
-    {id:'it',group:'The office',icon:'i-laptop',name:'IT',tag:'Staff access · PIN resets · printers',
-     eyebrow:'The office · IT',head:'Every device has a name, a branch and a last-seen',
-     body:'Tills, tablets, chef displays, staff phones — paired by a QR that works once and dies in ten minutes. Revoke one and it is gone everywhere.',
-     chips:['One-shot pairing','Revoke anywhere','Printers watched'],writes:'devices · access · PIN resets',
-     img:'/images/it.svg?v=20260920b',frame:'tablet',alt:'MiM IT — paired devices, the pairing QR and printer status'},
-    {id:'maint',group:'The office',icon:'i-wrench',name:'Maintenance',tag:'Report · fix · cost straight to finance',
-     eyebrow:'The office · maintenance',head:'Reported, fixed — and the cost goes straight to finance',
-     body:'A fridge losing temperature at Al Sadd is a card with an age on it. When it is fixed, the invoice does not need re-typing anywhere.',
-     chips:['Priority and age','Spend per branch','Cost → P&L'],writes:'jobs · repair costs · assets',
-     img:'/images/maintenance.svg?v=20260920b',frame:'tablet',alt:'MiM maintenance — repair jobs by state and this month’s spend by branch'},
-    {id:'hr',group:'People & place',icon:'i-team',name:'Human Resources',tag:'People · attendance · Qatar law',
-     eyebrow:'People · HR',head:'Qatar law built in — not looked up',
-     body:'Art. 79 leave, Art. 54 gratuity, WPS pay, QID and MOPH expiries with a colour and a countdown. A leave request written in Hindi arrives in English, with the original kept beside it.',
-     chips:['Expiries ranked','Leave and gratuity','Auto-translated requests'],writes:'people · attendance · payroll inputs',
-     img:'/images/hr.svg?v=20260920b',frame:'tablet',alt:'MiM human resources — an employee file with documents, leave and translated requests'},
-    {id:'accom',group:'People & place',icon:'i-home',name:'Accommodation',tag:'Villas · beds · occupancy',
-     eyebrow:'People · housing',head:'Villas, beds and the morning bus',
-     body:'Who sleeps where, which villa is full, which repair is open, and what time the bus leaves Ain Khaled. Housing is part of the payroll picture, so it lives in the same record.',
-     chips:['Occupancy per villa','Repairs open','Transport runs'],writes:'housing · occupancy · repair costs',
-     img:'/images/accommodation.svg?v=20260920b',frame:'tablet',alt:'MiM accommodation — villas with occupancy, a bed list and the transport runs'},
-    {id:'quality',group:'People & place',icon:'i-cap',name:'Quality & Training',tag:'Food safety · academy · exams',
-     eyebrow:'People · quality',head:'The fridge that drifted is on the audit, in red',
-     body:'Temperature logs, the signed allergen matrix, hand-wash stations — and who holds a valid MOPH Food Handler certificate, who is expiring, who is missing.',
-     chips:['Audit checklist','Temperature strips','Certificates tracked'],writes:'audits · certificates · exam scores',
-     img:'/images/quality.svg?v=20260920b',frame:'tablet',alt:'MiM quality — a branch audit checklist, temperature strip and training certificates'},
-    {id:'hq',group:'People & place',icon:'i-crown',name:'Head Office',tag:'Every branch, one screen',
-     eyebrow:'Head office · the Owner’s screen',head:'Every branch, one screen, in the Owner’s pocket',
-     body:'Sales pace by the hour, the inbox of things that need a decision, reviews as they land. Built from the same rows every department wrote — nothing re-keyed, nothing summarised by hand.',
-     chips:['Hourly pace','Decision inbox','Live reviews'],writes:'reads everything · signs the approvals',
-     img:'/images/owner-sales.svg?v=20260920b',frame:'tablet',alt:'The MiM owner screen — sales pace by branch and by hour'}
+   {
+    "id": "pos",
+    "eyebrow": "Front of house · the till",
+    "head": "A check at the table — and every tap is already a ledger row",
+    "body": "Category, item, done: built for a thumb on a busy night. The allergy is asked at the table and travels to the kitchen, a dish that is 86’d is sold out on every till, and it keeps selling with the line down.",
+    "chips": [
+     "Allergy asked, not hoped",
+     "86’d is 86’d everywhere",
+     "Sells offline"
+    ],
+    "writes": "stock ledger · P&L · the day’s Z"
+   },
+   {
+    "id": "me",
+    "eyebrow": "Front of house · every pocket",
+    "head": "The phone each member of staff carries — in their own language",
+    "body": "Clock in with the number showing on the till. Report sick in one tap, ask for leave, read your payslip behind your PIN. This is Raza’s phone, on shift since 16:58.",
+    "chips": [
+     "Clock in by the till’s code",
+     "Report sick",
+     "Payslip behind a PIN"
+    ],
+    "writes": "attendance · leave · HR requests"
+   },
+   {
+    "id": "cs",
+    "eyebrow": "Front of house · the guest’s voice",
+    "head": "Every complaint on the record — every review routed",
+    "body": "Calls, complaints in person and Google reviews land in one log with the branch named. A 3-star review at Lusail opened its own case, went to Lusail’s manager and was answered 22 minutes later.",
+    "chips": [
+     "Cases with a resolution",
+     "Google reviews every 6 h",
+     "Rating per branch"
+    ],
+    "writes": "cases · review replies · comps"
+   },
+   {
+    "id": "ck",
+    "eyebrow": "Kitchen · the production unit",
+    "head": "Only the items you supply arrive here",
+    "body": "Branch orders land at the Central Kitchen; it produces them and dispatches what it actually made. The branch counts it in, and the value is charged to that branch — QR 19,640 supplied this month.",
+    "chips": [
+     "Branch orders",
+     "Dispatch what was made",
+     "Charged to the branch"
+    ],
+    "writes": "production · dispatches · branch charges"
+   },
+   {
+    "id": "pastry",
+    "eyebrow": "Kitchen · the pastry unit",
+    "head": "Sent short is written down as short",
+    "body": "Bake & Co’s two morning orders, line by line: what was asked, what is being sent, what it costs the branch. Six pistachio cakes asked, five sent — and the branch counts in five.",
+    "chips": [
+     "Asked vs sending",
+     "Dispatch per branch",
+     "Value per line"
+    ],
+    "writes": "production runs · dispatches · branch charges"
+   },
+   {
+    "id": "store",
+    "eyebrow": "Supply · the store",
+    "head": "A short delivery is written down as short",
+    "body": "What came off the truck is counted against the purchase order: 54 kg of lemons against 60 is recorded as 54, damaged herbs never enter stock, and a price rise over 5% is told to Finance.",
+    "chips": [
+     "GRN against PO",
+     "Price rises flagged",
+     "Expiry watch"
+    ],
+    "writes": "purchase orders · GRNs · payables"
+   },
+   {
+    "id": "ordering",
+    "eyebrow": "Supply · the branch",
+    "head": "The branch orders, the store answers, the branch confirms",
+    "body": "West Walk’s morning order came back with kale 4 of 6 kg. Noor confirms what actually arrived — and only then is it posted to the branch’s food cost.",
+    "chips": [
+     "Order from Central Store",
+     "Confirm received",
+     "Wastage and counts"
+    ],
+    "writes": "orders · receipts · food cost"
+   },
+   {
+    "id": "finance",
+    "eyebrow": "The office · finance",
+    "head": "The morning in one sentence — and every signature on its own screen",
+    "body": "Finance Home is rewritten live from the registers: yesterday’s sales and leakage, what waits for a signature oldest first, and what drifted. There is no bulk-sign.",
+    "chips": [
+     "Oldest first, never by amount",
+     "No bulk-sign",
+     "Drift, exceptions only"
+    ],
+    "writes": "approvals · registers · P&L"
+   },
+   {
+    "id": "marketing",
+    "eyebrow": "The office · marketing",
+    "head": "Did the post sell food? The till answers",
+    "body": "Each post is joined to the dish it names, and the dish to its plates in the permanent book. The jalapeño sliders went from 18 to 41 plates a day; a post for a dish the kitchen cannot serve is flagged.",
+    "chips": [
+     "Post joined to its dish",
+     "Lift against its own baseline",
+     "Money-blind"
+    ],
+    "writes": "plans · campaigns · content"
+   },
+   {
+    "id": "it",
+    "eyebrow": "The office · IT",
+    "head": "Every till, the build it runs, and when it was last heard from",
+    "body": "Eleven tills across six branches, all on build 2026-09-07 — none behind, none gone quiet. The same room pairs waiter tablets, chef displays and staff phones, and resets PINs.",
+    "chips": [
+     "Tills & versions",
+     "Paired devices",
+     "Access & PINs"
+    ],
+    "writes": "devices · access · PIN resets"
+   },
+   {
+    "id": "maint",
+    "eyebrow": "The office · maintenance",
+    "head": "Reported, fixed — and the cost goes straight to finance",
+    "body": "Every job has a lane: new, outsourced for quotations, in progress, waiting for the branch to confirm. The walk-in fridge at West Walk waits on Finance for a QR 1,200 quotation; the cost posts to that branch’s P&L.",
+    "chips": [
+     "In-house or outsource",
+     "Quotations to Finance",
+     "Cost → P&L"
+    ],
+    "writes": "jobs · repair costs · assets"
+   },
+   {
+    "id": "hr",
+    "eyebrow": "People · HR",
+    "head": "Qatar law built in — the worst first",
+    "body": "The morning queue is ranked: an expired health card before a QID that renews in 9 days. People, requests, expiring documents and September’s payroll — approved by Finance — on one screen.",
+    "chips": [
+     "Expiries ranked",
+     "The payroll chain",
+     "Self-service phones"
+    ],
+    "writes": "people · attendance · payroll inputs"
+   },
+   {
+    "id": "accom",
+    "eyebrow": "People · housing",
+    "head": "Villas, beds and who sleeps where",
+    "body": "88 of 96 beds taken across four villas. Assign a bed by employee number, move someone out, report a leak — and it becomes a real job in Maintenance.",
+    "chips": [
+     "Occupancy per villa",
+     "Beds by employee",
+     "Repairs → Maintenance"
+    ],
+    "writes": "housing · occupancy · repair costs"
+   },
+   {
+    "id": "quality",
+    "eyebrow": "People · quality",
+    "head": "Food safety, counted — and the fridge that drifted is on the record",
+    "body": "How much of the kitchen holds the twelve Qatar MoPH food-safety programs, which certificates and legal papers run out, and today’s branch checks: a fridge at 6.1 °C at 05:50, corrected to 3.9 °C.",
+    "chips": [
+     "12 MoPH programs",
+     "Certificates tracked",
+     "Temperature checks"
+    ],
+    "writes": "audits · certificates · exam scores"
+   },
+   {
+    "id": "hq",
+    "eyebrow": "Head office · the Owner’s screen",
+    "head": "Every branch, one screen",
+    "body": "What is selling right now across the group — by the hour, by brand, by payment, every branch ranked — built from the same rows every department wrote. Nothing re-keyed, nothing summarised by hand.",
+    "chips": [
+     "Live dashboard",
+     "Decision inbox",
+     "Every branch ranked"
+    ],
+    "writes": "reads everything · signs the approvals"
+   }
   ];
-  var rail=document.getElementById('ex-rail'), stage=document.getElementById('ex-stage');
-  if(!rail||!stage) return;
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var T = {"tour": "Touring · tap any department to stop", "tap": "Tap any department", "writes": "Writes into the shared record: "};
+  var ex=document.getElementById('dept-explorer'); if(!ex) return;
+  var rail=document.getElementById('ex-rail'), stage=document.getElementById('ex-stage'),
+      fit=document.getElementById('ex-fit'), box=document.getElementById('ex-box');
+  var tabs=D.map(function(d){ return document.getElementById('ex-tab-'+d.id); });
+  if(!rail||!stage||!fit||tabs.some(function(t){ return !t; })) return;
   var el={eyebrow:document.getElementById('ex-eyebrow'),head:document.getElementById('ex-head'),body:document.getElementById('ex-body'),
-          chips:document.getElementById('ex-chips'),writes:document.getElementById('ex-writes'),img:document.getElementById('ex-img'),
-          frame:document.getElementById('ex-frame'),bar:document.getElementById('ex-bar'),hint:document.getElementById('ex-hint-text'),glow:document.getElementById('ex-glow')};
+          chips:document.getElementById('ex-chips'),writes:document.getElementById('ex-writes'),
+          bar:document.getElementById('ex-bar'),hint:document.getElementById('ex-hint-text')};
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var wide=window.matchMedia('(min-width:1040px)');
+  var rtl=(document.documentElement.getAttribute('dir')||'').toLowerCase()==='rtl';
 
-  /* the rail, grouped — the grouping is the information */
-  var groups=[]; D.forEach(function(d){ if(groups.indexOf(d.group)<0) groups.push(d.group); });
-  groups.forEach(function(g){
-    var wrap=document.createElement('div'); wrap.className='ex-group';
-    var h=document.createElement('h5'); h.textContent=g; wrap.appendChild(h);
-    var tabs=document.createElement('div'); tabs.className='ex-tabs'; tabs.setAttribute('role','tablist');
-    D.filter(function(d){return d.group===g;}).forEach(function(d){
-      var b=document.createElement('button'); b.type='button'; b.className='ex-tab'; b.id='ex-tab-'+d.id;
-      b.setAttribute('role','tab'); b.setAttribute('aria-selected','false'); b.setAttribute('aria-controls','ex-stage'); b.dataset.dept=d.id;
-      b.innerHTML='<svg class="ic" aria-hidden="true"><use href="#'+d.icon+'"/></svg><span><b></b><small></small></span>';
-      b.querySelector('b').textContent=d.name; b.querySelector('small').textContent=d.tag;
-      b.addEventListener('click',function(){ select(d.id,true); });
-      tabs.appendChild(b);
-    });
-    wrap.appendChild(tabs); rail.appendChild(wrap);
-  });
+  /* the screens: the first is on the stage already, the rest wait in their templates */
+  var shots={};
+  if(fit.firstElementChild) shots[D[0].id]=fit.firstElementChild.cloneNode(true);
+  ex.querySelectorAll('template[data-dept]').forEach(function(t){
+    var s=t.content&&t.content.querySelector('.ui-shot'); if(s) shots[t.getAttribute('data-dept')]=s; });
 
-  /* preload every screen once the page is idle, so the first swap never shows a blank */
-  var warm=function(){ D.forEach(function(d){ var i=new Image(); i.src=d.img; }); };
-  if('requestIdleCallback' in window) requestIdleCallback(warm,{timeout:3000}); else setTimeout(warm,1200);
-
-  var cur=-1, timer=null, tick=null, paused=false, userStopped=window.matchMedia('(max-width:1039px)').matches, DWELL=12000, t0=0;
   function render(d){
     el.eyebrow.textContent=d.eyebrow; el.head.textContent=d.head; el.body.textContent=d.body;
-    el.chips.innerHTML=''; d.chips.forEach(function(c){ var s=document.createElement('span'); s.textContent=c; el.chips.appendChild(s); });
-    el.writes.innerHTML=''; var w=document.createElement('span'); w.textContent='Writes into the shared record: '; var wb=document.createElement('b'); wb.textContent=d.writes; el.writes.appendChild(w); el.writes.appendChild(wb);
-    el.frame.setAttribute('data-frame',d.frame); el.img.alt=d.alt; el.img.src=d.img;
+    el.chips.textContent=''; d.chips.forEach(function(c){ var s=document.createElement('span'); s.textContent=c; el.chips.appendChild(s); });
+    el.writes.textContent=''; var w=document.createElement('span'); w.textContent=T.writes; var wb=document.createElement('b'); wb.textContent=d.writes;
+    el.writes.appendChild(w); el.writes.appendChild(wb);
+    var s=shots[d.id];
+    if(s){ var n=s.cloneNode(true); n.style.zoom=''; fit.textContent=''; fit.appendChild(n);
+      box.setAttribute('data-kind', n.getAttribute('data-kind')||'tablet');
+      if(typeof uiFit==='function') uiFit(); }
   }
-  function select(id,byUser){
-    var i=-1; D.forEach(function(d,k){ if(d.id===id) i=k; }); if(i<0||i===cur) { if(byUser) stopTour(); return; }
-    var d=D[i]; cur=i;
-    rail.querySelectorAll('.ex-tab').forEach(function(t){ t.setAttribute('aria-selected', t.dataset.dept===id ? 'true':'false'); });
-    if(reduce){ render(d); } else {
-      stage.classList.add('is-swapping');
-      setTimeout(function(){ render(d); requestAnimationFrame(function(){ stage.classList.remove('is-swapping'); }); }, 300);
-    }
-    if(el.glow) el.glow.style.transform='rotate('+(i*24)+'deg)';
-    if(byUser){ stopTour(); if(history.replaceState){ try{ history.replaceState(null,'','#dept-'+id); }catch(e){} }
-      /* on a phone the picker sits below the stage — bring the screen they just chose into view */
-      if(window.matchMedia('(max-width:1039px)').matches){ stage.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); } }
-    restart();
+  var cur=0, swapT=null, timer=null, tick=null, paused=false, touring=false, DWELL=12000, t0=0;
+  function mark(i){
+    tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected', on?'true':'false'); t.tabIndex=on?0:-1; });
+    stage.setAttribute('aria-labelledby', tabs[i].id);
   }
-  /* the tour: advance while nobody is touching it; a click stops it for good */
-  function restart(){ clearInterval(tick); clearTimeout(timer); if(reduce||userStopped) { el.bar.style.width=userStopped?'0':'0'; return; }
+  function select(i,byUser){
+    if(i===cur){ if(byUser) stopTour(); return; }
+    cur=i; mark(i);
+    if(reduce){ render(D[i]); }
+    else { stage.classList.add('is-swapping'); clearTimeout(swapT);
+      swapT=setTimeout(function(){ render(D[cur]); requestAnimationFrame(function(){ stage.classList.remove('is-swapping'); }); }, 280); }
+    if(byUser){ stopTour(); if(history.replaceState){ try{ history.replaceState(null,'','#dept-'+D[i].id); }catch(e){} } }
+    else if(touring) restart();
+  }
+  /* the tour: advance while nobody is touching it; a tap stops it for good */
+  function restart(){ clearInterval(tick); clearTimeout(timer); if(!touring) return;
     t0=Date.now(); el.bar.style.width='0';
     tick=setInterval(function(){ if(paused){ t0+=250; return; } el.bar.style.width=Math.min(100,(Date.now()-t0)/DWELL*100)+'%'; },250);
-    timer=setTimeout(function next(){ if(paused){ timer=setTimeout(next,600); return; } select(D[(cur+1)%D.length].id,false); },DWELL);
+    timer=setTimeout(function next(){ if(paused){ timer=setTimeout(next,600); return; } select((cur+1)%D.length,false); },DWELL);
   }
-  function stopTour(){ userStopped=true; stage.classList.add('is-paused'); if(el.hint) el.hint.textContent='Tap any department'; clearInterval(tick); clearTimeout(timer); el.bar.style.width='0'; }
-  stage.addEventListener('mouseenter',function(){ paused=true; stage.classList.add('is-paused'); });
-  stage.addEventListener('mouseleave',function(){ paused=false; if(!userStopped) stage.classList.remove('is-paused'); });
+  function startTour(){ touring=true; stage.classList.add('is-touring'); el.hint.textContent=T.tour; restart(); }
+  function stopTour(){ touring=false; clearInterval(tick); clearTimeout(timer); el.bar.style.width='0';
+    stage.classList.remove('is-touring'); stage.classList.remove('is-paused'); el.hint.textContent=T.tap; }
+  stage.addEventListener('mouseenter',function(){ paused=true; if(touring) stage.classList.add('is-paused'); });
+  stage.addEventListener('mouseleave',function(){ paused=false; stage.classList.remove('is-paused'); });
   stage.addEventListener('focusin',function(){ paused=true; }); stage.addEventListener('focusout',function(){ paused=false; });
-  /* only tour while it is on screen */
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){ es.forEach(function(e){ paused=!e.isIntersecting||stage.matches(':hover'); }); },{threshold:.35}).observe(stage);
   }
-  /* keyboard: arrows move along the rail */
+  /* the window narrowed under 1040: the stage is no longer beside the rail, so the tour ends */
+  var onWide=function(e){ if(!e.matches&&touring) stopTour(); };
+  if(wide.addEventListener) wide.addEventListener('change',onWide); else if(wide.addListener) wide.addListener(onWide);
+
+  tabs.forEach(function(t,k){ t.addEventListener('click',function(){ select(k,true); }); });
+  /* keyboard: one tab stop for the rail; arrows (mirrored in Arabic), Home and End move along it */
   rail.addEventListener('keydown',function(e){
-    if(e.key!=='ArrowDown'&&e.key!=='ArrowUp'&&e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
-    e.preventDefault(); var n=(e.key==='ArrowDown'||e.key==='ArrowRight')?1:-1; var k=(cur+n+D.length)%D.length;
-    select(D[k].id,true); var b=document.getElementById('ex-tab-'+D[k].id); if(b) b.focus();
+    var k=e.key, n=0, fwd=rtl?'ArrowLeft':'ArrowRight', back=rtl?'ArrowRight':'ArrowLeft', to=-1;
+    if(k==='ArrowDown'||k===fwd) n=1; else if(k==='ArrowUp'||k===back) n=-1;
+    else if(k==='Home') to=0; else if(k==='End') to=D.length-1; else return;
+    e.preventDefault(); if(to<0) to=(cur+n+D.length)%D.length;
+    select(to,true); tabs[to].focus();
   });
-  /* deep link, else start at the till */
-  var m=/#dept-([a-z]+)/.exec(location.hash); var start=(m&&D.some(function(d){return d.id===m[1];}))?m[1]:'pos';
-  select(start,false);
+  /* deep link (#dept-hr): open that department, no tour; else tour where it can */
+  var m=/#dept-([a-z]+)/.exec(location.hash), start=-1;
+  if(m) D.forEach(function(d,k){ if(d.id===m[1]) start=k; });
+  if(start>0){ cur=start; mark(start); render(D[start]); }
+  if(start<0&&wide.matches&&!reduce) startTour(); else stopTour();
   /* a shared link like #dept-hr is not an element id, so the browser lands at the top of the page —
-     take the visitor to what they were sent */
-  if(m){ stopTour(); setTimeout(function(){ document.getElementById('dept-explorer').scrollIntoView({behavior:'auto',block:'start'}); },60); }
+     take the visitor to what they were sent, and bring the chosen tab into its strip */
+  if(start>=0){ setTimeout(function(){ ex.scrollIntoView({behavior:'auto',block:'start'});
+    try{ tabs[start].scrollIntoView({block:'nearest',inline:'center'}); }catch(e){} },60); }
 })();
 </script>
 <script>
