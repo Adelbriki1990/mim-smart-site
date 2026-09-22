@@ -879,6 +879,57 @@ html.js #hero .reveal,
 html.js #hero .reveal-l,
 html.js #hero .reveal-r,
 html.js #hero .reveal-s{opacity:1;transform:none}
+
+/* ── integrations (part) ── begin */
+/* ── integrations (rebuilt): three groups; each = a list of rows + ONE real proof drawn in the screen kit ── */
+#integrations .int-group{background:var(--card);border-radius:var(--rh);padding:24px;margin-block-end:16px;text-align:start}
+#integrations .int-group:last-child{margin-block-end:0}
+#integrations .int-head{display:block;margin-block-end:16px}
+#integrations .int-head h3{font-size:21px;font-weight:700;letter-spacing:-.3px;line-height:1.25;margin:0}
+#integrations .int-head p{font-size:13px;color:var(--sub);margin:4px 0 0}
+#integrations .int-body{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+#integrations ul.int-grid{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+#integrations .int-row{background:var(--inner);border-radius:var(--ri);padding:12px 14px;display:flex;gap:12px;align-items:flex-start;margin:0;min-width:0}
+#integrations .int-row>.ic{color:var(--accent);flex-shrink:0;margin-block-start:2px}
+#integrations .int-txt{flex:1;min-width:0}
+#integrations .int-top{display:flex;align-items:center;justify-content:space-between;gap:4px 10px;flex-wrap:wrap}
+#integrations .int-txt b{font-size:15px;font-weight:600;line-height:1.35;min-width:0}
+#integrations .int-flow{display:block;font-size:12px;font-weight:500;color:var(--sub);margin-block:1px 2px}
+#integrations .int-flow i{font-style:normal;color:var(--dash);padding-inline:2px}
+#integrations .int-say{display:block;font-size:13px;color:var(--sub);line-height:1.5}
+#integrations .int-st{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;
+  font-size:12px;font-weight:600;white-space:nowrap;line-height:1;flex-shrink:0}
+#integrations .int-st.run{background:var(--good-bg);color:var(--good)}
+#integrations .int-st.soon{background:var(--pale);color:var(--accent)}
+#integrations .nw{white-space:nowrap}
+/* the proof: the product's own markup, small and fluid, framed like the hero's */
+#integrations .int-proof{margin:0;min-width:0;position:sticky;top:84px}
+#integrations .int-proof figcaption{font-size:12px;color:var(--sub);line-height:1.45;margin-block-start:10px;padding-inline:4px}
+#integrations .pf-phone{background:var(--ground);border:6px solid var(--ink);border-block-start:0;border-radius:0 0 34px 34px;padding:10px 10px 16px;display:flex;flex-direction:column;gap:8px}
+#integrations .pf-phone .pf-fade{height:14px;margin:-10px -10px 0;background:var(--ground);border-block-end:1px dashed var(--track)}
+#integrations .pf-card{background:var(--card);border-radius:20px;padding:12px}
+#integrations .pf-pillbtn{height:38px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;font-weight:600}
+#integrations .pf-pillbtn .ic{width:14px;height:14px}
+#integrations .pf-ticket{background:var(--inner);border-radius:6px;padding:14px 14px 18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;line-height:1.5;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line);text-align:left}
+#integrations .pf-ticket .t-h{font-weight:700;font-size:12.5px}
+#integrations .pf-ticket .t-s{color:var(--sub)}
+#integrations .pf-ticket .t-alg{background:var(--ink);color:#fff;border-radius:4px;padding:6px 4px;font-size:9.5px;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;margin-block:8px;font-weight:700;text-align:center}
+#integrations .pf-ticket .t-rule{color:var(--dash);overflow:hidden;white-space:nowrap}
+#integrations .pf-ticket b{font-weight:700}
+#integrations .pf-till{background:var(--inner);border-radius:18px;box-shadow:inset 0 0 0 1px var(--line);padding:12px;display:flex;flex-direction:column;gap:8px}
+#integrations .pf-till .pf-card{padding:4px 12px 8px}
+@media(max-width:1039px){#integrations .int-body{grid-template-columns:minmax(0,1fr) 260px}}
+@media(max-width:819px){
+  #integrations .int-group{padding:20px}
+  #integrations .int-body{grid-template-columns:minmax(0,1fr)}
+  #integrations .int-proof{position:static;max-width:320px;width:100%;margin-inline:auto}
+}
+@media(max-width:519px){
+  #integrations .int-group{padding:16px}
+  #integrations .int-head h3{font-size:19px}
+  #integrations .int-row{padding:12px}
+}
+/* ── integrations (part) ── end */
 </style>
 <script>
 /* THE ONE PLACE THE NUMBER LIVES. Fill it in (digits only, e.g. 97455001122) and every WhatsApp button on the site appears, all pointing here. Empty = the buttons stay hidden. */
@@ -2662,32 +2713,47 @@ var WA_NUMBER = '';
     <div class="center">
       <div class="eyebrow">Honest status, not a wish list</div>
       <h2 class="s-title reveal">What it <span class="hl">connects to</span></h2>
-      <p class="s-sub mx reveal">Anything marked "coming" is not connected yet. We would rather tell you now than on the install day.</p>
+      <p class="s-sub mx reveal">Every row says what it does and which way the data goes. “Running” means it is live on MiM’s server today; “Coming” means it is not connected yet, and the row says what it waits for.</p>
     </div>
-
-    <div class="int-group reveal">
-      <h3><span class="dot"></span> Running today</h3>
-      <div class="int-grid">
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-invoice"/></svg><h4>WPS / MoL</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-mobile"/></svg><h4>Guest app</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-qr"/></svg><h4>Loyalty &amp; QR</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg><h4>Instagram</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-tablet"/></svg><h4>Waiter tablets</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg><h4>Chef displays</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg><h4>Kitchen printers</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg><h4>Push alerts</h4></div>
+    <div class="int-group">
+      <div class="int-head"><h3>Outside the building — running today</h3><p>6 running · official channels only</p></div>
+      <div class="int-body">
+      <ul class="int-grid">
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><div class="int-txt"><div class="int-top"><b>Apple Wallet</b><span class="int-st run">Running</span></div><span class="int-flow">MiM <i aria-hidden="true">→</i> the guest’s iPhone</span><span class="int-say">The guest adds the loyalty card from the bill; every paid bill earns points, spent by scan at the till.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><div class="int-txt"><div class="int-top"><b>WhatsApp</b><span class="int-st run">Running</span></div><span class="int-flow">MiM <i aria-hidden="true">→</i> a share link</span><span class="int-say">The receipt page sends the bill and the card by a wa.me link; staff-request codes travel the same way.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg><div class="int-txt"><div class="int-top"><b>Instagram &amp; Facebook</b><span class="int-st run">Running</span></div><span class="int-flow">Meta <i aria-hidden="true">→</i> MiM · read only</span><span class="int-say">Each brand’s posts, reach and insights through Meta’s official <span class="nw">Graph API</span>, beside the till’s own takings.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg><div class="int-txt"><div class="int-top"><b>TikTok</b><span class="int-st run">Running</span></div><span class="int-flow">TikTok <i aria-hidden="true">→</i> MiM · read only</span><span class="int-say">The official <span class="nw">TikTok Business API</span>, one business account per brand, on the same board.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><div class="int-txt"><div class="int-top"><b>Google reviews</b><span class="int-st run">Running</span></div><span class="int-flow">Google <i aria-hidden="true">→</i> MiM · every 6 hours</span><span class="int-say">Each linked branch’s five newest reviews, routed to that branch and to Customer Service.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-invoice"/></svg><div class="int-txt"><div class="int-top"><b>Bank payday file (WPS)</b><span class="int-st run">Running</span></div><span class="int-flow">MiM <i aria-hidden="true">→</i> the bank</span><span class="int-say">Payroll signed by HR, Finance and the Owner becomes the QIB-format salary file (SIF) for the Wage Protection System.</span></div></li>
+      </ul>
+      <figure class="int-proof reveal-s"><div class="ui pf-phone" role="img" aria-label="The foot of the guest’s receipt page for bill #1200029: +13 points, Add your card to Apple Wallet, and a WhatsApp share"><div class="pf-fade"></div><div class="pf-card" style="padding:4px 12px 10px"><div class="row" style="padding:9px 0 2px"><span style="flex:1;font-size:11px;font-weight:600;color:var(--sub)">Total</span><span class="num" style="font-size:17px;font-weight:700;color:var(--accent)">QR 132.00</span></div></div><div class="pf-card"><div class="cap">WITHSTAND card</div><div style="font-size:11.5px;font-weight:600;margin-block-start:2px">This bill earned <b style="color:var(--good)">+13 points</b></div><div class="pf-pillbtn" style="margin-block-start:9px;background:var(--accent);color:#fff">Add your card to Apple Wallet</div></div><div class="row" style="gap:7px"><div class="pf-pillbtn" style="flex:1;background:var(--good-bg);color:var(--good)"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</div><div class="pf-pillbtn" style="flex:1;background:var(--card);color:var(--ink)">Save PDF</div></div></div><figcaption>The foot of bill #1200029’s receipt page, as the guest sees it: the card goes to Apple Wallet, the bill goes by WhatsApp.</figcaption></figure>
       </div>
     </div>
-
-    <div class="int-group reveal">
-      <h3><span class="dot dot-sub"></span> Coming</h3>
-      <div class="int-grid soon">
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-bike"/></svg><h4>Talabat</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-bike"/></svg><h4>Snoonu</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-bike"/></svg><h4>Rafeeq</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-bike"/></svg><h4>Keeta</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-receipt"/></svg><h4>GTA e-invoice</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-calculator"/></svg><h4>Accounting export</h4></div>
+    <div class="int-group">
+      <div class="int-head"><h3>Devices it drives — running today</h3><p>8 running · MiM’s own screens, each paired by QR</p></div>
+      <div class="int-body">
+      <ul class="int-grid">
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg><div class="int-txt"><div class="int-top"><b>Thermal printers (ESC/POS)</b><span class="int-st run">Running</span></div><span class="int-flow">MiM <i aria-hidden="true">→</i> paper</span><span class="int-say">Receipts and kitchen tickets through the print bridge; on a browser till the Arabic receipt prints as a picture.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-tablet"/></svg><div class="int-txt"><div class="int-top"><b>Waiter tablets</b><span class="int-st run">Running</span></div><span class="int-flow">Both ways</span><span class="int-say">Orders taken at the table land on the same check the till sees.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg><div class="int-txt"><div class="int-top"><b>Chef displays (the Pass)</b><span class="int-st run">Running</span></div><span class="int-flow">Both ways</span><span class="int-say">Each order on one card, courses in order; the plate’s status goes back to the floor.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><div class="int-txt"><div class="int-top"><b>Hostess desk</b><span class="int-st run">Running</span></div><span class="int-flow">Both ways</span><span class="int-say">Bookings, the waitlist and the floor; seating a guest carries the table to the till.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-mobile"/></svg><div class="int-txt"><div class="int-top"><b>Staff phones</b><span class="int-st run">Running</span></div><span class="int-flow">Both ways</span><span class="int-say">Punches, payslips, leave and requests on the staff member’s own phone.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-crown"/></svg><div class="int-txt"><div class="int-top"><b>The Owner’s iPhone app</b><span class="int-st run">Running</span></div><span class="int-flow">Both ways</span><span class="int-say">Sales pace, approvals, reviews and alerts for every branch; App Store review submitted 20 Sept 2026.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-laptop"/></svg><div class="int-txt"><div class="int-top"><b>Browser and Windows tills</b><span class="int-st run">Running</span></div><span class="int-flow">Both ways</span><span class="int-say">The till runs in a browser on any machine, or as the desktop till on Windows POS hardware.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg><div class="int-txt"><div class="int-top"><b>Push alerts (Apple push)</b><span class="int-st run">Running</span></div><span class="int-flow">MiM <i aria-hidden="true">→</i> iPhones</span><span class="int-say">The Owner app and staff phones hear of a demo request, a refused sign-in, a review, the day’s pace.</span></div></li>
+      </ul>
+      <figure class="int-proof reveal-s"><div class="ui pf-ticket" dir="ltr" role="img" aria-label="The hot-kitchen ticket for order #1200029: an allergy banner for tree nuts and sesame above everything, dine-in table T2, mains course, one J Fire Bird and one Parmesan Fries"><div class="t-h">NEW ORDER  #1200029</div><div class="t-s">JUNO · West Walk · 20:34</div><div class="t-alg">*** ALLERGY — TREE NUTS / SESAME ***<br>*** SEPARATE BOARD · CLEAN KNIFE ***</div><div><b>DINE-IN · TABLE T2</b></div><div>*** MAINS COURSE ***</div><div class="t-rule">================================</div><div><b>1 x J FIRE BIRD</b></div><div class="t-rule">--------------------------------</div><div><b>1 x PARMESAN FRIES</b></div></div><figcaption>Bill #1200029’s hot-kitchen ticket, laid out line for line as the till prints it: the allergy prints above everything, on every printer the order touches.</figcaption></figure>
+      </div>
+    </div>
+    <div class="int-group int-last">
+      <div class="int-head"><h3>Coming — said plainly</h3><p>Not connected yet · each row says what it waits for</p></div>
+      <div class="int-body">
+      <ul class="int-grid">
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-bike"/></svg><div class="int-txt"><div class="int-top"><b>Delivery platforms</b><span class="int-st soon">Coming</span></div><span class="int-flow">Talabat · Snoonu · Rafeeq · Keeta <i aria-hidden="true">→</i> MiM</span><span class="int-say">Built, awaiting the platforms’ keys. Our Talabat partner application was filed on 5 Sept 2026.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-receipt"/></svg><div class="int-txt"><div class="int-top"><b>E-invoice (General Tax Authority)</b><span class="int-st soon">Coming</span></div><span class="int-flow">MiM <i aria-hidden="true">→</i> the tax authority</span><span class="int-say">Ready to map when the format is published; the bilingual digital receipt already exists.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-calculator"/></svg><div class="int-txt"><div class="int-top"><b>Accounting export</b><span class="int-st soon">Mapping: coming</span></div><span class="int-flow">MiM <i aria-hidden="true">→</i> your accountant</span><span class="int-say">CSV file today · ledger mapping on request.</span></div></li>
+      </ul>
+      <figure class="int-proof reveal-s"><div class="ui pf-till" role="img" aria-label="A preview, not live: how a Talabat order will land on the till once the platform issues a key — its own order type, paid by the platform, with a Reject order button"><div class="row" style="gap:6px;flex-wrap:wrap"><span class="ui-pill accent">Delivery · TALABAT</span><span class="ui-pill warn">Preparing</span><span class="ui-pill sub" style="margin-inline-start:auto">Preview · not live</span></div><div class="pf-card"><div class="ui-list"><div class="ui-li"><span class="num muted" style="font-weight:700;font-size:11px">1×</span><span class="grow" style="font-size:11px;font-weight:600">J Fire Bird</span><span class="num" style="font-size:11px;font-weight:700">84.00</span></div><div class="ui-li"><span class="num muted" style="font-weight:700;font-size:11px">1×</span><span class="grow" style="font-size:11px;font-weight:600">Parmesan Fries</span><span class="num" style="font-size:11px;font-weight:700">24.00</span></div><div class="ui-li"><span class="grow muted" style="font-size:11px;font-weight:600">Paid · Talabat Card</span><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">QR 108.00</span></div></div></div><span class="ui-btn wide" style="background:var(--bad-bg);color:var(--bad)">✗ Reject order</span></div><figcaption>How a platform order will land on the till once a key is issued: its own order type, settled by the platform, with a reject door. Not live today.</figcaption></figure>
       </div>
     </div>
   </div>
@@ -3456,7 +3522,7 @@ var WA_NUMBER = '';
       <details class="faq-item reveal"><summary>Can I get my data out?<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">Every table exports to a spreadsheet, and the underlying journal is append-only — so your history is complete rather than a snapshot of today. If you ever leave, you leave with the whole record. We would rather earn the renewal than hold your numbers hostage.</div></details>
       <details class="faq-item reveal"><summary>Do I have to enter every recipe before it is useful?<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">No. The till, the floor, payroll, the store and the P&amp;L all work from day one. Food cost is the part that needs recipes — and until a dish has one, the system says <b>"not costed yet"</b> rather than inventing a number. An unknown is never shown as a zero, and it is never quietly averaged into your margin.</div></details>
       <details class="faq-item reveal"><summary>What about Arabic?<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">Every screen runs right-to-left in Arabic, including the receipt. It is not a translation layer bolted on top — the layout itself flips, so nothing ends up reading backwards or colliding.</div></details>
-      <details class="faq-item reveal"><summary>Does it connect to Talabat, Snoonu and the others?<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">Not yet, and we will not tell you otherwise. The delivery bridge is built and running dormant; the Talabat partner application is in progress. Everything currently connected is listed under <a href="#integrations">Integrations</a> as "Running today", and everything that is not is listed as "Coming". We would rather lose a sale than be found out on the install day.</div></details>
+      <details class="faq-item reveal"><summary>Does it connect to Talabat, Snoonu and the others?<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">Not yet, and we will not tell you otherwise. The delivery door for Talabat, Snoonu, Rafeeq and Keeta is built on MiM’s server and stays locked until each platform issues its key; our Talabat partner application was filed on 5 September 2026. Everything connected today is marked “Running” under <a href="#integrations">Integrations</a>; everything that is not is marked “Coming”, with what it waits for.</div></details>
       <details class="faq-item reveal"><summary>Who actually uses this?<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">We do. MiM runs a 17-branch, six-brand group in Doha, and it was built because we were losing money in the gaps between five systems. We are customer number one, and we have no third-party case studies to show you yet — when we do, they will be real and named.</div></details>
       <details class="faq-item reveal"><summary>What hardware do I need?<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">A Mac or Windows machine for the till, and any tablet with a browser for waiters, the chef display and the hostess desk — tablets pair by scanning a QR code and stay paired to that one branch. Standard 80mm kitchen printers. If you already have tills, we will look at whether they can be reused before you buy anything.</div></details>
     </div>

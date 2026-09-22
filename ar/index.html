@@ -879,6 +879,57 @@ html.js #hero .reveal,
 html.js #hero .reveal-l,
 html.js #hero .reveal-r,
 html.js #hero .reveal-s{opacity:1;transform:none}
+
+/* ── integrations (part) ── begin */
+/* ── integrations (rebuilt): three groups; each = a list of rows + ONE real proof drawn in the screen kit ── */
+#integrations .int-group{background:var(--card);border-radius:var(--rh);padding:24px;margin-block-end:16px;text-align:start}
+#integrations .int-group:last-child{margin-block-end:0}
+#integrations .int-head{display:block;margin-block-end:16px}
+#integrations .int-head h3{font-size:21px;font-weight:700;letter-spacing:-.3px;line-height:1.25;margin:0}
+#integrations .int-head p{font-size:13px;color:var(--sub);margin:4px 0 0}
+#integrations .int-body{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+#integrations ul.int-grid{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+#integrations .int-row{background:var(--inner);border-radius:var(--ri);padding:12px 14px;display:flex;gap:12px;align-items:flex-start;margin:0;min-width:0}
+#integrations .int-row>.ic{color:var(--accent);flex-shrink:0;margin-block-start:2px}
+#integrations .int-txt{flex:1;min-width:0}
+#integrations .int-top{display:flex;align-items:center;justify-content:space-between;gap:4px 10px;flex-wrap:wrap}
+#integrations .int-txt b{font-size:15px;font-weight:600;line-height:1.35;min-width:0}
+#integrations .int-flow{display:block;font-size:12px;font-weight:500;color:var(--sub);margin-block:1px 2px}
+#integrations .int-flow i{font-style:normal;color:var(--dash);padding-inline:2px}
+#integrations .int-say{display:block;font-size:13px;color:var(--sub);line-height:1.5}
+#integrations .int-st{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;
+  font-size:12px;font-weight:600;white-space:nowrap;line-height:1;flex-shrink:0}
+#integrations .int-st.run{background:var(--good-bg);color:var(--good)}
+#integrations .int-st.soon{background:var(--pale);color:var(--accent)}
+#integrations .nw{white-space:nowrap}
+/* the proof: the product's own markup, small and fluid, framed like the hero's */
+#integrations .int-proof{margin:0;min-width:0;position:sticky;top:84px}
+#integrations .int-proof figcaption{font-size:12px;color:var(--sub);line-height:1.45;margin-block-start:10px;padding-inline:4px}
+#integrations .pf-phone{background:var(--ground);border:6px solid var(--ink);border-block-start:0;border-radius:0 0 34px 34px;padding:10px 10px 16px;display:flex;flex-direction:column;gap:8px}
+#integrations .pf-phone .pf-fade{height:14px;margin:-10px -10px 0;background:var(--ground);border-block-end:1px dashed var(--track)}
+#integrations .pf-card{background:var(--card);border-radius:20px;padding:12px}
+#integrations .pf-pillbtn{height:38px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;font-weight:600}
+#integrations .pf-pillbtn .ic{width:14px;height:14px}
+#integrations .pf-ticket{background:var(--inner);border-radius:6px;padding:14px 14px 18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;line-height:1.5;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line);text-align:left}
+#integrations .pf-ticket .t-h{font-weight:700;font-size:12.5px}
+#integrations .pf-ticket .t-s{color:var(--sub)}
+#integrations .pf-ticket .t-alg{background:var(--ink);color:#fff;border-radius:4px;padding:6px 4px;font-size:9.5px;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;margin-block:8px;font-weight:700;text-align:center}
+#integrations .pf-ticket .t-rule{color:var(--dash);overflow:hidden;white-space:nowrap}
+#integrations .pf-ticket b{font-weight:700}
+#integrations .pf-till{background:var(--inner);border-radius:18px;box-shadow:inset 0 0 0 1px var(--line);padding:12px;display:flex;flex-direction:column;gap:8px}
+#integrations .pf-till .pf-card{padding:4px 12px 8px}
+@media(max-width:1039px){#integrations .int-body{grid-template-columns:minmax(0,1fr) 260px}}
+@media(max-width:819px){
+  #integrations .int-group{padding:20px}
+  #integrations .int-body{grid-template-columns:minmax(0,1fr)}
+  #integrations .int-proof{position:static;max-width:320px;width:100%;margin-inline:auto}
+}
+@media(max-width:519px){
+  #integrations .int-group{padding:16px}
+  #integrations .int-head h3{font-size:19px}
+  #integrations .int-row{padding:12px}
+}
+/* ── integrations (part) ── end */
 </style>
 <script>
 /* THE ONE PLACE THE NUMBER LIVES. Fill it in (digits only, e.g. 97455001122) and every WhatsApp button on the site appears, all pointing here. Empty = the buttons stay hidden. */
@@ -2661,33 +2712,48 @@ var WA_NUMBER = '';
   <div class="container">
     <div class="center">
       <div class="eyebrow">حالة صادقة، لا قائمة أمنيات</div>
-      <h2 class="s-title reveal">ما الذي <span class="hl">يتّصل به</span></h2>
-      <p class="s-sub mx reveal">كل ما يحمل علامة «قريباً» ليس متصلاً بعد. نفضّل أن نخبرك الآن لا يوم التركيب.</p>
+      <h2 class="s-title reveal">بماذا <span class="hl">يتّصل</span></h2>
+      <p class="s-sub mx reveal">كل سطر يقول ماذا يفعل وفي أي اتجاه تنتقل البيانات. «يعمل» تعني أنه قائم على خادم MiM اليوم؛ و«قريباً» تعني أنه غير متصل بعد، والسطر يقول ماذا ينتظر.</p>
     </div>
-
-    <div class="int-group reveal">
-      <h3><span class="dot"></span> يعمل اليوم</h3>
-      <div class="int-grid">
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-invoice"/></svg><h4>WPS / وزارة العمل</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-mobile"/></svg><h4>تطبيق الضيف</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-qr"/></svg><h4>الولاء ورمز QR</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg><h4>Instagram</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-tablet"/></svg><h4>أجهزة النادل اللوحية</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg><h4>شاشات المطبخ</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg><h4>طابعات المطبخ</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg><h4>التنبيهات الفورية</h4></div>
+    <div class="int-group">
+      <div class="int-head"><h3>خارج المطعم — تعمل اليوم</h3><p>6 تعمل · عبر القنوات الرسمية فقط</p></div>
+      <div class="int-body">
+      <ul class="int-grid">
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><div class="int-txt"><div class="int-top"><b>Apple Wallet</b><span class="int-st run">يعمل</span></div><span class="int-flow">MiM &rlm;<i aria-hidden="true">←</i>&rlm; آيفون الضيف</span><span class="int-say">يضيف الضيف بطاقة الولاء من الفاتورة؛ كل فاتورة مدفوعة تكسبه نقاطاً يصرفها بمسح البطاقة عند الكاشير.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg><div class="int-txt"><div class="int-top"><b>WhatsApp</b><span class="int-st run">يعمل</span></div><span class="int-flow">MiM &rlm;<i aria-hidden="true">←</i>&rlm; رابط مشاركة</span><span class="int-say">صفحة الإيصال ترسل الفاتورة والبطاقة برابط wa.me، ورموز طلبات الموظفين تنتقل بالطريقة نفسها.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg><div class="int-txt"><div class="int-top"><b>Instagram وFacebook</b><span class="int-st run">يعمل</span></div><span class="int-flow">Meta &rlm;<i aria-hidden="true">←</i>&rlm; MiM · قراءة فقط</span><span class="int-say">منشورات كل علامة ووصولها وإحصاءاتها عبر <bdi class="nw">Graph API</bdi> الرسمية من Meta، بجانب مبيعات الكاشير نفسه.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg><div class="int-txt"><div class="int-top"><b>TikTok</b><span class="int-st run">يعمل</span></div><span class="int-flow">TikTok &rlm;<i aria-hidden="true">←</i>&rlm; MiM · قراءة فقط</span><span class="int-say">عبر <bdi class="nw">TikTok Business API</bdi> الرسمية، حساب أعمال لكل علامة، على اللوحة نفسها.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><div class="int-txt"><div class="int-top"><b>تقييمات Google</b><span class="int-st run">يعمل</span></div><span class="int-flow">Google &rlm;<i aria-hidden="true">←</i>&rlm; MiM · كل 6 ساعات</span><span class="int-say">أحدث خمسة تقييمات لكل فرع مربوط، تصل إلى الفرع نفسه وإلى خدمة العملاء.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-invoice"/></svg><div class="int-txt"><div class="int-top"><b>ملف الرواتب للبنك (WPS)</b><span class="int-st run">يعمل</span></div><span class="int-flow">MiM &rlm;<i aria-hidden="true">←</i>&rlm; البنك</span><span class="int-say">مسيّر الرواتب الذي توقّعه الموارد البشرية ثم المالية ثم المالك يصبح ملف الرواتب (SIF) بصيغة QIB لنظام حماية الأجور.</span></div></li>
+      </ul>
+      <figure class="int-proof reveal-s"><div class="ui pf-phone" role="img" aria-label="أسفل صفحة إيصال الضيف للفاتورة #1200029: ‎+13 نقطة، إضافة البطاقة إلى Apple Wallet، ومشاركة عبر WhatsApp"><div class="pf-fade"></div><div class="pf-card" style="padding:4px 12px 10px"><div class="row" style="padding:9px 0 2px"><span style="flex:1;font-size:11px;font-weight:600;color:var(--sub)">الإجمالي</span><span class="num" style="font-size:17px;font-weight:700;color:var(--accent)">132.00 ر.ق</span></div></div><div class="pf-card"><div class="cap">بطاقة WITHSTAND</div><div style="font-size:11.5px;font-weight:600;margin-block-start:2px">هذه الفاتورة كسبت <b style="color:var(--good)">‎+13 نقطة</b></div><div class="pf-pillbtn" style="margin-block-start:9px;background:var(--accent);color:#fff">أضف بطاقتك إلى Apple Wallet</div></div><div class="row" style="gap:7px"><div class="pf-pillbtn" style="flex:1;background:var(--good-bg);color:var(--good)"><svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</div><div class="pf-pillbtn" style="flex:1;background:var(--card);color:var(--ink)">حفظ PDF</div></div></div><figcaption>أسفل صفحة إيصال الفاتورة #1200029 كما يراها الضيف: البطاقة إلى Apple Wallet، والفاتورة عبر WhatsApp.</figcaption></figure>
       </div>
     </div>
-
-    <div class="int-group reveal">
-      <h3><span class="dot dot-sub"></span> قريباً</h3>
-      <div class="int-grid soon">
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-bike"/></svg><h4>Talabat</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-bike"/></svg><h4>Snoonu</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-bike"/></svg><h4>Rafeeq</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-bike"/></svg><h4>Keeta</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-receipt"/></svg><h4>الفاتورة الإلكترونية (GTA)</h4></div>
-        <div class="int-item"><svg class="ic" aria-hidden="true"><use href="#i-calculator"/></svg><h4>تصدير محاسبي</h4></div>
+    <div class="int-group">
+      <div class="int-head"><h3>أجهزة يشغّلها — تعمل اليوم</h3><p>8 تعمل · شاشات MiM نفسها، كل جهاز يُربط برمز QR</p></div>
+      <div class="int-body">
+      <ul class="int-grid">
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-printer"/></svg><div class="int-txt"><div class="int-top"><b>الطابعات الحرارية (ESC/POS)</b><span class="int-st run">يعمل</span></div><span class="int-flow">MiM &rlm;<i aria-hidden="true">←</i>&rlm; الورق</span><span class="int-say">الإيصالات وتذاكر المطبخ عبر جسر الطباعة؛ وعلى كاشير المتصفح يُطبع الإيصال العربي كصورة.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-tablet"/></svg><div class="int-txt"><div class="int-top"><b>أجهزة النادل اللوحية</b><span class="int-st run">يعمل</span></div><span class="int-flow">في الاتجاهين</span><span class="int-say">الطلب المأخوذ على الطاولة ينزل على الفاتورة نفسها التي يراها الكاشير.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg><div class="int-txt"><div class="int-top"><b>شاشات الشيف (منصة التسليم)</b><span class="int-st run">يعمل</span></div><span class="int-flow">في الاتجاهين</span><span class="int-say">كل طلب في بطاقة واحدة والأطباق بترتيبها؛ وحالة الطبق تعود إلى الصالة.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><div class="int-txt"><div class="int-top"><b>مكتب الاستقبال</b><span class="int-st run">يعمل</span></div><span class="int-flow">في الاتجاهين</span><span class="int-say">الحجوزات وقائمة الانتظار والصالة؛ وإجلاس الضيف ينقل الطاولة إلى الكاشير.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-mobile"/></svg><div class="int-txt"><div class="int-top"><b>هواتف الموظفين</b><span class="int-st run">يعمل</span></div><span class="int-flow">في الاتجاهين</span><span class="int-say">البصمة وقسائم الراتب والإجازات والطلبات على هاتف الموظف نفسه.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-crown"/></svg><div class="int-txt"><div class="int-top"><b>تطبيق المالك على الآيفون</b><span class="int-st run">يعمل</span></div><span class="int-flow">في الاتجاهين</span><span class="int-say">وتيرة المبيعات والموافقات والتقييمات والتنبيهات لكل الفروع؛ وقُدّم لمراجعة App Store في 20 سبتمبر 2026.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-laptop"/></svg><div class="int-txt"><div class="int-top"><b>كاشير المتصفح وWindows</b><span class="int-st run">يعمل</span></div><span class="int-flow">في الاتجاهين</span><span class="int-say">الكاشير يعمل في المتصفح على أي جهاز، أو ككاشير سطح المكتب على أجهزة نقاط البيع بنظام Windows.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg><div class="int-txt"><div class="int-top"><b>التنبيهات الفورية (Apple)</b><span class="int-st run">يعمل</span></div><span class="int-flow">MiM &rlm;<i aria-hidden="true">←</i>&rlm; الآيفون</span><span class="int-say">يصل إلى تطبيق المالك وهواتف الموظفين: طلب عرض جديد، دخول مرفوض، تقييم، وتيرة اليوم.</span></div></li>
+      </ul>
+      <figure class="int-proof reveal-s"><div class="ui pf-ticket" dir="ltr" role="img" aria-label="تذكرة المطبخ الساخن للطلب #1200029: تنبيه حساسية المكسرات والسمسم فوق كل شيء، طاولة T2، طبقان رئيسيان"><div class="t-h">NEW ORDER  #1200029</div><div class="t-s">JUNO · West Walk · 20:34</div><div class="t-alg">*** ALLERGY — TREE NUTS / SESAME ***<br>*** SEPARATE BOARD · CLEAN KNIFE ***</div><div><b>DINE-IN · TABLE T2</b></div><div>*** MAINS COURSE ***</div><div class="t-rule">================================</div><div><b>1 x J FIRE BIRD</b></div><div class="t-rule">--------------------------------</div><div><b>1 x PARMESAN FRIES</b></div></div><figcaption>تذكرة المطبخ الساخن للفاتورة #1200029، سطراً بسطر كما يطبعها الكاشير: الحساسية تُطبع فوق كل شيء، على كل طابعة يصلها الطلب.</figcaption></figure>
+      </div>
+    </div>
+    <div class="int-group int-last">
+      <div class="int-head"><h3>قريباً — بصراحة</h3><p>غير متصل بعد · كل سطر يقول ماذا ينتظر</p></div>
+      <div class="int-body">
+      <ul class="int-grid">
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-bike"/></svg><div class="int-txt"><div class="int-top"><b>منصات التوصيل</b><span class="int-st soon">قريباً</span></div><span class="int-flow"><bdi>طلبات</bdi> · <bdi>سنونو</bdi> · <bdi>رفيق</bdi> · <bdi>كيتا</bdi> &rlm;<i aria-hidden="true">←</i>&rlm; MiM</span><span class="int-say">مبنيّ وجاهز، بانتظار مفاتيح المنصات. قدّمنا طلب الشراكة مع طلبات (Talabat) في 5 سبتمبر 2026.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-receipt"/></svg><div class="int-txt"><div class="int-top"><b>الفاتورة الإلكترونية (الهيئة العامة للضرائب)</b><span class="int-st soon">قريباً</span></div><span class="int-flow">MiM &rlm;<i aria-hidden="true">←</i>&rlm; الهيئة الضريبية</span><span class="int-say">جاهز للربط حين تُنشر الصيغة؛ والإيصال الرقمي ثنائي اللغة موجود اليوم.</span></div></li>
+        <li class="int-row reveal-s"><svg class="ic" aria-hidden="true"><use href="#i-calculator"/></svg><div class="int-txt"><div class="int-top"><b>التصدير المحاسبي</b><span class="int-st soon">الربط: قريباً</span></div><span class="int-flow">MiM &rlm;<i aria-hidden="true">←</i>&rlm; محاسبك</span><span class="int-say">ملف CSV اليوم · والربط بدفتر الأستاذ عند الطلب.</span></div></li>
+      </ul>
+      <figure class="int-proof reveal-s"><div class="ui pf-till" role="img" aria-label="معاينة غير مفعّلة: كيف سينزل طلب طلبات على الكاشير حين تصدر المنصة مفتاحها — نوع طلب مستقل، مدفوع عبر المنصة، مع زر رفض الطلب"><div class="row" style="gap:6px;flex-wrap:wrap"><span class="ui-pill accent">توصيل · TALABAT</span><span class="ui-pill warn">قيد التحضير</span><span class="ui-pill sub" style="margin-inline-start:auto">معاينة · غير مفعّل</span></div><div class="pf-card"><div class="ui-list"><div class="ui-li"><span class="num muted" style="font-weight:700;font-size:11px">1×</span><span class="grow" style="font-size:11px;font-weight:600">جي فاير بيرد</span><span class="num" style="font-size:11px;font-weight:700">84.00</span></div><div class="ui-li"><span class="num muted" style="font-weight:700;font-size:11px">1×</span><span class="grow" style="font-size:11px;font-weight:600">بطاطس بالبارميزان</span><span class="num" style="font-size:11px;font-weight:700">24.00</span></div><div class="ui-li"><span class="grow muted" style="font-size:11px;font-weight:600">مدفوع · Talabat Card</span><span class="num" style="font-size:15px;font-weight:700;color:var(--accent)">108.00 ر.ق</span></div></div></div><span class="ui-btn wide" style="background:var(--bad-bg);color:var(--bad)">✗ رفض الطلب</span></div><figcaption>كيف سينزل طلب المنصة على الكاشير حين يصدر المفتاح: نوع طلب مستقل، تسدّده المنصة، مع باب للرفض. غير مفعّل اليوم.</figcaption></figure>
       </div>
     </div>
   </div>
@@ -3456,7 +3522,7 @@ var WA_NUMBER = '';
       <details class="faq-item reveal"><summary>هل أستطيع إخراج بياناتي؟<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">كل جدول يُصدَّر إلى ملف جداول بيانات، والسجلّ الدائم الذي يقوم عليه النظام لا يقبل إلا الإضافة ولا يُمحى منه شيء — فتاريخك كامل، لا لقطة من اليوم فقط. وإن قرّرت الرحيل يوماً، ترحل بالسجل كاملاً. نفضّل أن نستحق التجديد على أن نحتجز أرقامك رهينة.</div></details>
       <details class="faq-item reveal"><summary>هل عليّ إدخال كل الوصفات قبل أن يصبح النظام مفيداً؟<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">لا. الكاشير والصالة والرواتب والمخزن وحساب P&amp;L كلها تعمل من اليوم الأول. تكلفة الطعام هي الجزء الذي يحتاج إلى الوصفات — وإلى أن تُسجَّل للطبق وصفة، يقول النظام <b>«لم تُحسب تكلفته بعد»</b> بدل أن يخترع رقماً. المجهول لا يظهر أبداً على أنه صفر، ولا يُدمَج بهدوء في متوسط هامش ربحك.</div></details>
       <details class="faq-item reveal"><summary>وماذا عن اللغة العربية؟<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">كل شاشة تعمل بالعربية من اليمين إلى اليسار، بما فيها الإيصال. وليست طبقة ترجمة أُلصقت فوق النظام — بل التخطيط نفسه ينقلب، فلا شيء يُقرأ بالمقلوب ولا عنصر يتداخل مع آخر.</div></details>
-      <details class="faq-item reveal"><summary>هل يتصل بـ Talabat وSnoonu وغيرهما؟<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">ليس بعد، ولن نقول لك غير ذلك. جسر التوصيل مبنيّ وجاهز، لكنه غير مفعّل بعد؛ وطلب الشراكة مع Talabat قيد الإجراء. كل ما هو متصل حالياً مدرج تحت <a href="#integrations">التكاملات</a> بوصفه «يعمل اليوم»، وكل ما ليس متصلاً مدرج بوصفه «قريباً». نفضّل أن نخسر صفقة على أن يُكشف أمرنا يوم التركيب.</div></details>
+      <details class="faq-item reveal"><summary>هل يتصل بـ Talabat وSnoonu وغيرهما؟<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">ليس بعد، ولن نقول لك غير ذلك. باب طلبات التوصيل من طلبات وسنونو ورفيق وكيتا مبنيّ على خادم MiM، ويبقى مقفلاً حتى تصدر كل منصة مفتاحها؛ وقد قدّمنا طلب الشراكة مع طلبات (Talabat) في 5 سبتمبر 2026. كل ما يعمل اليوم معلَّم «يعمل» في قسم <a href="#integrations">التكاملات</a>، وكل ما لم يُربط بعد معلَّم «قريباً» مع ما ينتظره.</div></details>
       <details class="faq-item reveal"><summary>من يستخدمه فعلاً؟<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">نحن. يدير MiM مجموعة من 17 فرعاً وست علامات تجارية في الدوحة، وقد بُني لأننا كنا نخسر المال في الفجوات بين خمسة أنظمة. نحن العميل رقم واحد، وليست لدينا بعد دراسات حالة من عملاء آخرين نعرضها عليك — وحين تتوفر، ستكون حقيقية وبأسماء أصحابها.</div></details>
       <details class="faq-item reveal"><summary>ما الأجهزة التي أحتاجها؟<svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg></summary><div class="a">جهاز Mac أو Windows للكاشير، وأي جهاز لوحي فيه متصفح للنُدُل وشاشة المطبخ ومكتب الاستقبال — الأجهزة اللوحية تقترن بمسح رمز QR وتبقى مقترنة بذلك الفرع وحده. وطابعات مطبخ قياسية بعرض 80 مم. وإن كانت لديك أجهزة كاشير بالفعل، سننظر في إمكانية إعادة استخدامها قبل أن تشتري أي شيء.</div></details>
     </div>
