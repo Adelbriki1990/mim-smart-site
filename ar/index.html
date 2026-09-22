@@ -453,6 +453,16 @@ html.js .visible{opacity:1;transform:none}
   .ex-group{flex:0 0 auto}
   .ex-tabs{overflow:visible;margin-inline:0;padding-inline:0;scroll-snap-type:none}
 }
+/* ≤819 a till or tablet shrunk to the stage's width is ~5px type: the screen keeps a floor of 85%
+   (body text ≥10px) and scrolls sideways inside its box — still the real screen, never reflowed */
+.ex-swipe{display:none;align-items:center;gap:6px;font-size:13px;color:var(--sub);margin:0 0 8px}
+.ex-swipe svg{transform:rotate(-90deg)} [dir=rtl] .ex-swipe svg{transform:rotate(90deg)}
+@media(max-width:819px){
+  #ex-fit{--fit-min:.85}
+  .ex-box,.ex-box[data-kind=phone]{height:auto!important;aspect-ratio:auto;justify-content:flex-start;align-items:flex-start;
+    overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;border-radius:18px}
+  .ex-device.can-scroll .ex-swipe{display:flex}
+}
 
 /* ── problem / solution ───────────────────────────────────────────────────────────────────── */
 .split-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
@@ -1126,6 +1136,7 @@ var WA_NUMBER = '';
           </div>
         </div>
         <div class="ex-device">
+          <p class="ex-swipe" aria-hidden="true">اسحب الشاشة جانباً لترى كل ما فيها<svg class="ic ic-s" aria-hidden="true"><use href="#i-chevron"/></svg></p>
           <div class="ex-box" id="ex-box" data-kind="terminal"><div class="ui-fit" id="ex-fit"><div class="ui ui-shot" data-kind="terminal" data-w="1120" role="img" aria-label="صندوق MiM في JUNO ويست ووك يوم 8 سبتمبر الساعة 20:34: الطاولة T2 لشخصين مفتوحة على الفاتورة #1200029 ولم يُرسل منها شيء بعد، رضا ك. مسجّل الدخول، شريط الفئات وشبكة الأصناف وفيها الكاليماري المقرمش موقوف «86 · نفد»، الفاتورة وفيها سلطة الكيل وجي فاير بيرد وبطاطس بالبارميزان ضيافة، شارات الحساسية التي سُئل عنها على الطاولة (مكسرات، سمسم)، الإجمالي 132.00 ر.ق وزر إرسال الطلب" style="width:1120px;height:700px;overflow:hidden">
   <div class="ui-nav">
     <span class="ui-pill accent" style="height:26px;font-size:11px">JUNO</span>
@@ -3991,8 +4002,14 @@ var WA_NUMBER = '';
     var s=shots[d.id];
     if(s){ var n=s.cloneNode(true); n.style.zoom=''; fit.textContent=''; fit.appendChild(n);
       box.setAttribute('data-kind', n.getAttribute('data-kind')||'tablet');
-      if(typeof uiFit==='function') uiFit(); }
+      if(typeof uiFit==='function') uiFit(); edge(); }
   }
+  var dev=box.parentNode;
+  /* ≤819 the screen scrolls in its box: the till opens on its check (the inline end), a tablet on its start */
+  function edge(){ if(!dev) return; var over=box.scrollWidth-box.clientWidth; dev.classList.toggle('can-scroll', over>2);
+    var end=over>2&&box.getAttribute('data-kind')==='terminal'; box.scrollLeft=end?(rtl?-over:over):0; }
+  window.addEventListener('load', edge); setTimeout(edge,0);
+  if(window.ResizeObserver) new ResizeObserver(edge).observe(box); else window.addEventListener('resize', edge);
   var cur=0, swapT=null, timer=null, tick=null, paused=false, touring=false, DWELL=12000, t0=0;
   function mark(i){
     tabs.forEach(function(t,k){ var on=k===i; t.setAttribute('aria-selected', on?'true':'false'); t.tabIndex=on?0:-1; });
@@ -4068,9 +4085,10 @@ var WA_NUMBER = '';
 function uiFit(){
   document.querySelectorAll('.ui-fit').forEach(function(f){
     var w = f.clientWidth; if (!w) return;
+    var mn = parseFloat(getComputedStyle(f).getPropertyValue('--fit-min')) || 0;
     f.querySelectorAll('.ui-shot').forEach(function(s){
       var cw = parseFloat(s.getAttribute('data-w')) || 960;
-      s.style.zoom = String(Math.min(1, w / cw));
+      s.style.zoom = String(Math.min(1, Math.max(mn, w / cw)));
     });
   });
 }
