@@ -480,10 +480,18 @@ html.js .visible{opacity:1;transform:none}
    the phone sits beside its caption and the board runs the full width under it (0.96 at 1006) —
    a board squeezed beside a phone at 1006 read at 0.6, too small to read */
 @media(max-width:1099px){.device-band{grid-template-columns:minmax(0,1fr)}}
+.device-facts{display:none}
 @media(min-width:520px) and (max-width:1099px){
   .device-band > div:first-child{display:grid;grid-template-columns:minmax(0,332px) minmax(0,1fr);gap:16px;align-items:center}
-  .device-band > div:first-child .device-label{margin-top:0}
+  .device-band > div:first-child .device-label{margin-top:0;font-size:15px;max-width:520px}
+  .device-band > div:first-child .device-label b{font-size:17px;margin-bottom:4px}
+  /* beside the phone, 520–1099: what the screen reads, so the row is not a caption in white space */
+  .device-facts{display:block;margin-top:14px;max-width:520px}
 }
+@media(min-width:520px) and (max-width:759px){
+  .device-facts{padding:12px}.device-facts .serve-row{padding:10px;gap:8px}.device-facts .serve-row .ic{display:none}
+}
+.demo-note a{color:var(--accent);font-weight:600}
 .phone-frame,.kds-frame{background:var(--card);border-radius:var(--rh);padding:16px}
 .phone-frame{max-width:332px}
 .device-label{font-size:13px;color:var(--sub);line-height:1.45;margin-top:10px}
@@ -1126,7 +1134,7 @@ var WA_NUMBER = '';
           </div>
         </div>
         <div class="ex-device">
-          <div class="ex-box" id="ex-box" data-kind="terminal"><div class="ui-fit" id="ex-fit"><div class="ui ui-shot" data-kind="terminal" data-w="1120" role="img" aria-label="The MiM till at JUNO West Walk on 8 September at 20:34: table T2 with 2 covers open on bill #1200029, nothing sent yet, Raza K. signed in, the category strip and item grid with the Crispy Calamari marked 86 · Sold out, the check with Kale Salad, J Fire Bird and the Parmesan Fries on us, the allergy chips asked at the table (tree nuts, sesame), the total QR 132.00 and the Place order button" style="width:1120px;height:700px;overflow:hidden">
+          <div class="ex-box" id="ex-box" data-kind="terminal"><div class="ui-fit" id="ex-fit"><div class="ui ui-shot" data-kind="terminal" data-w="1120" role="img" aria-label="The MiM till at JUNO West Walk on 8 September at 20:34: table T2 with 2 covers open on bill #1200029, nothing sent yet, Raza K. signed in, the category strip and item grid with the Crispy Calamari marked 86 · Sold out, the check with Kale Salad, J Fire Bird and Parmesan Fries, the allergy chips asked at the table (tree nuts, sesame), the total QR 156.00 and the Place order button" style="width:1120px;height:700px;overflow:hidden">
   <div class="ui-nav">
     <span class="ui-pill accent" style="height:26px;font-size:11px">JUNO</span>
     <span style="line-height:1.15"><b style="display:block;font-size:11px">West Walk</b><small style="display:block;font-size:9px;font-weight:600;color:var(--sub)">Till 1</small></span>
@@ -1182,15 +1190,15 @@ var WA_NUMBER = '';
             <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">Note (no onions...)</div>
           </div>
           <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
-            <div class="row" style="justify-content:space-between"><span><b>Parmesan Fries</b> <span class="ui-pill good" style="height:16px;padding:0 6px">ON US</span></span><span class="num" style="font-weight:700"><s class="muted" style="font-weight:600">QR 24.00</s> QR 0.00</span></div>
+            <div class="row" style="justify-content:space-between"><b>Parmesan Fries</b><span class="num" style="font-weight:700">QR 24.00</span></div>
             <div class="row" style="gap:4px"><span class="ui-pill sub">HOLD</span><span class="ui-pill sub">S1</span><span class="ui-pill sub">%</span><span class="row" style="margin-inline-start:auto;gap:6px"><span class="ui-pill sub">−</span><b class="num">1</b><span class="ui-pill sub">+</span></span></div>
             <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">Note (no onions...)</div>
           </div>
         </div>
       </div>
-      <div class="row muted" style="justify-content:space-between"><span>Subtotal</span><span class="num">QR 132.00</span></div>
-      <div class="row" style="justify-content:space-between"><span style="font-size:13px;font-weight:700">Total</span><span class="num" style="font-size:22px;font-weight:700;letter-spacing:-.4px">QR 132.00</span></div>
-      <span class="ui-btn accent wide">🍽️ Place order · QR 132.00</span>
+      <div class="row muted" style="justify-content:space-between"><span>Subtotal</span><span class="num">QR 156.00</span></div>
+      <div class="row" style="justify-content:space-between"><span style="font-size:13px;font-weight:700">Total</span><span class="num" style="font-size:22px;font-weight:700;letter-spacing:-.4px">QR 156.00</span></div>
+      <span class="ui-btn accent wide">🍽️ Place order · QR 156.00</span>
     </div>
   </div>
 </div></div></div>
@@ -2228,7 +2236,7 @@ var WA_NUMBER = '';
       <p class="s-sub mx reveal">Fast enough for a Thursday night, and every tap on it is already a row in the stock ledger, the P&amp;L and the day close. Nothing gets re-typed anywhere, ever.</p>
     </div>
     <div class="shot reveal-s" style="margin-bottom:16px">
-      <div class="ui-fit"><div class="ui ui-shot" data-kind="terminal" data-w="1120" role="img" aria-label="The MiM till at JUNO West Walk on 8 September at 20:34: table T2 with 2 covers open on bill #1200029, nothing sent yet, Raza K. signed in, the category strip and item grid with the Crispy Calamari marked 86 · Sold out, the check with Kale Salad, J Fire Bird and the Parmesan Fries on us, the allergy chips asked at the table (tree nuts, sesame), the total QR 132.00 and the Place order button" style="width:1120px;height:700px;overflow:hidden">
+      <div class="ui-fit"><div class="ui ui-shot" data-kind="terminal" data-w="1120" role="img" aria-label="The MiM till at JUNO West Walk on 8 September at 20:34: table T2 with 2 covers open on bill #1200029, nothing sent yet, Raza K. signed in, the category strip and item grid with the Crispy Calamari marked 86 · Sold out, the check with Kale Salad, J Fire Bird and Parmesan Fries, the allergy chips asked at the table (tree nuts, sesame), the total QR 156.00 and the Place order button" style="width:1120px;height:700px;overflow:hidden">
   <div class="ui-nav">
     <span class="ui-pill accent" style="height:26px;font-size:11px">JUNO</span>
     <span style="line-height:1.15"><b style="display:block;font-size:11px">West Walk</b><small style="display:block;font-size:9px;font-weight:600;color:var(--sub)">Till 1</small></span>
@@ -2284,15 +2292,15 @@ var WA_NUMBER = '';
             <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">Note (no onions...)</div>
           </div>
           <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
-            <div class="row" style="justify-content:space-between"><span><b>Parmesan Fries</b> <span class="ui-pill good" style="height:16px;padding:0 6px">ON US</span></span><span class="num" style="font-weight:700"><s class="muted" style="font-weight:600">QR 24.00</s> QR 0.00</span></div>
+            <div class="row" style="justify-content:space-between"><b>Parmesan Fries</b><span class="num" style="font-weight:700">QR 24.00</span></div>
             <div class="row" style="gap:4px"><span class="ui-pill sub">HOLD</span><span class="ui-pill sub">S1</span><span class="ui-pill sub">%</span><span class="row" style="margin-inline-start:auto;gap:6px"><span class="ui-pill sub">−</span><b class="num">1</b><span class="ui-pill sub">+</span></span></div>
             <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">Note (no onions...)</div>
           </div>
         </div>
       </div>
-      <div class="row muted" style="justify-content:space-between"><span>Subtotal</span><span class="num">QR 132.00</span></div>
-      <div class="row" style="justify-content:space-between"><span style="font-size:13px;font-weight:700">Total</span><span class="num" style="font-size:22px;font-weight:700;letter-spacing:-.4px">QR 132.00</span></div>
-      <span class="ui-btn accent wide">🍽️ Place order · QR 132.00</span>
+      <div class="row muted" style="justify-content:space-between"><span>Subtotal</span><span class="num">QR 156.00</span></div>
+      <div class="row" style="justify-content:space-between"><span style="font-size:13px;font-weight:700">Total</span><span class="num" style="font-size:22px;font-weight:700;letter-spacing:-.4px">QR 156.00</span></div>
+      <span class="ui-btn accent wide">🍽️ Place order · QR 156.00</span>
     </div>
   </div>
 </div></div>
@@ -2302,7 +2310,7 @@ var WA_NUMBER = '';
       <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-warn"/></svg></span><h4>The allergy question is asked, not hoped for</h4><p>It appears on the check and travels to the kitchen screen with the order. Undetermined never reads as "free".</p></div>
       <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-ban"/></svg></span><h4>86'd once, sold out everywhere</h4><p>Mark a dish off at one till and it reads “86 · Sold out” on every till, as the calamari does here. Nobody rings up what the kitchen cannot cook.</p></div>
       <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-plugoff"/></svg></span><h4>It keeps selling with the line down</h4><p>Orders queue locally and settle when the link returns. An empty answer is never mistaken for a real zero.</p></div>
-      <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></span><h4>Given away, still counted</h4><p>The fries on us stay on the check at QR 0.00 with the QR 24.00 struck through, so a comp is a line with a price, not a missing plate.</p></div>
+      <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></span><h4>Given away, still counted</h4><p>At 20:49 the fries ran late and Noor put them on us: the line stays on the check at QR 0.00 with the QR 24.00 struck through, and the bill closes at QR 132.00. A comp is a line with a price and a name, not a missing plate.</p></div>
       <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg></span><h4>Arabic, right to left</h4><p>Including the receipt. The layout flips; nothing ends up reading backwards.</p></div>
     </div>
   </div>
@@ -2356,7 +2364,7 @@ var WA_NUMBER = '';
         <ul class="lines">
           <li><svg class="ic ic-s i-ok" aria-hidden="true"><use href="#i-check"/></svg> <span>Money enters once, at the till, and is never re-typed.</span></li>
           <li><svg class="ic ic-s i-ok" aria-hidden="true"><use href="#i-check"/></svg> <span>The P&amp;L and the cockpit run the same arithmetic.</span></li>
-          <li><svg class="ic ic-s i-ok" aria-hidden="true"><use href="#i-check"/></svg> <span>Every riyal out is matched line-for-line with the bank.</span></li>
+          <li><svg class="ic ic-s i-ok" aria-hidden="true"><use href="#i-check"/></svg> <span>Every riyal out carries a signature, and every drawer is counted against its register.</span></li>
           <li><svg class="ic ic-s i-ok" aria-hidden="true"><use href="#i-check"/></svg> <span>Marketing sees demand in portions — never a riyal.</span></li>
         </ul>
       </div>
@@ -2370,7 +2378,7 @@ var WA_NUMBER = '';
     <div class="center">
       <div class="eyebrow">Demo data · not a real branch</div>
       <h2 class="s-title reveal">What the <span class="hl">screens</span> actually say</h2>
-      <p class="s-sub mx reveal">A count means somebody has to act. Every number below links to a person, a shelf, or a bank line.</p>
+      <p class="s-sub mx reveal">A count means somebody has to act. These two screens read the same evening at JUNO West Walk: the owner’s phone at 21:14, and the chef display at 20:45 with table T2’s bill #1200029 on the fire.</p>
     </div>
 
     <div class="device-band">
@@ -2446,7 +2454,14 @@ var WA_NUMBER = '';
     </div>
   </div>
 </div></div></div>
-        <div class="device-label"><b>The owner's phone</b>Opened on one branch: its sales so far against last Tuesday at the same minute, the busiest hour, and what sold best.</div>
+        <div class="device-side">
+          <div class="device-label"><b>The owner's phone</b>Opened on one branch: its sales so far against last Tuesday at the same minute, the busiest hour, and what sold best.</div>
+          <div class="serve-col device-facts"><div class="serve-list">
+            <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><div><b>QR 12,930 by 21:14</b><span>8% ahead of last Tuesday at the same minute, not against last Tuesday’s whole day.</span></div></div>
+            <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><div><b>Busiest hour: 20:00</b><span>QR 2,860 rung in that hour; 72 bills so far today.</span></div></div>
+            <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg><div><b>Top seller: J Fire Bird, 38 sold</b><span>The same plate the chef display shows cooking for table T2.</span></div></div>
+          </div></div>
+        </div>
       </div>
       <div class="reveal-r">
         <div class="kds-frame">
@@ -2589,75 +2604,7 @@ var WA_NUMBER = '';
       </div>
     </div>
 
-    <div class="preview-grid">
-      <div class="preview-card reveal-l">
-        <div class="preview-header">
-          <span class="title"><svg class="ic ic-s" aria-hidden="true"><use href="#i-team"/></svg> People &amp; Qatar law</span>
-          <span class="status warn">3 need action</span>
-        </div>
-        <div class="hr-alert">
-          <div class="alert-title">Ahmed R. is working without a valid health card</div>
-          <div class="alert-detail">MOPH · 12 days expired — renew before the next shift</div>
-        </div>
-        <div class="hr-alert warn">
-          <div class="alert-title">Payday in 6 days — 2 people cannot be paid</div>
-          <div class="alert-detail">No IBAN on file for WPS: Fatima S. · Rajesh K.</div>
-        </div>
-        <div class="preview-item"><span class="label">Documents expiring in 30 days</span><span class="value amber">4</span></div>
-        <div class="preview-item"><span class="label">Leave owed today</span><span class="value">QR 18,420.00</span></div>
-        <div class="preview-item"><span class="label">On shift now</span><span class="value">31 / 48</span></div>
-        <div class="preview-item"><span class="label">Below the legal wage floor</span><span class="value green">0</span></div>
-      </div>
-
-      <div class="preview-card reveal-r">
-        <div class="preview-header">
-          <span class="title"><svg class="ic ic-s" aria-hidden="true"><use href="#i-chart"/></svg> Today, Al Sadd branch</span>
-          <span class="status">Live</span>
-        </div>
-        <div class="preview-item"><span class="label">Covers seated</span><span class="value">184</span></div>
-        <div class="preview-item"><span class="label">Checks paid</span><span class="value">67</span></div>
-        <div class="preview-item"><span class="label">Average check</span><span class="value">QR 218.40</span></div>
-        <div class="preview-item"><span class="label">Total sales</span><span class="value green">QR 14,632.80</span></div>
-        <div class="preview-item"><span class="label">Theoretical food cost</span><span class="value">QR 4,243.50 · 29.0%</span></div>
-        <div class="preview-item"><span class="label">Actual food cost</span><span class="value amber">QR 4,678.20 · 32.0%</span></div>
-        <div class="preview-item"><span class="label">Unexplained variance</span><span class="value red">QR 434.70</span></div>
-        <div class="mini-chart" aria-hidden="true">
-          <div class="bar" style="--h:62"></div><div class="bar" style="--h:74"></div><div class="bar" style="--h:58"></div>
-          <div class="bar" style="--h:81"></div><div class="bar lit" style="--h:95"></div><div class="bar" style="--h:88"></div>
-          <div class="bar" style="--h:70"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="preview-grid">
-      <div class="preview-card reveal-l">
-        <div class="preview-header">
-          <span class="title"><svg class="ic ic-s" aria-hidden="true"><use href="#i-archive"/></svg> Stock on hand</span>
-          <span class="status warn">2 below par</span>
-        </div>
-        <div class="inv-item"><span class="nm">Chicken breast</span><div class="bar-bg"><i class="fill" style="--w:62%"></i></div><span class="qty">24 kg</span></div>
-        <div class="inv-item"><span class="nm nm-low">Salmon fillet</span><div class="bar-bg"><i class="fill low" style="--w:22%"></i></div><span class="qty">8 kg</span></div>
-        <div class="inv-item"><span class="nm">Tomatoes</span><div class="bar-bg"><i class="fill" style="--w:84%"></i></div><span class="qty">120 pcs</span></div>
-        <div class="inv-item"><span class="nm nm-mid">Olive oil</span><div class="bar-bg"><i class="fill mid" style="--w:34%"></i></div><span class="qty">3 L</span></div>
-        <div class="inv-item"><span class="nm">Bread flour</span><div class="bar-bg"><i class="fill" style="--w:66%"></i></div><span class="qty">18 kg</span></div>
-        <div class="inv-item"><span class="nm nm-low">Butter</span><div class="bar-bg"><i class="fill low" style="--w:18%"></i></div><span class="qty">2 kg</span></div>
-      </div>
-
-      <div class="preview-card reveal-r">
-        <div class="preview-header">
-          <span class="title"><svg class="ic ic-s" aria-hidden="true"><use href="#i-money"/></svg> Money out, matched</span>
-          <span class="status">Bank reconciled</span>
-        </div>
-        <div class="preview-item"><span class="label">Card settlements matched</span><span class="value green">62 / 62</span></div>
-        <div class="preview-item"><span class="label">Aggregator payouts matched</span><span class="value amber">14 / 16</span></div>
-        <div class="preview-item"><span class="label">Register drift, this week</span><span class="value">QR 12.50</span></div>
-        <div class="preview-item"><span class="label">Petty cash awaiting approval</span><span class="value amber">3 · QR 1,180.00</span></div>
-        <div class="preview-item"><span class="label">Invoices past Net 30</span><span class="value red">2 · QR 8,940.00</span></div>
-        <div class="preview-item"><span class="label">Unsigned end-of-day</span><span class="value green">0</span></div>
-      </div>
-    </div>
-
-    <p class="demo-note"><svg class="ic ic-s" aria-hidden="true"><use href="#i-info"/></svg> These panels use demo data. On a live install they read from your own branches.</p>
+    <p class="demo-note"><svg class="ic ic-s" aria-hidden="true"><use href="#i-info"/></svg> <span>Demo data. On a live install these screens read from your own branches. Every department’s own screen, HR, Finance, the Central Store and Head Office among them, is in the <a href="#departments">departments explorer</a> above.</span></p>
   </div>
 </section>
 

@@ -480,10 +480,18 @@ html.js .visible{opacity:1;transform:none}
    the phone sits beside its caption and the board runs the full width under it (0.96 at 1006) —
    a board squeezed beside a phone at 1006 read at 0.6, too small to read */
 @media(max-width:1099px){.device-band{grid-template-columns:minmax(0,1fr)}}
+.device-facts{display:none}
 @media(min-width:520px) and (max-width:1099px){
   .device-band > div:first-child{display:grid;grid-template-columns:minmax(0,332px) minmax(0,1fr);gap:16px;align-items:center}
-  .device-band > div:first-child .device-label{margin-top:0}
+  .device-band > div:first-child .device-label{margin-top:0;font-size:15px;max-width:520px}
+  .device-band > div:first-child .device-label b{font-size:17px;margin-bottom:4px}
+  /* beside the phone, 520–1099: what the screen reads, so the row is not a caption in white space */
+  .device-facts{display:block;margin-top:14px;max-width:520px}
 }
+@media(min-width:520px) and (max-width:759px){
+  .device-facts{padding:12px}.device-facts .serve-row{padding:10px;gap:8px}.device-facts .serve-row .ic{display:none}
+}
+.demo-note a{color:var(--accent);font-weight:600}
 .phone-frame,.kds-frame{background:var(--card);border-radius:var(--rh);padding:16px}
 .phone-frame{max-width:332px}
 .device-label{font-size:13px;color:var(--sub);line-height:1.45;margin-top:10px}
@@ -1126,7 +1134,7 @@ var WA_NUMBER = '';
           </div>
         </div>
         <div class="ex-device">
-          <div class="ex-box" id="ex-box" data-kind="terminal"><div class="ui-fit" id="ex-fit"><div class="ui ui-shot" data-kind="terminal" data-w="1120" role="img" aria-label="صندوق MiM في JUNO ويست ووك يوم 8 سبتمبر الساعة 20:34: الطاولة T2 لشخصين مفتوحة على الفاتورة #1200029 ولم يُرسل منها شيء بعد، رضا ك. مسجّل الدخول، شريط الفئات وشبكة الأصناف وفيها الكاليماري المقرمش موقوف «86 · نفد»، الفاتورة وفيها سلطة الكيل وجي فاير بيرد وبطاطس بالبارميزان ضيافة، شارات الحساسية التي سُئل عنها على الطاولة (مكسرات، سمسم)، الإجمالي 132.00 ر.ق وزر إرسال الطلب" style="width:1120px;height:700px;overflow:hidden">
+          <div class="ex-box" id="ex-box" data-kind="terminal"><div class="ui-fit" id="ex-fit"><div class="ui ui-shot" data-kind="terminal" data-w="1120" role="img" aria-label="صندوق MiM في JUNO ويست ووك يوم 8 سبتمبر الساعة 20:34: الطاولة T2 لشخصين مفتوحة على الفاتورة #1200029 ولم يُرسل منها شيء بعد، رضا ك. مسجّل الدخول، شريط الفئات وشبكة الأصناف وفيها الكاليماري المقرمش موقوف «86 · نفد»، الفاتورة وفيها سلطة الكيل وجي فاير بيرد وبطاطس بالبارميزان، شارات الحساسية التي سُئل عنها على الطاولة (مكسرات، سمسم)، الإجمالي 156.00 ر.ق وزر إرسال الطلب" style="width:1120px;height:700px;overflow:hidden">
   <div class="ui-nav">
     <span class="ui-pill accent" style="height:26px;font-size:11px">JUNO</span>
     <span style="line-height:1.15"><b style="display:block;font-size:11px">ويست ووك</b><small style="display:block;font-size:9px;font-weight:600;color:var(--sub)">الصندوق 1</small></span>
@@ -1182,15 +1190,15 @@ var WA_NUMBER = '';
             <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">ملاحظة (بدون بصل...)</div>
           </div>
           <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
-            <div class="row" style="justify-content:space-between"><span><b>بطاطس بالبارميزان</b> <span class="ui-pill good" style="height:16px;padding:0 6px">ضيافة</span></span><span class="num" style="font-weight:700"><s class="muted" style="font-weight:600">24.00 ر.ق</s> 0.00 ر.ق</span></div>
+            <div class="row" style="justify-content:space-between"><b>بطاطس بالبارميزان</b><span class="num" style="font-weight:700">24.00 ر.ق</span></div>
             <div class="row" style="gap:4px"><span class="ui-pill sub">تعليق</span><span class="ui-pill sub">مقعد 1</span><span class="ui-pill sub">%</span><span class="row" style="margin-inline-start:auto;gap:6px"><span class="ui-pill sub">−</span><b class="num">1</b><span class="ui-pill sub">+</span></span></div>
             <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">ملاحظة (بدون بصل...)</div>
           </div>
         </div>
       </div>
-      <div class="row muted" style="justify-content:space-between"><span>المجموع الفرعي</span><span class="num">132.00 ر.ق</span></div>
-      <div class="row" style="justify-content:space-between"><span style="font-size:13px;font-weight:700">الإجمالي</span><span class="num" style="font-size:22px;font-weight:700;letter-spacing:-.4px">132.00 ر.ق</span></div>
-      <span class="ui-btn accent wide">🍽️ إرسال الطلب · 132.00 ر.ق</span>
+      <div class="row muted" style="justify-content:space-between"><span>المجموع الفرعي</span><span class="num">156.00 ر.ق</span></div>
+      <div class="row" style="justify-content:space-between"><span style="font-size:13px;font-weight:700">الإجمالي</span><span class="num" style="font-size:22px;font-weight:700;letter-spacing:-.4px">156.00 ر.ق</span></div>
+      <span class="ui-btn accent wide">🍽️ إرسال الطلب · 156.00 ر.ق</span>
     </div>
   </div>
 </div></div></div>
@@ -2228,7 +2236,7 @@ var WA_NUMBER = '';
       <p class="s-sub mx reveal">سريعة بما يكفي لليلة خميس، وكل لمسة عليها هي أصلاً سطرٌ في سجلّ المخزون وفي قائمة P&amp;L وفي إقفال اليوم. لا شيء يُعاد إدخاله في أي مكان، أبداً.</p>
     </div>
     <div class="shot reveal-s" style="margin-bottom:16px">
-      <div class="ui-fit"><div class="ui ui-shot" data-kind="terminal" data-w="1120" role="img" aria-label="صندوق MiM في JUNO ويست ووك يوم 8 سبتمبر الساعة 20:34: الطاولة T2 لشخصين مفتوحة على الفاتورة #1200029 ولم يُرسل منها شيء بعد، رضا ك. مسجّل الدخول، شريط الفئات وشبكة الأصناف وفيها الكاليماري المقرمش موقوف «86 · نفد»، الفاتورة وفيها سلطة الكيل وجي فاير بيرد وبطاطس بالبارميزان ضيافة، شارات الحساسية التي سُئل عنها على الطاولة (مكسرات، سمسم)، الإجمالي 132.00 ر.ق وزر إرسال الطلب" style="width:1120px;height:700px;overflow:hidden">
+      <div class="ui-fit"><div class="ui ui-shot" data-kind="terminal" data-w="1120" role="img" aria-label="صندوق MiM في JUNO ويست ووك يوم 8 سبتمبر الساعة 20:34: الطاولة T2 لشخصين مفتوحة على الفاتورة #1200029 ولم يُرسل منها شيء بعد، رضا ك. مسجّل الدخول، شريط الفئات وشبكة الأصناف وفيها الكاليماري المقرمش موقوف «86 · نفد»، الفاتورة وفيها سلطة الكيل وجي فاير بيرد وبطاطس بالبارميزان، شارات الحساسية التي سُئل عنها على الطاولة (مكسرات، سمسم)، الإجمالي 156.00 ر.ق وزر إرسال الطلب" style="width:1120px;height:700px;overflow:hidden">
   <div class="ui-nav">
     <span class="ui-pill accent" style="height:26px;font-size:11px">JUNO</span>
     <span style="line-height:1.15"><b style="display:block;font-size:11px">ويست ووك</b><small style="display:block;font-size:9px;font-weight:600;color:var(--sub)">الصندوق 1</small></span>
@@ -2284,15 +2292,15 @@ var WA_NUMBER = '';
             <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">ملاحظة (بدون بصل...)</div>
           </div>
           <div class="ui-li" style="flex-direction:column;align-items:stretch;gap:5px">
-            <div class="row" style="justify-content:space-between"><span><b>بطاطس بالبارميزان</b> <span class="ui-pill good" style="height:16px;padding:0 6px">ضيافة</span></span><span class="num" style="font-weight:700"><s class="muted" style="font-weight:600">24.00 ر.ق</s> 0.00 ر.ق</span></div>
+            <div class="row" style="justify-content:space-between"><b>بطاطس بالبارميزان</b><span class="num" style="font-weight:700">24.00 ر.ق</span></div>
             <div class="row" style="gap:4px"><span class="ui-pill sub">تعليق</span><span class="ui-pill sub">مقعد 1</span><span class="ui-pill sub">%</span><span class="row" style="margin-inline-start:auto;gap:6px"><span class="ui-pill sub">−</span><b class="num">1</b><span class="ui-pill sub">+</span></span></div>
             <div class="muted" style="font-size:10px;border-bottom:1px dotted var(--track);padding-bottom:2px">ملاحظة (بدون بصل...)</div>
           </div>
         </div>
       </div>
-      <div class="row muted" style="justify-content:space-between"><span>المجموع الفرعي</span><span class="num">132.00 ر.ق</span></div>
-      <div class="row" style="justify-content:space-between"><span style="font-size:13px;font-weight:700">الإجمالي</span><span class="num" style="font-size:22px;font-weight:700;letter-spacing:-.4px">132.00 ر.ق</span></div>
-      <span class="ui-btn accent wide">🍽️ إرسال الطلب · 132.00 ر.ق</span>
+      <div class="row muted" style="justify-content:space-between"><span>المجموع الفرعي</span><span class="num">156.00 ر.ق</span></div>
+      <div class="row" style="justify-content:space-between"><span style="font-size:13px;font-weight:700">الإجمالي</span><span class="num" style="font-size:22px;font-weight:700;letter-spacing:-.4px">156.00 ر.ق</span></div>
+      <span class="ui-btn accent wide">🍽️ إرسال الطلب · 156.00 ر.ق</span>
     </div>
   </div>
 </div></div>
@@ -2302,7 +2310,7 @@ var WA_NUMBER = '';
       <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-warn"/></svg></span><h4>سؤال الحساسية يُطرح، لا يُترك للأمل</h4><p>يظهر على الحساب ويسافر مع الطلب إلى شاشة المطبخ. «غير محدَّد» لا يُقرأ أبداً على أنه «خالٍ».</p></div>
       <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-ban"/></svg></span><h4>يُوقَف مرة واحدة، فينفد في كل مكان</h4><p>أوقف صنفاً عن البيع من صندوق واحد فيظهر «86 · نفد» على كل الصناديق، كما يظهر الكاليماري هنا. لا أحد يُسجّل طبقاً لا يستطيع المطبخ طهيه.</p></div>
       <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-plugoff"/></svg></span><h4>يواصل البيع والاتصال مقطوع</h4><p>تصطفّ الطلبات محلياً وتُسوّى حين يعود الاتصال. الجواب الفارغ لا يُحسب أبداً صفراً حقيقياً.</p></div>
-      <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></span><h4>ما يُقدَّم ضيافةً يبقى محسوباً</h4><p>البطاطس الضيافة تبقى على الحساب بـ 0.00 ر.ق والسعر 24.00 ر.ق مشطوب، فالضيافة سطرٌ له سعر، لا طبقٌ مفقود.</p></div>
+      <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></span><h4>ما يُقدَّم ضيافةً يبقى محسوباً</h4><p>في الساعة 20:49 تأخّرت البطاطس فقدّمتها نور ضيافة: يبقى السطر على الحساب بـ 0.00 ر.ق والسعر 24.00 ر.ق مشطوب، وتُغلق الفاتورة على 132.00 ر.ق. الضيافة سطرٌ له سعر واسم من وافق، لا طبقٌ مفقود.</p></div>
       <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg></span><h4>عربي، من اليمين إلى اليسار</h4><p>بما في ذلك الإيصال. التخطيط ينقلب كاملاً؛ لا شيء يُقرأ بالمقلوب.</p></div>
     </div>
   </div>
@@ -2356,7 +2364,7 @@ var WA_NUMBER = '';
         <ul class="lines">
           <li><svg class="ic ic-s i-ok" aria-hidden="true"><use href="#i-check"/></svg> <span>المال يُدخَل مرة واحدة، عند الكاشير، ولا يُعاد إدخاله أبداً.</span></li>
           <li><svg class="ic ic-s i-ok" aria-hidden="true"><use href="#i-check"/></svg> <span>قائمة P&amp;L ولوحة القيادة تُجريان الحساب نفسه.</span></li>
-          <li><svg class="ic ic-s i-ok" aria-hidden="true"><use href="#i-check"/></svg> <span>كل ريال يخرج يُطابَق سطراً بسطر مع كشف البنك.</span></li>
+          <li><svg class="ic ic-s i-ok" aria-hidden="true"><use href="#i-check"/></svg> <span>كل ريال يخرج يحمل توقيعاً، وكل درج نقد يُعَدّ مقابل سجلّه.</span></li>
           <li><svg class="ic ic-s i-ok" aria-hidden="true"><use href="#i-check"/></svg> <span>التسويق يرى الطلب بالحصص — ولا يرى ريالاً واحداً.</span></li>
         </ul>
       </div>
@@ -2370,12 +2378,12 @@ var WA_NUMBER = '';
     <div class="center">
       <div class="eyebrow">بيانات عرض توضيحي · ليس فرعاً حقيقياً</div>
       <h2 class="s-title reveal">ما الذي تقوله <span class="hl">الشاشات</span> فعلاً</h2>
-      <p class="s-sub mx reveal">أيّ عدد هنا يعني أن على أحدهم أن يتحرّك. كل رقم في الأسفل يقود إلى شخص، أو رفّ، أو سطر في كشف البنك.</p>
+      <p class="s-sub mx reveal">أيّ عدد هنا يعني أن على أحدهم أن يتحرّك. الشاشتان أدناه تقرآن المساء نفسه في JUNO ويست ووك: هاتف المالك الساعة 21:14، وشاشة المطبخ الساعة 20:45 وفاتورة الطاولة T2 رقم #1200029 على النار.</p>
     </div>
 
     <div class="device-band">
       <div class="reveal-l">
-        <div class="phone-frame"><div class="ui-fit"><div class="ui ui-shot" data-kind="phone" data-w="300" role="img" aria-label="هاتف المالك مفتوحًا على فرع واحد، يونو ويست ووك، يوم الثلاثاء 8 سبتمبر الساعة 21:14: مبيعات الفرع اليوم 12,930 ر.ق، متقدمة 8% عن الثلاثاء الماضي في الدقيقة نفسها، ثم مربعات الفرع — أكثر ساعة ازدحامًا، الأكثر مبيعًا جي فاير بيرد، طرق الدفع وأنواع الطلبات" style="width:300px;height:620px;overflow:hidden">
+        <div class="phone-frame"><div class="ui-fit"><div class="ui ui-shot" data-kind="phone" data-w="300" role="img" aria-label="هاتف المالك مفتوحًا على فرع واحد، JUNO ويست ووك، يوم الثلاثاء 8 سبتمبر الساعة 21:14: مبيعات الفرع اليوم 12,930 ر.ق، متقدمة 8% عن الثلاثاء الماضي في الدقيقة نفسها، ثم مربعات الفرع — أكثر ساعة ازدحامًا، الأكثر مبيعًا جي فاير بيرد، طرق الدفع وأنواع الطلبات" style="width:300px;height:620px;overflow:hidden">
   <div style="flex:1;min-height:0;padding:9px 12px 6px;display:flex;flex-direction:column;gap:6px;overflow:hidden">
     <div class="row" style="justify-content:space-between">
       <span style="width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:800">M</span>
@@ -2383,10 +2391,10 @@ var WA_NUMBER = '';
     </div>
     <div>
       <div style="font-size:21px;font-weight:700;line-height:1.1">مساء الخير</div>
-      <div class="muted" style="font-size:10.5px;margin-top:3px">هذا ما يجري في يونو · ويست ووك</div>
+      <div class="muted" style="font-size:10.5px;margin-top:3px">هذا ما يجري في JUNO · ويست ووك</div>
     </div>
     <div class="row" style="justify-content:space-between">
-      <span class="ui-btn" style="height:28px">يونو · ويست ووك <svg class="ic" aria-hidden="true" style="width:12px;height:12px"><use href="#i-chevron"/></svg></span>
+      <span class="ui-btn" style="height:28px">JUNO · ويست ووك <svg class="ic" aria-hidden="true" style="width:12px;height:12px"><use href="#i-chevron"/></svg></span>
       <span class="row" style="gap:6px"><span style="font-size:11px;font-weight:600">اليوم</span><span style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center"><svg class="ic" aria-hidden="true" style="width:14px;height:14px"><use href="#i-calendar"/></svg></span></span>
     </div>
     <div class="ui-card" style="display:flex;flex-direction:column;gap:4px">
@@ -2446,7 +2454,14 @@ var WA_NUMBER = '';
     </div>
   </div>
 </div></div></div>
-        <div class="device-label"><b>هاتف المالك</b>مفتوح على فرع واحد: مبيعاته حتى الآن مقابل الثلاثاء الماضي في الدقيقة نفسها، وأكثر ساعة ازدحاماً، وما الذي بيع أكثر.</div>
+        <div class="device-side">
+          <div class="device-label"><b>هاتف المالك</b>مفتوح على فرع واحد: مبيعاته حتى الآن مقابل الثلاثاء الماضي في الدقيقة نفسها، وأكثر ساعة ازدحاماً، وما الذي بيع أكثر.</div>
+          <div class="serve-col device-facts"><div class="serve-list">
+            <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><div><b>12,930 ر.ق حتى 21:14</b><span>أعلى بـ 8% من الثلاثاء الماضي في الدقيقة نفسها، لا مقارنةً بيومه كاملاً.</span></div></div>
+            <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><div><b>أكثر ساعة ازدحاماً: 20:00</b><span>2,860 ر.ق في تلك الساعة، و72 فاتورة حتى الآن اليوم.</span></div></div>
+            <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg><div><b>الأكثر مبيعاً: جي فاير بيرد، 38 طبقاً</b><span>الطبق نفسه الذي تُظهره شاشة المطبخ قيد الطهي للطاولة T2.</span></div></div>
+          </div></div>
+        </div>
       </div>
       <div class="reveal-r">
         <div class="kds-frame">
@@ -2589,75 +2604,7 @@ var WA_NUMBER = '';
       </div>
     </div>
 
-    <div class="preview-grid">
-      <div class="preview-card reveal-l">
-        <div class="preview-header">
-          <span class="title"><svg class="ic ic-s" aria-hidden="true"><use href="#i-team"/></svg> الموظفون وقانون العمل القطري</span>
-          <span class="status warn">3 تحتاج إلى إجراء</span>
-        </div>
-        <div class="hr-alert">
-          <div class="alert-title">أحمد ر. يعمل من دون بطاقة صحية سارية</div>
-          <div class="alert-detail">وزارة الصحة العامة · منتهية منذ 12 يوماً — جدّدها قبل الوردية القادمة</div>
-        </div>
-        <div class="hr-alert warn">
-          <div class="alert-title">موعد الرواتب بعد 6 أيام — 2 من الموظفين لا يمكن صرف رواتبهم</div>
-          <div class="alert-detail">لا يوجد IBAN مسجَّل لنظام WPS: فاطمة س. · راجيش ك.</div>
-        </div>
-        <div class="preview-item"><span class="label">مستندات تنتهي خلال 30 يوماً</span><span class="value amber">4</span></div>
-        <div class="preview-item"><span class="label">رصيد الإجازات المستحق اليوم</span><span class="value">18,420.00 ر.ق</span></div>
-        <div class="preview-item"><span class="label">في الوردية الآن</span><span class="value">31 / 48</span></div>
-        <div class="preview-item"><span class="label">تحت الحدّ الأدنى القانوني للأجر</span><span class="value green">0</span></div>
-      </div>
-
-      <div class="preview-card reveal-r">
-        <div class="preview-header">
-          <span class="title"><svg class="ic ic-s" aria-hidden="true"><use href="#i-chart"/></svg> اليوم، فرع السد</span>
-          <span class="status">مباشر</span>
-        </div>
-        <div class="preview-item"><span class="label">الضيوف الجالسون</span><span class="value">184</span></div>
-        <div class="preview-item"><span class="label">الفواتير المدفوعة</span><span class="value">67</span></div>
-        <div class="preview-item"><span class="label">متوسط الفاتورة</span><span class="value">218.40 ر.ق</span></div>
-        <div class="preview-item"><span class="label">إجمالي المبيعات</span><span class="value green">14,632.80 ر.ق</span></div>
-        <div class="preview-item"><span class="label">تكلفة الطعام النظرية</span><span class="value">4,243.50 ر.ق · 29.0%</span></div>
-        <div class="preview-item"><span class="label">تكلفة الطعام الفعلية</span><span class="value amber">4,678.20 ر.ق · 32.0%</span></div>
-        <div class="preview-item"><span class="label">فرق غير مفسَّر</span><span class="value red">434.70 ر.ق</span></div>
-        <div class="mini-chart" aria-hidden="true">
-          <div class="bar" style="--h:62"></div><div class="bar" style="--h:74"></div><div class="bar" style="--h:58"></div>
-          <div class="bar" style="--h:81"></div><div class="bar lit" style="--h:95"></div><div class="bar" style="--h:88"></div>
-          <div class="bar" style="--h:70"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="preview-grid">
-      <div class="preview-card reveal-l">
-        <div class="preview-header">
-          <span class="title"><svg class="ic ic-s" aria-hidden="true"><use href="#i-archive"/></svg> المخزون المتوفر</span>
-          <span class="status warn">2 تحت الحدّ الأدنى</span>
-        </div>
-        <div class="inv-item"><span class="nm">صدر دجاج</span><div class="bar-bg"><i class="fill" style="--w:62%"></i></div><span class="qty">24 كجم</span></div>
-        <div class="inv-item"><span class="nm nm-low">فيليه سلمون</span><div class="bar-bg"><i class="fill low" style="--w:22%"></i></div><span class="qty">8 كجم</span></div>
-        <div class="inv-item"><span class="nm">طماطم</span><div class="bar-bg"><i class="fill" style="--w:84%"></i></div><span class="qty">120 حبة</span></div>
-        <div class="inv-item"><span class="nm nm-mid">زيت زيتون</span><div class="bar-bg"><i class="fill mid" style="--w:34%"></i></div><span class="qty">3 لتر</span></div>
-        <div class="inv-item"><span class="nm">دقيق خبز</span><div class="bar-bg"><i class="fill" style="--w:66%"></i></div><span class="qty">18 كجم</span></div>
-        <div class="inv-item"><span class="nm nm-low">زبدة</span><div class="bar-bg"><i class="fill low" style="--w:18%"></i></div><span class="qty">2 كجم</span></div>
-      </div>
-
-      <div class="preview-card reveal-r">
-        <div class="preview-header">
-          <span class="title"><svg class="ic ic-s" aria-hidden="true"><use href="#i-money"/></svg> الأموال الخارجة، مطابَقة</span>
-          <span class="status">مطابَق مع البنك</span>
-        </div>
-        <div class="preview-item"><span class="label">تسويات البطاقات المطابَقة</span><span class="value green">62 / 62</span></div>
-        <div class="preview-item"><span class="label">تحويلات منصّات التوصيل المطابَقة</span><span class="value amber">14 / 16</span></div>
-        <div class="preview-item"><span class="label">فرق الكاشير هذا الأسبوع</span><span class="value">12.50 ر.ق</span></div>
-        <div class="preview-item"><span class="label">مصروفات نثرية بانتظار الاعتماد</span><span class="value amber">3 · 1,180.00 ر.ق</span></div>
-        <div class="preview-item"><span class="label">فواتير تجاوزت مهلة الـ30 يوماً</span><span class="value red">2 · 8,940.00 ر.ق</span></div>
-        <div class="preview-item"><span class="label">إقفال يوم غير موقَّع</span><span class="value green">0</span></div>
-      </div>
-    </div>
-
-    <p class="demo-note"><svg class="ic ic-s" aria-hidden="true"><use href="#i-info"/></svg> هذه اللوحات تعرض بيانات عرض توضيحي. وفي التركيب الفعلي تقرأ من فروعك أنت.</p>
+    <p class="demo-note"><svg class="ic ic-s" aria-hidden="true"><use href="#i-info"/></svg> <span>بيانات عرض توضيحي. وفي التركيب الفعلي تقرأ هذه الشاشات من فروعك أنت. أمّا شاشة كل قسم، ومنها الموارد البشرية والمالية والمخزن المركزي والمكتب الرئيسي، فتجدها في <a href="#departments">مستكشف الأقسام</a> أعلاه.</span></p>
   </div>
 </section>
 
