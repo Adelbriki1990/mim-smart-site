@@ -498,6 +498,13 @@ html.js .visible{opacity:1;transform:none}
   .device-band > div:first-child .device-label b{font-size:17px;margin-bottom:4px}
   /* beside the phone, 520–1099: what the screen reads, so the row is not a caption in white space */
   .device-facts{display:block;margin-top:14px;max-width:520px}
+  /* the side column stands as tall as the phone: caption at the top, the facts card fills the rest,
+     its rows share the height — no blank band above or below */
+  .device-band > div:first-child{align-items:stretch}
+  .device-side{display:flex;flex-direction:column;padding-block:6px}
+  .device-side .device-facts{flex:1;display:flex;flex-direction:column;max-width:none}
+  .device-facts .serve-list{flex:1;display:flex;flex-direction:column}
+  .device-facts .serve-row{flex:1;align-items:center}
 }
 @media(min-width:520px) and (max-width:759px){
   .device-facts{padding:12px}.device-facts .serve-row{padding:10px;gap:8px}.device-facts .serve-row .ic{display:none}
@@ -2530,6 +2537,7 @@ var WA_NUMBER = '';
             <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><div><b>12,930 ر.ق حتى 21:14</b><span>أعلى بـ 8% من الثلاثاء الماضي في الدقيقة نفسها، لا مقارنةً بيومه كاملاً.</span></div></div>
             <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><div><b>أكثر ساعة ازدحاماً: 20:00</b><span>2,860 ر.ق في تلك الساعة، و72 فاتورة حتى الآن اليوم.</span></div></div>
             <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg><div><b>الأكثر مبيعاً: جي فاير بيرد، 38 طبقاً</b><span>الطبق نفسه الذي تُظهره شاشة المطبخ قيد الطهي للطاولة T2.</span></div></div>
+            <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><div><b>كيف دفع الضيوف: 67% بالبطاقة</b><span>النقد 22%، والباقي دُفع عبر تطبيق JUNO.</span></div></div>
           </div></div>
         </div>
       </div>
@@ -2770,7 +2778,7 @@ var WA_NUMBER = '';
 
     <div class="owner-phones">
       <div class="owner-phone reveal-l">
-        <div class="frame"><div class="ui-fit"><div class="ui ui-shot" data-kind="phone" data-w="300" role="img" aria-label="هاتف المالك يوم الثلاثاء 8 سبتمبر الساعة 21:14: مبيعات الشركة كلها اليوم 61,400 ر.ق، متقدمة 8% عن الثلاثاء الماضي في الدقيقة نفسها، خط اليوم المتراكم مقابل الأسبوع الماضي، ثم المربعات — العلامات التجارية، الفروع التي تبيع، الرواتب والضيوف المخدومون — و4 عناصر بانتظاره في الوارد" style="width:300px;height:620px;overflow:hidden">
+        <div class="frame"><div class="ui-fit"><div class="ui ui-shot" data-kind="phone" data-w="300" role="img" aria-label="هاتف المالك يوم الثلاثاء 8 سبتمبر الساعة 21:14: مبيعات الشركة كلها حتى الآن اليوم 53,425 ر.ق، متقدمة 8% عن الثلاثاء الماضي في الدقيقة نفسها، خط اليوم المتراكم مقابل الأسبوع الماضي، ثم المربعات — العلامات التجارية، الفروع التي تبيع، الرواتب والضيوف المخدومون — و4 عناصر بانتظاره في الوارد" style="width:300px;height:620px;overflow:hidden">
   <div style="flex:1;min-height:0;padding:9px 12px 6px;display:flex;flex-direction:column;gap:6px;overflow:hidden">
     <div class="row" style="justify-content:space-between">
       <span style="width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:800">M</span>
@@ -2789,8 +2797,8 @@ var WA_NUMBER = '';
         <span class="ui-title">مبيعات اليوم</span>
         <span class="row" style="gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:var(--good)"></span><span class="cap" style="font-weight:500">الثلاثاء 8 سبتمبر · مباشر</span></span>
       </div>
-      <div class="num" style="font-size:26px;font-weight:700;letter-spacing:-.5px;line-height:1.05">61,400<span style="font-size:16px">.00</span> <span style="font-size:16px">ر.ق</span></div>
-      <div class="muted" style="font-size:9.5px;line-height:1.3">بحلول 21:14 أنت متقدم بـ 4,548 ر.ق عن الثلاثاء الماضي. أي 8% أكثر من الدقيقة نفسها في الأسبوع الماضي.</div>
+      <div class="num" style="font-size:26px;font-weight:700;letter-spacing:-.5px;line-height:1.05">53,425<span style="font-size:16px">.00</span> <span style="font-size:16px">ر.ق</span></div>
+      <div class="muted" style="font-size:9.5px;line-height:1.3">بحلول 21:14 أنت متقدم بـ 3,957 ر.ق عن الثلاثاء الماضي. أي 8% أكثر من الدقيقة نفسها في الأسبوع الماضي.</div>
       <div style="position:relative;height:62px;margin-top:2px">
         <svg viewBox="0 0 240 62" aria-hidden="true" style="width:100%;height:62px;display:block;fill:none">
           <path d="M234.0 56.0 C230.6 55.8 220.5 55.4 213.7 54.8 C206.9 54.2 200.2 53.8 193.4 52.7 C186.6 51.5 179.9 49.5 173.1 48.0 C166.3 46.6 159.6 45.0 152.8 44.0 C146.0 42.9 139.3 42.4 132.5 41.7 C125.7 41.1 119.0 40.7 112.2 40.3 C105.4 39.8 98.7 39.5 91.9 38.9 C85.1 38.3 78.4 37.7 71.6 36.6 C64.8 35.4 58.1 33.9 51.3 32.0 C44.5 30.1 37.8 27.4 31.0 25.1 C24.2 22.8 14.9 19.5 10.7 18.1 C6.5 16.8 6.8 17.0 6.0 16.7" style="stroke:var(--dash);stroke-width:1.6;stroke-dasharray:4 5;stroke-linecap:round"/>
@@ -2802,7 +2810,7 @@ var WA_NUMBER = '';
       <div class="row" style="justify-content:space-between"><span class="cap" style="font-weight:500">10:00</span><span class="cap" style="font-weight:500">21:14 · الآن</span></div>
       <div class="row" style="gap:10px">
         <span class="row" style="gap:4px"><span style="width:14px;height:3px;border-radius:2px;background:var(--accent)"></span><span class="cap" style="font-weight:500">اليوم</span></span>
-        <span class="row" style="gap:4px"><span style="width:14px;border-top:2px dashed var(--dash)"></span><span class="cap" style="font-weight:500">الثلاثاء الماضي حتى 21:14 · 56,852 ر.ق</span></span>
+        <span class="row" style="gap:4px"><span style="width:14px;border-top:2px dashed var(--dash)"></span><span class="cap" style="font-weight:500">الثلاثاء الماضي حتى 21:14 · 49,468 ر.ق</span></span>
       </div>
     </div>
     <div class="ui-grid2" style="flex:1;min-height:0">
@@ -2832,9 +2840,9 @@ var WA_NUMBER = '';
       <div class="ui-card" style="aspect-ratio:1;padding:10px;display:flex;flex-direction:column;min-height:0">
         <div class="row" style="align-items:flex-start;gap:4px"><span class="grow" style="font-size:11px;font-weight:600;line-height:1.2">الضيوف المخدومون</span><svg class="ic" aria-hidden="true" style="width:12px;height:12px;stroke-width:2.2;transform:scaleX(-1)"><use href="#i-arrow"/></svg></div>
         <span style="flex:1"></span>
-        <div class="num" style="font-size:20px;font-weight:700;line-height:1.1">483</div>
+        <div class="num" style="font-size:20px;font-weight:700;line-height:1.1">420</div>
         <span style="flex:1"></span>
-        <div class="muted" style="font-size:9.5px;line-height:1.25">اليوم · 6 فروع</div>
+        <div class="muted" style="font-size:9.5px;line-height:1.25">حتى الآن · 6 فروع</div>
       </div>
     </div>
   </div>
@@ -3162,16 +3170,16 @@ var WA_NUMBER = '';
     </div>
     <div class="tier-row">
       <div class="tier-card bronze reveal-s">
-        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> علامتك التجارية</span><span class="tc-thresh">من 0 نقطة</span></div>
-        <div class="tc-body"><div class="tc-label">النقاط</div><div class="tc-points">137</div></div>
+        <div class="tc-top"><span class="tc-brand"><span aria-hidden="true" style="width:17px;height:17px;flex:none;border-radius:5px;background:#5B3FE0;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;letter-spacing:0">J</span> JUNO</span><span class="tc-thresh">من 0 نقطة</span></div>
+        <div class="tc-body"><div class="tc-label">النقاط</div><div class="tc-points">286</div></div>
         <div class="tc-foot">
-          <div><span>القيمة</span><b>≈ 68.50 ر.ق</b></div>
+          <div><span>القيمة</span><b>≈ 143.00 ر.ق</b></div>
           <div><span>الفئة</span><b>برونزية</b></div>
-          <div><span>العضو</span><b>سارة</b></div>
+          <div><span>العضو</span><b>مريم</b></div>
         </div>
       </div>
       <div class="tier-card silver reveal-s">
-        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> علامتك التجارية</span><span class="tc-thresh">من 500 نقطة</span></div>
+        <div class="tc-top"><span class="tc-brand"><span aria-hidden="true" style="width:17px;height:17px;flex:none;border-radius:5px;background:#5B3FE0;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;letter-spacing:0">J</span> JUNO</span><span class="tc-thresh">من 500 نقطة</span></div>
         <div class="tc-body"><div class="tc-label">النقاط</div><div class="tc-points">640</div></div>
         <div class="tc-foot">
           <div><span>القيمة</span><b>≈ 320.00 ر.ق</b></div>
@@ -3180,7 +3188,7 @@ var WA_NUMBER = '';
         </div>
       </div>
       <div class="tier-card gold reveal-s">
-        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> علامتك التجارية</span><span class="tc-thresh">من 1,000 نقطة</span></div>
+        <div class="tc-top"><span class="tc-brand"><span aria-hidden="true" style="width:17px;height:17px;flex:none;border-radius:5px;background:#5B3FE0;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;letter-spacing:0">J</span> JUNO</span><span class="tc-thresh">من 1,000 نقطة</span></div>
         <div class="tc-body"><div class="tc-label">النقاط</div><div class="tc-points">1,180</div></div>
         <div class="tc-foot">
           <div><span>القيمة</span><b>≈ 590.00 ر.ق</b></div>
@@ -3189,16 +3197,16 @@ var WA_NUMBER = '';
         </div>
       </div>
       <div class="tier-card platinum reveal-s">
-        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> علامتك التجارية</span><span class="tc-thresh">من 1,500 نقطة</span></div>
+        <div class="tc-top"><span class="tc-brand"><span aria-hidden="true" style="width:17px;height:17px;flex:none;border-radius:5px;background:#5B3FE0;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;letter-spacing:0">J</span> JUNO</span><span class="tc-thresh">من 1,500 نقطة</span></div>
         <div class="tc-body"><div class="tc-label">النقاط</div><div class="tc-points">1,760</div></div>
         <div class="tc-foot">
           <div><span>القيمة</span><b>≈ 880.00 ر.ق</b></div>
           <div><span>الفئة</span><b>♛ بلاتينية</b></div>
-          <div><span>العضو</span><b>عادل</b></div>
+          <div><span>العضو</span><b>حصة</b></div>
         </div>
       </div>
     </div>
-    <p class="tier-note">الفئات وحدودها ومكافآتها أنت من يحدّدها — وما تراه هنا مجرّد مثال. البطاقة تحمل علامتك <b>أنت</b> وألوانك، لا علامتنا أبداً. وكل رصيد أعلاه هو ببساطة عدد النقاط × <b>0.50 ر.ق</b>، بالمعدّل نفسه في كل فرع.</p>
+    <p class="tier-note">هنا تظهر بطاقة <b>JUNO</b> في المجموعة التجريبية — ونقاط مريم الـ 286 تشمل الـ 13 نقطة التي كسبتها على الفاتورة #1200029. بطاقة كل مجموعة تحمل علامتها وألوانها هي، لا علامتنا أبداً. الفئات وحدودها ومكافآتها أنت من يحدّدها؛ وكل رصيد هو ببساطة عدد النقاط × <b>0.50 ر.ق</b>، بالمعدّل نفسه في كل فرع.</p>
 
     <div class="loyalty-grid">
       <div class="loyalty-card reveal-l">
