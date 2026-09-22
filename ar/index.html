@@ -370,6 +370,7 @@ html.js .visible{opacity:1;transform:none}
 .tile-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 @media(max-width:1039px){.tile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:599px){.tile-grid{grid-template-columns:minmax(0,1fr)}}
+@media(min-width:1040px){.sec-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 /* inside a two-column block the points stack as rows, not tiles */
 .point-list{display:flex;flex-direction:column;gap:4px}
 .point-list .pt{background:var(--card);border-radius:var(--ri);padding:12px 14px;display:flex;gap:12px;align-items:flex-start}
@@ -724,10 +725,16 @@ blockquote{font-size:19px;font-weight:600;line-height:1.45;letter-spacing:-.2px;
 .proof-stat .l{font-size:13px;color:var(--sub);line-height:1.35;margin-top:2px}
 
 /* ── how it starts ────────────────────────────────────────────────────────────────────────── */
-.steps-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-@media(max-width:1039px){.steps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:599px){.steps-grid{grid-template-columns:minmax(0,1fr)}}
-.step-card{background:var(--card);border-radius:var(--rc);padding:20px;display:flex;flex-direction:column;gap:10px}
+/* a timeline, not a card grid: the numbered dots sit on one track (across ≥1040, down below) */
+.steps-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.step-card{position:relative;display:flex;flex-direction:column;gap:8px}
+.step-card:not(:last-child)::after{content:"";position:absolute;top:15px;height:2px;inset-inline-start:44px;inset-inline-end:-12px;background:var(--track);border-radius:2px}
+.step-card .when{font-size:12px;font-weight:700;color:var(--accent);margin-top:6px}
+@media(max-width:1039px){.steps-grid{grid-template-columns:minmax(0,1fr);gap:28px;max-width:640px;margin-inline:auto}
+  .step-card{padding-inline-start:52px;gap:6px}
+  .step-card .n{position:absolute;inset-inline-start:0;top:0}
+  .step-card .when{margin-top:6px}
+  .step-card:not(:last-child)::after{top:40px;bottom:-24px;inset-inline-start:15px;inset-inline-end:auto;width:2px;height:auto}}
 .step-card .n{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;
   font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .step-card h4{font-size:15px;font-weight:600;line-height:1.3}
@@ -753,8 +760,8 @@ blockquote{font-size:19px;font-weight:600;line-height:1.45;letter-spacing:-.2px;
 .price-card .btn{width:100%}
 /* a secondary button sitting ON a grey card takes the white cell colour, or it disappears */
 .price-card .btn:not(.btn-accent){background:var(--inner)}
-.price-how{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:16px}
-@media(max-width:1039px){.price-how{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.price-how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:16px}
+@media(max-width:767px){.price-how{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:599px){.price-how{grid-template-columns:minmax(0,1fr)}}
 .price-how > div{background:var(--card);border-radius:var(--rc);padding:18px}
 .price-how h4{font-size:15px;font-weight:600;color:var(--accent);margin-bottom:6px}
@@ -1449,7 +1456,7 @@ var WA_NUMBER = '';
     </div>
   </div>
 </div></template>
-      <template data-dept="store"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="المخزن يوم الثلاثاء 8 سبتمبر: أمر الشراء PO-2291 من Doha Fresh Produce (4,860.00 ر.ق، سداد خلال 30 يوماً، الاستحقاق 8 أكتوبر) يُستلَم سطراً سطراً والطماطم أغلى بـ9% من آخر توريد، وطلب ويست ووك الصباحي بأسطره الـ12 بانتظار التوجيه على المكتب والكيل ناقص على الرف (4 من 6 كغ مطلوبة)، ومخزون المخزن نفسه مع مراقبة الانتهاء" style="width:960px;height:640px;overflow:hidden">
+      <template data-dept="store"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="المخزن يوم الثلاثاء 8 سبتمبر: أمر الشراء PO-2291 من Doha Fresh Produce (4,860.00 ر.ق، سداد خلال 30 يوماً، الاستحقاق 8 أكتوبر) يُستلَم سطراً سطراً والطماطم أغلى بـ9% من آخر توريد، وطلب ويست ووك الصباحي بأسطره الـ12 صُرف الساعة 06:40 من مكتب التوجيه والكيل ناقص (4 من 6 كغ مطلوبة)، وإشعار الاستلام مسودة لم تُرحَّل بعد، ومخزون المخزن نفسه مع مراقبة الانتهاء" style="width:960px;height:640px;overflow:hidden">
   <div class="ui-nav">
     <span class="ui-title">📦 المخزن</span>
     <span class="ui-pill accent">مطاعم Mim · المنطقة الصناعية</span>
@@ -1462,7 +1469,7 @@ var WA_NUMBER = '';
       <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span></span>
       <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">لوحة المعلومات</span></span>
       <span class="cap">العمليات</span>
-      <span><svg class="ic" aria-hidden="true"><use href="#i-swap"/></svg><span class="grow">مكتب التوجيه</span><span class="ui-badge">1</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-swap"/></svg><span class="grow">مكتب التوجيه</span></span>
       <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg><span class="grow">المشتريات</span><span class="ui-badge">1</span></span>
       <span><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span class="grow">الموردون</span></span>
       <span class="cap">المخزون</span>
@@ -1474,7 +1481,7 @@ var WA_NUMBER = '';
     </div>
     <div class="ui-main">
       <div class="ui-top">
-        <span class="grow"><span class="ui-title">📥 إشعار استلام — أمر شراء رقم PO-2291 · Doha Fresh Produce</span><br><span class="muted" style="font-size:10px">عُدّ ما نزل فعلاً من الشاحنة — لا يدخل المخزن إلا البضاعة السليمة، وتُنبَّه المالية ألا تدفع كامل المبلغ.</span></span>
+        <span class="grow"><span class="ui-title">📥 إشعار استلام — أمر شراء رقم PO-2291 · Doha Fresh Produce</span> <span class="ui-pill warn">مسودة · لم يُرحَّل بعد</span><br><span class="muted" style="font-size:10px">عُدّ ما نزل فعلاً من الشاحنة — لا يدخل المخزن إلا البضاعة السليمة، وتُنبَّه المالية ألا تدفع كامل المبلغ.</span></span>
       </div>
       <div class="ui-card" style="padding-block:10px">
         <table style="width:100%;border-collapse:collapse;font-size:11px;line-height:1.25">
@@ -1500,13 +1507,13 @@ var WA_NUMBER = '';
       </div>
       <div class="ui-grid2" style="flex:1;min-height:0">
         <div class="ui-card" style="overflow:hidden">
-          <div class="row" style="justify-content:space-between;margin-bottom:4px"><span class="ui-title">🔀 مكتب التوجيه <span class="ui-badge">1</span></span><span class="cap">📥 طلبات جديدة — تحتاج إجراء</span></div>
+          <div class="row" style="justify-content:space-between;margin-bottom:4px"><span class="ui-title">🔀 مكتب التوجيه</span><span class="cap">📤 صُرف هذا الصباح</span></div>
           <div class="ui-cell">
-            <div class="row" style="justify-content:space-between;gap:6px"><span class="grow"><b>JUNO · ويست ووك</b><br><span class="muted">بواسطة نور ح. · 8 سبتمبر 07:05 · 12 سطراً</span></span></div>
+            <div class="row" style="justify-content:space-between;gap:6px"><span class="grow"><b>JUNO · ويست ووك</b><br><span class="muted">بواسطة نور ح. · 8 سبتمبر 06:05 · صُرف 06:40 · 10 كاملة، 2 ناقصة</span></span></div>
             <div class="ui-list" style="margin-top:4px">
-              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>صدر دجاج</b> <span class="muted">18 كغ</span></span><span class="muted" style="font-size:10px">في المخزن</span><b style="color:var(--good)">42</b><span class="ui-pill sub">🏬 المخزن المركزي</span></div>
-              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>كيل</b> <span class="muted">6 كغ</span></span><span class="muted" style="font-size:10px">في المخزن</span><b style="color:var(--bad)">4 ⚠️</b><span class="ui-pill sub">🏬 المخزن المركزي</span></div>
-              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>بارميزان</b> <span class="muted">2 كغ</span></span><span class="muted" style="font-size:10px">في المخزن</span><b style="color:var(--good)">5</b><span class="ui-pill sub">🏬 المخزن المركزي</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>صدر دجاج</b> <span class="muted">18 كغ</span></span><span class="muted" style="font-size:10px">صُرف</span><b style="color:var(--good)">18 ✓</b><span class="ui-pill sub">🏬 المخزن المركزي</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>كيل</b> <span class="muted">6 كغ</span></span><span class="muted" style="font-size:10px">صُرف</span><b style="color:var(--bad)">4 من 6 ⚠️</b><span class="ui-pill sub">🏬 المخزن المركزي</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>بارميزان</b> <span class="muted">2 كغ</span></span><span class="muted" style="font-size:10px">صُرف</span><b style="color:var(--good)">2 ✓</b><span class="ui-pill sub">🏬 المخزن المركزي</span></div>
             </div>
             <span class="muted" style="font-size:10px">+9 أسطر أخرى</span>
           </div>
@@ -1580,7 +1587,7 @@ var WA_NUMBER = '';
     </div>
   </div>
 </div></template>
-      <template data-dept="finance"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="الصفحة الرئيسية للمالية يوم الثلاثاء 8 سبتمبر، ليلى ت. مسجّلة الدخول: أغسطس أُقفل نظيفاً، حكم الصباح مركّب من الصناديق، سطر تسرّب الأمس، خمس بطاقات نظرة سريعة، صرفان نقديان بانتظار توقيعها الأقدم أولاً، شريط الفروقات مع تحويل اللؤلؤة 40 ر.ق، الشهر بحسب الفرع، المستحقات بحسب تاريخ الاستحقاق والمواعيد الثابتة" style="width:960px;height:640px;overflow:hidden">
+      <template data-dept="finance"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="الصفحة الرئيسية للمالية يوم الثلاثاء 8 سبتمبر، ليلى ت. مسجّلة الدخول: أغسطس أُقفل نظيفاً، حكم الصباح مركّب من الصناديق، سطر تسرّب الأمس، خمس بطاقات نظرة سريعة، ثلاثة بنود بانتظار توقيعها الأقدم أولاً — صرفان نقديان وعرض سعر ضاغط ثلاجة ويست ووك بـ1,200 ر.ق الذي أرسلته الصيانة، شريط الفروقات مع تحويل اللؤلؤة 40 ر.ق، الشهر بحسب الفرع، المستحقات بحسب تاريخ الاستحقاق والمواعيد الثابتة" style="width:960px;height:640px;overflow:hidden">
   <div class="ui-nav">
     <span class="ui-title">💰 المالية</span>
     <span class="ui-pill accent">مطاعم Mim · 6 فروع</span>
@@ -1590,7 +1597,7 @@ var WA_NUMBER = '';
   <div class="ui-body">
     <div class="ui-side">
       <span class="cap">اليوم</span>
-      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span class="grow">الرئيسية</span><span class="ui-badge">2</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span class="grow">الرئيسية</span><span class="ui-badge">3</span></span>
       <span><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg><span class="grow">إقفال اليوم</span></span>
       <span><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span class="grow">الدرج والمدفوعات</span></span>
       <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">الوارد</span></span>
@@ -1605,23 +1612,24 @@ var WA_NUMBER = '';
     <div class="ui-main">
       <div class="row" style="gap:6px;font-size:11px;font-weight:600;color:var(--good)"><svg class="ic" aria-hidden="true" style="width:14px;height:14px"><use href="#i-lock"/></svg><span>أُقفل <span dir="ltr">2026-08</span> نظيفاً بتوقيع ليلى ت. — وبدأ <span dir="ltr">2026-09</span> من جديد.</span></div>
       <div class="ui-top" style="padding:10px 16px;display:flex;flex-direction:column;gap:3px">
-        <div class="row" style="gap:10px"><span style="width:10px;height:10px;border-radius:50%;background:var(--amber);flex-shrink:0"></span><span class="ui-title grow">أمر واحد يحتاجك هذا الصباح: وقّع بندين (الأقدم انتظر يومين). كل ما عداه ضمن حدوده.</span></div>
+        <div class="row" style="gap:10px"><span style="width:10px;height:10px;border-radius:50%;background:var(--amber);flex-shrink:0"></span><span class="ui-title grow">أمر واحد يحتاجك هذا الصباح: وقّع ثلاثة بنود (الأقدم انتظر يومين). كل ما عداه ضمن حدوده.</span></div>
         <span class="cap" style="padding-inline-start:20px">يُكتب مباشرة من الصناديق — لا يُدخَل يدوياً</span>
       </div>
       <div class="ui-cell row" style="flex-wrap:wrap;gap:2px 9px;padding:5px 10px;font-size:9.5px;font-weight:700;color:var(--sub)"><span class="cap">الأمس · <span dir="ltr">2026-09-07</span></span><span>💰 58,900.00 ر.ق · 447 طلباً</span><span style="color:var(--amber)">🏷 خصومات 1,240.00 ر.ق · 31 مرة</span><span style="color:var(--bad)">↩️ استرجاعات 310.00 ر.ق · مرتان</span><span style="color:var(--bad)">🗑 إلغاءات 5 مرات · 172.00 ر.ق</span><span class="muted" style="font-size:9px">التسرّب = 1,550.00 ر.ق = 2.6% من اليوم</span></div>
       <div class="ui-grid4" style="grid-template-columns:repeat(5,minmax(0,1fr))">
-        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">⏳ بانتظار التوقيع</span><span class="num sm">2 · 240.00 ر.ق</span><span style="font-size:10px;font-weight:700;color:var(--amber)">الأقدم منذ يومين</span></div></div>
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">⏳ بانتظار التوقيع</span><span class="num sm">3 · 1,440.00 ر.ق</span><span style="font-size:10px;font-weight:700;color:var(--amber)">الأقدم منذ يومين</span></div></div>
         <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">💵 نقد في الطريق</span><span class="num sm">0.00 ر.ق</span><span style="font-size:10px;font-weight:700;color:var(--good)">وصل كله</span></div></div>
         <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">🧾 مستحقات الموردين</span><span class="num sm">4,860.00 ر.ق</span><span style="font-size:10px;font-weight:700;color:var(--good)">0.00 ر.ق مستحق / متأخر</span></div></div>
-        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">📊 إيرادات الشهر</span><span class="num sm">1,280,000.00 ر.ق</span><span class="muted" style="font-size:10px;font-weight:700">لا أساس للشهر الماضي بعد</span></div></div>
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">📊 إيرادات الشهر</span><span class="num sm">478,250.00 ر.ق</span><span class="muted" style="font-size:10px;font-weight:700">8 أيام · 1–8 سبتمبر</span></div></div>
         <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">🍔 تكلفة الطعام (النظرية)</span><span class="num sm">30.6%</span><span class="muted" style="font-size:10px;font-weight:700">مسجّلة عند كل بيع</span></div></div>
       </div>
       <div class="ui-grid2" style="grid-template-columns:7fr 5fr;flex:1;min-height:0">
         <div class="ui-card" style="display:flex;flex-direction:column;min-height:0;overflow:hidden">
           <span class="ui-title">⏳ بانتظارك</span><span class="cap" style="display:block">الأقدم أولاً، لا بحسب المبلغ — الحالة كاملة على شاشتها</span>
           <div class="ui-list" style="margin-top:4px">
-            <div class="ui-li" style="padding:6px 0"><span class="ui-avatar" style="border-radius:8px">💸</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">صرف نقدي · لوسيل بوليفارد</b><span class="muted" style="display:block;font-size:11px">"تنظيف" · رفعه طارق س. ← أنت</span></span><span class="ui-pill warn">منذ يومين</span><span class="num">180.00 ر.ق</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">مراجعة وتوقيع</span></div>
-            <div class="ui-li" style="padding:6px 0"><span class="ui-avatar" style="border-radius:8px">💸</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">صرف نقدي · السد</b><span class="muted" style="display:block;font-size:11px">"ثلج" · رفعته فاطمة س. ← أنت</span></span><span class="ui-pill sub">6 س</span><span class="num">60.00 ر.ق</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">مراجعة وتوقيع</span></div>
+            <div class="ui-li" style="padding:3px 0"><span class="ui-avatar" style="border-radius:8px">💸</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">صرف نقدي · لوسيل بوليفارد</b><span class="muted" style="display:block;font-size:11px">"تنظيف" · رفعه طارق س. ← أنت</span></span><span class="ui-pill warn">منذ يومين</span><span class="num">180.00 ر.ق</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">مراجعة وتوقيع</span></div>
+            <div class="ui-li" style="padding:3px 0"><span class="ui-avatar" style="border-radius:8px">💸</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">صرف نقدي · السد</b><span class="muted" style="display:block;font-size:11px">"ثلج" · رفعته فاطمة س. ← أنت</span></span><span class="ui-pill sub">6 س</span><span class="num">60.00 ر.ق</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">مراجعة وتوقيع</span></div>
+            <div class="ui-li" style="padding:3px 0"><span class="ui-avatar" style="border-radius:8px">🔧</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">عرض سعر · ثلاجة ويست ووك</b><span class="muted" style="display:block;font-size:11px">Gulf Cooling · جمال أ. ← أنت</span></span><span class="ui-pill sub">اليوم</span><span class="num">1,200.00 ر.ق</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">مراجعة وتوقيع</span></div>
           </div>
           <span class="cap" style="margin-top:auto;padding-top:6px">لا توقيع جماعي — التوقيع قرار، ولكل واحد قراءته على شاشته.</span>
         </div>
@@ -1638,9 +1646,9 @@ var WA_NUMBER = '';
         <div class="ui-card">
           <span class="ui-title">📊 الشهر حتى الآن، بحسب الفرع</span>
           <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px">
-            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">JUNO · ويست ووك</span><b>309,790.00 ر.ق</b></div><div class="ui-bar" style="--v:92%;margin-top:2px"></div></div>
-            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">بيت الزعفران · السد</span><b>336,050.00 ر.ق</b></div><div class="ui-bar" style="--v:100%;margin-top:2px"></div></div>
-            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">Bake &amp; Co · فيلاجيو</span><b>124,660.00 ر.ق</b></div><div class="ui-bar" style="--v:37%;margin-top:2px"></div></div>
+            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">JUNO · ويست ووك</span><b>116,420.00 ر.ق</b></div><div class="ui-bar" style="--v:94%;margin-top:2px"></div></div>
+            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">بيت الزعفران · السد</span><b>124,380.00 ر.ق</b></div><div class="ui-bar" style="--v:100%;margin-top:2px"></div></div>
+            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">Bake &amp; Co · فيلاجيو</span><b>48,900.00 ر.ق</b></div><div class="ui-bar" style="--v:39%;margin-top:2px"></div></div>
           </div>
           <span class="cap" style="display:block;margin-top:6px">لا هدف محدد = لا نسبة مُدّعاة</span>
         </div>
@@ -1653,7 +1661,7 @@ var WA_NUMBER = '';
         <div class="ui-card">
           <span class="ui-title">🗓 مواعيد ثابتة</span>
           <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px;font-size:11px">
-            <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">👥</span><span class="grow"><b style="display:block;line-height:1.15">رواتب WPS</b><span class="muted">لا إرسال بعد — الموارد البشرية تبدأه</span></span></div>
+            <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">👥</span><span class="grow"><b style="display:block;line-height:1.15">رواتب WPS</b><span class="muted">اعتُمدت — بانتظار توقيع المالك</span></span></div>
             <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">🧾</span><span class="grow"><b style="display:block;line-height:1.15">موردون يستحقون خلال 7 أيام</b><span class="muted">لا شيء يستحق هذا الأسبوع</span></span></div>
             <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">🔒</span><span class="grow"><b style="display:block;line-height:1.15">إقفال <span dir="ltr">2026-09</span> في نهاية الشهر</b><span class="muted">بقي 22 يوماً · لم يُقفل بعد</span></span></div>
           </div>
@@ -3229,6 +3237,65 @@ var WA_NUMBER = '';
       <h2 class="s-title reveal">مبنيّ من أجل <span class="hl">قطر</span></h2>
       <p class="s-sub mx reveal">القواعد المحلية ليست خانةً أضفناها إلى النظام. هي الطريقة التي يحسب بها النظام أصلاً.</p>
     </div>
+    <div class="shot reveal-s" style="margin-bottom:16px">
+      <div class="ui-fit"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="الموارد البشرية، غرفة الرواتب لشهر سبتمبر 2026 يوم الثلاثاء 8 سبتمبر: 84 موظفاً، الإجمالي 312,400 ر.ق، الاستقطاعات 15,450 ر.ق، الصافي إلى البنك 296,950 ر.ق؛ سلسلة التوقيعات: أرسلتها الموارد البشرية واعتمدتها المالية وتنتظر المالك؛ قسيمة راتب رضا ك. بالأساسي والبدلات ومكافأة نهاية الخدمة المتراكمة وفق قانون العمل رقم 14 لسنة 2004؛ وملف WPS للبنك بصيغة SIF الخاصة بـQIB، وكل سطر يُدفع عبر البنك يحمل QID وIBAN، مقفل حتى يوقّع المالك" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">👥 الموارد البشرية</span>
+    <span class="ui-pill accent">مطاعم Mim · 84 موظفاً</span>
+    <span class="ui-pill sub">الثلاثاء 8 سبتمبر 2026</span>
+    <div class="ui-who"><span class="ui-avatar">ع</span><span><b>عمر ب.</b><small>مدير الموارد البشرية · المكتب الرئيسي</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">👔 اليوم</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">لوحة المعلومات</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">صندوق الوارد</span></span>
+      <span class="cap">الأشخاص</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span class="grow">دليل الموظفين</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><span class="grow">ملف الموظف</span></span>
+      <span class="cap">الوقت والرواتب</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span class="grow">الحضور</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span class="grow">جدول العمل</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span class="grow">الرواتب</span></span>
+      <span class="cap">الطلبات</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg><span class="grow">الإجازات والطلبات</span></span>
+      <span class="cap">الالتزام</span>
+      <span style="padding-inline:8px 5px;gap:4px"><svg class="ic" aria-hidden="true"><use href="#i-scroll"/></svg><span class="grow" style="font-size:9.5px;letter-spacing:-.25px">المستندات والتأشيرات</span><span class="ui-badge bad" style="min-width:16px;padding:0 4px">4</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg><span class="grow">الكفالة</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span class="grow">السكن</span></span>
+      <span class="cap">السجلات</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg><span class="grow">سجلات الموظفين</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top" style="padding:10px 16px">
+        <div class="ui-title lg">💰 الرواتب — سبتمبر 2026</div>
+        <div style="font-size:10px;margin-top:2px;opacity:.85">الموارد البشرية (عمر ب.) ← المالية ← المالك · ملف WPS يأتي بعد التوقيعات</div>
+      </div>
+      <div class="ui-grid4"><div class="ui-card"><div class="ui-kpi"><span class="cap">الموظفون على الرواتب</span><span class="num">84</span><span class="muted" style="font-size:10px">6 فروع · 3 علامات</span></div></div><div class="ui-card"><div class="ui-kpi"><span class="cap">الإجمالي</span><span class="num">312,400 ر.ق</span><span class="muted" style="font-size:10px">الأساسي + البدلات</span></div></div><div class="ui-card"><div class="ui-kpi"><span class="cap">الاستقطاعات</span><span class="num">15,450 ر.ق</span><span class="muted" style="font-size:10px">غياب · سُلَف</span></div></div><div class="ui-card"><div class="ui-kpi"><span class="cap">الصافي إلى البنك</span><span class="num">296,950 ر.ق</span><span class="muted" style="font-size:10px">84 تحويلاً بنكياً</span></div></div></div>
+      <div class="ui-card" style="padding:10px 12px">
+        <span class="cap">✍️ التوقيعات — بهذا الترتيب، ولا يُتخطّى أحد</span>
+        <div class="ui-grid3" style="margin-top:6px"><div class="ui-cell" style="padding:6px 10px;display:flex;align-items:center;gap:8px"><span class="num" style="width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span><span class="grow"><b style="display:block">الموارد البشرية</b><span class="muted" style="font-size:10px">عمر ب. · أُرسلت</span></span><span class="ui-pill good">✓ أُرسلت</span></div><div class="ui-cell" style="padding:6px 10px;display:flex;align-items:center;gap:8px"><span class="num" style="width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span><span class="grow"><b style="display:block">المالية</b><span class="muted" style="font-size:10px">ليلى ت. · اعتُمدت</span></span><span class="ui-pill good">✓ اعتُمدت</span></div><div class="ui-cell" style="padding:6px 10px;display:flex;align-items:center;gap:8px"><span class="num" style="width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span><span class="grow"><b style="display:block">المالك</b><span class="muted" style="font-size:10px">يوقّع من هاتفه</span></span><span class="ui-pill warn">⏳ بالانتظار</span></div></div>
+      </div>
+      <div class="ui-grid2" style="flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;min-height:0;overflow:hidden">
+          <span class="cap">🧾 معاينة قسيمة الراتب — رضا ك. · نادل · ويست ووك</span>
+          <div class="ui-cell" style="margin-top:6px">
+            <div class="ui-list"><div class="ui-li" style="padding:5px 0"><span class="grow">الراتب الأساسي</span><span class="num">2,400.00 ر.ق</span></div><div class="ui-li" style="padding:5px 0"><span class="grow">البدلات (سكن · مواصلات · طعام)</span><span class="num">1,050.00 ر.ق</span></div><div class="ui-li" style="padding:5px 0"><span class="grow">العمل يوم الراحة — يُدفع وفق المادة 74</span><span class="num">لا شيء هذا الشهر</span></div><div class="ui-li" style="padding:6px 0"><b class="grow">صافي الراتب</b><b class="num" style="font-size:16px">3,450.00 ر.ق</b></div></div>
+          </div>
+          <div class="ui-cell ui-grid2" style="margin-top:8px"><div class="ui-kpi"><span class="cap">الساعات هذا الشهر</span><span class="num">176 س</span></div><div class="ui-kpi"><span class="cap">أيام الإجازة المتبقية</span><span class="num">18</span></div></div>
+          <div class="muted" style="font-size:10px;margin-top:auto;padding-top:6px">مكافأة نهاية الخدمة تتراكم كل شهر — ثلاثة أسابيع من الأساسي عن كل سنة خدمة (المادة 54)، تظهر في الملف ولا تُكتب يدوياً</div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;min-height:0;overflow:hidden">
+          <span class="cap">🏦 ملف WPS — صيغة SIF الخاصة بـQIB</span>
+          <div class="ui-cell" style="margin-top:6px"><div class="ui-list"><div class="ui-li" style="padding:5px 0"><span class="grow"><b>بيانات الشركة لملف WPS</b> <span class="muted" style="font-size:10px">· تُضبط مرة واحدة</span></span><span class="ui-pill good">✓ مضبوطة</span></div><div class="ui-li" style="padding:5px 0"><span class="grow"><b>QID في كل سطر يُدفع عبر البنك</b> <span class="muted" style="font-size:10px">· 84 من 84</span></span><span class="ui-pill good">✓ سليم</span></div><div class="ui-li" style="padding:5px 0"><span class="grow"><b>IBAN في كل سطر يُدفع عبر البنك</b> <span class="muted" style="font-size:10px">· 84 من 84</span></span><span class="ui-pill good">✓ سليم</span></div><div class="ui-li" style="padding:5px 0"><span class="grow"><b>ملف SIF لكل منشأة (بطاقة المنشأة)</b> <span class="muted" style="font-size:10px">· 6 ملفات</span></span><span class="ui-pill sub">لكل فرع</span></div></div></div>
+          <div class="row" style="gap:8px;margin-top:8px;flex-wrap:wrap"><span class="ui-btn" style="opacity:.55">⬇ أنشئ ملفات SIF</span><span class="ui-pill warn">🔒 مقفل حتى يوقّع المالك</span></div>
+          <div class="muted" style="font-size:10px;margin-top:auto;padding-top:6px">⛔ خانة QID الفارغة لا تمرّ في ملف WPS — تُوقَف هنا، لا عند البنك</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </div>
     <div class="tile-grid">
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-invoice"/></svg></span><h4>ملف رواتب WPS</h4><p>صيغة SIF الحقيقية التي يقبلها البنك</p></div>
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-scale"/></svg></span><h4>قانون العمل رقم 14 لسنة 2004</h4><p>مكافأة نهاية الخدمة، أجر يوم الراحة، الحدّ الأدنى للأجور، المادة 70</p></div>
@@ -3306,37 +3373,21 @@ var WA_NUMBER = '';
   </div>
 </section>
 
-<section id="engineering">
-  <div class="container">
-    <div class="center">
-      <div class="eyebrow">برمجيات تتعامل مع المال</div>
-      <h2 class="s-title reveal">لماذا يمكنك أن <span class="hl">تثق بالرقم</span></h2>
-      <p class="s-sub mx reveal">الثقة تُكتسب بما يرفض النظام إطلاقه، لا بما يعِد به.</p>
-    </div>
-    <div class="tile-grid">
-      <div class="tile reveal-s"><span class="big">297</span><h4>بوابة أمان</h4><p>كلّ واحدة منها تشغّل الكود الحقيقي. ولا واحدة تكتفي بقراءته.</p></div>
-      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-history"/></svg></span><h4>السجلّ الدائم</h4><p>للإضافة فقط. التصحيح يُضاف سطراً جديداً، ولا يُعدَّل شيء أبداً.</p></div>
-      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-plugoff"/></svg></span><h4>يعمل دون اتصال</h4><p>الكاشير يواصل البيع حين ينقطع الاتصال.</p></div>
-      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-db"/></svg></span><h4>الاستعادة مُختبَرة</h4><p>النسخة الاحتياطية التي لم يستعدها أحد ليست نسخة احتياطية.</p></div>
-      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-shieldcheck"/></svg></span><h4>كل إصلاح محروس</h4><p>نعيد زرع الخلل لنثبت أن الاختبار يلتقطه.</p></div>
-      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-equals"/></svg></span><h4>قاعدة واحدة، شاشتان</h4><p>لوحة القيادة وقائمة P&amp;L تتشاركان الكود نفسه.</p></div>
-    </div>
-  </div>
-</section>
-
 <section id="security">
   <div class="container">
     <div class="center">
       <div class="eyebrow">السؤال الثالث الذي يطرحه كل مشترٍ جادّ</div>
       <h2 class="s-title reveal">أين <span class="hl">تُحفَظ</span> بياناتك</h2>
-      <p class="s-sub mx reveal">أنت تسلّمنا الرواتب ومطابقة كشوف البنك وكل عملية بيع تُجريها. وهذا بالضبط ما يحدث لها.</p>
+      <p class="s-sub mx reveal">أنت تسلّمنا الرواتب ومطابقة كشوف البنك وكل عملية بيع تُجريها. وهذا بالضبط ما يحدث لها — ولماذا يمكنك أن تثق بالرقم على الشاشة.</p>
     </div>
     <div class="sec-grid tile-grid">
-      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-db"/></svg></span><h4>قاعدة بيانات واحدة، بنسخة احتياطية يومية</h4><p>PostgreSQL على خطة مدفوعة مع نسخ احتياطي تلقائي كل يوم. ليست خطة مجانية، وليست ملفاً على جهاز في المكتب الخلفي.</p></div>
+      <div class="tile reveal-s"><span class="big">297</span><h4>بوابة أمان</h4><p>كلّ واحدة منها تشغّل الكود الحقيقي ولا تكتفي بقراءته — وكل إصلاح يُثبَت بإعادة زرع الخلل حتى يلتقطه الاختبار.</p></div>
+      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-db"/></svg></span><h4>قاعدة بيانات واحدة، بنسخة احتياطية يومية</h4><p>PostgreSQL على خطة مدفوعة مع نسخ احتياطي تلقائي كل يوم، واستعادة مُختبَرة — فالنسخة التي لم يستعدها أحد ليست نسخة احتياطية.</p></div>
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><h4>باب البيانات العام مُغلَق</h4><p>لا توجد واجهة API مفتوحة تقرأ جداولك. كل طلب يمرّ عبر المحرّك بمفتاح، ولكل تثبيت مفتاحه الخاص.</p></div>
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-scroll"/></svg></span><h4>لا شيء يُمحى بالتعديل أبداً</h4><p>المبيعات والإلغاءات والاستردادات وتغييرات الأجور تُضاف إلى سجلّ دائم. التصحيح سطر جديد، فيبقى الأصل مقروءاً إلى الأبد.</p></div>
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-usershield"/></svg></span><h4>الموظف لا يرى إلا ما يخصّه</h4><p>الرواتب وأرقام الهوية والمستندات محفوظة خلف مفتاح مستقل للموارد البشرية. شاشة النادل لا تصل إليها، ولا شاشة المدير من دونه.</p></div>
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-plugoff"/></svg></span><h4>قد ينقطع الاتصال</h4><p>يواصل الكاشير البيع من دون اتصال ويحفظ كل عملية بيع في قائمة الانتظار. وحين يعود الاتصال يسوّي كل شيء — والجواب الفارغ لا يُحسَب صفراً حقيقياً أبداً.</p></div>
+      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-equals"/></svg></span><h4>قاعدة واحدة، شاشتان</h4><p>لوحة قيادة المالك وقائمة الأرباح والخسائر يحسبهما الكود نفسه، فلا يمكن أن تختلفا.</p></div>
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></span><h4>أرقامك ترحل معك</h4><p>كل جدول يُصدَّر إلى ملف جدول بيانات. وإن توقفت يوماً عن الدفع لنا، يبقى تاريخك معك — وهذا هو مغزى السجلّ الدائم.</p></div>
     </div>
   </div>
@@ -3350,11 +3401,11 @@ var WA_NUMBER = '';
       <h2 class="s-title reveal">فرعك الأول يعمل <span class="hl">خلال أسبوع</span></h2>
       <p class="s-sub mx reveal">الانتقال هو ما يخشاه الناس أكثر من السعر نفسه. وإليك الأمر كلّه.</p>
     </div>
-    <div class="steps-grid">
-      <div class="step-card reveal-s"><div class="n">1</div><h4>عرض توضيحي لمدة 20 دقيقة عبر مكالمة فيديو على WhatsApp</h4><p>الشاشات نفسها التي نُدير بها مطاعمنا، ببيانات تجريبية. أحضر قائمة طعامك، وسنُدخل ثلاثة أطباق أمامك.</p></div>
-      <div class="step-card reveal-s"><div class="n">2</div><h4>يوم التركيب</h4><p>تطبيق الكاشير يُثبَّت على جهازك من USB، ومفتاح المحرّك على بطاقة تضعها في محفظتك، والطابعات تُكتشف على الشبكة. كاشيرك الحالي، Mac أو POSBANK أو Windows — لا حاجة لشراء شيء جديد إلا إذا أردت.</p></div>
-      <div class="step-card reveal-s"><div class="n">3</div><h4>بياناتك، من جداول البيانات التي لديك أصلاً</h4><p>القائمة والموظفون والموردون والمخزون تصل عبر أربعة قوالب. كل صفّ يحصل على حكم، والخانة الفارغة لا تتحوّل أبداً إلى صفر.</p></div>
-      <div class="step-card reveal-s"><div class="n">4</div><h4>الأجهزة اللوحية تقترن برمز QR</h4><p>النادلون والشيف ومكتب الاستقبال وهاتف كل موظف، كلٌّ يمسح رمزاً واحداً. جهاز واحد، هوية واحدة — والجهاز اللوحي المفقود تُسحب صلاحيته بلمسة واحدة.</p></div>
+    <div class="steps-grid" role="list">
+      <div class="step-card reveal-s" role="listitem"><div class="n">1</div><span class="when">قبل أن توقّع</span><h4>عرض توضيحي لمدة 20 دقيقة عبر مكالمة فيديو على WhatsApp</h4><p>الشاشات نفسها التي نُدير بها مطاعمنا، ببيانات تجريبية. أحضر قائمة طعامك، وسنُدخل ثلاثة أطباق أمامك.</p></div>
+      <div class="step-card reveal-s" role="listitem"><div class="n">2</div><span class="when">اليوم الأول</span><h4>يوم التركيب</h4><p>تطبيق الكاشير يُثبَّت على جهازك من USB، ومفتاح المحرّك على بطاقة تضعها في محفظتك، والطابعات تُكتشف على الشبكة. كاشيرك الحالي، Mac أو POSBANK أو Windows — لا حاجة لشراء شيء جديد إلا إذا أردت.</p></div>
+      <div class="step-card reveal-s" role="listitem"><div class="n">3</div><span class="when">في الأسبوع نفسه</span><h4>بياناتك، من جداول البيانات التي لديك أصلاً</h4><p>القائمة والموظفون والموردون والمخزون تصل عبر أربعة قوالب. كل صفّ يحصل على حكم، والخانة الفارغة لا تتحوّل أبداً إلى صفر.</p></div>
+      <div class="step-card reveal-s" role="listitem"><div class="n">4</div><span class="when">في الأسبوع نفسه</span><h4>الأجهزة اللوحية تقترن برمز QR</h4><p>النادلون والشيف ومكتب الاستقبال وهاتف كل موظف، كلٌّ يمسح رمزاً واحداً. جهاز واحد، هوية واحدة — والجهاز اللوحي المفقود تُسحب صلاحيته بلمسة واحدة.</p></div>
     </div>
   </div>
 </section>
@@ -3372,7 +3423,7 @@ var WA_NUMBER = '';
         <div class="tag">فرع واحد</div>
         <h4>فردي</h4>
         <p class="who">مطعم واحد، مطبخ واحد، ومهما كان عدد أجهزة الكاشير التي تحتاجها في الصالة.</p>
-        <div class="price-band"><div class="unit">لكل فرع · شهرياً</div><div class="note">فرع واحد، مهما كان عدد أجهزة الكاشير</div></div>
+        <div class="price-band"><div class="unit">يُسعَّر لكل فرع</div><div class="note">لكل فرع شهرياً · مهما كان عدد أجهزة الكاشير</div></div>
         <ul>
           <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg> <span>كل الأقسام الـ15</span></li>
           <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg> <span>عدد غير محدود من أجهزة الكاشير وأجهزة النادل اللوحية</span></li>
@@ -3386,7 +3437,7 @@ var WA_NUMBER = '';
         <div class="tag">معظم المجموعات تبدأ من هنا</div>
         <h4>مجموعة</h4>
         <p class="who">عدة فروع، علامة تجارية أو أكثر، ومكتب رئيسي يريد شاشة واحدة لكل ذلك.</p>
-        <div class="price-band"><div class="unit">لكل فرع · شهرياً</div><div class="note">لكل فرع، والمكتب الرئيسي مشمول</div></div>
+        <div class="price-band"><div class="unit">المكتب الرئيسي مشمول</div><div class="note">لكل فرع شهرياً · شاشة المجموعة بلا تكلفة إضافية</div></div>
         <ul>
           <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg> <span>كل ما في باقة «فردي»، لكل فرع</span></li>
           <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg> <span>لوحة قيادة المكتب الرئيسي عبر كل الفروع</span></li>
@@ -3400,7 +3451,7 @@ var WA_NUMBER = '';
         <div class="tag">للعمليات الكبيرة</div>
         <h4>مؤسسات</h4>
         <p class="who">علامات تجارية كثيرة، أو شركاء امتياز، أو مجموعة تحتاج تثبيتاً خاصاً بها ومفاتيح خاصة بها.</p>
-        <div class="price-band"><div class="unit">لكل فرع · شهرياً</div><div class="note">محرّك خاص بك، والسعر يُحدَّد على العملية كاملة</div></div>
+        <div class="price-band"><div class="unit">محرّك خاص بك</div><div class="note">يُسعَّر على العملية كاملة</div></div>
         <ul>
           <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg> <span>كل ما في باقة «مجموعة»</span></li>
           <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg> <span>محرّكك الخاص ومفاتيحك الخاصة</span></li>
@@ -3413,7 +3464,6 @@ var WA_NUMBER = '';
     </div>
     <div class="price-how reveal">
       <div><h4>ما الذي يحدّد السعر</h4><p><b>الفروع وأجهزة الكاشير.</b> لا الوحدات، ولا تراخيص المستخدمين، ولا عدد من يسجّلون الدخول. أضف قسماً ولن يتغيّر شيء في فاتورتك.</p></div>
-      <div><h4>ما المشمول دائماً</h4><p>كل <b>الأقسام الـ15</b>، وحسابات موظفين بلا حدود، وأجهزة النادل اللوحية، وشاشات المطبخ، وتطبيق الضيف وبرنامج الولاء، وكل تحديث نُصدره.</p></div>
       <div><h4>ما الذي له تكلفة إضافية</h4><p><b>الإعداد الأولي</b> فقط — إدخال قائمتك ومكوّناتك ومورّديك وسجلات موظفيك، وتثبيت الفرع الأول. يُسعَّر مرة واحدة، ولا يتكرر أبداً.</p></div>
       <div><h4>كيف تحصل على رقم</h4><p>أخبرنا <b>بعدد فروعك</b> وبما تعمل به اليوم. يصلك عرض سعر مكتوب، لا مكالمة من مندوب مبيعات.</p></div>
     </div>
@@ -3431,7 +3481,7 @@ var WA_NUMBER = '';
         <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg><span>تدريب في الصالة، بالعربية أو الإنجليزية</span></li>
         <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg><span>بياناتك تخرج كجدول بيانات، في أي يوم</span></li>
         <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg><span>السجلّ الدائم، منسوخ احتياطياً ومختبَر الاستعادة</span></li>
-        <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg><span>الإيصال الرقمي للضيف وبطاقة الولاء</span></li>
+        <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg><span>كل الأقسام الـ15 وحسابات موظفين بلا حدود</span></li>
         <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg><span>دعم عبر WhatsApp، في اليوم نفسه</span></li>
       </ul></div>
     </div>
@@ -3550,7 +3600,6 @@ var WA_NUMBER = '';
           <ul>
             <li><a href="#problem">الفجوة</a></li>
             <li><a href="#qatar">صُنع لقطر</a></li>
-            <li><a href="#engineering">الهندسة</a></li>
             <li><a href="#proof">مجموعة مطاعمنا</a></li>
             <li><a href="#security">بياناتك</a></li>
           </ul>

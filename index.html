@@ -370,6 +370,7 @@ html.js .visible{opacity:1;transform:none}
 .tile-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 @media(max-width:1039px){.tile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:599px){.tile-grid{grid-template-columns:minmax(0,1fr)}}
+@media(min-width:1040px){.sec-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 /* inside a two-column block the points stack as rows, not tiles */
 .point-list{display:flex;flex-direction:column;gap:4px}
 .point-list .pt{background:var(--card);border-radius:var(--ri);padding:12px 14px;display:flex;gap:12px;align-items:flex-start}
@@ -724,10 +725,16 @@ blockquote{font-size:19px;font-weight:600;line-height:1.45;letter-spacing:-.2px;
 .proof-stat .l{font-size:13px;color:var(--sub);line-height:1.35;margin-top:2px}
 
 /* ── how it starts ────────────────────────────────────────────────────────────────────────── */
-.steps-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-@media(max-width:1039px){.steps-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:599px){.steps-grid{grid-template-columns:minmax(0,1fr)}}
-.step-card{background:var(--card);border-radius:var(--rc);padding:20px;display:flex;flex-direction:column;gap:10px}
+/* a timeline, not a card grid: the numbered dots sit on one track (across ≥1040, down below) */
+.steps-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.step-card{position:relative;display:flex;flex-direction:column;gap:8px}
+.step-card:not(:last-child)::after{content:"";position:absolute;top:15px;height:2px;inset-inline-start:44px;inset-inline-end:-12px;background:var(--track);border-radius:2px}
+.step-card .when{font-size:12px;font-weight:700;color:var(--accent);margin-top:6px}
+@media(max-width:1039px){.steps-grid{grid-template-columns:minmax(0,1fr);gap:28px;max-width:640px;margin-inline:auto}
+  .step-card{padding-inline-start:52px;gap:6px}
+  .step-card .n{position:absolute;inset-inline-start:0;top:0}
+  .step-card .when{margin-top:6px}
+  .step-card:not(:last-child)::after{top:40px;bottom:-24px;inset-inline-start:15px;inset-inline-end:auto;width:2px;height:auto}}
 .step-card .n{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;
   font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center}
 .step-card h4{font-size:15px;font-weight:600;line-height:1.3}
@@ -753,8 +760,8 @@ blockquote{font-size:19px;font-weight:600;line-height:1.45;letter-spacing:-.2px;
 .price-card .btn{width:100%}
 /* a secondary button sitting ON a grey card takes the white cell colour, or it disappears */
 .price-card .btn:not(.btn-accent){background:var(--inner)}
-.price-how{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:16px}
-@media(max-width:1039px){.price-how{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.price-how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:16px}
+@media(max-width:767px){.price-how{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:599px){.price-how{grid-template-columns:minmax(0,1fr)}}
 .price-how > div{background:var(--card);border-radius:var(--rc);padding:18px}
 .price-how h4{font-size:15px;font-weight:600;color:var(--accent);margin-bottom:6px}
@@ -1449,7 +1456,7 @@ var WA_NUMBER = '';
     </div>
   </div>
 </div></template>
-      <template data-dept="store"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Central Store on Tuesday 8 September: purchase order PO-2291 from Doha Fresh Produce (QR 4,860.00, net 30, due 8 October) received line by line with tomatoes 9% dearer than the last delivery, West Walk's 12-line morning order waiting on the routing desk with kale short on the shelf (4 of the 6 kg asked), and the store's own stock with its expiry watch" style="width:960px;height:640px;overflow:hidden">
+      <template data-dept="store"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Central Store on Tuesday 8 September: purchase order PO-2291 from Doha Fresh Produce (QR 4,860.00, net 30, due 8 October) received line by line with tomatoes 9% dearer than the last delivery, West Walk's 12-line morning order issued at 06:40 from the routing desk with kale short (4 of the 6 kg asked), the GRN still a draft not posted yet, and the store's own stock with its expiry watch" style="width:960px;height:640px;overflow:hidden">
   <div class="ui-nav">
     <span class="ui-title">📦 Central Store</span>
     <span class="ui-pill accent">Mim restaurants · Industrial Area</span>
@@ -1462,7 +1469,7 @@ var WA_NUMBER = '';
       <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span></span>
       <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">Dashboard</span></span>
       <span class="cap">Operations</span>
-      <span><svg class="ic" aria-hidden="true"><use href="#i-swap"/></svg><span class="grow">Routing desk</span><span class="ui-badge">1</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-swap"/></svg><span class="grow">Routing desk</span></span>
       <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg><span class="grow">Purchasing</span><span class="ui-badge">1</span></span>
       <span><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span class="grow">Suppliers</span></span>
       <span class="cap">Stock</span>
@@ -1474,7 +1481,7 @@ var WA_NUMBER = '';
     </div>
     <div class="ui-main">
       <div class="ui-top">
-        <span class="grow"><span class="ui-title">📥 Goods Received Note — PO #PO-2291 · Doha Fresh Produce</span><br><span class="muted" style="font-size:10px">Count what actually came off the truck — only good stock enters the store, and Finance is warned not to pay in full.</span></span>
+        <span class="grow"><span class="ui-title">📥 Goods Received Note — PO #PO-2291 · Doha Fresh Produce</span> <span class="ui-pill warn">draft · not posted yet</span><br><span class="muted" style="font-size:10px">Count what actually came off the truck — only good stock enters the store, and Finance is warned not to pay in full.</span></span>
       </div>
       <div class="ui-card" style="padding-block:10px">
         <table style="width:100%;border-collapse:collapse;font-size:11px;line-height:1.25">
@@ -1500,13 +1507,13 @@ var WA_NUMBER = '';
       </div>
       <div class="ui-grid2" style="flex:1;min-height:0">
         <div class="ui-card" style="overflow:hidden">
-          <div class="row" style="justify-content:space-between;margin-bottom:4px"><span class="ui-title">🔀 Routing desk <span class="ui-badge">1</span></span><span class="cap">📥 New requests — need action</span></div>
+          <div class="row" style="justify-content:space-between;margin-bottom:4px"><span class="ui-title">🔀 Routing desk</span><span class="cap">📤 Issued this morning</span></div>
           <div class="ui-cell">
-            <div class="row" style="justify-content:space-between;gap:6px"><span class="grow"><b>JUNO · West Walk</b><br><span class="muted">by Noor H. · 8 Sept 07:05 · 12 lines</span></span></div>
+            <div class="row" style="justify-content:space-between;gap:6px"><span class="grow"><b>JUNO · West Walk</b><br><span class="muted">by Noor H. · 8 Sept 06:05 · issued 06:40 · 10 full, 2 short</span></span></div>
             <div class="ui-list" style="margin-top:4px">
-              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Chicken breast</b> <span class="muted">18 kg</span></span><span class="muted" style="font-size:10px">in store</span><b style="color:var(--good)">42</b><span class="ui-pill sub">🏬 Central Store</span></div>
-              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Kale</b> <span class="muted">6 kg</span></span><span class="muted" style="font-size:10px">in store</span><b style="color:var(--bad)">4 ⚠️</b><span class="ui-pill sub">🏬 Central Store</span></div>
-              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Parmesan</b> <span class="muted">2 kg</span></span><span class="muted" style="font-size:10px">in store</span><b style="color:var(--good)">5</b><span class="ui-pill sub">🏬 Central Store</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Chicken breast</b> <span class="muted">18 kg</span></span><span class="muted" style="font-size:10px">issued</span><b style="color:var(--good)">18 ✓</b><span class="ui-pill sub">🏬 Central Store</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Kale</b> <span class="muted">6 kg</span></span><span class="muted" style="font-size:10px">issued</span><b style="color:var(--bad)">4 of 6 ⚠️</b><span class="ui-pill sub">🏬 Central Store</span></div>
+              <div class="ui-li" style="padding:5px 0"><span class="grow"><b>Parmesan</b> <span class="muted">2 kg</span></span><span class="muted" style="font-size:10px">issued</span><b style="color:var(--good)">2 ✓</b><span class="ui-pill sub">🏬 Central Store</span></div>
             </div>
             <span class="muted" style="font-size:10px">+9 more lines</span>
           </div>
@@ -1580,7 +1587,7 @@ var WA_NUMBER = '';
     </div>
   </div>
 </div></template>
-      <template data-dept="finance"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Finance Home on Tuesday 8 September, Layla T. signed in: August closed clean, the morning verdict composed from the registers, yesterday's leakage line, five glance tiles, two petty-cash paid-outs waiting for her signature oldest first, the drift rail with The Pearl's QR 40 remit, the month by branch, what is owed by due date and the fixed points" style="width:960px;height:640px;overflow:hidden">
+      <template data-dept="finance"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Finance Home on Tuesday 8 September, Layla T. signed in: August closed clean, the morning verdict composed from the registers, yesterday's leakage line, five glance tiles, three items waiting for her signature oldest first — two petty-cash paid-outs and the QR 1,200 West Walk fridge compressor quotation sent by Maintenance, the drift rail with The Pearl's QR 40 remit, the month by branch, what is owed by due date and the fixed points" style="width:960px;height:640px;overflow:hidden">
   <div class="ui-nav">
     <span class="ui-title">💰 Finance</span>
     <span class="ui-pill accent">Mim restaurants · 6 branches</span>
@@ -1590,7 +1597,7 @@ var WA_NUMBER = '';
   <div class="ui-body">
     <div class="ui-side">
       <span class="cap">Today</span>
-      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span class="grow">Home</span><span class="ui-badge">2</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span class="grow">Home</span><span class="ui-badge">3</span></span>
       <span><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg><span class="grow">End of day</span></span>
       <span><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span class="grow">Drawer &amp; payouts</span></span>
       <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span></span>
@@ -1605,23 +1612,24 @@ var WA_NUMBER = '';
     <div class="ui-main">
       <div class="row" style="gap:6px;font-size:11px;font-weight:600;color:var(--good)"><svg class="ic" aria-hidden="true" style="width:14px;height:14px"><use href="#i-lock"/></svg><span>2026-08 closed clean by Layla T. — 2026-09 started new.</span></div>
       <div class="ui-top" style="padding:10px 16px;display:flex;flex-direction:column;gap:3px">
-        <div class="row" style="gap:10px"><span style="width:10px;height:10px;border-radius:50%;background:var(--amber);flex-shrink:0"></span><span class="ui-title grow">One thing needs you this morning: sign 2 items (oldest waited 2 days). Everything else is inside its lines.</span></div>
+        <div class="row" style="gap:10px"><span style="width:10px;height:10px;border-radius:50%;background:var(--amber);flex-shrink:0"></span><span class="ui-title grow">One thing needs you this morning: sign 3 items (oldest waited 2 days). Everything else is inside its lines.</span></div>
         <span class="cap" style="padding-inline-start:20px">rewritten live from the registers — never hand-typed</span>
       </div>
       <div class="ui-cell row" style="flex-wrap:wrap;gap:2px 9px;padding:5px 10px;font-size:9.5px;font-weight:700;color:var(--sub)"><span class="cap" style="letter-spacing:.6px">Yesterday · 2026-09-07</span><span>💰 QR 58,900.00 · 447 order(s)</span><span style="color:var(--amber)">🏷 discounts QR 1,240.00 · 31×</span><span style="color:var(--bad)">↩️ refunds QR 310.00 · 2×</span><span style="color:var(--bad)">🗑 voids 5× QR 172.00</span><span class="muted" style="font-size:9px">leakage = QR 1,550.00 = 2.6% of the day</span></div>
       <div class="ui-grid4" style="grid-template-columns:repeat(5,minmax(0,1fr))">
-        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">⏳ Awaiting signature</span><span class="num sm">2 · QR 240.00</span><span style="font-size:10px;font-weight:700;color:var(--amber)">oldest 2 days</span></div></div>
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">⏳ Awaiting signature</span><span class="num sm">3 · QR 1,440.00</span><span style="font-size:10px;font-weight:700;color:var(--amber)">oldest 2 days</span></div></div>
         <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">💵 Cash in transit</span><span class="num sm">QR 0.00</span><span style="font-size:10px;font-weight:700;color:var(--good)">all received</span></div></div>
         <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">🧾 We owe suppliers</span><span class="num sm">QR 4,860.00</span><span style="font-size:10px;font-weight:700;color:var(--good)">QR 0.00 due / overdue</span></div></div>
-        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">📊 Revenue this month</span><span class="num sm">QR 1,280,000.00</span><span class="muted" style="font-size:10px;font-weight:700">no last-month basis yet</span></div></div>
+        <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">📊 Revenue this month</span><span class="num sm">QR 478,250.00</span><span class="muted" style="font-size:10px;font-weight:700">8 days · 1–8 Sept</span></div></div>
         <div class="ui-card" style="padding:10px 10px"><div class="ui-kpi"><span class="cap">🍔 Food cost (theo.)</span><span class="num sm">30.6%</span><span class="muted" style="font-size:10px;font-weight:700">from costs stamped at each sale</span></div></div>
       </div>
       <div class="ui-grid2" style="grid-template-columns:7fr 5fr;flex:1;min-height:0">
         <div class="ui-card" style="display:flex;flex-direction:column;min-height:0;overflow:hidden">
           <span class="ui-title">⏳ Waiting for you</span><span class="cap" style="display:block">oldest first, never by amount — the case in full on its own screen</span>
           <div class="ui-list" style="margin-top:4px">
-            <div class="ui-li" style="padding:6px 0"><span class="ui-avatar" style="border-radius:8px">💸</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Paid-out · Lusail Boulevard</b><span class="muted" style="display:block;font-size:11px">"cleaning" · raised by Tariq S. → you</span></span><span class="ui-pill warn">2 days</span><span class="num">QR 180.00</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">Review &amp; sign</span></div>
-            <div class="ui-li" style="padding:6px 0"><span class="ui-avatar" style="border-radius:8px">💸</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Paid-out · Al Sadd</b><span class="muted" style="display:block;font-size:11px">"ice" · raised by Fatima S. → you</span></span><span class="ui-pill sub">6 h</span><span class="num">QR 60.00</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">Review &amp; sign</span></div>
+            <div class="ui-li" style="padding:3px 0"><span class="ui-avatar" style="border-radius:8px">💸</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Paid-out · Lusail Boulevard</b><span class="muted" style="display:block;font-size:11px">"cleaning" · raised by Tariq S. → you</span></span><span class="ui-pill warn">2 days</span><span class="num">QR 180.00</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">Review &amp; sign</span></div>
+            <div class="ui-li" style="padding:3px 0"><span class="ui-avatar" style="border-radius:8px">💸</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Paid-out · Al Sadd</b><span class="muted" style="display:block;font-size:11px">"ice" · raised by Fatima S. → you</span></span><span class="ui-pill sub">6 h</span><span class="num">QR 60.00</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">Review &amp; sign</span></div>
+            <div class="ui-li" style="padding:3px 0"><span class="ui-avatar" style="border-radius:8px">🔧</span><span class="grow"><b style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Quote · West Walk fridge</b><span class="muted" style="display:block;font-size:11px">Gulf Cooling · Jamal A. → you</span></span><span class="ui-pill sub">today</span><span class="num">QR 1,200.00</span><span class="ui-btn accent" style="height:26px;padding:0 10px;font-size:10px">Review &amp; sign</span></div>
           </div>
           <span class="cap" style="margin-top:auto;padding-top:6px">There is no bulk-sign — a signature is a decision, and each one gets its own read on its own screen.</span>
         </div>
@@ -1638,9 +1646,9 @@ var WA_NUMBER = '';
         <div class="ui-card">
           <span class="ui-title">📊 Month so far, by branch</span>
           <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px">
-            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">JUNO · West Walk</span><b>QR 309,790.00</b></div><div class="ui-bar" style="--v:92%;margin-top:2px"></div></div>
-            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">Saffron House · Al Sadd</span><b>QR 336,050.00</b></div><div class="ui-bar" style="--v:100%;margin-top:2px"></div></div>
-            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">Bake &amp; Co · Villaggio</span><b>QR 124,660.00</b></div><div class="ui-bar" style="--v:37%;margin-top:2px"></div></div>
+            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">JUNO · West Walk</span><b>QR 116,420.00</b></div><div class="ui-bar" style="--v:94%;margin-top:2px"></div></div>
+            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">Saffron House · Al Sadd</span><b>QR 124,380.00</b></div><div class="ui-bar" style="--v:100%;margin-top:2px"></div></div>
+            <div><div class="row" style="justify-content:space-between;font-size:11px"><span class="muted" style="font-weight:600">Bake &amp; Co · Villaggio</span><b>QR 48,900.00</b></div><div class="ui-bar" style="--v:39%;margin-top:2px"></div></div>
           </div>
           <span class="cap" style="display:block;margin-top:6px">No target set = no % claimed</span>
         </div>
@@ -1653,7 +1661,7 @@ var WA_NUMBER = '';
         <div class="ui-card">
           <span class="ui-title">🗓 Fixed points</span>
           <div style="display:flex;flex-direction:column;gap:3px;margin-top:6px;font-size:11px">
-            <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">👥</span><span class="grow"><b style="display:block;line-height:1.15">WPS payroll</b><span class="muted">no submission yet — HR starts it</span></span></div>
+            <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">👥</span><span class="grow"><b style="display:block;line-height:1.15">WPS payroll</b><span class="muted">approved — waits for the Owner’s signature</span></span></div>
             <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">🧾</span><span class="grow"><b style="display:block;line-height:1.15">Suppliers due ≤7 days</b><span class="muted">nothing falls due this week</span></span></div>
             <div class="row"><span class="ui-avatar" style="border-radius:8px;background:var(--inner)">🔒</span><span class="grow"><b style="display:block;line-height:1.15">2026-09 files at month end</b><span class="muted">22 day(s) left · not filed yet</span></span></div>
           </div>
@@ -3229,6 +3237,65 @@ var WA_NUMBER = '';
       <h2 class="s-title reveal">Built for <span class="hl">Qatar</span></h2>
       <p class="s-sub mx reveal">The local rules are not a checkbox we added. They are the way the system counts.</p>
     </div>
+    <div class="shot reveal-s" style="margin-bottom:16px">
+      <div class="ui-fit"><div class="ui ui-shot" data-kind="tablet" data-w="960" role="img" aria-label="Human Resources, the Payroll room for September 2026 on Tuesday 8 September: 84 staff, gross QR 312,400, deductions QR 15,450, net to the bank QR 296,950; the signature chain with HR sent and Finance approved, waiting for the Owner; Raza K.'s payslip with basic, allowances and the end-of-service gratuity accruing under Labour Law 14/2004; and the WPS bank file in the QIB SIF format, every bank-paid row carrying a QID and an IBAN, locked until the Owner signs" style="width:960px;height:640px;overflow:hidden">
+  <div class="ui-nav">
+    <span class="ui-title">👥 Human Resources</span>
+    <span class="ui-pill accent">Mim restaurants · 84 staff</span>
+    <span class="ui-pill sub">Tue 8 Sept 2026</span>
+    <div class="ui-who"><span class="ui-avatar">OB</span><span><b>Omar B.</b><small>HR manager · Head Office</small></span></div>
+  </div>
+  <div class="ui-body">
+    <div class="ui-side">
+      <span class="cap">👔 Today</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><span class="grow">Dashboard</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-inbox"/></svg><span class="grow">Inbox</span></span>
+      <span class="cap">People</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-team"/></svg><span class="grow">Staff directory</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-idcard"/></svg><span class="grow">Employee file</span></span>
+      <span class="cap">Time &amp; pay</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg><span class="grow">Attendance</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span class="grow">Rota</span></span>
+      <span class="on"><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><span class="grow">Payroll</span></span>
+      <span class="cap">Requests</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg><span class="grow">Leave &amp; requests</span></span>
+      <span class="cap">Compliance</span>
+      <span style="padding-inline:8px 5px;gap:4px"><svg class="ic" aria-hidden="true"><use href="#i-scroll"/></svg><span class="grow" style="font-size:9.5px;letter-spacing:-.25px">Documents &amp; visas</span><span class="ui-badge bad" style="min-width:16px;padding:0 4px">4</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg><span class="grow">Sponsorship</span></span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg><span class="grow">Housing</span></span>
+      <span class="cap">Records</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-archive"/></svg><span class="grow">Staff records</span></span>
+    </div>
+    <div class="ui-main">
+      <div class="ui-top" style="padding:10px 16px">
+        <div class="ui-title lg">💰 Payroll — September 2026</div>
+        <div style="font-size:10px;margin-top:2px;opacity:.85">HR (Omar B.) → Finance → the Owner · the WPS file follows the signatures</div>
+      </div>
+      <div class="ui-grid4"><div class="ui-card"><div class="ui-kpi"><span class="cap">STAFF ON PAYROLL</span><span class="num">84</span><span class="muted" style="font-size:10px">6 branches · 3 brands</span></div></div><div class="ui-card"><div class="ui-kpi"><span class="cap">GROSS</span><span class="num">QR 312,400</span><span class="muted" style="font-size:10px">basic + allowances</span></div></div><div class="ui-card"><div class="ui-kpi"><span class="cap">DEDUCTIONS</span><span class="num">QR 15,450</span><span class="muted" style="font-size:10px">absence · advances</span></div></div><div class="ui-card"><div class="ui-kpi"><span class="cap">NET TO THE BANK</span><span class="num">QR 296,950</span><span class="muted" style="font-size:10px">84 bank transfers</span></div></div></div>
+      <div class="ui-card" style="padding:10px 12px">
+        <span class="cap">✍️ SIGNATURES — IN THIS ORDER, NONE SKIPPED</span>
+        <div class="ui-grid3" style="margin-top:6px"><div class="ui-cell" style="padding:6px 10px;display:flex;align-items:center;gap:8px"><span class="num" style="width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span><span class="grow"><b style="display:block">HR</b><span class="muted" style="font-size:10px">Omar B. · sent</span></span><span class="ui-pill good">✓ sent</span></div><div class="ui-cell" style="padding:6px 10px;display:flex;align-items:center;gap:8px"><span class="num" style="width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span><span class="grow"><b style="display:block">Finance</b><span class="muted" style="font-size:10px">Layla T. · approved</span></span><span class="ui-pill good">✓ approved</span></div><div class="ui-cell" style="padding:6px 10px;display:flex;align-items:center;gap:8px"><span class="num" style="width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span><span class="grow"><b style="display:block">The Owner</b><span class="muted" style="font-size:10px">signs from his phone</span></span><span class="ui-pill warn">⏳ waiting</span></div></div>
+      </div>
+      <div class="ui-grid2" style="flex:1;min-height:0">
+        <div class="ui-card" style="display:flex;flex-direction:column;min-height:0;overflow:hidden">
+          <span class="cap">🧾 PAYSLIP PREVIEW — RAZA K. · SERVER · WEST WALK</span>
+          <div class="ui-cell" style="margin-top:6px">
+            <div class="ui-list"><div class="ui-li" style="padding:5px 0"><span class="grow">Basic salary</span><span class="num">QR 2,400.00</span></div><div class="ui-li" style="padding:5px 0"><span class="grow">Allowances (housing · transport · food)</span><span class="num">QR 1,050.00</span></div><div class="ui-li" style="padding:5px 0"><span class="grow">Rest day worked — paid per Art. 74</span><span class="num">none this month</span></div><div class="ui-li" style="padding:6px 0"><b class="grow">Net pay</b><b class="num" style="font-size:16px">QR 3,450.00</b></div></div>
+          </div>
+          <div class="ui-cell ui-grid2" style="margin-top:8px"><div class="ui-kpi"><span class="cap">HOURS THIS MONTH</span><span class="num">176 h</span></div><div class="ui-kpi"><span class="cap">LEAVE DAYS LEFT</span><span class="num">18</span></div></div>
+          <div class="muted" style="font-size:10px;margin-top:auto;padding-top:6px">End-of-service gratuity accrues every month — 3 weeks’ basic per year of service (Art. 54), shown on the file, never typed</div>
+        </div>
+        <div class="ui-card" style="display:flex;flex-direction:column;min-height:0;overflow:hidden">
+          <span class="cap">🏦 WPS FILE — QIB SIF FORMAT</span>
+          <div class="ui-cell" style="margin-top:6px"><div class="ui-list"><div class="ui-li" style="padding:5px 0"><span class="grow"><b>Company details for the WPS file</b> <span class="muted" style="font-size:10px">· set once</span></span><span class="ui-pill good">✓ set</span></div><div class="ui-li" style="padding:5px 0"><span class="grow"><b>QID on every bank-paid row</b> <span class="muted" style="font-size:10px">· 84 of 84</span></span><span class="ui-pill good">✓ clean</span></div><div class="ui-li" style="padding:5px 0"><span class="grow"><b>IBAN on every bank-paid row</b> <span class="muted" style="font-size:10px">· 84 of 84</span></span><span class="ui-pill good">✓ clean</span></div><div class="ui-li" style="padding:5px 0"><span class="grow"><b>One SIF per establishment (Computer Card)</b> <span class="muted" style="font-size:10px">· 6 files</span></span><span class="ui-pill sub">per branch</span></div></div></div>
+          <div class="row" style="gap:8px;margin-top:8px;flex-wrap:wrap"><span class="ui-btn" style="opacity:.55">⬇ Build the SIF files</span><span class="ui-pill warn">🔒 locked until the Owner signs</span></div>
+          <div class="muted" style="font-size:10px;margin-top:auto;padding-top:6px">⛔ an empty QID cannot ride the WPS file — it is stopped here, not at the bank</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+    </div>
     <div class="tile-grid">
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-invoice"/></svg></span><h4>WPS salary file</h4><p>The real SIF format, accepted by the bank</p></div>
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-scale"/></svg></span><h4>Labour Law 14/2004</h4><p>EOSB, rest-day pay, wage floors, Art. 70</p></div>
@@ -3306,37 +3373,21 @@ var WA_NUMBER = '';
   </div>
 </section>
 
-<section id="engineering">
-  <div class="container">
-    <div class="center">
-      <div class="eyebrow">Software that handles money</div>
-      <h2 class="s-title reveal">Why you can <span class="hl">trust the number</span></h2>
-      <p class="s-sub mx reveal">Trust is earned by what a system refuses to ship, not by what it promises.</p>
-    </div>
-    <div class="tile-grid">
-      <div class="tile reveal-s"><span class="big">297</span><h4>Gates</h4><p>Every one runs the real code. None just reads it.</p></div>
-      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-history"/></svg></span><h4>Permanent journal</h4><p>Append-only. A correction is added, never an edit.</p></div>
-      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-plugoff"/></svg></span><h4>Offline-first</h4><p>The till keeps selling when the line drops.</p></div>
-      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-db"/></svg></span><h4>Restores tested</h4><p>A backup nobody restored is not a backup.</p></div>
-      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-shieldcheck"/></svg></span><h4>Every fix armed</h4><p>The bug is re-injected to prove the test catches it.</p></div>
-      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-equals"/></svg></span><h4>One rule, two screens</h4><p>The cockpit and the P&amp;L share the same code.</p></div>
-    </div>
-  </div>
-</section>
-
 <section id="security">
   <div class="container">
     <div class="center">
       <div class="eyebrow">The third question every serious buyer asks</div>
       <h2 class="s-title reveal">Where your data <span class="hl">lives</span></h2>
-      <p class="s-sub mx reveal">You are handing over payroll, bank matching and every sale you make. Here is exactly what happens to it.</p>
+      <p class="s-sub mx reveal">You are handing over payroll, bank matching and every sale you make. Here is exactly what happens to it — and why the number on the screen can be trusted.</p>
     </div>
     <div class="sec-grid tile-grid">
-      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-db"/></svg></span><h4>One database, backed up daily</h4><p>PostgreSQL on a paid tier with daily automatic backups. Not a free plan, and not a file on a machine in the back office.</p></div>
+      <div class="tile reveal-s"><span class="big">297</span><h4>Safety gates</h4><p>Every one runs the real code, none just reads it — and every fix is proven by putting the bug back until the test catches it.</p></div>
+      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-db"/></svg></span><h4>One database, backed up daily</h4><p>PostgreSQL on a paid tier with daily automatic backups, and restores that are tested — a backup nobody restored is not a backup.</p></div>
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><h4>The public data door is shut</h4><p>There is no open API reading your tables. Every request goes through the engine, with a key, and the key is per install.</p></div>
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-scroll"/></svg></span><h4>Nothing is ever edited away</h4><p>Sales, voids, refunds and wage changes are appended to a permanent journal. A correction is a new line, so the original stays readable for ever.</p></div>
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-usershield"/></svg></span><h4>Staff see only their own business</h4><p>Salaries, ID numbers and documents sit behind a separate HR key. A waiter's screen cannot reach them, and neither can a manager's without it.</p></div>
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-plugoff"/></svg></span><h4>The line can drop</h4><p>The till keeps selling offline and queues every sale. When the link returns it settles up — and an empty answer is never mistaken for a real zero.</p></div>
+      <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-equals"/></svg></span><h4>One rule, two screens</h4><p>The Owner’s cockpit and the P&amp;L are computed by the same code, so they cannot disagree.</p></div>
       <div class="tile reveal-s"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></span><h4>Your numbers leave with you</h4><p>Every table exports to a spreadsheet. If you ever stop paying us, you keep your history — that is the point of a permanent journal.</p></div>
     </div>
   </div>
@@ -3350,11 +3401,11 @@ var WA_NUMBER = '';
       <h2 class="s-title reveal">First branch live <span class="hl">inside a week</span></h2>
       <p class="s-sub mx reveal">The switch is the part people fear more than the price. Here is the whole of it.</p>
     </div>
-    <div class="steps-grid">
-      <div class="step-card reveal-s"><div class="n">1</div><h4>A 20-minute demo on WhatsApp video</h4><p>The same screens we run our own restaurants on, with demo data. Bring your menu; we type three dishes in front of you.</p></div>
-      <div class="step-card reveal-s"><div class="n">2</div><h4>Install day</h4><p>The till app on your machine from a USB, the engine key on a wallet card, printers found on the network. Your Mac, POSBANK or Windows till — nothing new to buy unless you want to.</p></div>
-      <div class="step-card reveal-s"><div class="n">3</div><h4>Your data, from the spreadsheets you already have</h4><p>Menu, staff, suppliers and stock arrive through four templates. Every row gets a verdict; a blank is never turned into a zero.</p></div>
-      <div class="step-card reveal-s"><div class="n">4</div><h4>Tablets pair by QR</h4><p>Waiters, the chef, the hostess desk and each staff phone scan one code each. One device, one identity — a lost tablet is revoked in a tap.</p></div>
+    <div class="steps-grid" role="list">
+      <div class="step-card reveal-s" role="listitem"><div class="n">1</div><span class="when">Before you sign</span><h4>A 20-minute demo on WhatsApp video</h4><p>The same screens we run our own restaurants on, with demo data. Bring your menu; we type three dishes in front of you.</p></div>
+      <div class="step-card reveal-s" role="listitem"><div class="n">2</div><span class="when">Day one</span><h4>Install day</h4><p>The till app on your machine from a USB, the engine key on a wallet card, printers found on the network. Your Mac, POSBANK or Windows till — nothing new to buy unless you want to.</p></div>
+      <div class="step-card reveal-s" role="listitem"><div class="n">3</div><span class="when">The same week</span><h4>Your data, from the spreadsheets you already have</h4><p>Menu, staff, suppliers and stock arrive through four templates. Every row gets a verdict; a blank is never turned into a zero.</p></div>
+      <div class="step-card reveal-s" role="listitem"><div class="n">4</div><span class="when">The same week</span><h4>Tablets pair by QR</h4><p>Waiters, the chef, the hostess desk and each staff phone scan one code each. One device, one identity — a lost tablet is revoked in a tap.</p></div>
     </div>
   </div>
 </section>
@@ -3372,7 +3423,7 @@ var WA_NUMBER = '';
         <div class="tag">One branch</div>
         <h4>Single</h4>
         <p class="who">One restaurant, one kitchen, however many tills you need on the floor.</p>
-        <div class="price-band"><div class="unit">Per branch · per month</div><div class="note">One branch, however many tills</div></div>
+        <div class="price-band"><div class="unit">Quoted per branch</div><div class="note">Per branch, per month · however many tills</div></div>
         <ul>
           <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg> <span>All 15 departments</span></li>
           <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg> <span>Unlimited tills and waiter tablets</span></li>
@@ -3386,7 +3437,7 @@ var WA_NUMBER = '';
         <div class="tag">Most groups start here</div>
         <h4>Group</h4>
         <p class="who">Several branches, one or more brands, a head office that wants one screen for all of it.</p>
-        <div class="price-band"><div class="unit">Per branch · per month</div><div class="note">Per branch, and the head office is included</div></div>
+        <div class="price-band"><div class="unit">Head office included</div><div class="note">Per branch, per month · the group screen costs nothing extra</div></div>
         <ul>
           <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg> <span>Everything in Single, per branch</span></li>
           <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg> <span>Head office cockpit across every branch</span></li>
@@ -3400,7 +3451,7 @@ var WA_NUMBER = '';
         <div class="tag">Large operations</div>
         <h4>Enterprise</h4>
         <p class="who">Many brands, franchise partners, or a group that needs its own install and its own keys.</p>
-        <div class="price-band"><div class="unit">Per branch · per month</div><div class="note">Your own engine, quoted on the whole operation</div></div>
+        <div class="price-band"><div class="unit">Your own engine</div><div class="note">Quoted on the whole operation</div></div>
         <ul>
           <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg> <span>Everything in Group</span></li>
           <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg> <span>Your own engine and your own keys</span></li>
@@ -3413,7 +3464,6 @@ var WA_NUMBER = '';
     </div>
     <div class="price-how reveal">
       <div><h4>What sets the price</h4><p><b>Branches and tills.</b> Not modules, not seats, not how many people log in. Add a department and nothing changes on your invoice.</p></div>
-      <div><h4>What is always included</h4><p>All <b>15 departments</b>, unlimited staff accounts, waiter tablets, chef displays, the guest app and loyalty, and every update we ship.</p></div>
       <div><h4>What costs extra</h4><p>Only <b>onboarding</b> — bringing in your menu, ingredients, suppliers and staff records, and the first branch install. Quoted once, never recurring.</p></div>
       <div><h4>How to get a number</h4><p>Tell us your <b>branch count</b> and what you run today. You get a written quote, not a call from a salesperson.</p></div>
     </div>
@@ -3431,7 +3481,7 @@ var WA_NUMBER = '';
         <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg><span>Training on the floor, in Arabic or English</span></li>
         <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg><span>Your data out as a spreadsheet, any day</span></li>
         <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg><span>The permanent journal, backed up and restore-tested</span></li>
-        <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg><span>The guest's digital receipt and the loyalty card</span></li>
+        <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg><span>All 15 departments and unlimited staff accounts</span></li>
         <li><svg class="ic ic-s" aria-hidden="true"><use href="#i-check"/></svg><span>Support on WhatsApp, same day</span></li>
       </ul></div>
     </div>
@@ -3550,7 +3600,6 @@ var WA_NUMBER = '';
           <ul>
             <li><a href="#problem">The gap</a></li>
             <li><a href="#qatar">Built for Qatar</a></li>
-            <li><a href="#engineering">Engineering</a></li>
             <li><a href="#proof">Our own group</a></li>
             <li><a href="#security">Your data</a></li>
           </ul>
