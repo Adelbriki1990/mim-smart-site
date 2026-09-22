@@ -503,6 +503,13 @@ html.js .visible{opacity:1;transform:none}
   .device-band > div:first-child .device-label b{font-size:17px;margin-bottom:4px}
   /* beside the phone, 520–1099: what the screen reads, so the row is not a caption in white space */
   .device-facts{display:block;margin-top:14px;max-width:520px}
+  /* the side column stands as tall as the phone: caption at the top, the facts card fills the rest,
+     its rows share the height — no blank band above or below */
+  .device-band > div:first-child{align-items:stretch}
+  .device-side{display:flex;flex-direction:column;padding-block:6px}
+  .device-side .device-facts{flex:1;display:flex;flex-direction:column;max-width:none}
+  .device-facts .serve-list{flex:1;display:flex;flex-direction:column}
+  .device-facts .serve-row{flex:1;align-items:center}
 }
 @media(min-width:520px) and (max-width:759px){
   .device-facts{padding:12px}.device-facts .serve-row{padding:10px;gap:8px}.device-facts .serve-row .ic{display:none}
@@ -2545,6 +2552,7 @@ var WA_NUMBER = '';
             <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg><div><b>QR 12,930 by 21:14</b><span>8% ahead of last Tuesday at the same minute, not against last Tuesday’s whole day.</span></div></div>
             <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><div><b>Busiest hour: 20:00</b><span>QR 2,860 rung in that hour; 72 bills so far today.</span></div></div>
             <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg><div><b>Top seller: J Fire Bird, 38 sold</b><span>The same plate the chef display shows cooking for table T2.</span></div></div>
+            <div class="serve-row"><svg class="ic" aria-hidden="true"><use href="#i-money"/></svg><div><b>How guests paid: 67% by card</b><span>Cash 22%, and the rest paid through the JUNO app.</span></div></div>
           </div></div>
         </div>
       </div>
@@ -2785,7 +2793,7 @@ var WA_NUMBER = '';
 
     <div class="owner-phones">
       <div class="owner-phone reveal-l">
-        <div class="frame"><div class="ui-fit"><div class="ui ui-shot" data-kind="phone" data-w="300" role="img" aria-label="The Owner’s phone on Tuesday 8 September at 21:14: the whole company’s sales today, QR 61,400, 8% ahead of last Tuesday at the same minute, the running line of the day against last week’s, then the squares — Brands, Branches selling, Payroll and Guests served — with 4 items waiting in the inbox" style="width:300px;height:620px;overflow:hidden">
+        <div class="frame"><div class="ui-fit"><div class="ui ui-shot" data-kind="phone" data-w="300" role="img" aria-label="The Owner’s phone on Tuesday 8 September at 21:14: the whole company’s sales so far today, QR 53,425, 8% ahead of last Tuesday at the same minute, the running line of the day against last week’s, then the squares — Brands, Branches selling, Payroll and Guests served — with 4 items waiting in the inbox" style="width:300px;height:620px;overflow:hidden">
   <div style="flex:1;min-height:0;padding:9px 12px 6px;display:flex;flex-direction:column;gap:6px;overflow:hidden">
     <div class="row" style="justify-content:space-between">
       <span style="width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:800">M</span>
@@ -2804,8 +2812,8 @@ var WA_NUMBER = '';
         <span class="ui-title">Today’s Sales</span>
         <span class="row" style="gap:4px"><span style="width:6px;height:6px;border-radius:50%;background:var(--good)"></span><span class="cap" style="font-weight:500">Tue 8 Sep · live</span></span>
       </div>
-      <div class="num" style="font-size:26px;font-weight:700;letter-spacing:-.5px;line-height:1.05">QR 61,400<span style="font-size:16px">.00</span></div>
-      <div class="muted" style="font-size:9.5px;line-height:1.3">By 21:14 you are QR 4,548 ahead of last Tuesday. That’s 8% more than the same minute last week.</div>
+      <div class="num" style="font-size:26px;font-weight:700;letter-spacing:-.5px;line-height:1.05">QR 53,425<span style="font-size:16px">.00</span></div>
+      <div class="muted" style="font-size:9.5px;line-height:1.3">By 21:14 you are QR 3,957 ahead of last Tuesday. That’s 8% more than the same minute last week.</div>
       <div style="position:relative;height:62px;margin-top:2px">
         <svg viewBox="0 0 240 62" aria-hidden="true" style="width:100%;height:62px;display:block;fill:none">
           <path d="M6.0 56.0 C9.4 55.8 19.5 55.4 26.3 54.8 C33.1 54.2 39.8 53.8 46.6 52.7 C53.4 51.5 60.1 49.5 66.9 48.0 C73.7 46.6 80.4 45.0 87.2 44.0 C94.0 42.9 100.7 42.4 107.5 41.7 C114.3 41.1 121.0 40.7 127.8 40.3 C134.6 39.8 141.3 39.5 148.1 38.9 C154.9 38.3 161.6 37.7 168.4 36.6 C175.2 35.4 181.9 33.9 188.7 32.0 C195.5 30.1 202.2 27.4 209.0 25.1 C215.8 22.8 225.1 19.5 229.3 18.1 C233.5 16.8 233.2 17.0 234.0 16.7" style="stroke:var(--dash);stroke-width:1.6;stroke-dasharray:4 5;stroke-linecap:round"/>
@@ -2817,7 +2825,7 @@ var WA_NUMBER = '';
       <div class="row" style="justify-content:space-between"><span class="cap" style="font-weight:500">10:00</span><span class="cap" style="font-weight:500">21:14 · now</span></div>
       <div class="row" style="gap:10px">
         <span class="row" style="gap:4px"><span style="width:14px;height:3px;border-radius:2px;background:var(--accent)"></span><span class="cap" style="font-weight:500">today</span></span>
-        <span class="row" style="gap:4px"><span style="width:14px;border-top:2px dashed var(--dash)"></span><span class="cap" style="font-weight:500">last Tuesday by 21:14 · QR 56,852</span></span>
+        <span class="row" style="gap:4px"><span style="width:14px;border-top:2px dashed var(--dash)"></span><span class="cap" style="font-weight:500">last Tuesday by 21:14 · QR 49,468</span></span>
       </div>
     </div>
     <div class="ui-grid2" style="flex:1;min-height:0">
@@ -2847,9 +2855,9 @@ var WA_NUMBER = '';
       <div class="ui-card" style="aspect-ratio:1;padding:10px;display:flex;flex-direction:column;min-height:0">
         <div class="row" style="align-items:flex-start;gap:4px"><span class="grow" style="font-size:11px;font-weight:600;line-height:1.2">Guests served</span><svg class="ic" aria-hidden="true" style="width:12px;height:12px;stroke-width:2.2"><use href="#i-arrow"/></svg></div>
         <span style="flex:1"></span>
-        <div class="num" style="font-size:20px;font-weight:700;letter-spacing:-.4px;line-height:1.1">483</div>
+        <div class="num" style="font-size:20px;font-weight:700;letter-spacing:-.4px;line-height:1.1">420</div>
         <span style="flex:1"></span>
-        <div class="muted" style="font-size:9.5px;line-height:1.25">today · 6 branches</div>
+        <div class="muted" style="font-size:9.5px;line-height:1.25">so far · 6 branches</div>
       </div>
     </div>
   </div>
@@ -3177,16 +3185,16 @@ var WA_NUMBER = '';
     </div>
     <div class="tier-row">
       <div class="tier-card bronze reveal-s">
-        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> YOUR BRAND</span><span class="tc-thresh">0+ points</span></div>
-        <div class="tc-body"><div class="tc-label">POINTS</div><div class="tc-points">137</div></div>
+        <div class="tc-top"><span class="tc-brand"><span aria-hidden="true" style="width:17px;height:17px;flex:none;border-radius:5px;background:#5B3FE0;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;letter-spacing:0">J</span> JUNO</span><span class="tc-thresh">0+ points</span></div>
+        <div class="tc-body"><div class="tc-label">POINTS</div><div class="tc-points">286</div></div>
         <div class="tc-foot">
-          <div><span>VALUE</span><b>≈ QR 68.50</b></div>
+          <div><span>VALUE</span><b>≈ QR 143.00</b></div>
           <div><span>TIER</span><b>BRONZE</b></div>
-          <div><span>MEMBER</span><b>Sara</b></div>
+          <div><span>MEMBER</span><b>Maryam</b></div>
         </div>
       </div>
       <div class="tier-card silver reveal-s">
-        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> YOUR BRAND</span><span class="tc-thresh">500+ points</span></div>
+        <div class="tc-top"><span class="tc-brand"><span aria-hidden="true" style="width:17px;height:17px;flex:none;border-radius:5px;background:#5B3FE0;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;letter-spacing:0">J</span> JUNO</span><span class="tc-thresh">500+ points</span></div>
         <div class="tc-body"><div class="tc-label">POINTS</div><div class="tc-points">640</div></div>
         <div class="tc-foot">
           <div><span>VALUE</span><b>≈ QR 320.00</b></div>
@@ -3195,7 +3203,7 @@ var WA_NUMBER = '';
         </div>
       </div>
       <div class="tier-card gold reveal-s">
-        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> YOUR BRAND</span><span class="tc-thresh">1,000+ points</span></div>
+        <div class="tc-top"><span class="tc-brand"><span aria-hidden="true" style="width:17px;height:17px;flex:none;border-radius:5px;background:#5B3FE0;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;letter-spacing:0">J</span> JUNO</span><span class="tc-thresh">1,000+ points</span></div>
         <div class="tc-body"><div class="tc-label">POINTS</div><div class="tc-points">1,180</div></div>
         <div class="tc-foot">
           <div><span>VALUE</span><b>≈ QR 590.00</b></div>
@@ -3204,16 +3212,16 @@ var WA_NUMBER = '';
         </div>
       </div>
       <div class="tier-card platinum reveal-s">
-        <div class="tc-top"><span class="tc-brand"><svg><use href="#mim-mark"/></svg> YOUR BRAND</span><span class="tc-thresh">1,500+ points</span></div>
+        <div class="tc-top"><span class="tc-brand"><span aria-hidden="true" style="width:17px;height:17px;flex:none;border-radius:5px;background:#5B3FE0;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;letter-spacing:0">J</span> JUNO</span><span class="tc-thresh">1,500+ points</span></div>
         <div class="tc-body"><div class="tc-label">POINTS</div><div class="tc-points">1,760</div></div>
         <div class="tc-foot">
           <div><span>VALUE</span><b>≈ QR 880.00</b></div>
           <div><span>TIER</span><b>♛ PLATINUM</b></div>
-          <div><span>MEMBER</span><b>Adel</b></div>
+          <div><span>MEMBER</span><b>Hessa</b></div>
         </div>
       </div>
     </div>
-    <p class="tier-note">Tiers, thresholds and rewards are yours to set — these are an example. The card carries <b>your</b> brand and your colours, never ours. Every balance above is simply points × <b>QR 0.50</b>, the same rate at every branch.</p>
+    <p class="tier-note">Shown here as the <b>JUNO</b> card of the demo group — Maryam’s 286 points include the 13 she earned on bill #1200029. Each group’s card carries its own brand and colours, never ours. Tiers, thresholds and rewards are yours to set; every balance is simply points × <b>QR 0.50</b>, the same rate at every branch.</p>
 
     <div class="loyalty-grid">
       <div class="loyalty-card reveal-l">
