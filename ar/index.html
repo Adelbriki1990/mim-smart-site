@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://www.mim-smart.com/ar/" />
 <meta property="og:title" content="Smart MiM — حقيقة واحدة، بلا فواصل" />
 <meta property="og:description" content="قاعدة بيانات واحدة لمجموعة المطاعم كلها: الكاشير والمطبخ والمخزون والرواتب وقائمة P&amp;L. بُني في الدوحة، ويُشغّل 17 فرعاً كل يوم." />
-<meta property="og:image" content="https://www.mim-smart.com/images/share-card.png?v=20260920b" />
+<meta property="og:image" content="https://www.mim-smart.com/images/share-card.png?v=20260930" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:type" content="image/png" />
@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Smart MiM — حقيقة واحدة، بلا فواصل" />
 <meta name="twitter:description" content="قاعدة بيانات واحدة لمجموعة المطاعم كلها. بُني في الدوحة." />
-<meta name="twitter:image" content="https://www.mim-smart.com/images/share-card.png?v=20260920b" />
+<meta name="twitter:image" content="https://www.mim-smart.com/images/share-card.png?v=20260930" />
 <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png?v=2" />
 <link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png?v=2" />
@@ -945,6 +945,119 @@ html.js #hero .reveal-s{opacity:1;transform:none}
   #integrations .int-row{padding:12px}
 }
 /* ── integrations (part) ── end */
+/* ═══ THE FINISHED PICTURES — 30 Sept 2026, the Owner: "PUT ALL" ══════════════════════════════════
+   Real MiM screens placed in drawn devices, shown with sample data: images/shots/, WebP at 1x and 2x,
+   picked by srcset + sizes, lazy everywhere but the hero. One family, four shapes:
+     .pic       a picture in the page's grey card, rounded inside it, its caption under it
+     .pic-row   one row whose pictures grow by their aspect ratio (--a = width ÷ height, the card's own
+                20px of padding as the flex basis), so a 16:9 banner beside a 4:5 phone card ends at
+                exactly the same height
+     .pic-grid  a centred wrap of same-shape pictures, --n to a row (.tall = 4:5 cards, .wide = 16:10)
+     .pic-trio  #receipt: the bill's two lock pages, then the same bill drawn in the other language
+   Every picture is a link to its 2x file (.pic-open, a magnifier in its corner); the viewer below
+   opens it in place. Under 600px a grid becomes a swipe strip (the next picture peeks in) and a row
+   wraps, so a picture is never wider than its column and the page never scrolls sideways. Logical
+   properties only: the Arabic twin mirrors with the same lines. ══════════════════════════════════ */
+.pics{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+.pic{margin:0;background:var(--card);border-radius:var(--rc);padding:10px;min-width:0;display:flex;flex-direction:column}
+.pic img{display:block;width:100%;height:auto;border-radius:18px;background:var(--track)}
+.pic figcaption{font-size:13px;color:var(--sub);line-height:1.45;padding:10px 6px 4px;text-align:start}
+.pic figcaption b{display:block;font-size:14px;font-weight:600;color:var(--ink);line-height:1.35;margin-bottom:2px}
+.pic-open{display:block;position:relative;border-radius:18px;cursor:zoom-in;color:var(--ink)}
+.pic-open:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.pic-zoom{position:absolute;inset-block-start:10px;inset-inline-end:10px;width:30px;height:30px;border-radius:50%;
+  background:rgba(255,255,255,.88);box-shadow:0 1px 4px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;
+  opacity:.82;transition:opacity .15s}
+.pic-zoom .ic{width:15px;height:15px;stroke-width:2.2}
+.pic-open:hover .pic-zoom,.pic-open:focus-visible .pic-zoom{opacity:1}
+.pic-row{display:flex;gap:16px;align-items:stretch}
+.pic-row>.pic{flex:var(--a,1) 1 20px}
+.pic-grid{--n:4;display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+.pic-grid>.pic{flex:0 0 calc((100% - 16px * (var(--n) - 1)) / var(--n))}
+.pic-grid.wide{--n:3}
+.pic-grid:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:var(--rc)}
+.pic-trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.pic-trio>.pic-html{justify-content:center;padding:18px 10px 12px}
+@media(min-width:960px){   /* three across (from 960: narrower, the drawn receipt wraps its total): the lock pages grow to the receipt's height — the phone stays whole, only backdrop at the sides gives */
+  .pic-trio>.pic:not(.pic-html)>.pic-open{flex:1 1 auto;aspect-ratio:4/5}
+  .pic-trio>.pic:not(.pic-html) img{position:absolute;inset:0;height:100%;object-fit:cover}
+}
+@supports (grid-template-rows:subgrid){@media(min-width:960px){
+  /* one picture row and one caption row shared by the trio (subgrid): both lock pages end at the same
+     height and their captions start on one line, however many lines each caption takes */
+  .pic-trio{grid-template-rows:minmax(0,1fr) auto}
+  .pic-trio>.pic{grid-row:span 2}
+  .pic-trio>.pic:not(.pic-html){display:grid;grid-template-rows:subgrid;row-gap:0}
+  .pic-trio>.pic:not(.pic-html)>.pic-open{aspect-ratio:auto;min-height:0}
+}}
+.pic-trio>.pic-html .rcpt-phone{max-width:300px}
+#receipt .two-col .cap-line{max-width:330px;margin-inline:auto}   /* as it read in the hero: the caption the phone's width */
+.pic-trio>.pic-html .cap-line{max-width:300px;margin-inline:auto;justify-content:flex-start!important}
+@media(max-width:959px){
+  .pic-trio{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pic-trio>.pic-html{grid-column:1/-1}
+}
+@media(max-width:819px){.pic-grid.tall{--n:3}}
+@media(max-width:759px){.pic-grid.wide{--n:2}}
+@media(max-width:599px){
+  .pics{gap:12px;margin-top:20px}
+  .pic{padding:8px}
+  .pic figcaption{font-size:12.5px;padding:8px 4px 2px}
+  .pic-zoom{width:26px;height:26px;inset-block-start:8px;inset-inline-end:8px}
+  .pic-zoom .ic{width:13px;height:13px}
+  .pic-row{flex-wrap:wrap;justify-content:center;gap:12px}
+  .pic-row>.pic{flex:0 1 calc(50% - 6px)}
+  .pic-row>.pic.is-wide{flex:1 1 100%}
+  .pic-row>.pic.is-wide+.pic:not(.is-wide):last-child{flex-basis:64%}   /* a lone phone card under a banner */
+  .pic-grid{display:grid;grid-auto-flow:column;grid-auto-columns:72%;justify-content:start;gap:12px;
+    overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding-bottom:4px}
+  .pic-grid.wide{grid-auto-columns:86%}
+  .pic-grid>.pic{scroll-snap-align:start}
+  .pic-trio{gap:12px}
+}
+/* the hero: Banner A in the right-hand column, above the fold from 760px (the Owner's ~1006×600 window
+   included); the guest's receipt that stood there now stands beside #receipt's words */
+.hero-pic{margin:0;min-width:0}
+.hero-pic img{display:block;width:100%;height:auto;border-radius:var(--rh);background:var(--track)}
+.hero-pic .pic-open{border-radius:var(--rh)}
+#hero .hero-pic .cap-line{max-width:none;margin-inline:0;margin-top:12px}
+@media(min-width:1040px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}}
+/* 760–1039: halves, but the text column never under 410px — the width it had here before the banner
+   (so the stats card keeps "Safety gates" on one line and all four numbers on one baseline at 768) */
+@media(min-width:760px) and (max-width:1039px){.hero-grid{grid-template-columns:minmax(410px,1fr) minmax(0,1fr)}}
+/* the viewer: one <dialog>, built by the script at the end of the page. The picture fits the window;
+   a tap (or the magnifier button) zooms it to reading size and the window scrolls around it.
+   Arrows, or the ‹ › buttons, walk the pictures of the same section; Esc closes. */
+html.pic-box-on{overflow:hidden}
+.pic-box{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;
+  background:#0E0E14;color:#fff}
+.pic-box[open]{display:flex;flex-direction:column}
+.pic-box::backdrop{background:rgba(14,14,20,.6)}
+.pic-box-stage{flex:1 1 auto;min-height:0;overflow:auto;display:flex;padding:16px;overscroll-behavior:contain}
+.pic-box-img{margin:auto;flex:none;display:block;max-width:none!important;max-height:none;border-radius:14px;background:#1d1d26;cursor:zoom-in}
+.pic-box.is-zoom .pic-box-img{cursor:zoom-out}
+.pic-box-bar{flex:none;display:flex;align-items:center;gap:16px;padding:10px 16px calc(12px + env(safe-area-inset-bottom));
+  border-top:1px solid rgba(255,255,255,.1)}
+.pic-box-cap{flex:1 1 auto;min-width:0;margin:0;font-size:13px;line-height:1.45;color:rgba(255,255,255,.72)}
+.pic-box-cap b{color:#fff;font-weight:600;margin-inline-end:4px}
+.pic-box-cap .dot{display:none}
+.pic-box-btns{flex:none;display:flex;align-items:center;gap:6px}
+.pic-box button{width:40px;height:40px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.12);color:#fff;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font:inherit}
+.pic-box button:hover{background:rgba(255,255,255,.22)}
+.pic-box button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.pic-box button[hidden],.pic-box-count[hidden]{display:none}
+.pic-box button .ic{width:18px;height:18px;stroke-width:2.2}
+.pic-box-x{position:absolute;inset-block-start:12px;inset-inline-end:12px;z-index:1;background:rgba(40,40,52,.85)!important}
+[dir="rtl"] .pic-box-nav .ic{transform:scaleX(-1)}
+.pic-box-count{font-size:12px;color:rgba(255,255,255,.62);min-width:40px;text-align:center;font-variant-numeric:tabular-nums}
+@media(max-width:599px){
+  .pic-box-stage{padding:56px 8px 8px}
+  .pic-box-bar{flex-direction:column;align-items:stretch;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
+  .pic-box-cap{font-size:12.5px;max-height:5.8em;overflow:auto}
+  .pic-box-btns{justify-content:center}
+}
+/* ═══ end of the finished pictures ═══════════════════════════════════════════════════════════════ */
 </style>
 <script>
 /* THE ONE PLACE THE NUMBER LIVES. Fill it in (digits only, e.g. 97455001122) and every WhatsApp button on the site appears, all pointing here. Empty = the buttons stay hidden. */
@@ -1114,9 +1227,11 @@ var WA_NUMBER = '';
       </div>
 
       <div class="reveal-s">
-        <!-- the guest's own receipt: the real page behind the QR on every printed bill, not a drawing -->
-        <div class="rcpt-phone ui"><div style="background:#5B3FE0;color:#fff;padding:15px 15px 17px"><div class="row" style="justify-content:space-between"><div class="row" style="gap:9px"><div style="width:34px;height:34px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">J</div><div><div style="font-size:14px;font-weight:700">JUNO</div><div style="font-size:9.5px;color:rgba(255,255,255,.78);margin-top:1px;white-space:nowrap">West Walk</div></div></div><div class="row" style="gap:3px"><span style="font-size:9px;font-weight:600;padding:4px 9px;border-radius:999px;color:rgba(255,255,255,.8)">EN</span><span style="font-size:9px;font-weight:600;padding:4px 9px;border-radius:999px;background:#fff;color:#5B3FE0">العربية</span></div></div><div class="row" style="margin-top:15px;justify-content:space-between;align-items:flex-end"><div><div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.72)">الإجمالي المدفوع</div><div class="num" style="font-size:28px;font-weight:700;line-height:1.05;letter-spacing:-.5px;margin-top:3px">132.00 ر.ق</div></div><span style="background:#DDF3E4;color:#17663A;border-radius:999px;padding:4px 10px;font-size:9px;font-weight:700">✓ مدفوع</span></div></div><div style="background:#FFFFFF;padding:10px;display:flex;flex-direction:column;gap:8px"><div style="background:#F2F2F6;border-radius:20px;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">الإيصال</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">#1200029</div></div><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">التاريخ</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">8 سبتمبر · 21:14</div></div><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">الطاولة</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">T2 · 2</div></div><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">النادل</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">Raza</div></div></div><div style="background:#F2F2F6;border-radius:20px;padding:4px 12px 10px"><div class="row" style="padding:7px 0;border-top:1px solid #EEEEF3"><span class="num" style="font-size:11px;font-weight:700;color:#62626E">1×</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">Kale Salad</span><span class="num" style="font-size:11px;font-weight:700;color:#16161D">48.00</span></div><div class="row" style="padding:7px 0;border-top:1px solid #EEEEF3"><span class="num" style="font-size:11px;font-weight:700;color:#62626E">1×</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">J Fire Bird</span><span class="num" style="font-size:11px;font-weight:700;color:#16161D">84.00</span></div><div class="row" style="padding:7px 0;border-top:1px solid #EEEEF3"><span class="num" style="font-size:11px;font-weight:700;color:#62626E">1×</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">Parmesan Fries<span style="display:inline-flex;align-items:center;height:16px;padding:0 6px;border-radius:999px;background:#DDF3E4;color:#17663A;font-size:8px;font-weight:700;margin-inline-start:6px">ضيافة</span></span><span class="num" style="font-size:11px;font-weight:700;color:#A9A9B6;text-decoration:line-through">0.00</span></div><div class="row" style="padding:9px 0 2px;border-top:1px solid #EEEEF3;margin-top:4px"><span style="flex:1;font-size:11px;font-weight:600;color:#62626E">الإجمالي</span><span class="num" style="font-size:17px;font-weight:700;color:#5B3FE0">132.00 ر.ق</span></div></div><div style="background:#F2F2F6;border-radius:20px;padding:12px"><div style="font-size:9px;font-weight:600;color:#62626E">بطاقة JUNO</div><div style="font-size:11.5px;font-weight:600;color:#16161D;margin-top:2px">هذه الفاتورة أكسبتك <b style="color:#17663A">+13 نقطة</b></div><div style="margin-top:9px;height:38px;border-radius:999px;background:#5B3FE0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">أضف بطاقتك إلى Apple Wallet</div></div><div class="row" style="gap:7px"><div style="flex:1;height:38px;border-radius:999px;background:#DDF3E4;color:#17663A;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">WhatsApp</div><div style="flex:1;height:38px;border-radius:999px;background:#F2F2F6;color:#16161D;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">حفظ PDF</div></div></div></div>
-        <div class="cap-line" style="justify-content:center"><span class="dot"></span> <span>إيصال الضيف كما يرسمه البرنامج فعلاً — بلغتين، ومعه النقاط التي كسبها من هذه الفاتورة.</span></div>
+        <!-- 🖼 Banner A — the whole product (30 Sept 2026, "PUT ALL"): real MiM screens, sample data -->
+        <figure class="hero-pic">
+          <a class="pic-open" href="/images/shots/banner-a-whole-product-2x.webp" data-z="2.0"><img class="pic-img" src="/images/shots/banner-a-whole-product-1x.webp" srcset="/images/shots/banner-a-whole-product-1x.webp 1920w, /images/shots/banner-a-whole-product-2x.webp 3840w" sizes="(min-width:1160px) 576px, (min-width:760px) 50vw, 100vw" width="1920" height="1080" alt="MiM على ثلاثة أجهزة: تطبيق المالك على iPhone، وشاشة «اليوم» للمكتب الرئيسي على MacBook، ومخطط صالة جهاز النادل على iPad" loading="eager" fetchpriority="high" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a>
+          <figcaption class="cap-line"><span class="dot"></span> <span>شاشات MiM الحقيقية، ببيانات تجريبية.</span></figcaption>
+        </figure>
       </div>
     </div>
   </div>
@@ -2293,6 +2408,21 @@ var WA_NUMBER = '';
   </div>
 </div></template>
     </div>
+    <!-- 🖼 The back office on a MacBook — real MiM screens, sample data (images/shots/, the 30 Sept picture pack) -->
+    <div class="pics reveal">
+      <div class="pic-row">
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/mac-head-office-today-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/mac-head-office-today-1x.webp" srcset="/images/shots/mac-head-office-today-1x.webp 1600w, /images/shots/mac-head-office-today-2x.webp 3200w" sizes="(min-width:1160px) 528px, (min-width:600px) 45vw, 90vw" width="1600" height="1000" alt="المكتب الرئيسي على MacBook: شاشة «اليوم» للمالك، مع خط مبيعات اليوم ساعة بساعة وقائمة ما ينتظره" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>المكتب الرئيسي — «اليوم» للمالك</b> اليوم في جملة واحدة — ما بِيع حتى الآن وما ينتظره — ثم خط المبيعات ساعة بساعة، وما ينتظر توقيعه.</figcaption></figure>
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/mac-finance-home-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/mac-finance-home-1x.webp" srcset="/images/shots/mac-finance-home-1x.webp 1600w, /images/shots/mac-finance-home-2x.webp 3200w" sizes="(min-width:1160px) 528px, (min-width:600px) 45vw, 90vw" width="1600" height="1000" alt="الصفحة الرئيسية للمالية على MacBook: ما ينتظر مديرة المالية اليوم، والمصروفات من النقد بانتظار التوقيع، وفحوص إقفال الشهر" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>المالية — الصفحة الرئيسية</b> المصروفات من النقد بانتظار توقيعها، الأقدم أولاً لا الأكبر مبلغاً — وأيّ إقفال يومي يختلف فيه الدفتر عن الكاشير.</figcaption></figure>
+      </div>
+      <div class="pic-grid wide" role="group" aria-label="مزيد من شاشات المكتب">
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/mac-hr-payroll-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/mac-hr-payroll-1x.webp" srcset="/images/shots/mac-hr-payroll-1x.webp 1600w, /images/shots/mac-hr-payroll-2x.webp 3200w" sizes="(min-width:1160px) 340px, (min-width:760px) 29vw, (min-width:600px) 42vw, 76vw" width="1600" height="1000" alt="الرواتب في الموارد البشرية على MacBook: صافي سبتمبر رقماً واحداً كبيراً، والأسطر التي يتكوّن منها، وسلسلة التوقيعات تحتها" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الموارد البشرية — الرواتب</b> صافي رواتب الشهر رقماً واحداً، وهل هو جاهز للإرسال — والعمل الإضافي والغياب وتسوية المغادر، كلٌّ بمادّته من قانون العمل.</figcaption></figure>
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/mac-hr-staff-directory-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/mac-hr-staff-directory-1x.webp" srcset="/images/shots/mac-hr-staff-directory-1x.webp 1600w, /images/shots/mac-hr-staff-directory-2x.webp 3200w" sizes="(min-width:1160px) 340px, (min-width:760px) 29vw, (min-width:600px) 42vw, 76vw" width="1600" height="1000" alt="دليل الموظفين في الموارد البشرية على MacBook، وفوقه بطاقة راميش: عمله وفرعه، وإجازته، وتواريخ وثائقه" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الموارد البشرية — بطاقة راميش</b> تُفتح من دليل الموظفين: هل ملفّه مكتمل ويوم راتبه آمن، في بطاقة واحدة.</figcaption></figure>
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/mac-hr-self-service-qr-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/mac-hr-self-service-qr-1x.webp" srcset="/images/shots/mac-hr-self-service-qr-1x.webp 1600w, /images/shots/mac-hr-self-service-qr-2x.webp 3200w" sizes="(min-width:1160px) 340px, (min-width:760px) 29vw, (min-width:600px) 42vw, 76vw" width="1600" height="1000" alt="الموارد البشرية على MacBook: نافذة الخدمة الذاتية لراميش فوق دليل الموظفين، مع رمز QR تجريبي ورابطه" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الموارد البشرية — رمز الخدمة الذاتية لراميش</b> يمسحه بهاتفه الخاص. الرمز يعمل مرّة واحدة وينتهي خلال 10 دقائق، ثم يبقى الهاتف له وحده.</figcaption></figure>
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/mac-maintenance-arabic-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/mac-maintenance-arabic-1x.webp" srcset="/images/shots/mac-maintenance-arabic-1x.webp 1600w, /images/shots/mac-maintenance-arabic-2x.webp 3200w" sizes="(min-width:1160px) 340px, (min-width:760px) 29vw, (min-width:600px) 42vw, 76vw" width="1600" height="1000" alt="الصيانة على MacBook بالعربية: ما هو معطّل الآن، وكلفة الإصلاحات حسب العلامة، وسرعة الإصلاح، ومن أصلح" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الصيانة — هل هناك شيء معطّل؟</b> ما هو معطّل الآن، الأقدم أولاً — وكلفة الإصلاحات في آخر 30 يوماً، حسب العلامة والفرع وما تعطّل ومن أصلحه.</figcaption></figure>
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/mac-head-office-today-ivory-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/mac-head-office-today-ivory-1x.webp" srcset="/images/shots/mac-head-office-today-ivory-1x.webp 1600w, /images/shots/mac-head-office-today-ivory-2x.webp 3200w" sizes="(min-width:1160px) 340px, (min-width:760px) 29vw, (min-width:600px) 42vw, 76vw" width="1600" height="1000" alt="شاشة «اليوم» نفسها للمكتب الرئيسي على MacBook، أمام خلفية عاجية" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>«اليوم» نفسه، على خلفية عاجية</b> لكل موافقة تنتظر توقيعه زرّها الخاص، ومعها ما أنجزته المالية من دورها.</figcaption></figure>
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/mac-finance-home-ivory-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/mac-finance-home-ivory-1x.webp" srcset="/images/shots/mac-finance-home-ivory-1x.webp 1600w, /images/shots/mac-finance-home-ivory-2x.webp 3200w" sizes="(min-width:1160px) 340px, (min-width:760px) 29vw, (min-width:600px) 42vw, 76vw" width="1600" height="1000" alt="الصفحة الرئيسية نفسها للمالية على MacBook، أمام خلفية عاجية، وفحوص إقفال الشهر في أسفلها" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>رئيسية المالية، على خلفية عاجية</b> إقفال الشهر في الأسفل، فحصاً فحصاً — والبند المفتوح لا يُسقَط أبداً بل يُرحَّل باسمه.</figcaption></figure>
+      </div>
+    </div>
     <div class="ex-exit reveal">
       <a href="#contact" class="btn btn-accent"><svg class="ic ic-s" aria-hidden="true"><use href="#i-calendar"/></svg> شاهده خلال 20 دقيقة</a>
       <a href="#howitstarts" class="btn">كيف تبدأ</a>
@@ -2396,6 +2526,18 @@ var WA_NUMBER = '';
       <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg></span><h4>ما يُقدَّم ضيافةً يبقى محسوباً</h4><p>في الساعة 20:49 تأخّرت البطاطس فقدّمتها نور ضيافة: يبقى السطر على الحساب بـ 0.00 ر.ق والسعر 24.00 ر.ق مشطوب، وتُغلق الفاتورة على 132.00 ر.ق. الضيافة سطرٌ له سعر واسم من وافق، لا طبقٌ مفقود.</p></div>
       <div class="tile reveal"><span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg></span><h4>عربي، من اليمين إلى اليسار</h4><p>بما في ذلك الإيصال. التخطيط ينقلب كاملاً؛ لا شيء يُقرأ بالمقلوب.</p></div>
     </div>
+    <!-- 🖼 Front of house on the iPad: the waiter tablet and the hostess desk — real MiM screens, sample data (images/shots/, the 30 Sept picture pack) -->
+    <div class="pics reveal">
+      <div class="pic-grid wide" role="group" aria-label="شاشات جهاز النادل">
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/waiter-floor-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/waiter-floor-1x.webp" srcset="/images/shots/waiter-floor-1x.webp 1600w, /images/shots/waiter-floor-2x.webp 3200w" sizes="(min-width:1160px) 340px, (min-width:760px) 29vw, (min-width:600px) 42vw, 76vw" width="1600" height="1000" alt="جهاز النادل على iPad: مخطط الصالة للطاولات من T1 إلى T12، كلٌّ منها ملوّنة بحالتها، بجانب لوحة أرقام" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>جهاز النادل — الصالة</b> مخطط صالة جوزيف: حالة كل طاولة، وحساب كل طاولة مفتوحة ودقائقها، ولوحة أرقام لفتح طاولة برقمها.</figcaption></figure>
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/waiter-open-order-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/waiter-open-order-1x.webp" srcset="/images/shots/waiter-open-order-1x.webp 1600w, /images/shots/waiter-open-order-2x.webp 3200w" sizes="(min-width:1160px) 340px, (min-width:760px) 29vw, (min-width:600px) 42vw, 76vw" width="1600" height="1000" alt="جهاز النادل على iPad: طلب الطاولة 3 المفتوح بجانب مخطط الصالة، كل سطر بمرحلته، والمجموع وزرّ إضافة أصناف" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>جهاز النادل — طلب الطاولة 3</b> كل سطر أُرسل إلى المطبخ بمرحلته، والحساب حتى الآن، وإضافة الأصناف على بُعد لمسة.</figcaption></figure>
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/waiter-adding-to-order-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/waiter-adding-to-order-1x.webp" srcset="/images/shots/waiter-adding-to-order-1x.webp 1600w, /images/shots/waiter-adding-to-order-2x.webp 3200w" sizes="(min-width:1160px) 340px, (min-width:760px) 29vw, (min-width:600px) 42vw, 76vw" width="1600" height="1000" alt="جهاز النادل على iPad: شبكة القائمة حسب الفئة، وصنفان جديدان في الجولة التالية للطاولة 3، وزرّ إرسال الأصناف الجديدة" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>جهاز النادل — إضافة إلى الطلب</b> الأصناف الجديدة تنتظر في الجولة التالية للطاولة 3، حتى يرسلها زرّ «إرسال الأصناف الجديدة» إلى المطبخ.</figcaption></figure>
+      </div>
+      <div class="pic-row">
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/hostess-floor-bookings-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/hostess-floor-bookings-1x.webp" srcset="/images/shots/hostess-floor-bookings-1x.webp 1600w, /images/shots/hostess-floor-bookings-2x.webp 3200w" sizes="(min-width:1160px) 528px, (min-width:600px) 45vw, 90vw" width="1600" height="1000" alt="مكتب الاستقبال على iPad: المجموعات الجالسة على جانب، ومخطط الصالة وكل طاولة محجوزة أو مشغولة أو حسابها مفتوح أو فارغة" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>مكتب الاستقبال — الصالة وحجوزات الليلة</b> ضيوف الليلة ومن ينتظر، في الأعلى — ثم من جلس، وأيّ الطاولات محجوزة، وأيّها حسابها مفتوح، وأيّها فارغة.</figcaption></figure>
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/hostess-tonight-bookings-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/hostess-tonight-bookings-1x.webp" srcset="/images/shots/hostess-tonight-bookings-1x.webp 1600w, /images/shots/hostess-tonight-bookings-2x.webp 3200w" sizes="(min-width:1160px) 528px, (min-width:600px) 45vw, 90vw" width="1600" height="1000" alt="مكتب الاستقبال على iPad: فترات الليلة كل نصف ساعة، ونموذج حجز جديد، وقائمة حجوزات الليلة بأزرارها" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>مكتب الاستقبال — حجوزات الليلة</b> المساء في فترات من نصف ساعة، وحجز جديد في ورقة واحدة، ولكل حجز أزرار الإجلاس والنقل وعدم الحضور.</figcaption></figure>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2417,6 +2559,13 @@ var WA_NUMBER = '';
       <div class="reveal-r">
         <div class="shot"><div class="shot-in"><div class="ui" style="background:#FFFFFF"><div style="font-size:12px;font-weight:600;color:#62626E;text-align:center;padding:2px 0 8px">قيد التنفيذ (2)</div><div style="background:#F2F2F6;border-radius:16px;padding:12px"><div class="row" style="gap:7px"><span style="font-size:13px;font-weight:700;color:#16161D">#1200031 · صالة T4</span><span style="font-size:12px;color:#62626E">· 4 أشخاص</span><span style="margin-inline-start:auto;font-size:11px;color:#62626E;white-space:nowrap">الآن: الرئيسي</span></div><div style="margin-top:8px;border-radius:12px;background:#FFF0E6;padding:8px 10px"><div style="font-size:11px;font-weight:700;color:#9A3412">⚠ سؤال الحساسية بلا جواب</div><div style="font-size:10px;color:#9A3412;margin-top:2px;line-height:1.35">اسأل الطاولة قبل أن يخرج هذا الطعام من ممرّ التسليم</div></div><div class="row" style="background:#DDF3E4;border-radius:12px;padding:7px 9px;gap:8px;margin-top:5px"><span style="width:18px;height:18px;flex-shrink:0;border-radius:50%;background:#5B3FE0;color:#fff;font-size:9px;font-weight:700;display:inline-flex;align-items:center;justify-content:center">1</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">المقبلات</span><span style="font-size:10px;font-weight:600;color:#17663A;white-space:nowrap">✓ خرجت</span></div><div class="row" style="background:#EEEAFD;border-radius:12px;padding:7px 9px;gap:8px;margin-top:5px"><span style="width:18px;height:18px;flex-shrink:0;border-radius:50%;background:#5B3FE0;color:#fff;font-size:9px;font-weight:700;display:inline-flex;align-items:center;justify-content:center">2</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">الأطباق الرئيسية</span><span style="font-size:10px;font-weight:600;color:#5B3FE0;white-space:nowrap">بدأ 1 من 2 · ينقص 3 · 🔥 أمر تجهيز</span></div><div class="row" style="background:#FFFFFF;border-radius:12px;padding:7px 9px;gap:8px;margin-top:5px"><span style="width:18px;height:18px;flex-shrink:0;border-radius:50%;background:#5B3FE0;color:#fff;font-size:9px;font-weight:700;display:inline-flex;align-items:center;justify-content:center">3</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">الحلويات</span><span style="font-size:10px;font-weight:600;color:#62626E;white-space:nowrap">في الانتظار</span></div><div class="row" style="gap:7px;margin-top:9px"><div style="flex:1;height:32px;border-radius:999px;background:#5B3FE0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600">▶ ابدأ الرئيسي · 1</div><div style="flex:1;height:32px;border-radius:999px;background:#FFFFFF;color:#A9A9B6;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600">⏳ الرئيسي ما زال ينقصه 3</div></div></div></div></div></div>
         <div class="cap-line"><span class="dot"></span> <span>ممرّ التسليم على لوحة المطبخ في الكاشير، بيانات عرض توضيحي. القاعدة نفسها تُشغّل جهاز الشيف اللوحي.</span></div>
+      </div>
+    </div>
+    <!-- 🖼 Banner C and the chef display — real MiM screens, sample data (images/shots/, the 30 Sept picture pack) -->
+    <div class="pics reveal">
+      <div class="pic-row">
+        <figure class="pic is-wide" style="--a:1.778"><a class="pic-open" href="/images/shots/banner-c-kitchen-2x.webp" data-z="2.0"><img class="pic-img" src="/images/shots/banner-c-kitchen-1x.webp" srcset="/images/shots/banner-c-kitchen-1x.webp 1920w, /images/shots/banner-c-kitchen-2x.webp 3840w" sizes="(min-width:1160px) 556px, (min-width:600px) 47vw, 90vw" width="1920" height="1080" alt="مطبخ: شاشة المطبخ على الجدار بأعمدتها جديد وقيد التحضير وجاهز، بجانب جهاز النادل على iPad" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>المطبخ من طرفيه</b> طلب الطاولة 3 على جهاز النادل، وتذكرته على شاشة المطبخ.</figcaption></figure>
+        <figure class="pic is-wide" style="--a:1.600"><a class="pic-open" href="/images/shots/kds-chef-display-2x.webp" data-z="1.5"><img class="pic-img" src="/images/shots/kds-chef-display-1x.webp" srcset="/images/shots/kds-chef-display-1x.webp 1600w, /images/shots/kds-chef-display-2x.webp 3200w" sizes="(min-width:1160px) 500px, (min-width:600px) 43vw, 90vw" width="1600" height="1000" alt="شاشة المطبخ: التذاكر في أعمدة جديد وقيد التحضير وجاهز تحت شريط طوال اليوم، مع زرَّي البدء والتسليم لكل صحن" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>شاشة المطبخ — جديد، قيد التحضير، جاهز</b> كل طلب في بطاقة واحدة والمراحل بترتيبها — والصحن الذي طال انتظاره على ممرّ التسليم يقول: يبرد، أبلغوا الصالة.</figcaption></figure>
       </div>
     </div>
   </div>
@@ -2979,6 +3128,23 @@ var WA_NUMBER = '';
         <div class="row good"><div class="k">ما يعرضه MiM</div><div class="v">▲ 8% مقابل الثلاثاء الماضي · حتى 21:14</div></div>
       </div>
     </div>
+    <!-- 🖼 Banner B and the Owner app on the iPhone — real MiM screens, sample data (images/shots/, the 30 Sept picture pack) -->
+    <div class="pics reveal">
+      <div class="pic-row">
+        <figure class="pic is-wide" style="--a:1.778"><a class="pic-open" href="/images/shots/banner-b-owner-app-back-office-2x.webp" data-z="2.0"><img class="pic-img" src="/images/shots/banner-b-owner-app-back-office-1x.webp" srcset="/images/shots/banner-b-owner-app-back-office-1x.webp 1920w, /images/shots/banner-b-owner-app-back-office-2x.webp 3840w" sizes="(min-width:1160px) 728px, (min-width:600px) 62vw, 90vw" width="1920" height="1080" alt="الصفحة الرئيسية لتطبيق المالك على iPhone، أمام شاشتين من المكتب على الماك: «اليوم» للمكتب الرئيسي والصفحة الرئيسية للمالية" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>تطبيق المالك، ومن خلفه المكتب</b> تطبيق المالك على iPhone، أمام شاشة «اليوم» في المكتب الرئيسي والصفحة الرئيسية للمالية على الماك.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/owner-duo-sales-sources-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/owner-duo-sales-sources-1x.webp" srcset="/images/shots/owner-duo-sales-sources-1x.webp 800w, /images/shots/owner-duo-sales-sources-2x.webp 1600w" sizes="(min-width:1160px) 328px, (min-width:600px) 28vw, 42vw" width="800" height="1000" alt="شاشتان من تطبيق المالك جنباً إلى جنب: الرئيسية بمبيعات اليوم، و«من أين جاءت المبيعات» موزّعة حسب الفرع في حلقة" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>اليوم، ومن أين جاء</b> مبيعات اليوم حتى الآن — ثم فرعاً فرعاً، لكلٍّ فواتيره ومتوسّطها.</figcaption></figure>
+      </div>
+      <div class="pic-grid tall" role="group" aria-label="شاشات تطبيق المالك">
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/owner-pin-door-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/owner-pin-door-1x.webp" srcset="/images/shots/owner-pin-door-1x.webp 800w, /images/shots/owner-pin-door-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="باب رمز المالك على iPhone: شعار MiM Owner، و«أدخل الرقم السري» بالعربية والإنجليزية، وأربع نقاط ولوحة أرقام" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>باب رمز المالك</b> لا يفتح هذا التطبيق إلا رمز المالك — ويتحقّق منه محرّك شركتك.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/owner-home-today-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/owner-home-today-1x.webp" srcset="/images/shots/owner-home-today-1x.webp 800w, /images/shots/owner-home-today-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="الصفحة الرئيسية لتطبيق المالك على iPhone: مساء الخير، ومبيعات اليوم مقابل الدقيقة نفسها من الأسبوع الماضي، وخط اليوم، والمربّعات تحتها" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الرئيسية — مبيعات اليوم</b> اليوم مقابل الدقيقة نفسها من اليوم نفسه في الأسبوع الماضي — بالريال وبالنسبة.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/owner-home-squares-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/owner-home-squares-1x.webp" srcset="/images/shots/owner-home-squares-1x.webp 800w, /images/shots/owner-home-squares-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="الرئيسية في تطبيق المالك وقد نزلت إلى مربّعاتها: تطبيقات التوصيل، وأكثر ساعة ازدحاماً، والفروع التي تبيع، والأكثر مبيعاً، والدفع" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الرئيسية — المربّعات</b> تطبيقات التوصيل، وأكثر ساعة ازدحاماً، والأكثر مبيعاً، والدفع، وأنواع الطلب، وآخر 7 أيام — والشكاوى التي ما زالت مفتوحة.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/owner-company-or-brand-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/owner-company-or-brand-1x.webp" srcset="/images/shots/owner-company-or-brand-1x.webp 800w, /images/shots/owner-company-or-brand-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="الصفحة الرئيسية لتطبيق المالك وقائمة الاختيار مفتوحة: «الشركة كلها» مُحدَّدة، وعلامات الشركة تحتها، لكلٍّ منها سهم" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الشركة كلها أو علامة واحدة</b> تقرأ الرئيسية الشركة كلها، أو أيّ علامة واحدة وحدها.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/owner-sales-sources-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/owner-sales-sources-1x.webp" srcset="/images/shots/owner-sales-sources-1x.webp 800w, /images/shots/owner-sales-sources-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="شاشة «من أين جاءت المبيعات» في تطبيق المالك على iPhone: حلقة موزّعة حسب الفرع، ثم كل فرع بحصّته وفواتيره ومتوسّطها" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>من أين جاءت مبيعات اليوم</b> حسب العلامة أو الفرع أو النوع أو الدفع أو التوصيل — ولكل فرع فواتيره ومتوسّطها.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/owner-this-month-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/owner-this-month-1x.webp" srcset="/images/shots/owner-this-month-1x.webp 800w, /images/shots/owner-this-month-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="شاشة «هذا الشهر» في تطبيق المالك على iPhone: مبيعات الشهر حتى الآن مباشرة، مقابل الأيام نفسها من الشهر الماضي، والمربّعات تحتها" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>هذا الشهر</b> حتى الآن، مقابل الأيام نفسها من الشهر الماضي — وأفضل يوم مذكور باسمه.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/owner-pin-door-ivory-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/owner-pin-door-ivory-1x.webp" srcset="/images/shots/owner-pin-door-ivory-1x.webp 800w, /images/shots/owner-pin-door-ivory-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="باب رمز المالك نفسه على iPhone، أمام خلفية عاجية" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>باب الرمز، على خلفية عاجية</b> يُظهر أنه متّصل بشركتك، مع رابط للتبديل — ولا شيء يُفتح من دون رمز المالك.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/owner-home-today-ivory-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/owner-home-today-ivory-1x.webp" srcset="/images/shots/owner-home-today-ivory-1x.webp 800w, /images/shots/owner-home-today-ivory-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="الصفحة الرئيسية نفسها لتطبيق المالك على iPhone، أمام خلفية عاجية" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الرئيسية، على خلفية عاجية</b> تحت مبيعات اليوم: الشهر حتى الآن، والعلامة التي تتصدّر اليوم.</figcaption></figure>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -3164,6 +3330,24 @@ var WA_NUMBER = '';
         <li><svg class="ic" aria-hidden="true"><use href="#i-eyeoff"/></svg><div><b>ولا شيء ليس له</b><span>لا راتب زميل، ولا أرقام IBAN، ولا أرقام سرية، ولا بيانات الشركة. يُقدَّم للهاتف عرض على قياس شخص واحد — فهو ليس كاشيراً بشاشة أصغر.</span></div></li>
       </ul>
     </div>
+    <!-- 🖼 Banner D and the staff phone (the Arabic screens on this page) — real MiM screens, sample data (images/shots/, the 30 Sept picture pack) -->
+    <div class="pics reveal">
+      <div class="pic-row">
+        <figure class="pic is-wide" style="--a:1.778"><a class="pic-open" href="/images/shots/banner-d-staff-phone-languages-2x.webp" data-z="2.0"><img class="pic-img" src="/images/shots/banner-d-staff-phone-languages-1x.webp" srcset="/images/shots/banner-d-staff-phone-languages-1x.webp 1920w, /images/shots/banner-d-staff-phone-languages-2x.webp 3840w" sizes="(min-width:1160px) 537px, (min-width:600px) 47vw, 90vw" width="1920" height="1080" alt="ثلاثة هواتف موظفين جنباً إلى جنب: شاشة «اليوم» لياسمين بالعربية، ولراميش بالإنجليزية، ولراميش مرّة أخرى بالهندية" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>هاتف موظف واحد، بلغة كل شخص</b> ياسمين بالعربية، وراميش بالإنجليزية وبالهندية — ورقم تسجيل الحضور نفسه من الكاشير على الثلاثة.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/staff-duo-arabic-english-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/staff-duo-arabic-english-1x.webp" srcset="/images/shots/staff-duo-arabic-english-1x.webp 800w, /images/shots/staff-duo-arabic-english-2x.webp 1600w" sizes="(min-width:1160px) 242px, (min-width:600px) 21vw, 42vw" width="800" height="1000" alt="هاتفا موظفين جنباً إلى جنب، كلٌّ منهما على تبويب «اليوم»: أحدهما بالإنجليزية والآخر بالعربية" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>العربية والإنجليزية</b> هاتف راميش بالإنجليزية بجانب هاتف ياسمين بالعربية، من اليمين إلى اليسار.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/staff-language-picker-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/staff-language-picker-1x.webp" srcset="/images/shots/staff-language-picker-1x.webp 800w, /images/shots/staff-language-picker-2x.webp 1600w" sizes="(min-width:1160px) 242px, (min-width:600px) 21vw, 42vw" width="800" height="1000" alt="تبويب «أنا» في هاتف الموظف: الوثائق والأيام الباقية لكلٍّ منها، ثم قائمة اللغات العشر للاختيار" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>عشر لغات</b> يختار كل شخص لغته — وما يكتبه يصل إلى الموارد البشرية بالإنجليزية.</figcaption></figure>
+      </div>
+      <div class="pic-grid tall" role="group" aria-label="شاشات هاتف الموظف">
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/staff-home-arabic-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/staff-home-arabic-1x.webp" srcset="/images/shots/staff-home-arabic-1x.webp 800w, /images/shots/staff-home-arabic-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="هاتف ياسمين بالعربية على تبويب «اليوم»: ورديتها القادمة، وبطاقة تسجيل الحضور بالرقم الظاهر على الكاشير، والإبلاغ عن المرض" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>اليوم</b> وردية ياسمين القادمة، وتسجيل الحضور، والإبلاغ عن المرض — على هاتفها، بالعربية.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/staff-schedule-arabic-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/staff-schedule-arabic-1x.webp" srcset="/images/shots/staff-schedule-arabic-1x.webp 800w, /images/shots/staff-schedule-arabic-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="تبويب الورديات لياسمين بالعربية: ورديات الأسبوع يوماً بيوم، واليوم مُعلَّم، مع ملاحظات كجرد المخزون وحجز كبير" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الورديات</b> ورديات الأسبوع وساعاتها، واليوم مُعلَّم — مع ملاحظة على كل ما هو خاص، كحجز كبير.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/staff-requests-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/staff-requests-1x.webp" srcset="/images/shots/staff-requests-1x.webp 800w, /images/shots/staff-requests-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="تبويب الطلبات لراميش بالإنجليزية: رصيد إجازته السنوية، ونموذج طلب جديد، وطلباته السابقة مع ردودها" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الطلبات</b> رصيد إجازته، وطلب جديد بلمسة، وكل ردّ مع سببه.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/staff-payslip-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/staff-payslip-1x.webp" srcset="/images/shots/staff-payslip-1x.webp 800w, /images/shots/staff-payslip-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="قسيمة راتب راميش لشهر أغسطس على هاتفه بالإنجليزية: أيام العمل، والأساسي والعمل الإضافي، وكل خصم باسمه، والصافي" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>قسيمة الراتب</b> راتب الشهر: الإجمالي، وكل خصم باسمه، والصافي.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/staff-documents-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/staff-documents-1x.webp" srcset="/images/shots/staff-documents-1x.webp 800w, /images/shots/staff-documents-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="تبويب «أنا» في هاتف الموظف بالإنجليزية: قسيمة الراتب مقفلة برقمه السري، ثم وثائقه والأيام الباقية لكلٍّ منها" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الوثائق</b> كل وثيقة والأيام الباقية لها — وقسيمة الراتب تنتظر رقمه السري.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/staff-home-hindi-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/staff-home-hindi-1x.webp" srcset="/images/shots/staff-home-hindi-1x.webp 800w, /images/shots/staff-home-hindi-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="شاشة «اليوم» لراميش بالهندية: ورديته القادمة، وبطاقة تسجيل الحضور، وبطاقة الإبلاغ عن المرض" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الهندية</b> شاشة «اليوم» نفسها لراميش، بالهندية.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/staff-home-ivory-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/staff-home-ivory-1x.webp" srcset="/images/shots/staff-home-ivory-1x.webp 800w, /images/shots/staff-home-ivory-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="شاشة «اليوم» نفسها لراميش بالإنجليزية، أمام خلفية عاجية" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>اليوم بالإنجليزية، على خلفية عاجية</b> الإبلاغ عن المرض قبل الوردية بثلاث ساعات على الأقل، ليُوجد من يغطّيها.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/staff-schedule-ivory-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/staff-schedule-ivory-1x.webp" srcset="/images/shots/staff-schedule-ivory-1x.webp 800w, /images/shots/staff-schedule-ivory-2x.webp 1600w" sizes="(min-width:1160px) 246px, (min-width:820px) 22vw, (min-width:600px) 28vw, 64vw" width="800" height="1000" alt="تبويب الورديات نفسه لراميش بالإنجليزية، أمام خلفية عاجية" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الورديات بالإنجليزية، على خلفية عاجية</b> الوردية التي تتجاوز منتصف الليل تُحسب كاملة: من 16:00 إلى 01:00 تسع ساعات.</figcaption></figure>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -3245,7 +3429,11 @@ var WA_NUMBER = '';
 <section id="receipt">
   <div class="container">
     <div class="two-col">
-      <div class="reveal-l"><div class="rcpt-phone ui" dir="ltr" lang="en"><div style="background:#5B3FE0;color:#fff;padding:15px 15px 17px"><div class="row" style="justify-content:space-between"><div class="row" style="gap:9px"><div style="width:34px;height:34px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">J</div><div><div style="font-size:14px;font-weight:700">JUNO</div><div style="font-size:9.5px;color:rgba(255,255,255,.78);margin-top:1px;white-space:nowrap">West Walk</div></div></div><div class="row" style="gap:3px"><span style="font-size:9px;font-weight:600;padding:4px 9px;border-radius:999px;background:#fff;color:#5B3FE0">EN</span><span style="font-size:9px;font-weight:600;padding:4px 9px;border-radius:999px;color:rgba(255,255,255,.8)">العربية</span></div></div><div class="row" style="margin-top:15px;justify-content:space-between;align-items:flex-end"><div><div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.72)">Total paid</div><div class="num" style="font-size:28px;font-weight:700;line-height:1.05;letter-spacing:-.5px;margin-top:3px">QR 132.00</div></div><span style="background:#DDF3E4;color:#17663A;border-radius:999px;padding:4px 10px;font-size:9px;font-weight:700">✓ PAID</span></div></div><div style="background:#FFFFFF;padding:10px;display:flex;flex-direction:column;gap:8px"><div style="background:#F2F2F6;border-radius:20px;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">Receipt</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">#1200029</div></div><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">Date</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">8 Sept · 21:14</div></div><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">Table</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">T2 · 2</div></div><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">Server</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">Raza</div></div></div><div style="background:#F2F2F6;border-radius:20px;padding:4px 12px 10px"><div class="row" style="padding:7px 0;border-top:1px solid #EEEEF3"><span class="num" style="font-size:11px;font-weight:700;color:#62626E">1×</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">Kale Salad</span><span class="num" style="font-size:11px;font-weight:700;color:#16161D">48.00</span></div><div class="row" style="padding:7px 0;border-top:1px solid #EEEEF3"><span class="num" style="font-size:11px;font-weight:700;color:#62626E">1×</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">J Fire Bird</span><span class="num" style="font-size:11px;font-weight:700;color:#16161D">84.00</span></div><div class="row" style="padding:7px 0;border-top:1px solid #EEEEF3"><span class="num" style="font-size:11px;font-weight:700;color:#62626E">1×</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">Parmesan Fries<span style="display:inline-flex;align-items:center;height:16px;padding:0 6px;border-radius:999px;background:#DDF3E4;color:#17663A;font-size:8px;font-weight:700;margin-inline-start:6px">ON US</span></span><span class="num" style="font-size:11px;font-weight:700;color:#A9A9B6;text-decoration:line-through">0.00</span></div><div class="row" style="padding:9px 0 2px;border-top:1px solid #EEEEF3;margin-top:4px"><span style="flex:1;font-size:11px;font-weight:600;color:#62626E">Total</span><span class="num" style="font-size:17px;font-weight:700;color:#5B3FE0">QR 132.00</span></div></div><div style="background:#F2F2F6;border-radius:20px;padding:12px"><div style="font-size:9px;font-weight:600;color:#62626E">JUNO card</div><div style="font-size:11.5px;font-weight:600;color:#16161D;margin-top:2px">This bill earned <b style="color:#17663A">+13 points</b></div><div style="margin-top:9px;height:38px;border-radius:999px;background:#5B3FE0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">Add your card to Apple Wallet</div></div><div class="row" style="gap:7px"><div style="flex:1;height:38px;border-radius:999px;background:#DDF3E4;color:#17663A;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">WhatsApp</div><div style="flex:1;height:38px;border-radius:999px;background:#F2F2F6;color:#16161D;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">Save PDF</div></div></div></div><div class="cap-line" style="justify-content:center"><span class="dot"></span> <span>الفاتورة نفسها بعد لمسة واحدة على EN — تصير الصفحة من اليسار إلى اليمين دون إعادة تحميل.</span></div></div>
+      <div class="reveal-l">
+        <!-- the guest's own receipt: the real page behind the QR on every printed bill, not a drawing -->
+        <div class="rcpt-phone ui"><div style="background:#5B3FE0;color:#fff;padding:15px 15px 17px"><div class="row" style="justify-content:space-between"><div class="row" style="gap:9px"><div style="width:34px;height:34px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">J</div><div><div style="font-size:14px;font-weight:700">JUNO</div><div style="font-size:9.5px;color:rgba(255,255,255,.78);margin-top:1px;white-space:nowrap">West Walk</div></div></div><div class="row" style="gap:3px"><span style="font-size:9px;font-weight:600;padding:4px 9px;border-radius:999px;color:rgba(255,255,255,.8)">EN</span><span style="font-size:9px;font-weight:600;padding:4px 9px;border-radius:999px;background:#fff;color:#5B3FE0">العربية</span></div></div><div class="row" style="margin-top:15px;justify-content:space-between;align-items:flex-end"><div><div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.72)">الإجمالي المدفوع</div><div class="num" style="font-size:28px;font-weight:700;line-height:1.05;letter-spacing:-.5px;margin-top:3px">132.00 ر.ق</div></div><span style="background:#DDF3E4;color:#17663A;border-radius:999px;padding:4px 10px;font-size:9px;font-weight:700">✓ مدفوع</span></div></div><div style="background:#FFFFFF;padding:10px;display:flex;flex-direction:column;gap:8px"><div style="background:#F2F2F6;border-radius:20px;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">الإيصال</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">#1200029</div></div><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">التاريخ</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">8 سبتمبر · 21:14</div></div><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">الطاولة</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">T2 · 2</div></div><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">النادل</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">Raza</div></div></div><div style="background:#F2F2F6;border-radius:20px;padding:4px 12px 10px"><div class="row" style="padding:7px 0;border-top:1px solid #EEEEF3"><span class="num" style="font-size:11px;font-weight:700;color:#62626E">1×</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">Kale Salad</span><span class="num" style="font-size:11px;font-weight:700;color:#16161D">48.00</span></div><div class="row" style="padding:7px 0;border-top:1px solid #EEEEF3"><span class="num" style="font-size:11px;font-weight:700;color:#62626E">1×</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">J Fire Bird</span><span class="num" style="font-size:11px;font-weight:700;color:#16161D">84.00</span></div><div class="row" style="padding:7px 0;border-top:1px solid #EEEEF3"><span class="num" style="font-size:11px;font-weight:700;color:#62626E">1×</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">Parmesan Fries<span style="display:inline-flex;align-items:center;height:16px;padding:0 6px;border-radius:999px;background:#DDF3E4;color:#17663A;font-size:8px;font-weight:700;margin-inline-start:6px">ضيافة</span></span><span class="num" style="font-size:11px;font-weight:700;color:#A9A9B6;text-decoration:line-through">0.00</span></div><div class="row" style="padding:9px 0 2px;border-top:1px solid #EEEEF3;margin-top:4px"><span style="flex:1;font-size:11px;font-weight:600;color:#62626E">الإجمالي</span><span class="num" style="font-size:17px;font-weight:700;color:#5B3FE0">132.00 ر.ق</span></div></div><div style="background:#F2F2F6;border-radius:20px;padding:12px"><div style="font-size:9px;font-weight:600;color:#62626E">بطاقة JUNO</div><div style="font-size:11.5px;font-weight:600;color:#16161D;margin-top:2px">هذه الفاتورة أكسبتك <b style="color:#17663A">+13 نقطة</b></div><div style="margin-top:9px;height:38px;border-radius:999px;background:#5B3FE0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">أضف بطاقتك إلى Apple Wallet</div></div><div class="row" style="gap:7px"><div style="flex:1;height:38px;border-radius:999px;background:#DDF3E4;color:#17663A;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">WhatsApp</div><div style="flex:1;height:38px;border-radius:999px;background:#F2F2F6;color:#16161D;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">حفظ PDF</div></div></div></div>
+        <div class="cap-line" style="justify-content:center"><span class="dot"></span> <span>إيصال الضيف كما يرسمه البرنامج فعلاً — بلغتين، ومعه النقاط التي كسبها من هذه الفاتورة.</span></div>
+      </div>
       <div class="reveal-r">
         <div class="eyebrow">إيصال الضيف · جاهز للفوترة الإلكترونية</div>
         <h2 class="s-title">فاتورة الضيف، <span class="hl">إلى الأبد</span></h2>
@@ -3256,6 +3444,17 @@ var WA_NUMBER = '';
           <div class="pt"><svg class="ic" aria-hidden="true"><use href="#i-comments"/></svg><div><b>راضٍ ← Google. غير راضٍ تماماً ← المدير، على انفراد</b><span>طريق غير الراضين ينتهي في بريد المدير وهاتف المالك، ولا يظهر على الإنترنت أبداً.</span></div></div>
           <div class="pt"><svg class="ic" aria-hidden="true"><use href="#i-invoice"/></svg><div><b>الفوترة الإلكترونية في قطر، جاهزة في وقتها</b><span>الإيصال نفسه يُقدَّم اليوم كمستند مُهيكل: البائع، والرقم المتسلسل، والبنود، وإجماليات الضريبة. وحين تنشر الهيئة العامة للضرائب (GTA) صيغها، يكون الشريط الضريبي مجرّد ربط للحقول، لا إعادة بناء. ولا شيء هنا يُسمّى فاتورة ضريبية قبل أن يقول القانون ذلك.</span></div></div>
         </div>
+      </div>
+    </div>
+    <!-- 🖼 The bill's lock page in both languages, then the same bill in the other language — real MiM screens, sample data (images/shots/, the 30 Sept picture pack) -->
+    <div class="pics reveal">
+      <div class="pic-trio">
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/einvoice-lock-arabic-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/einvoice-lock-arabic-1x.webp" srcset="/images/shots/einvoice-lock-arabic-1x.webp 800w, /images/shots/einvoice-lock-arabic-2x.webp 1600w" sizes="(min-width:960px) 460px, 46vw" width="800" height="1000" alt="صفحة فاتورة الضيف على iPhone بالعربية ومقفلة: «أدخل رقم هاتفك»، وخانة الرقم وفيها رقم للمثال، وزرّ «افتح الفاتورة»" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الفاتورة تطلب الرقم أولاً</b> رقمك غير مطبوع على الفاتورة — يُطلب حتى لا يستطيع أحد غيرك فتحها أو أخذ بطاقتك.</figcaption></figure>
+        <figure class="pic" style="--a:0.800"><a class="pic-open" href="/images/shots/einvoice-lock-2x.webp" data-z="1.1"><img class="pic-img" src="/images/shots/einvoice-lock-1x.webp" srcset="/images/shots/einvoice-lock-1x.webp 800w, /images/shots/einvoice-lock-2x.webp 1600w" sizes="(min-width:960px) 460px, 46vw" width="800" height="1000" alt="صفحة فاتورة الضيف على iPhone بالإنجليزية ومقفلة: «أدخل رقم هاتفك»، وخانة الرقم وفيها رقم للمثال، وزرّ «افتح فاتورتي»" loading="lazy" decoding="async"><span class="pic-zoom" aria-hidden="true"><svg class="ic"><use href="#i-search"/></svg></span></a><figcaption><b>الباب نفسه، بالإنجليزية</b> مفتاح واحد في الأعلى يقلب الصفحة بين العربية والإنجليزية.</figcaption></figure>
+        <!-- the same bill in the other language, behind the door: this drawing and its caption stood beside
+             the section's words until 30 Sept ("PUT ALL"); the page's own-language receipt from the hero took
+             that place when Banner A took the hero. Markup and words unchanged. -->
+        <div class="pic pic-html"><div class="rcpt-phone ui" dir="ltr" lang="en"><div style="background:#5B3FE0;color:#fff;padding:15px 15px 17px"><div class="row" style="justify-content:space-between"><div class="row" style="gap:9px"><div style="width:34px;height:34px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">J</div><div><div style="font-size:14px;font-weight:700">JUNO</div><div style="font-size:9.5px;color:rgba(255,255,255,.78);margin-top:1px;white-space:nowrap">West Walk</div></div></div><div class="row" style="gap:3px"><span style="font-size:9px;font-weight:600;padding:4px 9px;border-radius:999px;background:#fff;color:#5B3FE0">EN</span><span style="font-size:9px;font-weight:600;padding:4px 9px;border-radius:999px;color:rgba(255,255,255,.8)">العربية</span></div></div><div class="row" style="margin-top:15px;justify-content:space-between;align-items:flex-end"><div><div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.72)">Total paid</div><div class="num" style="font-size:28px;font-weight:700;line-height:1.05;letter-spacing:-.5px;margin-top:3px">QR 132.00</div></div><span style="background:#DDF3E4;color:#17663A;border-radius:999px;padding:4px 10px;font-size:9px;font-weight:700">✓ PAID</span></div></div><div style="background:#FFFFFF;padding:10px;display:flex;flex-direction:column;gap:8px"><div style="background:#F2F2F6;border-radius:20px;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">Receipt</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">#1200029</div></div><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">Date</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">8 Sept · 21:14</div></div><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">Table</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">T2 · 2</div></div><div style="background:#FFFFFF;border-radius:12px;padding:7px 9px;min-width:0"><div style="font-size:9px;font-weight:600;color:#62626E">Server</div><div class="num" style="font-size:11px;font-weight:700;color:#16161D;margin-top:1px">Raza</div></div></div><div style="background:#F2F2F6;border-radius:20px;padding:4px 12px 10px"><div class="row" style="padding:7px 0;border-top:1px solid #EEEEF3"><span class="num" style="font-size:11px;font-weight:700;color:#62626E">1×</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">Kale Salad</span><span class="num" style="font-size:11px;font-weight:700;color:#16161D">48.00</span></div><div class="row" style="padding:7px 0;border-top:1px solid #EEEEF3"><span class="num" style="font-size:11px;font-weight:700;color:#62626E">1×</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">J Fire Bird</span><span class="num" style="font-size:11px;font-weight:700;color:#16161D">84.00</span></div><div class="row" style="padding:7px 0;border-top:1px solid #EEEEF3"><span class="num" style="font-size:11px;font-weight:700;color:#62626E">1×</span><span style="flex:1;min-width:0;font-size:11px;font-weight:600;color:#16161D">Parmesan Fries<span style="display:inline-flex;align-items:center;height:16px;padding:0 6px;border-radius:999px;background:#DDF3E4;color:#17663A;font-size:8px;font-weight:700;margin-inline-start:6px">ON US</span></span><span class="num" style="font-size:11px;font-weight:700;color:#A9A9B6;text-decoration:line-through">0.00</span></div><div class="row" style="padding:9px 0 2px;border-top:1px solid #EEEEF3;margin-top:4px"><span style="flex:1;font-size:11px;font-weight:600;color:#62626E">Total</span><span class="num" style="font-size:17px;font-weight:700;color:#5B3FE0">QR 132.00</span></div></div><div style="background:#F2F2F6;border-radius:20px;padding:12px"><div style="font-size:9px;font-weight:600;color:#62626E">JUNO card</div><div style="font-size:11.5px;font-weight:600;color:#16161D;margin-top:2px">This bill earned <b style="color:#17663A">+13 points</b></div><div style="margin-top:9px;height:38px;border-radius:999px;background:#5B3FE0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">Add your card to Apple Wallet</div></div><div class="row" style="gap:7px"><div style="flex:1;height:38px;border-radius:999px;background:#DDF3E4;color:#17663A;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">WhatsApp</div><div style="flex:1;height:38px;border-radius:999px;background:#F2F2F6;color:#16161D;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">Save PDF</div></div></div></div><div class="cap-line" style="justify-content:center"><span class="dot"></span> <span>الفاتورة نفسها بعد لمسة واحدة على EN — تصير الصفحة من اليسار إلى اليمين دون إعادة تحميل.</span></div></div>
       </div>
     </div>
   </div>
@@ -4167,6 +4366,114 @@ function uiFit(){
   window.addEventListener('load', uiFit);
   if (window.ResizeObserver) { var ro = new ResizeObserver(uiFit); document.querySelectorAll('.ui-fit').forEach(function(f){ ro.observe(f); }); }
   else window.addEventListener('resize', uiFit);
+})();
+</script>
+<script>
+/* 🖼 THE FINISHED PICTURES — the viewer (30 Sept 2026). Every picture on the page is a link to its 2x
+   file; here a plain click opens it in place instead: fitted to the window, a tap zooms it to reading
+   size (the window then scrolls around it), ‹ › or the arrow keys walk the pictures of the same
+   section, Esc or ✕ closes and focus goes back to the picture. A modified click (new tab), a browser
+   without <dialog>, or no script at all: the link simply opens the file. The swipe strips under 600px
+   take keyboard focus only while they really scroll. */
+(function(){
+  var T = {"close": "إغلاق", "prev": "الصورة السابقة", "next": "الصورة التالية", "zin": "تكبير", "zout": "تصغير"};
+  var rtl = document.documentElement.dir === 'rtl';
+  var box, stage, pic, cap, prev, next, zoom, count, list = [], at = 0, zoomed = false, opener = null, cur = null;
+  var svg = function(d){ return '<svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="' + d + '"/></svg>'; };
+  function build(){
+    box = document.createElement('dialog'); box.className = 'pic-box'; box.setAttribute('aria-labelledby', 'pic-box-cap');
+    box.innerHTML =
+      '<button type="button" class="pic-box-x" aria-label="' + T.close + '">' + svg('M18 6 6 18M6 6l12 12') + '</button>' +
+      '<div class="pic-box-stage" dir="ltr"><img class="pic-box-img" alt=""></div>' +
+      '<div class="pic-box-bar"><p class="pic-box-cap" id="pic-box-cap"></p><div class="pic-box-btns">' +
+        '<button type="button" class="pic-box-nav pic-box-prev" aria-label="' + T.prev + '">' + svg('m15 18-6-6 6-6') + '</button>' +
+        '<span class="pic-box-count" dir="ltr"></span>' +
+        '<button type="button" class="pic-box-nav pic-box-next" aria-label="' + T.next + '">' + svg('m9 18 6-6-6-6') + '</button>' +
+        '<button type="button" class="pic-box-zoom" aria-pressed="false" aria-label="' + T.zin + '">' +
+          '<svg class="ic" aria-hidden="true"><use href="#i-search"/></svg></button>' +
+      '</div></div>';
+    document.body.appendChild(box);
+    stage = box.querySelector('.pic-box-stage'); pic = box.querySelector('.pic-box-img'); cap = box.querySelector('.pic-box-cap');
+    prev = box.querySelector('.pic-box-prev'); next = box.querySelector('.pic-box-next');
+    zoom = box.querySelector('.pic-box-zoom'); count = box.querySelector('.pic-box-count');
+    box.querySelector('.pic-box-x').addEventListener('click', function(){ box.close(); });
+    prev.addEventListener('click', function(){ go(-1); });
+    next.addEventListener('click', function(){ go(1); });
+    zoom.addEventListener('click', function(){ toggle(null); });
+    pic.addEventListener('click', function(e){ toggle(e); });
+    stage.addEventListener('click', function(e){ if (e.target === stage && !zoomed) box.close(); });
+    box.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        if (zoomed) return;                                  /* zoomed: the arrows scroll the picture */
+        e.preventDefault(); go((e.key === 'ArrowRight') !== rtl ? 1 : -1);
+      }
+    });
+    box.addEventListener('close', function(){
+      document.documentElement.classList.remove('pic-box-on');
+      pic.removeAttribute('src');
+      if (opener) { try { opener.focus({ preventScroll: true }); } catch (e) { opener.focus(); } }
+    });
+    window.addEventListener('resize', function(){ if (box.open) size(); });
+  }
+  function size(){
+    if (!cur) return;
+    var cs = getComputedStyle(stage);
+    var sw = stage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    var sh = stage.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+    var fit = Math.min(sw / cur.w, sh / cur.h, 1);
+    var z = cur.z * (window.innerWidth < 600 ? .8 : 1);         /* a phone: less to pan around */
+    var s = zoomed ? Math.max(z, fit * 1.6) : fit;
+    pic.style.width = Math.round(cur.w * s) + 'px'; pic.style.height = Math.round(cur.h * s) + 'px';
+  }
+  function toggle(e){
+    var r = pic.getBoundingClientRect(), sr = stage.getBoundingClientRect();
+    var fx = e ? (e.clientX - r.left) / r.width : .5, fy = e ? (e.clientY - r.top) / r.height : .5;
+    var cx = e ? e.clientX - sr.left : sr.width / 2, cy = e ? e.clientY - sr.top : sr.height / 2;
+    zoomed = !zoomed; box.classList.toggle('is-zoom', zoomed);
+    zoom.setAttribute('aria-pressed', zoomed ? 'true' : 'false'); zoom.setAttribute('aria-label', zoomed ? T.zout : T.zin);
+    size();
+    var n = pic.getBoundingClientRect();
+    stage.scrollLeft = n.left - sr.left + stage.scrollLeft + fx * n.width - cx;
+    stage.scrollTop = n.top - sr.top + stage.scrollTop + fy * n.height - cy;
+  }
+  function show(k){
+    at = k; var a = list[k], im = a.querySelector('img'), fig = a.closest('figure');
+    cur = { w: +im.getAttribute('width') || 800, h: +im.getAttribute('height') || 1000, z: parseFloat(a.getAttribute('data-z')) || 1.5 };
+    zoomed = false; box.classList.remove('is-zoom');
+    zoom.setAttribute('aria-pressed', 'false'); zoom.setAttribute('aria-label', T.zin);
+    pic.alt = im.alt; pic.src = im.currentSrc || im.src; size(); stage.scrollTop = 0; stage.scrollLeft = 0;
+    var big = new Image(), href = a.getAttribute('href');
+    big.onload = function(){ if (list[at] === a) pic.src = href; }; big.src = href;
+    cap.textContent = '';
+    var fc = fig && fig.querySelector('figcaption');
+    if (fc) Array.prototype.forEach.call(fc.childNodes, function(n){ cap.appendChild(n.cloneNode(true)); });
+    var many = list.length > 1;
+    prev.hidden = next.hidden = count.hidden = !many;
+    count.textContent = (k + 1) + ' / ' + list.length;
+  }
+  function go(d){ if (list.length > 1) show((at + d + list.length) % list.length); }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a.pic-open') : null;
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (!box) { if (typeof HTMLDialogElement !== 'function') return; build(); }
+    e.preventDefault();
+    var g = a.closest('.pics') || a.closest('figure');
+    list = Array.prototype.slice.call(g.querySelectorAll('a.pic-open'));
+    opener = a;
+    document.documentElement.classList.add('pic-box-on');
+    box.showModal(); show(Math.max(0, list.indexOf(a)));
+    box.querySelector('.pic-box-x').focus();
+  });
+  /* the swipe strips: a tab stop only while they really scroll sideways */
+  function strips(){
+    document.querySelectorAll('.pic-grid').forEach(function(g){
+      if (g.scrollWidth > g.clientWidth + 1) g.setAttribute('tabindex', '0'); else g.removeAttribute('tabindex');
+    });
+  }
+  var t = 0;
+  window.addEventListener('resize', function(){ cancelAnimationFrame(t); t = requestAnimationFrame(strips); });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', strips); else strips();
+  window.addEventListener('load', strips);
 })();
 </script>
 </body>
