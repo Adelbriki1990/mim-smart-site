@@ -1588,6 +1588,37 @@ html[lang="ar"] .pp h3{font-family:"Noto Kufi Arabic","Geeza Pro",Tahoma,sans-se
 .pp.wide .av{inset-inline-start:auto;inset-inline-end:14px;top:auto;bottom:14px;margin:0}
 @media(max-width:1039px){.pp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pp.wide{flex-direction:column}.pp.wide .shot{flex:none;aspect-ratio:4/3;border-inline-end:0;border-bottom:1px solid var(--line)}.pp.wide .av{inset-inline-start:14px;inset-inline-end:auto;top:var(--avtop,0);bottom:auto;margin-top:-23px}.pp.wide .t{padding:32px 18px 20px}}
 @media(max-width:560px){.pp-grid{grid-template-columns:minmax(0,1fr)}.pp.wide{grid-column:auto}}
+
+/* ══ the day look ══ */
+:root{--ground:#FFFFFF;--card:#F4F2FB;--inner:#FFFFFF;--ink:#141026;--sub:#5C5772;--line:#E8E4F3;--track:#E0DBEF;--dash:#A9A3C4;
+  --accent:#5B3FE0;--pale:#EEEAFD;--soft:#B7AAF2;--good:#17663A;--good-bg:#DDF3E4;--bad:#9A3412;--bad-bg:#FCE6DA;--warn-bg:#FFF0E6;--amber:#B45309;
+  --tint:#F7F5FD;--gold:#94741F;--gold-hi:#C9A852;--surface:#FFFFFF;--violet:#5B3FE0;color-scheme:light}
+body{background:var(--ground)}
+nav{background:rgba(255,255,255,.84)!important;border-bottom-color:var(--line)!important}
+.lang-switch span,.lang-switch a{background:var(--card);color:var(--ink)}.lang-switch .on{background:var(--violet);color:#fff}
+.btn{background:var(--card);color:var(--ink)}.btn-accent{background:var(--violet);color:#fff;box-shadow:0 12px 34px -12px rgba(91,63,224,.6)}
+.hl,#hero h1 .hl{color:var(--violet)!important;-webkit-text-fill-color:var(--violet)!important;background:none!important}
+.contact-card .hl{color:#EBD79C!important;-webkit-text-fill-color:#EBD79C!important}
+section{background:var(--ground)!important}
+:is(#thisweek,#till,#problem,#who,#owner,#foodcost,#loyalty,#qatar,#security,#pricing,#hygiene,#einvoice,#members,#people){background:var(--tint)!important;--card:#FFFFFF;--inner:#F7F5FD}
+.card,.card-lg,.cell,.pic,.frame,.group,.mb-kpi,.mb-card,.limits div,.soc-card,.plan,.price-card,.faq-item,.ex-stage,.ho-btn[aria-selected="true"],.tile,.mb-rules div,.trio .card,.duo .card-lg,.q-grid div,.proof-stat,.int-row,.mk-card,.price-how>div,.qatar div,.mb-member,.mb-propose,.pp{background:var(--card)!important;color:var(--ink)}
+:is(.card,.card-lg,.frame,.mb-kpi,.mb-card,.limits div,.soc-card,.price-card,.faq-item,.ex-stage,.mb-rules div,.pp){box-shadow:0 1px 0 var(--line),0 14px 34px -24px rgba(40,24,120,.28)!important;border-color:var(--line)!important}
+.frame-bar,.mb-seg div,.mb-where div,.mb-chip,.ex-chips span,.ho-facts span,.chip,.pill{background:var(--inner)!important;color:var(--ink)!important;border-color:var(--line)!important}
+.hero-stats{background:transparent!important}
+.ex-writes{background:linear-gradient(90deg,#FBF6E6,#F6F2FF)!important;color:var(--ink)!important;box-shadow:inset 0 0 0 1px rgba(214,190,116,.45)!important}
+.mb-ring::after{background:var(--card)}
+.price-card.mid{background:linear-gradient(#fff,#fff) padding-box,linear-gradient(150deg,#8C76FF,#5B3FE0 50%,#D6BE74) border-box!important}
+.faq-item[open]{background:linear-gradient(180deg,#FFFFFF,#F8F6FE)!important}
+#proof{background:linear-gradient(180deg,#FFFFFF,#FBF7EA)!important}
+.contact-card{background:linear-gradient(150deg,#7458F2,#5B3FE0 45%,#3B22B0)!important}
+footer{background:linear-gradient(180deg,#FFFFFF,#F5F2FD)!important;color:var(--sub)}footer::after{-webkit-text-stroke:1px rgba(91,63,224,.13)}
+.sample-tag{background:rgba(255,255,255,.92);color:var(--ink);border-color:#D6BE74}
+.chapters{background:rgba(255,255,255,.75)}.chapters a i{background:#CFC8E8}.chapters a span{background:#fff;color:var(--ink)}
+#hero{background:radial-gradient(50% 50% at 50% 15%,rgba(91,63,224,.12),transparent 70%),radial-gradient(30% 40% at 8% 0%,rgba(214,190,116,.2),transparent 70%),#FFFFFF!important}
+#hero .hero-stats{border-top-color:var(--line)}
+.pp .av{box-shadow:0 0 0 4px #fff}
+.pp:hover{box-shadow:0 1px 0 var(--line),0 30px 60px -30px rgba(91,63,224,.4)!important}
+.ex-tab[aria-selected="true"]{color:#fff}
  
 
 /* the gold dot and ring */
